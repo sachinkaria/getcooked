@@ -14,7 +14,7 @@ var Navigation = () => {
         <Navbar bsSize="lg" className="gc-navbar" >
             <Navbar.Header>
                 <Navbar.Brand>
-                    <img className="gc-logo-default" href="#" src="images/logo-icon.png" />
+                    <img className="gc-logo-default gc-padding-small" href="#" src="images/logo-icon.png" />
                 </Navbar.Brand>
                 <Navbar.Toggle />
             </Navbar.Header>

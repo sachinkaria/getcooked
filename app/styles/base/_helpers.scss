@@ -2,9 +2,25 @@
 
 .gc-position-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
+}
+
+.gc-margin-none{
+  margin: 0 0 0 0;
 }
 
 .gc-margin-left {
   margin-left: 50px;
+}
+
+.gc-margin-bottom {
+  margin-bottom: 15px;
+}
+
+.gc-margin-top {
+  margin-top: 15px;
+}
+
+.gc-padding-small {
+  padding: 5px 5px;
 }

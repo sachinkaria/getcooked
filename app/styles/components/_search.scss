@@ -1,12 +1,11 @@
 .gc-searchbar{
   background-color:rgba(black, 0);
   border: none;
-  position: fixed;
-  bottom: 0;
-
+  min-width: 400px;
 }
 
 .gc-btn-search {
-  background-color: orange;
+  background-color: $primary-colour;
+  color: white;
   border: none;
 }

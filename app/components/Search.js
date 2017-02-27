@@ -10,7 +10,7 @@ var classNames = require('classnames');
 
 var Search = () => {
     return (
-        <FormGroup className="gc-position-bottom gc-margin-left">
+        <FormGroup className="gc-position-bottom">
             <InputGroup bsSize="large">
                 <FormControl
                     type="text"

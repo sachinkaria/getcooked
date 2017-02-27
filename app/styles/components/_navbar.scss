@@ -1,4 +1,15 @@
-.blue {
-  background-color: blue;
-  color: red;
+gc-logo {
+  background-image: 'default-logo.png';
+}
+.gc-navbar {
+  background-color: rgba(black, 0.8);
+  height: 80px;
+  position: relative;
+}
+
+.gc-logo-default {
+  position: absolute;
+  height: 100%;
+  display: block;
+  opacity: 1;
 }

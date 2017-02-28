@@ -2,22 +2,25 @@ var getUserInfo = () => {
     return {
         data: [
             {
+                "id": 1,
             "firstname": "Sachin",
             "surname": "Karia",
-            "Endorsements": ["Indian", "Weddings", "Deserts"],
-            "Rating": 5
+            "endorsements": ["Indian", "Weddings", "Deserts"],
+            "rating": 5
                 },
             {
+                "id": 2,
                 "firstname": "Jonny",
                 "surname": "Ive",
-                "Endorsements": ["Italian", "Cocktails", "Burgers"],
-                "Rating": 5
+                "endorsements": ["Italian", "Cocktails", "Burgers"],
+                "rating": 5
             },
             {
+                "id": 3,
                 "firstname": "Jeremy",
                 "surname": "Clarkson",
-                "Endorsements": ["Breakfast", "Bread", "Lobster"],
-                "Rating": 5
+                "endorsements": ["Breakfast", "Bread", "Lobster"],
+                "rating": 5
             }
         ]
     };

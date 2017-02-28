@@ -1,9 +1,9 @@
 var React = require('react');
-var userHelpers = require('../helpers/userHelpers').data;
+var users = require('./../utils/userHelpers').data;
 var Profile = require('./../components/Profile');
 
 
-var Main = React.createClass({
+var ProfileList = React.createClass({
     getInitialState: function () {
         return {
             usersInfo: []
@@ -11,7 +11,7 @@ var Main = React.createClass({
     },
     componentDidMount: function(){
         this.setState({
-            usersInfo: userHelpers
+            usersInfo: users
         });
     },
   render: function () {
@@ -20,7 +20,7 @@ var Main = React.createClass({
         <div>
         {
             this.state.usersInfo.map(function(user){
-                return <Profile usersInfo={user} />
+                return <Profile key={user.id} usersInfo={user} />
             })
         }
         </div>
@@ -28,4 +28,4 @@ var Main = React.createClass({
   }
 });
 
-module.exports = Main;
+module.exports = ProfileList;

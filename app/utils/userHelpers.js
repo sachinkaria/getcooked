@@ -6,21 +6,24 @@ var getUserInfo = () => {
             "firstname": "Sachin",
             "surname": "Karia",
             "endorsements": ["Indian", "Weddings", "Deserts"],
-            "rating": 5
+            "rating": 5,
+                "imageUrl": "images/1.jpg"
                 },
             {
                 "id": 2,
                 "firstname": "Jonny",
                 "surname": "Ive",
                 "endorsements": ["Italian", "Cocktails", "Burgers"],
-                "rating": 5
+                "rating": 5,
+                "imageUrl": "images/2.jpg"
             },
             {
                 "id": 3,
                 "firstname": "Jeremy",
                 "surname": "Clarkson",
                 "endorsements": ["Breakfast", "Bread", "Lobster"],
-                "rating": 5
+                "rating": 5,
+                "imageUrl": "images/3.jpg"
             }
         ]
     };

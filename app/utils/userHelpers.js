@@ -6,7 +6,7 @@ var getUserInfo = () => {
             "firstname": "Sachin",
             "surname": "Karia",
             "endorsements": ["Indian", "Weddings", "Deserts"],
-            "rating": 5,
+            "rating": 4,
                 "imageUrl": "images/1.jpg"
                 },
             {
@@ -22,7 +22,7 @@ var getUserInfo = () => {
                 "firstname": "Jeremy",
                 "surname": "Clarkson",
                 "endorsements": ["Breakfast", "Bread", "Lobster"],
-                "rating": 5,
+                "rating": 4,
                 "imageUrl": "images/3.jpg"
             }
         ]

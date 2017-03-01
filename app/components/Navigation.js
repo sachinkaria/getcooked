@@ -6,9 +6,6 @@ var Form = require('react-bootstrap').Form;
 var classNames = require('classnames');
 var Search = require('./Search');
 
-
-
-
 class Navigation extends React.Component {
   render() {
       return (

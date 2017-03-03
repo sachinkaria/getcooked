@@ -5,24 +5,38 @@ var Navbar = require('react-bootstrap').Navbar;
 var Form = require('react-bootstrap').Form;
 var classNames = require('classnames');
 var Search = require('./Search');
+var Nav = require('react-bootstrap').Nav;
+var NavItem = require('react-bootstrap').NavItem;
+
 
 class Navigation extends React.Component {
   render() {
       return (
-          <body>
+          <div className="row">
               <Navbar bsSize="lg" className="gc-navbar">
                   <Navbar.Header>
                       <Navbar.Brand>
-                          <img className="gc-logo-default gc-padding-small" href="#" src="images/logo-icon.png"/>
+                          <Link to="/" className="gc-padding-none">
+                          <img className="gc-logo-default" href="#" src="images/logo-icon.png"/>
+                          </Link>
                       </Navbar.Brand>
                       <Navbar.Toggle />
                   </Navbar.Header>
-                  <Form inline>
-                      <Search />
-                  </Form>
+                  <Nav className="gc-pull-right">
+                      <Link>
+                          <p className="gc-navbar-link">I'm a chef</p>
+                      </Link>
+                      <Link>
+                            <p className="gc-navbar-link">Messages</p>
+                      </Link>
+                      <Link>
+                          <p className="gc-navbar-link">Bookings</p>
+                      </Link>
+                  </Nav>
+
               </Navbar>
               {this.props.children}
-          </body>
+          </div>
             )
          }
     }

@@ -24,6 +24,14 @@ var getUserInfo = () => {
                 "endorsements": ["Breakfast", "Bread", "Lobster"],
                 "rating": 4,
                 "imageUrl": "images/3.jpg"
+            },
+            {
+                "id": 4,
+                "firstname": "Another",
+                "surname": "Person",
+                "endorsements": ["Tacos", "Guacamole", "Burritos"],
+                "rating": 5,
+                "imageUrl": "images/4.jpg"
             }
         ]
     };

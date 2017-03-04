@@ -11,14 +11,8 @@
 }
 .gc-profile-heading-sm {
   font-family: $primary-font;
-  font-size: 18pt;
+  font-size: 16pt;
   color: black;
-}
-
-.gc-profile-heading-white-sm {
-  font-family: $primary-font;
-  font-size: 18pt;
-  color: white;
 }
 
 .gc-profile-heading-lg {
@@ -42,4 +36,13 @@
 
 .gc-text-white{
   color: white;
+}
+
+.gc-badge{
+  display: inline-flex;
+  margin: 0 auto;
+  height: 50px;
+  width: 50px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

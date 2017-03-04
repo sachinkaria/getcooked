@@ -3,28 +3,28 @@ var getUsers = () => {
         data: [
             {
                 "id": 1,
-            "firstname": "Sachin Karia",
+            "name": "Sachin Karia",
             "endorsements": ["Indian", "Weddings", "Deserts"],
             "rating": 4,
                 "imageUrl": "images/1.jpg"
                 },
             {
                 "id": 2,
-                "firstname": "Jonny Packard",
+                "name": "Jonny Packard",
                 "endorsements": ["Italian", "Cocktails", "Burgers"],
                 "rating": 5,
                 "imageUrl": "images/2.jpg"
             },
             {
                 "id": 3,
-                "firstname": "Jeremy's Tacos",
+                "name": "Jeremy's Tacos",
                 "endorsements": ["Breakfast", "Bread", "Lobster"],
                 "rating": 4,
                 "imageUrl": "images/3.jpg"
             },
             {
                 "id": 4,
-                "firstname": "Another Truck",
+                "name": "Another Truck",
                 "endorsements": ["Tacos", "Guacamole", "Burritos"],
                 "rating": 5,
                 "imageUrl": "images/4.jpg"

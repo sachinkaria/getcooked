@@ -33,8 +33,7 @@ let ProfileList = React.createClass({
                                     id={user.id}
                                     key={user.id}
                                     imageUrl={user.imageUrl}
-                                    firstname={user.firstname}
-                                    surname={user.surname}
+                                    name={user.name}
                                     rating={user.rating}
                                     endorsements={user.endorsements}
                                     />

@@ -1,0 +1,45 @@
+.gc-profile-text-xs{
+  font-family: $primary-font;
+  font-size: 12pt;
+  color: black;
+}
+
+.gc-profile-text-sm{
+  font-family: $primary-font;
+  font-size: 14pt;
+  color: black;
+}
+.gc-profile-heading-sm {
+  font-family: $primary-font;
+  font-size: 18pt;
+  color: black;
+}
+
+.gc-profile-heading-white-sm {
+  font-family: $primary-font;
+  font-size: 18pt;
+  color: white;
+}
+
+.gc-profile-heading-lg {
+  font-family: $primary-font;
+  font-size: 24pt;
+}
+
+.gc-profile-thumbnail {
+  height: 400px;
+  position:relative;
+  border-radius: 5px;
+}
+
+.gc-profile-infobox{
+  height: 35%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+}
+
+.gc-text-white{
+  color: white;
+}

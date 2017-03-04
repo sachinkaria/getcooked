@@ -5,7 +5,7 @@ let Col = require('react-bootstrap').Col;
 let SearchBar = React.createClass({
      render: function(){
          return (
-             <Col xs={8} xsOffset={2} className="gc-margin-bottom">
+             <Col xs={12} sm={8} smOffset={2} className="gc-margin-bottom">
                  <div>
                     <Search/>
                  </div>

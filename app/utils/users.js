@@ -1,4 +1,4 @@
-var getUserInfo = () => {
+var getUsers = () => {
     return {
         data: [
             {
@@ -33,4 +33,4 @@ var getUserInfo = () => {
     };
 }
 
-module.exports = getUserInfo();
+module.exports = getUsers();

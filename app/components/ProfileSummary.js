@@ -17,7 +17,7 @@ let ProfileSummary = (props) => {
 
     return (
             <Col xs={6} md={3}>
-                <Link to='/profile'>
+                <Link to={'/profile/' + props.id }>
                         <Thumbnail className='gc-profile-thumbnail img-responsive' style={ styles }>
                                <Row>
                                    <div className="gc-profile-infobox">
@@ -42,6 +42,7 @@ let ProfileSummary = (props) => {
 };
 
 ProfileSummary.propTypes = {
+    id: PropTypes.number.isRequired,
     firstname: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
     endorsements: PropTypes.array.isRequired,

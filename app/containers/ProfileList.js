@@ -1,5 +1,5 @@
 let React = require('react');
-let users = require('./../utils/userHelpers').data;
+let users = require('./../utils/users').data;
 let ProfileSummary = require('./../components/ProfileSummary');
 let Row = require('react-bootstrap').Row;
 let Col = require('react-bootstrap').Col;
@@ -13,7 +13,7 @@ let ProfileList = React.createClass({
             usersInfo: []
         }
     },
-    componentDidMount: function(){
+    componentWillMount: function(){
         this.setState({
             usersInfo: users
         });
@@ -30,6 +30,7 @@ let ProfileList = React.createClass({
                         this.state.usersInfo.map(function(user){
                             return (
                                 <ProfileSummary
+                                    id={user.id}
                                     key={user.id}
                                     imageUrl={user.imageUrl}
                                     firstname={user.firstname}

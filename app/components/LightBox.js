@@ -1,13 +1,18 @@
 let React = require('react');
 let LightboxComponent = require('react-images');
+let Thumbnail = require('react-bootstrap').Thumbnail;
+let Col = require('react-bootstrap').Col;
 
 let LightBox = React.createClass ({
         getInitialState: function() {
             return {
-                lightboxIsOpen: true,
-                currentImage: 0
+                lightboxIsOpen: false,
+                currentImage: 0,
+                images: this.props.images
             };
         },
+
+
 
     openLightbox: function (index, event) {
         event.preventDefault();
@@ -49,32 +54,30 @@ let LightBox = React.createClass ({
     },
 
     renderGallery: function () {
-        console.log(this.state);
-        const { images } = this.props.images;
 
-        if (!images) return;
-
-        const gallery = images.filter(i => i.useForDemo).map((obj, i) => {
-            return (
-                <a
-                    href={obj.src}
-                    key={i}
-                    onClick={(e) => this.openLightbox(i, e)}
-                >
-                    <img src={obj.src} />
-                </a>
-            );
-        });
         return (
-            <div>
-                {gallery}
-            </div>
-        );
+           <div>
+           {
+               this.state.images.map(function (image, i) {
+                   console.log(image);
+               return (
+                   <Col xs={10} sm={3} key={i} className="gc-center">
+                       <a onClick={(e) => this.openLightbox(i, e)}>
+                           <Thumbnail className='gc-lightbox-thumbnail img-responsive'
+                                      style={{backgroundImage: 'url(' + image.src + ')'}}
+                           />
+                       </a>
+                   </Col>
+               )
+           }.bind(this))
+        }
+           </div>
+        )
     },
 
     render () {
         return (
-            <div className="section">
+            <div>
                 {this.renderGallery()}
                 <LightboxComponent
                     currentImage={this.state.currentImage}

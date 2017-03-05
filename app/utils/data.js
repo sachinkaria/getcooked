@@ -28,6 +28,11 @@ let dataSet = [
                 title: 'image title',
                 description: 'image description'
             },
+            {
+                src: 'images/food-5.jpg',
+                title: 'image title',
+                description: 'image description'
+            }
         ],
         "endorsements": ["Indian", "Weddings", "Deserts"],
         "rating": 4,

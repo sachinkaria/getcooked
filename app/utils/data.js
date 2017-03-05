@@ -7,6 +7,28 @@ let dataSet = [
             {"name":"barbecue", "logo":"images/barbecue.svg"},
             {"name":"chef", "logo":"images/chef.svg"}
         ],
+        "images": [
+            {
+                src: 'images/food-1.jpg',
+                title: 'image title',
+                description: 'image description'
+            },
+            {
+                src: 'images/food-2.jpg',
+                title: 'image title',
+                description: 'image description'
+            },
+            {
+                src: 'images/food-3.jpg',
+                title: 'image title',
+                description: 'image description'
+            },
+            {
+                src: 'images/food-4.jpg',
+                title: 'image title',
+                description: 'image description'
+            },
+        ],
         "endorsements": ["Indian", "Weddings", "Deserts"],
         "rating": 4,
         "imageUrl": "images/1.jpg"

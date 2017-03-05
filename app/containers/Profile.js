@@ -2,11 +2,13 @@ let React = require('react');
 let ProfileData = require('./../utils/profileData');
 let Row = require('react-bootstrap').Row;
 let Col = require('react-bootstrap').Col;
-let Jumbotron = require('react-bootstrap').Jumbotron;
+let Panel = require('react-bootstrap').Panel;
 let Thumbnail = require('react-bootstrap').Thumbnail;
 let Image = require('react-bootstrap').Image;
 let data = require('./../utils/data');
 let Badge = require('./../components/Badge');
+let LightBox = require('./../components/LightBox');
+
 
 
 let Profile = React.createClass ({
@@ -23,25 +25,36 @@ let Profile = React.createClass ({
     },
     render: function () {
         let user = this.state.userData[0];
+        console.log(user);
         return (
             <div>
                 <Col xs={8} xsOffset={1}>
-                    <Jumbotron>
+                    <Panel>
                         <Col xs={10} sm={4}>
                             <Thumbnail src={user.imageUrl} />
                         </Col>
                         <Col xs={10} sm={8}>
-                            <h2 className="gc-center">{user.name}</h2>
-                            <Col xs={12} sm={6} smOffset={3} className="gc-center">
-                            {user.badges.map(function(badge){
-                                return (
-                                        <Badge logo={badge.logo} key={badge.name} />
-                                    )
-                                })
-                            }
-                            </Col>
+                            <Row>
+                                <h2 className="gc-center">{user.name}</h2>
+                                    <Col xs={12} sm={6} smOffset={3} className="gc-center">
+                                    {user.badges.map(function(badge){
+                                        return (
+                                                <Badge logo={badge.logo} key={badge.name} />
+                                            )
+                                        })
+                                    }
+                                    </Col>
+                            </Row>
                         </Col>
-                    </Jumbotron>
+                        <Col xs={10}>
+                            <LightBox images={user.images} />
+                        </Col>
+                    </Panel>
+                </Col>
+                <Col xs={2}>
+                    <Panel className="gc-center">
+                        <h4>Make a booking</h4>
+                    </Panel>
                 </Col>
             </div>
         )

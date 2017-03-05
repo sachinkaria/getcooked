@@ -8,7 +8,6 @@ var InputGroup = require('react-bootstrap').InputGroup;
 var FormControl = require('react-bootstrap').FormControl;
 var Col = require('react-bootstrap').Col;
 var Form = require('react-bootstrap').Form;
-var classNames = require('classnames');
 
 var Search = () => {
     return (
@@ -26,6 +25,6 @@ var Search = () => {
                 </FormGroup>
             </Form>
         )
-}
+};
 
 module.exports = Search;

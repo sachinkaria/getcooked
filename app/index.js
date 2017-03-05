@@ -12,6 +12,11 @@ require('./images/barbecue.svg');
 require('./images/vegan.svg');
 require('./images/cake.svg');
 require('./images/cocktail.svg');
+require('./images/food/food-1.jpg');
+require('./images/food/food-2.jpg');
+require('./images/food/food-3.jpg');
+require('./images/food/food-4.jpg');
+
 
 
 

@@ -34,9 +34,8 @@ let Profile = React.createClass ({
                             <Thumbnail src={user.imageUrl} />
                         </Col>
                         <Col xs={10} sm={8}>
-                            <Row>
-                                <h2 className="gc-center">{user.name}</h2>
-                                    <Col xs={12} sm={6} smOffset={3} className="gc-center">
+                                <h2 className="gc-center gc-margin-none">{user.name}</h2>
+                                    <Col xs={12} sm={6} smOffset={3} className="gc-center gc-margin-top">
                                     {user.badges.map(function(badge){
                                         return (
                                                 <Badge logo={badge.logo} key={badge.name} />
@@ -44,9 +43,13 @@ let Profile = React.createClass ({
                                         })
                                     }
                                     </Col>
-                            </Row>
+                            <Col xs={12} className="gc-margin-top">
+                                <p>{user.description}
+                                </p>
+                            </Col>
                         </Col>
-                        <Col xs={10}>
+                        <Col xs={12}>
+                            <h2 className="gc-center gc-margin-bottom">Photos</h2>
                             <LightBox images={user.images} />
                         </Col>
                     </Panel>

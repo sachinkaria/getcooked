@@ -1,6 +1,5 @@
 let React = require('react');
 let PropTypes = React.PropTypes;
-let Jumbotron = require('react-bootstrap').Jumbotron;
 let Col = require('react-bootstrap').Col;
 let Thumbnail = require('react-bootstrap').Thumbnail;
 let Row = require('react-bootstrap').Row;
@@ -10,8 +9,6 @@ let Link = ReactRouter.Link;
 let ProfileSummary = (props) => {
     let styles = {
             backgroundImage: 'url(' + props.imageUrl + ')',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
         };
 
     return (

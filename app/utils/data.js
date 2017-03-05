@@ -7,6 +7,7 @@ let dataSet = [
             {"name":"barbecue", "logo":"images/barbecue.svg"},
             {"name":"chef", "logo":"images/chef.svg"}
         ],
+        "description": "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win. You see that bamboo behind me though, you see that bamboo? Ain’t nothin’ like bamboo. Bless up. The first of the month is coming, we have to get money, we have no choice. It cost money to eat and they don’t want you to eat. The ladies always say Khaled you smell good, I use no cologne.",
         "images": [
             {
                 src: 'images/food-1.jpg',
@@ -25,11 +26,6 @@ let dataSet = [
             },
             {
                 src: 'images/food-4.jpg',
-                title: 'image title',
-                description: 'image description'
-            },
-            {
-                src: 'images/food-5.jpg',
                 title: 'image title',
                 description: 'image description'
             }

@@ -59,7 +59,6 @@ let LightBox = React.createClass ({
            <div>
            {
                this.state.images.map(function (image, i) {
-                   console.log(image);
                return (
                    <Col xs={10} sm={3} key={i} className="gc-center">
                        <a onClick={(e) => this.openLightbox(i, e)}>

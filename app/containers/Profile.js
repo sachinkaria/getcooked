@@ -7,7 +7,8 @@ let Thumbnail = require('react-bootstrap').Thumbnail;
 let Image = require('react-bootstrap').Image;
 let data = require('./../utils/data');
 let Badge = require('./../components/Badge');
-let LightBox = require('./../components/LightBox');
+let LightBox = require('./LightBox');
+let DatePicker = require('./DatePicker');
 
 
 
@@ -25,13 +26,12 @@ let Profile = React.createClass ({
     },
     render: function () {
         let user = this.state.userData[0];
-        console.log(user);
         return (
             <div>
                 <Col xs={8} xsOffset={1}>
                     <Panel>
                         <Col xs={10} sm={4}>
-                            <Thumbnail src={user.imageUrl} />
+                            <Thumbnail onClick={null} src={user.imageUrl} />
                         </Col>
                         <Col xs={10} sm={8}>
                                 <h2 className="gc-center gc-margin-none">{user.name}</h2>
@@ -57,6 +57,7 @@ let Profile = React.createClass ({
                 <Col xs={2}>
                     <Panel className="gc-center">
                         <h4>Make a booking</h4>
+                        <DatePicker />
                     </Panel>
                 </Col>
             </div>

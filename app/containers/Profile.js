@@ -9,6 +9,14 @@ let data = require('./../utils/data');
 let Badge = require('./../components/Badge');
 let LightBox = require('./LightBox');
 let DatePicker = require('./DatePicker');
+let Button = require('react-bootstrap').Button;
+let Link = require('react-router').Link;
+let FormGroup = require('react-bootstrap').FormGroup;
+let ControlLabel = require('react-bootstrap').ControlLabel;
+let FormControl = require('react-bootstrap').FormControl;
+
+
+
 
 
 
@@ -56,8 +64,13 @@ let Profile = React.createClass ({
                 </Col>
                 <Col xs={2}>
                     <Panel className="gc-center">
-                        <h4>Make a booking</h4>
-                        <DatePicker />
+                        <Panel>
+                            <DatePicker />
+                            <Button bsStyle="success" bsSize="medium" className="gc-margin-top" block> Make a Booking </Button>
+                        </Panel>
+                        <Button bsStyle="primary" bsSize="medium" className=" gc-button gc-margin-top" block> Contact </Button>
+                        <Button bsStyle="default" bsSize="medium" className=" gc-button gc-margin-top gc-margin-bottom" block> Add to Favourites </Button>
+                        <Link>Share</Link>
                     </Panel>
                 </Col>
             </div>

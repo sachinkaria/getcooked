@@ -26,6 +26,7 @@ let DatePicker = React.createClass ({
                 focused={this.state.focused}
                 onDateChange={(date) => { this.setState({ date }); }}
                 onFocusChange={({ focused }) => { this.setState({ focused }); }}
+                placeholder="Select a Date"
             />
         )
     }

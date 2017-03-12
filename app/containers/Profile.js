@@ -11,9 +11,8 @@ let LightBox = require('./LightBox');
 let DatePicker = require('./DatePicker');
 let Button = require('react-bootstrap').Button;
 let Link = require('react-router').Link;
-let FormGroup = require('react-bootstrap').FormGroup;
-let ControlLabel = require('react-bootstrap').ControlLabel;
-let FormControl = require('react-bootstrap').FormControl;
+let FaHeart = require('react-icons/lib/fa/heart-o');
+let FaComment = require('react-icons/lib/fa/commenting-o');
 
 
 
@@ -68,8 +67,8 @@ let Profile = React.createClass ({
                             <DatePicker />
                             <Button bsStyle="success" bsSize="medium" className="gc-margin-top" block> Make a Booking </Button>
                         </Panel>
-                        <Button bsStyle="primary" bsSize="medium" className=" gc-button gc-margin-top" block> Contact </Button>
-                        <Button bsStyle="default" bsSize="medium" className=" gc-button gc-margin-top gc-margin-bottom" block> Add to Favourites </Button>
+                        <Button bsStyle="primary" bsSize="medium" className=" gc-button gc-margin-top" block>Contact </Button>
+                        <Button bsStyle="default" bsSize="medium" className=" gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>
                         <Link>Share</Link>
                     </Panel>
                 </Col>

@@ -30,6 +30,26 @@ let dataSet = [
                 description: 'image description'
             }
         ],
+        "numberOfRatings": 34,
+        "overallRating": 9,
+        "reviews": [
+            {name: "John Renting",
+            reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."},
+            {name: "Alison McDun",
+                reviewDescription: "Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion!"},
+            {name: "Charlie Lewis",
+                reviewDescription: "I’m giving you cloth talk, cloth. Special cloth alert, cut from a special cloth. Life is what you make it, so let’s make it."},
+            {name: "Roger Federer",
+                reviewDescription: "The first of the month is coming, we have to get money, we have no choice. It cost money to eat and they don’t want you to eat."},
+            {name: "Amy Sorto",
+                reviewDescription: "The ladies always say Khaled you smell good, I use no cologne. Cocoa butter is the key."},
+            {name: "Sachin Tenul",
+                reviewDescription: "Lorem Khaled Ipsum is a major key to success. Fan luv. I’m up to something. Surround yourself with angels."},
+            {name: "William Green",
+                reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."},
+            {name: "Lyla Rogers",
+                reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."}
+        ],
         "endorsements": ["Indian", "Weddings", "Deserts"],
         "rating": 4,
         "imageUrl": "images/1.jpg"

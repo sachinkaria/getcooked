@@ -11,8 +11,7 @@ let LightBox = require('./LightBox');
 let DatePicker = require('./DatePicker');
 let Button = require('react-bootstrap').Button;
 let Link = require('react-router').Link;
-let FaHeart = require('react-icons/lib/fa/heart-o');
-let FaComment = require('react-icons/lib/fa/commenting-o');
+let Review = require('./../components/Review');
 
 
 
@@ -59,7 +58,19 @@ let Profile = React.createClass ({
                             <h2 className="gc-center gc-margin-bottom">Photos</h2>
                             <LightBox images={user.images} />
                         </Col>
+                        <Col xs={10} xsOffset={1} className="gc-margin-top">
+                            <Panel>
+                                <h3 className="gc-center">Reviews</h3>
+                                {user.reviews.map(function(review){
+                                    return (
+                                        <Review name={review.name} description={review.reviewDescription} />
+                                    )
+                                })
+                                }
+                            </Panel>
+                        </Col>
                     </Panel>
+
                 </Col>
                 <Col xs={2}>
                     <Panel className="gc-center">

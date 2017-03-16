@@ -13,6 +13,18 @@
   margin-left: 50px;
 }
 
+.gc-margin-left-xs {
+  margin-left: 10px;
+}
+
+.gc-margin-right {
+  margin-right: 50px;
+}
+
+.gc-margin-right-xs {
+  margin-right: 10px;
+}
+
 .gc-margin-bottom {
   margin-bottom: 15px;
 }
@@ -33,16 +45,20 @@
   text-align: center;
 }
 
-.gc-float-left{
-  float: left;
-}
-
 .gc-pull-right{
   float: right;
 }
 
 .gc-pull-left{
   float: left;
+}
+
+.gc-clear-right{
+  clear: right;
+}
+
+.gc-clear-left{
+  clear: left;
 }
 
 .gc-font-size-lg{

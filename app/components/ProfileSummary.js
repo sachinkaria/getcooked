@@ -5,6 +5,7 @@ let Thumbnail = require('react-bootstrap').Thumbnail;
 let Row = require('react-bootstrap').Row;
 let ReactRouter = require('react-router');
 let Link = ReactRouter.Link;
+let StarRatingComponent = require('react-star-rating-component');
 
 let ProfileSummary = (props) => {
     let styles = {
@@ -14,19 +15,20 @@ let ProfileSummary = (props) => {
     return (
             <Col xs={6} md={3}>
                 <Link to={'/profile/' + props.id }>
-                        <Thumbnail className='gc-profile-thumbnail img-responsive' style={ styles }>
-                               <Row>
-                                   <div className="gc-profile-infobox">
-                                       <Col xs={10} xsOffset={1}>
-                                       <h3 className="gc-profile-heading-sm gc-text-white">{props.name}</h3>
-                                            {props.endorsements.map(function(endorsement){
-                                                return <h4 className="gc-profile-text-xs gc-text-white" key={endorsement}>{endorsement}</h4>;
-                                            })
-                                            }
-                                        </Col>
-                                   </div>
-                                </Row>
-                        </Thumbnail>
+                    <div>
+                        <Thumbnail className='gc-profile-thumbnail img-responsive' style={ styles } />
+                            <div className="gc-profile-infobox">
+                                <h3 className="gc-profile-heading-sm gc-margin-left-xs gc-pull-left gc-clear-left">{props.name}</h3>
+                                <StarRatingComponent
+                                    className="gc-margin-left-xs gc-pull-left gc-clear-left"
+                                    starCount={5}
+                                    value={props.rating}
+                                    starColor={'#e46344'}
+                                    emptyStarColor={'#cecccc'}
+                                    name={'rating'}
+                                /><span className="gc-ratings-text">{props.numberOfRatings} reviews</span>
+                            </div>
+                    </div>
                 </Link>
             </Col>
     )
@@ -36,8 +38,9 @@ ProfileSummary.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    endorsements: PropTypes.array.isRequired,
-    rating: PropTypes.number.isRequired
+    rating: PropTypes.number.isRequired,
+    numberOfRatings: PropTypes.number.isRequired
+
 };
 
 module.exports = ProfileSummary;

@@ -11,8 +11,9 @@
 }
 .gc-profile-heading-sm {
   font-family: $primary-font;
-  font-size: 16pt;
+  font-size: 14pt;
   color: black;
+  margin-top: 10px;
 }
 
 .gc-profile-heading-lg {
@@ -21,23 +22,22 @@
 }
 
 .gc-profile-thumbnail {
-  height: 400px;
+  height: 300px;
   position:relative;
-  border-radius: 5px;
   background-size: cover;
   background-position: center;
+  margin-bottom: 0;
 }
 
 .gc-profile-infobox{
-  height: 35%;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  height: 70px;
+  background-color: rgba(255, 255, 255, 0.8);
+  position: relative;
   width: 100%;
-  bottom: 0px;
-}
-
-.gc-text-white{
-  color: white;
+  top: 0;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  border-bottom-width: 1px;
 }
 
 .gc-badge{
@@ -47,4 +47,10 @@
   width: 50px;
   margin-left: 5px;
   margin-right: 5px;
+}
+
+.gc-ratings-text{
+  float: left;
+  margin-left: 3px;
+  color: rgba(58, 58, 58, 1);
 }

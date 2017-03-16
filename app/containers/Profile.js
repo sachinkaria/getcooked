@@ -1,5 +1,5 @@
 let React = require('react');
-let ProfileData = require('./../utils/profileData');
+let ProfileData = require('./../utils/helpers');
 let Row = require('react-bootstrap').Row;
 let Col = require('react-bootstrap').Col;
 let Panel = require('react-bootstrap').Panel;
@@ -55,10 +55,15 @@ let Profile = React.createClass ({
                             </Col>
                         </Col>
                         <Col xs={12}>
-                            <h2 className="gc-center gc-margin-bottom">Photos</h2>
+                            <h3 className="gc-center gc-margin-bottom">Photos</h3>
                             <LightBox images={user.images} />
                         </Col>
-                        <Col xs={10} xsOffset={1} className="gc-margin-top">
+                        <Col xs={4} className="gc-margin-top">
+                            <Panel>
+                                <h3 className="gc-center">Ratings</h3>
+                            </Panel>
+                        </Col>
+                        <Col xs={8} className="gc-margin-top">
                             <Panel>
                                 <h3 className="gc-center">Reviews</h3>
                                 {user.reviews.map(function(review){

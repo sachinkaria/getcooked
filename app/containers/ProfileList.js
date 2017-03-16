@@ -25,7 +25,7 @@ let ProfileList = React.createClass({
                 <SearchBar/>
             </Row>
             <Row>
-                <Col xs={10} xsOffset={1}>
+                <Col xs={8} xsOffset={2}>
                     {
                         this.state.usersInfo.map(function(user){
                             return (
@@ -36,6 +36,7 @@ let ProfileList = React.createClass({
                                     name={user.name}
                                     rating={user.rating}
                                     endorsements={user.endorsements}
+                                    numberOfRatings={user.numberOfRatings}
                                     />
                             )
                         })

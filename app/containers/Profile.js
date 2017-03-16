@@ -12,6 +12,7 @@ let DatePicker = require('./DatePicker');
 let Button = require('react-bootstrap').Button;
 let Link = require('react-router').Link;
 let Review = require('./../components/Review');
+let Rating = require('./../components/Rating');
 
 
 
@@ -61,6 +62,12 @@ let Profile = React.createClass ({
                         <Col xs={4} className="gc-margin-top">
                             <Panel>
                                 <h3 className="gc-center">Ratings</h3>
+                                {user.ratings.map(function(rating){
+                                    return (
+                                        <Rating category={rating.category} value={rating.value} />
+                                    )
+                                })
+                                }
                             </Panel>
                         </Col>
                         <Col xs={8} className="gc-margin-top">

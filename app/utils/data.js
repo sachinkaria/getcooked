@@ -31,7 +31,13 @@ let dataSet = [
             }
         ],
         "numberOfRatings": 34,
-        "overallRating": 9,
+        "ratings":[
+            {category: "Overall", value: 4.5},
+            {category: "Food", value: 5},
+            {category: "Hygiene", value: 5},
+            {category: "Service", value: 4},
+            {category: "Value", value: 4}
+        ],
         "reviews": [
             {name: "John Renting",
             reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."},
@@ -50,8 +56,6 @@ let dataSet = [
             {name: "Lyla Rogers",
                 reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."}
         ],
-        "endorsements": ["Indian", "Weddings", "Deserts"],
-        "rating": 4,
         "imageUrl": "images/1.jpg"
     },
     {

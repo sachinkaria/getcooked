@@ -1,0 +1,21 @@
+.gc-endorsement{
+  float: left;
+  display: inline-block;
+  padding-left: 15px;
+}
+
+.label {
+  background-color: $primary-colour--light;
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .5em;
+  cursor: pointer;
+}
+
+

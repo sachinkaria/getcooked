@@ -40,7 +40,7 @@ let dataSet = [
         ],
         "reviews": [
             {name: "John Renting",
-            reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."},
+                reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."},
             {name: "Alison McDun",
                 reviewDescription: "Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion!"},
             {name: "Charlie Lewis",
@@ -55,6 +55,19 @@ let dataSet = [
                 reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."},
             {name: "Lyla Rogers",
                 reviewDescription: "Lorem Khaled Ipsum is a major key to success. Special cloth alert They don’t want us to win."}
+        ],
+        "endorsements": [
+            {description: "Weddings", number: 16},
+            {description: "Tiramisu", number: 13},
+            {description: "Steet Food", number: 12},
+            {description: "Cocktails", number: 12},
+            {description: "Ramen", number: 10},
+            {description: "Cake and Cream", number: 10},
+            {description: "Chocolate brownies", number: 8},
+            {description: "Tacos", number: 14},
+            {description: "Apple pie", number: 2},
+            {description: "Fine dining", number: 3},
+            {description: "Custard", number: 8}
         ],
         "imageUrl": "images/1.jpg"
     },

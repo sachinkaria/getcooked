@@ -1,18 +1,19 @@
 let React = require('react');
+let _ = require('lodash');
 let ProfileData = require('./../utils/helpers');
-let Row = require('react-bootstrap').Row;
 let Col = require('react-bootstrap').Col;
 let Panel = require('react-bootstrap').Panel;
 let Thumbnail = require('react-bootstrap').Thumbnail;
-let Image = require('react-bootstrap').Image;
 let data = require('./../utils/data');
-let Badge = require('./../components/Badge');
 let LightBox = require('./LightBox');
+let Endorsement = require('./Endorsement');
 let DatePicker = require('./DatePicker');
 let Button = require('react-bootstrap').Button;
 let Link = require('react-router').Link;
 let Review = require('./../components/Review');
 let Rating = require('./../components/Rating');
+let Badge = require('./../components/Badge');
+
 
 
 
@@ -33,6 +34,7 @@ let Profile = React.createClass ({
     },
     render: function () {
         let user = this.state.userData[0];
+        let endorsements = _.sortBy(user.endorsements, 'number').reverse();
         return (
             <div>
                 <Col xs={8} xsOffset={1}>
@@ -59,27 +61,34 @@ let Profile = React.createClass ({
                             <h3 className="gc-center gc-margin-bottom">Photos</h3>
                             <LightBox images={user.images} />
                         </Col>
-                        <Col xs={4} className="gc-margin-top">
-                            <Panel>
-                                <h3 className="gc-center">Ratings</h3>
+                        <Col xs={12} className="gc-margin-top">
+                            <Col xs={12} className="gc-center">
+                                <h3>Reviews ({user.numberOfRatings})</h3>
+                            </Col>
+                            <Col xs={8}>
+                                    {user.reviews.map(function(review){
+                                        return (
+                                            <Review key={review.name} name={review.name} description={review.reviewDescription} />
+                                        )
+                                    })
+                                    }
+                            </Col>
+                            <Col xs={4}>
                                 {user.ratings.map(function(rating){
                                     return (
-                                        <Rating category={rating.category} value={rating.value} />
+                                        <Rating key={rating.category} category={rating.category} value={rating.value} />
                                     )
                                 })
                                 }
-                            </Panel>
-                        </Col>
-                        <Col xs={8} className="gc-margin-top">
-                            <Panel>
-                                <h3 className="gc-center">Reviews</h3>
-                                {user.reviews.map(function(review){
+                            </Col>
+                            <Col xs={4} className="gc-margin-top--large">
+                                {endorsements.map(function(endorsement){
                                     return (
-                                        <Review name={review.name} description={review.reviewDescription} />
+                                        <Endorsement key={endorsement.description} description={endorsement.description} number={endorsement.number} />
                                     )
                                 })
                                 }
-                            </Panel>
+                            </Col>
                         </Col>
                     </Panel>
 
@@ -88,10 +97,10 @@ let Profile = React.createClass ({
                     <Panel className="gc-center">
                         <Panel>
                             <DatePicker />
-                            <Button bsStyle="success" bsSize="medium" className="gc-margin-top" block> Make a Booking </Button>
+                            <Button bsStyle="success" bsSize="small" className="gc-margin-top" block> Make a Booking </Button>
                         </Panel>
-                        <Button bsStyle="primary" bsSize="medium" className=" gc-button gc-margin-top" block>Contact </Button>
-                        <Button bsStyle="default" bsSize="medium" className=" gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>
+                        <Button bsStyle="primary" bsSize="small" className=" gc-button gc-margin-top" block>Contact </Button>
+                        <Button bsStyle="default" bsSize="small" className=" gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>
                         <Link>Share</Link>
                     </Panel>
                 </Col>

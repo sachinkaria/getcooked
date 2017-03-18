@@ -6,7 +6,6 @@ var Button = require('react-bootstrap').Button;
 var FormGroup = require('react-bootstrap').FormGroup;
 var InputGroup = require('react-bootstrap').InputGroup;
 var FormControl = require('react-bootstrap').FormControl;
-var Col = require('react-bootstrap').Col;
 var Form = require('react-bootstrap').Form;
 
 var Search = () => {
@@ -16,7 +15,7 @@ var Search = () => {
                     <InputGroup bsSize="large">
                         <FormControl
                             type="text"
-                            placeholder="Search"
+                            placeholder="Search by place, event, cuisine..."
                             className="gc-searchbar"
                         />
                     </InputGroup>

@@ -58,7 +58,7 @@ let dataSet = [
         ],
         "endorsements": [
             {description: "Weddings", number: 16},
-            {description: "Tiramisu", number: 13},
+            {description: "Ice cream", number: 13},
             {description: "Steet Food", number: 12},
             {description: "Cocktails", number: 12},
             {description: "Ramen", number: 10},

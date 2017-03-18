@@ -35,6 +35,7 @@ let Profile = React.createClass ({
     render: function () {
         let user = this.state.userData[0];
         let endorsements = _.sortBy(user.endorsements, 'number').reverse();
+        let imagesCount = user.images.length;
         return (
             <div>
                 <Col xs={8} xsOffset={1}>
@@ -58,12 +59,12 @@ let Profile = React.createClass ({
                             </Col>
                         </Col>
                         <Col xs={12}>
-                            <h3 className="gc-center gc-margin-bottom">Photos</h3>
+                            <h3 className="gc-center gc-margin-bottom">Photos <span className="gc-profile-text-xs">({imagesCount})</span></h3>
                             <LightBox images={user.images} />
                         </Col>
                         <Col xs={12} className="gc-margin-top">
                             <Col xs={12} className="gc-center">
-                                <h3>Reviews ({user.numberOfRatings})</h3>
+                                <h3>Reviews <span className="gc-profile-text-xs">({user.numberOfRatings})</span></h3>
                             </Col>
                             <Col xs={8}>
                                     {user.reviews.map(function(review){
@@ -81,6 +82,7 @@ let Profile = React.createClass ({
                                 })
                                 }
                             </Col>
+
                             <Col xs={4} className="gc-margin-top--large">
                                 {endorsements.map(function(endorsement){
                                     return (
@@ -95,10 +97,9 @@ let Profile = React.createClass ({
                 </Col>
                 <Col xs={2}>
                     <Panel className="gc-center">
-                        <Panel>
                             <DatePicker />
                             <Button bsStyle="success" bsSize="small" className="gc-margin-top" block> Make a Booking </Button>
-                        </Panel>
+                        <hr/>
                         <Button bsStyle="primary" bsSize="small" className=" gc-button gc-margin-top" block>Contact </Button>
                         <Button bsStyle="default" bsSize="small" className=" gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>
                         <Link>Share</Link>

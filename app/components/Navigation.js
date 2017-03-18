@@ -1,12 +1,9 @@
-var React = require('react');
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
-var Navbar = require('react-bootstrap').Navbar;
-var Form = require('react-bootstrap').Form;
-var classNames = require('classnames');
-var Search = require('./Search');
-var Nav = require('react-bootstrap').Nav;
-var NavItem = require('react-bootstrap').NavItem;
+let React = require('react');
+let ReactRouter = require('react-router');
+let Link = ReactRouter.Link;
+let Navbar = require('react-bootstrap').Navbar;
+let Nav = require('react-bootstrap').Nav;
+let Col = require('react-bootstrap').Col;
 
 
 class Navigation extends React.Component {
@@ -14,26 +11,35 @@ class Navigation extends React.Component {
       return (
           <div className="row">
               <Navbar bsSize="lg" className="gc-navbar">
-                  <Navbar.Header>
-                      <Navbar.Brand>
-                          <Link to="/" className="gc-padding-none">
-                          <img className="gc-logo-default" href="#" src="images/logo-icon.png"/>
-                          </Link>
-                      </Navbar.Brand>
-                      <Navbar.Toggle />
-                  </Navbar.Header>
-                  <Nav className="gc-pull-right">
-                      <Link>
-                          <p className="gc-navbar-link">I'm a chef</p>
-                      </Link>
-                      <Link>
-                            <p className="gc-navbar-link">Messages</p>
-                      </Link>
-                      <Link>
-                          <p className="gc-navbar-link">Bookings</p>
-                      </Link>
-                  </Nav>
-
+                  <Col xs={4}>
+                      <Navbar.Header>
+                          <Navbar.Brand>
+                              <Link to="/" className="gc-padding-none">
+                              <img className="gc-logo-default" href="#" src="images/logo-icon.png"/>
+                              </Link>
+                          </Navbar.Brand>
+                          <Navbar.Toggle />
+                      </Navbar.Header>
+                  </Col>
+                  <Col xs={4} xsOffset={4} className="gc-vertical-center">
+                      <Nav>
+                          <Col xs={4}>
+                              <Link>
+                                  <p>I'm a chef</p>
+                              </Link>
+                          </Col>
+                          <Col xs={4}>
+                              <Link>
+                                  <p>Messages</p>
+                              </Link>
+                          </Col>
+                          <Col xs={4}>
+                              <Link>
+                                  <p>Bookings</p>
+                              </Link>
+                          </Col>
+                      </Nav>
+                  </Col>
               </Navbar>
               {this.props.children}
           </div>

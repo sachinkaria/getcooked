@@ -1,6 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var routes = require('./config/routes');
+let React = require('react');
+let ReactDOM = require('react-dom');
+let routes = require('./config/routes');
 require('./styles/main.scss');
 require('./images/logo-icon.png');
 require('./images/1.jpg');

@@ -9,7 +9,8 @@ let ChatInput = require('./ChatInput');
 class Chat extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {"messages": this.props.chatMessages};
+        console.log(this.state);
+        this.state = {messages: this.props.chatMessages};
     }
 
     sendMessage(message) {

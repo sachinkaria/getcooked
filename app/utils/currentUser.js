@@ -9,16 +9,20 @@ let getUsers = () => {
                                 "chatMessages": [
                                     {"username": "Maxyboi",
                                     "message": "Hello there!",
-                                    "fromMe": "false"},
+                                    "fromMe": "false",
+                                    "created": "2012-04-23T18:25:40.511Z"},
                                     {"username": "Sachin Karia",
-                                        "message": "Hello there!",
-                                        "fromMe": "true"},
+                                        "message": "Hello Maxiboy!",
+                                        "fromMe": "true",
+                                        "created": "2012-04-23T18:25:41.511Z"},
                                     {"username": "Sachin K",
-                                        "message": "Hello there!",
-                                        "fromMe": "true"},
+                                        "message": " How are you?",
+                                        "fromMe": "true",
+                                        "created": "2012-04-23T18:25:43.111Z"},
                                     {"username": "Maxyboi",
-                                        "message": "Hello there!",
-                                        "fromMe": "false"}
+                                        "message": "The entire menu is vegetarian",
+                                        "fromMe": "false",
+                                        "created": "2012-04-23T18:25:47.511Z"}
                                 ]
                     }
                 ]

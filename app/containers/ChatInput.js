@@ -10,12 +10,12 @@ class ChatInput extends React.Component {
 
         // React ES6 does not bind 'this' to event handlers by default
         this.textChangeHandler = this.textChangeHandler.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(event) {
         // Stop the form from refreshing the page on submit
         event.preventDefault();
-
         // Call the onSend callback with the chatInput message
         this.props.onSend(this.state.chatInput);
 

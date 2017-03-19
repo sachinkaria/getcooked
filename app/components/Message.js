@@ -1,7 +1,7 @@
 /**
  * Created by sachinkaria on 18/03/2017.
  */
-import React from 'react';
+let React = require('react');
 
 class Message extends React.Component {
     render() {
@@ -24,7 +24,8 @@ class Message extends React.Component {
 Message.defaultProps = {
     message: '',
     username: '',
-    fromMe: false
+    fromMe: false,
+    date: new Date()
 };
 
-export default Message;
+module.exports = Message;

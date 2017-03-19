@@ -29,7 +29,7 @@ class Navigation extends React.Component {
                               </Link>
                           </Col>
                           <Col xs={4}>
-                              <Link>
+                              <Link to={'/inbox'}>
                                   <p>Messages</p>
                               </Link>
                           </Col>

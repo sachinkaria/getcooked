@@ -2,6 +2,9 @@
  * Created by sachinkaria on 19/03/2017.
  */
 let React = require('react');
+let FormGroup = require('react-bootstrap').FormGroup;
+let FormControl = require('react-bootstrap').FormControl;
+let Col = require('react-bootstrap').Col;
 
 class ChatInput extends React.Component {
     constructor(props) {
@@ -31,13 +34,15 @@ class ChatInput extends React.Component {
 
     render() {
         return (
-            <form className="chat-input" onSubmit={this.handleChange}>
-                <input type="text"
-                       onChange={this.textChangeHandler}
-                       value={this.state.chatInput}
-                       placeholder="Write a message..."
-                       required />
-            </form>
+                <FormGroup onSubmit={this.handleChange}>
+                    <FormControl
+                        bsClass='chat-input'
+                            type='text'
+                           onChange={this.textChangeHandler}
+                           value={this.state.chatInput}
+                           placeholder='Write a message...'
+                           required />
+                </FormGroup>
         );
     }
 }

@@ -4,6 +4,7 @@
 let React = require('react');
 let Messages = require('../components/Messages');
 let ChatInput = require('./ChatInput');
+let Col = require('react-bootstrap').Col;
 
 
 class Chat extends React.Component {
@@ -32,9 +33,11 @@ class Chat extends React.Component {
     render() {
         return (
             <div className="container">
-                <h3>React Chat App</h3>
-                <Messages messages={this.state.messages} />
-                <ChatInput onSend={this.sendMessage} />
+                <h3>Messages</h3>
+                <Col xs={8}>
+                    <Messages messages={this.state.messages} />
+                    <ChatInput onSend={this.sendMessage} />
+                </Col>
             </div>
         );
     }

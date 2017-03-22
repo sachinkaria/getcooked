@@ -1,22 +1,28 @@
-/**
- * Created by sachinkaria on 18/03/2017.
- */
 let React = require('react');
+let classNames = require('classnames');
+let Row = require('react-bootstrap').Row;
+let Col = require('react-bootstrap').Col;
 
 class Message extends React.Component {
     render() {
-        // Was the message sent by the current user. If so, add a css class
-        const fromMe = this.props.fromMe ? 'from-me' : '';
+        let classes = classNames({
+            'message' : true,
+            'from-me': this.props.fromMe
+        });
 
         return (
-            <div className={`message ${fromMe}`}>
-                <div className='username'>
-                    { this.props.username }
-                </div>
-                <div className='message-body'>
-                    { this.props.message }
-                </div>
-            </div>
+            <Row>
+                <Col xs={12}>
+                    <div className={classes}>
+                        <div className='username'>
+                            { this.props.username }
+                        </div>
+                        <div className='message-body'>
+                            { this.props.message }
+                        </div>
+                    </div>
+                </Col>
+            </Row>
         );
     }
 }

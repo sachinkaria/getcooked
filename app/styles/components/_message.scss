@@ -1,0 +1,14 @@
+.message {
+  color: rgba(0, 0, 0, 1);
+  float: left;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+
+  &.from-me {
+    float: right;
+    text-align: right;
+  }
+}

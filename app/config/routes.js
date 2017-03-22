@@ -8,6 +8,7 @@ let ProfileList = require('../containers/ProfileList');
 let Navigation = require('../components/Navigation');
 let Profile = require('../containers/Profile');
 let Inbox = require('../containers/Inbox');
+let Chat = require('../containers/Chat');
 
 let routes = (
   <Router history={hashHistory}>
@@ -15,6 +16,7 @@ let routes = (
       <IndexRoute component={ProfileList} />
         <Route path='/profile/:id' component={Profile}/>
         <Route path="/inbox" component={Inbox} />
+        <Route path='/chat/:id' component={Chat}/>
     </Route>
   </Router>
 );

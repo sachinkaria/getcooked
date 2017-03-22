@@ -15,11 +15,6 @@ let Rating = require('./../components/Rating');
 let Badge = require('./../components/Badge');
 
 
-
-
-
-
-
 let Profile = React.createClass ({
     getInitialState: function () {
         return {
@@ -33,7 +28,7 @@ let Profile = React.createClass ({
         })
     },
     render: function () {
-        let user = this.state.userData[0];
+        let user = this.state.userData;
         let endorsements = _.sortBy(user.endorsements, 'number').reverse();
         let imagesCount = user.images.length;
         return (

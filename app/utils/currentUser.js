@@ -4,8 +4,9 @@ let getUsers = () => {
             {
                 "id": 1,
                 "name": "Sachin Karia",
-                "inbox": [
-                            {   "id": "1234",
+                "inbox":
+                    [
+                    {   "id": "1234",
                                 "username": "Maxyboi",
                                 "chatMessages": [
                                     {"username": "Maxyboi",

@@ -1,7 +1,8 @@
 function getProfileData (id, data) {
-    return data.filter(function( obj ) {
+    result = data.filter(function( obj ) {
         return obj.id == id;
     });
+    return result[0]
 }
 
 let helpers = {

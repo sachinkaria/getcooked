@@ -17,7 +17,8 @@ class Chat extends React.Component {
     }
 
     componentWillMount (){
-        let messages = helpers.getData(this.props.params.id, data)[0].chatMessages;
+        console.log(helpers.getData(this.props.params.id, data));
+        let messages = helpers.getData(this.props.params.id, data).chatMessages;
     this.setState({
         messages: messages
     })

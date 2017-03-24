@@ -1,25 +1,24 @@
 /**
  * Created by sachinkaria on 18/03/2017.
  */
-let React = require('react');
-let Messages = require('../components/Messages');
-let ChatInput = require('./ChatInput');
-let Col = require('react-bootstrap').Col;
-let data = require('../utils/currentUser').data[0].inbox;
-let helpers = require('../utils/helpers');
+import React from 'react';
+import { Messages } from '../components/Messages';
+import { ChatInput } from './ChatInput';
+import { Col } from 'react-bootstrap';
+import { data } from '../utils/currentUser';
+import { helpers } from '../utils/helpers';
 
 
 
-class Chat extends React.Component {
+export default class Chat extends React.Component {
     constructor(props) {
         super(props);
         this.sendMessage = this.sendMessage.bind(this);
     }
 
     componentWillMount (){
-        console.log(helpers.getData(this.props.params.id, data));
         let messages = helpers.getData(this.props.params.id, data).chatMessages;
-    this.setState({
+        this.setState({
         messages: messages
     })
 }
@@ -52,5 +51,3 @@ class Chat extends React.Component {
     }
 
 }
-
-module.exports = Chat;

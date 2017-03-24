@@ -1,6 +1,4 @@
-let getUsers = () => {
-    return {
-        data: [
+let getUsers = [
             {
                 "id": 1,
                 "name": "Sachin Karia",
@@ -29,8 +27,6 @@ let getUsers = () => {
                 "imageUrl": "images/4.jpg",
                 "numberOfRatings": 21
             }
-        ]
-    };
-}
+        ];
 
-module.exports = getUsers();
+export default getUsers;

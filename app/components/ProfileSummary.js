@@ -1,9 +1,7 @@
-let React = require('react');
-let PropTypes = React.PropTypes;
-let Col = require('react-bootstrap').Col;
-let Thumbnail = require('react-bootstrap').Thumbnail;
-let ReactRouter = require('react-router');
-let Link = ReactRouter.Link;
+import React from 'react';
+import { PropTypes } from 'react';
+import { Col, Thumbnail } from 'react-bootstrap';
+import { ReactRouter, Link } from 'react-router';
 let StarRatingComponent = require('react-star-rating-component');
 
 let ProfileSummary = (props) => {
@@ -42,4 +40,4 @@ ProfileSummary.propTypes = {
 
 };
 
-module.exports = ProfileSummary;
+export default ProfileSummary;

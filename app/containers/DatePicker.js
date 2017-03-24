@@ -1,6 +1,5 @@
-let React = require('react');
-let { SingleDatePicker } = require('react-dates');
-let moment = require('moment');
+import React from 'react';
+import { SingleDatePicker } from 'react-dates';
 
 let DatePicker = React.createClass ({
     getInitialState: function () {

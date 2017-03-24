@@ -1,14 +1,10 @@
 /**
  * Created by sachinkaria on 27/02/2017.
  */
-var React = require('react');
-var Button = require('react-bootstrap').Button;
-var FormGroup = require('react-bootstrap').FormGroup;
-var InputGroup = require('react-bootstrap').InputGroup;
-var FormControl = require('react-bootstrap').FormControl;
-var Form = require('react-bootstrap').Form;
+import React from 'react';
+import { Button, FormGroup, InputGroup, FormControl, Form } from 'react-bootstrap';
 
-var Search = () => {
+let Search = () => {
     return (
             <Form inline>
                 <FormGroup>
@@ -26,4 +22,4 @@ var Search = () => {
         )
 };
 
-module.exports = Search;
+export default Search;

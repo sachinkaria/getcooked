@@ -1,7 +1,7 @@
-let React = require('react');
-let Search = require('./../components/Search');
-let DatePicker = require('./DatePicker');
-let Col = require('react-bootstrap').Col;
+import React from 'react';
+import Search from './../components/Search';
+import DatePicker from './DatePicker';
+import { Col } from 'react-bootstrap';
 
 let SearchBar = React.createClass({
      render: function(){
@@ -18,5 +18,5 @@ let SearchBar = React.createClass({
      }
 });
 
-module.exports = SearchBar;
+export default SearchBar;
 

@@ -1,9 +1,8 @@
-let React = require('react');
-let users = require('./../utils/users').data;
-let ProfileSummary = require('./../components/ProfileSummary');
-let Row = require('react-bootstrap').Row;
-let Col = require('react-bootstrap').Col;
-let SearchBar = require('./SearchBar');
+import React from 'react';
+import getUsers from './../utils/users';
+import ProfileSummary from './../components/ProfileSummary';
+import { Col, Row } from 'react-bootstrap';
+import SearchBar from './SearchBar';
 
 
 
@@ -14,8 +13,9 @@ let ProfileList = React.createClass({
         }
     },
     componentWillMount: function(){
+        console.log(getUsers);
         this.setState({
-            usersInfo: users
+            usersInfo: getUsers
         });
     },
   render: function () {
@@ -48,4 +48,4 @@ let ProfileList = React.createClass({
     }
 });
 
-module.exports = ProfileList;
+export default ProfileList;

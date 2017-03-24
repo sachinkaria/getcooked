@@ -1,12 +1,8 @@
-let React = require('react');
-let ReactRouter = require('react-router');
-let Link = ReactRouter.Link;
-let Navbar = require('react-bootstrap').Navbar;
-let Nav = require('react-bootstrap').Nav;
-let Col = require('react-bootstrap').Col;
+import React from 'react';
+import { ReactRouter, Link } from 'react-router';
+import { Navbar, Nav, Col } from 'react-bootstrap';
 
-
-class Navigation extends React.Component {
+export default class Navigation extends React.Component {
   render() {
       return (
           <div className="row">
@@ -46,5 +42,3 @@ class Navigation extends React.Component {
             )
          }
     }
-
-module.exports = Navigation;

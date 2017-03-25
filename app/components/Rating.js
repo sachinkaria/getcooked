@@ -1,6 +1,6 @@
-let React = require('react');
-let Col = require('react-bootstrap').Col;
-let StarRatingComponent = require('react-star-rating-component');
+import React from 'react';
+import { Col } from 'react-bootstrap';
+import StarRatingComponent from 'react-star-rating-component';
 
 
 let Rating = (props) => {
@@ -21,4 +21,4 @@ let Rating = (props) => {
     )
 };
 
-module.exports = Rating;
+export default Rating;

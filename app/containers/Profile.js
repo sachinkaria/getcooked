@@ -1,18 +1,15 @@
-let React = require('react');
-let _ = require('lodash');
-let ProfileData = require('./../utils/helpers');
-let Col = require('react-bootstrap').Col;
-let Panel = require('react-bootstrap').Panel;
-let Thumbnail = require('react-bootstrap').Thumbnail;
-let data = require('./../utils/data');
-let LightBox = require('./LightBox');
-let Endorsement = require('./Endorsement');
-let DatePicker = require('./DatePicker');
-let Button = require('react-bootstrap').Button;
-let Link = require('react-router').Link;
-let Review = require('./../components/Review');
-let Rating = require('./../components/Rating');
-let Badge = require('./../components/Badge');
+import React from 'react';
+import _ from 'lodash';
+import getProfileData from './../utils/helpers';
+import LightBox from './LightBox';
+import Endorsement from './Endorsement';
+import Review from './../components/Review';
+import Badge from './../components/Badge';
+import Rating from './../components/Rating';
+import DatePicker from './DatePicker';
+import { Col, Panel, Thumbnail, Button } from 'react-bootstrap';
+import { Link } from 'react-router';
+import data from './../utils/data';
 
 
 let Profile = React.createClass ({
@@ -22,7 +19,7 @@ let Profile = React.createClass ({
         }
     },
     componentWillMount: function(){
-        let user = ProfileData.getData(this.props.params.id, data);
+        let user = getProfileData(this.props.params.id, data);
         this.setState({
             userData: user
         })

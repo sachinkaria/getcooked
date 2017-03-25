@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'react';
 import { Col, Thumbnail } from 'react-bootstrap';
-import { ReactRouter, Link } from 'react-router';
+import { Link } from 'react-router';
 let StarRatingComponent = require('react-star-rating-component');
 
 let ProfileSummary = (props) => {

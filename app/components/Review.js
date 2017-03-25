@@ -1,5 +1,5 @@
-let React = require('react');
-let Col = require('react-bootstrap').Col;
+import React from 'react';
+import { Col } from 'react-bootstrap';
 
 let Review = (props) => {
     return (
@@ -12,4 +12,4 @@ let Review = (props) => {
     )
 };
 
-module.exports = Review;
+export default Review;

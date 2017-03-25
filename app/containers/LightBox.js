@@ -1,7 +1,6 @@
-let React = require('react');
-let LightboxComponent = require('react-images');
-let Thumbnail = require('react-bootstrap').Thumbnail;
-let Col = require('react-bootstrap').Col;
+import React from 'react';
+import LightboxComponent from 'react-images';
+import { Col, Thumbnail } from 'react-bootstrap';
 
 let LightBox = React.createClass ({
         getInitialState: function() {
@@ -96,4 +95,4 @@ let LightBox = React.createClass ({
 });
 
 
-module.exports = LightBox;
+export default LightBox;

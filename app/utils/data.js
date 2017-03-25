@@ -1,4 +1,4 @@
-let dataSet = [
+let data = [
     {
         "id": 1,
         "name": "Sachin Karia",
@@ -110,4 +110,4 @@ let dataSet = [
     }
     ];
 
-module.exports = dataSet;
+export default data;

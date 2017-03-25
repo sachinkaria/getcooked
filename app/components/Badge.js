@@ -1,6 +1,6 @@
-let React = require('react');
-let PropTypes = React.PropTypes;
-let Image = require('react-bootstrap').Image;
+import React from 'react';
+import { PropTypes } from 'react';
+import { Image } from 'react-bootstrap';
 
 
 let Badge = (props) => {
@@ -14,4 +14,4 @@ Badge.propTypes = {
     logo: PropTypes.string.isRequired
 };
 
-module.exports = Badge;
+export default Badge;

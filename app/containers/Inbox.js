@@ -1,17 +1,15 @@
 /**
  * Created by sachinkaria on 19/03/2017.
  */
-let React = require('react');
-let currentUser = require('../utils/currentUser').data[0];
-let Col = require('react-bootstrap').Col;
-let Row = require('react-bootstrap').Row;
-let _ = require('lodash');
-let ReactRouter = require('react-router');
-let Link = ReactRouter.Link;
+import React from 'react';
+import getUsers from '../utils/currentUser';
+import { Col, Row } from 'react-bootstrap';
+import _ from 'lodash';
+import { ReactRouter, Link } from 'react-router';
 
 let Inbox = React.createClass({
     render: function(){
-        let chats = currentUser.inbox;
+        let chats = getUsers[0].inbox;
         return (
             <Col xs={10} sm={8} smOffset={2}>
                 <Col xs={8}>
@@ -32,5 +30,5 @@ let Inbox = React.createClass({
     }
 });
 
-module.exports = Inbox;
+export default Inbox;
 

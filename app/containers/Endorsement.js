@@ -1,5 +1,5 @@
-let React = require('react');
-let Label = require('react-bootstrap').Label;
+import React from 'react';
+import { Label } from 'react-bootstrap';
 
 let Endorsement = React.createClass ({
     getInitialState: function () {
@@ -25,4 +25,4 @@ let Endorsement = React.createClass ({
     }
 });
 
-module.exports = Endorsement;
+export default Endorsement;

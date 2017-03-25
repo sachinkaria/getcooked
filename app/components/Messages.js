@@ -1,8 +1,8 @@
 /**
  * Created by sachinkaria on 18/03/2017.
  */
-let React = require('react');
-let Message = require('./Message');
+import React from 'react';
+import Message from './Message';
 
 class Messages extends React.Component {
     componentDidUpdate() {

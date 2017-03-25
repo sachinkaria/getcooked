@@ -1,7 +1,6 @@
-let React = require('react');
-let classNames = require('classnames');
-let Row = require('react-bootstrap').Row;
-let Col = require('react-bootstrap').Col;
+import React from 'react';
+import classNames from 'classnames';
+import { Row, Col } from 'react-bootstrap';
 
 class Message extends React.Component {
     render() {
@@ -34,4 +33,4 @@ Message.defaultProps = {
     date: new Date()
 };
 
-module.exports = Message;
+export default Message;

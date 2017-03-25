@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactRouter, Link } from 'react-router';
 import { Navbar, Nav, Col } from 'react-bootstrap';
 
-export default class Navigation extends React.Component {
+export default class NavigationBar extends React.Component {
   render() {
       return (
           <div className="row">

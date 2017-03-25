@@ -1,14 +1,11 @@
 /**
  * Created by sachinkaria on 19/03/2017.
  */
-let React = require('react');
-let FormGroup = require('react-bootstrap').FormGroup;
-let FormControl = require('react-bootstrap').FormControl;
-let Button = require('react-bootstrap').Button;
-let Col = require('react-bootstrap').Col;
-let Form = require('react-bootstrap').Form;
+import React from 'react';
+import { FormGroup, FormControl, Col, Button, Form } from 'react-bootstrap';
 
-class ChatInput extends React.Component {
+
+export default class ChatInput extends React.Component {
     constructor(props) {
         super(props);
         this.state = { chatInput: '' };
@@ -54,5 +51,3 @@ class ChatInput extends React.Component {
         );
     }
 }
-
-module.exports = ChatInput;

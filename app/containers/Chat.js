@@ -2,11 +2,11 @@
  * Created by sachinkaria on 18/03/2017.
  */
 import React from 'react';
-import { Messages } from '../components/Messages';
-import { ChatInput } from './ChatInput';
+import Messages from '../components/Messages';
+import ChatInput from './ChatInput';
 import { Col } from 'react-bootstrap';
-import { data } from '../utils/currentUser';
-import { helpers } from '../utils/helpers';
+import currentUser from '../utils/currentUser';
+import getMessage from '../utils/helpers';
 
 
 
@@ -17,7 +17,9 @@ export default class Chat extends React.Component {
     }
 
     componentWillMount (){
-        let messages = helpers.getData(this.props.params.id, data).chatMessages;
+        let inbox = currentUser[0].inbox;
+        let messages = getMessage(this.props.params.id, inbox).chatMessages;
+        console.log(messages);
         this.setState({
         messages: messages
     })

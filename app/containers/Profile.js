@@ -6,7 +6,7 @@ import Endorsement from './Endorsement';
 import Review from './../components/Review';
 import Badge from './../components/Badge';
 import Rating from './../components/Rating';
-import DatePicker from './DatePicker';
+import BookingForm from './BookingForm';
 import { Col, Panel, Thumbnail, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import data from './../utils/data';
@@ -89,11 +89,10 @@ let Profile = React.createClass ({
                 </Col>
                 <Col xs={2}>
                     <Panel className="gc-center">
-                            <DatePicker />
-                            <Button bsStyle="success" bsSize="small" className="gc-margin-top" block> Make a Booking </Button>
+                        <BookingForm />
                         <hr/>
-                        <Button bsStyle="primary" bsSize="small" className=" gc-button gc-margin-top" block>Contact </Button>
-                        <Button bsStyle="default" bsSize="small" className=" gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>
+                        <Button bsStyle="primary" bsSize="small" className="gc-button gc-margin-top" block>Contact </Button>
+                        <Button bsStyle="default" bsSize="small" className="gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>
                         <Link>Share</Link>
                     </Panel>
                 </Col>

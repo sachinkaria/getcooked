@@ -2,16 +2,17 @@
  * Created by sachinkaria on 19/03/2017.
  */
 import React from 'react';
-import getUsers from '../utils/currentUser';
+import userData from '../utils/currentUser';
 import { Col, Row } from 'react-bootstrap';
 import _ from 'lodash';
 import { ReactRouter, Link } from 'react-router';
 
 let Inbox = React.createClass({
     render: function(){
-        let chats = getUsers[0].inbox;
+        let chats = userData.inbox;
         return (
             <Col xs={10} sm={8} smOffset={2}>
+                <h3 className="gc-profile-heading-lg">Inbox</h3>
                 <Col xs={8}>
                     {chats.map(function(chat){
                         return (

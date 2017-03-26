@@ -18,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BookingForm.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BookingForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/containers/BookingForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+            <state relative-caret-position="53">
+              <caret line="28" column="48" lean-forward="false" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
               <folding>
                 <element signature="e#49#75#0" expanded="true" />
               </folding>
@@ -30,26 +30,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Endorsement.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/containers/Endorsement.js">
+      <file leaf-file-name="Inbox.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/containers/Inbox.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+            <state relative-caret-position="180">
+              <caret line="14" column="64" lean-forward="false" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#49#75#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatePicker.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/containers/DatePicker.js">
+      <file leaf-file-name="_bookingForm.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/styles/components/_bookingForm.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/components/LightBox.js" />
         <option value="$PROJECT_DIR$/app/containers/DatePickerWrapper.js" />
         <option value="$PROJECT_DIR$/app/styles/components/_datepicker.scss" />
         <option value="$PROJECT_DIR$/app/components/Review.scss" />
@@ -119,7 +116,6 @@
         <option value="$PROJECT_DIR$/app/styles/base/_all.scss" />
         <option value="$PROJECT_DIR$/app/components/Chat.js" />
         <option value="$PROJECT_DIR$/app/styles/components/_chat-input.scss" />
-        <option value="$PROJECT_DIR$/app/styles/components/_all.scss" />
         <option value="$PROJECT_DIR$/app/styles/components/_chatInput.scss" />
         <option value="$PROJECT_DIR$/app/styles/components/_message.scss" />
         <option value="$PROJECT_DIR$/app/components/ChatList.js" />
@@ -133,7 +129,6 @@
         <option value="$PROJECT_DIR$/app/utils/users.js" />
         <option value="$PROJECT_DIR$/app/components/Navigation.js" />
         <option value="$PROJECT_DIR$/app/components/Navigation.js" />
-        <option value="$PROJECT_DIR$/app/containers/Inbox.js" />
         <option value="$PROJECT_DIR$/app/utils/data.js" />
         <option value="$PROJECT_DIR$/app/components/ProfileSummary.js" />
         <option value="$PROJECT_DIR$/app/containers/LightBox.js" />
@@ -151,7 +146,10 @@
         <option value="$PROJECT_DIR$/app/containers/Chat.js" />
         <option value="$PROJECT_DIR$/app/utils/currentUser.js" />
         <option value="$PROJECT_DIR$/app/containers/Profile.js" />
+        <option value="$PROJECT_DIR$/app/styles/components/_all.scss" />
+        <option value="$PROJECT_DIR$/app/styles/components/_bookingForm.scss" />
         <option value="$PROJECT_DIR$/app/containers/BookingForm.js" />
+        <option value="$PROJECT_DIR$/app/containers/Inbox.js" />
       </list>
     </option>
   </component>
@@ -247,6 +245,68 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="containers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -303,10 +363,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/styles/components" />
       <recent name="$PROJECT_DIR$/app/containers" />
       <recent name="$PROJECT_DIR$/app/components" />
       <recent name="$PROJECT_DIR$/app/utils" />
-      <recent name="$PROJECT_DIR$/app/styles/components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/containers" />
@@ -424,12 +484,12 @@
       <workItem from="1490290748285" duration="2874000" />
       <workItem from="1490373288172" duration="15000" />
       <workItem from="1490393052199" duration="5010000" />
-      <workItem from="1490540932949" duration="2868000" />
+      <workItem from="1490540932949" duration="4568000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137516000" />
+    <option name="totallyTimeSpent" value="139216000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="953" extended-state="6" />
@@ -486,13 +546,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/react-dates/css/DayPicker.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-dates/css/SingleDatePicker.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -634,13 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/styles/components/_all.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/ChatList.js" />
     <entry file="file://$PROJECT_DIR$/.babelrc">
       <provider selected="true" editor-type-id="text-editor">
@@ -690,16 +736,6 @@
         <state relative-caret-position="45">
           <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/Inbox.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -830,16 +866,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/Profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="84" column="34" lean-forward="true" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/Endorsement.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -860,10 +886,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/components/_all.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/Profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="84" column="34" lean-forward="true" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/styles/components/_bookingForm.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/containers/BookingForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="48" column="36" lean-forward="false" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
+        <state relative-caret-position="53">
+          <caret line="28" column="48" lean-forward="false" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+          <folding>
+            <element signature="e#49#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/Inbox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="14" column="64" lean-forward="false" selection-start-line="14" selection-start-column="64" selection-end-line="14" selection-end-column="64" />
           <folding>
             <element signature="e#49#75#0" expanded="true" />
           </folding>

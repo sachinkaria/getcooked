@@ -26,7 +26,7 @@ export default class BookingForm extends React.Component {
     render() {
         return (
             <ButtonToolbar>
-                <Button bsStyle="success" className="gc-button" block onClick={this.showModal}>
+                <Button className="gc-btn-search" block onClick={this.showModal}>
                    Make a booking
                 </Button>
 
@@ -65,6 +65,33 @@ export default class BookingForm extends React.Component {
                                             </FormControl>
                                         </FormGroup>
                                     </Col>
+                                <Col sm={4}>
+                                    Event type
+                                </Col>
+                                <Col sm={8}>
+                                    <FormGroup controlId="formControlsSelect">
+                                        <FormControl componentClass="select" placeholder="Event type">
+                                            <option value="select">Private Dinner</option>
+                                            <option value="select">Wedding</option>
+                                            <option value="select">Private Party</option>
+                                            <option value="select">Public Event</option>
+                                            <option value="select">Festival</option>
+                                            <option value="select">Corporate Event</option>
+                                            <option value="select">BBQ</option>
+                                        </FormControl>
+                                    </FormGroup>
+                                </Col>
+                                <Col sm={4}>
+                                    Additional Information
+                                </Col>
+                                <Col sm={8}>
+                                    <FormGroup controlId="formControlsSelect">
+                                        <FormControl componentClass="textarea" bsClass="gc-input-box" placeholder="Provide additional information or any special requirements that may be needed e.g vegetarian, dinner for two, 3 course set menu..." />
+                                    </FormGroup>
+                                </Col>
+                                <Col xs={4} xsOffset={4}>
+                                    <Button className="gc-btn-search"  onClick={this.hideModal} block>Submit Booking</Button>
+                                </Col>
                             </Form>
                         </Row>
                     </Modal.Body>

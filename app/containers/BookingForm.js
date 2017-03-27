@@ -4,16 +4,19 @@
 import React from 'react';
 import { ButtonToolbar, Button, Modal, Form, FormGroup, FormControl, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
-
+import currentUser from '../utils/currentUser';
 
 export default class BookingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {show: false, guests: '', eventType: '', additionalInfo: '', date: new Date() };
+        this.state = {show: false, guests: '', type: '', info: '', date: null };
+        this.baseState = this.state
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.resetForm = this.resetForm.bind(this);
+        this.setDate = this.setDate.bind(this);
 
     }
 
@@ -22,11 +25,10 @@ export default class BookingForm extends React.Component {
     }
 
     hideModal() {
-        this.setState({show: false});
+        this.resetForm();
     }
 
     handleChange(event) {
-        console.log(event.target.name);
         const name = event.target.name;
         this.setState(
             {
@@ -36,8 +38,17 @@ export default class BookingForm extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state);
             event.preventDefault();
+            currentUser.bookings.push(this.state);
+            this.resetForm();
+    }
+
+    setDate(date) {
+        this.setState({date});
+    }
+
+    resetForm(){
+        this.setState(this.baseState);
     }
 
     render() {
@@ -63,7 +74,7 @@ export default class BookingForm extends React.Component {
                                     Select a date
                                 </Col>
                                 <Col sm={8}>
-                                    <DatePicker name="date" value={this.state.date} onChange={this.handleSubmit} />
+                                    <DatePicker name="date" onChange={this.setDate} />
                                 </Col>
                                 <hr/>
                                     <Col sm={4}>
@@ -72,6 +83,7 @@ export default class BookingForm extends React.Component {
                                     <Col sm={8}>
                                         <FormGroup controlId="formControlsSelect">
                                             <FormControl name="guests" componentClass="select"  onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
+                                                <option value="">Select</option>
                                                 <option value="0-10">0-10</option>
                                                 <option value="10-20">10-20</option>
                                                 <option value="20-50">20-50</option>
@@ -87,7 +99,8 @@ export default class BookingForm extends React.Component {
                                 </Col>
                                 <Col sm={8}>
                                     <FormGroup controlId="formControlsSelect">
-                                        <FormControl name="eventType" componentClass="select" onChange={this.handleChange} value={this.state.eventType} placeholder="Event type">
+                                        <FormControl name="type" componentClass="select" onChange={this.handleChange} value={this.state.type} placeholder="Event type">
+                                            <option value="">Select</option>
                                             <option value="Private Dinner">Private Dinner</option>
                                             <option value="Wedding">Wedding</option>
                                             <option value="Private Party">Private Party</option>
@@ -104,10 +117,10 @@ export default class BookingForm extends React.Component {
                                 <Col sm={8}>
                                     <FormGroup controlId="formControlsSelect">
                                         <FormControl
-                                            name="additionalInfo"
+                                            name="info"
                                             componentClass="textarea"
                                             bsClass="gc-input-box"
-                                            value={this.state.additionalInfo}
+                                            value={this.state.info}
                                             onChange={this.handleChange}
                                             placeholder="Provide additional information or any special requirements that may be needed e.g vegetarian, dinner for two, 3 course set menu..." />
                                     </FormGroup>

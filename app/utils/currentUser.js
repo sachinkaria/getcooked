@@ -1,6 +1,7 @@
 let data = {
                 "id": 1,
                 "name": "Sachin Karia",
+                "bookings": [],
                 "inbox":
                     [
                     {   "id": "1234",

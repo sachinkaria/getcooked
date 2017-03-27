@@ -9,23 +9,25 @@ export default class DatePicker extends React.Component{
         this.onFocusChange = this.onFocusChange.bind(this);
     }
 
-    onDateChange (date) {
-        this.setState({ date: date });
-        this.props.onChange();
+    onDateChange(date) {
+        this.setState({ date });
+        this.props.onChange(date);
     }
 
     onFocusChange ({focused}) {
-        this.setState({ focused: focused });
+        this.setState({ focused });
     }
 
     render () {
+        const { focused, date } = this.state;
+
         return (
             <SingleDatePicker
                 id="date_input"
-                date={this.state.date}
-                focused={this.state.focused}
-                onDateChange={(date) => { this.setState({ date }); this.props.onChange(date); }}
-                onFocusChange={({ focused }) => { this.setState({ focused }); }}
+                date={date}
+                focused={focused}
+                onDateChange={this.onDateChange}
+                onFocusChange={this.onFocusChange}
                 placeholder="Select a Date"
             />
         )

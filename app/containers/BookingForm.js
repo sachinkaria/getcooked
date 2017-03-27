@@ -9,8 +9,8 @@ import currentUser from '../utils/currentUser';
 export default class BookingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {show: false, guests: '', type: '', info: '', date: null };
-        this.baseState = this.state
+        this.state = {show: false, guests: '', type: '', info: '', date: null, confirmed: false };
+        this.baseState = this.state;
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -82,7 +82,7 @@ export default class BookingForm extends React.Component {
                                     </Col>
                                     <Col sm={8}>
                                         <FormGroup controlId="formControlsSelect">
-                                            <FormControl name="guests" componentClass="select"  onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
+                                            <FormControl name="guests" componentClass="select" onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
                                                 <option value="">Select</option>
                                                 <option value="0-10">0-10</option>
                                                 <option value="10-20">10-20</option>

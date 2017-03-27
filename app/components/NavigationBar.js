@@ -30,7 +30,7 @@ export default class NavigationBar extends React.Component {
                               </Link>
                           </Col>
                           <Col xs={4}>
-                              <Link>
+                              <Link to={'/bookings'}>
                                   <p>Bookings</p>
                               </Link>
                           </Col>

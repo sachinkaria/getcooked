@@ -31,4 +31,4 @@ class Messages extends React.Component {
     }
 }
 
-module.exports = Messages;
+export default Messages;

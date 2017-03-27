@@ -487,7 +487,10 @@
 
 .SingleDatePicker {
   position: relative;
-  display: inline-block; }
+  display: inline-block;
+  margin-bottom: 15px;
+  margin-left: 0;
+}
 
 .SingleDatePicker__picker {
   z-index: 1;

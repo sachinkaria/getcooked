@@ -9,7 +9,7 @@ import currentUser from '../utils/currentUser';
 export default class BookingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {chefID: this.props.id, show: true, guests: '', type: '', info: '', date: null, confirmed: false, budget: ''};
+        this.state = {chefID: this.props.id, show: false, guests: '', type: '', info: '', date: null, confirmed: false, budget: ''};
         this.baseState = this.state;
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
@@ -66,7 +66,7 @@ export default class BookingForm extends React.Component {
                     dialogClassName="custom-modal"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title className="gc-profile-text-md">Make a booking</Modal.Title>
+                        <Modal.Title className="gc-profile-heading-lg gc-center">Make a booking</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Row>
@@ -143,7 +143,7 @@ export default class BookingForm extends React.Component {
                                     </FormGroup>
                                 </Col>
                                 <Col xs={4} xsOffset={4}>
-                                    <Button className="gc-btn-search"  onClick={this.handleSubmit} block>Submit Booking</Button>
+                                    <Button bsSize="large" className="gc-btn-search" onClick={this.handleSubmit} block >Submit Booking</Button>
                                 </Col>
                             </Form>
                         </Row>

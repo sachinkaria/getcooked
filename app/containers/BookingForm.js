@@ -9,7 +9,7 @@ import currentUser from '../utils/currentUser';
 export default class BookingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {show: false, guests: '', type: '', info: '', date: null, confirmed: false };
+        this.state = {chefID: this.props.id, show: false, guests: '', type: '', info: '', date: null, confirmed: false, budget: null};
         this.baseState = this.state;
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
@@ -40,6 +40,7 @@ export default class BookingForm extends React.Component {
     handleSubmit(event) {
             event.preventDefault();
             currentUser.bookings.push(this.state);
+            console.log(this.state);
             this.resetForm();
     }
 
@@ -109,6 +110,20 @@ export default class BookingForm extends React.Component {
                                             <option value="Corporate Event">Corporate Event</option>
                                             <option value="BBQ">BBQ</option>
                                         </FormControl>
+                                    </FormGroup>
+                                </Col>
+                                <Col sm={4}>
+                                    Budget
+                                </Col>
+                                <Col sm={8}>
+                                    <FormGroup controlId="formControlsSelect">
+                                        <FormControl
+                                            block
+                                            name="budget"
+                                            type="number"
+                                            value={this.state.budget}
+                                            onChange={this.handleChange}
+                                            placeholder="Enter budget" />
                                     </FormGroup>
                                 </Col>
                                 <Col sm={4}>

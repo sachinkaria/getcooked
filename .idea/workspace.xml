@@ -18,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BookingForm.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BookingForm.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/containers/BookingForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="345">
+              <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
               <folding>
                 <element signature="e#49#75#0" expanded="true" />
               </folding>
@@ -42,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bookings.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Bookings.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/Bookings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+            <state relative-caret-position="330">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="e#49#75#0" expanded="true" />
               </folding>
@@ -77,8 +77,8 @@
       <file leaf-file-name="Profile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/containers/Profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="45" column="37" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="45" selection-end-column="37" />
+            <state relative-caret-position="1200">
+              <caret line="91" column="37" lean-forward="false" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -203,7 +203,6 @@
         <option value="$PROJECT_DIR$/app/utils/helpers.js" />
         <option value="$PROJECT_DIR$/app/components/Message.js" />
         <option value="$PROJECT_DIR$/app/containers/Chat.js" />
-        <option value="$PROJECT_DIR$/app/containers/Profile.js" />
         <option value="$PROJECT_DIR$/app/styles/components/_all.scss" />
         <option value="$PROJECT_DIR$/app/styles/components/_bookingForm.scss" />
         <option value="$PROJECT_DIR$/app/containers/Inbox.js" />
@@ -211,12 +210,13 @@
         <option value="$PROJECT_DIR$/app/containers/DatePicker.js" />
         <option value="$PROJECT_DIR$/app/utils/currentUser.js" />
         <option value="$PROJECT_DIR$/app/styles/components/_datepicker.scss" />
-        <option value="$PROJECT_DIR$/app/containers/BookingForm.js" />
         <option value="$PROJECT_DIR$/app/components/BookingList.js" />
         <option value="$PROJECT_DIR$/app/config/routes.js" />
         <option value="$PROJECT_DIR$/app/components/Messages.js" />
         <option value="$PROJECT_DIR$/app/components/NavigationBar.js" />
         <option value="$PROJECT_DIR$/app/components/Bookings.js" />
+        <option value="$PROJECT_DIR$/app/containers/Profile.js" />
+        <option value="$PROJECT_DIR$/app/containers/BookingForm.js" />
       </list>
     </option>
   </component>
@@ -474,12 +474,12 @@
       <workItem from="1490540932949" duration="4736000" />
       <workItem from="1490556863808" duration="2602000" />
       <workItem from="1490601457635" duration="188000" />
-      <workItem from="1490644710769" duration="5221000" />
+      <workItem from="1490644710769" duration="6588000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147395000" />
+    <option name="totallyTimeSpent" value="148762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="953" extended-state="6" />
@@ -827,24 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/BookingForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#49#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/containers/Profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="45" column="37" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="45" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -901,8 +883,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/Bookings.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
+        <state relative-caret-position="330">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#49#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/Profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="91" column="37" lean-forward="false" selection-start-line="91" selection-start-column="37" selection-end-line="91" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/containers/BookingForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
           <folding>
             <element signature="e#49#75#0" expanded="true" />
           </folding>

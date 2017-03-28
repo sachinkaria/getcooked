@@ -89,7 +89,7 @@ let Profile = React.createClass ({
                 </Col>
                 <Col xs={2}>
                     <Panel className="gc-center">
-                        <BookingForm />
+                        <BookingForm id={user.id}/>
                         <hr/>
                         <Button bsStyle="primary" bsSize="small" className="gc-button gc-margin-top" block>Contact </Button>
                         <Button bsStyle="default" bsSize="small" className="gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>

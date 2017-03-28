@@ -5,8 +5,8 @@
   bottom: 5px;
 }
 
-.gc-margin-none{
-  margin: 0 0 0 0;
+.gc-margin-none {
+  margin: 0;
 }
 
 .gc-margin-left {
@@ -36,6 +36,7 @@
 .gc-margin-top--large {
   margin-top: 25px;
 }
+
 .gc-padding-small {
   padding: 5px 5px;
 }
@@ -74,4 +75,8 @@
 
 .gc-vertical-center{
   vertical-align: middle;
+}
+
+.full-width {
+  width: 100%;
 }

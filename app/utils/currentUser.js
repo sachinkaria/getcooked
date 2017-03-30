@@ -1,7 +1,14 @@
 let data = {
                 "id": 1,
                 "name": "Sachin Karia",
-                "bookings": [],
+                "bookings": [{
+                    "chefID": "1",
+                    "type": "Wedding",
+                    "guests": "1000",
+                    "budget": "5500",
+                    "date": "2017-04-28T11:00:00.000Z",
+                    "confirmed": false
+                }],
                 "inbox":
                     [
                     {   "id": "1234",

@@ -19,7 +19,6 @@ export default class Chat extends React.Component {
     componentWillMount (){
         let inbox = currentUser.inbox;
         let messages = getMessage(this.props.params.id, inbox).chatMessages;
-        console.log(messages);
         this.setState({
         messages: messages
     })

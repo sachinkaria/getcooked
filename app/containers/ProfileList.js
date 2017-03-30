@@ -13,7 +13,6 @@ let ProfileList = React.createClass({
         }
     },
     componentWillMount: function(){
-        console.log(getUsers);
         this.setState({
             usersInfo: getUsers
         });

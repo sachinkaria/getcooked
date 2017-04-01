@@ -4,7 +4,7 @@ import { Col, Form, FormControl, FormGroup, InputGroup, Button } from 'react-boo
 let SearchBar = React.createClass({
      render: function(){
          return (
-             <Col xs={12} sm={10} smOffset={2} className="gc-margin-bottom">
+             <Col xs={10} xsOffset={1} sm={10} smOffset={2} className="gc-margin-bottom">
                  <Form inline>
                      <FormGroup bsSize="large">
                              <InputGroup bsClass="without-border-radius">

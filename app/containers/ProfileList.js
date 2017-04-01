@@ -5,40 +5,31 @@ import { Col, Row } from 'react-bootstrap';
 import SearchBar from './SearchBar';
 
 
-
 let ProfileList = React.createClass({
-    getInitialState: function () {
-        return {
-            usersInfo: []
-        }
-    },
-    componentWillMount: function(){
-        this.setState({
-            usersInfo: getUsers
-        });
-    },
   render: function () {
     return (
         <div>
-                <SearchBar/>
             <Row>
-                <Col xs={8} xsOffset={2}>
-                    {
-                        this.state.usersInfo.map(function(user){
-                            return (
-                                <ProfileSummary
-                                    id={user.id}
-                                    key={user.id}
-                                    imageUrl={user.imageUrl}
-                                    name={user.name}
-                                    rating={user.rating}
-                                    endorsements={user.endorsements}
-                                    numberOfRatings={user.numberOfRatings}
-                                    />
-                            )
-                        })
-                    }
-                </Col>
+                <SearchBar/>
+            </Row>
+            <Row>
+                    <Col xs={10} xsOffset={1}>
+                        {
+                            getUsers.map(function(user){
+                                return (
+                                    <ProfileSummary
+                                        id={user.id}
+                                        key={user.id}
+                                        imageUrl={user.imageUrl}
+                                        name={user.name}
+                                        rating={user.rating}
+                                        endorsements={user.endorsements}
+                                        numberOfRatings={user.numberOfRatings}
+                                        />
+                                )
+                            })
+                        }
+                    </Col>
             </Row>
         </div>
         )

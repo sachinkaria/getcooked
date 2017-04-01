@@ -75,7 +75,7 @@ let Profile = React.createClass ({
                                 }
                             </Col>
 
-                            <Col xs={4} className="gc-margin-top--large">
+                            <Col xs={4} className="gc-margin-top--lg">
                                 {endorsements.map(function(endorsement){
                                     return (
                                         <Endorsement key={endorsement.description} description={endorsement.description} number={endorsement.number} />

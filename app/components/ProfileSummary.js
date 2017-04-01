@@ -10,9 +10,8 @@ let ProfileSummary = (props) => {
         };
 
     return (
-            <Col xs={6} md={3}>
+            <Col xs={12} sm={4} md={3} className="gc-profile-wrapper">
                 <Link to={'/profile/' + props.id }>
-                    <div>
                         <Thumbnail className='gc-profile-thumbnail img-responsive' style={ styles } />
                             <div className="gc-profile-infobox">
                                 <h3 className="gc-profile-heading-sm gc-margin-left-xs gc-pull-left gc-clear-left">{props.name}</h3>
@@ -25,7 +24,6 @@ let ProfileSummary = (props) => {
                                     name={'rating'}
                                 /><span className="gc-ratings-text">{props.numberOfRatings} reviews</span>
                             </div>
-                    </div>
                 </Link>
             </Col>
     )

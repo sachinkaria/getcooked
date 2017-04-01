@@ -30,14 +30,14 @@ let Profile = React.createClass ({
         let imagesCount = user.images.length;
         return (
             <div>
-                <Col xs={8} xsOffset={1}>
+                <Col xs={12} sm={9} md={8} mdOffset={1}>
                     <Panel>
-                        <Col xs={10} sm={4}>
+                        <Col xs={12} sm={12} md={4}>
                             <Thumbnail onClick={null} src={user.imageUrl} />
                         </Col>
-                        <Col xs={10} sm={8}>
+                        <Col xs={12} sm={12} md={8}>
                                 <h2 className="gc-center gc-margin-none">{user.name}</h2>
-                                    <Col xs={12} sm={6} smOffset={3} className="gc-center gc-margin-top">
+                                    <Col xs={12} sm={10} smOffset={1} className="gc-center gc-margin-top">
                                     {user.badges.map(function(badge){
                                         return (
                                                 <Badge logo={badge.logo} key={badge.name} />
@@ -46,8 +46,7 @@ let Profile = React.createClass ({
                                     }
                                     </Col>
                             <Col xs={12} className="gc-margin-top">
-                                <p>{user.description}
-                                </p>
+                                <p className="gc-profile-text-xs">{user.description}</p>
                             </Col>
                         </Col>
                         <Col xs={12}>
@@ -87,12 +86,12 @@ let Profile = React.createClass ({
                     </Panel>
 
                 </Col>
-                <Col xs={2}>
-                    <Panel className="gc-center">
+                <Col xs={4} sm={3} md={2} xsHidden>
+                    <Panel className="gc-center gc-booking-panel">
                         <BookingForm id={user.id}/>
                         <hr/>
                         <Button bsStyle="primary" className="gc-button gc-margin-top" block>Contact </Button>
-                        <Button bsStyle="default" className="gc-button gc-margin-top gc-margin-bottom" block>Add to Favourites </Button>
+                        <Button bsStyle="default" className="gc-button gc-margin-top gc-margin-bottom" block>Favourite</Button>
                         <Link>Share</Link>
                     </Panel>
                 </Col>

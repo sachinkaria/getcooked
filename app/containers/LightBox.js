@@ -59,7 +59,7 @@ let LightBox = React.createClass ({
            {
                this.state.images.map(function (image, i) {
                return (
-                   <Col xs={10} sm={3} key={i} className="gc-center">
+                   <Col xs={12} sm={3} key={i} className="gc-center">
                        <a onClick={(e) => this.openLightbox(i, e)}>
                            <Thumbnail className='gc-lightbox-thumbnail img-responsive'
                                       style={{backgroundImage: 'url(' + image.src + ')'}}

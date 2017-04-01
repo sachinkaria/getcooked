@@ -19,17 +19,17 @@ export default class NavigationBar extends React.Component {
                   </Col>
                           <Navbar.Collapse className="gc-navbar-dropdown">
                               <Nav pullRight>
-                                  <NavItem eventKey={1} href="#">
+                                  <NavItem>
                                       <Link to={'/inbox'}>
                                         <p className="gc-dropdown-item">Messages</p>
                                       </Link>
                                   </NavItem>
-                                  <NavItem eventKey={2} href="#">
+                                  <NavItem>
                                       <Link>
                                         <p className="gc-dropdown-item">I'm a chef</p>
                                       </Link>
                                   </NavItem>
-                                  <NavItem eventKey={2} href="#">
+                                  <NavItem>
                                       <Link to={'/bookings'}>
                                           <p className="gc-dropdown-item">Bookings</p>
                                       </Link>

@@ -1,25 +1,25 @@
 .gc-profile-text-xs{
   font-family: $primary-font;
   font-size: 12pt;
-  color: black;
+  color: $black;
 }
 
 .gc-profile-text-sm{
   font-family: $primary-font;
   font-size: 14pt;
-  color: black;
+  color: $black;
 }
 
 .gc-profile-text-md{
   font-family: $primary-font;
   font-size: 16pt;
-  color: black;
+  color: $black;
 }
 
 .gc-profile-heading-sm {
   font-family: $primary-font;
   font-size: 14pt;
-  color: black;
+  color: $black;
   margin-top: 10px;
 }
 
@@ -74,4 +74,8 @@
   float: left;
   margin-left: 3px;
   color: rgba(58, 58, 58, 1);
+}
+
+.gc-booking-panel{
+
 }

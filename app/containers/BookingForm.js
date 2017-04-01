@@ -55,8 +55,8 @@ export default class BookingForm extends React.Component {
     render() {
         return (
             <ButtonToolbar>
-                <Button className="gc-btn-search" block onClick={this.showModal}>
-                   Make a booking
+                <Button className="gc-btn-orange" block onClick={this.showModal}>
+                  Request to book
                 </Button>
                 <Col xs={10} xsOffset={1}>
                     <Modal

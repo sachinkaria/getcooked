@@ -1,6 +1,4 @@
-.gc-searchbar{
-  background-color:rgba(black, 0);
-  border: none;
+.gc-search-width {
   min-width: 400px;
 }
 
@@ -8,4 +6,7 @@
   background-color: $primary-colour;
   color: white;
   border: none;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  min-width: 150px;
 }

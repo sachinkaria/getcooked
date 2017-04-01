@@ -16,10 +16,19 @@
   border-radius: 0;
   border: 1px solid rgb(166, 166, 166);
   border-image: initial;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
 
-  &.gc-input-margin-none {
-    margin: 0;
+  &.gc-input-search {
+    margin-bottom: 0;
+    height: 44px;
+    padding: 10px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-right: none;
   }
+
 }
 
 .gc-input-box {

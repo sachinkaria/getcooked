@@ -81,52 +81,52 @@ export default class BookingForm extends React.Component {
                                         <ControlLabel className="gc-form-label">Number of people</ControlLabel>
                                     </Col>
                                     <Col sm={8}>
-                                            <FormGroup controlId="formControlsSelect">
-                                                <FormControl bsClass="gc-input"  name="guests" componentClass="select" onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
-                                                    <option value="">Select</option>
-                                                    <option value="0-10">0-10</option>
-                                                    <option value="10-20">10-20</option>
-                                                    <option value="20-50">20-50</option>
-                                                    <option value="50-10">50-100</option>
-                                                    <option value="100-200">100-200</option>
-                                                    <option value="200-500">200-500</option>
-                                                    <option value="500+">500+</option>
-                                                </FormControl>
-                                            </FormGroup>
-                                        </Col>
+                                        <FormGroup controlId="formControlsSelect">
+                                            <FormControl bsClass="gc-input"  name="guests" componentClass="select" onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
+                                                <option value="">Select</option>
+                                                <option value="0-10">0-10</option>
+                                                <option value="10-20">10-20</option>
+                                                <option value="20-50">20-50</option>
+                                                <option value="50-10">50-100</option>
+                                                <option value="100-200">100-200</option>
+                                                <option value="200-500">200-500</option>
+                                                <option value="500+">500+</option>
+                                            </FormControl>
+                                        </FormGroup>
+                                    </Col>
                                     <Col sm={4}>
-                                            <ControlLabel className="gc-form-label">Type of event</ControlLabel>
-                                        </Col>
-                                        <Col sm={8}>
+                                        <ControlLabel className="gc-form-label">Type of event</ControlLabel>
+                                    </Col>
+                                    <Col sm={8}>
+                                        <FormGroup controlId="formControlsSelect">
+                                            <FormControl bsClass="gc-input" name="type" componentClass="select" onChange={this.handleChange} value={this.state.type} placeholder="Event type">
+                                                <option value="">Select</option>
+                                                <option value="Private Dinner">Private Dinner</option>
+                                                <option value="Wedding">Wedding</option>
+                                                <option value="Private Party">Private Party</option>
+                                                <option value="Public Event">Public Event</option>
+                                                <option value="Festival">Festival</option>
+                                                <option value="Corporate Event">Corporate Event</option>
+                                                <option value="BBQ">BBQ</option>
+                                            </FormControl>
+                                        </FormGroup>
+                                    </Col>
+                                    <Col sm={4}>
+                                        <ControlLabel className="gc-form-label">Budget</ControlLabel>
+                                    </Col>
+                                    <Col sm={8}>
                                             <FormGroup controlId="formControlsSelect">
-                                                <FormControl bsClass="gc-input" name="type" componentClass="select" onChange={this.handleChange} value={this.state.type} placeholder="Event type">
-                                                    <option value="">Select</option>
-                                                    <option value="Private Dinner">Private Dinner</option>
-                                                    <option value="Wedding">Wedding</option>
-                                                    <option value="Private Party">Private Party</option>
-                                                    <option value="Public Event">Public Event</option>
-                                                    <option value="Festival">Festival</option>
-                                                    <option value="Corporate Event">Corporate Event</option>
-                                                    <option value="BBQ">BBQ</option>
-                                                </FormControl>
+                                                <InputGroup className="gc-margin-bottom">
+                                                    <InputGroup.Addon>£</InputGroup.Addon>
+                                                    <FormControl
+                                                        bsClass="gc-input gc-input-margin-none"
+                                                        name="budget"
+                                                        type="number"
+                                                        value={this.state.budget}
+                                                        onChange={this.handleChange}
+                                                    />
+                                                </InputGroup>
                                             </FormGroup>
-                                        </Col>
-                                        <Col sm={4}>
-                                            <ControlLabel className="gc-form-label">Budget</ControlLabel>
-                                        </Col>
-                                        <Col sm={8}>
-                                                <FormGroup controlId="formControlsSelect">
-                                                    <InputGroup className="gc-margin-bottom">
-                                                        <InputGroup.Addon>£</InputGroup.Addon>
-                                                        <FormControl
-                                                            bsClass="gc-input gc-input-margin-none"
-                                                            name="budget"
-                                                            type="number"
-                                                            value={this.state.budget}
-                                                            onChange={this.handleChange}
-                                                        />
-                                                    </InputGroup>
-                                                </FormGroup>
                                         </Col>
                                     <Col sm={4}>
                                         <ControlLabel className="gc-form-label">Additional information</ControlLabel>

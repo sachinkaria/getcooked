@@ -20,9 +20,7 @@ let ProfileList = React.createClass({
   render: function () {
     return (
         <div>
-            <Row>
                 <SearchBar/>
-            </Row>
             <Row>
                 <Col xs={8} xsOffset={2}>
                     {

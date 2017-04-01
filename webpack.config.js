@@ -17,10 +17,9 @@ module.exports = {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader", query: {presets: ['es2015','react']}},
         {test: /\.jpe?g$|\.gif$|\.svg$|\.png$/i, loader: "file-loader?name=/images/[name].[ext]"},
-        {test: /\.css$/, loaders: ['style-loader', 'css-loader', 'sass-loader','resolve-url-loader']},
-        {test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader','resolve-url-loader']},
-        {test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/, loader: 'imports?define=>false&this=>window'}
-    ]
+        {test: /\.css$/, loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader','resolve-url-loader']},
+        {test: /\.scss$/, loaders: ['style-loader', 'css-loader','postcss-loader', 'sass-loader','resolve-url-loader']}
+        ]
   },
   plugins: [HTMLWebpackPluginConfig]
 };

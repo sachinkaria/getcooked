@@ -13,7 +13,7 @@ class Bookings extends React.Component {
     render() {
         let bookings = currentUser.bookings;
         return (
-            <Col xs={12} sm={6} smOffset={2}>
+            <Col xs={12} md={8} mdOffset={2} className="center-m">
                 <h3 className="gc-profile-heading-lg">Bookings</h3>
                 <hr/>
                 {bookings.length > 0 ? bookings.map(function(booking, i){
@@ -25,17 +25,17 @@ class Bookings extends React.Component {
                         'gc-right': true
                     });
                         return (
-                            <Panel className="gc-panel-light" key={i}>
+                            <Panel key={i}>
                                 <Col xs={12} sm={3}>
                                     <Image className="gc-booking-thumbnail" src={chefPic}/>
                                 </Col>
-                                <Col xs={12} sm={5}>
+                                <Col xs={12} sm={6}>
                                     <p className="gc-profile-text-md">{chefName}</p>
-                                    <p className="gc-text-xs">Type of event: {booking.type}</p>
-                                    <p className="gc-text-xs">Number of people: {booking.guests}</p>
-                                    <p className="gc-text-xs">Budget: £{booking.budget}</p>
+                                    <span className="gc-icon gc-icon--wedding pull-left"/><p className="gc-text-xs pull-left">{booking.type}</p>
+                                    <span className="gc-icon gc-icon--people pull-left gc-margin-left"/><p className="gc-text-xs pull-left">{booking.guests}</p>
+                                    <span className="gc-icon gc-icon--money pull-left gc-margin-left"/><p className="gc-text-xs pull-left">£{booking.budget}</p>
                                 </Col>
-                                <Col xs={12} sm={4}>
+                                <Col xs={12} sm={3}>
                                     <p className="gc-text-xs gc-right">{moment(booking.date).format('MMMM Do YYYY')}</p>
                                     <p className={classes}>{booking.confirmed ? 'Confirmed' : 'Pending'}</p>
                                 </Col>

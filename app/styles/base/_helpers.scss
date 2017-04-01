@@ -92,3 +92,9 @@
 .gc-left {
   text-align: left;
 }
+
+.center-m {
+  @include breakpoint(mobileonly){
+    text-align: center;
+  }
+}

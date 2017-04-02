@@ -17,6 +17,10 @@
   margin-left: 10px;
 }
 
+.gc-margin-left--lg {
+  margin-left: 15px;
+}
+
 .gc-margin-right {
   margin-right: 50px;
 }
@@ -98,3 +102,21 @@
     text-align: center;
   }
 }
+
+.left-t {
+  @include breakpoint(tablet){
+    text-align: left;
+  }
+}
+
+.pull-right--t {
+  @include breakpoint(tablet) {
+    text-align: right;
+  }
+}
+
+.pull-left--t {
+    @include breakpoint(tablet) {
+      text-align: left;
+    }
+  }

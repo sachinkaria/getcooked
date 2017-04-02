@@ -58,16 +58,18 @@ export default class BookingForm extends React.Component {
                 <Button className="gc-btn-orange" block onClick={this.showModal}>
                   Request to book
                 </Button>
-                <Col xs={10} xsOffset={1}>
                     <Modal
                         {...this.props}
                         show={this.state.show}
                         onHide={this.hideModal}
                         dialogClassName="custom-modal"
+                        bsSize="large"
                     >
                         <Modal.Header closeButton>
-                            <Modal.Title className="gc-profile-heading-lg gc-center">Make a booking</Modal.Title>
+                            <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">Request to book</Modal.Title>
+                            <p className="gc-center gc-text-xs">Please fill out the details of your event. This is just a request and you will not be charged until the booking is confirmed and you are invoiced.</p>
                         </Modal.Header>
+                        <Col xs={8} xsOffset={2}>
                         <Modal.Body>
                             <Row>
                                 <Form inline>
@@ -82,7 +84,7 @@ export default class BookingForm extends React.Component {
                                     </Col>
                                     <Col sm={8}>
                                         <FormGroup controlId="formControlsSelect">
-                                            <FormControl bsClass="gc-input"  name="guests" componentClass="select" onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
+                                            <FormControl bsClass="gc-input gc-margin-bottom"  name="guests" componentClass="select" onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
                                                 <option value="">Select</option>
                                                 <option value="0-10">0-10</option>
                                                 <option value="10-20">10-20</option>
@@ -99,7 +101,7 @@ export default class BookingForm extends React.Component {
                                     </Col>
                                     <Col sm={8}>
                                         <FormGroup controlId="formControlsSelect">
-                                            <FormControl bsClass="gc-input" name="type" componentClass="select" onChange={this.handleChange} value={this.state.type} placeholder="Event type">
+                                            <FormControl bsClass="gc-input gc-margin-bottom" name="type" componentClass="select" onChange={this.handleChange} value={this.state.type} placeholder="Event type">
                                                 <option value="">Select</option>
                                                 <option value="Private Dinner">Private Dinner</option>
                                                 <option value="Wedding">Wedding</option>
@@ -119,7 +121,7 @@ export default class BookingForm extends React.Component {
                                                 <InputGroup className="gc-margin-bottom">
                                                     <InputGroup.Addon>£</InputGroup.Addon>
                                                     <FormControl
-                                                        bsClass="gc-input gc-input-margin-none"
+                                                        bsClass="gc-input gc-input-addon"
                                                         name="budget"
                                                         type="number"
                                                         value={this.state.budget}
@@ -136,23 +138,22 @@ export default class BookingForm extends React.Component {
                                             <FormControl
                                                 name="info"
                                                 componentClass="textarea"
-                                                bsClass="gc-input gc-input-box"
+                                                bsClass="gc-input gc-input-box gc-margin-bottom"
                                                 value={this.state.info}
                                                 onChange={this.handleChange}
                                             />
                                         </FormGroup>
                                     </Col>
                                     <Col xs={4} xsOffset={4}>
-                                        <Button className="gc-btn-search" onClick={this.handleSubmit} block >Submit Booking</Button>
+                                        <Button bsSize="large" className="gc-btn-orange" onClick={this.handleSubmit} block >Submit request</Button>
                                     </Col>
                                 </Form>
                             </Row>
                         </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.hideModal}>Close</Button>
-                        </Modal.Footer>
+                        </Col>
+                            <Modal.Footer>
+                            </Modal.Footer>
                     </Modal>
-                </Col>
             </ButtonToolbar>
         );
     }

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import currentUser from '../utils/currentUser';
-import { Col, Panel, Image } from 'react-bootstrap';
+import { Col, Row, Panel, Image } from 'react-bootstrap';
 import moment from 'moment';
 import users from '../utils/data';
 import getProfile from '../utils/helpers';
@@ -13,16 +13,18 @@ class Bookings extends React.Component {
     render() {
         let bookings = currentUser.bookings;
         return (
-            <Col xs={12} md={8} mdOffset={2} className="center-m">
+            <Col xs={12} sm={10} smOffset={1} lg={8} lgOffset={2} className="center-m pull-left--t">
                 <h3 className="gc-profile-heading-lg">Bookings</h3>
                 <hr/>
                 {bookings.length > 0 ? bookings.map(function(booking, i){
                     let chefPic = getProfile(booking.chefID, users).imageUrl;
                     let chefName = getProfile(booking.chefID, users).name;
+                    let iconClass = booking.type.toLowerCase();
                     let classes = classNames({
+                        'gc-bold': true,
                         'gc-pending' : !booking.confirmed,
                         'gc-confirmed' : booking.confirmed,
-                        'gc-right': true
+                        'pull-right--t' : true
                     });
                         return (
                             <Panel key={i}>
@@ -30,13 +32,25 @@ class Bookings extends React.Component {
                                     <Image className="gc-booking-thumbnail" src={chefPic}/>
                                 </Col>
                                 <Col xs={12} sm={6}>
-                                    <p className="gc-profile-text-md">{chefName}</p>
-                                    <span className="gc-icon gc-icon--wedding pull-left"/><p className="gc-text-xs pull-left">{booking.type}</p>
-                                    <span className="gc-icon gc-icon--people pull-left gc-margin-left"/><p className="gc-text-xs pull-left">{booking.guests}</p>
-                                    <span className="gc-icon gc-icon--money pull-left gc-margin-left"/><p className="gc-text-xs pull-left">£{booking.budget}</p>
+                                    <Row>
+                                        <p className="gc-profile-text-md left-t">{chefName}</p>
+                                    </Row>
+                                    <Row>
+                                    <div className="gc-bookingIcons-table">
+                                        <div className="gc-booking-icon">
+                                            <span className={'gc-icon gc-icon--' + (iconClass)}/><p className="gc-text-xs">{booking.type}</p>
+                                        </div>
+                                        <div className="gc-booking-icon">
+                                            <span className="gc-icon gc-icon--people"/><p className="gc-text-xs">{booking.guests}</p>
+                                        </div>
+                                        <div className="gc-booking-icon">
+                                            <span className="gc-icon gc-icon--money"/><p className="gc-text-xs">£{booking.budget}</p>
+                                        </div>
+                                    </div>
+                                    </Row>
                                 </Col>
                                 <Col xs={12} sm={3}>
-                                    <p className="gc-text-xs gc-right">{moment(booking.date).format('MMMM Do YYYY')}</p>
+                                    <p className="gc-text-xs pull-right--t">{moment(booking.date).format('MMMM Do YYYY')}</p>
                                     <p className={classes}>{booking.confirmed ? 'Confirmed' : 'Pending'}</p>
                                 </Col>
                             </Panel>

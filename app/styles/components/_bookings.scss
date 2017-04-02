@@ -12,3 +12,27 @@
 .gc-confirmed {
   color: green;
 }
+
+.gc-bookingIcons-table {
+  display: table;
+  width: 100%;
+  @include breakpoint(tablet) {
+    width: 80%;
+  }
+}
+
+div.gc-booking-icon {
+  display:table-cell;
+  width:33%;
+
+  span {
+    text-align: center;
+    float: left;
+  }
+
+  p {
+    text-align: center;
+    float: left;
+  }
+
+}

@@ -12,7 +12,7 @@ let data = {
                     },
                     {
                         "chefID": "3",
-                        "type": "Corporate Event",
+                        "type": "Corporate",
                         "guests": "10",
                         "budget": "1500",
                         "date": "2017-05-02T11:00:00.000Z",

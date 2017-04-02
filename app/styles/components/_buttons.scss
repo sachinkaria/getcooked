@@ -1,4 +1,27 @@
 .gc-btn-orange {
   background-color: $primary-colour;
   color: $white;
+
+  &:hover {
+    background-color: $primary-colour--dark;
+    color: $white;
+  }
+
+  &:active {
+    background-color: $primary-colour--dark;
+    color: $white;
+  }
+
+  &:focus {
+
+    background-color: $primary-colour--dark;
+    color: $white;
+
+    &:active {
+      background-color: $primary-colour--dark;
+      color: $white;
+    }
+  }
+
+
 }

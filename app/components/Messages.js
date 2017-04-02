@@ -5,7 +5,7 @@ import React from 'react';
 import Message from './Message';
 
 class Messages extends React.Component {
-    componentDidUpdate() {
+    componentDidUpdate () {
         // There is a new message in the state, scroll to bottom of list
         const objDiv = document.getElementById('messageList');
         objDiv.scrollTop = objDiv.scrollHeight;

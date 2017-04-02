@@ -16,8 +16,14 @@
 .gc-bookingIcons-table {
   display: table;
   width: 100%;
+
+  @include breakpoint(mobileonly) {
+    margin-left: 9%;
+  }
+
   @include breakpoint(tablet) {
     width: 80%;
+    margin-left: 0;
   }
 }
 

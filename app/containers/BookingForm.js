@@ -9,12 +9,14 @@ import currentUser from '../utils/currentUser';
 export default class BookingForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {chefID: this.props.id, show: false, guests: '', type: '', info: '', date: null, confirmed: false, budget: ''};
+        this.state = {chefID: this.props.id, show: false, guests: '', type: '', info: '', date: null, confirmed: false, budget: '', errorMessage: ''};
         this.baseState = this.state;
+
         this.showModal = this.showModal.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEmptySubmit = this.handleEmptySubmit.bind(this);
         this.resetForm = this.resetForm.bind(this);
         this.setDate = this.setDate.bind(this);
 
@@ -39,11 +41,16 @@ export default class BookingForm extends React.Component {
 
     handleSubmit(event) {
             event.preventDefault();
-            console.log(this.state);
             currentUser.bookings.push(this.state);
             this.resetForm();
     }
 
+    handleEmptySubmit (event) {
+        event.preventDefault();
+        this.setState({
+            errorMessage: 'Please complete all the fields before submitting your booking request.'
+        })
+    }
     setDate(date) {
         this.setState({date});
     }
@@ -53,6 +60,7 @@ export default class BookingForm extends React.Component {
     }
 
     render() {
+        const submitHandler = (this.state.chefID && this.state.guests && this.state.date && this.state.budget) ? this.handleSubmit : this.handleEmptySubmit;
         return (
             <ButtonToolbar>
                 <Button className="gc-btn-orange" block onClick={this.showModal}>
@@ -145,7 +153,9 @@ export default class BookingForm extends React.Component {
                                         </FormGroup>
                                     </Col>
                                     <Col xs={4} xsOffset={4}>
-                                        <Button bsSize="large" className="gc-btn-orange" onClick={this.handleSubmit} block >Submit request</Button>
+                                        <Button bsSize="large" className="gc-btn-orange" onClick={submitHandler} block >Submit request</Button>
+                                        {this.state.errorMessage &&
+                                            <span>{this.state.errorMessage}</span>}
                                     </Col>
                                 </Form>
                             </Row>

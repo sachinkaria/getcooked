@@ -14,14 +14,12 @@ class Bookings extends React.Component {
         let bookings = currentUser.bookings;
         return (
             <Col xs={12} sm={10} smOffset={1} lg={8} lgOffset={2} className="center-m pull-left--t">
-                <h3 className="gc-profile-heading-lg">Bookings</h3>
-                <hr/>
+                <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Bookings</h3>
                 {bookings.length > 0 ? bookings.map(function(booking, i){
                     let chefPic = getProfile(booking.chefID, users).imageUrl;
                     let chefName = getProfile(booking.chefID, users).name;
                     let iconClass = booking.type.toLowerCase();
                     let classes = classNames({
-                        'gc-bold': true,
                         'gc-pending' : !booking.confirmed,
                         'gc-confirmed' : booking.confirmed,
                         'pull-right--t' : true
@@ -50,12 +48,12 @@ class Bookings extends React.Component {
                                     </Row>
                                 </Col>
                                 <Col xs={12} sm={3}>
-                                    <p className="gc-text-xs pull-right--t">{moment(booking.date).format('MMMM Do YYYY')}</p>
+                                    <p className="gc-profile-text-xs pull-right--t">{moment(booking.date).format('MMMM Do YYYY')}</p>
                                     <p className={classes}>{booking.confirmed ? 'Confirmed' : 'Pending'}</p>
                                 </Col>
                             </Panel>
                         )
-                    }) : <p className="gc-profile-text-sm">You currently have no bookings</p>}
+                    }) : <p className="gc-profile-text-sm ">You currently have no bookings</p>}
                 {
             }
             </Col>

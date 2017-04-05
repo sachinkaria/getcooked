@@ -2,29 +2,26 @@ import React from 'react';
 import classNames from 'classnames';
 import { Row, Col } from 'react-bootstrap';
 
-class Message extends React.Component {
-    render() {
+let Message = (props) =>  {
         let classes = classNames({
             'message' : true,
-            'from-me': this.props.fromMe
+            'from-me': props.fromMe
         });
-
         return (
             <Row>
                 <Col xs={12}>
                     <div className={classes}>
                         <div className='username'>
-                            { this.props.username }
+                            { props.username }
                         </div>
                         <div className='message-body'>
-                            { this.props.message }
+                            { props.message }
                         </div>
                     </div>
                 </Col>
             </Row>
         );
-    }
-}
+};
 
 Message.defaultProps = {
     message: '',

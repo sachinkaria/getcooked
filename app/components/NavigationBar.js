@@ -1,9 +1,8 @@
 import React from 'react';
 import { ReactRouter, Link } from 'react-router';
-import { Navbar, Nav, Col, NavDropdown, NavItem, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, Col, NavItem } from 'react-bootstrap';
 
-export default class NavigationBar extends React.Component {
-  render() {
+const NavigationBar = (props) => {
       return (
           <div>
               <Navbar className="gc-navbar">
@@ -37,8 +36,10 @@ export default class NavigationBar extends React.Component {
                               </Nav>
                           </Navbar.Collapse>
               </Navbar>
-              {this.props.children}
+              {props.children}
           </div>
             )
-         }
-    }
+    };
+
+export default NavigationBar;
+

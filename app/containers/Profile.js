@@ -57,7 +57,7 @@ let Profile = React.createClass ({
                             <Col xs={12} className="gc-center">
                                 <h3>Reviews <span className="gc-profile-text-xs">({user.numberOfRatings})</span></h3>
                             </Col>
-                            <Col xs={8}>
+                            <Col xs={12} md={8}>
                                     {user.reviews.map(function(review){
                                         return (
                                             <Review key={review.name} name={review.name} description={review.reviewDescription} />
@@ -65,7 +65,7 @@ let Profile = React.createClass ({
                                     })
                                     }
                             </Col>
-                            <Col xs={4}>
+                            <Col xs={12} md={4}>
                                 {user.ratings.map(function(rating){
                                     return (
                                         <Rating key={rating.category} category={rating.category} value={rating.value} />
@@ -74,7 +74,7 @@ let Profile = React.createClass ({
                                 }
                             </Col>
 
-                            <Col xs={4} className="gc-margin-top--lg">
+                            <Col xs={12} md={4} className="gc-margin-top--lg">
                                 {endorsements.map(function(endorsement){
                                     return (
                                         <Endorsement key={endorsement.description} description={endorsement.description} number={endorsement.number} />

@@ -22,6 +22,15 @@
       color: $white;
     }
   }
-
-
 }
+
+.gc-btn-primary-lg {
+  border: none;
+  min-width: 120px;
+}
+
+.gc-btn-radius-right {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+

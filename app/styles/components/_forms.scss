@@ -19,16 +19,19 @@
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 
-  &.gc-input-search {
+  &.gc-input--lg {
     margin-bottom: 1px;
-    height: 43px;
+    height: 44px;
     padding: 10px;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
     border-right: none;
   }
 
-  &.gc-input-addon {
+  &.gc-input--radius-left{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &.gc-input--addon {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }
@@ -37,5 +40,14 @@
 
 .gc-input-box {
   height: 100px;
+}
+
+.gc-input-item {
+  display: table-cell;
+  width: 100%;
+}
+
+.gc-input-bar{
+  display: table;
   width: 100%;
 }

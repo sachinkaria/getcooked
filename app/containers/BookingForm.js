@@ -129,7 +129,7 @@ export default class BookingForm extends React.Component {
                                                 <InputGroup className="gc-margin-bottom">
                                                     <InputGroup.Addon>£</InputGroup.Addon>
                                                     <FormControl
-                                                        bsClass="gc-input gc-input-addon"
+                                                        bsClass="gc-input"
                                                         name="budget"
                                                         type="number"
                                                         value={this.state.budget}

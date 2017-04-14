@@ -10,10 +10,12 @@ let ProfileList = React.createClass({
     return (
         <div>
             <Row>
-                <SearchBar/>
+                <Col sm={6} smOffset={1} className="gc-margin-bottom">
+                    <SearchBar/>
+                </Col>
             </Row>
             <Row>
-                    <Col xs={10} xsOffset={1}>
+                    <Col xs={10} xsOffset={1} className="gc-padding-none">
                         {
                             getUsers.map(function(user){
                                 return (

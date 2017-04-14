@@ -20,17 +20,17 @@ const NavigationBar = (props) => {
                               <Nav pullRight>
                                   <NavItem>
                                       <Link>
-                                          <p className="gc-text gc-text--dark-grey">I'm a chef</p>
+                                          <p className="gc-text gc-text--grey">I'm a chef</p>
                                       </Link>
                                   </NavItem>
                                   <NavItem>
                                       <Link to={'/inbox'}>
-                                        <p className="gc-text gc-text--dark-grey">Messages</p>
+                                        <p className="gc-text gc-text--grey">Messages</p>
                                       </Link>
                                   </NavItem>
                                   <NavItem>
                                       <Link to={'/bookings'}>
-                                          <p className="gc-text gc-text--dark-grey">Bookings</p>
+                                          <p className="gc-text gc-text--grey">Bookings</p>
                                       </Link>
                                   </NavItem>
                               </Nav>

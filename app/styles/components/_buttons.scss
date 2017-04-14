@@ -1,27 +1,57 @@
-.gc-btn-orange {
-  background-color: $primary-colour;
-  color: $white;
-
-  &:hover {
-    background-color: $primary-colour--dark;
-    color: $white;
-  }
-
-  &:active {
-    background-color: $primary-colour--dark;
-    color: $white;
-  }
+.gc-btn {
 
   &:focus {
+    outline: none;
+    &:active {
+      outline: none;
+    }
+  }
 
-    background-color: $primary-colour--dark;
+  &.gc-btn-orange {
+    background-color: $primary-colour;
     color: $white;
+
+    &:hover {
+      background-color: $primary-colour--dark;
+      color: $white;
+    }
 
     &:active {
       background-color: $primary-colour--dark;
       color: $white;
     }
   }
+
+  &.gc-btn-blue {
+    background-color: $blue;
+    color: $white;
+
+    &:hover {
+      background-color: $dark-blue;
+      color: $white;
+    }
+
+    &:active {
+      background-color: $dark-blue;
+      color: $white;
+    }
+  }
+
+  &.gc-btn-white {
+    background-color: $white;
+    color: $dark-grey;
+
+    &:hover {
+      background-color: $light-grey;
+      color: $dark-grey;
+    }
+
+    &:active {
+      background-color: $light-grey;
+      color: $dark-grey;
+    }
+  }
+
 }
 
 .gc-btn-primary-lg {

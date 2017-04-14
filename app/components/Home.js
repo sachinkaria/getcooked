@@ -6,9 +6,11 @@ import { Col } from 'react-bootstrap';
 let Home = () => {
     return (
         <div>
-            <Col xs={12} sm={10} smOffset={1} >
-                <h1 className="gc-pull-left gc-heading">Connect and share food with the coolest chefs around.</h1>
-                <SearchBar/>
+            <Col sm={8} smOffset={2} >
+                <h1 className="gc-pull-left gc-heading">Organise and share food with the coolest chefs around.</h1>
+                <Col sm={10} smOffset={1} md={8} mdOffset={1} className="gc-margin-bottom gc-padding-none">
+                    <SearchBar />
+                </Col>
             </Col>
         </div>
     )

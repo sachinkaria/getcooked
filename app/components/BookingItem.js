@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 let BookingItem = (props) => {
     let classes = classNames({
+        'gc-text' : true,
         'gc-pending' : !props.booking.confirmed,
         'gc-confirmed' : props.booking.confirmed,
         'pull-right--t' : true
@@ -20,21 +21,21 @@ let BookingItem = (props) => {
                     <p className="gc-profile-text-md left-t">{props.chefName}</p>
                 </Row>
                 <Row>
-                    <div className="gc-bookingIcons-table">
+                    <div>
                         <div className="gc-booking-icon">
-                            <span className={'gc-icon gc-icon--' + (props.iconClass)}/><p className="gc-text-xs">{props.booking.type}</p>
+                            <span className={'gc-icon gc-icon--' + (props.iconClass)}/><p className="gc-text gc-text--sm">{props.booking.type}</p>
                         </div>
                         <div className="gc-booking-icon">
-                            <span className="gc-icon gc-icon--people"/><p className="gc-text-xs">{props.booking.guests}</p>
+                            <span className="gc-icon gc-icon--people"/><p className="gc-text gc-text--sm">{props.booking.guests}</p>
                         </div>
                         <div className="gc-booking-icon">
-                            <span className="gc-icon gc-icon--money"/><p className="gc-text-xs">£{props.booking.budget}</p>
+                            <span className="gc-icon gc-icon--money"/><p className="gc-text gc-text--sm">£{props.booking.budget}</p>
                         </div>
                     </div>
                 </Row>
             </Col>
             <Col xs={12} sm={3}>
-                <p className="gc-profile-text-xs pull-right--t">{moment(props.booking.date).format('MMMM Do YYYY')}</p>
+                <p className="gc-text pull-right--t">{moment(props.booking.date).format('MMMM Do YYYY')}</p>
                 <p className={classes}>{props.booking.confirmed ? 'Confirmed' : 'Pending'}</p>
             </Col>
         </Panel>

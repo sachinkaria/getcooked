@@ -90,8 +90,8 @@ let Profile = React.createClass ({
                     <Panel className="gc-center gc-booking-panel">
                         <BookingForm id={user.id}/>
                         <hr/>
-                        <Button bsStyle="primary" className="gc-button gc-margin-top" block>Contact </Button>
-                        <Button bsStyle="default" className="gc-button gc-margin-top gc-margin-bottom" block>Favourite</Button>
+                        <Button className="gc-btn gc-btn-white gc-margin-top" block>Contact </Button>
+                        <Button className="gc-btn gc-btn-blue gc-margin-top gc-margin-bottom" block>Favourite</Button>
                         <Link>Share</Link>
                     </Panel>
                 </Col>

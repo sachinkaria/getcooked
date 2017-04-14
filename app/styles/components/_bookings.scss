@@ -1,8 +1,8 @@
 .gc-booking-thumbnail {
-  height: 100px;
-  width: 100px;
+  height: 140px;
+  width: 140px;
   object-fit: cover;
-  border-radius: 50px;
+  border-radius: 70px;
 }
 
 .gc-pending {
@@ -13,22 +13,22 @@
   color: green;
 }
 
-.gc-bookingIcons-table {
-  display: table;
-  width: 100%;
-
-  @include breakpoint(mobileonly) {
-    margin-left: 9%;
-  }
-
-  @include breakpoint(tablet) {
-    width: 80%;
-    margin-left: 0;
-  }
-}
+//.gc-bookingIcons-table {
+//  display: table;
+//  width: 100%;
+//
+//  @include breakpoint(mobileonly) {
+//    margin-left: 6%;
+//  }
+//
+//  @include breakpoint(tablet) {
+//    width: 100%;
+//    margin-left: 0;
+//  }
+//}
 
 div.gc-booking-icon {
-  display:table-cell;
+  display:table-row;
   width:33%;
 
   span {

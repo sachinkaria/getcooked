@@ -1,11 +1,16 @@
-$primary-colour: rgb(255, 119, 73);
-$primary-colour--dark: rgb(236, 83, 49);
+$primary-colour: rgba(255, 104, 81, 1);
+$primary-colour--dark: rgb(226, 96, 69);
 $primary-colour--light: rgba(255, 119, 73, 0.8);
 
-$black: rgba(0, 0, 0, 1);
+$black: rgba(23, 18, 25, 1);
+$green: rgba(34, 85, 96, 1);
+$yellow: rgba(237, 240, 96, 1);
+$purple: rgba(49, 13, 32, 1);
+
 $white: rgba(255, 255, 255, 1);
 
 $light-grey: rgba(219, 219, 219, 0.2);
+$dark-grey: rgba(57, 57, 57, 1);
 
 $primary-font: 'Muli', sans-serif;
 $font-size-forms: 16px;

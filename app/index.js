@@ -1,5 +1,5 @@
-let React = require('react');
-let ReactDOM = require('react-dom');
+import React from 'react'
+import ReactDOM from 'react-dom'
 let routes = require('./config/routes');
 require('./styles/main.scss');
 require('./images/logo-icon.png');
@@ -18,10 +18,5 @@ require('./images/food/food-3.jpg');
 require('./images/food/food-4.jpg');
 require('./images/food/food-5.jpg');
 require('./images/icons/wedding-cake.png');
-
-
-
-
-
 
 ReactDOM.render(routes, document.getElementById('app'));

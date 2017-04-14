@@ -19,18 +19,18 @@ const NavigationBar = (props) => {
                           <Navbar.Collapse className="gc-navbar-dropdown">
                               <Nav pullRight>
                                   <NavItem>
-                                      <Link to={'/inbox'}>
-                                        <p className="gc-dropdown-item">Messages</p>
+                                      <Link>
+                                          <p className="gc-text gc-text--dark-grey">I'm a chef</p>
                                       </Link>
                                   </NavItem>
                                   <NavItem>
-                                      <Link>
-                                        <p className="gc-dropdown-item">I'm a chef</p>
+                                      <Link to={'/inbox'}>
+                                        <p className="gc-text gc-text--dark-grey">Messages</p>
                                       </Link>
                                   </NavItem>
                                   <NavItem>
                                       <Link to={'/bookings'}>
-                                          <p className="gc-dropdown-item">Bookings</p>
+                                          <p className="gc-text gc-text--dark-grey">Bookings</p>
                                       </Link>
                                   </NavItem>
                               </Nav>
@@ -38,7 +38,7 @@ const NavigationBar = (props) => {
               </Navbar>
               {props.children}
           </div>
-            )
+      )
     };
 
 export default NavigationBar;

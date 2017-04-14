@@ -27,9 +27,11 @@
     "react-icons": "^2.2.3",
     "react-images": "^0.5.2",
     "react-masonry-component": "^5.0.3",
+    "react-redux": "^5.0.4",
     "react-router": "^2.0.0-rc5",
     "react-router-dom": "^4.0.  0-beta.8",
     "react-star-rating-component": "^1.2.4",
+    "redux": "^3.6.0",
     "style-loader": "^0.13.2"
   },
   "devDependencies": {

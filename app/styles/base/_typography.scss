@@ -1,4 +1,19 @@
-.gc-text-xs {
-  font-size: 16px;
+.gc-text {
   font-family: $primary-font;
+  font-size: 18px;
+
+  &.gc-text--dark-grey {
+    color: $dark-grey;
+  }
+}
+
+.gc-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  color: $green;
+  margin-bottom: 30px;
+
+  @include breakpoint(tablet) {
+    font-size: 72px;
+  }
 }

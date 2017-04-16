@@ -13,22 +13,22 @@
   color: green;
 }
 
-//.gc-bookingIcons-table {
-//  display: table;
-//  width: 100%;
-//
-//  @include breakpoint(mobileonly) {
-//    margin-left: 6%;
-//  }
-//
-//  @include breakpoint(tablet) {
-//    width: 100%;
-//    margin-left: 0;
-//  }
-//}
+.gc-bookingIcons-table {
+  display: table;
+  width: 100%;
+
+  @include breakpoint(mobileonly) {
+    margin-left: 6%;
+  }
+
+  @include breakpoint(tablet) {
+    width: 100%;
+    margin-left: 0;
+  }
+}
 
 div.gc-booking-icon {
-  display:table-row;
+  display:table-cell;
   width:33%;
 
   span {

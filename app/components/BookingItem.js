@@ -21,7 +21,7 @@ let BookingItem = (props) => {
                     <p className="gc-profile-text-md left-t">{props.chefName}</p>
                 </Row>
                 <Row>
-                    <div>
+                    <div className="gc-bookingIcons-table">
                         <div className="gc-booking-icon">
                             <span className={'gc-icon gc-icon--' + (props.iconClass)}/><p className="gc-text gc-text--sm">{props.booking.type}</p>
                         </div>

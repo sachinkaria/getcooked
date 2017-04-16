@@ -30,3 +30,13 @@
     font-size: 72px;
   }
 }
+
+.gc-profile-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: $green;
+
+  @include breakpoint(tablet) {
+    font-size: 36px;
+  }
+}

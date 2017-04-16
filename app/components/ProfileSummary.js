@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 let StarRatingComponent = require('react-star-rating-component');
 
 let ProfileSummary = (props) => {
+    let primaryColour = '#ff6851';
     let styles = {
             backgroundImage: 'url(' + props.imageUrl + ')',
         };
@@ -19,7 +20,7 @@ let ProfileSummary = (props) => {
                                     className="gc-margin-left-xs gc-pull-left gc-clear-left"
                                     starCount={5}
                                     value={props.rating}
-                                    starColor={'#e46344'}
+                                    starColor={primaryColour}
                                     emptyStarColor={'#cecccc'}
                                     name={'rating'}
                                 /><span className="gc-ratings-text">{props.numberOfRatings} reviews</span>

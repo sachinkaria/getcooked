@@ -153,7 +153,7 @@ export default class BookingForm extends React.Component {
                                         </FormGroup>
                                     </Col>
                                     <Col xs={4} xsOffset={4}>
-                                        <Button bsSize="large" className="gc-btn-orange" onClick={submitHandler} block >Submit request</Button>
+                                        <Button bsSize="large" className="gc-btn gc-btn-orange" onClick={submitHandler} block >Submit request</Button>
                                         {this.state.errorMessage &&
                                             <span>{this.state.errorMessage}</span>}
                                     </Col>

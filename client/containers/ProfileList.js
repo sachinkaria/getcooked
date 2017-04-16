@@ -5,8 +5,23 @@ import { Col, Row } from 'react-bootstrap';
 import SearchBar from './SearchBar';
 
 
-let ProfileList = React.createClass({
-  render: function () {
+export default class ProfileList extends React.Component {
+    constructor () {
+        super();
+        this.state = {
+            users: []
+        };
+    }
+
+    componentDidMount() {
+        getUsers().then((resp) => {
+            this.setState ({
+                users: resp.data
+            })
+        })
+    }
+
+  render () {
     return (
         <div>
             <Row>
@@ -17,7 +32,7 @@ let ProfileList = React.createClass({
             <Row>
                     <Col xs={10} xsOffset={1} className="gc-padding-none">
                         {
-                            getUsers.map(function(user){
+                            this.state.users.map(function(user){
                                 return (
                                     <ProfileSummary
                                         id={user.id}
@@ -36,6 +51,4 @@ let ProfileList = React.createClass({
         </div>
         )
     }
-});
-
-export default ProfileList;
+}

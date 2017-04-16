@@ -86,8 +86,8 @@ let Profile = React.createClass ({
                     </Panel>
 
                 </Col>
-                <Col xs={4} sm={3} md={2} xsHidden>
-                    <Panel className="gc-center gc-booking-panel">
+                <Col sm={3} md={2} xsHidden>
+                    <Panel className="gc-center">
                         <BookingForm id={user.id}/>
                         <hr/>
                         <Button className="gc-btn gc-btn-white gc-margin-top" block>Contact </Button>

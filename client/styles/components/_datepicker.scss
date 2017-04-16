@@ -300,7 +300,6 @@
 .DateInput {
   font-family: $primary-font;
   font-size: 12pt;
-  height: 40px;
   color: black;
   background-color: rgba(255, 255, 255, 1);
   font-weight: 200;
@@ -432,7 +431,7 @@ border-radius: 5px}
 
 .SingleDatePickerInput {
   background-color: #fff;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid $light-grey;
   border-radius: 5px;
 }
 

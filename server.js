@@ -3,7 +3,7 @@
 let express = require('express');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
-let Comment = require('./model/comments');
+let Comment = require('./server/model/comments');
 
 //and create our instances
 let app = express();
@@ -33,8 +33,39 @@ router.get('/', function(req, res) {
     res.json({ message: 'API Initialized!'});
 });
 
+router.get('/search', function(req, res) {
+    res.json([{
+            "id": 1,
+            "name": "Sachin Karia",
+            "rating": 4,
+            "imageUrl": "images/1.jpg",
+            "numberOfRatings": 91
+        },
+        {
+            "id": 2,
+            "name": "Jonny Packard",
+            "rating": 5,
+            "imageUrl": "images/2.jpg",
+            "numberOfRatings": 34
+        },
+        {
+            "id": 3,
+            "name": "Jeremy's Tacos",
+            "rating": 4,
+            "imageUrl": "images/3.jpg",
+            "numberOfRatings": 8
+        },
+        {
+            "id": 4,
+            "name": "Another Truck",
+            "rating": 5,
+            "imageUrl": "images/4.jpg",
+            "numberOfRatings": 21
+        }])
+});
+
 //Use our router configuration when we call /api
-app.use('/api', router);
+app.use('/', router);
 
 //starts the server and listens for requests
 app.listen(port, function() {

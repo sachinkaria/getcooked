@@ -74,10 +74,10 @@ router.get('/search', function(req, res) {
 });
 
 // Registration route
-router.post('/register', AuthenticationController.register);
+router.post('/auth/register', AuthenticationController.register);
 
 // Login route
-router.post('/login', requireLogin, AuthenticationController.login);
+router.post('/auth/login', requireLogin, AuthenticationController.login);
 
 //Use our router configuration when we call /
 app.use('/', router);

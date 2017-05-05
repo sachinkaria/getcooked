@@ -3,10 +3,20 @@
 let express = require('express');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
+let config = require('./server/config/main');
+const AuthenticationController = require('./server/controllers/authentication');
+let passportService = require('./server/config/passport');
+let passport = require('passport');
+
+const requireAuth = passport.authenticate('jwt', { session: false });
+const requireLogin = passport.authenticate('local', { session: false });
+
 
 //and create our instances
 let app = express();
 let router = express.Router();
+let apiRoutes = express.Router();
+let authRoutes = express.Router();
 
 let port = 3001;
 
@@ -63,7 +73,13 @@ router.get('/search', function(req, res) {
         }])
 });
 
-//Use our router configuration when we call /api
+// Registration route
+router.post('/register', AuthenticationController.register);
+
+// Login route
+router.post('/login', requireLogin, AuthenticationController.login);
+
+//Use our router configuration when we call /
 app.use('/', router);
 
 //starts the server and listens for requests
@@ -72,5 +88,5 @@ app.listen(port, function() {
 });
 
 //db config
-mongoose.connect('mongodb://localhost/get-cooked');
+mongoose.connect(config.database);
 // mongoose.connect('mongodb://sachinkaria:manchester04@ds161890.mlab.com:61890/get-cooked');

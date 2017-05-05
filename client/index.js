@@ -1,8 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Provider from 'react-redux'
-import { createStore } from 'redux'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Provider from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
+import reducers from './reducers/index';
 let routes = require('./config/routes');
+
 require('./styles/main.scss');
 require('./images/logo-icon.png');
 require('./images/1.jpg');
@@ -21,4 +24,11 @@ require('./images/food/food-4.jpg');
 require('./images/food/food-5.jpg');
 require('./images/icons/wedding-cake.png');
 
-ReactDOM.render(routes, document.getElementById('app'));
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
+const store = createStoreWithMiddleware(reducers);
+
+ReactDOM.render(
+    <Provider store={store}>
+    routes
+    </Provider>,
+    document.getElementById('app'));

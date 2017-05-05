@@ -6,6 +6,8 @@ import Bookings from '../components/Bookings';
 import Profile from '../containers/Profile';
 import Inbox from '../containers/Inbox';
 import Chat from '../containers/Chat';
+import Register from '../components/auth/Register';
+import Login from '../components/auth/Login';
 import Home from '../components/Home';
 
 let routes = (
@@ -17,6 +19,8 @@ let routes = (
         <Route path="/inbox" component={Inbox} />
         <Route path="/bookings" component={Bookings} />
         <Route path='/chat/:id' component={Chat}/>
+        <Route path="register" component={Register} />
+        <Route path="login" component={Login} />
     </Route>
   </Router>
 );

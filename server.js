@@ -3,7 +3,6 @@
 let express = require('express');
 let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
-let Comment = require('./server/model/comments');
 
 //and create our instances
 let app = express();
@@ -73,4 +72,5 @@ app.listen(port, function() {
 });
 
 //db config
-mongoose.connect('mongodb://sachinkaria:manchester04@ds161890.mlab.com:61890/get-cooked');
+mongoose.connect('mongodb://localhost/get-cooked');
+// mongoose.connect('mongodb://sachinkaria:manchester04@ds161890.mlab.com:61890/get-cooked');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactRouter, Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { ReactRouter, Route, IndexRoute } from 'react-router';
 import ProfileList from '../containers/ProfileList';
 import NavigationBar from '../components/NavigationBar';
 import Bookings from '../components/Bookings';
@@ -11,7 +11,6 @@ import Login from '../components/auth/Login';
 import Home from '../components/Home';
 
 let routes = (
-  <Router history={hashHistory}>
     <Route path='/' component={NavigationBar}>
       <IndexRoute component={Home} />
         <Route path='/search' component={ProfileList}/>
@@ -19,10 +18,9 @@ let routes = (
         <Route path="/inbox" component={Inbox} />
         <Route path="/bookings" component={Bookings} />
         <Route path='/chat/:id' component={Chat}/>
-        <Route path="register" component={Register} />
-        <Route path="login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
     </Route>
-  </Router>
 );
 
-module.exports = routes;
+export default routes;

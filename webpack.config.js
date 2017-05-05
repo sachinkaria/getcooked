@@ -15,7 +15,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader", query: {presets: ['es2015','react']}},
+      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader", query: {presets: ['es2015','react'], plugins: ['transform-es2015-destructuring', 'transform-object-rest-spread']}},
         {test: /\.jpe?g$|\.gif$|\.svg$|\.png$/i, loader: "file-loader?name=/images/[name].[ext]"},
         {test: /\.css$/, loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader','resolve-url-loader']},
         {test: /\.scss$/, loaders: ['style-loader', 'css-loader','postcss-loader', 'sass-loader','resolve-url-loader']}

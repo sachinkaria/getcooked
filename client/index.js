@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Provider from 'react-redux';
+import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers/index';
-let routes = require('./config/routes');
+import routes from'./config/routes';
+import { Router, hashHistory } from 'react-router';
 
 require('./styles/main.scss');
 require('./images/logo-icon.png');
@@ -29,6 +30,6 @@ const store = createStoreWithMiddleware(reducers);
 
 ReactDOM.render(
     <Provider store={store}>
-    routes
+        <Router history={hashHistory} routes={routes} />
     </Provider>,
     document.getElementById('app'));

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { loginUser } from '../../actions';
+import { Col, Panel } from 'react-bootstrap';
 
 const form = reduxForm({
     form: 'login'
@@ -27,7 +28,10 @@ class Login extends Component {
         const { handleSubmit } = this.props;
 
         return (
-            <div>
+            <Col sm={6} smOffset={3}>
+                <Panel className="gc-panel-light">
+                <h4 className="gc-profile-heading-md">Sign in</h4>
+                    <br />
                 <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                     {this.renderAlert()}
                     <div>
@@ -40,7 +44,8 @@ class Login extends Component {
                     </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
-            </div>
+                </Panel>
+            </Col>
         );
     }
 }

@@ -8,6 +8,7 @@ import Inbox from '../containers/Inbox';
 import Chat from '../containers/Chat';
 import Register from '../components/auth/Register';
 import Login from '../components/auth/Login';
+import Logout from '../components/auth/Logout';
 import Home from '../components/Home';
 import RequireAuth from '../components/auth/RequireAuth';
 
@@ -21,6 +22,7 @@ let routes = (
         <Route path='/chat/:id' component={Chat}/>
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
     </Route>
 );
 

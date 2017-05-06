@@ -13,6 +13,7 @@ import * as actions from '../actions';
 class Bookings extends React.Component {
     constructor(props) {
         console.log(props);
+        console.log(localStorage);
         super(props);
         this.props.getBookings();
     }

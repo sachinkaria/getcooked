@@ -64,7 +64,7 @@ export function registerUser({ email, firstName, lastName, password }) {
 export function logoutUser() {
     return function (dispatch) {
         dispatch({ type: UNAUTH_USER });
-        cookie.remove('token', { path: '/' });
+        delete localStorage['token'];
         hashHistory.push('/');
     }
 }

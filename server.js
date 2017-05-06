@@ -28,7 +28,6 @@ app.use(bodyParser.json());
 //To prevent errors from Cross Origin Resource Sharing, we will set
 //our headers to allow CORS with middleware like so:
 app.use(function(req, res, next) {
-    console.log(res);
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
@@ -81,7 +80,7 @@ router.post('/auth/register', AuthenticationController.register);
 // Login route
 router.post('/auth/login', requireLogin, AuthenticationController.login);
 
-//protected test
+// bookings
 router.get('/bookings', requireAuth, (req, res) => {
     res.json({ "bookings":[
         {
@@ -103,12 +102,61 @@ router.get('/bookings', requireAuth, (req, res) => {
     ]})
 });
 
+// messages
+router.get('/inbox', requireAuth, (req, res) => {
+    res.json({ "inbox":[{   "id": "1234",
+        "username": "Maxyboi",
+        "chatMessages": [
+            {"username": "Maxyboi",
+                "message": "Hello there!",
+                "fromMe": false,
+                "created": "2012-04-23T18:25:40.511Z"},
+            {"username": "Sachin Karia",
+                "message": "Hello Maxiboy!",
+                "fromMe": true,
+                "created": "2012-04-23T18:25:41.511Z"},
+            {"username": "Sachin K",
+                "message": " How are you?d fhajkdhfklahkdfhaklj sdhfkjhalks dfhlaksdfhlkaj sdhfkj alskjdfhksajhdfkljashfda" +
+                "afdsafkds j dfhlaks dfhjkasldfhkjlsahdfkl hadsjfahklas dfhlka dhskflhaskldfahklsjd fklasdfhjsa fhljkads    ",
+                "fromMe": true,
+                "created": "2012-04-23T18:25:43.111Z"},
+            {"username": "Maxyboi",
+                "message": "The entire menu is vegetarian",
+                "fromMe": false,
+                "created": "2012-04-23T18:25:47.511Z"}
+        ]
+    },
+        {   "id": "3434",
+            "username": "Voss the boss",
+            "chatMessages": [
+                {"username": "Voss the boss",
+                    "message": "Hello there!",
+                    "fromMe": false,
+                    "created": "2012-04-23T18:25:40.511Z"},
+                {"username": "Sachin Karia",
+                    "message": "Hello Maxiboy!",
+                    "fromMe": true,
+                    "created": "2012-04-23T18:25:41.511Z"},
+                {"username": "Sachin K",
+                    "message": " How are you?d fhajkdhfklahkdfhaklj sdhfkjhalks dfhlaksdfhlkaj sdhfkj alskjdfhksajhdfkljashfda" +
+                    "afdsafkds j dfhlaks dfhjkasldfhkjlsahdfkl hadsjfahklas dfhlka dhskflhaskldfahklsjd fklasdfhjsa fhljkads    ",
+                    "fromMe": true,
+                    "created": "2012-04-23T18:25:43.111Z"},
+                {"username": "Voss the boss",
+                    "message": "The entire menu is vegetarian",
+                    "fromMe": false,
+                    "created": "2012-04-23T18:25:47.511Z"}
+            ]
+        }
+    ]})
+});
+
 //Use our router configuration when we call /
 app.use('/', router);
 
 //starts the server and listens for requests
 app.listen(port, function() {
-    console.log('api running on port ${port}');
+    console.log(`api running on port ${port}`);
 });
 
 //db config

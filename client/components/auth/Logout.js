@@ -7,8 +7,8 @@ class Logout extends Component {
         this.props.logoutUser();
     }
 
-    render() {
-        return <div>Sorry to see you go!</div>;
+    render () {
+        return null;
     }
 }
 

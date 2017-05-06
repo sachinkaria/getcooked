@@ -36,11 +36,11 @@ class Login extends Component {
                     {this.renderAlert()}
                     <div>
                         <label>Email</label>
-                        <Field name="email" className="form-control" component="input" type="text" />
+                        <Field name="email" className="form-control gc-input" component="input" type="text" />
                     </div>
                     <div>
                         <label>Password</label>
-                        <Field name="password" className="form-control" component="input" type="password" />
+                        <Field name="password" className="form-control gc-input" component="input" type="password" />
                     </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>

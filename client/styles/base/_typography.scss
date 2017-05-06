@@ -22,12 +22,14 @@
 
 .gc-heading {
   font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
+  font-size: 46px;
   color: $green;
   margin-bottom: 36px;
+  margin-top: 36px;
 
   @include breakpoint(tablet) {
-    font-size: 72px;
+    margin-top: 40px;
+    font-size: 78px;
   }
 }
 

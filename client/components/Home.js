@@ -1,14 +1,16 @@
 import React from 'react';
 import SearchBar from '../containers/SearchBar';
 import { Col } from 'react-bootstrap';
+import { hashHistory } from 'react-router';
 
 
 let Home = () => {
+    localStorage['token'] && hashHistory.push('/search');
     return (
         <div>
             <Col sm={8} smOffset={2} >
                 <h1 className="gc-pull-left gc-heading">Curate and share food with the coolest chefs around.</h1>
-                <Col sm={10} smOffset={1} md={8} mdOffset={1} className="gc-margin-bottom gc-padding-none">
+                <Col sm={12} smOffset={0} md={10} mdOffset={1} className="gc-margin-bottom gc-padding-none">
                     <SearchBar />
                 </Col>
             </Col>

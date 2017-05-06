@@ -42,7 +42,7 @@ export function loginUser({ email, password }) {
                 hashHistory.push('/search');
             })
             .catch((error) => {
-                errorHandler(dispatch, error.response, AUTH_ERROR)
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
             });
     }
 }
@@ -56,8 +56,7 @@ export function registerUser({ email, firstName, lastName, password }) {
                 hashHistory.push('/search');
             })
             .catch((error) => {
-            console.log(error);
-                errorHandler(dispatch, error.response, AUTH_ERROR)
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
             });
     }
 }
@@ -66,14 +65,14 @@ export function logoutUser() {
     return function (dispatch) {
         dispatch({ type: UNAUTH_USER });
         cookie.remove('token', { path: '/' });
-        window.location.href = CLIENT_ROOT_URL + '/login';
+        hashHistory.push('/');
     }
 }
 
 export function protectedTest() {
     return function(dispatch) {
         axios.get(`${API_URL}/protected`, {
-            headers: { 'Authorization': cookie.load('token') }
+            headers: { 'Authorization': localStorage['token'] }
         })
             .then(response => {
                 dispatch({
@@ -82,7 +81,7 @@ export function protectedTest() {
                 });
             })
             .catch((error) => {
-                errorHandler(dispatch, error.response, AUTH_ERROR)
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
             });
     }
 }

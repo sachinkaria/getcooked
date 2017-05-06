@@ -6,7 +6,6 @@ import reduxThunk from 'redux-thunk';
 import reducers from './reducers/index';
 import routes from'./config/routes';
 import { Router, hashHistory } from 'react-router';
-import cookie, { Cookies } from 'react-cookie';
 import { AUTH_USER } from './actions/types';
 
 require('./styles/main.scss');
@@ -30,12 +29,10 @@ require('./images/icons/wedding-cake.png');
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
-// console.log(cookie);
 const token = localStorage['token'];
 
 if (token) {
     store.dispatch({ type: AUTH_USER });
-    console.log(store.getState());
 }
 
 ReactDOM.render(

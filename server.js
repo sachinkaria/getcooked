@@ -28,11 +28,13 @@ app.use(bodyParser.json());
 //To prevent errors from Cross Origin Resource Sharing, we will set
 //our headers to allow CORS with middleware like so:
 app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    console.log(res);
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-//and remove cacheing so we get the most recent comments
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Authorization, Access-Control-Request-Method, Access-Control-Request-Headers');
+
+    //and remove cacheing so we get the most recent data
     res.setHeader('Cache-Control', 'no-cache');
     next();
 });
@@ -78,6 +80,11 @@ router.post('/auth/register', AuthenticationController.register);
 
 // Login route
 router.post('/auth/login', requireLogin, AuthenticationController.login);
+
+//protected test
+router.get('/protected', requireAuth, (req, res) => {
+    res.send({ content: 'The protected test route is functional!' });
+});
 
 //Use our router configuration when we call /
 app.use('/', router);

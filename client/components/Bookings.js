@@ -13,11 +13,11 @@ import * as actions from '../actions';
 class Bookings extends React.Component {
     constructor(props) {
         super(props);
-
         this.props.protectedTest();
     }
 
     renderContent() {
+        console.log(this.props.content);
         if(this.props.content) {
             let bookings = this.props.content;
             return (

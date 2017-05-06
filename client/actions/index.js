@@ -1,7 +1,9 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
+import React from 'react';
 import cookie from 'react-cookie';
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, PROTECTED_TEST } from './types';
+import { Redirect } from 'react-router';
 
 const API_URL = 'http://localhost:3001';
 const CLIENT_ROOT_URL = 'http://localhost:8080';
@@ -35,9 +37,9 @@ export function loginUser({ email, password }) {
     return function(dispatch) {
         axios.post(`${API_URL}/auth/login`, { email, password })
             .then(response => {
-                cookie.save('token', response.data.token, { path: '/' });
+                localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });
-                window.location.href = CLIENT_ROOT_URL + '/bookings';
+                hashHistory.push('/search');
             })
             .catch((error) => {
                 errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -49,11 +51,12 @@ export function registerUser({ email, firstName, lastName, password }) {
     return function(dispatch) {
         axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
             .then(response => {
-                cookie.save('token', response.data.token, { path: '/' });
+                localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });
-                window.location.href = CLIENT_ROOT_URL + '/bookings';
+                hashHistory.push('/search');
             })
             .catch((error) => {
+            console.log(error);
                 errorHandler(dispatch, error.response, AUTH_ERROR)
             });
     }
@@ -63,7 +66,6 @@ export function logoutUser() {
     return function (dispatch) {
         dispatch({ type: UNAUTH_USER });
         cookie.remove('token', { path: '/' });
-
         window.location.href = CLIENT_ROOT_URL + '/login';
     }
 }

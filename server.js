@@ -82,8 +82,25 @@ router.post('/auth/register', AuthenticationController.register);
 router.post('/auth/login', requireLogin, AuthenticationController.login);
 
 //protected test
-router.get('/protected', requireAuth, (req, res) => {
-    res.send({ content: 'The protected test route is functional!' });
+router.get('/bookings', requireAuth, (req, res) => {
+    res.json({ "bookings":[
+        {
+            "chefID": "1",
+            "type": "Wedding",
+            "guests": "1000",
+            "budget": "5500",
+            "date": "2017-04-28T11:00:00.000Z",
+            "confirmed": false
+        },
+        {
+            "chefID": "3",
+            "type": "Corporate",
+            "guests": "10",
+            "budget": "1500",
+            "date": "2017-05-02T11:00:00.000Z",
+            "confirmed": true
+        }
+    ]})
 });
 
 //Use our router configuration when we call /

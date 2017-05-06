@@ -12,14 +12,14 @@ import * as actions from '../actions';
 
 class Bookings extends React.Component {
     constructor(props) {
+        console.log(props);
         super(props);
-        this.props.protectedTest();
+        this.props.getBookings();
     }
 
     renderContent() {
-        console.log(this.props.content);
-        if(this.props.content) {
-            let bookings = this.props.content;
+        if(this.props.bookings) {
+            let bookings = this.props.bookings;
             return (
                 <Col xs={12} sm={10} smOffset={1} lg={8} lgOffset={2} className="center-m pull-left--t">
                     <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Bookings</h3>
@@ -54,7 +54,7 @@ class Bookings extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { content: state.auth.content };
+    return { bookings: state.auth.bookings };
 }
 
 export default connect(mapStateToProps, actions)(Bookings);

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { hashHistory } from 'react-router';
 import React from 'react';
 import cookie from 'react-cookie';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, PROTECTED_TEST } from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, GET_BOOKINGS } from './types';
 import { Redirect } from 'react-router';
 
 const API_URL = 'http://localhost:3001';
@@ -69,15 +69,15 @@ export function logoutUser() {
     }
 }
 
-export function protectedTest() {
+export function getBookings() {
     return function(dispatch) {
-        axios.get(`${API_URL}/protected`, {
+        axios.get(`${API_URL}/bookings`, {
             headers: { 'Authorization': localStorage['token'] }
         })
             .then(response => {
                 dispatch({
-                    type: PROTECTED_TEST,
-                    payload: response.data.content
+                    type: GET_BOOKINGS,
+                    payload: response.data.bookings
                 });
             })
             .catch((error) => {

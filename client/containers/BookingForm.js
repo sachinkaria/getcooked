@@ -63,7 +63,7 @@ export default class BookingForm extends React.Component {
         const submitHandler = (this.state.chefID && this.state.guests && this.state.date && this.state.budget) ? this.handleSubmit : this.handleEmptySubmit;
         return (
             <ButtonToolbar>
-                <Button className="gc-btn gc-btn-orange" block onClick={this.showModal}>
+                <Button className="gc-btn gc-btn--orange" block onClick={this.showModal}>
                   Request to book
                 </Button>
                     <Modal

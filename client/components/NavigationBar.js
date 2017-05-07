@@ -22,6 +22,11 @@ const NavigationBar = (props) => {
                         isAuthenticated ? (
                                 <Nav pullRight>
                                     <NavItem>
+                                        <Link to={'/events'}>
+                                            <p className="gc-text gc-text--dark-grey">Events</p>
+                                        </Link>
+                                    </NavItem>
+                                    <NavItem>
                                         <Link to={'/inbox'}>
                                             <p className="gc-text gc-text--dark-grey">Messages</p>
                                         </Link>
@@ -39,6 +44,11 @@ const NavigationBar = (props) => {
                                 </Nav>
                             ) : (
                                 <Nav pullRight>
+                                    <NavItem>
+                                        <Link to={'/events'}>
+                                            <p className="gc-text gc-text--dark-grey">Events</p>
+                                        </Link>
+                                    </NavItem>
                                     <NavItem>
                                         <Link>
                                             <p className="gc-text gc-text--dark-grey">I'm a chef</p>

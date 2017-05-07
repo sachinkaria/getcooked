@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../actions';
-import { Col, Panel } from 'react-bootstrap';
+import { Col, Panel, Row, Button } from 'react-bootstrap';
 
 const form = reduxForm({
     form: 'register',
@@ -11,7 +11,7 @@ const form = reduxForm({
 
 const renderField = field => (
     <div>
-        <input className="form-control" {...field.input}/>
+        <input className="form-control gc-input gc-margin-bottom" placeholder={field.placeholder} {...field.input}/>
         {field.touched && field.error && <div className="error">{field.error}</div>}
     </div>
 );
@@ -63,29 +63,25 @@ class Register extends Component {
                     <br />
                     <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                         {this.renderAlert()}
-                        <div className="row">
-                            <div className="col-md-6">
-                                <label>First Name</label>
-                                <Field name="firstName" className="form-control" component={renderField} type="text" />
-                            </div>
-                            <div className="col-md-6">
-                                <label>Last Name</label>
-                                <Field name="lastName" className="form-control" component={renderField} type="text" />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <label>Email</label>
-                                <Field name="email" className="form-control" component={renderField} type="text" />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-12">
-                                <label>Password</label>
-                                <Field name="password" className="form-control" component={renderField} type="password" />
-                            </div>
-                        </div>
-                        <button type="submit" className="btn btn-primary">Register</button>
+                        <Row>
+                            <Col xs={12} sm={6} smOffset={3}>
+                                <Field name="firstName" placeholder="First name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                            </Col>
+                            <Col xs={12} sm={6} smOffset={3}>
+                                <Field name="lastName" placeholder="Last name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} sm={6} smOffset={3}>
+                                <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} sm={6} smOffset={3}>
+                                <Field name="password" placeholder="Password" className="form-control gc-input gc-margin-bottom" component={renderField} type="password" />
+                            </Col>
+                        </Row>
+                        <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
                     </form>
                 </Panel>
             </Col>

@@ -4,7 +4,6 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 let bcrypt = require('bcrypt-nodejs');
-let ChefSchema = require('./chef');
 //create new instance of the mongoose.schema. the schema takes an
 //object that shows the shape of your database entries.
 const UserSchema = new Schema({
@@ -33,7 +32,14 @@ const UserSchema = new Schema({
             type: String,
             required: false
         },
-        chef: [ChefSchema],
+        displayName: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
         resetPasswordToken: { type: String },
         resetPasswordExpires: { type: Date }
     },

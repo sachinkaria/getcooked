@@ -21,26 +21,15 @@ function setUserInfo(request) {
     };
 }
 
-// Set user info from request
-function setChefInfo(request) {
-    return {
-        _id: request._id,
-        firstName: request.firstName,
-        lastName: request.lastName,
-        email: request.email,
-        role: request.role
-    };
-}
+exports.login = function(req, res, next) {
 
-    exports.login = function(req, res, next) {
+    let userInfo = setUserInfo(req.user);
 
-        let userInfo = setUserInfo(req.user);
-
-        res.status(200).json({
-            token: 'JWT ' + generateToken(userInfo),
-            user: userInfo
-        });
-    };
+    res.status(200).json({
+        token: 'JWT ' + generateToken(userInfo),
+        user: userInfo
+    });
+};
 
 
 //========================================
@@ -106,14 +95,12 @@ function setChefInfo(request) {
 // Registration Chef Route
 //========================================
 exports.registerChef = function(req, res, next) {
-    console.log(req.body);
     // Check for registration errors
     const email = req.body.email;
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const password = req.body.password;
-    const title = req.body.title;
-    const description = req.body.description;
+
 
     // Return error if no email provided
     if (!email) {
@@ -139,13 +126,9 @@ exports.registerChef = function(req, res, next) {
         }
 
         // If email is unique and password was provided, create account
-        let user = new User({
-            email: email,
-            password: password,
-            firstName: firstName,
-            lastName: lastName,
-            role: 'chef'
-        });
+        let user = new User(req.body);
+
+        user.role = 'chef';
 
         user.save(function(err, user) {
             if (err) { return next(err); }
@@ -155,7 +138,7 @@ exports.registerChef = function(req, res, next) {
 
             // Respond with JWT if user was created
 
-            let userInfo = setChefInfo(user);
+            let userInfo = setUserInfo(user);
 
             res.status(201).json({
                 token: 'JWT ' + generateToken(userInfo),

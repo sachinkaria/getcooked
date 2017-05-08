@@ -41,6 +41,7 @@ function validate(formProps) {
 
 class RegisterChef extends Component {
     handleFormSubmit(formProps) {
+        console.log(formProps);
         this.props.registerChef(formProps);
     }
 
@@ -81,7 +82,17 @@ class RegisterChef extends Component {
                         </Row>
                         <Row>
                             <Col xs={12} sm={6} smOffset={3}>
-                                <Field name="password" placeholder="Password" className="form-control gc-input gc-margin-bottom" masked={true} component={renderField} type="password" />
+                                <Field name="password" placeholder="Password" className="form-control gc-input gc-margin-bottom" component={renderField} type="password" />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} sm={6} smOffset={3}>
+                                <Field name="displayName" placeholder="Display name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col xs={12} sm={6} smOffset={3}>
+                                <Field name="description" placeholder="Description" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
                             </Col>
                         </Row>
                         <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>

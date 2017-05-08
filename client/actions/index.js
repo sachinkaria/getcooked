@@ -58,9 +58,9 @@ export function registerUser({ email, firstName, lastName, password }) {
     }
 }
 
-export function registerChef({ email, firstName, lastName, password }) {
+export function registerChef({ email, firstName, lastName, password, displayName, description }) {
     return function(dispatch) {
-        axios.post(`${API_URL}/auth/chef/register`, { email, firstName, lastName, password })
+        axios.post(`${API_URL}/auth/chef/register`, { email, firstName, lastName, password, displayName, description })
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });

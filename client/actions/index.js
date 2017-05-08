@@ -1,12 +1,9 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
 import React from 'react';
-import cookie from 'react-cookie';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, GET_BOOKINGS } from './types';
-import { Redirect } from 'react-router';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, GET_BOOKINGS, GET_INBOX } from './types';
 
 const API_URL = 'http://localhost:3001';
-const CLIENT_ROOT_URL = 'http://localhost:8080';
 
 export function errorHandler(dispatch, error, type) {
     let errorMessage = '';
@@ -78,6 +75,23 @@ export function getBookings() {
                 dispatch({
                     type: GET_BOOKINGS,
                     payload: response.data.bookings
+                });
+            })
+            .catch((error) => {
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
+    }
+}
+
+export function getInbox() {
+    return function(dispatch) {
+        axios.get(`${API_URL}/inbox`, {
+            headers: { 'Authorization': localStorage['token'] }
+        })
+            .then(response => {
+                dispatch({
+                    type: GET_INBOX,
+                    payload: response.data.inbox
                 });
             })
             .catch((error) => {

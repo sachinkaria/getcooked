@@ -2,7 +2,6 @@
  * Created by sachinkaria on 18/03/2017.
  */
 import React from 'react';
-import currentUser from '../utils/currentUser';
 import { Col } from 'react-bootstrap';
 import users from '../utils/data';
 import getProfile from '../utils/helpers';

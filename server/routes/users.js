@@ -7,29 +7,43 @@ const AuthenticationController = require('../controllers/authentication'),
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireLogin = passport.authenticate('local', { session: false });
 
-// Constants for role types
-const REQUIRE_ADMIN = "Admin",
-    REQUIRE_CHEF = "Chef",
-    REQUIRE_MEMBER = "Member";
 
 module.exports = function(app) {
-    // Initializing route groups
-    const apiRoutes = express.Router(),
-        authRoutes = express.Router();
-
-    //=========================
-    // Auth Routes
-    //=========================
-
-    // Set auth routes as subgroup/middleware to apiRoutes
-    apiRoutes.use('/auth', authRoutes);
-
     // Registration route
-    authRoutes.post('/register', AuthenticationController.register);
+    app.post('/auth/register', AuthenticationController.register);
 
     // Login route
-    authRoutes.post('/login', requireLogin, AuthenticationController.login);
+    app.post('/auth/login', requireLogin, AuthenticationController.login);
 
-// Set url for API group routes
-    app.use('/api', apiRoutes);
+    // search chefs
+    app.get('/search', function(req, res) {
+        res.json([{
+            "id": 1,
+            "name": "Sachin Karia",
+            "rating": 4,
+            "imageUrl": "images/1.jpg",
+            "numberOfRatings": 91
+        },
+            {
+                "id": 2,
+                "name": "Jonny Packard",
+                "rating": 5,
+                "imageUrl": "images/2.jpg",
+                "numberOfRatings": 34
+            },
+            {
+                "id": 3,
+                "name": "Jeremy's Tacos",
+                "rating": 4,
+                "imageUrl": "images/3.jpg",
+                "numberOfRatings": 8
+            },
+            {
+                "id": 4,
+                "name": "Another Truck",
+                "rating": 5,
+                "imageUrl": "images/4.jpg",
+                "numberOfRatings": 21
+            }])
+    });
 };

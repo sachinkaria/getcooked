@@ -2,7 +2,6 @@
  * Created by sachinkaria on 19/03/2017.
  */
 import React from 'react';
-import userData from '../utils/currentUser';
 import { Col, Row } from 'react-bootstrap';
 import _ from 'lodash';
 import { Link } from 'react-router';

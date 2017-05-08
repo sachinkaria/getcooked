@@ -58,6 +58,20 @@ export function registerUser({ email, firstName, lastName, password }) {
     }
 }
 
+export function registerChef({ email, firstName, lastName, password }) {
+    return function(dispatch) {
+        axios.post(`${API_URL}/auth/chef/register`, { email, firstName, lastName, password })
+            .then(response => {
+                localStorage.setItem('token', response.data.token);
+                dispatch({ type: AUTH_USER });
+                hashHistory.push('/search');
+            })
+            .catch((error) => {
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
+    }
+}
+
 export function logoutUser() {
     return function (dispatch) {
         dispatch({ type: UNAUTH_USER });

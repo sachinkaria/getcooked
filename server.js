@@ -8,6 +8,7 @@ let passport = require('passport');
 let authRoutes = require('./server/routes/users');
 let bookingRoutes = require('./server/routes/bookings');
 let messageRoutes = require('./server/routes/messages');
+let chefRoutes = require('./server/routes/chefs');
 
 //and create our instances
 let app = express();
@@ -34,6 +35,7 @@ app.use(function(req, res, next) {
 authRoutes(router);
 bookingRoutes(router);
 messageRoutes(router);
+chefRoutes(router);
 
 //Use our router configuration when we call /
 app.use('/', router);

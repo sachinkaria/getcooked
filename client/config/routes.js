@@ -7,6 +7,7 @@ import Profile from '../containers/Profile';
 import Inbox from '../containers/Inbox';
 import Chat from '../containers/Chat';
 import Register from '../components/auth/Register';
+import RegisterChef from '../components/auth/chef/Register';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Home from '../components/Home';
@@ -17,10 +18,11 @@ let routes = (
       <IndexRoute component={Home} />
         <Route path='/search' component={ProfileList}/>
         <Route path='/profile/:id' component={Profile}/>
-        <Route path="/inbox" component={Inbox} />
+        <Route path="/inbox" component={RequireAuth(Inbox)} />
         <Route path="/bookings" component={RequireAuth(Bookings)} />
         <Route path='/chat/:id' component={Chat}/>
         <Route path="/register" component={Register} />
+        <Route path="/chef/register" component={RegisterChef} />
         <Route path="/login" component={Login} />
         <Route path="/logout" component={Logout} />
     </Route>

@@ -8,14 +8,9 @@ let passport = require('passport');
 let authRoutes = require('./server/routes/users');
 let bookingRoutes = require('./server/routes/bookings');
 
-const requireAuth = passport.authenticate('jwt', { session: false });
-
-
 //and create our instances
 let app = express();
 let router = express.Router();
-
-let port = 3001;
 
 //now we should configure the API to use bodyParser and look for
 //JSON data in the request body
@@ -42,8 +37,8 @@ bookingRoutes(router);
 app.use('/', router);
 
 //starts the server and listens for requests
-app.listen(port, function() {
-    console.log(`api running on port ${port}`);
+app.listen(config.port, function() {
+    console.log(`api running on port ${config.port}`);
 });
 
 //db config

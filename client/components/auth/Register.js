@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../actions';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
+import { Link } from "react-router";
 
 const form = reduxForm({
     form: 'register',
@@ -57,9 +58,11 @@ class Register extends Component {
         const { handleSubmit } = this.props;
 
         return (
-            <Col xs={12} sm={6} smOffset={3}>
+            <Col sm={8} smOffset={2} md={4} mdOffset={4}>
                 <Panel className="gc-panel-light">
                     <h4 className="gc-profile-heading-md gc-center">Sign up</h4>
+                    <br />
+                    <p className="gc-text gc-center"><Link to="/login">Already have an account? </Link></p>
                     <br />
                     <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                         {this.renderAlert()}

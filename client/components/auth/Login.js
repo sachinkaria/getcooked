@@ -28,11 +28,13 @@ class Login extends Component {
         const { handleSubmit } = this.props;
 
         return (
-            <Col sm={4} smOffset={4}>
+            <Col sm={8} smOffset={2} md={4} mdOffset={4}>
                 <Panel className="gc-panel-light gc-center">
                 <h4 className="gc-profile-heading-md">Get Cooked</h4>
                     <br />
-                <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                    <p className="gc-text gc-center"><Link to="/register">Don't have an account?</Link></p>
+                    <br />
+                    <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                     {this.renderAlert()}
                     <Col sm={8} smOffset={2}>
                         <Field placeholder="Email" name="email" className="form-control gc-input gc-margin-bottom" component="input" type="text" />
@@ -41,7 +43,7 @@ class Login extends Component {
                         <Field placeholder="Password" name="password" className="form-control gc-input gc-margin-bottom--lg" component="input" type="password" />
                     </Col>
                     <Col xs={12} sm={4} smOffset={4}>
-                    <Button type="submit" block bsSize="large" className="btn gc-btn gc-btn--orange">Login</Button>
+                    <Button type="submit" block bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-bottom">Login</Button>
                         <p className="gc-text">Forgot your password?</p>
                     </Col>
                 </form>

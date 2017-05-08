@@ -2,6 +2,7 @@
  * Created by sachinkaria on 18/03/2017.
  */
 import React from 'react';
+import { hashHistory } from 'react-router';
 import { ButtonToolbar, Button, Modal, Form, FormGroup, FormControl, Col, Row, ControlLabel, InputGroup } from 'react-bootstrap';
 import DatePicker from './DatePicker';
 import currentUser from '../utils/currentUser';
@@ -41,7 +42,11 @@ export default class BookingForm extends React.Component {
 
     handleSubmit(event) {
             event.preventDefault();
-            currentUser.bookings.push(this.state);
+            if (localStorage['token']) {
+                currentUser.bookings.push(this.state);
+            } else {
+                hashHistory.push('/register');
+            }
             this.resetForm();
     }
 
@@ -153,7 +158,7 @@ export default class BookingForm extends React.Component {
                                         </FormGroup>
                                     </Col>
                                     <Col xs={4} xsOffset={4}>
-                                        <Button bsSize="large" className="gc-btn gc-btn-orange" onClick={submitHandler} block >Submit request</Button>
+                                        <Button bsSize="large" className="gc-btn gc-btn--orange" onClick={submitHandler} block >Submit request</Button>
                                         {this.state.errorMessage &&
                                             <span>{this.state.errorMessage}</span>}
                                     </Col>

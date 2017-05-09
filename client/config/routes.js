@@ -16,7 +16,7 @@ import RequireAuth from '../components/auth/RequireAuth';
 let routes = (
     <Route path='/' component={NavigationBar}>
       <IndexRoute component={Home} />
-        <Route path='/search' component={ProfileList}/>
+        <Route path='/chefs' component={ProfileList}/>
         <Route path='/profile/:id' component={Profile}/>
         <Route path="/inbox" component={RequireAuth(Inbox)} />
         <Route path="/bookings" component={RequireAuth(Bookings)} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchBar from '../containers/SearchBar';
+import SearchBar from './SearchBar';
 import { Col } from 'react-bootstrap';
 import { hashHistory } from 'react-router';
 

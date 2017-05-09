@@ -18,7 +18,7 @@ let SearchBar = React.createClass({
                          <FormControl.Feedback />
                      </FormGroup>
                      <FormGroup className="gc-input-item">
-                         <Link to="search" className="gc-padding-none">
+                         <Link to="chefs" className="gc-padding-none">
                             <Button bsSize="large" className="gc-btn gc-btn--orange gc-btn-primary-lg gc-btn-radius-right" block>Search</Button>
                          </Link>
                      </FormGroup>

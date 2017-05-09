@@ -2,7 +2,7 @@ import React from 'react';
 import getUsers from './../utils/users';
 import ProfileSummary from './../components/ProfileSummary';
 import { Col, Row } from 'react-bootstrap';
-import SearchBar from './SearchBar';
+import SearchBar from '../components/SearchBar';
 
 
 export default class ProfileList extends React.Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { registerChef } from '../../../actions';
+import { registerChef } from '../../../actions/auth';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { Link } from "react-router";
 
@@ -41,7 +41,6 @@ function validate(formProps) {
 
 class RegisterChef extends Component {
     handleFormSubmit(formProps) {
-        console.log(formProps);
         this.props.registerChef(formProps);
     }
 

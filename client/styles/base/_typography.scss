@@ -1,6 +1,7 @@
 .gc-text {
   font-family: $primary-font;
   font-size: 16px;
+  color: $dark-grey;
 
   &.gc-text--grey {
     color: $grey;
@@ -16,6 +17,10 @@
 
   &.gc-text--sm {
     font-size: 14px;
+  }
+
+  &.gc-text--lg {
+    font-size: 18px;
   }
 }
 

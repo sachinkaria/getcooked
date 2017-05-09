@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileSummary from '../ProfileSummary';
+import ListItem from './ListItem';
 import { Col, Row } from 'react-bootstrap';
 import SearchBar from '../SearchBar';
 import { connect } from 'react-redux';
@@ -9,11 +9,10 @@ import * as actions from '../../actions/public';
 class Chefs extends React.Component {
     constructor(props) {
         super(props);
-        this.props.getChefs();
-        console.log(this.props);
+        this.props.listChefs();
     }
 
-  renderContent () {
+    renderContent () {
         if (this.props.chefs) {
             return (
                 <div>
@@ -27,10 +26,10 @@ class Chefs extends React.Component {
                             {
                                 this.props.chefs.map(function(chef){
                                     return (
-                                        <ProfileSummary
+                                        <ListItem
                                             id={chef._id}
                                             key={chef._id}
-                                            imageUrl={chef.imageUrl}
+                                            profilePhoto={chef.profilePhoto}
                                             name={chef.displayName}
                                             rating={chef.rating}
                                             endorsements={chef.endorsements}
@@ -56,7 +55,7 @@ class Chefs extends React.Component {
 }
 
 function mapStateToProps (state){
-        return { chefs: state.public.chefs };
+    return { chefs: state.public.chefs };
 }
 
 export default connect(mapStateToProps, actions)(Chefs);

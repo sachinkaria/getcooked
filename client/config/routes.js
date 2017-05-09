@@ -3,7 +3,7 @@ import { ReactRouter, Route, IndexRoute } from 'react-router';
 import ProfileList from '../components/chefs/List';
 import NavigationBar from '../components/NavigationBar';
 import Bookings from '../components/bookings/List';
-import Profile from '../containers/chefs/Profile';
+import Profile from '../components/chefs/Profile';
 import Inbox from '../containers/Inbox';
 import Chat from '../containers/Chat';
 import Register from '../components/auth/Register';
@@ -17,7 +17,7 @@ let routes = (
     <Route path='/' component={NavigationBar}>
       <IndexRoute component={Home} />
         <Route path='/chefs' component={ProfileList}/>
-        <Route path='/profile/:id' component={Profile}/>
+        <Route path='/chefs/:id' component={Profile}/>
         <Route path="/inbox" component={RequireAuth(Inbox)} />
         <Route path="/bookings" component={RequireAuth(Bookings)} />
         <Route path='/chat/:id' component={Chat}/>

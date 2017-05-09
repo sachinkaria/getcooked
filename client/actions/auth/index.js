@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
 import React from 'react';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, GET_BOOKINGS, GET_INBOX } from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, GET_BOOKINGS, GET_INBOX } from '../types';
 
 const API_URL = 'http://localhost:3001';
 

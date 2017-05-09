@@ -6,5 +6,8 @@ module.exports = function(app) {
     app.post('/auth/chef/register', AuthenticationController.registerChef);
 
     // search chefs
-    app.get('/chefs', ChefController.listChefs);
+    app.get('/chefs/', ChefController.listChefs);
+
+    // search chefs
+    app.get('/chefs/:id', ChefController.getChef);
 };

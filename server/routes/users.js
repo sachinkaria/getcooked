@@ -10,8 +10,8 @@ const requireLogin = passport.authenticate('local', { session: false });
 
 module.exports = function(app) {
     // Registration route
-    app.post('/auth/register', AuthenticationController.register);
+    app.post('/users/create', AuthenticationController.register);
 
     // Login route
-    app.post('/auth/login', requireLogin, AuthenticationController.login);
+    app.post('/users/login', requireLogin, AuthenticationController.login);
 };

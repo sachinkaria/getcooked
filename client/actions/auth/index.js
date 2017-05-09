@@ -32,7 +32,7 @@ export function errorHandler(dispatch, error, type) {
 
 export function loginUser({ email, password }) {
     return function(dispatch) {
-        axios.post(`${API_URL}/auth/login`, { email, password })
+        axios.post(`${API_URL}/users/login`, { email, password })
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });
@@ -46,7 +46,7 @@ export function loginUser({ email, password }) {
 
 export function registerUser({ email, firstName, lastName, password }) {
     return function(dispatch) {
-        axios.post(`${API_URL}/auth/register`, { email, firstName, lastName, password })
+        axios.post(`${API_URL}/users/create`, { email, firstName, lastName, password })
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });
@@ -60,7 +60,7 @@ export function registerUser({ email, firstName, lastName, password }) {
 
 export function registerChef({ email, firstName, lastName, password, displayName, description }) {
     return function(dispatch) {
-        axios.post(`${API_URL}/auth/chef/register`, { email, firstName, lastName, password, displayName, description })
+        axios.post(`${API_URL}/chefs/create`, { email, firstName, lastName, password, displayName, description })
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });

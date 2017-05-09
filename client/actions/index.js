@@ -36,7 +36,7 @@ export function loginUser({ email, password }) {
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });
-                hashHistory.push('/search');
+                hashHistory.push('/chefs');
             })
             .catch((error) => {
                 // errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -50,7 +50,7 @@ export function registerUser({ email, firstName, lastName, password }) {
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });
-                hashHistory.push('/search');
+                hashHistory.push('/chefs');
             })
             .catch((error) => {
                 // errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -64,7 +64,7 @@ export function registerChef({ email, firstName, lastName, password, displayName
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 dispatch({ type: AUTH_USER });
-                hashHistory.push('/search');
+                hashHistory.push('/chefs');
             })
             .catch((error) => {
                 // errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -77,39 +77,5 @@ export function logoutUser() {
         dispatch({ type: UNAUTH_USER });
         delete localStorage['token'];
         hashHistory.push('/');
-    }
-}
-
-export function getBookings() {
-    return function(dispatch) {
-        axios.get(`${API_URL}/bookings`, {
-            headers: { 'Authorization': localStorage['token'] }
-        })
-            .then(response => {
-                dispatch({
-                    type: GET_BOOKINGS,
-                    payload: response.data.bookings
-                });
-            })
-            .catch((error) => {
-                // errorHandler(dispatch, error.response, AUTH_ERROR)
-            });
-    }
-}
-
-export function getInbox() {
-    return function(dispatch) {
-        axios.get(`${API_URL}/inbox`, {
-            headers: { 'Authorization': localStorage['token'] }
-        })
-            .then(response => {
-                dispatch({
-                    type: GET_INBOX,
-                    payload: response.data.inbox
-                });
-            })
-            .catch((error) => {
-                // errorHandler(dispatch, error.response, AUTH_ERROR)
-            });
     }
 }

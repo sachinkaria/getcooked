@@ -5,7 +5,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import _ from 'lodash';
 import { Link } from 'react-router';
-import * as actions from '../actions';
+import * as actions from '../actions/messages';
 import { connect } from 'react-redux';
 
 

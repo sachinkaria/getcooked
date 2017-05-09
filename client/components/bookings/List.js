@@ -3,11 +3,11 @@
  */
 import React from 'react';
 import { Col } from 'react-bootstrap';
-import users from '../utils/data';
-import getProfile from '../utils/helpers';
-import BookingItem from './BookingItem';
+import users from '../../utils/data';
+import getProfile from '../../utils/helpers';
+import BookingItem from './Item';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../../actions/bookings';
 
 class Bookings extends React.Component {
     constructor(props) {

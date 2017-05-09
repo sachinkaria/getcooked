@@ -2,8 +2,10 @@
 
 const User = require('../models/user');
 
-exports.listChefs = function(req, res) {
+module.exports.listChefs = listChefs;
+
+function listChefs (req, res) {
     User.find({role:'chef'}).exec(function(err, chefs){
         res.jsonp(chefs)
     });
-};
+}

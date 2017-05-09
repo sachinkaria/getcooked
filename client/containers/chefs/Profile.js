@@ -1,15 +1,15 @@
 import React from 'react';
 import _ from 'lodash';
-import getProfileData from './../utils/helpers';
-import LightBox from './LightBox';
-import Endorsement from './Endorsement';
-import Review from './../components/Review';
-import Badge from './../components/Badge';
-import Rating from './../components/Rating';
-import BookingForm from './BookingForm';
+import getProfileData from '../../utils/helpers';
+import LightBox from '../LightBox';
+import Endorsement from '../Endorsement';
+import Review from '../../components/Review';
+import Badge from '../../components/Badge';
+import Rating from '../../components/Rating';
+import BookingForm from '../BookingForm';
 import { Col, Panel, Thumbnail, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
-import data from './../utils/data';
+import data from '../../utils/data';
 
 
 export default class Profile extends React.Component {

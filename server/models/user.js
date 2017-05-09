@@ -29,16 +29,13 @@ const UserSchema = new Schema({
             default: 'member'
         },
         profilePhoto: {
-            type: String,
-            required: false
+            type: String
         },
         displayName: {
-            type: String,
-            required: true
+            type: String
         },
         description: {
-            type: String,
-            required: true
+            type: String
         },
         resetPasswordToken: { type: String },
         resetPasswordExpires: { type: Date }

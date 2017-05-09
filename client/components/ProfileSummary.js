@@ -31,12 +31,9 @@ let ProfileSummary = (props) => {
 };
 
 ProfileSummary.propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    numberOfRatings: PropTypes.number.isRequired
-
 };
 
 export default ProfileSummary;

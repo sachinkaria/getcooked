@@ -5,7 +5,7 @@ import { hashHistory } from 'react-router';
 
 
 let Home = () => {
-    localStorage['token'] && hashHistory.push('/search');
+    localStorage['token'] && hashHistory.push('/chefs');
     return (
         <div>
             <Col sm={8} smOffset={2} >

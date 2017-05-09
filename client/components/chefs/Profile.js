@@ -23,7 +23,7 @@ class Profile extends React.Component {
         if (this.props.chef) {
             let user = this.props.chef;
             // let endorsements = _.sortBy(user.endorsements, 'number').reverse();
-            // let imagesCount = user.images.length;
+            let imagesCount = user.images && user.images.length;
             return (
                 <div>
                     <Col xs={12} sm={9} md={8} mdOffset={1}>
@@ -32,24 +32,19 @@ class Profile extends React.Component {
                                 <Thumbnail onClick={null} src={user.profilePhoto}/>
                             </Col>
                             <Col xs={12} sm={12} md={8}>
-                                <h2 className="gc-center gc-margin-none">{user.displayName}</h2>
-                                {/*<Col xs={12} sm={10} smOffset={1} className="gc-center gc-margin-top">*/}
-                                    {/*{user.badges.map(function (badge) {*/}
-                                        {/*return (*/}
-                                            {/*<Badge logo={badge.logo} key={badge.name}/>*/}
-                                        {/*)*/}
-                                    {/*})*/}
-                                    {/*}*/}
-                                {/*</Col>*/}
-                                <Col xs={12} className="gc-margin-top">
-                                    <p className="gc-profile-text-xs">{user.description}</p>
+                                <p className="gc-center gc-profile-heading-lg">{user.displayName}</p>
+                                <Col xs={12} className="gc-margin-top--lg">
+                                    <p className="gc-profile-text-sm">{user.description}</p>
                                 </Col>
                             </Col>
-                            {/*<Col xs={12}>*/}
-                            {/*<h3 className="gc-center gc-margin-bottom">Photos <span*/}
-                            {/*className="gc-profile-text-xs">({imagesCount})</span></h3>*/}
-                            {/*<LightBox images={user.images}/>*/}
-                            {/*</Col>*/}
+                            {imagesCount > 0 && (
+                                <Col xs={12}>
+                                    <h3 className="gc-center gc-margin-bottom">Photos <span
+                                        className="gc-profile-text-xs">({imagesCount})</span></h3>
+                                    <LightBox images={user.images}/>
+                                </Col>
+                            )
+                            }
                             {/*<Col xs={12} className="gc-margin-top">*/}
                             {/*<Col xs={12} className="gc-center">*/}
                             {/*<h3>Reviews <span className="gc-profile-text-xs">({user.numberOfRatings})</span></h3>*/}
@@ -63,6 +58,7 @@ class Profile extends React.Component {
                             {/*})*/}
                             {/*}*/}
                             {/*</Col>*/}
+
                             {/*<Col xs={12} md={4}>*/}
                             {/*{user.ratings.map(function (rating) {*/}
                             {/*return (*/}
@@ -83,7 +79,6 @@ class Profile extends React.Component {
                             {/*</Col>*/}
                             {/*</Col>*/}
                         </Panel>
-
                     </Col>
                     <Col sm={3} md={2} xsHidden>
                         <Panel className="gc-center">

@@ -50,7 +50,6 @@ export function getChef(id) {
     return function(dispatch) {
         axios.get(`${API_URL}/chefs/${id}`)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: GET_CHEF,
                     payload: response.data

@@ -5,10 +5,11 @@ let mongoose = require('mongoose');
 let bodyParser = require('body-parser');
 let config = require('./server/config/main');
 let passport = require('passport');
-let authRoutes = require('./server/routes/users');
-let bookingRoutes = require('./server/routes/bookings');
-let messageRoutes = require('./server/routes/messages');
-let chefRoutes = require('./server/routes/chefs');
+let authRoutes = require('./server/routes/user');
+let bookingRoutes = require('./server/routes/booking');
+let messageRoutes = require('./server/routes/message');
+let chefRoutes = require('./server/routes/chef');
+let conversationRoutes = require('./server/routes/conversation');
 
 //and create our instances
 let app = express();
@@ -36,6 +37,8 @@ authRoutes(router);
 bookingRoutes(router);
 messageRoutes(router);
 chefRoutes(router);
+conversationRoutes(router);
+
 
 //Use our router configuration when we call /
 app.use('/', router);

@@ -24,6 +24,14 @@ const MessageSchema = new Schema({
         type: Date,
         default: Date.now,
         required: true
+    },
+    subject: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
     }
 });
 

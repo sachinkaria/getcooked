@@ -32,7 +32,7 @@ export function errorHandler(dispatch, error, type) {
 
 export function getInbox() {
     return function(dispatch) {
-        axios.get(`${API_URL}/inbox`, {
+        axios.get(`${API_URL}/conversations`, {
             headers: { 'Authorization': localStorage['token'] }
         })
             .then(response => {

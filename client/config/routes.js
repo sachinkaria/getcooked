@@ -4,7 +4,7 @@ import ProfileList from '../components/chefs/List';
 import NavigationBar from '../components/NavigationBar';
 import Bookings from '../components/bookings/List';
 import Profile from '../components/chefs/Profile';
-import Inbox from '../containers/Inbox';
+import Inbox from '../components/Inbox';
 import Chat from '../containers/Chat';
 import Register from '../components/auth/Register';
 import RegisterChef from '../components/auth/chef/Register';

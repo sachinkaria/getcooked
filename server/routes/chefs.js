@@ -3,11 +3,11 @@ const AuthenticationController = require('../controllers/authentication'),
 
 module.exports = function(app) {
     // Registration route
-    app.post('/auth/chef/register', AuthenticationController.registerChef);
+    app.post('/chefs/create', AuthenticationController.registerChef);
 
     // search chefs
-    app.get('/chefs/', ChefController.listChefs);
+    app.get('/chefs', ChefController.listChefs);
 
-    // search chefs
+    // chef profile
     app.get('/chefs/:id', ChefController.getChef);
 };

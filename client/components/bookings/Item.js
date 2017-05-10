@@ -14,7 +14,7 @@ let BookingItem = (props) => {
     return (
         <Panel>
             <Col xs={12} sm={3}>
-                <Image className="gc-booking-thumbnail" src={props.chefPic}/>
+                <Image className="gc-thumbnail" src={props.chefPic}/>
             </Col>
             <Col xs={12} sm={6}>
                 <Row>

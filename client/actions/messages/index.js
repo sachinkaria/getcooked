@@ -30,7 +30,7 @@ export function errorHandler(dispatch, error, type) {
 }
 
 
-export function getInbox() {
+export function getConversations() {
     return function(dispatch) {
         axios.get(`${API_URL}/conversations`, {
             headers: { 'Authorization': localStorage['token'] }
@@ -38,7 +38,7 @@ export function getInbox() {
             .then(response => {
                 dispatch({
                     type: GET_INBOX,
-                    payload: response.data.inbox
+                    payload: response.data
                 });
             })
             .catch((error) => {

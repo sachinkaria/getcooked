@@ -83,3 +83,10 @@
   margin-left: 3px;
   color: rgba(58, 58, 58, 1);
 }
+
+.gc-thumbnail {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50px;
+}

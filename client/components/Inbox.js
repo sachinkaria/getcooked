@@ -2,17 +2,17 @@
  * Created by sachinkaria on 19/03/2017.
  */
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
-import _ from 'lodash';
+import { Col, Row, Image, Panel  } from 'react-bootstrap';
 import { Link } from 'react-router';
 import * as actions from '../actions/messages';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 
 class Inbox extends React.Component{
     constructor(props) {
         super(props);
-        this.props.getInbox();
+        this.props.getConversations();
     }
 
     render() {
@@ -23,25 +23,38 @@ class Inbox extends React.Component{
         )
     }
     renderContent() {
-        let chats = this.props.inbox;
-        return (
-            <Col xs={10} sm={8} smOffset={2}>
-                <h3 className="gc-profile-heading-lg">Inbox</h3>
-                <Col xs={8}>
-                    {chats.length > 0 ? chats.map(function(chat){
-                        return (
-                            <Link key={chat.id} to={'/chat/' + chat.id }>
-                                <Row>
-                                    <h1 className="gc-profile-heading-sm">{chat.username}</h1>
-                                    <p className="gc-profile-text-xs">{_.last(chat.chatMessages).message}</p>
-                                </Row>
-                            </Link>
-                        )
-                    }) : (<p>You have no messages</p>)
-                    }
-                </Col>
-            </Col>
-        )
+        if (this.props.inbox) {
+            let conversations = this.props.inbox;
+            return (
+                <div>
+                <Col sm={6} smOffset={3}>
+                    <h3 className="gc-profile-heading-lg">Inbox</h3>
+                        <Panel>
+                            {conversations.map((conversation) => {
+                                return (
+                                    <Col>
+                                        <Link key={conversation._id} to={'/chat/' + conversation._id }>
+                                            <Col className="gc-panel-light" xs={12} sm={3}>
+                                                <Image className="gc-thumbnail" src={conversation._recipient.profilePhoto}/>
+                                            </Col>
+                                            <Col className="gc-panel-light" sm={6}>
+                                                <p className="gc-profile-heading-sm">{conversation._recipient.displayName}</p>
+                                            </Col>
+                                            <Col className="gc-panel-light" xs={12} sm={3}>
+                                                <p className="gc-text pull-right--t">{moment(conversation.lastUpdated).format('MMMM Do YYYY')}</p>
+                                            </Col>
+                                        </Link>
+                                    </Col>
+                                )
+                            })
+                            }
+                        </Panel>
+                    </Col>
+                </div>
+            )
+        } else {
+            return (<p className="gc-profile-text-md">You have no messages</p>)
+        }
     }
 }
 

@@ -12,7 +12,6 @@ function list(req, res) {
         .populate('_recipient', '_id firstName displayName profilePhoto')
         .populate('_sender', '_id firstName displayName profilePhoto')
         .exec((err, conversations) => {
-        console.log(conversations);
         res.jsonp(conversations)
     });
 }

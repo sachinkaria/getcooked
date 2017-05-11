@@ -27,24 +27,22 @@ class Inbox extends React.Component{
             let conversations = this.props.inbox;
             return (
                 <div>
-                <Col sm={6} smOffset={3}>
-                    <h3 className="gc-profile-heading-lg">Inbox</h3>
+                <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
+                    <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Inbox</h3>
                         <Panel>
                             {conversations.map((conversation) => {
                                 return (
-                                    <Col>
                                         <Link key={conversation._id} to={'/chat/' + conversation._id }>
-                                            <Col className="gc-panel-light" xs={12} sm={3}>
+                                            <Col xs={12} sm={3}>
                                                 <Image className="gc-thumbnail" src={conversation._recipient.profilePhoto}/>
                                             </Col>
-                                            <Col className="gc-panel-light" sm={6}>
-                                                <p className="gc-profile-heading-sm">{conversation._recipient.displayName}</p>
+                                            <Col sm={5}>
+                                                <p className="gc-profile-text-md">{conversation._recipient.displayName}</p>
                                             </Col>
-                                            <Col className="gc-panel-light" xs={12} sm={3}>
-                                                <p className="gc-text pull-right--t">{moment(conversation.lastUpdated).format('MMMM Do YYYY')}</p>
+                                            <Col xs={12} sm={4}>
+                                                <p className="gc-text pull-right--t">Last message: {moment(conversation.lastUpdated).format('MMMM Do YYYY')}</p>
                                             </Col>
                                         </Link>
-                                    </Col>
                                 )
                             })
                             }

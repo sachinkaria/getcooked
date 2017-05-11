@@ -3,6 +3,7 @@ import React from 'react';
 import { GET_INBOX } from '../types';
 
 const API_URL = 'http://localhost:3001';
+const AUTH_HEADERS = {headers: { 'Authorization': localStorage['token'] } };
 
 export function errorHandler(dispatch, error, type) {
     let errorMessage = '';
@@ -32,14 +33,24 @@ export function errorHandler(dispatch, error, type) {
 
 export function getConversations() {
     return function(dispatch) {
-        axios.get(`${API_URL}/conversations`, {
-            headers: { 'Authorization': localStorage['token'] }
-        })
+        axios.get(`${API_URL}/conversations`, AUTH_HEADERS)
             .then(response => {
                 dispatch({
                     type: GET_INBOX,
                     payload: response.data
                 });
+            })
+            .catch((error) => {
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
+    }
+}
+
+export function contactChef({ body, _recipient }) {
+    return function(dispatch) {
+        axios.post(`${API_URL}/conversations/create`, {_recipient}, AUTH_HEADERS)
+            .then(response => {
+                console.log(response);
             })
             .catch((error) => {
                 // errorHandler(dispatch, error.response, AUTH_ERROR)

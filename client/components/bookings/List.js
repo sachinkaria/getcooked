@@ -19,7 +19,7 @@ class Bookings extends React.Component {
         if(this.props.bookings) {
             let bookings = this.props.bookings;
             return (
-                <Col xs={12} sm={10} smOffset={1} lg={8} lgOffset={2} className="center-m pull-left--t">
+                <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3} className="center-m pull-left--t">
                     <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Bookings</h3>
                     {bookings.length > 0 ? bookings.map(function(booking, i){
                             let chefPic = getProfile(booking.chefID, users).imageUrl;

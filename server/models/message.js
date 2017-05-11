@@ -25,10 +25,6 @@ const MessageSchema = new Schema({
         default: Date.now,
         required: true
     },
-    subject: {
-        type: String,
-        required: true
-    },
     body: {
         type: String,
         required: true

@@ -1,4 +1,3 @@
-const AuthenticationController = require('../controllers/authentication');
 const ConversationController = require('../controllers/conversation');
 const express = require('express');
 const passport = require('passport');

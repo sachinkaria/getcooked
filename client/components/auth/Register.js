@@ -4,18 +4,12 @@ import { Field, reduxForm } from 'redux-form';
 import { registerUser } from '../../actions/auth';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { Link } from "react-router";
+import renderField from '../forms/renderField';
 
 const form = reduxForm({
     form: 'register',
     validate
 });
-
-const renderField = field => (
-    <div>
-        <input className="form-control gc-input gc-margin-bottom" placeholder={field.placeholder} {...field.input}/>
-        {field.touched && field.error && <div className="error">{field.error}</div>}
-    </div>
-);
 
 function validate(formProps) {
     const errors = {};

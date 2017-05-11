@@ -5,6 +5,7 @@ import Endorsement from '../../containers/Endorsement';
 import Review from '../Review';
 import Badge from '../Badge';
 import Rating from '../Rating';
+import ContactForm from '../../containers/ContactForm';
 import BookingForm from '../../containers/BookingForm';
 import { Col, Panel, Thumbnail, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
@@ -22,6 +23,7 @@ class Profile extends React.Component {
     renderContent () {
         if (this.props.chef) {
             let user = this.props.chef;
+            let id = user._id;
             // let endorsements = _.sortBy(user.endorsements, 'number').reverse();
             let imagesCount = user.images && user.images.length;
             return (
@@ -84,7 +86,7 @@ class Profile extends React.Component {
                         <Panel className="gc-center">
                             <BookingForm id={user.id}/>
                             <hr/>
-                            <Button className="gc-btn gc-btn-white gc-margin-top" block>Contact </Button>
+                            <ContactForm chefId={this.props.params.id}/>
                             <Button className="gc-btn gc-btn-blue gc-margin-top gc-margin-bottom" block>Favourite</Button>
                             <Link>Share</Link>
                         </Panel>

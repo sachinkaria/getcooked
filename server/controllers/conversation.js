@@ -18,7 +18,6 @@ function list(req, res) {
 
 function create (req, res) {
     let _sender = req.user._id;
-    console.log(req.body);
     let _recipient = req.body._recipient;
 
     let conversation = new Conversation({_sender: _sender, _recipient: _recipient});

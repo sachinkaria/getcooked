@@ -1,4 +1,4 @@
-const AuthenticationController = require('../controllers/authentication');
+const MessageController = require('../controllers/message');
 const express = require('express');
 const passport = require('passport');
 
@@ -11,6 +11,5 @@ module.exports = function(app) {
     app.get('/conversations/:id/messages', requireAuth, (req, res) => {
     });
 
-    app.post('/conversations/:id/messages/create', requireAuth, (req, res) => {
-    });
+    app.post('/conversations/:id/messages/create', requireAuth, MessageController.sendMessage);
 };

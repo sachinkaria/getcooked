@@ -17,7 +17,7 @@ const MessageSchema = new Schema({
     status: {
         type: String,
         enum: ['sent', 'read'],
-        default: 'member',
+        default: 'sent',
         required: true
     },
     date: {

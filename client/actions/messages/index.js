@@ -46,14 +46,27 @@ export function getConversations() {
     }
 }
 
-export function contactChef({ body, _recipient }) {
-    return function(dispatch) {
+export function createConversation({ body, _recipient }) {
+    return function() {
         axios.post(`${API_URL}/conversations/create`, {_recipient}, AUTH_HEADERS)
             .then(response => {
-                console.log(response);
+                let _conversation = response.data._id;
+                sendMessage({_conversation, body});
             })
             .catch((error) => {
                 // errorHandler(dispatch, error.response, AUTH_ERROR)
             });
     }
 }
+
+export function sendMessage({ _conversation, body }) {
+        axios.post(`${API_URL}/conversations/${_conversation}/messages/create`, {body}, AUTH_HEADERS)
+            .then(response => {
+                console.log(response);
+            })
+            .catch((error) => {
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
+}
+
+

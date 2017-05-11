@@ -4,7 +4,7 @@
 import React from 'react';
 import { ButtonToolbar, Button, Modal, Col, Row } from 'react-bootstrap';
 import renderField from '../components/forms/renderField';
-import { contactChef } from '../actions/messages';
+import { createConversation } from '../actions/messages';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
@@ -33,7 +33,7 @@ class ContactForm extends React.Component {
 
     handleFormSubmit(formProps) {
         formProps._recipient = this.props.chefId;
-        this.props.contactChef(formProps);
+        this.props.createConversation(formProps);
     }
 
     renderAlert() {
@@ -106,4 +106,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { contactChef })(form(ContactForm));
+export default connect(mapStateToProps, { createConversation })(form(ContactForm));

@@ -18,12 +18,10 @@ const MessageSchema = new Schema({
         type: String,
         enum: ['sent', 'read'],
         default: 'sent',
-        required: true
     },
     date: {
         type: Date,
         default: Date.now,
-        required: true
     },
     body: {
         type: String,

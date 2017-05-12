@@ -13,3 +13,15 @@
     text-align: right;
   }
 }
+
+.message-box {
+  overflow: scroll;
+  @include breakpoint(mobileonly){
+    height: 300px;
+  }
+
+  @include breakpoint(tablet){
+    height: 500px;
+  }
+
+}

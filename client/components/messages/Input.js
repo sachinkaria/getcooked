@@ -2,67 +2,77 @@
  * Created by sachinkaria on 18/03/2017.
  */
 import React from 'react';
-import { ButtonToolbar, Button, Modal, Col, Row } from 'react-bootstrap';
-import renderField from '../forms/renderField';
+import { Button, Col, Form, FormControl, FormGroup } from 'react-bootstrap';
 import { sendMessageUpdateConversation } from '../../actions/messages';
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-const form = reduxForm({
-    form: 'contact',
-    validate
-});
-
-function validate(formProps) {
-    const errors = {};
-
-    if (!formProps.body) {
-        errors.body = 'Please enter a message';
-    }
-
-    return errors;
-}
 
 class ConversationInput extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {body: '', conversationId: props.conversationId, errorMessage: ''};
+        this.baseState = this.state;
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEmptySubmit = this.handleEmptySubmit.bind(this);
+        this.resetForm = this.resetForm.bind(this);
     }
 
-    handleFormSubmit(formProps) {
-        this.props.sendMessageUpdateConversation({_conversationId: this.props.conversationId, body: formProps.body});
+    handleEmptySubmit (event) {
+        event.preventDefault();
+        this.setState({
+            errorMessage: 'Please enter a message.'
+        })
+    }
+
+    handleChange(event) {
+        const name = event.target.name;
+        this.setState(
+            {
+                [name]: event.target.value
+            }
+        );
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        this.props.sendMessageUpdateConversation({_conversationId: this.state.conversationId, body: this.state.body});
+    }
+
+    resetForm(){
+        this.setState(this.baseState);
     }
 
     renderAlert() {
-        if(this.props.errorMessage) {
+        if(this.state.errorMessage) {
             return (
                 <div>
-                    <span><strong>Error!</strong> {this.props.errorMessage}</span>
+                    <span><strong>Error!</strong> {this.state.errorMessage}</span>
                 </div>
             );
         }
     }
 
     render() {
-        const { handleSubmit } = this.props;
+        const submitHandler = (this.state.body) ? this.handleSubmit : this.handleEmptySubmit;
         return (
-                    <Col xs={8} xsOffset={2}>
-                            <Row>
-                                <Col sm={8} smOffset={2} md={4} mdOffset={4}>
-                                    <h4 className="gc-profile-heading-md gc-center">Enter a message</h4>
-                                    <br />
-                                    <br />
-                                    <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                                    <Form className="gc-center" onSubmit={submitHandler}>
                                         {this.renderAlert()}
-                                        <Row>
-                                            <Col>
-                                                <Field name="body" placeholder="Enter message" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
-                                            </Col>
-                                        </Row>
-                                        <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
-                                    </form>
-                                </Col>
-                            </Row>
-                    </Col>
+                                        <FormGroup controlId="body">
+                                            <FormControl componentClass="textarea"
+                                                         bsClass="gc-input gc-input-box gc-margin-bottom"
+                                                         onChange={this.handleChange}
+                                                         type="text"
+                                                         name="body"
+                                                         placeholder="Enter message...." />
+                                        </FormGroup>
+                                        <Button
+                                            type="submit"
+                                            bsSize="large"
+                                            className="btn gc-btn gc-btn--orange">
+                                            Register
+                                        </Button>
+                                    </Form>
         );
     }
 }
@@ -74,4 +84,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { sendMessageUpdateConversation })(form(ConversationInput));
+export default connect(mapStateToProps, { sendMessageUpdateConversation })((ConversationInput));

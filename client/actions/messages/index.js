@@ -51,7 +51,6 @@ export function getConversation(_id) {
     return function(dispatch) {
         axios.get(`${API_URL}/conversations/${_id}/messages`, AUTH_HEADERS)
             .then(response => {
-                console.log(response);
                 dispatch({
                     type: GET_CONVERSATION,
                     payload: response.data

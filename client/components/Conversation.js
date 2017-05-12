@@ -12,7 +12,6 @@ class Conversation extends React.Component {
     constructor(props) {
         super(props);
         this.props.getConversation(props.params.id);
-        console.log(this.props);
     }
 
     componentDidUpdate () {
@@ -31,6 +30,8 @@ class Conversation extends React.Component {
 
     renderContent() {
         if (this.props.conversation) {
+            let currentUser = localStorage['user'];
+            console.log(currentUser);
             let messages = this.props.conversation;
             return (
                 <div>
@@ -43,7 +44,7 @@ class Conversation extends React.Component {
                                         <Message
                                             username={message._sender.displayName || message._sender.firstName}
                                             message={message.body}
-                                            fromMe={true}
+                                            fromMe={currentUser._id === message._sender._id}
                                             date={message.date}/>
                                     </div>
                                 )

@@ -12,6 +12,7 @@ class Conversation extends React.Component {
     constructor(props) {
         super(props);
         this.props.getConversation(props.params.id);
+        console.log(this.props);
     }
 
     componentDidUpdate () {
@@ -59,7 +60,10 @@ class Conversation extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { conversation: state.user.conversation };
+    return {
+        user: state.auth.user,
+        conversation: state.user.conversation
+    };
 }
 
 export default connect(mapStateToProps, actions)(Conversation);

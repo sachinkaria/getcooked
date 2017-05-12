@@ -27,26 +27,26 @@ class Inbox extends React.Component{
             let conversations = this.props.inbox;
             return (
                 <div>
-                <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
-                    <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Inbox</h3>
-                            {conversations.map((conversation) => {
-                                return (
-                                    <Panel key={conversation._id}>
-                                    <Link to={'/conversation/' + conversation._id }>
-                                            <Col xs={12} sm={3}>
-                                                <Image className="gc-thumbnail" src={conversation._recipient.profilePhoto}/>
-                                            </Col>
-                                            <Col sm={5}>
-                                                <p className="gc-profile-text-md">{conversation._recipient.displayName}</p>
-                                            </Col>
-                                            <Col xs={12} sm={4}>
-                                                <p className="gc-text pull-right--t">Last message: {moment(conversation.lastUpdated).format('MMMM Do YYYY')}</p>
-                                            </Col>
-                                        </Link>
+                    <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
+                        <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Inbox</h3>
+                        {conversations.map((conversation) => {
+                            return (
+                                <Link to={'/conversation/' + conversation._id } key={conversation._id}>
+                                    <Panel>
+                                        <Col xs={12} sm={3}>
+                                            <Image className="gc-thumbnail" src={conversation._recipient.profilePhoto}/>
+                                        </Col>
+                                        <Col sm={5}>
+                                            <p className="gc-profile-text-md">{conversation._recipient.displayName}</p>
+                                        </Col>
+                                        <Col xs={12} sm={4}>
+                                            <p className="gc-text pull-right--t">Last message: {moment(conversation.lastUpdated).format('MMMM Do YYYY')}</p>
+                                        </Col>
                                     </Panel>
-                                )
-                            })
-                            }
+                                </Link>
+                            )
+                        })
+                        }
                     </Col>
                 </div>
             )

@@ -31,7 +31,7 @@ class Conversation extends React.Component {
 
     renderContent() {
         if (this.props.conversation) {
-            let currentUser = localStorage['user'];
+            let currentUser = JSON.parse(localStorage['user']);
             let messages = this.props.conversation;
             return (
                 <div>

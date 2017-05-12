@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/messages/index.js" afterPath="$PROJECT_DIR$/client/actions/messages/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/messages/Conversation.js" afterPath="$PROJECT_DIR$/client/components/messages/Conversation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/messages/Inbox.js" afterPath="$PROJECT_DIR$/client/components/messages/Inbox.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/messages/Input.js" afterPath="$PROJECT_DIR$/client/components/messages/Input.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_message.scss" afterPath="$PROJECT_DIR$/client/styles/components/_message.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,9 +47,22 @@
       <file leaf-file-name="Input.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/messages/Input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1095">
-              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="457">
+              <caret line="65" column="80" lean-forward="false" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="80" />
               <folding>
+                <element signature="e#49#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Conversation.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/messages/Conversation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="e#49#75#0" expanded="true" />
               </folding>
             </state>
@@ -73,8 +84,8 @@
       <file leaf-file-name="Inbox.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/messages/Inbox.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="53" column="71" lean-forward="true" selection-start-line="53" selection-start-column="71" selection-end-line="53" selection-end-column="72" />
+            <state relative-caret-position="495">
+              <caret line="35" column="60" lean-forward="true" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
               <folding>
                 <element signature="e#49#75#0" expanded="true" />
               </folding>
@@ -185,10 +196,10 @@
         <option value="$PROJECT_DIR$/server/controllers/conversation.js" />
         <option value="$PROJECT_DIR$/client/config/routes.js" />
         <option value="$PROJECT_DIR$/client/components/messages/ChatInput.js" />
-        <option value="$PROJECT_DIR$/client/components/messages/Inbox.js" />
-        <option value="$PROJECT_DIR$/client/components/messages/Conversation.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_message.scss" />
         <option value="$PROJECT_DIR$/client/actions/messages/index.js" />
+        <option value="$PROJECT_DIR$/client/components/messages/Inbox.js" />
+        <option value="$PROJECT_DIR$/client/components/messages/Conversation.js" />
         <option value="$PROJECT_DIR$/client/components/messages/Input.js" />
       </list>
     </option>
@@ -589,12 +600,12 @@
       <workItem from="1493987353798" duration="19744000" />
       <workItem from="1494097294423" duration="12710000" />
       <workItem from="1494256650635" duration="6751000" />
-      <workItem from="1494316690791" duration="54963000" />
+      <workItem from="1494316690791" duration="56418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306386000" />
+    <option name="totallyTimeSpent" value="307841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="952" extended-state="6" />
@@ -1060,16 +1071,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/messages/Inbox.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="53" column="71" lean-forward="true" selection-start-line="53" selection-start-column="71" selection-end-line="53" selection-end-column="72" />
-          <folding>
-            <element signature="e#49#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/actions/messages/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8">
@@ -1096,17 +1097,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/messages/Conversation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="14" column="52" lean-forward="true" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#49#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/containers/BookingForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="382">
@@ -1115,10 +1105,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/messages/Inbox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="35" column="60" lean-forward="true" selection-start-line="35" selection-start-column="60" selection-end-line="35" selection-end-column="60" />
+          <folding>
+            <element signature="e#49#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/messages/Conversation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#49#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/messages/Input.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="457">
+          <caret line="65" column="80" lean-forward="false" selection-start-line="65" selection-start-column="80" selection-end-line="65" selection-end-column="80" />
           <folding>
             <element signature="e#49#75#0" expanded="true" />
           </folding>

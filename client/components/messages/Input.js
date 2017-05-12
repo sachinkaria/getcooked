@@ -37,6 +37,7 @@ class ConversationInput extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
         this.props.sendMessageUpdateConversation({_conversationId: this.state.conversationId, body: this.state.body});
+        this.resetForm();
     }
 
     resetForm(){
@@ -62,6 +63,7 @@ class ConversationInput extends React.Component {
                                             <FormControl componentClass="textarea"
                                                          bsClass="gc-input gc-input-box gc-margin-bottom"
                                                          onChange={this.handleChange}
+                                                         value={this.state.body}
                                                          type="text"
                                                          name="body"
                                                          placeholder="Enter message...." />

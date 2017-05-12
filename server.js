@@ -7,7 +7,6 @@ let config = require('./server/config/main');
 let passport = require('passport');
 let authRoutes = require('./server/routes/user');
 let bookingRoutes = require('./server/routes/booking');
-let messageRoutes = require('./server/routes/message');
 let chefRoutes = require('./server/routes/chef');
 let conversationRoutes = require('./server/routes/conversation');
 
@@ -35,7 +34,6 @@ app.use(function(req, res, next) {
 
 authRoutes(router);
 bookingRoutes(router);
-messageRoutes(router);
 chefRoutes(router);
 conversationRoutes(router);
 

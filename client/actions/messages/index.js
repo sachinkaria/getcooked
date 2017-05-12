@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { GET_INBOX } from '../types';
+import { GET_INBOX, GET_CONVERSATION } from '../types';
 
 const API_URL = 'http://localhost:3001';
 const AUTH_HEADERS = {headers: { 'Authorization': localStorage['token'] } };
@@ -35,8 +35,24 @@ export function getConversations() {
     return function(dispatch) {
         axios.get(`${API_URL}/conversations`, AUTH_HEADERS)
             .then(response => {
+                console.log(response.data);
                 dispatch({
                     type: GET_INBOX,
+                    payload: response.data
+                });
+            })
+            .catch((error) => {
+                // errorHandler(dispatch, error.response, AUTH_ERROR)
+            });
+    }
+}
+
+export function getConversation(_id) {
+    return function(dispatch) {
+        axios.get(`${API_URL}/conversations/${_id}/messages`, AUTH_HEADERS)
+            .then(response => {
+                dispatch({
+                    type: GET_CONVERSATION,
                     payload: response.data
                 });
             })
@@ -59,8 +75,8 @@ export function createConversation({ body, _recipient }) {
     }
 }
 
-export function sendMessage({ _conversation, body }) {
-        axios.post(`${API_URL}/conversations/${_conversation}/messages/create`, {body}, AUTH_HEADERS)
+export function sendMessage({ _id, body }) {
+        axios.post(`${API_URL}/conversations/${_id}/messages/create`, {body}, AUTH_HEADERS)
             .then(response => {
                 console.log(response);
             })

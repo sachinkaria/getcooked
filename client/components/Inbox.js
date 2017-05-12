@@ -32,7 +32,7 @@ class Inbox extends React.Component{
                             {conversations.map((conversation) => {
                                 return (
                                     <Panel key={conversation._id}>
-                                    <Link to={'/chat/' + conversation._id }>
+                                    <Link to={'/conversation/' + conversation._id }>
                                             <Col xs={12} sm={3}>
                                                 <Image className="gc-thumbnail" src={conversation._recipient.profilePhoto}/>
                                             </Col>

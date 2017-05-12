@@ -11,6 +11,7 @@ function list(req, res) {
     let user = req.user;
     Conversation
         .find( { $or: [ { _sender: user._id }, { _recipient: user._id } ] } )
+        .sort('-lastUpdated')
         .populate('_recipient', '_id firstName displayName profilePhoto')
         .populate('_sender', '_id firstName displayName profilePhoto')
         .populate('messages', 'body')
@@ -33,7 +34,7 @@ function create (req, res) {
 function get (req, res, next) {
     let id = req.params.id;
     Message.find({ _conversation: id })
-        .sort('-date')
+        .sort('date')
         .populate('_sender', '_id firstName displayName profilePhoto')
         .exec((err, messages) => {
             if (err) {

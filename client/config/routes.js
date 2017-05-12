@@ -20,7 +20,7 @@ let routes = (
         <Route path='/chefs/:id' component={Profile}/>
         <Route path="/inbox" component={RequireAuth(Inbox)} />
         <Route path="/bookings" component={RequireAuth(Bookings)} />
-        <Route path='/chat/:id' component={Conversation}/>
+        <Route path='/conversation/:id' component={Conversation}/>
         <Route path="/register" component={Register} />
         <Route path="/chef/register" component={RegisterChef} />
         <Route path="/login" component={Login} />

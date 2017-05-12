@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { GET_INBOX, GET_CONVERSATION } from '../types';
+import { hashHistory } from 'react-router';
 
 const API_URL = 'http://localhost:3001';
 const AUTH_HEADERS = {headers: { 'Authorization': localStorage['token'] } };
@@ -65,8 +66,8 @@ export function createConversation({ body, _recipient }) {
     return function() {
         axios.post(`${API_URL}/conversations/create`, {_recipient}, AUTH_HEADERS)
             .then(response => {
-                let _conversation = response.data._id;
-                sendMessage({_conversation, body});
+                let _conversationId = response.data._id;
+                _newMessage({_conversationId, body});
             })
             .catch((error) => {
                 // errorHandler(dispatch, error.response, AUTH_ERROR)
@@ -74,14 +75,27 @@ export function createConversation({ body, _recipient }) {
     }
 }
 
-export function sendMessage({ _id, body }) {
-        axios.post(`${API_URL}/conversations/${_id}/messages/create`, {body}, AUTH_HEADERS)
+export function sendMessage({ _conversationId, body }) {
+    return function() {
+        axios.post(`${API_URL}/conversations/${_conversationId}/messages/create`, {body}, AUTH_HEADERS)
             .then(response => {
-                console.log(response);
+                hashHistory.push(`/conversation/${_conversationId}`)
             })
             .catch((error) => {
                 // errorHandler(dispatch, error.response, AUTH_ERROR)
             });
+    }
 }
+
+function _newMessage({ _conversationId, body }) {
+    axios.post(`${API_URL}/conversations/${_conversationId}/messages/create`, {body}, AUTH_HEADERS)
+        .then(response => {
+            hashHistory.push(`/conversation/${_conversationId}`)
+        })
+        .catch((error) => {
+            // errorHandler(dispatch, error.response, AUTH_ERROR)
+        });
+}
+
 
 

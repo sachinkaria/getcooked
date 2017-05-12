@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import Message from './Message';
+import ChatInput from './ChatInput';
 import * as actions from '../actions/messages';
 import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
@@ -31,7 +32,6 @@ class Conversation extends React.Component {
     renderContent() {
         if (this.props.conversation) {
             let currentUser = localStorage['user'];
-            console.log(currentUser);
             let messages = this.props.conversation;
             return (
                 <div>
@@ -51,6 +51,7 @@ class Conversation extends React.Component {
                             })
                             }
                         </div>
+                        <ChatInput conversationId={this.props.params.id} />
                     </Col>
                 </div>
             )

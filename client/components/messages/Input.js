@@ -4,7 +4,7 @@
 import React from 'react';
 import { ButtonToolbar, Button, Modal, Col, Row } from 'react-bootstrap';
 import renderField from '../forms/renderField';
-import { sendMessage } from '../../actions/messages';
+import { sendMessageUpdateConversation } from '../../actions/messages';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
@@ -29,7 +29,7 @@ class ConversationInput extends React.Component {
     }
 
     handleFormSubmit(formProps) {
-        this.props.sendMessage({_conversationId: this.props.conversationId, body: formProps.body});
+        this.props.sendMessageUpdateConversation({_conversationId: this.props.conversationId, body: formProps.body});
     }
 
     renderAlert() {
@@ -74,4 +74,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { sendMessage })(form(ConversationInput));
+export default connect(mapStateToProps, { sendMessageUpdateConversation })(form(ConversationInput));

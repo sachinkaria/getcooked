@@ -51,6 +51,7 @@ export function getConversation(_id) {
     return function(dispatch) {
         axios.get(`${API_URL}/conversations/${_id}/messages`, AUTH_HEADERS)
             .then(response => {
+                console.log(response);
                 dispatch({
                     type: GET_CONVERSATION,
                     payload: response.data
@@ -75,15 +76,12 @@ export function createConversation({ body, _recipient }) {
     }
 }
 
-export function sendMessage({ _conversationId, body }) {
-    return function() {
-        axios.post(`${API_URL}/conversations/${_conversationId}/messages/create`, {body}, AUTH_HEADERS)
-            .then(response => {
-                hashHistory.push(`/conversation/${_conversationId}`)
-            })
-            .catch((error) => {
-                // errorHandler(dispatch, error.response, AUTH_ERROR)
-            });
+
+export function sendMessageUpdateConversation({ _conversationId, body }){
+    return function(dispatch){
+        return _sendMessage({_conversationId, body}).then((response) => {
+            dispatch(getConversation(response.data._conversation));
+        })
     }
 }
 
@@ -96,6 +94,11 @@ function _newMessage({ _conversationId, body }) {
             // errorHandler(dispatch, error.response, AUTH_ERROR)
         });
 }
+
+function _sendMessage({ _conversationId, body }) {
+    return axios.post(`${API_URL}/conversations/${_conversationId}/messages/create`, {body}, AUTH_HEADERS);
+}
+
 
 
 

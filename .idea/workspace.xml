@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/ChatInput.js" afterPath="$PROJECT_DIR$/client/components/messages/Input.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/Conversation.js" afterPath="$PROJECT_DIR$/client/components/messages/Conversation.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/Inbox.js" afterPath="$PROJECT_DIR$/client/components/messages/Inbox.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/Message.js" afterPath="$PROJECT_DIR$/client/components/messages/Message.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/config/routes.js" afterPath="$PROJECT_DIR$/client/config/routes.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/messages/index.js" afterPath="$PROJECT_DIR$/client/actions/messages/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/messages/Input.js" afterPath="$PROJECT_DIR$/client/components/messages/Input.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -50,8 +46,8 @@
       <file leaf-file-name="Input.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/messages/Input.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+            <state relative-caret-position="727">
+              <caret line="76" column="71" lean-forward="false" selection-start-line="76" selection-start-column="71" selection-end-line="76" selection-end-column="71" />
               <folding>
                 <element signature="e#49#75#0" expanded="true" />
               </folding>
@@ -59,7 +55,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Conversation.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Conversation.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/messages/Conversation.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
@@ -67,6 +63,18 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#49#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/actions/messages/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="637">
+              <caret line="97" column="50" lean-forward="true" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,7 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/actions/bookings/index.js" />
         <option value="$PROJECT_DIR$/client/components/List.js" />
         <option value="$PROJECT_DIR$/client/actions/chefs/index.js" />
         <option value="$PROJECT_DIR$/client/components/auth/Login.js" />
@@ -199,11 +206,12 @@
         <option value="$PROJECT_DIR$/client/components/Conversation.js" />
         <option value="$PROJECT_DIR$/client/components/ChatInput.js" />
         <option value="$PROJECT_DIR$/server/controllers/conversation.js" />
-        <option value="$PROJECT_DIR$/client/actions/messages/index.js" />
         <option value="$PROJECT_DIR$/client/config/routes.js" />
         <option value="$PROJECT_DIR$/client/components/messages/ChatInput.js" />
         <option value="$PROJECT_DIR$/client/components/messages/Inbox.js" />
         <option value="$PROJECT_DIR$/client/components/messages/Conversation.js" />
+        <option value="$PROJECT_DIR$/client/components/messages/Input.js" />
+        <option value="$PROJECT_DIR$/client/actions/messages/index.js" />
       </list>
     </option>
   </component>
@@ -357,6 +365,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="actions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="actions" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="messages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -519,12 +549,12 @@
       <workItem from="1493987353798" duration="19744000" />
       <workItem from="1494097294423" duration="12710000" />
       <workItem from="1494256650635" duration="6751000" />
-      <workItem from="1494316690791" duration="50904000" />
+      <workItem from="1494316690791" duration="52043000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="302327000" />
+    <option name="totallyTimeSpent" value="303466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="952" extended-state="6" />
@@ -990,16 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/actions/messages/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="36" lean-forward="true" selection-start-line="39" selection-start-column="36" selection-end-line="39" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/controllers/conversation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -1014,16 +1034,6 @@
           <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/messages/Input.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="20" lean-forward="false" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding>
-            <element signature="e#49#75#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1055,6 +1065,26 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#49#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/messages/Input.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="76" column="71" lean-forward="false" selection-start-line="76" selection-start-column="71" selection-end-line="76" selection-end-column="71" />
+          <folding>
+            <element signature="e#49#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/actions/messages/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="637">
+          <caret line="97" column="50" lean-forward="true" selection-start-line="97" selection-start-column="50" selection-end-line="97" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

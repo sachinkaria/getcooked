@@ -2,13 +2,11 @@
   color: rgba(0, 0, 0, 1);
   float: left;
   text-align: left;
-  background-color: $light-grey;
   padding: 20px 20px;
   border-radius: 10px;
   margin-bottom: 10px;
 
   &.from-me {
-    background-color: $blue;
     float: right;
     text-align: right;
   }
@@ -23,5 +21,8 @@
   @include breakpoint(tablet){
     height: 500px;
   }
+}
 
+.gc-message-heading {
+  display: inline-block;
 }

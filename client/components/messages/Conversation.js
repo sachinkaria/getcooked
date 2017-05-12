@@ -42,6 +42,7 @@ class Conversation extends React.Component {
                                 return (
                                     <div key={message._id}>
                                         <Message
+                                            image={message._sender.profilePhoto}
                                             username={message._sender.displayName || message._sender.firstName}
                                             message={message.body}
                                             fromMe={currentUser._id === message._sender._id}

@@ -35,7 +35,6 @@ export function getConversations() {
     return function(dispatch) {
         axios.get(`${API_URL}/conversations`, AUTH_HEADERS)
             .then(response => {
-                console.log(response.data);
                 dispatch({
                     type: GET_INBOX,
                     payload: response.data

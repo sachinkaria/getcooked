@@ -1,19 +1,15 @@
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_BOOKINGS, GET_INBOX } from '../actions/types';
+import { GET_BOOKINGS, GET_INBOX, GET_CONVERSATION } from '../actions/types';
 
-const INITIAL_STATE = { error: '', message: '', bookings: [], inbox: [], authenticated: false};
+const INITIAL_STATE = { bookings: [], inbox: [], conversation: [] };
 
 export default function (state = INITIAL_STATE, action) {
     switch(action.type) {
-        case AUTH_USER:
-            return { ...state, error: '', message: '', authenticated: true };
-        case UNAUTH_USER:
-            return { ...state, authenticated: false };
-        case AUTH_ERROR:
-            return { ...state, error: action.payload };
         case GET_BOOKINGS:
             return { ...state, bookings: action.payload };
         case GET_INBOX:
             return {...state, inbox: action.payload};
+        case GET_CONVERSATION:
+            return {...state, conversation: action.payload};
     }
 
     return state;

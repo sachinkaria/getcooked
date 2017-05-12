@@ -52,7 +52,7 @@ class Bookings extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return { bookings: state.auth.bookings };
+    return { bookings: state.user.bookings };
 }
 
 export default connect(mapStateToProps, actions)(Bookings);

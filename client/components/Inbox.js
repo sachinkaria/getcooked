@@ -57,7 +57,7 @@ class Inbox extends React.Component{
 }
 
 function mapStateToProps(state) {
-    return { inbox: state.auth.inbox };
+    return { inbox: state.user.inbox };
 }
 
 export default connect(mapStateToProps, actions)(Inbox);

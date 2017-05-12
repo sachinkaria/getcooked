@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import Message from './Message';
-import ChatInput from './ChatInput';
-import * as actions from '../actions/messages';
+import ChatInput from './Input';
+import * as actions from '../../actions/messages';
 import { connect } from 'react-redux';
 import { Col } from 'react-bootstrap';
 

@@ -4,7 +4,7 @@
 import React from 'react';
 import { Col, Row, Image, Panel  } from 'react-bootstrap';
 import { Link } from 'react-router';
-import * as actions from '../actions/messages';
+import * as actions from '../../actions/messages';
 import { connect } from 'react-redux';
 import moment from 'moment';
 

@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import { ButtonToolbar, Button, Modal, Col, Row } from 'react-bootstrap';
-import renderField from './forms/renderField';
-import { sendMessage } from '../actions/messages';
+import renderField from '../forms/renderField';
+import { sendMessage } from '../../actions/messages';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 

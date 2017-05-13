@@ -28,7 +28,7 @@ class Inbox extends React.Component{
             return (
                 <div>
                     <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
-                        <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Inbox</h3>
+                        <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Messages</h3>
                         {conversations.map((conversation) => {
                             let recipient = conversation._sender._id === currentUser._id ? conversation._recipient : conversation._sender;
                             return (

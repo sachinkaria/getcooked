@@ -7,6 +7,7 @@ import ChatInput from './Input';
 import * as actions from '../../actions/messages';
 import { connect } from 'react-redux';
 import { Col, Panel } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 
 class Conversation extends React.Component {
@@ -36,8 +37,8 @@ class Conversation extends React.Component {
             return (
                 <div>
                     <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
-                        <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Messages</h3>
-                        <Panel className='message-box' id='messageList'>
+                        <Link to="/inbox" className="gc-profile-heading-sm gc-margin-bottom--lg">&larr; Messages</Link>
+                        <Panel className='message-box gc-margin-top--lg' id='messageList'>
                             {messages.map((message) => {
                                 return (
                                     <div key={message._id}>

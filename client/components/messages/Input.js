@@ -72,7 +72,7 @@ class ConversationInput extends React.Component {
                                             type="submit"
                                             bsSize="large"
                                             className="btn gc-btn gc-btn--orange">
-                                            Register
+                                            Send Message
                                         </Button>
                                     </Form>
         );

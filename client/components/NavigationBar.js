@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactRouter, Link } from 'react-router';
 import { Navbar, Nav, Col, NavItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 const NavigationBar = (props) => {
     const isAuthenticated = localStorage['token'];
@@ -74,5 +75,11 @@ const NavigationBar = (props) => {
     )
 };
 
-export default NavigationBar;
+function mapStateToProps(state) {
+    return {
+        inbox: state.user.inbox,
+        bookings: state.user.bookings
+    };
+}
 
+export default connect(mapStateToProps)(NavigationBar)

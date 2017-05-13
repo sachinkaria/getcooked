@@ -2,11 +2,10 @@
  * Created by sachinkaria on 19/03/2017.
  */
 import React from 'react';
-import { Col, Row, Image, Panel  } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Col } from 'react-bootstrap';
 import * as actions from '../../actions/messages';
 import { connect } from 'react-redux';
-import moment from 'moment';
+import MessageItem from './Item';
 
 
 class Inbox extends React.Component{
@@ -25,25 +24,21 @@ class Inbox extends React.Component{
     renderContent() {
         if (this.props.inbox) {
             let conversations = this.props.inbox;
+            let currentUser = JSON.parse(localStorage['user']);
             return (
                 <div>
                     <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
                         <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Inbox</h3>
                         {conversations.map((conversation) => {
+                            let recipient = conversation._sender._id === currentUser._id ? conversation._recipient : conversation._sender;
                             return (
-                                <Link to={'/conversation/' + conversation._id } key={conversation._id}>
-                                    <Panel>
-                                        <Col xs={12} sm={3}>
-                                            <Image className="gc-thumbnail" src={conversation._recipient.profilePhoto}/>
-                                        </Col>
-                                        <Col sm={5}>
-                                            <p className="gc-profile-text-md">{conversation._recipient.displayName}</p>
-                                        </Col>
-                                        <Col xs={12} sm={4}>
-                                            <p className="gc-text pull-right--t">Last message: {moment(conversation.lastUpdated).format('MMMM Do YYYY')}</p>
-                                        </Col>
-                                    </Panel>
-                                </Link>
+                                <MessageItem
+                                    key={conversation._id}
+                                    id={conversation._id}
+                                    profilePhoto={recipient.profilePhoto}
+                                    displayName={recipient.displayName || recipient.firstName}
+                                    lastUpdated={conversation.lastUpdated}
+                                />
                             )
                         })
                         }

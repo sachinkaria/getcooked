@@ -13,7 +13,6 @@ let Message = (props) =>  {
                     <div className={classes}>
                         <div className='gc-profile-text-sm gc-message-heading gc-margin-bottom--xs'>
                             <Image className="gc-icon" src={props.image}/>
-                            <span>{ props.username }</span>
                         </div>
                         <Panel className='gc-panel-message'>
                             <div className='gc-text'>

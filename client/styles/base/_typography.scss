@@ -3,6 +3,10 @@
   font-size: 16px;
   color: $dark-grey;
 
+  &.gc-text--xs{
+    font-size: 14px;
+  }
+
   &.gc-text--grey {
     color: $grey;
   }

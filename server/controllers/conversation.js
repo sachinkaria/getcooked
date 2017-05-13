@@ -32,6 +32,7 @@ function create (req, res) {
 }
 
 function get (req, res, next) {
+    let user = req.user;
     let id = req.params.id;
     Message.find({ _conversation: id })
         .sort('date')
@@ -41,6 +42,12 @@ function get (req, res, next) {
                 res.send({ error: err });
                 return next(err);
             }
+
+            messages.forEach((message) => {
+                parseInt(message._sender._id) != parseInt(user._id) && (message.status = 'read');
+                message.save();
+            });
+
             return res.jsonp(messages);
         });
 }

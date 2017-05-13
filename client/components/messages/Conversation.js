@@ -47,7 +47,9 @@ class Conversation extends React.Component {
                                             username={message._sender.displayName || message._sender.firstName}
                                             message={message.body}
                                             fromMe={currentUser._id === message._sender._id}
-                                            date={message.date}/>
+                                            date={message.date}
+                                        status={message.status}
+                                        />
                                     </div>
                                 )
                             })

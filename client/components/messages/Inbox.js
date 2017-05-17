@@ -6,6 +6,7 @@ import { Col } from 'react-bootstrap';
 import * as actions from '../../actions/messages';
 import { connect } from 'react-redux';
 import MessageItem from './Item';
+import _ from 'lodash';
 
 
 class Inbox extends React.Component{
@@ -38,6 +39,7 @@ class Inbox extends React.Component{
                                     profilePhoto={recipient.profilePhoto}
                                     displayName={recipient.displayName || recipient.firstName}
                                     lastUpdated={conversation.lastUpdated}
+                                    lastMessage={_.last(conversation.messages)}
                                 />
                             )
                         })

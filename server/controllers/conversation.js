@@ -14,9 +14,9 @@ function list(req, res) {
         .sort('-lastUpdated')
         .populate('_recipient', '_id firstName displayName profilePhoto')
         .populate('_sender', '_id firstName displayName profilePhoto')
-        .populate('messages', 'body')
+        .populate('messages', '_sender body status')
         .exec((err, conversations) => {
-        res.jsonp(conversations)
+        res.jsonp(conversations);
     });
 }
 

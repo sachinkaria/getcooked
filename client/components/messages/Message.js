@@ -14,7 +14,7 @@ let Message = (props) =>  {
         'gc-pull-left': !props.fromMe,
         'gc-pull-right': props.fromMe,
         'gc-text': true,
-        'gc-text--xs': true,
+        'gc-text--sm': true,
         'gc-text--grey': true,
         'gc-margin-none':true
     });
@@ -23,32 +23,29 @@ let Message = (props) =>  {
         <Row>
             <Col xs={12}>
                 <div className={classes}>
-                    <div className='gc-profile-text-sm gc-message-heading gc-margin-bottom--xs'>
-                        <Image className="gc-icon" src={props.image}/>
-                    </div>
-                    <Panel className='gc-panel-message gc-margin-none'>
-                        <Row>
-                        <Col>
-                            <div className={messageClass}>
-                                { moment(props.date).format('MMMM Do YYYY') }
-                            </div>
-                        </Col>
-                        </Row>
-                        <Row>
+                    <Col xs={2}>
+                        <div className='gc-profile-text-sm gc-message-heading gc-margin-bottom--xs'>
+                            <Image className="gc-thumbnail--sm" src={props.image}/>
+                        </div>
+                    </Col>
+                    <Col xs={10}>
+                        <Panel className='gc-panel-message gc-margin-none'>
+                            <Row>
                             <Col>
-                            <div className='gc-text'>
-                                { props.message }
-                            </div>
+                                <div className={messageClass}>
+                                    { moment(props.date).format('MMMM Do YYYY') }
+                                </div>
                             </Col>
-                        </Row>
-                        <Row>
-                            <Col>
-                            <div className={messageClass}>
-                                { _.capitalize(props.status) }
-                            </div>
-                            </Col>
-                        </Row>
-                    </Panel>
+                            </Row>
+                            <Row>
+                                <Col>
+                                <div className='gc-text'>
+                                    { props.message }
+                                </div>
+                                </Col>
+                            </Row>
+                        </Panel>
+                    </Col>
                 </div>
             </Col>
         </Row>

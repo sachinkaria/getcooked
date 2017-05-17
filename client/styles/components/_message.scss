@@ -25,3 +25,10 @@
 .gc-message-heading {
   display: inline-block;
 }
+
+.gc-inbox-item-wrapper {
+  height: 150px;
+  @include breakpoint(tablet) {
+    height: 130px;
+  }
+}

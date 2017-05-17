@@ -1,10 +1,18 @@
 .gc-text {
   font-family: $primary-font;
-  font-size: 16px;
+  font-size: 14px;
   color: $dark-grey;
 
   &.gc-text--xs{
-    font-size: 14px;
+    font-size: 10px;
+  }
+
+  &.gc-text--sm{
+    font-size: 12px;
+  }
+
+  &.gc-text--lg {
+    font-size: 16px;
   }
 
   &.gc-text--grey {
@@ -18,16 +26,11 @@
   &.gc-text--light-grey {
     color: $light-grey;
   }
-
-  &.gc-text--sm {
-    font-size: 14px;
-  }
-
-  &.gc-text--lg {
-    font-size: 18px;
-  }
 }
 
+.gc-bold {
+  font-weight: bolder;
+}
 
 .gc-heading {
   font-family: 'Montserrat', sans-serif;
@@ -50,4 +53,10 @@
   @include breakpoint(tablet) {
     font-size: 36px;
   }
+}
+
+.gc-overflow-ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

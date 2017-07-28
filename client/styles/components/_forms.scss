@@ -26,6 +26,7 @@
     border-right: none;
   }
 
+
   &.gc-input--radius-left{
     border-right: none;
     border-top-right-radius: 0;
@@ -46,11 +47,21 @@
   &:focus {
     outline: none;
   }
-
 }
 
 .gc-input-box {
+  min-height: 200px;
   height: 100px;
+  margin-bottom: 10px;
+
+  @include placeholder {
+    color: red;
+    text-align: right;
+  }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .gc-input-item {

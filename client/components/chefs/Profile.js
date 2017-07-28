@@ -7,7 +7,7 @@ import Badge from '../Badge';
 import Rating from '../Rating';
 import ContactForm from '../../containers/ContactForm';
 import BookingForm from '../../containers/BookingForm';
-import { Col, Panel, Thumbnail, Button } from 'react-bootstrap';
+import { Col, Panel, Thumbnail, Button, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/public';
@@ -34,7 +34,12 @@ class Profile extends React.Component {
                                 <Thumbnail onClick={null} src={user.profilePhoto}/>
                             </Col>
                             <Col xs={12} sm={12} md={8}>
-                                <p className="gc-center gc-profile-heading-lg">{user.displayName}</p>
+                                <p className="gc-center gc-profile-heading">{user.displayName}</p>
+                                <Row>
+                                <Col xs={4} smOffset={4}>
+                                    <Rating size={22} value={4.5}/>
+                                </Col>
+                                </Row>
                                 <Col xs={12} className="gc-margin-top--lg">
                                     <p className="gc-profile-text-sm">{user.description}</p>
                                 </Col>
@@ -56,15 +61,6 @@ class Profile extends React.Component {
                             {/*return (*/}
                             {/*<Review key={review.name} name={review.name}*/}
                             {/*description={review.reviewDescription}/>*/}
-                            {/*)*/}
-                            {/*})*/}
-                            {/*}*/}
-                            {/*</Col>*/}
-
-                            {/*<Col xs={12} md={4}>*/}
-                            {/*{user.ratings.map(function (rating) {*/}
-                            {/*return (*/}
-                            {/*<Rating key={rating.category} category={rating.category} value={rating.value}/>*/}
                             {/*)*/}
                             {/*})*/}
                             {/*}*/}

@@ -1,23 +1,30 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
-import StarRatingComponent from 'react-star-rating-component';
-
+import { Col, Row } from 'react-bootstrap';
+import ReactStars from 'react-stars';
 
 let Rating = (props) => {
-    return (
-        <div>
-            <Col xs={12}>
 
-                    <h4 className="gc-pull-left">{props.category}</h4>
-                <StarRatingComponent
-                    className="gc-rating"
-                    starCount={5}
-                    value={props.value}
-                    starColor={'#e46344'}
-                    emptyStarColor={'#cecccc'}
-                    name={'rating'}/>
+    return (
+        <Row>
+            <Col>
+                {props.category && (<h4 className="gc-pull-left">{props.category}</h4>)}
+                <Row>
+                    <Col xs={10}>
+                        <ReactStars
+                            count={5}
+                            size={props.size}
+                            color1={'#ff9900'}
+                            color2={'#ffd700'}
+                            value={props.value}
+                            edit="false"
+                        />
+                    </Col>
+                    <Col xs={2}>
+                        <p className="pull-left">{'(' + props.value + ')'}</p>
+                    </Col>
+                </Row>
             </Col>
-        </div>
+        </Row>
     )
 };
 

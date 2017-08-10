@@ -28,41 +28,38 @@ class Conversation extends React.Component {
       <div>
         {this.renderContent()}
       </div>
-    )
+    );
   }
 
   renderContent() {
     if (this.props.conversation) {
-      let currentUser = JSON.parse(localStorage['user']);
-      let messages = this.props.conversation;
+      const currentUser = JSON.parse(localStorage.user);
+      const messages = this.props.conversation;
       return (
         <div>
           <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
             <Link to="/inbox" className="gc-profile-heading-sm gc-margin-bottom--lg">&larr; Messages</Link>
-            <Panel className='message-box gc-margin-top--lg' id='messageList'>
-              {messages.map((message) => {
-                return (
-                  <div key={message._id}>
-                    <Message
-                      image={message._sender.profilePhoto}
-                      username={message._sender.displayName || message._sender.firstName}
-                      message={message.body}
-                      fromMe={currentUser._id === message._sender._id}
-                      date={message.date}
-                      status={message.status}
-                    />
-                  </div>
-                )
-              })
+            <Panel className="message-box gc-margin-top--lg" id="messageList">
+              {messages.map(message => (
+                <div key={message._id}>
+                  <Message
+                    image={message._sender.profilePhoto}
+                    username={message._sender.displayName || message._sender.firstName}
+                    message={message.body}
+                    fromMe={currentUser._id === message._sender._id}
+                    date={message.date}
+                    status={message.status}
+                  />
+                </div>
+              ))
               }
             </Panel>
             <ChatInput conversationId={this.props.params.id} />
           </Col>
         </div>
-      )
-    } else {
-      return (<p className="gc-profile-text-md">You have no messages</p>)
+      );
     }
+    return (<p className="gc-profile-text-md">You have no messages</p>);
   }
 }
 

@@ -1,6 +1,4 @@
-export default function getProfileData (id, data) {
-    let result = data.filter(function( obj ) {
-        return obj.id == id;
-    });
-    return result[0]
-};
+export default function getProfileData(id, data) {
+  const result = data.filter(obj => obj.id == id);
+  return result[0];
+}

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers/index';
-import routes from'./config/routes';
+import routes from './config/routes';
 import { Router, hashHistory } from 'react-router';
 import { AUTH_USER } from './actions/types';
 import { getConversations } from './actions/messages';
@@ -32,16 +32,16 @@ require('./images/default_profile.png');
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
-const token = localStorage['token'];
+const token = localStorage.token;
 
 if (token) {
-    store.dispatch(getConversations());
-    store.dispatch(getBookings());
-    store.dispatch({ type: AUTH_USER });
+  store.dispatch(getConversations());
+  store.dispatch(getBookings());
+  store.dispatch({ type: AUTH_USER });
 }
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router history={hashHistory} routes={routes} />
-    </Provider>,
-    document.getElementById('app'));
+  <Provider store={store}>
+    <Router history={hashHistory} routes={routes} />
+  </Provider>,
+  document.getElementById('app'));

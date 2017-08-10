@@ -3,10 +3,11 @@
  */
 import React from 'react';
 import { Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import users from '../../utils/data';
 import getProfile from '../../utils/helpers';
 import BookingItem from './Item';
-import { connect } from 'react-redux';
 import * as actions from '../../actions/bookings';
 
 class Bookings extends React.Component {
@@ -50,6 +51,11 @@ class Bookings extends React.Component {
     );
   }
 }
+
+Bookings.propTypes = {
+  bookings: PropTypes.object.isRequired,
+  getBookings: PropTypes.func.isRequired
+};
 
 function mapStateToProps(state) {
   return { bookings: state.user.bookings };

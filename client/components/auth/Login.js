@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
-import { loginUser } from '../../actions/auth';
 import { Col, Panel, Button } from 'react-bootstrap';
+import { loginUser } from '../../actions/auth';
 
 const form = reduxForm({
   form: 'login'

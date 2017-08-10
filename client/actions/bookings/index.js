@@ -1,34 +1,9 @@
 import axios from 'axios';
-import React from 'react';
-import { GET_BOOKINGS } from '../types';
+import { GET_BOOKINGS, AUTH_ERROR } from '../types';
+
+const errorHandler = require('../public').errorHandler();
 
 const API_URL = 'http://localhost:3001';
-
-export function errorHandler(dispatch, error, type) {
-  let errorMessage = '';
-
-  if (error.data.error) {
-    errorMessage = error.data.error;
-  } else if (error.data) {
-    errorMessage = error.data;
-  } else {
-    errorMessage = error;
-  }
-
-  if (error.status === 401) {
-    dispatch({
-      type,
-      payload: 'You are not authorized to do this. Please login and try again.'
-    });
-    logoutUser();
-  } else {
-    dispatch({
-      type,
-      payload: errorMessage
-    });
-  }
-}
-
 
 export function getBookings() {
   return function (dispatch) {
@@ -42,7 +17,7 @@ export function getBookings() {
         });
       })
       .catch((error) => {
-        // errorHandler(dispatch, error.response, AUTH_ERROR)
+        errorHandler(dispatch, error.response, AUTH_ERROR);
       });
   };
 }

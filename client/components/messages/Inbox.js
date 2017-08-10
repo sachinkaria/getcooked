@@ -2,11 +2,12 @@
  * Created by sachinkaria on 19/03/2017.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Col } from 'react-bootstrap';
-import * as actions from '../../actions/messages';
 import { connect } from 'react-redux';
-import MessageItem from './Item';
 import _ from 'lodash';
+import * as actions from '../../actions/messages';
+import MessageItem from './Item';
 
 
 class Inbox extends React.Component {
@@ -15,13 +16,7 @@ class Inbox extends React.Component {
     this.props.getConversations();
   }
 
-  render() {
-    return (
-      <div>
-        {this.renderContent()}
-      </div>
-    );
-  }
+
   renderContent() {
     if (this.props.inbox) {
       const conversations = this.props.inbox;
@@ -50,7 +45,20 @@ class Inbox extends React.Component {
     }
     return (<p className="gc-profile-text-md">You have no messages</p>);
   }
+
+  render() {
+    return (
+      <div>
+        {this.renderContent()}
+      </div>
+    );
+  }
 }
+
+Inbox.propTypes = {
+  inbox: PropTypes.array.isRequired,
+  getConversations: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return { inbox: state.user.inbox };

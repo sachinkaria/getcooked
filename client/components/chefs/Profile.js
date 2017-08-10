@@ -1,15 +1,11 @@
 import React from 'react';
-import _ from 'lodash';
-import LightBox from '../../containers/LightBox';
-import Endorsement from '../../containers/Endorsement';
-import Review from '../Review';
-import Badge from '../Badge';
-import Rating from '../Rating';
-import ContactForm from '../../containers/ContactForm';
-import BookingForm from '../../containers/BookingForm';
 import { Col, Panel, Thumbnail, Button, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import LightBox from '../../containers/LightBox';
+import Rating from '../Rating';
+import ContactForm from '../../containers/ContactForm';
+import BookingForm from '../../containers/BookingForm';
 import * as actions from '../../actions/public';
 
 
@@ -22,7 +18,6 @@ class Profile extends React.Component {
   renderContent() {
     if (this.props.chef) {
       const user = this.props.chef;
-      const id = user._id;
       // let endorsements = _.sortBy(user.endorsements, 'number').reverse();
       const imagesCount = user.images && user.images.length;
       return (

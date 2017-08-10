@@ -8,6 +8,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, chefs: action.payload };
     case GET_CHEF:
       return { ...state, chef: action.payload };
+    default:
+      break;
   }
   return state;
 }

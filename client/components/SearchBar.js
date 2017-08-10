@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactRouter, Link } from 'react-router';
+import { Link } from 'react-router';
 import { Form, FormControl, FormGroup, InputGroup, Button } from 'react-bootstrap';
 
 const SearchBar = React.createClass({

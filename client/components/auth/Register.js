@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { registerUser } from '../../actions/auth';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
+import { registerUser } from '../../actions/auth';
 import renderField from '../forms/renderField';
 
 const form = reduxForm({

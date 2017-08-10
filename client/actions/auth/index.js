@@ -1,34 +1,11 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
-import React from 'react';
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, GET_BOOKINGS, GET_INBOX } from '../types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../types';
+
+const errorHandler = require('../public').errorHandler();
 
 const API_URL = 'http://localhost:3001';
 
-export function errorHandler(dispatch, error, type) {
-  let errorMessage = '';
-
-  if (error.data.error) {
-    errorMessage = error.data.error;
-  } else if (error.data) {
-    errorMessage = error.data;
-  } else {
-    errorMessage = error;
-  }
-
-  if (error.status === 401) {
-    dispatch({
-      type,
-      payload: 'You are not authorized to do this. Please login and try again.'
-    });
-    logoutUser();
-  } else {
-    dispatch({
-      type,
-      payload: errorMessage
-    });
-  }
-}
 
 export function loginUser({ email, password }) {
   return function (dispatch) {
@@ -40,7 +17,7 @@ export function loginUser({ email, password }) {
         hashHistory.push('/chefs');
       })
       .catch((error) => {
-        // errorHandler(dispatch, error.response, AUTH_ERROR)
+        errorHandler(dispatch, error.response, AUTH_ERROR);
       });
   };
 }
@@ -55,7 +32,7 @@ export function registerUser({ email, firstName, lastName, password }) {
         hashHistory.push('/chefs');
       })
       .catch((error) => {
-        // errorHandler(dispatch, error.response, AUTH_ERROR)
+        errorHandler(dispatch, error.response, AUTH_ERROR);
       });
   };
 }
@@ -70,7 +47,7 @@ export function registerChef({ email, firstName, lastName, password, displayName
         hashHistory.push('/chefs');
       })
       .catch((error) => {
-        // errorHandler(dispatch, error.response, AUTH_ERROR)
+        errorHandler(dispatch, error.response, AUTH_ERROR);
       });
   };
 }

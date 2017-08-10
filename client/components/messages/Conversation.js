@@ -3,12 +3,12 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Message from './Message';
-import ChatInput from './Input';
-import * as actions from '../../actions/messages';
 import { connect } from 'react-redux';
 import { Col, Panel } from 'react-bootstrap';
 import { Link } from 'react-router';
+import Message from './Message';
+import ChatInput from './Input';
+import * as actions from '../../actions/messages';
 
 
 class Conversation extends React.Component {
@@ -21,14 +21,6 @@ class Conversation extends React.Component {
     // There is a new message in the state, scroll to bottom of list
     const objDiv = document.getElementById('messageList');
     objDiv.scrollTop = objDiv.scrollHeight;
-  }
-
-  render() {
-    return (
-      <div>
-        {this.renderContent()}
-      </div>
-    );
   }
 
   renderContent() {
@@ -61,11 +53,20 @@ class Conversation extends React.Component {
     }
     return (<p className="gc-profile-text-md">You have no messages</p>);
   }
+
+  render() {
+    return (
+      <div>
+        {this.renderContent()}
+      </div>
+    );
+  }
 }
 
 Conversation.propTypes = {
-  user: PropTypes.object.isRequired,
-  conversation: PropTypes.object.isRequired
+  params: PropTypes.object.isRequired,
+  getConversation: PropTypes.func.isRequired,
+  conversation: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {

@@ -55,9 +55,8 @@ const Message = (props) => {
 Message.propTypes = {
   message: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
   fromMe: PropTypes.bool.isRequired,
-  date: PropTypes.date.isRequired
+  date: PropTypes.string.isRequired
 };
 
 Message.defaultProps = {

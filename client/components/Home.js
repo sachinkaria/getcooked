@@ -1,8 +1,7 @@
 import React from 'react';
-import SearchBar from './SearchBar';
 import { Col } from 'react-bootstrap';
 import { hashHistory } from 'react-router';
-
+import SearchBar from './SearchBar';
 
 const Home = () => {
   localStorage.token && hashHistory.push('/chefs');

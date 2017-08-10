@@ -10,6 +10,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, inbox: action.payload };
     case GET_CONVERSATION:
       return { ...state, conversation: action.payload };
+    default:
+      break;
   }
 
   return state;

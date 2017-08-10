@@ -1,5 +1,6 @@
 import React from 'react';
 import { Label } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 const Endorsement = React.createClass({
   getInitialState() {
@@ -24,5 +25,12 @@ const Endorsement = React.createClass({
     );
   }
 });
+
+
+Endorsement.propTypes = {
+  description: PropTypes.string.isRequired,
+  number: PropTypes.number.isRequired
+};
+
 
 export default Endorsement;

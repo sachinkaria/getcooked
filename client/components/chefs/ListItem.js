@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import { Col, Thumbnail } from 'react-bootstrap';
 import { Link } from 'react-router';
 
@@ -34,7 +34,11 @@ const ListItem = (props) => {
 ListItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  profilePhoto: PropTypes.string.isRequired,
+  profilePhoto: PropTypes.string.isRequired
+};
+
+ListItem.defaultProps = {
+  numberOfRatings: null
 };
 
 export default ListItem;

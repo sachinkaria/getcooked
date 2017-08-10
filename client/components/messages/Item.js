@@ -8,7 +8,7 @@ const MessageItem = (props) => {
   const currentUser = JSON.parse(localStorage.user);
   const classes = classNames({
     'gc-text': true,
-    'gc-bold': props.lastMessage.status === 'sent' && props.lastMessage._sender != currentUser._id
+    'gc-bold': props.lastMessage.status === 'sent' && props.lastMessage._sender !== currentUser._id
   });
   return (
     <Link to={`/conversation/${props.id}`} key={props._id}>
@@ -18,10 +18,10 @@ const MessageItem = (props) => {
         </Col>
         <Col sm={9} className="gc-margin-top--sm">
           <Col sm={7} className="gc-center pull-left--t">
-            <p className={props.lastMessage.status === 'sent' && props.lastMessage._sender != currentUser._id ? 'gc-profile-text-sm gc-bold' : 'gc-profile-text-sm'}>{props.displayName || props.firstName}</p>
+            <p className={props.lastMessage.status === 'sent' && props.lastMessage._sender !== currentUser._id ? 'gc-profile-text-sm gc-bold' : 'gc-profile-text-sm'}>{props.displayName || props.firstName}</p>
           </Col>
           <Col sm={5} className="gc-center pull-left--t">
-            <p className={props.lastMessage.status === 'sent' && props.lastMessage._sender != currentUser._id ? 'gc-text gc-bold' : 'gc-text'}>Last message: {moment(props.lastUpdated).format('MMMM Do YYYY')}</p>
+            <p className={props.lastMessage.status === 'sent' && props.lastMessage._sender !== currentUser._id ? 'gc-text gc-bold' : 'gc-text'}>Last message: {moment(props.lastUpdated).format('MMMM Do YYYY')}</p>
           </Col>
           {props.lastMessage && (
             <Col sm={12} className="gc-margin-top gc-overflow-ellipsis">

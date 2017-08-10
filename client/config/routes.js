@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactRouter, Route, IndexRoute } from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import ProfileList from '../components/chefs/List';
 import NavigationBar from '../components/NavigationBar';
 import Bookings from '../components/bookings/List';

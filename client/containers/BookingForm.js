@@ -22,10 +22,6 @@ export default class BookingForm extends React.Component {
     this.setDate = this.setDate.bind(this);
   }
 
-  showModal() {
-    this.setState({ show: true });
-  }
-
   hideModal() {
     this.resetForm();
   }
@@ -55,8 +51,13 @@ export default class BookingForm extends React.Component {
       errorMessage: 'Please complete all the fields before submitting your booking request.'
     });
   }
+
   setDate(date) {
     this.setState({ date });
+  }
+
+  showModal() {
+    this.setState({ show: true });
   }
 
   resetForm() {

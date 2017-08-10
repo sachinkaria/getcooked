@@ -1,5 +1,5 @@
 import React from 'react';
-import { PropTypes } from 'react';
+import PropTypes from 'prop-types';
 import { Image, Col, Panel, Row } from 'react-bootstrap';
 import moment from 'moment';
 import classNames from 'classnames';
@@ -42,9 +42,9 @@ const BookingItem = (props) => {
   );
 };
 
-//
-// Badge.propTypes = {
-//     logo: PropTypes.string.isRequired
-// };
+
+BookingItem.propTypes = {
+  booking: PropTypes.object.isRequired
+};
 
 export default BookingItem;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactRouter, Link } from 'react-router';
+import { Link } from 'react-router';
 import { Navbar, Nav, Col, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -12,7 +12,7 @@ const NavigationBar = (props) => {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/" className="gc-padding-none">
-                <img className="gc-logo-default" href="#" src="images/logo-icon.png" />
+                <img alt="Get Cooked" className="gc-logo-default" href="#" src="images/logo-icon.png" />
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />

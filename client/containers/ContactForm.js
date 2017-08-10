@@ -3,10 +3,11 @@
  */
 import React from 'react';
 import { ButtonToolbar, Button, Modal, Col, Row } from 'react-bootstrap';
-import renderInputBox from '../components/forms/renderInputBox';
-import { createConversation } from '../actions/messages';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import renderInputBox from '../components/forms/renderInputBox';
+import { createConversation } from '../actions/messages';
 
 const form = reduxForm({
   form: 'contact',
@@ -36,6 +37,14 @@ class ContactForm extends React.Component {
     this.props.createConversation(formProps);
   }
 
+  showModal() {
+    this.setState({ show: true });
+  }
+
+  hideModal() {
+    this.setState({ show: false });
+  }
+
   renderAlert() {
     if (this.props.errorMessage) {
       return (
@@ -46,20 +55,13 @@ class ContactForm extends React.Component {
     }
   }
 
-  showModal() {
-    this.setState({ show: true });
-  }
-
-  hideModal() {
-    this.setState({ show: false });
-  }
 
   render() {
     const { handleSubmit } = this.props;
     return (
       <ButtonToolbar>
         <Button className="gc-btn gc-btn--white" block onClick={this.showModal}>
-                    Contact
+          Contact
         </Button>
         <Modal
           show={this.state.show}
@@ -79,8 +81,8 @@ class ContactForm extends React.Component {
                     {this.renderAlert()}
                     <Row>
                       <Col>
-                            <Field name="body" placeholder="Enter message" component={renderInputBox} type="text" />
-                          </Col>
+                        <Field name="body" placeholder="Enter message" component={renderInputBox} type="text" />
+                      </Col>
                     </Row>
                     <Button type="submit" className="btn gc-btn gc-btn--orange">Send Message</Button>
                   </form>
@@ -94,6 +96,12 @@ class ContactForm extends React.Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  errorMessage: PropTypes.string.isRequired,
+  chefId: PropTypes.string.isRequired,
+  createConversation: PropTypes.func.isRequired
+};
 
 function mapStateToProps(state) {
   return {

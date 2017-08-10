@@ -2,9 +2,10 @@
  * Created by sachinkaria on 18/03/2017.
  */
 import React from 'react';
-import { Button, Col, Form, FormControl, FormGroup } from 'react-bootstrap';
-import { sendMessageUpdateConversation } from '../../actions/messages';
+import PropTypes from 'prop-types';
+import { Button, Form, FormControl, FormGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { sendMessageUpdateConversation } from '../../actions/messages';
 
 
 class ConversationInput extends React.Component {
@@ -81,6 +82,11 @@ class ConversationInput extends React.Component {
     );
   }
 }
+
+ConversationInput.propTypes = {
+  conversationId: PropTypes.string.isRequired,
+  sendMessageUpdateConversation: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return {

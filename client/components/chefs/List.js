@@ -1,8 +1,8 @@
 import React from 'react';
-import ListItem from './ListItem';
 import { Col, Row } from 'react-bootstrap';
-import SearchBar from '../SearchBar';
 import { connect } from 'react-redux';
+import ListItem from './ListItem';
+import SearchBar from '../SearchBar';
 import * as actions from '../../actions/public';
 
 

@@ -10,7 +10,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, authenticated: false };
     case AUTH_ERROR:
       return { ...state, error: action.payload };
+    default:
+      break;
   }
-
   return state;
 }

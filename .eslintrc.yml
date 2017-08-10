@@ -9,13 +9,7 @@ extends: ["airbnb"]
 env:
   browser: true
   es6: true
-  jasmine: true
-  mocha: true
   node: true
-  protractor: true
-
-ecmaFeatures:
-  jsx: true
 
 globals:
   ApplicationConfiguration: true

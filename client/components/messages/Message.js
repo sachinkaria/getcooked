@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Row, Col, Panel, Image } from 'react-bootstrap';
 import moment from 'moment';
-import _ from 'lodash';
 
 let Message = (props) =>  {
     let classes = classNames({
@@ -50,6 +50,14 @@ let Message = (props) =>  {
             </Col>
         </Row>
     );
+};
+
+Message.propTypes = {
+  message: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  fromMe: PropTypes.bool.isRequired,
+  date: PropTypes.date.isRequired
 };
 
 Message.defaultProps = {

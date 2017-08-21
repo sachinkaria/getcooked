@@ -3,12 +3,11 @@ import { GET_BOOKINGS, AUTH_ERROR } from '../types';
 const errorHandler = require('../public').errorHandler;
 
 const API_URL = 'http://localhost:3001';
+const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 
 export function getBookings() {
   return function (dispatch) {
-    axios.get(`${API_URL}/bookings`, {
-      headers: { Authorization: localStorage.token }
-    })
+    axios.get(`${API_URL}/bookings`, AUTH_HEADERS)
       .then((response) => {
         dispatch({
           type: GET_BOOKINGS,

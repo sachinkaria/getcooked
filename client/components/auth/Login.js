@@ -44,7 +44,7 @@ class Login extends Component {
             <Col sm={8} smOffset={2} className="gc-margin-bottom">
               {this.renderAlert()}
             </Col>
-            <Col xs={12} sm={4} smOffset={4}>
+            <Col sm={4} smOffset={4}>
               <Button type="submit" block bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-bottom">Login</Button>
               <p className="gc-text">Forgot your password?</p>
             </Col>

@@ -13,7 +13,7 @@ const BookingItem = (props) => {
   });
   return (
     <Panel>
-      <Col xs={12} sm={3}>
+      <Col xs={12} sm={3} className="gc-center">
         <Image className="gc-thumbnail" src={props.chefPic} />
       </Col>
       <Col xs={12} sm={6}>

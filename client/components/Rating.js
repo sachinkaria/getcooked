@@ -11,7 +11,7 @@ const Rating = props => (
     <Col>
       {props.category && (<h4 className="gc-pull-left">{props.category}</h4>)}
       <Row>
-        <Col xs={12}>
+        <Col>
           <ReactStars
             count={5}
             size={props.size}

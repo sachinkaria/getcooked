@@ -7,7 +7,7 @@ const NavigationBar = (props) => {
   const isAuthenticated = localStorage.token;
   return (
     <div>
-      <Navbar className="gc-navbar">
+      <Navbar fixedTop className="gc-navbar">
         <Col>
           <Navbar.Header>
             <Navbar.Brand>
@@ -70,7 +70,9 @@ const NavigationBar = (props) => {
           }
         </Navbar.Collapse>
       </Navbar>
-      {props.children}
+      <div className="gc-container">
+        {props.children}
+      </div>
     </div>
   );
 };

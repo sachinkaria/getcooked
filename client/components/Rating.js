@@ -2,23 +2,25 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import ReactStars from 'react-stars';
 
+const COLOUR_FILLED = '#ff9900';
+const COLOUR_EMPTY = '#ffd700';
+
+
 const Rating = props => (
   <Row>
     <Col>
       {props.category && (<h4 className="gc-pull-left">{props.category}</h4>)}
       <Row>
-        <Col xs={10}>
+        <Col xs={12}>
           <ReactStars
             count={5}
             size={props.size}
-            color1={'#ff9900'}
-            color2={'#ffd700'}
+            color1={COLOUR_FILLED}
+            color2={COLOUR_EMPTY}
             value={props.value}
             edit="false"
           />
-        </Col>
-        <Col xs={2}>
-          <p className="pull-left">{`(${props.value})`}</p>
+          <p className="gc-pull-left">{`(${props.value})`}</p>
         </Col>
       </Row>
     </Col>

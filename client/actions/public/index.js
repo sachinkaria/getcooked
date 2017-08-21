@@ -1,33 +1,36 @@
 import axios from 'axios';
-import { LIST_CHEFS, GET_CHEF, AUTH_ERROR } from '../types';
-import { logoutUser } from '../auth/index';
+import { LIST_CHEFS, GET_CHEF, SHOW_ERROR, HIDE_ERROR } from '../types';
+import { logoutUser } from '../auth';
 
 const API_URL = 'http://localhost:3001';
 
-export function errorHandler(dispatch, error, type) {
-  if (error) {
-    console.log(error);
-  }
-  // if (error.data.error) {
-  //   errorMessage = error.data.error;
-  // } else if (error.data) {
-  //   errorMessage = error.data;
-  // } else {
-  //   errorMessage = error;
-  // }
+export function errorHandler(dispatch, error) {
+  let errorMessage = null;
 
-  // if (error.status === 401) {
-  //   dispatch({
-  //     type,
-  //     payload: 'You are not authorized to do this. Please login and try again.'
-  //   });
-  //   logoutUser();
-  // } else {
-  //   dispatch({
-  //     type,
-  //     payload: errorMessage
-  //   });
-  // }
+  if (error.data) {
+    errorMessage = error.data;
+  } else {
+    errorMessage = error;
+  }
+
+  if (error.status === 401) {
+    dispatch({
+      type: SHOW_ERROR,
+      payload: 'Oops you are authenticated. Please login and try again.'
+    });
+    logoutUser();
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_ERROR,
+        payload: ''
+      });
+    }, 5000);
+  } else {
+    dispatch({
+      type: SHOW_ERROR,
+      payload: errorMessage
+    });
+  }
 }
 
 

@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { GET_BOOKINGS, AUTH_ERROR } from '../types';
-
-const errorHandler = require('../public').errorHandler();
+const errorHandler = require('../public').errorHandler;
 
 const API_URL = 'http://localhost:3001';
 

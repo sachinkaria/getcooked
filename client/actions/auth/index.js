@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../types';
-
-const errorHandler = require('../public').errorHandler();
+import { errorHandler } from '../public';
+// const errorHandler = require('../public').errorHandler;
 
 const API_URL = 'http://localhost:3001';
 

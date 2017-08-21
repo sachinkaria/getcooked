@@ -21,7 +21,7 @@ class Profile extends React.Component {
       // let endorsements = _.sortBy(user.endorsements, 'number').reverse();
       const imagesCount = user.images && user.images.length;
       return (
-        <div>
+        <Row>
           <Col xs={12} sm={9} md={8} mdOffset={1}>
             <Panel>
               <Col xs={12} sm={12} md={4}>
@@ -31,7 +31,7 @@ class Profile extends React.Component {
                 <p className="gc-center gc-profile-heading">{user.displayName}</p>
                 <Row>
                   <Col xs={4} smOffset={4}>
-                    <Rating size={22} value={4.5} />
+                    <Rating size={22} value={3.5} />
                   </Col>
                 </Row>
                 <Col xs={12} className="gc-margin-top--lg">
@@ -82,7 +82,7 @@ class Profile extends React.Component {
               <Link>Share</Link>
             </Panel>
           </Col>
-        </div>
+        </Row>
       );
     }
   }

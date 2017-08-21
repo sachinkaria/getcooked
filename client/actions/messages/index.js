@@ -4,7 +4,7 @@ import { GET_INBOX, GET_CONVERSATION, AUTH_ERROR } from '../types';
 
 const API_URL = 'http://localhost:3001';
 const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
-const errorHandler = require('../public').errorHandler();
+const errorHandler = require('../public').errorHandler;
 
 export function getConversations() {
   return (dispatch) => {

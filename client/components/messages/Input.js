@@ -76,7 +76,7 @@ class ConversationInput extends React.Component {
           bsSize="large"
           className="btn gc-btn gc-btn--orange"
         >
-                                            Send Message
+          Send Message
         </Button>
       </Form>
     );

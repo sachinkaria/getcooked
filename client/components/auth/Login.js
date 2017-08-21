@@ -18,7 +18,7 @@ class Login extends Component {
     if (this.props.errorMessage) {
       return (
         <div>
-          <span><strong>Error!</strong> {this.props.errorMessage}</span>
+          <strong>{this.props.errorMessage}</strong>
         </div>
       );
     }
@@ -35,12 +35,14 @@ class Login extends Component {
           <p className="gc-text gc-center"><Link to="/register">Don't have an account?</Link></p>
           <br />
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-            {this.renderAlert()}
             <Col sm={8} smOffset={2}>
               <Field placeholder="Email" name="email" className="form-control gc-input gc-margin-bottom" component="input" type="text" />
             </Col>
             <Col sm={8} smOffset={2}>
               <Field placeholder="Password" name="password" className="form-control gc-input gc-margin-bottom--lg" component="input" type="password" />
+            </Col>
+            <Col sm={8} smOffset={2} className="gc-margin-bottom">
+              {this.renderAlert()}
             </Col>
             <Col xs={12} sm={4} smOffset={4}>
               <Button type="submit" block bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-bottom">Login</Button>

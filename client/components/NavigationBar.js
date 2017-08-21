@@ -52,7 +52,7 @@ const NavigationBar = (props) => {
                 </NavItem>
                 <NavItem>
                   <Link to={'/chef/register'}>
-                    <p className="gc-text gc-text--dark-grey">I'm a chef</p>
+                    <p className="gc-text gc-text--dark-grey">I&apos;m a chef</p>
                   </Link>
                 </NavItem>
                 <NavItem>

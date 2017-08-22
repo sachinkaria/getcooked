@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, CURRENT_USER } from '../types';
 import { errorHandler } from '../public';
 // const errorHandler = require('../public').errorHandler;
 
@@ -11,9 +11,11 @@ export function loginUser({ email, password }) {
   return function (dispatch) {
     axios.post(`${API_URL}/users/login`, { email, password })
       .then((response) => {
+      console.log(response);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         dispatch({ type: AUTH_USER });
+        dispatch({type: CURRENT_USER, payload: response.data.user});
         hashHistory.push('/chefs');
       })
       .catch((error) => {
@@ -44,7 +46,7 @@ export function registerChef({ email, firstName, lastName, password, displayName
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         dispatch({ type: AUTH_USER });
-        hashHistory.push('/chefs');
+        hashHistory.push('/basic-setup');
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR);

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 const NavigationBar = (props) => {
   const isAuthenticated = localStorage.token;
+  const showNav = !props.location.pathname.includes('setup');
   return (
     <div>
       <Navbar fixedTop className="gc-navbar">
@@ -20,7 +21,7 @@ const NavigationBar = (props) => {
         </Col>
         <Navbar.Collapse className="gc-navbar-dropdown">
           {
-            isAuthenticated ? (
+            (isAuthenticated && showNav) && (
               <Nav pullRight>
                 <NavItem>
                   <Link to={'/events'}>
@@ -43,7 +44,10 @@ const NavigationBar = (props) => {
                   </Link>
                 </NavItem>
               </Nav>
-            ) : (
+            )
+          }
+          {
+            (!isAuthenticated && showNav) && (
               <Nav pullRight>
                 <NavItem>
                   <Link to={'/events'}>
@@ -79,6 +83,7 @@ const NavigationBar = (props) => {
 
 function mapStateToProps(state) {
   return {
+    user: state.user,
     inbox: state.user.inbox,
     bookings: state.user.bookings
   };

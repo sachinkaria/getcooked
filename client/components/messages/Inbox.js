@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import * as actions from '../../actions/messages';
@@ -18,11 +18,11 @@ class Inbox extends React.Component {
 
 
   renderContent() {
-    if (this.props.inbox) {
+    if (this.props.inbox.length) {
       const conversations = this.props.inbox;
       const currentUser = JSON.parse(localStorage.user);
       return (
-        <div>
+        <Row>
           <Col sm={10} smOffset={1} md={8} mdOffset={2} lg={6} lgOffset={3}>
             <h3 className="gc-profile-heading-md gc-margin-bottom--lg">Messages</h3>
             {conversations.map((conversation) => {
@@ -40,10 +40,16 @@ class Inbox extends React.Component {
             })
             }
           </Col>
-        </div>
+        </Row>
       );
     }
-    return (<p className="gc-profile-text-md">You have no messages</p>);
+    return (
+      <Row>
+        <Col xs={8} xsOffset={2} sm={3} smOffset={5}>
+          <p className="gc-profile-text-md">You have no messages</p>
+        </Col>
+      </Row>
+    );
   }
 
   render() {

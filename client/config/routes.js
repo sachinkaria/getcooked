@@ -8,6 +8,8 @@ import Inbox from '../components/messages/Inbox';
 import Conversation from '../components/messages/Conversation';
 import Register from '../components/auth/Register';
 import RegisterChef from '../components/auth/chef/Register';
+import BasicSetup from '../components/auth/chef/Setup';
+import Photos from '../components/auth/chef/Photos';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Home from '../components/Home';
@@ -25,7 +27,10 @@ const routes = (
     <Route path="/chef/register" component={RegisterChef} />
     <Route path="/login" component={Login} />
     <Route path="/logout" component={Logout} />
+    <Route path="/setup-basics" component={BasicSetup} />
+    <Route path="/setup-photos" component={Photos} />
   </Route>
 );
+
 
 export default routes;

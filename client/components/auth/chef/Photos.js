@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { updateUser } from '../../../actions/users';
+import ImageUpload from '../../image-upload';
 
 const form = reduxForm({
   form: 'register',
@@ -56,11 +57,7 @@ class BasicInfo extends Component {
           <br />
           <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
-            <Row>
-              <Col xs={12} sm={6} smOffset={3}>
-                <Field name="photos" placeholder="Photos" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
-              </Col>
-            </Row>
+            <ImageUpload onUpload={() => { console.log('uploaded')} } onRemove={() => { console.log('removing') }} />
             <Link to="/setup-basics">Back</Link>
             <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Next</Button>
             <Link to="/dashboard">Skip</Link>

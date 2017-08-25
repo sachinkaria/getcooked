@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { updateUser } from '../../../actions/users';
-import ImageUpload from '../../image-upload';
+import ImageUpload from '../../ImageUpload';
 
 const form = reduxForm({
   form: 'register',
@@ -53,7 +53,7 @@ class BasicInfo extends Component {
     return (
       <Col sm={8} smOffset={2} md={4} mdOffset={4}>
         <Panel className="gc-panel-light">
-          <h4 className="gc-profile-heading-md gc-center">Add photos</h4>
+          <h4 className="gc-profile-heading-md gc-center">Add a profile photo</h4>
           <br />
           <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}

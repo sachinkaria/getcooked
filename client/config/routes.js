@@ -9,7 +9,7 @@ import Conversation from '../components/messages/Conversation';
 import Register from '../components/auth/Register';
 import RegisterChef from '../components/auth/chef/Register';
 import BasicSetup from '../components/auth/chef/Setup';
-import Photos from '../components/auth/chef/Photos';
+import Photos from '../components/auth/chef/ProfilePhoto';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Home from '../components/Home';

@@ -1,9 +1,11 @@
-import { CURRENT_USER, GET_BOOKINGS, GET_INBOX, GET_CONVERSATION } from '../actions/types';
+import { UPDATE_USER, CURRENT_USER, GET_BOOKINGS, GET_INBOX, GET_CONVERSATION } from '../actions/types';
 
-const INITIAL_STATE = { bookings: [], inbox: [], conversation: [] };
+const INITIAL_STATE = { bookings: [], inbox: [], conversation: [], user: [] };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
+    case UPDATE_USER:
+      return { ...state, user: action.payload };
     case CURRENT_USER:
       return { ...state, user: action.payload };
     case GET_BOOKINGS:

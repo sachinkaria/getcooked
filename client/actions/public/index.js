@@ -6,14 +6,13 @@ const API_URL = 'http://localhost:3001';
 
 export function errorHandler(dispatch, error) {
   let errorMessage = null;
-
-  if (error.data) {
+  if (error && error.data) {
     errorMessage = error.data;
   } else {
     errorMessage = error;
   }
 
-  if (error.status === 401) {
+  if (error && error.status === 401) {
     dispatch({
       type: SHOW_ERROR,
       payload: 'Oops you are authenticated. Please login and try again.'

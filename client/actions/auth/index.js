@@ -15,7 +15,7 @@ export function loginUser({ email, password }) {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         dispatch({ type: AUTH_USER });
-        dispatch({type: CURRENT_USER, payload: response.data.user});
+        dispatch({ type: CURRENT_USER, payload: response.data.user });
         hashHistory.push('/chefs');
       })
       .catch((error) => {

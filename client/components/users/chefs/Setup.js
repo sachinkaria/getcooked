@@ -1,30 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
+import { Field, reduxForm } from 'redux-form';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { updateUser } from '../../../actions/users';
+import renderField from '../../forms/renderField';
+import renderTextBox from '../../forms/renderInputBox';
 
 const form = reduxForm({
-  form: 'register',
+  form: 'setup-basics',
   validate
 });
-
-const renderField = field => (
-  <div>
-    <input className="form-control gc-input gc-margin-bottom" placeholder={field.placeholder} {...field.input} />
-    {field.touched && field.error && <div className="error">{field.error}</div>}
-  </div>
-);
 
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.firstName) {
-    errors.displayName = 'Please enter a display name';
+  if (!formProps.displayName) {
+    errors.firstName = 'Please enter a display name';
   }
 
-  if (!formProps.lastName) {
+  if (!formProps.description) {
     errors.lastName = 'Please enter a description';
   }
 
@@ -50,20 +45,18 @@ class BasicInfo extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <Col sm={8} smOffset={2} md={4} mdOffset={4}>
+      <Col sm={8} smOffset={2} md={6} mdOffset={3}>
         <Panel className="gc-panel-light">
           <h4 className="gc-profile-heading-md gc-center">Basic details</h4>
           <br />
           <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <Row>
-              <Col xs={12} sm={6} smOffset={3}>
+              <Col xs={12} sm={10} smOffset={1}>
                 <Field name="displayName" placeholder="Display name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
               </Col>
-            </Row>
-            <Row>
-              <Col xs={12} sm={6} smOffset={3}>
-                <Field name="description" placeholder="Description" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+              <Col xs={12} sm={10} smOffset={1}>
+                <Field value={this.props.user.displayName} name="description" placeholder="Description" className="form-control gc-input gc-margin-bottom" component={renderTextBox} type="text" />
               </Col>
             </Row>
             <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Next</Button>
@@ -77,8 +70,9 @@ class BasicInfo extends Component {
 
 function mapStateToProps(state) {
   return {
-    errorMessage: state.auth.error,
-    message: state.auth.message
+    errorMessage: state.user.error,
+    message: state.user.error,
+    user: state.user
   };
 }
 

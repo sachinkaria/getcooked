@@ -8,7 +8,8 @@ import Inbox from '../components/messages/Inbox';
 import Conversation from '../components/messages/Conversation';
 import Register from '../components/auth/Register';
 import RegisterChef from '../components/auth/chef/Register';
-import BasicSetup from '../components/users/chefs/Setup';
+import BasicSetup from '../components/users/chefs/setup/basics';
+import CategoriesSetup from '../components/users/chefs/setup/categories';
 import Photos from '../components/auth/chef/ProfilePhoto';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
@@ -29,6 +30,7 @@ const routes = (
     <Route path="/logout" component={Logout} />
     <Route path="/setup-basics" component={BasicSetup} />
     <Route path="/setup-photos" component={Photos} />
+    <Route path="/setup-categories" component={CategoriesSetup} />
   </Route>
 );
 

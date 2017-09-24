@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
-import { updateUser } from '../../../actions/users';
-import renderField from '../../forms/renderField';
-import renderTextBox from '../../forms/renderInputBox';
-import ProgressBar from '../../progress-bar';
+import { updateUser } from '../../../../actions/users';
+import renderField from '../../../forms/renderField';
+import renderInputBox from '../../../forms/renderInputBox';
+import ProgressBar from '../../../progress-bar';
 
 const form = reduxForm({
   form: 'setup-basics',
@@ -45,34 +45,26 @@ class BasicInfo extends Component {
   render() {
     const { handleSubmit } = this.props;
 
-    const containerStyle = {
-      height: '50px'
-    };
-
-    const options = {
-      strokeWidth: 2,
-      easing: 'easeInOut',
-      duration: 1400,
-      color: '#ff6851',
-      trailColor: '#eee',
-      trailWidth: 1
-    };
-
     return (
       <Row>
         <Col sm={6} smOffset={3}>
-          <ProgressBar progress={0.1} />
+          <ProgressBar progress={0.2} />
           <Panel className="gc-panel-light">
-            <h4 className="gc-profile-heading--sm gc-center">Basic details</h4>
             <br />
             <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
               {this.renderAlert()}
               <Row>
                 <Col xs={12} sm={10} smOffset={1}>
+                  <Field name="firstName" placeholder="First name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                </Col>
+                <Col xs={12} sm={10} smOffset={1}>
+                  <Field name="lastName" placeholder="Last name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                </Col>
+                <Col xs={12} sm={10} smOffset={1}>
                   <Field name="displayName" placeholder="Display name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
                 </Col>
                 <Col xs={12} sm={10} smOffset={1}>
-                  <Field value={this.props.user.displayName} name="description" placeholder="Description" className="form-control gc-input gc-margin-bottom" component={renderTextBox} type="text" />
+                  <Field name="description" placeholder="Description" className="form-control gc-input gc-margin-bottom" component={renderInputBox} type="text" />
                 </Col>
               </Row>
               <Row>
@@ -81,7 +73,7 @@ class BasicInfo extends Component {
                 </Col>
                 <Col xs={3} xsOffset={1}>
                   <Button bsSize="small" bsStyle="default">
-                    <Link className="gc-link-default" to="/setup-photos">Skip</Link>
+                    <Link className="gc-link-default" to="/setup-categories">Skip</Link>
                   </Button>
                 </Col>
               </Row>

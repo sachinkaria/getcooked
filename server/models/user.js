@@ -36,6 +36,9 @@ const UserSchema = new Schema({
   description: {
     type: String
   },
+  serviceType: [{
+    type: String
+  }],
   resetPasswordToken: {type: String},
   resetPasswordExpires: {type: Date}
 },

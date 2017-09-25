@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Link} from 'react-router';
-import {Field, reduxForm} from 'redux-form';
-import {FormGroup, Checkbox} from 'react-bootstrap';
-import {Col, Panel, Row, Button} from 'react-bootstrap';
-import {updateUser} from '../../../../actions/users';
-import renderField from '../../../forms/renderField';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { Field, reduxForm } from 'redux-form';
+import { Col, Panel, Row, Button }  from 'react-bootstrap';
+import _ from 'lodash';
+
+import { updateUser } from '../../../../actions/users';
 import renderCheckbox from '../../../forms/renderCheckbox';
 import ProgressBar from '../../../progress-bar';
 
@@ -29,12 +29,27 @@ function validate(formProps) {
 }
 
 class BasicInfo extends Component {
-  handleFormSubmit(formProps) {
-    this.props.updateUser(formProps);
+  constructor() {
+    super();
+    this.state = { serviceType: [] };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.handler = this.handler.bind(this);
+  }
+
+  handleFormSubmit() {
+    this.props.updateUser(this.state);
   }
 
   handler(event) {
-    this.setState({ value: event.target.value });
+    if (event.target.checked) {
+      this.setState({
+        serviceType: this.state.serviceType.concat([event.target.name])
+      });
+    } else {
+      this.setState({
+        serviceType: _.remove(this.state.serviceType, (event.target.name))
+      });
+    }
   }
 
   renderAlert() {
@@ -47,33 +62,44 @@ class BasicInfo extends Component {
     }
   }
 
+
   render() {
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <Row>
         <Col sm={6} smOffset={3}>
-          <ProgressBar progress={0.4} />
+          <ProgressBar progress={0.2} />
           <Panel className="gc-panel-light">
             <br />
-            <FormGroup className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+            <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit)}>
               {this.renderAlert()}
               <Row>
                 <Col xs={12} sm={10} smOffset={1}>
-                  <Field placeholder="Professional Caterer" onChange={console.log('hello')} name="Professional Caterer" type="checkbox" component={renderCheckbox}>
-                    <Checkbox onClick={e => this.handler(e.target.checked)}>
-                      Professional Caterer
-                    </Checkbox>
-                  </Field>
-                  <Checkbox onClick={e => this.handler(e.target.checked)}>
-                    Food Truck
-                  </Checkbox>
-                  <Checkbox onClick={e => this.handler(e.target.checked)}>
-                    Private Chef
-                  </Checkbox>
-                  <Checkbox onClick={e => this.handler(e.target.checked)}>
-                    Market Stall
-                  </Checkbox>
+                  <Field
+                    name="professional caterer"
+                    type="checkbox"
+                    component={renderCheckbox}
+                    onChange={e => this.handler(e)}
+                  />
+                  <Field
+                    name="market stall"
+                    type="checkbox"
+                    component={renderCheckbox}
+                    onChange={e => this.handler(e)}
+                  />
+                  <Field
+                    name="private chef"
+                    type="checkbox"
+                    component={renderCheckbox}
+                    onChange={e => this.handler(e)}
+                  />
+                  <Field
+                    name="food truck"
+                    type="checkbox"
+                    component={renderCheckbox}
+                    onChange={e => this.handler(e)}
+                  />
                 </Col>
               </Row>
               <Row>
@@ -82,11 +108,11 @@ class BasicInfo extends Component {
                 </Col>
                 <Col xs={3} xsOffset={1}>
                   <Button bsSize="small" bsStyle="default">
-                    <Link className="gc-link-default" to="/setup-photos">Skip</Link>
+                    <Link className="gc-link-default" to="/setup-categories">Skip</Link>
                   </Button>
                 </Col>
               </Row>
-            </FormGroup>
+            </form>
           </Panel>
         </Col>
       </Row>
@@ -102,4 +128,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {updateUser})(form(BasicInfo));
+export default connect(mapStateToProps, { updateUser })(form(BasicInfo));

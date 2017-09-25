@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { Field, reduxForm } from 'redux-form';
-import { Col, Panel, Row, Button }  from 'react-bootstrap';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-router';
+import {Field, reduxForm} from 'redux-form';
+import {Col, Panel, Row, Button}  from 'react-bootstrap';
 import _ from 'lodash';
 
-import { updateUser } from '../../../../actions/users';
+import {updateUser} from '../../../../actions/users';
 import renderCheckbox from '../../../forms/renderCheckbox';
 import ProgressBar from '../../../progress-bar';
 
@@ -31,7 +31,7 @@ function validate(formProps) {
 class BasicInfo extends Component {
   constructor() {
     super();
-    this.state = { serviceType: [] };
+    this.state = {serviceType: []};
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handler = this.handler.bind(this);
   }
@@ -64,18 +64,18 @@ class BasicInfo extends Component {
 
 
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
 
     return (
       <Row>
         <Col sm={6} smOffset={3}>
-          <ProgressBar progress={0.2} />
+          <ProgressBar progress={0.2}/>
           <Panel className="gc-panel-light">
             <br />
-            <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit)}>
+            <form onSubmit={handleSubmit(this.handleFormSubmit)}>
               {this.renderAlert()}
               <Row>
-                <Col xs={12} sm={10} smOffset={1}>
+                <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
                   <Field
                     name="professional caterer"
                     type="checkbox"
@@ -103,13 +103,22 @@ class BasicInfo extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col xs={4} xsOffset={4}>
+                <Col xs={4}>
+                  <Link className="gc-link-default pull-left" to="/setup-basics">
+                    <Button bsSize="small" bsStyle="default">
+                      Back
+                    </Button>
+                  </Link>
+                </Col>
+                <Col xs={4}>
                   <Button type="submit" bsSize="small" block className="btn gc-btn gc-btn--orange">Next</Button>
                 </Col>
-                <Col xs={3} xsOffset={1}>
-                  <Button bsSize="small" bsStyle="default">
-                    <Link className="gc-link-default" to="/setup-categories">Skip</Link>
-                  </Button>
+                <Col xs={4}>
+                  <Link className="gc-link-default pull-right" to="/setup-categories">
+                    <Button bsSize="small" bsStyle="default">
+                      Skip
+                    </Button>
+                  </Link>
                 </Col>
               </Row>
             </form>
@@ -128,4 +137,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateUser })(form(BasicInfo));
+export default connect(mapStateToProps, {updateUser})(form(BasicInfo));

@@ -9,6 +9,7 @@ import routes from './config/routes';
 import { AUTH_USER } from './actions/types';
 import { getConversations } from './actions/messages';
 import { getBookings } from './actions/bookings';
+import { getCurrentUser } from './actions/users';
 
 require('./styles/main.scss');
 require('./images/logo-icon.png');
@@ -36,6 +37,7 @@ const store = createStoreWithMiddleware(reducers);
 const token = localStorage.token;
 
 if (token) {
+  store.dispatch(getCurrentUser());
   store.dispatch(getConversations());
   store.dispatch(getBookings());
   store.dispatch({ type: AUTH_USER });

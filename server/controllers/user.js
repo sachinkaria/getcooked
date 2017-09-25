@@ -17,8 +17,6 @@ const IMMUTABLE_FIELDS = [
  * Update user details
  */
 exports.update = function (req, res) {
-  console.log(req.body);
-  console.log(req.user);
   // Init Variables
   let user = req.user;
 
@@ -50,6 +48,22 @@ exports.update = function (req, res) {
         message: err
       });
     }
+  }
+  res.jsonp(user);
+};
+
+/**
+ * Update user details
+ */
+exports.getCurrentUser = function (req, res) {
+  // Init Variables
+  let user = req.user;
+
+
+  if (!user) {
+    return res.status(400).send({
+      message: 'User is not signed in'
+    });
   }
   res.jsonp(user);
 };

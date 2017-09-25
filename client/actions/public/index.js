@@ -15,7 +15,7 @@ export function errorHandler(dispatch, error) {
   if (error && error.status === 401) {
     dispatch({
       type: SHOW_ERROR,
-      payload: 'Oops you are authenticated. Please login and try again.'
+      payload: 'Oops there was an error. Please login with your correct credentials and try again.'
     });
     logoutUser();
     setTimeout(() => {

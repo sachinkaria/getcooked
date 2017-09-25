@@ -6,7 +6,7 @@ const AuthenticationController = require('../controllers/authentication'),
 
 // Middleware to require login/auth
 const requireAuth = passport.authenticate('jwt', { session: false });
-  const requireLogin = passport.authenticate('local', { session: false });
+const requireLogin = passport.authenticate('local', { session: false });
 
 
 module.exports = function (app) {
@@ -16,6 +16,9 @@ module.exports = function (app) {
   // Login route
   app.post('/users/login', requireLogin, AuthenticationController.login);
 
-  // Login route
+  // Update route
   app.put('/users', requireAuth, User.update);
+
+  // Update route
+  app.get('/users/me', requireAuth, User.getCurrentUser);
 };

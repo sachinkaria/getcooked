@@ -8,10 +8,9 @@ const API_URL = 'http://localhost:3001';
 
 
 export function loginUser({ email, password }) {
-  return function (dispatch) {
+  return (dispatch) => {
     axios.post(`${API_URL}/users/login`, { email, password })
       .then((response) => {
-      console.log(response);
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         dispatch({ type: AUTH_USER });
@@ -25,7 +24,7 @@ export function loginUser({ email, password }) {
 }
 
 export function registerUser({ email, firstName, lastName, password }) {
-  return function (dispatch) {
+  return (dispatch) => {
     axios.post(`${API_URL}/users/create`, { email, firstName, lastName, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
@@ -40,7 +39,7 @@ export function registerUser({ email, firstName, lastName, password }) {
 }
 
 export function registerChef({ email, firstName, lastName, password, displayName, description }) {
-  return function (dispatch) {
+  return (dispatch) => {
     axios.post(`${API_URL}/chefs/create`, { email, firstName, lastName, password, displayName, description })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
@@ -55,7 +54,7 @@ export function registerChef({ email, firstName, lastName, password, displayName
 }
 
 export function logoutUser() {
-  return function (dispatch) {
+  return (dispatch) => {
     dispatch({ type: UNAUTH_USER });
     delete localStorage.token;
     delete localStorage.user;

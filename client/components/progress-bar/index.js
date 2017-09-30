@@ -8,12 +8,12 @@ const containerStyle = {
 };
 
 const options = {
-  strokeWidth: 1,
+  strokeWidth: 1.2,
   easing: 'easeInOut',
   duration: 1400,
   color: 'rgba(34, 85, 96, 1)',
   trailColor: '#eee',
-  trailWidth: 0.2
+  trailWidth: 1.2
 };
 
 const ProgressBar = props => (

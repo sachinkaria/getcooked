@@ -50,7 +50,9 @@ class BasicInfo extends Component {
     return (
       <div>
         <Row>
-          <ProgressBar containerClassName="gc-progress-bar" progress={0.2}/>
+          <div className="gc-progress-bar">
+            <ProgressBar containerClassName="gc-progress-bar" progress={0.2}/>
+          </div>
           <Col sm={6} smOffset={1}>
             <div>
               <br />

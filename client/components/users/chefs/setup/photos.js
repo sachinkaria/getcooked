@@ -9,10 +9,9 @@ import {SERVICES, EVENTS, TYPES} from '../../../../utils/data';
 import renderCheckbox from '../../../forms/renderCheckbox';
 import ProgressBar from '../../../progress-bar';
 
-const URL = '/setup-photos';
 
 const form = reduxForm({
-  form: 'setup-categories',
+  form: 'setup-photos',
   validate
 });
 
@@ -30,7 +29,7 @@ function validate(formProps) {
   return errors;
 }
 
-class Categories extends Component {
+class Photos extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,7 +44,7 @@ class Categories extends Component {
   }
 
   handleFormSubmit() {
-    this.props.updateUser(this.state, URL);
+    this.props.updateUser(this.state);
   }
 
   handler(event, category) {
@@ -78,12 +77,12 @@ class Categories extends Component {
     return (
       <Row>
         <div className="gc-progress-bar">
-          <ProgressBar progress={0.4} />
+          <ProgressBar progress={0.6} />
         </div>
         <Col sm={6} smOffset={1}>
           <Row>
             <Col sm={6} smOffset={1}>
-              <Link className="gc-link-default pull-left" to="/setup-basics">
+              <Link className="gc-link-default pull-left" to="/setup-categories">
                 <Button className="gc-btn gc-btn--white gc-margin-top" bsSize="small" bsStyle="default">
                   Back
                 </Button>
@@ -96,58 +95,10 @@ class Categories extends Component {
             <Row>
               <Col xs={12} sm={10} smOffset={1}>
                 <Panel>
-                  <p className="gc-form-heading gc-green">Service Type</p>
-                  <Row>
-                    {
-                      TYPES.map(item => (
-                        <Col sm={6} key={item}>
-                          <Field
-                            checked={this.isChecked(item, this.state.serviceType)}
-                            name={item}
-                            type="checkbox"
-                            component={renderCheckbox}
-                            onChange={e => this.handler(e, 'serviceType')}
-                          />
-                        </Col>
-                      ))
-                    }
-                  </Row>
-                </Panel>
-                <Panel>
-                  <p className="gc-form-heading">Services</p>
-                  <Row>
-                    {
-                      SERVICES.map(item => (
-                        <Col sm={6} key={item}>
-                          <Field
-                            checked={this.isChecked(item, this.state.services)}
-                            name={item}
-                            type="checkbox"
-                            component={renderCheckbox}
-                            onChange={e => this.handler(e, 'services')}
-                          />
-                        </Col>
-                      ))
-                    }
-                  </Row>
-                </Panel>
-                <Panel>
-                  <h3 className="gc-form-heading">Events</h3>
-                  <Row>
-                    {
-                      EVENTS.map(item => (
-                        <Col sm={6} key={item}>
-                          <Field
-                            checked={this.isChecked(item, this.state.events)}
-                            name={item}
-                            type="checkbox"
-                            component={renderCheckbox}
-                            onChange={e => this.handler(e, 'events')}
-                          />
-                        </Col>
-                      ))
-                    }
-                  </Row>
+                  <p className="gc-form-heading gc-green">Profile Photo</p>
+                  <Button bsStyle="primary">
+                    Upload photo
+                  </Button>
                 </Panel>
               </Col>
             </Row>
@@ -169,8 +120,8 @@ class Categories extends Component {
         </Col>
         <Col xsHidden={true} sm={4}>
           <Panel className="gc-panel gc-margin-top">
-            <h3 className="gc-profile-heading-sm">Basic Details</h3>
-            <p className="gc-text">Your basic information will give everyone an idea of what type of services you are able to offer. You can select more than one category for all of your services.</p>
+            <h3 className="gc-profile-heading-sm">Photos</h3>
+            <p className="gc-text">Provide a profile and photo as well as photos of events and food.</p>
           </Panel>
         </Col>
       </Row>
@@ -178,7 +129,7 @@ class Categories extends Component {
   }
 }
 
-Categories.propTypes = {
+Photos.propTypes = {
   user: React.PropTypes.object,
   updateUser: React.PropTypes.func,
   errorMessage: React.PropTypes.string
@@ -191,4 +142,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {updateUser})(form(Categories));
+export default connect(mapStateToProps, {updateUser})(form(Photos));

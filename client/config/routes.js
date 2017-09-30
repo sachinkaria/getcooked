@@ -10,7 +10,7 @@ import Register from '../components/auth/Register';
 import RegisterChef from '../components/auth/chef/Register';
 import BasicSetup from '../components/users/chefs/setup/basics';
 import CategoriesSetup from '../components/users/chefs/setup/categories';
-import Photos from '../components/auth/chef/ProfilePhoto';
+import PhotosSetup from '../components/users/chefs/setup/photos';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Home from '../components/Home';
@@ -29,7 +29,7 @@ const routes = (
     <Route path="/login" component={Login} />
     <Route path="/logout" component={Logout} />
     <Route path="/setup-basics" component={BasicSetup} />
-    <Route path="/setup-photos" component={Photos} />
+    <Route path="/setup-photos" component={PhotosSetup} />
     <Route path="/setup-categories" component={CategoriesSetup} />
   </Route>
 );

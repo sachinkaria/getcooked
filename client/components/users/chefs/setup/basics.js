@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {Field, reduxForm} from 'redux-form';
-import {Col, Panel, Row, Button} from 'react-bootstrap';
+import {Col, Panel, Row, Button, Jumbotron} from 'react-bootstrap';
 import {updateUser} from '../../../../actions/users';
 import renderField from '../../../forms/renderField';
 import renderInputBox from '../../../forms/renderInputBox';
@@ -45,98 +45,113 @@ class BasicInfo extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
 
     return (
-      <Row>
-        <Col sm={6} smOffset={3}>
-          <ProgressBar progress={0.2}/>
-          <Panel className="gc-panel-light">
-            <br />
-            <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-              {this.renderAlert()}
-              <Row>
-                <Col xs={12} sm={10} smOffset={1}>
-                  <Field
-                    name="firstName"
-                    placeholder="First name"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderField}
-                    type="text"
-                  />
-                </Col>
-                <Col xs={12} sm={10} smOffset={1}>
-                  <Field
-                    name="lastName"
-                    placeholder="Last name"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderField}
-                    type="text"
-                  />
-                </Col>
-                <Col xs={12} sm={10} smOffset={1}>
-                  <Field
-                    name="email"
-                    placeholder="Email"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderField}
-                    type="text"
-                  />
-                </Col>
-                <Col xs={12} sm={10} smOffset={1}>
-                  <Field
-                    name="mobileNumber"
-                    placeholder="Mobile number"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderField}
-                    type="number"
-                  />
-                </Col>
-                <Col xs={12} sm={10} smOffset={1}>
-                  <Field
-                    name="displayName"
-                    placeholder="Display name"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderField}
-                    type="text"
-                  />
-                </Col>
-                <Col xs={12} sm={10} smOffset={1}>
-                  <Field
-                    name="description"
-                    placeholder="Description"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderInputBox}
-                    type="text"
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={4} xsOffset={4}>
-                  <Button type="submit" bsSize="small" block className="btn gc-btn gc-btn--orange">Next</Button>
-                </Col>
-                <Col xs={4}>
-                  <Link className="gc-link-default pull-right" to="/setup-categories">
-                    <Button bsSize="small" bsStyle="default">
-                      Skip
-                    </Button>
-                  </Link>
-                </Col>
-              </Row>
-            </form>
-          </Panel>
-        </Col>
-      </Row>
+      <div>
+        <Row>
+          <ProgressBar containerClassName="gc-progress-bar" progress={0.2}/>
+          <Col sm={6} smOffset={1}>
+            <div>
+              <br />
+              <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                {this.renderAlert()}
+                <Row>
+                  <Col xs={12} sm={10} smOffset={1}>
+                    <Field
+                      name="firstName"
+                      placeholder="First name"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="text"
+                    />
+                  </Col>
+                  <Col sm={10} smOffset={1}>
+                    <Field
+                      name="lastName"
+                      placeholder="Last name"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="text"
+                    />
+                  </Col>
+                  <Col sm={10} smOffset={1}>
+                    <Field
+                      name="email"
+                      placeholder="Email"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="text"
+                    />
+                  </Col>
+                  <Col sm={10} smOffset={1}>
+                    <Field
+                      name="mobileNumber"
+                      placeholder="Mobile number"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="number"
+                    />
+                  </Col>
+                  <Col sm={10} smOffset={1}>
+                    <Field
+                      name="displayName"
+                      placeholder="Display name"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="text"
+                    />
+                  </Col>
+                  <Col sm={10} smOffset={1}>
+                    <Field
+                      name="description"
+                      placeholder="Description"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderInputBox}
+                      type="text"
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
+                    <Button type="submit" bsSize="small" block className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">Next</Button>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
+                    <Link className="gc-link-default" to="/setup-categories">
+                      <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
+                        Skip
+                      </Button>
+                    </Link>
+                  </Col>
+                </Row>
+              </form>
+            </div>
+          </Col>
+          <Col xsHidden={true} sm={4}>
+            <Panel className="gc-panel gc-margin-top">
+              <h3 className="gc-profile-heading-sm">Personal Details</h3>
+              <p className="gc-text">These are you personal details and won't be linked to you profile. They will only be used for authentication and to contact you via email and phone.
+                They will never be published on your profile.</p>
+            </Panel>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }
 
+BasicInfo.propTypes = {
+  updateUser: React.PropTypes.func,
+  errorMessage: React.PropTypes.string
+};
+
 function mapStateToProps(state) {
   return {
     errorMessage: state.user.error,
-    message: state.user.error,
     initialValues: state.user.data
   };
 }
 
-export default connect(mapStateToProps, { updateUser })(form(BasicInfo));
+export default connect(mapStateToProps, {updateUser})(form(BasicInfo));

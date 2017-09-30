@@ -1,14 +1,22 @@
-.gc-panel-light {
+.gc-panel--light {
   background-color: $lightest-grey;
 }
 
-.gc-panel-blue{
+.gc-panel--blue{
   background-color: $blue;
+}
+
+.gc-panel--white {
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .gc-panel-message {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 8px;
+}
+
+cgc-slide--grey {
+  background-color: $grey;
 }
 

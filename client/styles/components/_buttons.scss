@@ -1,12 +1,21 @@
 .gc-btn {
-
   border: none;
+  height: 42px;
+  font-size: 16px;
 
   &:focus {
     outline: none;
     &:active {
       outline: none;
     }
+  }
+
+  &.gc-btn--white {
+    background-color: white;
+    border: 2px solid $green;
+    color: $green;
+    font-weight: 700;
+
   }
 
   &.gc-btn--orange {

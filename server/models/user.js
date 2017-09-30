@@ -1,8 +1,8 @@
 'use strict';
 
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
-let bcrypt = require('bcrypt-nodejs');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt-nodejs');
 
 
 const UserSchema = new Schema({
@@ -40,6 +40,12 @@ const UserSchema = new Schema({
     type: String
   },
   serviceType: [{
+    type: String
+  }],
+  services: [{
+    type: String
+  }],
+  events: [{
     type: String
   }],
   resetPasswordToken: {type: String},

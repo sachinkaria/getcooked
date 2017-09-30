@@ -5,15 +5,15 @@
 }
 
 .gc-input {
-  height: 40px;
+  height: 42px;
   display: block;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   font-family: $primary-font;
   font-size: 12pt;
-  color: black;
+  color: $grey;
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 6px;
+  border-radius: 2px;
   border: 1px solid $light-grey;
   border-image: initial;
   -webkit-box-shadow: none !important;
@@ -47,6 +47,7 @@
 
   &:focus {
     outline: none;
+    border-color: $green;
   }
 }
 
@@ -102,4 +103,11 @@ input[type=checkbox] {
   &:focus {
     outline: none;
   }
+}
+
+.gc-form-heading {
+  font-family: $secondary-font;
+  font-size: 18px;
+  color: $green;
+  margin-top: 0;
 }

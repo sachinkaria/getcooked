@@ -45,7 +45,7 @@ class BasicInfo extends Component {
   }
 
   render() {
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <Row>

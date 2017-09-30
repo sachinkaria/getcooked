@@ -75,3 +75,31 @@
   display: table;
   width: 100%;
 }
+
+input[type=checkbox] {
+  cursor: pointer;
+  position: relative;
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  vertical-align: bottom;
+  border-radius: 2px;
+  border: 1px solid $light-grey;
+
+  &:checked:before {
+    content: '';
+    background: $primary-colour;
+    position: absolute;
+    font-size: 1.4rem;
+    text-align: center;
+    top: 1px;
+    bottom: 1px;
+    right: 1px;
+    left: 1px;
+    border-radius: 1px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

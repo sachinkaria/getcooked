@@ -12,7 +12,7 @@ function imageUploader(options, callback) {
     port: 10001,
     secure: true,
     style: 'path',
-    region: 'eu'
+    region: 'eu-west-1'
   });
 
   uploadImage(options, callback);
@@ -28,8 +28,6 @@ function imageUploader(options, callback) {
       'Content-Type': FILE_TYPE,
       'x-amz-acl': 'public-read'
     };
-
-    console.log(FILE_NAME, header);
 
     const req = s3Client.put('/images/'.concat(FILE_NAME), header);
 

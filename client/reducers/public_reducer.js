@@ -1,6 +1,6 @@
 import { LIST_CHEFS, GET_CHEF } from '../actions/types';
 
-const INITIAL_STATE = { chefs: [], chef: [] };
+const INITIAL_STATE = { chefs: [], chef: {} };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {

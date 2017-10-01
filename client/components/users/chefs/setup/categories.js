@@ -78,9 +78,9 @@ class Categories extends Component {
     return (
       <Row>
         <div className="gc-progress-bar">
-          <ProgressBar progress={0.4} />
+          <ProgressBar progress={0.4}/>
         </div>
-        <Col sm={6} smOffset={1}>
+        <Col sm={5} smOffset={1} md={4} mdOffset={2}>
           <Row>
             <Col sm={6} smOffset={1}>
               <Link className="gc-link-default pull-left" to="/setup-basics">
@@ -94,7 +94,7 @@ class Categories extends Component {
           <form onSubmit={handleSubmit(this.handleFormSubmit)}>
             {this.renderAlert()}
             <Row>
-              <Col xs={12} sm={10} smOffset={1}>
+              <Col xs={12} sm={11} smOffset={1}>
                 <Panel>
                   <p className="gc-form-heading gc-green">Service Type</p>
                   <Row>
@@ -152,26 +152,41 @@ class Categories extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                <Button type="submit" bsSize="small" block className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">Next</Button>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                <Link className="gc-link-default" to="/setup-photos">
-                  <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
-                    Skip
-                  </Button>
-                </Link>
+              <Col xs={11} xsOffset={1}>
+                <Row>
+                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
+                    <Button
+                      type="submit"
+                      bsSize="small"
+                      block
+                      className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">
+                      Next
+                    </Button>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
+                    <Link className="gc-link-default" to="/setup-photos">
+                      <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
+                        Skip
+                      </Button>
+                    </Link>
+                  </Col>
+                </Row>
               </Col>
             </Row>
           </form>
         </Col>
-        <Col xsHidden={true} sm={4}>
-          <Panel className="gc-panel gc-margin-top">
-            <h3 className="gc-profile-heading-sm">Basic Details</h3>
-            <p className="gc-text">Your basic information will give everyone an idea of what type of services you are able to offer. You can select more than one category for all of your services.</p>
-          </Panel>
+        <Col xsHidden={true} sm={5} md={4}>
+          <Row>
+            <Col sm={11}>
+              <Panel className="gc-panel gc-margin-top">
+                <h3 className="gc-profile-heading-sm">Basic Details</h3>
+                <p className="gc-text">Your basic information will give everyone an idea of what type of services you
+                  are able to offer. You can select more than one category for all of your services.</p>
+              </Panel>
+            </Col>
+          </Row>
         </Col>
       </Row>
     );

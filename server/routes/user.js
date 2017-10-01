@@ -18,6 +18,7 @@ module.exports = function (app) {
 
   // Update route
   app.put('/users', requireAuth, User.update);
+  app.post('/users/upload-photo', requireAuth, User.uploadProfilePhoto);
 
   // Update route
   app.get('/users/me', requireAuth, User.getCurrentUser);

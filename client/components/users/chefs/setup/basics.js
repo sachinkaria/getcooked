@@ -53,13 +53,13 @@ class BasicInfo extends Component {
           <div className="gc-progress-bar">
             <ProgressBar containerClassName="gc-progress-bar" progress={0.2}/>
           </div>
-          <Col sm={6} smOffset={1}>
+          <Col sm={5} smOffset={1} md={4} mdOffset={2}>
             <div>
               <br />
               <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 {this.renderAlert()}
                 <Row>
-                  <Col xs={12} sm={10} smOffset={1}>
+                  <Col sm={11} smOffset={1}>
                     <Field
                       name="firstName"
                       placeholder="First name"
@@ -68,7 +68,7 @@ class BasicInfo extends Component {
                       type="text"
                     />
                   </Col>
-                  <Col sm={10} smOffset={1}>
+                  <Col sm={11} smOffset={1}>
                     <Field
                       name="lastName"
                       placeholder="Last name"
@@ -77,7 +77,7 @@ class BasicInfo extends Component {
                       type="text"
                     />
                   </Col>
-                  <Col sm={10} smOffset={1}>
+                  <Col sm={11} smOffset={1}>
                     <Field
                       name="email"
                       placeholder="Email"
@@ -86,7 +86,7 @@ class BasicInfo extends Component {
                       type="text"
                     />
                   </Col>
-                  <Col sm={10} smOffset={1}>
+                  <Col sm={11} smOffset={1}>
                     <Field
                       name="mobileNumber"
                       placeholder="Mobile number"
@@ -95,7 +95,7 @@ class BasicInfo extends Component {
                       type="number"
                     />
                   </Col>
-                  <Col sm={10} smOffset={1}>
+                  <Col sm={11} smOffset={1}>
                     <Field
                       name="displayName"
                       placeholder="Display name"
@@ -104,7 +104,7 @@ class BasicInfo extends Component {
                       type="text"
                     />
                   </Col>
-                  <Col sm={10} smOffset={1}>
+                  <Col sm={11} smOffset={1}>
                     <Field
                       name="description"
                       placeholder="Description"
@@ -115,28 +115,38 @@ class BasicInfo extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                    <Button type="submit" bsSize="small" block className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">Next</Button>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                    <Link className="gc-link-default" to="/setup-categories">
-                      <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
-                        Skip
-                      </Button>
-                    </Link>
+                  <Col xs={11} xsOffset={1}>
+                    <Row>
+                      <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
+                        <Button type="submit" bsSize="small" block
+                                className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">Next</Button>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
+                        <Link className="gc-link-default" to="/setup-categories">
+                          <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
+                            Skip
+                          </Button>
+                        </Link>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </form>
             </div>
           </Col>
-          <Col xsHidden={true} sm={4}>
-            <Panel className="gc-panel gc-margin-top">
-              <h3 className="gc-profile-heading-sm">Personal Details</h3>
-              <p className="gc-text">These are you personal details and won't be linked to you profile. They will only be used for authentication and to contact you via email and phone.
-                They will never be published on your profile.</p>
-            </Panel>
+          <Col xsHidden={true} sm={5} md={4}>
+            <Row>
+              <Col sm={11}>
+                <Panel className="gc-panel gc-margin-top">
+                  <h3 className="gc-profile-heading-sm">Personal Details</h3>
+                  <p className="gc-text">These are you personal details and won't be linked to you profile. They will
+                    only be used for authentication and to contact you via email and phone.
+                    They will never be published on your profile.</p>
+                </Panel>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </div>

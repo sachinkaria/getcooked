@@ -1,4 +1,3 @@
-
 'use strict';
 
 /**
@@ -7,11 +6,15 @@
 const _ = require('lodash');
 const mongoose = require('mongoose');
 
+const utils = require('./utils');
+
 const IMMUTABLE_FIELDS = [
   '_id',
   'roles',
   'messages'
 ];
+
+module.exports.uploadProfilePhoto = uploadProfilePhoto;
 
 /**
  * Update user details
@@ -53,11 +56,11 @@ exports.update = function (req, res) {
 };
 
 /**
- * Update user details
+ * Get current user details
  */
 exports.getCurrentUser = function (req, res) {
   // Init Variables
-  let user = req.user;
+  const user = req.user;
 
 
   if (!user) {
@@ -66,4 +69,17 @@ exports.getCurrentUser = function (req, res) {
     });
   }
   res.jsonp(user);
+};
+
+/**
+ * Upload profile picture
+ */
+function uploadProfilePhoto(req, res) {
+  const image = utils.imageUploader({
+    data_uri: req.body.data_uri,
+    filename: req.body.filename,
+    filetype: req.body.filetype
+  }, (error, response) => {
+    console.log(response);
+  });
 };

@@ -64,4 +64,8 @@
 
 .gc-link-default {
   color: $grey;
+
+  &:hover {
+    text-decoration: none;
+  }
 }

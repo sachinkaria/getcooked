@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GET_BOOKINGS, AUTH_ERROR } from '../types';
 const errorHandler = require('../public').errorHandler;
 
-const API_URL = 'http://localhost:3001';
+const API_URL = 'http://localhost:3000';
 const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 
 export function getBookings() {

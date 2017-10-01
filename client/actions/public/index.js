@@ -2,7 +2,7 @@ import axios from 'axios';
 import { LIST_CHEFS, GET_CHEF, SHOW_ERROR, HIDE_ERROR } from '../types';
 import { logoutUser } from '../auth';
 
-const API_URL = 'http://localhost:3001';
+const API_URL = 'http://localhost:3000';
 
 export function errorHandler(dispatch, error) {
   let errorMessage = null;

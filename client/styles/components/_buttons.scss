@@ -82,24 +82,28 @@
 }
 .custom-file-input::before {
   content: 'Upload Image';
-  color: black;
+  color: $green;
   display: inline-block;
   border-radius: 7px;
-  padding: 50px 50px;
+  padding: 80px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
   text-shadow: 1px 1px #fff;
-  font-weight: 100;
-  font-size: 10pt;
+  font-weight: 700;
+  font-size: 16px;
   background-color: white;
+  width: 100%;
+  text-align: center;
 }
 .custom-file-input:hover::before {
   border-color: black;
 }
 .custom-file-input:active {
   outline: 0;
+  border: 2px solid $green;
+  background: transparent;
 }
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);

@@ -4,7 +4,7 @@ import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, CURRENT_USER } from '../types';
 import { errorHandler } from '../public';
 // const errorHandler = require('../public').errorHandler;
 
-const API_URL = 'http://localhost:3001';
+const API_URL = 'http://localhost:3000';
 
 
 export function loginUser({ email, password }) {

@@ -7,5 +7,5 @@ module.exports = {
     // Database connection information
     'database': 'mongodb://localhost/get-cooked',
     // Server port
-    'port': 3001
+    'port': 3000
 };

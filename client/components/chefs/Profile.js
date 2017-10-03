@@ -1,9 +1,8 @@
 import React from 'react';
-import {Col, Panel, Thumbnail, Button, Row} from 'react-bootstrap';
-import {Link} from 'react-router';
-import {connect} from 'react-redux';
+import { Col, Panel, Thumbnail, Button, Row } from 'react-bootstrap';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import LightBox from '../../containers/LightBox';
-import Rating from '../Rating';
 import ContactForm from '../../containers/ContactForm';
 import BookingForm from '../../containers/BookingForm';
 import * as actions from '../../actions/public';
@@ -30,22 +29,24 @@ class Profile extends React.Component {
               <Col md={8}>
                 <p className="gc-center gc-profile-heading-md gc-margin-bottom gc-green">{user.displayName}</p>
                 <div className="text-center">
-                  { user.serviceType.map((item) =>
-                    <p className="text-capitalize gc-text">
-                      {item}
-                    </p>
+                  { user.serviceType.map(item =>
+                    (
+                      <p className="text-capitalize gc-text">
+                        {item}
+                      </p>
+                    )
                   )}
                 </div>
                 <div className="gc-margin-bottom gc-margin-top--lg">
-                  <ul className="gc-tags">
-                    { user.services.map((item) =>
-                      <li>
+                  <div className="gc-tags">
+                    { user.services.map(item =>
+                      (
                         <p className="gc-tag">
                           {item}
                         </p>
-                      </li>
+                      )
                     )}
-                  </ul>
+                  </div>
                 </div>
                 <Col>
                   <p className="gc-text">{user.description}</p>
@@ -88,7 +89,7 @@ class Profile extends React.Component {
           </Col>
           <Col sm={3} md={2} xsHidden>
             <Panel className="gc-center">
-              <BookingForm id={user.id}/>
+              <BookingForm id={user.id} />
               <hr />
               <ContactForm chefId={this.props.params.id}/>
               <Button className="gc-btn gc-btn--white gc-margin-top gc-margin-bottom" block>Favourite</Button>

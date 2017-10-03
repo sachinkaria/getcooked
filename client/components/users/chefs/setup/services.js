@@ -5,11 +5,11 @@ import {Field, reduxForm} from 'redux-form';
 import {Col, Panel, Row, Button} from 'react-bootstrap';
 import _ from 'lodash';
 import {updateUser} from '../../../../actions/users';
-import {SERVICES, EVENTS, TYPES} from '../../../../utils/data';
+import { EVENTS, TYPES } from '../../../../utils/data';
 import renderCheckbox from '../../../forms/renderCheckbox';
 import ProgressBar from '../../../progress-bar';
 
-const URL = '/setup-photos';
+const URL = '/setup-food';
 
 const form = reduxForm({
   form: 'setup-categories',
@@ -36,7 +36,8 @@ class Categories extends Component {
     this.state = {
       serviceType: props.user.data.serviceType || [],
       services: props.user.data.services || [],
-      events: props.user.data.events || []
+      events: props.user.data.events || [],
+      cuisines: props.user.data.cuisines || []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -80,7 +81,7 @@ class Categories extends Component {
         <div className="gc-progress-bar">
           <ProgressBar progress={0.4}/>
         </div>
-        <Col sm={5} smOffset={1} md={4} mdOffset={2}>
+        <Col xs={10} xsOffset={1} sm={6} smOffset={1} md={5} mdOffset={2}>
           <Row>
             <Col sm={6} smOffset={1}>
               <Link className="gc-link-default pull-left" to="/setup-basics">
@@ -117,28 +118,10 @@ class Categories extends Component {
                   <p className="gc-form-heading">Services</p>
                   <Row>
                     {
-                      SERVICES.map(item => (
-                        <Col sm={6} key={item}>
-                          <Field
-                            checked={this.isChecked(item, this.state.services)}
-                            name={item}
-                            type="checkbox"
-                            component={renderCheckbox}
-                            onChange={e => this.handler(e, 'services')}
-                          />
-                        </Col>
-                      ))
-                    }
-                  </Row>
-                </Panel>
-                <Panel>
-                  <h3 className="gc-form-heading">Events</h3>
-                  <Row>
-                    {
                       EVENTS.map(item => (
                         <Col sm={6} key={item}>
                           <Field
-                            checked={this.isChecked(item, this.state.events)}
+                            checked={this.isChecked(item, this.state.services)}
                             name={item}
                             type="checkbox"
                             component={renderCheckbox}
@@ -154,7 +137,7 @@ class Categories extends Component {
             <Row>
               <Col xs={11} xsOffset={1}>
                 <Row>
-                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
+                  <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
                     <Button
                       type="submit"
                       bsSize="small"
@@ -165,8 +148,8 @@ class Categories extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                    <Link className="gc-link-default" to="/setup-photos">
+                  <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
+                    <Link className="gc-link-default" to="/setup-food">
                       <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
                         Skip
                       </Button>
@@ -177,11 +160,11 @@ class Categories extends Component {
             </Row>
           </form>
         </Col>
-        <Col xsHidden={true} sm={5} md={4}>
+        <Col xsHidden={true} sm={4} md={3}>
           <Row>
             <Col sm={11}>
               <Panel className="gc-panel gc-margin-top">
-                <h3 className="gc-profile-heading-sm">Basic Details</h3>
+                <h3 className="gc-profile-heading-sm">Services</h3>
                 <p className="gc-text">Your basic information will give everyone an idea of what type of services you
                   are able to offer. You can select more than one category for all of your services.</p>
               </Panel>

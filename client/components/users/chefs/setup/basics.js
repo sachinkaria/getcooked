@@ -8,7 +8,7 @@ import renderField from '../../../forms/renderField';
 import renderInputBox from '../../../forms/renderInputBox';
 import ProgressBar from '../../../progress-bar';
 
-const URL = '/setup-categories';
+const URL = '/setup-services';
 
 const form = reduxForm({
   form: 'setup-basics',
@@ -53,7 +53,7 @@ class BasicInfo extends Component {
           <div className="gc-progress-bar">
             <ProgressBar containerClassName="gc-progress-bar" progress={0.2}/>
           </div>
-          <Col sm={5} smOffset={1} md={4} mdOffset={2}>
+          <Col sm={6} smOffset={1} md={5} mdOffset={2}>
             <div>
               <br />
               <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
@@ -118,13 +118,18 @@ class BasicInfo extends Component {
                   <Col xs={11} xsOffset={1}>
                     <Row>
                       <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                        <Button type="submit" bsSize="small" block
-                                className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">Next</Button>
+                        <Button
+                          type="submit"
+                          bsSize="small"
+                          block
+                          className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">
+                          Next
+                        </Button>
                       </Col>
                     </Row>
                     <Row>
                       <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                        <Link className="gc-link-default" to="/setup-categories">
+                        <Link className="gc-link-default" to="/setup-services">
                           <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
                             Skip
                           </Button>
@@ -136,7 +141,7 @@ class BasicInfo extends Component {
               </form>
             </div>
           </Col>
-          <Col xsHidden={true} sm={5} md={4}>
+          <Col xsHidden={true} sm={4} md={3}>
             <Row>
               <Col sm={11}>
                 <Panel className="gc-panel gc-margin-top">

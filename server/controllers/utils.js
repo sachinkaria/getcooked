@@ -1,7 +1,6 @@
 const knox = require('knox');
 
 function imageUploader(options, callback) {
-
   const buffer = new Buffer(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
 
   const s3Client = knox.createClient({
@@ -12,7 +11,7 @@ function imageUploader(options, callback) {
     port: 10001,
     secure: true,
     style: 'path',
-    region: 'eu-west-1'
+    region: 'eu'
   });
 
   uploadImage(options, callback);
@@ -29,10 +28,11 @@ function imageUploader(options, callback) {
       'x-amz-acl': 'public-read'
     };
 
+    console.log(FILE_NAME, header);
+
     const req = s3Client.put('/images/'.concat(FILE_NAME), header);
 
     req.on('response', (res) => {
-      console.log(res.statusCode);
       if (res.statusCode === 200) {
         console.log('Image saved on S3 to %s', req.url);
         callback(null, req.url);

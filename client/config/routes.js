@@ -9,7 +9,8 @@ import Conversation from '../components/messages/Conversation';
 import Register from '../components/auth/Register';
 import RegisterChef from '../components/auth/chef/Register';
 import BasicSetup from '../components/users/chefs/setup/basics';
-import CategoriesSetup from '../components/users/chefs/setup/categories';
+import FoodSetup from '../components/users/chefs/setup/food';
+import ServicesSetup from '../components/users/chefs/setup/services';
 import PhotosSetup from '../components/users/chefs/setup/photos';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
@@ -30,7 +31,8 @@ const routes = (
     <Route path="/logout" component={Logout} />
     <Route path="/setup-basics" component={BasicSetup} />
     <Route path="/setup-photos" component={PhotosSetup} />
-    <Route path="/setup-categories" component={CategoriesSetup} />
+    <Route path="/setup-services" component={ServicesSetup} />
+    <Route path="/setup-food" component={FoodSetup} />
   </Route>
 );
 

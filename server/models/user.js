@@ -48,6 +48,9 @@ const UserSchema = new Schema({
   events: [{
     type: String
   }],
+  cuisines: [{
+    type: String
+  }],
   resetPasswordToken: {type: String},
   resetPasswordExpires: {type: Date}
 },

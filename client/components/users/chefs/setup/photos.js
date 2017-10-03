@@ -82,12 +82,12 @@ class Photos extends Component {
     return (
       <Row>
         <div className="gc-progress-bar">
-          <ProgressBar progress={0.6} />
+          <ProgressBar progress={0.8} />
         </div>
-        <Col sm={4} smOffset={2}>
+        <Col sm={5} smOffset={2}>
           <Row>
             <Col sm={6} smOffset={1}>
-              <Link className="gc-link-default pull-left" to="/setup-categories">
+              <Link className="gc-link-default pull-left" to="/setup-food">
                 <Button className="gc-btn gc-btn--white gc-margin-top" bsSize="small" bsStyle="default">
                   Back
                 </Button>
@@ -132,7 +132,7 @@ class Photos extends Component {
             </Row>
           </form>
         </Col>
-        <Col xsHidden={true} sm={4}>
+        <Col xsHidden={true} sm={3}>
           <Row>
             <Col sm={11}>
               <Panel className="gc-panel gc-margin-top">

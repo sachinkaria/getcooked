@@ -111,7 +111,8 @@ const data = [
 ];
 
 export const TYPES = ['professional caterer', 'market stall', 'private chef', 'food truck', 'bakery'];
-export const SERVICES = ['canapes', 'desserts', 'buffets', 'vegetarian', 'vegan', 'halal', 'kosher', 'nut free', 'gluten free', 'alcoholic drinks', 'non-alcoholic drinks'];
+export const FOOD_SERVICES = ['canapes', 'desserts', 'buffets', 'vegetarian', 'vegan', 'halal', 'kosher', 'nut free', 'gluten free', 'alcoholic drinks', 'non-alcoholic drinks'];
 export const EVENTS = ['corporate events', 'weddings', 'private dinners', 'parties'];
+export const CUISINES = ['american', 'chinese', 'french', 'greek', 'indian', 'italian', 'japanese', 'mediterranean', 'mexican', 'moroccan', 'spanish', 'thai', 'turkish', 'vietnamese', 'other'];
 
 export default data;

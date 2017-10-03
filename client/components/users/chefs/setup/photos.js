@@ -109,7 +109,7 @@ class Photos extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs={11} xsOffset={1}>
+              <Col sm={11} smOffset={1}>
                 <Row>
                   <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
                     <Button

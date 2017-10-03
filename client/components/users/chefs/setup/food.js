@@ -34,9 +34,7 @@ class Services extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      serviceType: props.user.data.serviceType || [],
       services: props.user.data.services || [],
-      events: props.user.data.events || [],
       cuisines: props.user.data.cuisines || []
     };
 
@@ -135,7 +133,7 @@ class Services extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs={11} xsOffset={1}>
+              <Col sm={11} smOffset={1}>
                 <Row>
                   <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
                     <Button

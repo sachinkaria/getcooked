@@ -35,9 +35,7 @@ class Categories extends Component {
     super(props);
     this.state = {
       serviceType: props.user.data.serviceType || [],
-      services: props.user.data.services || [],
-      events: props.user.data.events || [],
-      cuisines: props.user.data.cuisines || []
+      events: props.user.data.events || []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -79,7 +77,7 @@ class Categories extends Component {
     return (
       <Row>
         <div className="gc-progress-bar">
-          <ProgressBar progress={0.4}/>
+          <ProgressBar progress={0.4} />
         </div>
         <Col xs={10} xsOffset={1} sm={6} smOffset={1} md={5} mdOffset={2}>
           <Row>
@@ -121,7 +119,7 @@ class Categories extends Component {
                       EVENTS.map(item => (
                         <Col sm={6} key={item}>
                           <Field
-                            checked={this.isChecked(item, this.state.services)}
+                            checked={this.isChecked(item, this.state.events)}
                             name={item}
                             type="checkbox"
                             component={renderCheckbox}
@@ -135,7 +133,7 @@ class Categories extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs={11} xsOffset={1}>
+              <Col sm={11} smOffset={1}>
                 <Row>
                   <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
                     <Button

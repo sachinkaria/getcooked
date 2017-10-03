@@ -51,9 +51,9 @@ class BasicInfo extends Component {
       <div>
         <Row>
           <div className="gc-progress-bar">
-            <ProgressBar containerClassName="gc-progress-bar" progress={0.2}/>
+            <ProgressBar containerClassName="gc-progress-bar" progress={0.2} />
           </div>
-          <Col sm={6} smOffset={1} md={5} mdOffset={2}>
+          <Col xs={10} xsOffset={1} sm={6} smOffset={1} md={5} mdOffset={2}>
             <div>
               <br />
               <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
@@ -115,7 +115,7 @@ class BasicInfo extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Col xs={11} xsOffset={1}>
+                  <Col sm={11} smOffset={1}>
                     <Row>
                       <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
                         <Button

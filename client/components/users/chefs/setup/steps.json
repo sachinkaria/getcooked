@@ -1,0 +1,30 @@
+{
+  "basics": {
+    "number": 1,
+    "name": "personal details",
+    "description": "These are you personal details used only to communication with you.",
+    "onNext": "/setup-services"
+  },
+  "services": {
+    "number": 2,
+    "name": "services offered",
+    "description": "These are you personal details used only to communication with you.",
+    "onNext": "/setup-food",
+    "onBack": "/setup-basics"
+  },
+  "food": {
+    "number": 3,
+    "name": "food services",
+    "description": "These are you personal details used only to communication with you.",
+    "onNext": "/setup-photos",
+    "onBack": "/setup-services"
+  },
+  "photos": {
+    "number": 4,
+    "name": "photos",
+    "description": "These are you personal details used only to communication with you.",
+    "onNext": "/setup-photos",
+    "onBack": "/setup-food"
+  },
+  "totalSteps": 4
+}

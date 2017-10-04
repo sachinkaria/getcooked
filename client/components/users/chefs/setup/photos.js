@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import {reduxForm} from 'redux-form';
-import {Col, Panel, Row, Button} from 'react-bootstrap';
-import _ from 'lodash';
+import {Col, Panel, Row} from 'react-bootstrap';
 import ImageUpload from '../../../image-upload';
 import {uploadPhoto} from '../../../../actions/users';
-import ProgressBar from '../../../progress-bar';
-
+import Wizard from '../../../wizard';
+import Steps from './steps.json';
 
 const form = reduxForm({
   form: 'setup-photos',
@@ -76,73 +74,36 @@ class Photos extends Component {
   }
 
   render() {
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
+    const progress = (Steps.photos.number / (Steps.totalSteps + 1));
+    const sideBarHeading = Steps.photos.name;
+    const sideBarText = Steps.photos.description;
+    const onBack = Steps.photos.onBack;
+
+
     let uploaded;
 
     return (
-      <Row>
-        <div className="gc-progress-bar">
-          <ProgressBar progress={0.8} />
-        </div>
-        <Col sm={5} smOffset={2}>
-          <Row>
-            <Col sm={6} smOffset={1}>
-              <Link className="gc-link-default pull-left" to="/setup-food">
-                <Button className="gc-btn gc-btn--white gc-margin-top" bsSize="small" bsStyle="default">
-                  Back
-                </Button>
-              </Link>
-            </Col>
-          </Row>
-          <br />
-          <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-            {this.renderAlert()}
-            <Row>
-              {uploaded}
-              <Col xs={12} sm={11} smOffset={1}>
-                <Panel className="gc-panel-light">
-                  <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-                    {this.renderAlert()}
-                    <ImageUpload onUpload={this.onFileUpload}/>
-                  </form>
-                </Panel>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm={11} smOffset={1}>
-                <Row>
-                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                    <Button
-                      type="submit"
-                      bsSize="small"
-                      block
-                      className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">Next</Button>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs={6} xsOffset={3} md={4} mdOffset={4}>
-                    <Link className="gc-link-default" to="/setup-photos">
-                      <Button className="gc-btn gc-btn--white" block bsStyle="default">
-                        Skip
-                      </Button>
-                    </Link>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </form>
-        </Col>
-        <Col xsHidden={true} sm={3}>
-          <Row>
-            <Col sm={11}>
-              <Panel className="gc-panel gc-margin-top">
-                <h3 className="gc-profile-heading-sm">Photos</h3>
-                <p className="gc-text">Provide a profile and photo as well as photos of events and food.</p>
-              </Panel>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      <Wizard
+        onSubmit={handleSubmit(this.handleFormSubmit)}
+        progress={progress}
+        sideBarHeading={sideBarHeading}
+        sideBarText={sideBarText}
+        onBack={onBack}
+        errorMessage={this.props.errorMessage}
+      >
+        <Row>
+          {uploaded}
+          <Col xs={12} sm={11} smOffset={1}>
+            <Panel className="gc-panel-light">
+              <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                {this.renderAlert()}
+                <ImageUpload onUpload={this.onFileUpload}/>
+              </form>
+            </Panel>
+          </Col>
+        </Row>
+      </Wizard>
     );
   }
 }

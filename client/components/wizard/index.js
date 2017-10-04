@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { Col, Panel, Row, Button } from 'react-bootstrap';
+import {Link} from 'react-router';
+import {Col, Panel, Row, Button} from 'react-bootstrap';
 import ProgressBar from '../progress-bar';
 
 function Wizard(props) {
@@ -11,16 +11,17 @@ function Wizard(props) {
         <ProgressBar progress={props.progress}/>
       </div>
       <Col xs={10} xsOffset={1} sm={6} smOffset={1} md={5} mdOffset={2}>
+        { props.onBack &&
         <Row>
           <Col sm={6} smOffset={1}>
             <Link className="gc-link-default pull-left" to={props.onBack}>
-              <Button className="gc-btn gc-btn--white gc-margin-top" bsSize="small" bsStyle="default">
+              <Button className="gc-btn gc-btn--white gc-margin-bottom" bsSize="small" bsStyle="default">
                 Back
               </Button>
             </Link>
           </Col>
         </Row>
-        <br />
+        }
         <form onSubmit={props.onSubmit}>
           {children}
           <Row>
@@ -53,8 +54,8 @@ function Wizard(props) {
       <Col xsHidden sm={4} md={3}>
         <Row>
           <Col sm={11}>
-            <Panel className="gc-panel gc-margin-top">
-              <h3 className="gc-profile-heading-sm">{props.sideBarHeading}</h3>
+            <Panel className="gc-panel">
+              <h3 className="gc-profile-heading-sm text-capitalize">{props.sideBarHeading}</h3>
               <p className="gc-text">{props.sideBarText}</p>
             </Panel>
           </Col>

@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 import {Field, reduxForm} from 'redux-form';
-import {Col, Panel, Row, Button} from 'react-bootstrap';
+import {Col, Panel, Row } from 'react-bootstrap';
 import _ from 'lodash';
 import {updateUser} from '../../../../actions/users';
 import {FOOD_SERVICES, CUISINES} from '../../../../utils/data';
 import renderCheckbox from '../../../forms/renderCheckbox';
-import ProgressBar from '../../../progress-bar';
 import Wizard from '../../../wizard';
+import Steps from './steps.json';
 
 const URL = '/setup-photos';
 
@@ -64,11 +63,11 @@ class Services extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    const progress = 0.6;
-    const sideBarHeading = 'services';
-    const sideBarText = 'Your basic information will give everyone an idea of what type of services you are able to offer. You can select more than one category for all of your services.';
-    const onBack = '/setup-services';
-    const onSkip = '/setup-photos';
+    const progress = (Steps.food.number / (Steps.totalSteps + 1));
+    const sideBarHeading = Steps.food.name;
+    const sideBarText = Steps.food.description;
+    const onSkip = Steps.food.onNext;
+    const onBack = Steps.food.onBack;
 
     return (
       <Wizard

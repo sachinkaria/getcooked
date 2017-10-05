@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
-import {Col, Row } from 'react-bootstrap';
-import {updateUser} from '../../../../actions/users';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { Col, Row } from 'react-bootstrap';
+import { updateUser } from '../../../../actions/users';
 import renderField from '../../../forms/renderField';
 import renderInputBox from '../../../forms/renderInputBox';
 import Wizard from '../../../wizard';
@@ -128,4 +128,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {updateUser})(form(BasicInfo));
+export default connect(mapStateToProps, { updateUser })(form(BasicInfo));

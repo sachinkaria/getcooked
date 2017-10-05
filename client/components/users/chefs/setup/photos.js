@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {reduxForm} from 'redux-form';
-import {Col, Panel, Row} from 'react-bootstrap';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
+import { Col, Panel, Row } from 'react-bootstrap';
 import ImageUpload from '../../../image-upload';
-import {uploadPhoto} from '../../../../actions/users';
+import { uploadPhoto } from '../../../../actions/users';
 import Wizard from '../../../wizard';
 import Steps from './steps.json';
 
@@ -79,8 +79,6 @@ class Photos extends Component {
     const sideBarHeading = Steps.photos.name;
     const sideBarText = Steps.photos.description;
     const onBack = Steps.photos.onBack;
-
-
     let uploaded;
 
     return (
@@ -98,7 +96,7 @@ class Photos extends Component {
             <Panel className="gc-panel-light">
               <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 {this.renderAlert()}
-                <ImageUpload onUpload={this.onFileUpload}/>
+                <ImageUpload onUpload={this.onFileUpload} />
               </form>
             </Panel>
           </Col>
@@ -121,4 +119,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {uploadPhoto})(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto })(form(Photos));

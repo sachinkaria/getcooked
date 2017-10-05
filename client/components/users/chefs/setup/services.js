@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Field, reduxForm} from 'redux-form';
-import {Col, Panel, Row } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+import { Col, Panel, Row } from 'react-bootstrap';
 import _ from 'lodash';
-import {updateUser} from '../../../../actions/users';
+import { updateUser } from '../../../../actions/users';
 import { EVENTS, TYPES } from '../../../../utils/data';
 import renderCheckbox from '../../../forms/renderCheckbox';
 import Wizard from '../../../wizard';
@@ -137,4 +137,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {updateUser})(form(Categories));
+export default connect(mapStateToProps, { updateUser })(form(Categories));

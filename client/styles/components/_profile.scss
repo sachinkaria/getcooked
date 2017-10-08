@@ -158,7 +158,7 @@
   @include breakpoint(laptop) {
     @include aspect-ratio(16,5);
   }
-  background-color: blue;
+  background-color: $lightest-grey;
 }
 
 .gc-profile-body {

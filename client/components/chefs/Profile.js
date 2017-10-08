@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Panel, Thumbnail, Button, Row, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Col, Panel, Thumbnail, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { connect} from 'react-redux';
 import Phone from 'react-icons/lib/fa/phone'
@@ -36,19 +36,21 @@ class Profile extends React.Component {
           </Row>
           <Row>
             <div className="gc-profile-body">
-              <Col sm={9} md={8} mdOffset={1}>
+              <Col sm={9} md={7} mdOffset={1}>
                 <Panel className="gc-panel--translucent">
-                  <Col sm={4} className="gc-padding-none">
-                    <Thumbnail onClick={null} src={user.profilePhoto}/>
+                  <Col sm={3} className="gc-padding-none">
+                    <Thumbnail onClick={null} src={user.profilePhoto} />
                   </Col>
-                  <Col md={8}>
-                    <p className="gc-center gc-profile-heading-md gc-margin-bottom">{user.displayName}</p>
+                  <Col md={9}>
+                    <p className="gc-center gc-profile-heading-md gc-margin-bottom gc-green">{user.displayName}</p>
                     <div className="text-center">
-                      { user.serviceType.map((item, i) =>
+                      { user.serviceType.map(item =>
                         (
-                          <p key={i} className="text-capitalize gc-text">
-                            {item}
-                          </p>
+                          <div className="gc-inline-block">
+                            <p key={item} className="text-capitalize gc-text gc-bold">
+                              {item}
+                            </p>
+                          </div>
                         )
                       )}
                     </div>
@@ -64,7 +66,7 @@ class Profile extends React.Component {
                       </div>
                     </div>
                     <Col>
-                      <p className="gc-text">{user.description}</p>
+                      <p className="gc-text gc-grey">{user.description}</p>
                     </Col>
                   </Col>
                   {imagesCount > 0 && (
@@ -102,19 +104,19 @@ class Profile extends React.Component {
                   {/* </Col> */}
                 </Panel>
               </Col>
-              <Col sm={3} md={2} xsHidden>
+              <Col sm={3} xsHidden>
                 <Panel className="gc-panel--translucent">
                   <p className="gc-profile-heading-md gc-margin-bottom">Contact</p>
                   <div>
-                    <p>
-                      <a href={user.companyWebsite} className="gc-text">{user.companyWebsite}</a>
-                    </p>
-                    <p>
-                      <p className="gc-text">{user.companyEmail}</p>
-                    </p>
-                    <p>
-                      <p className="gc-text">{user.companyPhoneNumber}</p>
-                    </p>
+                    <div className="gc-margin-bottom">
+                      <Globe className="gc-icon gc-list-item gc-grey" /><a href={user.companyWebsite} className="gc-text gc-list-item gc-grey">{user.companyWebsite}</a>
+                    </div>
+                    <div className="gc-margin-bottom">
+                      <Email className="gc-icon gc-list-item gc-grey" /><p className="gc-text gc-list-item gc-grey">{user.companyEmail}</p>
+                    </div>
+                    <div className="gc-margin-bottom">
+                      <Phone className="gc-icon gc-list-item gc-grey" /><p className="gc-text gc-list-item gc-grey">{user.companyPhoneNumber}</p>
+                    </div>
                   </div>
                   {/*<BookingForm id={user.id} />*/}
                   {/*<hr />*/}

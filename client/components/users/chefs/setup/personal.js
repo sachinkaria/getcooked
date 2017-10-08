@@ -9,19 +9,19 @@ import Wizard from '../../../wizard';
 import Steps from './steps.json';
 
 const form = reduxForm({
-  form: 'setup-basics',
+  form: 'setup-personal',
   validate
 });
 
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.displayName) {
-    errors.firstName = 'Please enter a display name';
+  if (!formProps.firstName) {
+    errors.firstName = 'Please enter your first name';
   }
 
-  if (!formProps.description) {
-    errors.lastName = 'Please enter a description';
+  if (!formProps.lastName) {
+    errors.lastName = 'Please enter your last name';
   }
 
   return errors;

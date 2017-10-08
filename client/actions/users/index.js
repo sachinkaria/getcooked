@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
-import { UPDATE_USER, UPLOAD_PHOTO } from '../types';
+import { CURRENT_USER, UPDATE_USER, UPLOAD_PHOTO } from '../types';
 import { errorHandler } from '../public';
 // const errorHandler = require('../public').errorHandler;
 
@@ -39,7 +39,7 @@ export function getCurrentUser() {
   return function (dispatch) {
     axios.get(`${API_URL}/users/me`, AUTH_HEADERS)
       .then((response) => {
-        dispatch({ type: UPDATE_USER, payload: response.data });
+        dispatch({ type: CURRENT_USER, payload: response.data });
       })
       .catch((error) => {
         errorHandler(dispatch, error.response);

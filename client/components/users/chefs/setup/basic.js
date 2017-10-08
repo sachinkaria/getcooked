@@ -11,7 +11,7 @@ import Steps from './steps.json';
 const URL = '/setup-services';
 
 const form = reduxForm({
-  form: 'setup-basics',
+  form: 'setup-basic',
   validate
 });
 
@@ -19,11 +19,11 @@ function validate(formProps) {
   const errors = {};
 
   if (!formProps.displayName) {
-    errors.firstName = 'Please enter a display name';
+    errors.displayName = 'Please enter a display name';
   }
 
   if (!formProps.description) {
-    errors.lastName = 'Please enter a description';
+    errors.description = 'Please enter a description';
   }
 
   return errors;
@@ -60,6 +60,15 @@ class BasicInfo extends Component {
         <Row>
           <Col sm={11} smOffset={1}>
             <Field
+              name="displayName"
+              placeholder="Profile name"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="text"
+            />
+          </Col>
+          <Col sm={11} smOffset={1}>
+            <Field
               name="companyWebsite"
               placeholder="Company website (not required)"
               className="form-control gc-input gc-margin-bottom"
@@ -83,15 +92,6 @@ class BasicInfo extends Component {
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
               type="number"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="displayName"
-              placeholder="Profile name"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="text"
             />
           </Col>
           <Col sm={11} smOffset={1}>

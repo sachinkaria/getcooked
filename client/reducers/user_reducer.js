@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { UPLOAD_PHOTO, UPDATE_USER, CURRENT_USER, GET_BOOKINGS, GET_INBOX, GET_CONVERSATION } from '../actions/types';
 
 const INITIAL_STATE = { bookings: [], inbox: [], conversation: [], data: {} };

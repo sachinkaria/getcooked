@@ -17,24 +17,27 @@
 }
 
 .gc-profile-heading-sm {
-  font-family: $primary-font;
-  font-size: 14pt;
+  font-family: $secondary-font;
+  font-weight: 700;
+  font-size: 16pt;
   color: $dark-grey;
   margin-top: 10px;
 }
 
-.gc-profile-heading-lg {
-  font-family: $primary-font;
-  font-size: 24pt;
-  color: $dark-grey;
-}
-
 .gc-profile-heading-md {
-  font-family: $primary-font;
+  font-family: $secondary-font;
+  font-weight: 700;
   font-size: 20pt;
   color: $dark-grey;
-
 }
+
+.gc-profile-heading-lg {
+  font-family: $secondary-font;
+  font-size: 26pt;
+  font-weight: 700;
+  color: $dark-grey;
+}
+
 
 .gc-profile-wrapper{
   height:56vw;

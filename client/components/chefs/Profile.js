@@ -38,7 +38,7 @@ class Profile extends React.Component {
             <div className="gc-profile-body">
               <Col sm={9} md={7} mdOffset={1}>
                 <Panel className="gc-panel--translucent">
-                  <Col sm={3} className="gc-padding-none">
+                  <Col xs={8} xsOffset={2} sm={3} smOffset={0} className="gc-padding-none gc-profile-photo">
                     <Thumbnail onClick={null} src={user.profilePhoto} />
                   </Col>
                   <Col md={9}>

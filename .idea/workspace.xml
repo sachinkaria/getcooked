@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/images/cover-photo.jpg" afterPath="$PROJECT_DIR$/client/images/cover-photo.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/Profile.js" afterPath="$PROJECT_DIR$/client/components/chefs/Profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/base/_helpers.scss" afterPath="$PROJECT_DIR$/client/styles/base/_helpers.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/base/_typography.scss" afterPath="$PROJECT_DIR$/client/styles/base/_typography.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/base/_mixins.scss" afterPath="$PROJECT_DIR$/client/styles/base/_mixins.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_profile.scss" afterPath="$PROJECT_DIR$/client/styles/components/_profile.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -39,9 +36,11 @@
       <file leaf-file-name="Profile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/chefs/Profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-630">
-              <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-              <folding />
+            <state relative-caret-position="206">
+              <caret line="42" column="71" lean-forward="true" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_mixins.scss" pinned="false" current-in-tab="false">
+      <file leaf-file-name="_mixins.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/styles/base/_mixins.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+            <state relative-caret-position="240">
+              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -86,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_profile.scss" pinned="false" current-in-tab="true">
+      <file leaf-file-name="_profile.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/styles/components/_profile.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="112" column="20" lean-forward="false" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
+            <state relative-caret-position="362">
+              <caret line="173" column="22" lean-forward="true" selection-start-line="173" selection-start-column="22" selection-end-line="173" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -225,13 +224,13 @@
         <option value="$PROJECT_DIR$/client/styles/utilities/_variables.scss" />
         <option value="$PROJECT_DIR$/server/models/user.js" />
         <option value="$PROJECT_DIR$/client/index.js" />
-        <option value="$PROJECT_DIR$/client/styles/base/_mixins.scss" />
         <option value="$PROJECT_DIR$/client/styles/components/_panel.scss" />
         <option value="$PROJECT_DIR$/client/styles/components/_icons.scss" />
         <option value="$PROJECT_DIR$/client/styles/base/_typography.scss" />
         <option value="$PROJECT_DIR$/client/styles/base/_helpers.scss" />
-        <option value="$PROJECT_DIR$/client/components/chefs/Profile.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_profile.scss" />
+        <option value="$PROJECT_DIR$/client/components/chefs/Profile.js" />
+        <option value="$PROJECT_DIR$/client/styles/base/_mixins.scss" />
       </list>
     </option>
   </component>
@@ -554,12 +553,12 @@
       <workItem from="1507022910837" duration="238000" />
       <workItem from="1507046892394" duration="6905000" />
       <workItem from="1507191579099" duration="226000" />
-      <workItem from="1507411832339" duration="16943000" />
+      <workItem from="1507411832339" duration="17697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="447919000" />
+    <option name="totallyTimeSpent" value="448673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="951" extended-state="6" />
@@ -990,14 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/base/_mixins.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/styles/components/_panel.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1022,18 +1013,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/Profile.js">
+    <entry file="file://$PROJECT_DIR$/client/styles/components/_profile.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-630">
-          <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        <state relative-caret-position="362">
+          <caret line="173" column="22" lean-forward="true" selection-start-line="173" selection-start-column="22" selection-end-line="173" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/components/_profile.scss">
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="112" column="20" lean-forward="false" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
+        <state relative-caret-position="206">
+          <caret line="42" column="71" lean-forward="true" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/base/_mixins.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding />
         </state>
       </provider>

@@ -10,7 +10,7 @@ function Wizard(props) {
       <div className="gc-progress-bar">
         <ProgressBar progress={props.progress}/>
       </div>
-      <Col xs={10} xsOffset={1} sm={6} smOffset={1} md={5} mdOffset={2}>
+      <Col xs={10} xsOffset={1} sm={6} smOffset={1}>
         { props.onBack &&
         <Row>
           <Col sm={6} smOffset={1}>
@@ -51,7 +51,7 @@ function Wizard(props) {
           </Row>
         </form>
       </Col>
-      <Col xsHidden sm={4} md={3}>
+      <Col xsHidden sm={4}>
         <Row>
           <Col sm={11}>
             <Panel className="gc-panel">

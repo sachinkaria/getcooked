@@ -8,8 +8,6 @@ import renderInputBox from '../../../forms/renderInputBox';
 import Wizard from '../../../wizard';
 import Steps from './steps.json';
 
-const URL = '/setup-services';
-
 const form = reduxForm({
   form: 'setup-basics',
   validate
@@ -36,15 +34,15 @@ class BasicInfo extends Component {
   }
 
   handleFormSubmit(formProps) {
-    this.props.updateUser(formProps, URL);
+    this.props.updateUser(formProps, Steps.personal.onNext);
   }
 
   render() {
     const { handleSubmit } = this.props;
-    const progress = (Steps.basics.number / (Steps.totalSteps + 1));
-    const sideBarHeading = Steps.basics.name;
-    const sideBarText = Steps.basics.description;
-    const onSkip = Steps.basics.onNext;
+    const progress = (Steps.personal.number / (Steps.totalSteps + 1));
+    const sideBarHeading = Steps.personal.name;
+    const sideBarText = Steps.personal.description;
+    const onSkip = Steps.personal.onNext;
 
     return (
       <Wizard
@@ -90,24 +88,6 @@ class BasicInfo extends Component {
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
               type="number"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="displayName"
-              placeholder="Display name"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="text"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="description"
-              placeholder="Description"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderInputBox}
-              type="text"
             />
           </Col>
         </Row>

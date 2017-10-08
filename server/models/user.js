@@ -33,6 +33,15 @@ const UserSchema = new Schema({
   profilePhoto: {
     type: String
   },
+  companyEmail: {
+    type: String
+  },
+  companyWebsite: {
+    type: String
+  },
+  companyPhoneNumber: {
+    type: Number
+  },
   displayName: {
     type: String
   },

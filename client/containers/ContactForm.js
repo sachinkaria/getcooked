@@ -59,7 +59,7 @@ class ContactForm extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <ButtonToolbar>
+      <div>
         <Button className="gc-btn gc-btn--white" block onClick={this.showModal}>
           Contact
         </Button>
@@ -92,7 +92,7 @@ class ContactForm extends React.Component {
           </Col>
           <Modal.Footer />
         </Modal>
-      </ButtonToolbar>
+      </div>
     );
   }
 }

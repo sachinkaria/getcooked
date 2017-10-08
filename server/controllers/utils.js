@@ -1,7 +1,7 @@
 const knox = require('knox');
 
 function imageUploader(options, callback) {
-  const buffer = new Buffer(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+  const buffer = Buffer.from(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
 
   const s3Client = knox.createClient({
     key: 'key',
@@ -27,8 +27,6 @@ function imageUploader(options, callback) {
       'Content-Type': FILE_TYPE,
       'x-amz-acl': 'public-read'
     };
-
-    console.log(FILE_NAME, header);
 
     const req = s3Client.put('/images/'.concat(FILE_NAME), header);
 

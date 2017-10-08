@@ -29,9 +29,9 @@ class Profile extends React.Component {
               <Col md={8}>
                 <p className="gc-center gc-profile-heading-md gc-margin-bottom gc-green">{user.displayName}</p>
                 <div className="text-center">
-                  { user.serviceType.map(item =>
+                  { user.serviceType.map((item, i) =>
                     (
-                      <p className="text-capitalize gc-text">
+                      <p key={i} className="text-capitalize gc-text">
                         {item}
                       </p>
                     )

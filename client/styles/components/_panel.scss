@@ -16,7 +16,11 @@
   border-radius: 8px;
 }
 
-cgc-slide--grey {
+.gc-slide--grey {
   background-color: $grey;
+}
+
+.gc-panel--translucent {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 

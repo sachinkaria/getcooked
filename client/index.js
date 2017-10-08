@@ -17,6 +17,7 @@ require('./images/1.jpg');
 require('./images/2.jpg');
 require('./images/3.jpg');
 require('./images/4.jpg');
+require('./images/cover-photo.jpg');
 require('./images/chef.svg');
 require('./images/barbecue.svg');
 require('./images/vegan.svg');

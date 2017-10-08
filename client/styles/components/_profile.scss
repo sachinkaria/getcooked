@@ -148,4 +148,23 @@
   }
 }
 
+.gc-profile-cover {
+  @include aspect-ratio(16,9);
+
+  @include breakpoint(tablet) {
+    @include aspect-ratio(16,7);
+  }
+
+  @include breakpoint(laptop) {
+    @include aspect-ratio(16,5);
+  }
+  background-color: blue;
+}
+
+.gc-profile-body {
+  margin-top: -60px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
 

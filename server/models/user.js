@@ -33,6 +33,9 @@ const UserSchema = new Schema({
   profilePhoto: {
     type: String
   },
+  coverPhoto: {
+    type: String
+  },
   companyEmail: {
     type: String
   },

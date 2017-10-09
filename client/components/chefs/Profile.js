@@ -1,13 +1,11 @@
 import React from 'react';
 import { Col, Panel, Thumbnail, Row } from 'react-bootstrap';
-import { Link } from 'react-router';
 import { connect} from 'react-redux';
-import Phone from 'react-icons/lib/fa/phone'
-import Email from 'react-icons/lib/fa/envelope-o'
-import Globe from 'react-icons/lib/fa/globe'
 import LightBox from '../../containers/LightBox';
-import ContactForm from '../../containers/ContactForm';
-import BookingForm from '../../containers/BookingForm';
+import ContactDetails from './ContactDetails';
+import Heading from './Heading';
+import Services from './Services';
+import ServiceTypes from './ServiceTypes';
 import * as actions from '../../actions/public';
 
 
@@ -27,6 +25,7 @@ class Profile extends React.Component {
 
       // let endorsements = _.sortBy(user.endorsements, 'number').reverse();
       const imagesCount = user.images && user.images.length;
+      const websiteUrl = user.companyWebsite && user.companyWebsite.substring(0, 4) === 'http' ? user.companyWebsite : 'http://' + user.companyWebsite;
       return (
         <div>
           <Row>
@@ -42,28 +41,10 @@ class Profile extends React.Component {
                     <Thumbnail onClick={null} src={user.profilePhoto} />
                   </Col>
                   <Col md={9}>
-                    <p className="gc-center gc-profile-heading-md gc-margin-bottom gc-green">{user.displayName}</p>
-                    <div className="text-center">
-                      { user.serviceType.map(item =>
-                        (
-                          <div className="gc-inline-block">
-                            <p key={item} className="text-capitalize gc-text gc-bold">
-                              {item}
-                            </p>
-                          </div>
-                        )
-                      )}
-                    </div>
+                    <Heading text={user.displayName} />
+                    <ServiceTypes serviceTypes={user.serviceType} />
                     <div className="gc-margin-bottom gc-margin-top--lg">
-                      <div className="gc-tags">
-                        { user.services.map(item =>
-                          (
-                            <p className="gc-tag">
-                              {item}
-                            </p>
-                          )
-                        )}
-                      </div>
+                      <Services services={user.services} />
                     </div>
                     <Col>
                       <p className="gc-text gc-grey">{user.description}</p>
@@ -106,23 +87,8 @@ class Profile extends React.Component {
               </Col>
               <Col sm={3} xsHidden>
                 <Panel className="gc-panel--translucent">
-                  <p className="gc-profile-heading-md gc-margin-bottom">Contact</p>
-                  <div>
-                    <div className="gc-margin-bottom">
-                      <Globe className="gc-icon gc-list-item gc-grey" /><a href={user.companyWebsite} className="gc-text gc-list-item gc-grey">{user.companyWebsite}</a>
-                    </div>
-                    <div className="gc-margin-bottom">
-                      <Email className="gc-icon gc-list-item gc-grey" /><p className="gc-text gc-list-item gc-grey">{user.companyEmail}</p>
-                    </div>
-                    <div className="gc-margin-bottom">
-                      <Phone className="gc-icon gc-list-item gc-grey" /><p className="gc-text gc-list-item gc-grey">{user.companyPhoneNumber}</p>
-                    </div>
-                  </div>
-                  {/*<BookingForm id={user.id} />*/}
-                  {/*<hr />*/}
-                  {/*<ContactForm chefId={this.props.params.id}/>*/}
-                  {/*<Button className="gc-btn gc-btn--white gc-margin-top gc-margin-bottom" block>Favourite</Button>*/}
-                  {/*<Link>Share</Link>*/}
+                  <Heading text="Contact" textAlign="left" />
+                  <ContactDetails website={websiteUrl} email={user.companyEmail} phone={user.companyPhoneNumber} />
                 </Panel>
               </Col>
             </div>

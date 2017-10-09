@@ -13,7 +13,7 @@ const NavigationBar = (props) => {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/" className="gc-padding-none">
-                <img alt="Get Cooked" className="gc-logo-default" href="#" src="images/logo-icon.png" />
+                <img alt="Get Cooked" className="gc-logo-default" src="images/logo-icon.png" />
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />

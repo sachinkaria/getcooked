@@ -12,6 +12,7 @@
   "author": "Sachin Karia",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.130.0",
     "axios": "^0.15.3",
     "babel-eslint": "^7.2.3",
     "body-parser": "^1.17.1",
@@ -26,7 +27,9 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.2.0",
     "express": "^4.15.2",
+    "file-system": "^2.2.2",
     "foreman": "^2.0.0",
+    "jimp": "^0.2.28",
     "jsonwebtoken": "^7.4.0",
     "knox": "^0.9.2",
     "lodash": "^4.17.4",

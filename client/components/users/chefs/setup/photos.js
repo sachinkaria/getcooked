@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { Col, Panel, Row } from 'react-bootstrap';
+import { Col, Panel, Row, Thumbnail } from 'react-bootstrap';
 import ImageUpload from '../../../image-upload';
 import { uploadPhoto } from '../../../../actions/users';
 import Wizard from '../../../wizard';
@@ -91,12 +91,11 @@ class Photos extends Component {
         errorMessage={this.props.errorMessage}
       >
         <Row>
-          {uploaded}
           <Col xs={12} sm={11} smOffset={1}>
             <Panel className="gc-panel-light">
               <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
                 {this.renderAlert()}
-                <ImageUpload onUpload={this.onFileUpload} />
+                <ImageUpload image={this.props.user.data.profilePhoto} onUpload={this.onFileUpload} />
               </form>
             </Panel>
           </Col>

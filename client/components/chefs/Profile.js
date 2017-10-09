@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Panel, Thumbnail, Row } from 'react-bootstrap';
-import { connect} from 'react-redux';
+import { connect } from 'react-redux';
 import LightBox from '../../containers/LightBox';
 import ContactDetails from './ContactDetails';
 import Heading from './Heading';
@@ -30,7 +30,7 @@ class Profile extends React.Component {
         <div>
           <Row>
             <Col md={10} mdOffset={1}>
-              <div style={coverStyle} className="gc-profile-cover"></div>
+              <div style={coverStyle} className="gc-profile-cover" />
             </Col>
           </Row>
           <Row>
@@ -45,6 +45,9 @@ class Profile extends React.Component {
                     <ServiceTypes serviceTypes={user.serviceType} />
                     <div className="gc-margin-bottom gc-margin-top--lg">
                       <Services services={user.services} />
+                    </div>
+                    <div className="gc-margin-bottom gc-margin-top--lg">
+                      <Services services={user.cuisines} />
                     </div>
                     <Col>
                       <p className="gc-text gc-grey">{user.description}</p>
@@ -116,7 +119,7 @@ class Profile extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {chef: state.public.chef};
+  return { chef: state.public.chef };
 }
 
 export default connect(mapStateToProps, actions)(Profile);

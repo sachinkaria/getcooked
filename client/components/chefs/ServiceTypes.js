@@ -5,8 +5,8 @@ const ServiceTypes = (props) => {
     <div className="text-center">
       { props.serviceTypes.map(item =>
         (
-          <div className="gc-inline-block">
-            <p key={item} className="text-capitalize gc-text gc-bold">
+          <div key={item} className="gc-inline-block">
+            <p className="text-capitalize gc-text gc-bold">
               {item}
             </p>
           </div>

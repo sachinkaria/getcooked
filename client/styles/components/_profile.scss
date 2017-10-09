@@ -22,6 +22,10 @@
   font-size: 16pt;
   color: $dark-grey;
   margin-top: 10px;
+
+  &--green {
+    color: $green;
+  }
 }
 
 .gc-profile-heading-md {

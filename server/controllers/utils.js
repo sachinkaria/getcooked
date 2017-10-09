@@ -1,7 +1,9 @@
 const knox = require('knox');
+const jimp = require('jimp');
+const AWS = require('aws-sdk');
 
-function imageUploader(options, callback) {
-  const buffer = Buffer.from(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+function imageUploader(options) {
+  const buffer = new Buffer(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
 
   const s3Client = knox.createClient({
     key: 'key',
@@ -9,18 +11,29 @@ function imageUploader(options, callback) {
     bucket: 'getcooked',
     endpoint: 'localhost',
     port: 10001,
-    secure: true,
+    secure: false,
     style: 'path',
     region: 'eu'
   });
 
-  uploadImage(options, callback);
+  jimp.read(buffer, onOpen);
+
+  function onOpen(err, Img) {
+    if (err) {
+      console.log('opening image error', err);
+    }
+
+    const jimpImg = Img.getBuffer(jimp.MIME_JPEG, uploadImage.bind((err, res) => {
+      console.log(res);
+      console.log(err);
+    }));
+  }
 
   // put to a path in our bucket, and make readable by the public
-  function uploadImage(data, callback) {
-    const FILE_LENGTH = buffer.length;
-    const FILE_NAME = data.filename;
-    const FILE_TYPE = data.filetype;
+  function uploadImage(callback, img) {
+    const FILE_LENGTH = img.length;
+    const FILE_NAME = options.filename;
+    const FILE_TYPE = options.filetype;
 
     const header = {
       'Content-Length': FILE_LENGTH,
@@ -33,14 +46,14 @@ function imageUploader(options, callback) {
     req.on('response', (res) => {
       if (res.statusCode === 200) {
         console.log('Image saved on S3 to %s', req.url);
-        callback(null, req.url);
+        // callback(null, req.url);
       }
     });
     req.on('error', (error) => {
       console.log('Problem saving image to S3:', error.message);
-      callback(error);
+      // callback(error);
     });
-    req.end(FILE_NAME);
+    req.end(img);
   }
 }
 

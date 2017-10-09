@@ -55,7 +55,7 @@ function Wizard(props) {
         <Row>
           <Col sm={11}>
             <Panel className="gc-panel">
-              <h3 className="gc-profile-heading-sm text-capitalize">{props.sideBarHeading}</h3>
+              <h3 className="gc-profile-heading-sm gc-profile-heading-sm--green text-capitalize">{props.sideBarHeading}</h3>
               <p className="gc-text">{props.sideBarText}</p>
             </Panel>
           </Col>

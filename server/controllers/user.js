@@ -79,7 +79,5 @@ function uploadProfilePhoto(req, res) {
     data_uri: req.body.data_uri,
     filename: req.body.filename,
     filetype: req.body.filetype
-  }, (error, response) => {
-    console.log(response);
   });
 };

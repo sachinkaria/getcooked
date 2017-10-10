@@ -4,7 +4,6 @@
  * Module dependencies.
  */
 const _ = require('lodash');
-const mongoose = require('mongoose');
 
 const utils = require('./utils');
 
@@ -52,6 +51,7 @@ exports.update = function (req, res) {
       });
     }
   }
+
   res.jsonp(user);
 };
 
@@ -75,9 +75,19 @@ exports.getCurrentUser = function (req, res) {
  * Upload profile picture
  */
 function uploadProfilePhoto(req, res) {
-  const image = utils.imageUploader({
+  utils.imageUploader({
     data_uri: req.body.data_uri,
     filename: req.body.filename,
     filetype: req.body.filetype
+  }, (error, response) => {
+    if (error) {
+      console.log(error);
+    }
+
+    let user = req.user;
+    user = _.extend(user, { profilePhoto: response });
+
+    user.save();
+    res.jsonp(user);
   });
 };

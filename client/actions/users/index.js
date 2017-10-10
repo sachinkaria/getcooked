@@ -21,17 +21,16 @@ export function updateUser(user, url) {
 }
 
 export function uploadPhoto(file) {
-  return function(dispatch) {
+  return function (dispatch) {
     axios.post(`${API_URL}/users/upload-photo`, file, AUTH_HEADERS)
       .then((response) => {
-        dispatch({ type: UPLOAD_PHOTO, payload: response.data });
-        console.log(response.data);
+        dispatch({ type: UPDATE_USER, payload: response.data });
         // hashHistory.push(url);
       })
       .catch((error) => {
         errorHandler(dispatch, error.response);
       });
-  }
+  };
 }
 
 

@@ -14,6 +14,7 @@ const IMMUTABLE_FIELDS = [
 ];
 
 module.exports.uploadProfilePhoto = uploadProfilePhoto;
+module.exports.uploadCoverPhoto = uploadCoverPhoto;
 
 /**
  * Update user details
@@ -86,6 +87,27 @@ function uploadProfilePhoto(req, res) {
 
     let user = req.user;
     user = _.extend(user, { profilePhoto: response });
+
+    user.save();
+    res.jsonp(user);
+  });
+};
+
+/**
+ * Upload profile picture
+ */
+function uploadCoverPhoto(req, res) {
+  utils.imageUploader({
+    data_uri: req.body.data_uri,
+    filename: req.body.filename,
+    filetype: req.body.filetype
+  }, (error, response) => {
+    if (error) {
+      console.log(error);
+    }
+
+    let user = req.user;
+    user = _.extend(user, { coverPhoto: response });
 
     user.save();
     res.jsonp(user);

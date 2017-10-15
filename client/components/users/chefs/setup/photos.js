@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
-import { Col, Panel, Row, Thumbnail } from 'react-bootstrap';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {reduxForm} from 'redux-form';
+import {Col, Panel, Row, Thumbnail} from 'react-bootstrap';
 import ImageUpload from '../../../image-upload';
-import { uploadPhoto } from '../../../../actions/users';
+import {uploadPhoto} from '../../../../actions/users';
 import Wizard from '../../../wizard';
 import Steps from './steps.json';
 
@@ -37,10 +37,11 @@ class Photos extends Component {
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.isChecked = this.isChecked.bind(this);
-    this.onFileUpload = this.onFileUpload.bind(this);
+    this.onProfileUpload = this.onProfileUpload.bind(this);
+    this.onCoverUpload = this.onCoverUpload.bind(this);
   }
 
-  onFileUpload(e) {
+  onProfileUpload(e) {
     const reader = new FileReader();
     const file = e.target.files[0];
 
@@ -49,6 +50,25 @@ class Photos extends Component {
         data_uri: upload.target.result,
         filename: file.name,
         filetype: file.type
+      }, () => {
+        this.handleFormSubmit('profile');
+      });
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  onCoverUpload(e) {
+    const reader = new FileReader();
+    const file = e.target.files[0];
+
+    reader.onload = (upload) => {
+      this.setState({
+        data_uri: upload.target.result,
+        filename: file.name,
+        filetype: file.type
+      }, () => {
+        this.handleFormSubmit('cover');
       });
     };
 
@@ -59,8 +79,8 @@ class Photos extends Component {
     return state && state.indexOf(item) > -1;
   }
 
-  handleFormSubmit() {
-    this.props.uploadPhoto(this.state);
+  handleFormSubmit(type) {
+    this.props.uploadPhoto(this.state, type);
   }
 
   renderAlert() {
@@ -74,7 +94,7 @@ class Photos extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
     const progress = (Steps.photos.number / (Steps.totalSteps + 1));
     const sideBarHeading = Steps.photos.name;
     const sideBarText = Steps.photos.description;
@@ -93,9 +113,14 @@ class Photos extends Component {
         <Row>
           <Col xs={12} sm={11} smOffset={1}>
             <Panel className="gc-panel-light">
-              <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+              <form className="gc-center">
+                <p className="gc-form-heading">Profile Photo</p>
                 {this.renderAlert()}
-                <ImageUpload image={this.props.user.data.profilePhoto} onUpload={this.onFileUpload} />
+                <ImageUpload image={this.props.user.data.profilePhoto} onUpload={this.onProfileUpload}/>
+
+                <p className="gc-form-heading">Cover Photo</p>
+                {this.renderAlert()}
+                <ImageUpload image={this.props.user.data.coverPhoto} onUpload={this.onCoverUpload}/>
               </form>
             </Panel>
           </Col>
@@ -118,4 +143,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadPhoto })(form(Photos));
+export default connect(mapStateToProps, {uploadPhoto})(form(Photos));

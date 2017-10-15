@@ -80,7 +80,7 @@ function uploadProfilePhoto(req, res) {
     data_uri: req.body.data_uri,
     filename: req.body.filename,
     filetype: req.body.filetype
-  }, (error, response) => {
+  }, 'profile', (error, response) => {
     if (error) {
       console.log(error);
     }
@@ -94,14 +94,14 @@ function uploadProfilePhoto(req, res) {
 };
 
 /**
- * Upload profile picture
+ * Upload cover picture
  */
 function uploadCoverPhoto(req, res) {
   utils.imageUploader({
     data_uri: req.body.data_uri,
     filename: req.body.filename,
     filetype: req.body.filetype
-  }, (error, response) => {
+  }, 'cover', (error, response) => {
     if (error) {
       console.log(error);
     }

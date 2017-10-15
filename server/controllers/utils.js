@@ -1,7 +1,7 @@
 const knox = require('knox');
 const jimp = require('jimp');
 
-function imageUploader(options, callback) {
+function imageUploader(options, type, callback) {
   const buffer = new Buffer(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
 
   const s3Client = knox.createClient({
@@ -18,9 +18,12 @@ function imageUploader(options, callback) {
   jimp.read(buffer, onOpen);
 
   function onOpen(err, Img) {
+    const PROFILE_WIDTH = 600;
+    const PROFILE_HEIGHT = 600;
     if (err) {
       console.log('opening image error', err);
     }
+    Img = (type === 'profile') ? Img.scaleToFit(PROFILE_WIDTH, PROFILE_HEIGHT) : Img;
 
     Img.getBuffer(jimp.MIME_JPEG, uploadImage.bind(callback));
   }

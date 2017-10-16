@@ -43,10 +43,10 @@ class Profile extends React.Component {
                   <Col md={9}>
                     <Heading text={user.displayName} />
                     <ServiceTypes serviceTypes={user.serviceType} />
-                    <div className="gc-margin-bottom gc-margin-top--lg">
+                    <div className="gc-margin-bottom gc-margin-top--sm">
                       <Services services={user.services} />
                     </div>
-                    <div className="gc-margin-bottom gc-margin-top--lg">
+                    <div className="gc-margin-bottom gc-margin-top--sm">
                       <Services services={user.cuisines} />
                     </div>
                     <Col>

@@ -1,3 +1,6 @@
+$image-width: 200px;
+$image-height: 200px;
+
 .gc-btn {
   border: none;
   height: 42px;
@@ -76,6 +79,7 @@
 
 .custom-file-input {
   color: transparent;
+  max-width: 200px;
 }
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
@@ -85,7 +89,7 @@
   color: $green;
   display: inline-block;
   border-radius: 7px;
-  padding: 80px;
+  padding: 10px 0;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -117,4 +121,88 @@ input[type=file]:focus {
   all: unset;
 }
 
+.bu-file-upload-btn {
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
 
+  input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 10rem;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+}
+
+.bu-photo-upload__img {
+  position: relative;
+  height: $image-height;
+  width: $image-width;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  padding: 40px 20px;
+  cursor: pointer;
+
+  &.cover {
+    width: 100%;
+    height: auto;
+    @include aspect-ratio(16,5);
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -ms-filter: "alpha(opacity=50)";
+  }
+}
+
+.bu-photo-upload__img-inner {
+  text-align: right;
+  position: absolute;
+  left: 0;
+  top:0;
+  bottom: 0;
+  right: 0;
+  font-size: 2rem;
+  z-index:  7;
+  border-radius: 10px;
+  border: 5px solid transparent;
+
+  button {
+    font-weight: 600;
+    color: white;
+    top: -10px;
+    right: -10px;
+
+    &:hover {
+      text-decoration: none;
+      color: $primary-colour;
+    }
+  }
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover {
+  background-color: transparent;
+  color: white;
+  border-radius: 7px;
+  border: none;
+}

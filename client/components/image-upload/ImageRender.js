@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Button, FormGroup } from 'react-bootstrap';
+import FaEdit from 'react-icons/lib/fa/edit';
 
 const ImageRender = ({ ...props }) => {
   const styles = {
     backgroundImage: `url(${props.image})`
   };
 
+  const classes = classNames('bu-photo-upload__img', {
+    cover: props.type === 'cover'
+  });
+
   return (
     <FormGroup className="bu-m-center">
-      <div className="bu-photo-upload__img" style={styles}>
+      <div className={classes} style={styles}>
         <div className="bu-photo-upload__img-inner">
-          <Button type="button" className="btn-link bu-file-upload-btn bu-image-preview__edit-img-btn">
+          <Button type="button" className="btn-link bu-file-upload-btn bu-image-preview__edit-img-btn" >
             <input type="file" accept="image/*" onChange={props.onChange} />
-            Change picture
-          </Button>
-
-          <Button type="button" className="btn-link bu-image-preview__remove-img-btn" onClick={props.onRemove}>
-            Remove picture
+            <p style={{fontSize: '28px'}}>
+              <FaEdit />
+            </p>
           </Button>
         </div>
       </div>

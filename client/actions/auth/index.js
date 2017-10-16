@@ -44,8 +44,9 @@ export function registerChef({ email, firstName, lastName, password, displayName
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
+        dispatch({ type: CURRENT_USER, payload: response.data.user });
         dispatch({ type: AUTH_USER });
-        hashHistory.push('/basic-setup');
+        hashHistory.push('/setup-personal');
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR);

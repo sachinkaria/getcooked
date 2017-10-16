@@ -9,6 +9,7 @@ const ImageUpload = ({ ...props }) => (
     !props.image ?
       <ImageSelect onChange={props.onUpload} /> :
       <ImageRender
+        type={props.type}
         image={props.image}
         onChange={props.onUpload}
         onRemove={props.onRemove}

@@ -46,6 +46,8 @@ app.listen(config.port, () => {
 });
 
 // db config
-mongoose.connect(config.database);
+mongoose.connect(config.database, {
+  useMongoClient: true,
+});
 
 // mongoose.connect('mongodb://sachinkaria:manchester04@ds161890.mlab.com:61890/get-cooked');

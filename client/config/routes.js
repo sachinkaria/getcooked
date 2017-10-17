@@ -15,6 +15,7 @@ import ServicesSetup from '../components/users/chefs/setup/services';
 import PhotosSetup from '../components/users/chefs/setup/photos';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
+import Dashboard from '../containers/users/Dashboard';
 import Home from '../components/Home';
 import RequireAuth from '../components/auth/RequireAuth';
 
@@ -35,6 +36,7 @@ const routes = (
     <Route path="/setup-photos" component={PhotosSetup} />
     <Route path="/setup-services" component={ServicesSetup} />
     <Route path="/setup-food" component={FoodSetup} />
+    <Route path="/dashboard" component={Dashboard} />
   </Route>
 );
 

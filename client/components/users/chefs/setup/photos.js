@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {reduxForm} from 'redux-form';
 import {Col, Panel, Row, Thumbnail} from 'react-bootstrap';
-import ImageUpload from '../../../image-upload';
+import ImageUpload from '../../../ImageUpload';
 import {uploadPhoto} from '../../../../actions/users';
 import Wizard from '../../../Wizard';
 import Steps from './steps.json';
@@ -99,15 +99,16 @@ class Photos extends Component {
     const sideBarHeading = Steps.photos.name;
     const sideBarText = Steps.photos.description;
     const onBack = Steps.photos.onBack;
+    const onNext = Steps.photos.onNext;
     let uploaded;
 
     return (
       <Wizard
-        onSubmit={handleSubmit(this.handleFormSubmit)}
         progress={progress}
         sideBarHeading={sideBarHeading}
         sideBarText={sideBarText}
         onBack={onBack}
+        onNext={onNext}
         errorMessage={this.props.errorMessage}
       >
         <Row>

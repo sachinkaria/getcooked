@@ -26,18 +26,8 @@ const NavigationBar = (props) => {
             (isAuthenticated && showNav) && (
               <Nav pullRight>
                 <NavItem>
-                  <Link to={'/events'}>
-                    <p className="gc-text gc-text--dark-grey">Events</p>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to={'/inbox'}>
-                    <p className="gc-text gc-text--dark-grey">Messages</p>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to={'/bookings'}>
-                    <p className="gc-text gc-text--dark-grey">Bookings</p>
+                  <Link to={'/dashboard'}>
+                    <p className="gc-text gc-text--dark-grey">Dashboard</p>
                   </Link>
                 </NavItem>
                 <NavItem>
@@ -51,11 +41,6 @@ const NavigationBar = (props) => {
           {
             (!isAuthenticated && showNav) && (
               <Nav pullRight>
-                <NavItem>
-                  <Link to={'/events'}>
-                    <p className="gc-text gc-text--dark-grey">Events</p>
-                  </Link>
-                </NavItem>
                 <NavItem>
                   <Link to={'/chef/register'}>
                     <p className="gc-text gc-text--dark-grey">I&apos;m a chef</p>

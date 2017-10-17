@@ -1,6 +1,6 @@
 import React from 'react';
-import {Col, Panel, Row} from 'react-bootstrap';
-import {connect} from 'react-redux';
+import { Col, Panel, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import ContactDetails from '../../components/chefs/profile/ContactDetails';
 import Heading from '../../components/chefs/profile/Heading';
 import Services from '../../components/chefs/profile/Services';
@@ -8,38 +8,37 @@ import ServiceTypes from '../../components/chefs/profile/ServiceTypes';
 import ProfilePicture from '../../components/chefs/profile/ProfilePicture';
 import CoverPicture from '../../components/chefs/profile/CoverPicture';
 import Description from '../../components/chefs/profile/Description';
-import * as actions from '../../actions/public';
+import * as actions from '../../actions/users';
 
 
 class Profile extends React.Component {
   componentWillMount() {
-    this.props.getChef(this.props.params.id);
+    this.props.getCurrentUser();
   }
-
   renderContent() {
-    const CHEF = this.props.chef;
+    const USER = this.props.user;
 
-    // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
+    // let endorsements = _.sortBy(USER.endorsements, 'number').reverse();
     return (
       <div>
         <Row>
-          <CoverPicture photoUrl={CHEF.coverPhoto} />
+          <CoverPicture photoUrl={USER.coverPhoto} />
         </Row>
         <Row>
           <div className="gc-profile-body">
             <Col sm={9} md={7} mdOffset={1}>
               <Panel className="gc-panel--translucent">
                 <Col xs={8} xsOffset={2} sm={3} smOffset={0} className="gc-padding-none">
-                  <ProfilePicture photoUrl={CHEF.profilePhoto} />
+                  <ProfilePicture photoUrl={USER.profilePhoto} />
                 </Col>
                 <Col sm={9}>
-                  <Heading text={CHEF.displayName} />
-                  <ServiceTypes serviceTypes={CHEF.serviceType} />
-                  <Services services={CHEF.services} />
-                  <Services services={CHEF.cuisines} />
+                  <Heading text={USER.displayName} />
+                  <ServiceTypes serviceTypes={USER.serviceType} />
+                  <Services services={USER.services} />
+                  <Services services={USER.cuisines} />
                 </Col>
                 <Col>
-                  <Description description={CHEF.description} />
+                  <Description description={USER.description} />
                 </Col>
 
               </Panel>
@@ -48,9 +47,9 @@ class Profile extends React.Component {
               <Panel className="gc-panel--translucent">
                 <Heading text="Contact" textAlign="left" />
                 <ContactDetails
-                  website={CHEF.companyWebsite}
-                  email={CHEF.companyEmail}
-                  phone={CHEF.companyPhoneNumber}
+                  website={USER.companyWebsite}
+                  email={USER.companyEmail}
+                  phone={USER.companyPhoneNumber}
                 />
               </Panel>
             </Col>
@@ -62,7 +61,7 @@ class Profile extends React.Component {
 
   render() {
     return (
-      (this.props.chef) ?
+      (this.props.user) ?
         <div>
           {this.renderContent()}
         </div>
@@ -75,7 +74,7 @@ class Profile extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { chef: state.public.chef };
+  return { user: state.user.data };
 }
 
 export default connect(mapStateToProps, actions)(Profile);

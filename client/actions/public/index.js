@@ -5,18 +5,10 @@ import { logoutUser } from '../auth';
 const API_URL = 'http://localhost:3000';
 
 export function errorHandler(dispatch, error) {
-  console.log(error);
-  let errorMessage = null;
-  if (error && error.data) {
-    errorMessage = error.data;
-  } else {
-    errorMessage = error;
-  }
-
-  if (error && error.status === 401) {
+  if (error) {
     dispatch({
       type: SHOW_ERROR,
-      payload: 'Oops there was an error. Please login with your correct credentials and try again.'
+      payload: error
     });
     logoutUser();
     setTimeout(() => {
@@ -25,11 +17,6 @@ export function errorHandler(dispatch, error) {
         payload: ''
       });
     }, 5000);
-  } else {
-    dispatch({
-      type: SHOW_ERROR,
-      payload: errorMessage
-    });
   }
 }
 
@@ -44,7 +31,7 @@ export function listChefs() {
         });
       })
       .catch((error) => {
-        errorHandler(dispatch, error.response, AUTH_ERROR);
+        errorHandler(dispatch, error.response);
       });
   };
 }

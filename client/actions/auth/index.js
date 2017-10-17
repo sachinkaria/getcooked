@@ -17,8 +17,9 @@ export function loginUser({ email, password }) {
         dispatch({ type: CURRENT_USER, payload: response.data.user });
         hashHistory.push('/chefs');
       })
-      .catch((error) => {
-        errorHandler(dispatch, error.response, AUTH_ERROR);
+      .catch(() => {
+        const ERROR = 'Sorry the email or password was incorrect. Please try again.';
+        errorHandler(dispatch, ERROR);
       });
   };
 }

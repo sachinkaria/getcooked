@@ -24,7 +24,7 @@ exports.login = (req, res, next) => {
   console.log(req.user);
   const userInfo = setUserInfo(req.user);
   res.status(200).json({
-    token: 'JWT ' + generateToken(userInfo),
+    token: 'JWT'.concat(generateToken(userInfo)),
     user: userInfo
   });
 };
@@ -54,7 +54,7 @@ exports.register = (req, res, next) => {
     return res.status(422).send({ error: 'You must enter a password.' });
   }
 
-  User.findOne({ email: email }, function(err, existingUser) {
+  User.findOne({ email }, (err, existingUser) => {
     if (err) { return next(err); }
 
     // If user is not unique, return error
@@ -63,14 +63,14 @@ exports.register = (req, res, next) => {
     }
 
     // If email is unique and password was provided, create account
-    let user = new User({
-      email: email,
-      password: password,
-      firstName: firstName,
-      lastName: lastName
+    const user = new User({
+      email,
+      password,
+      firstName,
+      lastName
     });
 
-    user.save(function(err, user) {
+    user.save((err, user) => {
       if (err) { return next(err); }
 
       // Subscribe member to Mailchimp list
@@ -78,10 +78,10 @@ exports.register = (req, res, next) => {
 
       // Respond with JWT if user was created
 
-      let userInfo = setUserInfo(user);
+      const userInfo = setUserInfo(user);
 
       res.status(201).json({
-        token: 'JWT ' + generateToken(userInfo),
+        token: 'JWT '.concat(generateToken(userInfo)),
         user: userInfo
       });
     });

@@ -5,7 +5,7 @@ import { Col, Row } from 'react-bootstrap';
 import { updateUser } from '../../../../actions/users';
 import renderField from '../../../forms/renderField';
 import renderInputBox from '../../../forms/renderInputBox';
-import Wizard from '../../../wizard';
+import Wizard from '../../../Wizard';
 import Steps from './steps.json';
 
 const URL = '/setup-services';

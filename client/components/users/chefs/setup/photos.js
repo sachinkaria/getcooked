@@ -4,7 +4,7 @@ import {reduxForm} from 'redux-form';
 import {Col, Panel, Row, Thumbnail} from 'react-bootstrap';
 import ImageUpload from '../../../image-upload';
 import {uploadPhoto} from '../../../../actions/users';
-import Wizard from '../../../wizard';
+import Wizard from '../../../Wizard';
 import Steps from './steps.json';
 
 const form = reduxForm({

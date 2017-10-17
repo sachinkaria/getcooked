@@ -1,14 +1,14 @@
 import React from 'react';
-import {Link} from 'react-router';
-import {Col, Panel, Row, Button} from 'react-bootstrap';
-import ProgressBar from '../progress-bar';
+import { Link } from 'react-router';
+import { Col, Panel, Row, Button } from 'react-bootstrap';
+import ProgressBar from '../ProgressBar';
 
 function Wizard(props) {
   const children = props.children;
   return (
     <Row>
       <div className="gc-progress-bar">
-        <ProgressBar progress={props.progress}/>
+        <ProgressBar progress={props.progress} />
       </div>
       <Col xs={10} xsOffset={1} sm={6} smOffset={1}>
         { props.onBack &&

@@ -6,7 +6,7 @@ import _ from 'lodash';
 import { updateUser } from '../../../../actions/users';
 import { EVENTS, TYPES } from '../../../../utils/data';
 import renderCheckbox from '../../../forms/renderCheckbox';
-import Wizard from '../../../wizard';
+import Wizard from '../../../Wizard';
 import Steps from './steps.json';
 
 const URL = '/setup-food';

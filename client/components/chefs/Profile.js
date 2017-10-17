@@ -23,6 +23,11 @@ class Profile extends React.Component {
         backgroundSize: 'cover'
       };
 
+      const profilePhotoStyle = {
+        backgroundImage: `url(${user.profilePhoto})`,
+        backgroundSize: 'cover'
+      };
+
       // let endorsements = _.sortBy(user.endorsements, 'number').reverse();
       const imagesCount = user.images && user.images.length;
       const websiteUrl = user.companyWebsite && user.companyWebsite.substring(0, 4) === 'http' ? user.companyWebsite : 'http://' + user.companyWebsite;
@@ -37,10 +42,10 @@ class Profile extends React.Component {
             <div className="gc-profile-body">
               <Col sm={9} md={7} mdOffset={1}>
                 <Panel className="gc-panel--translucent">
-                  <Col xs={8} xsOffset={2} sm={3} smOffset={0} className="gc-padding-none gc-profile-photo">
-                    <Thumbnail onClick={null} src={user.profilePhoto} />
+                  <Col xs={8} xsOffset={2} sm={3} smOffset={0} className="gc-padding-none">
+                    <Thumbnail className="gc-profile-photo" style={profilePhotoStyle} onClick={null} />
                   </Col>
-                  <Col md={9}>
+                  <Col sm={9}>
                     <Heading text={user.displayName} />
                     <ServiceTypes serviceTypes={user.serviceType} />
                     <div className="gc-margin-bottom gc-margin-top--sm">
@@ -49,9 +54,9 @@ class Profile extends React.Component {
                     <div className="gc-margin-bottom gc-margin-top--sm">
                       <Services services={user.cuisines} />
                     </div>
-                    <Col>
-                      <p className="gc-text gc-grey">{user.description}</p>
-                    </Col>
+                  </Col>
+                  <Col>
+                    <p className="gc-text gc-grey">{user.description}</p>
                   </Col>
                   {imagesCount > 0 && (
                     <Col>

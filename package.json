@@ -9,6 +9,9 @@
     "start-dev": "nf start -p 3000",
     "lint": "eslint -c .eslintrc.yml *.js client --cache --quiet"
   },
+  "engines": {
+    "node": "6.11.3"
+  },
   "author": "Sachin Karia",
   "license": "ISC",
   "dependencies": {

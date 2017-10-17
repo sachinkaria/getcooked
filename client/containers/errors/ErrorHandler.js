@@ -7,12 +7,13 @@ const ErrorHandler = (props) => {
     'gc-slide-down': props.error
   });
   return (
-    props.error &&
-    <div className={classes}>
-      <p className="gc-text gc-white">
-        {props.error}
-      </p>
-    </div>
+    props.error ?
+      <div className={classes}>
+        <p className="gc-text gc-white">
+          {props.error}
+        </p>
+      </div> :
+      null
   );
 };
 

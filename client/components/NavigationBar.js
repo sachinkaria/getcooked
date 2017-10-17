@@ -3,9 +3,9 @@ import { Link } from 'react-router';
 import { Navbar, Nav, Col, Row, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ErrorHandler from '../containers/errors/ErrorHandler';
+import isAuthenticated from '../utils/isAuthenticated';
 
 const NavigationBar = (props) => {
-  const isAuthenticated = localStorage.token;
   const showNav = !props.location.pathname.includes('setup');
   return (
     <div>

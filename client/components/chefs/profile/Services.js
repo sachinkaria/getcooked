@@ -2,16 +2,16 @@ import React from 'react';
 
 const Services = (props) => {
   return (
-    <div className="gc-tags">
-      { props.services.map(item =>
-        (
-          <div className="gc-margin-bottom gc-margin-top--sm">
-            <p key={item} className="gc-tag">
-              {item}
-            </p>
-          </div>
-        )
-      )}
+    <div className="gc-margin-bottom gc-margin-top--sm">
+      <div className="gc-tags">
+        { props.services.map(item =>
+          (
+              <p key={item} className="gc-tag">
+                {item}
+              </p>
+          )
+        )}
+      </div>
     </div>
   );
 };

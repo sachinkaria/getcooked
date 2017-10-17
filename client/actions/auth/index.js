@@ -12,7 +12,6 @@ export function loginUser({ email, password }) {
     axios.post(`${API_URL}/users/login`, { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
         dispatch({ type: AUTH_USER });
         dispatch({ type: CURRENT_USER, payload: response.data.user });
         hashHistory.push('/chefs');

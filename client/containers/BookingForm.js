@@ -5,7 +5,6 @@ import React from 'react';
 import { hashHistory } from 'react-router';
 import { ButtonToolbar, Button, Modal, Form, FormGroup, FormControl, Col, Row, ControlLabel, InputGroup } from 'react-bootstrap';
 import DatePicker from './DatePicker';
-import currentUser from '../utils/currentUser';
 
 export default class BookingForm extends React.Component {
   constructor(props) {
@@ -38,7 +37,6 @@ export default class BookingForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     if (localStorage.token) {
-      currentUser.bookings.push(this.state);
     } else {
       hashHistory.push('/register');
     }

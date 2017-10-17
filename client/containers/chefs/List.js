@@ -1,14 +1,13 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import ListItem from './ListItem';
-import SearchBar from '../SearchBar';
+import ListItem from '../../components/chefs/ListItem';
+import SearchBar from '../../components/SearchBar';
 import * as actions from '../../actions/public';
 
 
 class Chefs extends React.Component {
-  constructor(props) {
-    super(props);
+  componentWillMount() {
     this.props.listChefs();
   }
 

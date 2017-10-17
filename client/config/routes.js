@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import ProfileList from '../components/chefs/List';
+import ProfileList from '../containers/chefs/List';
 import NavigationBar from '../components/NavigationBar';
 import Bookings from '../components/bookings/List';
-import Profile from '../components/chefs/Profile';
+import Profile from '../containers/chefs/Profile';
 import Inbox from '../components/messages/Inbox';
 import Conversation from '../components/messages/Conversation';
 import Register from '../components/auth/Register';

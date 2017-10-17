@@ -5,9 +5,11 @@ const Services = (props) => {
     <div className="gc-tags">
       { props.services.map(item =>
         (
-          <p key={item} className="gc-tag">
-            {item}
-          </p>
+          <div className="gc-margin-bottom gc-margin-top--sm">
+            <p key={item} className="gc-tag">
+              {item}
+            </p>
+          </div>
         )
       )}
     </div>

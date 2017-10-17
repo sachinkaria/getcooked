@@ -34,7 +34,7 @@ const jwtOptions = {
   // Telling Passport to check authorization headers for JWT
   jwtFromRequest: ExtractJwt.fromAuthHeader(),
   // Telling Passport where to find the secret
-  secretOrKey: config.secret
+  secretOrKey: config.jwt_secret
 };
 
 // Setting up JWT login strategy

@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken'),
   config = require('../config/main');
 
 function generateToken(user) {
-  return jwt.sign(user, config.secret, {});
+  return jwt.sign(user, config.jwt_secret, {});
 }
 
 // Set user info from request

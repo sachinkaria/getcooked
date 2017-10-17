@@ -1,5 +1,5 @@
 import React from 'react';
-import { Thumbnail } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 const CoverPicture = (props) => {
   const style = {
@@ -15,7 +15,7 @@ const CoverPicture = (props) => {
 };
 
 CoverPicture.propTypes = {
-  photoUrl: React.PropTypes.photoUrl.isRequired
+  photoUrl: React.PropTypes.string.isRequired
 };
 
 CoverPicture.defaultProps = {

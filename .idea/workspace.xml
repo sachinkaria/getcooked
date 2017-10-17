@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/chefs/profile/Description.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/chefs/profile/Images.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/chefs/reviews/List.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/Review.js" afterPath="$PROJECT_DIR$/client/components/chefs/reviews/Item.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/chefs/ContactDetails.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/ContactDetails.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/chefs/Heading.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/Heading.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/chefs/List.js" afterPath="$PROJECT_DIR$/client/containers/chefs/List.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/chefs/Profile.js" afterPath="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/chefs/ServiceTypes.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/chefs/Services.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/Services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/config/routes.js" afterPath="$PROJECT_DIR$/client/config/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/reducers/public_reducer.js" afterPath="$PROJECT_DIR$/client/reducers/public_reducer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/public/index.js" afterPath="$PROJECT_DIR$/client/actions/public/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/containers/chefs/Profile.js" afterPath="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,33 +27,31 @@
       <file leaf-file-name="Profile.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/containers/chefs/Profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="1" column="18" lean-forward="false" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Images.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Images.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/Images.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="1" column="32" lean-forward="false" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoverPicture.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CoverPicture.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +103,8 @@
       <file leaf-file-name="ProfilePicture.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="20" />
+            <state relative-caret-position="345">
+              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -135,14 +122,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="List.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/containers/chefs/List.js">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/actions/public/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="555">
+              <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -250,18 +235,18 @@
         <option value="$PROJECT_DIR$/client/index.js" />
         <option value="$PROJECT_DIR$/client/containers/chefs/List/List.js" />
         <option value="$PROJECT_DIR$/client/containers/chefs/Profile/Profile.js" />
-        <option value="$PROJECT_DIR$/client/actions/public/index.js" />
         <option value="$PROJECT_DIR$/client/containers/chefs/List.js" />
         <option value="$PROJECT_DIR$/client/reducers/public_reducer.js" />
-        <option value="$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/profile/Services.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/profile/Description.js" />
         <option value="$PROJECT_DIR$/client/components/Review.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/reviews/Item.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/reviews/List.js" />
-        <option value="$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js" />
-        <option value="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/profile/Images.js" />
+        <option value="$PROJECT_DIR$/client/actions/public/index.js" />
+        <option value="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
+        <option value="$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js" />
+        <option value="$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js" />
       </list>
     </option>
   </component>
@@ -453,24 +438,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="getcooked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -494,32 +461,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="chefs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="getcooked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chefs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reviews" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -562,7 +503,7 @@
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v4.1.2/bin/node" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
-    <property name="SearchEverywhereHistoryKey" value="profil&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_profile.scss&#10;prof&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Profile.js&#10;butt&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_buttons.scss&#10;photo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/users/chefs/setup/photos.js&#10;pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Profile.js&#10;list&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;util&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/server/controllers/utils.js&#10;profile&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Profile.js&#10;custom-file&#9;null&#9;null&#10;pho&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/users/chefs/setup/photos.js&#10;li&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/chefs/List.js&#10;gc-ta&#9;null&#9;null&#10;hel&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_helpers.scss&#10;help&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_helpers.scss&#10;gc-tex&#9;null&#9;null&#10;icon&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_icons.scss&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_panel.scss&#10;gc-inpu&#9;null&#9;null&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/utils/data.js&#10;cate&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/users/chefs/setup/categories.js&#10;profi&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/chefs/Profile.js&#10;tag&#9;null&#9;null&#10;basic&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/users/chefs/setup/basics.js&#10;button&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_buttons.scss&#10;gc-text&#9;null&#9;null&#10;gc-input&#9;null&#9;null&#10;pane&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_panel.scss&#10;helper&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_helpers.scss&#10;gc-btn&#9;null&#9;null&#10;renderField&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/forms/renderField.js&#10;gc-input-bo&#9;null&#9;null&#10;gc-ratin&#9;null&#9;null&#10;gc-pro&#9;null&#9;null&#10;booking&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/containers/BookingForm.js&#10;gc-hea&#9;null&#9;null&#10;thumbnail&#9;null&#9;null&#10;typ&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_typography.scss&#10;gc-icon&#9;null&#9;null&#10;panel-me&#9;null&#9;null&#10;gc-panel&#9;null&#9;null&#10;margin-top&#9;null&#9;null&#10;mess&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/messages/Message.js&#10;gc-thum&#9;null&#9;null&#10;s&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_message.scss&#10;messages&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_message.scss&#10;gc-prof&#9;null&#9;null&#10;booking-thu&#9;null&#9;null&#10;gc-profile-&#9;null&#9;null&#10;gc-logo&#9;null&#9;null&#10;gc-head&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="public&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/reducers/public_reducer.js&#10;profil&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_profile.scss&#10;prof&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Profile.js&#10;butt&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_buttons.scss&#10;photo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/users/chefs/setup/photos.js&#10;pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Profile.js&#10;list&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;util&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/server/controllers/utils.js&#10;profile&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Profile.js&#10;custom-file&#9;null&#9;null&#10;pho&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/users/chefs/setup/photos.js&#10;li&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/chefs/List.js&#10;gc-ta&#9;null&#9;null&#10;hel&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_helpers.scss&#10;help&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_helpers.scss&#10;gc-tex&#9;null&#9;null&#10;icon&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_icons.scss&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_panel.scss&#10;gc-inpu&#9;null&#9;null&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/utils/data.js&#10;cate&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/users/chefs/setup/categories.js&#10;profi&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/chefs/Profile.js&#10;tag&#9;null&#9;null&#10;basic&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/users/chefs/setup/basics.js&#10;button&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_buttons.scss&#10;gc-text&#9;null&#9;null&#10;gc-input&#9;null&#9;null&#10;pane&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_panel.scss&#10;helper&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_helpers.scss&#10;gc-btn&#9;null&#9;null&#10;renderField&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/forms/renderField.js&#10;gc-input-bo&#9;null&#9;null&#10;gc-ratin&#9;null&#9;null&#10;gc-pro&#9;null&#9;null&#10;booking&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/containers/BookingForm.js&#10;gc-hea&#9;null&#9;null&#10;thumbnail&#9;null&#9;null&#10;typ&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/base/_typography.scss&#10;gc-icon&#9;null&#9;null&#10;panel-me&#9;null&#9;null&#10;gc-panel&#9;null&#9;null&#10;margin-top&#9;null&#9;null&#10;mess&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/components/messages/Message.js&#10;gc-thum&#9;null&#9;null&#10;s&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_message.scss&#10;messages&#9;FILE&#9;file:///Users/sachinkaria/Workspace/gc/client/styles/components/_message.scss&#10;gc-prof&#9;null&#9;null&#10;booking-thu&#9;null&#9;null&#10;gc-profile-&#9;null&#9;null&#10;gc-logo&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -740,12 +681,12 @@
       <workItem from="1508159258927" duration="5990000" />
       <workItem from="1508178248957" duration="4181000" />
       <workItem from="1508227009479" duration="1469000" />
-      <workItem from="1508229838154" duration="7123000" />
+      <workItem from="1508229838154" duration="7915000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="484950000" />
+    <option name="totallyTimeSpent" value="485742000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-5" y="-1023" width="1280" height="734" extended-state="0" />
@@ -1102,36 +1043,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/actions/public/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/containers/chefs/List.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="32" lean-forward="false" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/reducers/public_reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="20" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -1166,14 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/Services.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1182,20 +1089,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/Images.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="32" lean-forward="false" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/reducers/public_reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/actions/public/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="39" column="23" lean-forward="false" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/containers/chefs/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="15">
+          <caret line="1" column="18" lean-forward="false" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/ProfilePicture.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/Images.js">
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/CoverPicture.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        <state relative-caret-position="240">
+          <caret line="16" column="26" lean-forward="true" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

@@ -5,6 +5,7 @@ import { logoutUser } from '../auth';
 const API_URL = 'http://localhost:3000';
 
 export function errorHandler(dispatch, error) {
+  console.log(error);
   let errorMessage = null;
   if (error && error.data) {
     errorMessage = error.data;

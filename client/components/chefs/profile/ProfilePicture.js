@@ -13,7 +13,7 @@ const ProfilePicture = (props) => {
 };
 
 ProfilePicture.propTypes = {
-  photoUrl: React.PropTypes.photoUrl.isRequired
+  photoUrl: React.PropTypes.string.isRequired
 };
 
 ProfilePicture.defaultProps = {

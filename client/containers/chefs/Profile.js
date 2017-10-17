@@ -1,7 +1,6 @@
 import React from 'react';
-import {Col, Panel, Thumbnail, Row} from 'react-bootstrap';
+import {Col, Panel, Row} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import LightBox from '../LightBox';
 import ContactDetails from '../../components/chefs/profile/ContactDetails';
 import Heading from '../../components/chefs/profile/Heading';
 import Services from '../../components/chefs/profile/Services';
@@ -19,13 +18,8 @@ class Profile extends React.Component {
 
   renderContent() {
     const CHEF = this.props.chef;
-    const coverStyle = {
-      backgroundImage: `url(${CHEF.coverPhoto})`,
-      backgroundSize: 'cover'
-    };
 
     // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
-    const imagesCount = CHEF.images && CHEF.images.length;
     return (
       <div>
         <Row>
@@ -53,7 +47,11 @@ class Profile extends React.Component {
             <Col sm={3} xsHidden>
               <Panel className="gc-panel--translucent">
                 <Heading text="Contact" textAlign="left" />
-                <ContactDetails website={CHEF.companyWebsite} email={CHEF.companyEmail} phone={CHEF.companyPhoneNumber} />
+                <ContactDetails
+                  website={CHEF.companyWebsite}
+                  email={CHEF.companyEmail}
+                  phone={CHEF.companyPhoneNumber}
+                />
               </Panel>
             </Col>
           </div>

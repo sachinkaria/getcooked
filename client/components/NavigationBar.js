@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Navbar, Nav, Col, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, Col, Row, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import ErrorHandler from '../containers/errors/ErrorHandler';
 
 const NavigationBar = (props) => {
   const isAuthenticated = localStorage.token;
@@ -19,6 +20,7 @@ const NavigationBar = (props) => {
             <Navbar.Toggle />
           </Navbar.Header>
         </Col>
+        <ErrorHandler />
         <Navbar.Collapse className="gc-navbar-dropdown">
           {
             (isAuthenticated && showNav) && (

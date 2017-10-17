@@ -14,7 +14,7 @@ export function errorHandler(dispatch, error) {
     setTimeout(() => {
       dispatch({
         type: HIDE_ERROR,
-        payload: ''
+        payload: null
       });
     }, 5000);
   }

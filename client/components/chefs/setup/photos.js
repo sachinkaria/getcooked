@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {reduxForm} from 'redux-form';
-import {Col, Panel, Row, Thumbnail} from 'react-bootstrap';
-import ImageUpload from '../../../ImageUpload';
-import {uploadPhoto} from '../../../../actions/users';
-import Wizard from '../../../Wizard';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { reduxForm } from 'redux-form';
+import { hashHistory } from 'react-router';
+import { Col, Panel, Row } from 'react-bootstrap';
+import ImageUpload from '../../ImageUpload';
+import { uploadPhoto } from '../../../actions/users';
+import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
 const form = reduxForm({
@@ -39,6 +40,7 @@ class Photos extends Component {
     this.isChecked = this.isChecked.bind(this);
     this.onProfileUpload = this.onProfileUpload.bind(this);
     this.onCoverUpload = this.onCoverUpload.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   onProfileUpload(e) {
@@ -79,6 +81,10 @@ class Photos extends Component {
     return state && state.indexOf(item) > -1;
   }
 
+  handleSubmit() {
+    hashHistory.push(Steps.photos.onNext);
+  }
+
   handleFormSubmit(type) {
     this.props.uploadPhoto(this.state, type);
   }
@@ -94,21 +100,21 @@ class Photos extends Component {
   }
 
   render() {
-    const {handleSubmit} = this.props;
     const progress = (Steps.photos.number / (Steps.totalSteps + 1));
     const sideBarHeading = Steps.photos.name;
     const sideBarText = Steps.photos.description;
     const onBack = Steps.photos.onBack;
-    const onNext = Steps.photos.onNext;
+    const onSkip = Steps.photos.onNext;
     let uploaded;
 
     return (
       <Wizard
+        onSubmit={this.handleSubmit}
         progress={progress}
         sideBarHeading={sideBarHeading}
         sideBarText={sideBarText}
         onBack={onBack}
-        onNext={onNext}
+        onSkip={onSkip}
         errorMessage={this.props.errorMessage}
       >
         <Row>

@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Col, Panel, Row } from 'react-bootstrap';
 import _ from 'lodash';
-import { updateUser } from '../../../../actions/users';
-import { EVENTS, TYPES } from '../../../../utils/data';
-import renderCheckbox from '../../../forms/renderCheckbox';
-import Wizard from '../../../Wizard';
+import { updateUser } from '../../../actions/users';
+import { EVENTS, TYPES } from '../../../utils/data';
+import renderCheckbox from '../../forms/renderCheckbox';
+import Wizard from '../../Wizard';
 import Steps from './steps.json';
-
-const URL = '/setup-food';
 
 const form = reduxForm({
   form: 'setup-categories',
@@ -44,7 +42,7 @@ class Categories extends Component {
   }
 
   handleFormSubmit() {
-    this.props.updateUser(this.state, URL);
+    this.props.updateUser(this.state, Steps.services.onNext);
   }
 
   handler(event, category) {

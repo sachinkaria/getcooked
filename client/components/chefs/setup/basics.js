@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Col, Row } from 'react-bootstrap';
-import { updateUser } from '../../../../actions/users';
-import renderField from '../../../forms/renderField';
-import Wizard from '../../../Wizard';
+import { updateUser } from '../../../actions/users';
+import renderField from '../../forms/renderField';
+import renderInputBox from '../../forms/renderInputBox';
+import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
 const form = reduxForm({
-  form: 'setup-personal',
+  form: 'setup-basic',
   validate
 });
 
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.firstName) {
-    errors.firstName = 'Please enter your first name';
+  if (!formProps.displayName) {
+    errors.displayName = 'Please enter a display name';
   }
 
-  if (!formProps.lastName) {
-    errors.lastName = 'Please enter your last name';
+  if (!formProps.description) {
+    errors.description = 'Please enter a description';
   }
 
   return errors;
@@ -33,15 +34,16 @@ class BasicInfo extends Component {
   }
 
   handleFormSubmit(formProps) {
-    this.props.updateUser(formProps, Steps.personal.onNext);
+    this.props.updateUser(formProps, Steps.basic.onNext);
   }
 
   render() {
     const { handleSubmit } = this.props;
-    const progress = (Steps.personal.number / (Steps.totalSteps + 1));
-    const sideBarHeading = Steps.personal.name;
-    const sideBarText = Steps.personal.description;
-    const onSkip = Steps.personal.onNext;
+    const progress = (Steps.basic.number / (Steps.totalSteps + 1));
+    const sideBarHeading = Steps.basic.name;
+    const sideBarText = Steps.basic.description;
+    const onSkip = Steps.basic.onNext;
+    const onBack = Steps.basic.onBack;
 
     return (
       <Wizard
@@ -50,13 +52,14 @@ class BasicInfo extends Component {
         sideBarHeading={sideBarHeading}
         sideBarText={sideBarText}
         onSkip={onSkip}
+        onBack={onBack}
         errorMessage={this.props.errorMessage}
       >
         <Row>
           <Col sm={11} smOffset={1}>
             <Field
-              name="firstName"
-              placeholder="First name"
+              name="displayName"
+              placeholder="Profile name"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
               type="text"
@@ -64,29 +67,38 @@ class BasicInfo extends Component {
           </Col>
           <Col sm={11} smOffset={1}>
             <Field
-              name="lastName"
-              placeholder="Last name"
+              name="companyWebsite"
+              placeholder="Company website (not required)"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
-              type="text"
+              type="string"
             />
           </Col>
           <Col sm={11} smOffset={1}>
             <Field
-              name="email"
-              placeholder="Email"
+              name="companyEmail"
+              placeholder="Company email"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
-              type="text"
+              type="string"
             />
           </Col>
           <Col sm={11} smOffset={1}>
             <Field
-              name="mobileNumber"
-              placeholder="Mobile number"
+              name="companyPhoneNumber"
+              placeholder="Company phone number"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
               type="number"
+            />
+          </Col>
+          <Col sm={11} smOffset={1}>
+            <Field
+              name="description"
+              placeholder="Description"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderInputBox}
+              type="text"
             />
           </Col>
         </Row>

@@ -33,7 +33,7 @@ function Wizard(props) {
                     type="submit"
                     bsSize="small"
                     block
-                    className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top">
+                    className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top" >
                     Next
                   </Button>
                 </Col>
@@ -44,6 +44,7 @@ function Wizard(props) {
                     <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
                       Skip
                     </Button>
+                    <br />
                   </Link>
                 </Col>
               </Row>

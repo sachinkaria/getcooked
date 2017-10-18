@@ -3,35 +3,35 @@
     "number": 1,
     "name": "personal details",
     "description": "Your personal details will only be used for communication and authentication to your account. THey will never be published on your profile.",
-    "onNext": "/setup-basic"
+    "onNext": "/setup/basics"
   },
   "basic": {
     "number": 2,
     "name": "basic details",
     "description": "Your personal details will only be used for communication and authentication to your account. THey will never be published on your profile.",
-    "onNext": "/setup-services",
-    "onBack": "/setup-personal"
+    "onNext": "/setup/services",
+    "onBack": "/setup/personal"
   },
   "services": {
     "number": 3,
     "name": "services offered",
     "description": "Let people know what type of caterer you are and what types of events you're able to provide for. If you provide more than one type of service feel free to select multiple categories.",
-    "onNext": "/setup-food",
-    "onBack": "/setup-basic"
+    "onNext": "/setup/food",
+    "onBack": "/setup/basics"
   },
   "food": {
     "number": 4,
     "name": "food services",
     "description": "Select what type of food you provide or specialise in. This could range from simple specialising in one category or being able to cater to different requirements.",
-    "onNext": "/setup-photos",
-    "onBack": "/setup-services"
+    "onNext": "/setup/photos",
+    "onBack": "/setup/services"
   },
   "photos": {
     "number": 5,
     "name": "photos",
     "description": "These are you personal details used only to communication with you.",
     "onNext": "/dashboard",
-    "onBack": "/setup-food"
+    "onBack": "/setup/food"
   },
   "totalSteps": 5
 }

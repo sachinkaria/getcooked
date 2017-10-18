@@ -2,28 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Col, Row } from 'react-bootstrap';
-import { updateUser } from '../../../../actions/users';
-import renderField from '../../../forms/renderField';
-import renderInputBox from '../../../forms/renderInputBox';
-import Wizard from '../../../Wizard';
+import { updateUser } from '../../../actions/users';
+import renderField from '../../forms/renderField';
+import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
-const URL = '/setup-services';
-
 const form = reduxForm({
-  form: 'setup-basic',
+  form: 'setup-personal',
   validate
 });
 
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.displayName) {
-    errors.displayName = 'Please enter a display name';
+  if (!formProps.firstName) {
+    errors.firstName = 'Please enter your first name';
   }
 
-  if (!formProps.description) {
-    errors.description = 'Please enter a description';
+  if (!formProps.lastName) {
+    errors.lastName = 'Please enter your last name';
   }
 
   return errors;
@@ -36,16 +33,15 @@ class BasicInfo extends Component {
   }
 
   handleFormSubmit(formProps) {
-    this.props.updateUser(formProps, URL);
+    this.props.updateUser(formProps, Steps.personal.onNext);
   }
 
   render() {
     const { handleSubmit } = this.props;
-    const progress = (Steps.basic.number / (Steps.totalSteps + 1));
-    const sideBarHeading = Steps.basic.name;
-    const sideBarText = Steps.basic.description;
-    const onSkip = Steps.basic.onNext;
-    const onBack = Steps.basic.onBack;
+    const progress = (Steps.personal.number / (Steps.totalSteps + 1));
+    const sideBarHeading = Steps.personal.name;
+    const sideBarText = Steps.personal.description;
+    const onSkip = Steps.personal.onNext;
 
     return (
       <Wizard
@@ -54,14 +50,13 @@ class BasicInfo extends Component {
         sideBarHeading={sideBarHeading}
         sideBarText={sideBarText}
         onSkip={onSkip}
-        onBack={onBack}
         errorMessage={this.props.errorMessage}
       >
         <Row>
           <Col sm={11} smOffset={1}>
             <Field
-              name="displayName"
-              placeholder="Profile name"
+              name="firstName"
+              placeholder="First name"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
               type="text"
@@ -69,38 +64,29 @@ class BasicInfo extends Component {
           </Col>
           <Col sm={11} smOffset={1}>
             <Field
-              name="companyWebsite"
-              placeholder="Company website (not required)"
+              name="lastName"
+              placeholder="Last name"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
-              type="string"
+              type="text"
             />
           </Col>
           <Col sm={11} smOffset={1}>
             <Field
-              name="companyEmail"
-              placeholder="Company email"
+              name="email"
+              placeholder="Email"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
-              type="string"
+              type="text"
             />
           </Col>
           <Col sm={11} smOffset={1}>
             <Field
-              name="companyPhoneNumber"
-              placeholder="Company phone number"
+              name="mobileNumber"
+              placeholder="Mobile number"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
               type="number"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="description"
-              placeholder="Description"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderInputBox}
-              type="text"
             />
           </Col>
         </Row>

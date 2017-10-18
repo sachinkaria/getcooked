@@ -39,8 +39,6 @@ const token = localStorage.token;
 
 if (token) {
   store.dispatch(getCurrentUser());
-  store.dispatch(getConversations());
-  store.dispatch(getBookings());
   store.dispatch({ type: AUTH_USER });
 }
 

@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
                 <ul className="gc-list gc-padding-none">
                   <li>
                     <Link className="gc-link-default">
-                      <p className="gc-text">Basics</p>
+                      <p className="gc-text">Basic Details</p>
                     </Link>
                   </li>
                   <li>

@@ -52,34 +52,36 @@ class BasicInfo extends Component {
         onSkip={onSkip}
         errorMessage={this.props.errorMessage}
       >
-        <Field
-          name="firstName"
-          placeholder="First name"
-          className="form-control gc-input gc-margin-bottom"
-          component={renderField}
-          type="text"
-        />
-        <Field
-          name="lastName"
-          placeholder="Last name"
-          className="form-control gc-input gc-margin-bottom"
-          component={renderField}
-          type="text"
-        />
-        <Field
-          name="email"
-          placeholder="Email"
-          className="form-control gc-input gc-margin-bottom"
-          component={renderField}
-          type="text"
-        />
-        <Field
-          name="mobileNumber"
-          placeholder="Mobile number"
-          className="form-control gc-input gc-margin-bottom"
-          component={renderField}
-          type="number"
-        />
+        <div>
+          <Field
+            name="firstName"
+            placeholder="First name"
+            className="form-control gc-input gc-margin-bottom"
+            component={renderField}
+            type="text"
+          />
+          <Field
+            name="lastName"
+            placeholder="Last name"
+            className="form-control gc-input gc-margin-bottom"
+            component={renderField}
+            type="text"
+          />
+          <Field
+            name="email"
+            placeholder="Email"
+            className="form-control gc-input gc-margin-bottom"
+            component={renderField}
+            type="text"
+          />
+          <Field
+            name="mobileNumber"
+            placeholder="Mobile number"
+            className="form-control gc-input gc-margin-bottom"
+            component={renderField}
+            type="number"
+          />
+        </div>
       </Wizard>
     );
   }

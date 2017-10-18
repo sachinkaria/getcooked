@@ -40,8 +40,8 @@ export function getCurrentUser() {
       .then((response) => {
         dispatch({ type: CURRENT_USER, payload: response.data });
       })
-      .catch((error) => {
-        errorHandler(dispatch, error.response);
+      .catch(() => {
+        errorHandler(dispatch, 'Sorry there was a problem with your account. Please sign in and try again.');
       });
   };
 }

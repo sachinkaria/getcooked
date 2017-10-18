@@ -77,42 +77,44 @@ class Categories extends Component {
         onBack={onBack}
         errorMessage={this.props.errorMessage}
       >
-        <Panel>
-          <p className="gc-form-heading gc-green">Service Type</p>
-          <Row>
-            {
-              TYPES.map(item => (
-                <Col sm={6} key={item}>
-                  <Field
-                    checked={this.isChecked(item, this.state.serviceType)}
-                    name={item}
-                    type="checkbox"
-                    component={renderCheckbox}
-                    onChange={e => this.handler(e, 'serviceType')}
-                  />
-                </Col>
-              ))
-            }
-          </Row>
-        </Panel>
-        <Panel>
-          <p className="gc-form-heading">Events</p>
-          <Row>
-            {
-              EVENTS.map(item => (
-                <Col sm={6} key={item}>
-                  <Field
-                    checked={this.isChecked(item, this.state.events)}
-                    name={item}
-                    type="checkbox"
-                    component={renderCheckbox}
-                    onChange={e => this.handler(e, 'events')}
-                  />
-                </Col>
-              ))
-            }
-          </Row>
-        </Panel>
+        <div>
+          <Panel>
+            <p className="gc-form-heading gc-green">Service Type</p>
+            <Row>
+              {
+                TYPES.map(item => (
+                  <Col sm={6} key={item}>
+                    <Field
+                      checked={this.isChecked(item, this.state.serviceType)}
+                      name={item}
+                      type="checkbox"
+                      component={renderCheckbox}
+                      onChange={e => this.handler(e, 'serviceType')}
+                    />
+                  </Col>
+                ))
+              }
+            </Row>
+          </Panel>
+          <Panel>
+            <p className="gc-form-heading">Events</p>
+            <Row>
+              {
+                EVENTS.map(item => (
+                  <Col sm={6} key={item}>
+                    <Field
+                      checked={this.isChecked(item, this.state.events)}
+                      name={item}
+                      type="checkbox"
+                      component={renderCheckbox}
+                      onChange={e => this.handler(e, 'events')}
+                    />
+                  </Col>
+                ))
+              }
+            </Row>
+          </Panel>
+        </div>
       </Wizard>
     );
   }

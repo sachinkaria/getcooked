@@ -23,7 +23,7 @@ const NavigationBar = (props) => {
         <ErrorHandler />
         <Navbar.Collapse className="gc-navbar-dropdown">
           {
-            (isAuthenticated && showNav) && (
+            (isAuthenticated() && showNav) && (
               <Nav pullRight>
                 <NavItem>
                   <Link to={'/dashboard/profile'}>
@@ -39,7 +39,7 @@ const NavigationBar = (props) => {
             )
           }
           {
-            (!isAuthenticated && showNav) && (
+            (!isAuthenticated() && showNav) && (
               <Nav pullRight>
                 <NavItem>
                   <Link to={'/chef/register'}>

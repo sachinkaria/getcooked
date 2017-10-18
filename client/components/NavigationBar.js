@@ -26,7 +26,7 @@ const NavigationBar = (props) => {
             (isAuthenticated() && showNav) && (
               <Nav pullRight>
                 <NavItem>
-                  <Link to={'/dashboard/profile'}>
+                  <Link to={'/dashboard/profile/basics'}>
                     <p className="gc-text gc-text--dark-grey">Dashboard</p>
                   </Link>
                 </NavItem>

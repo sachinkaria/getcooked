@@ -1,5 +1,6 @@
 body{
   font-family: $primary-font;
+  overflow-x:hidden;
 }
 
 @media (min-width: 1400px) {
@@ -11,3 +12,4 @@ body{
 .gc-container {
   margin-top: 100px;
 }
+

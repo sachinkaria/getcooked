@@ -30,7 +30,7 @@
     "number": 5,
     "name": "photos",
     "description": "These are you personal details used only to communication with you.",
-    "onNext": "/dashboard/profile",
+    "onNext": "/dashboard/profile/basics",
     "onBack": "/setup/food"
   },
   "totalSteps": 5

@@ -19,7 +19,7 @@
 .gc-profile-heading-sm {
   font-family: $secondary-font;
   font-weight: 700;
-  font-size: 16pt;
+  font-size: 14pt;
   color: $dark-grey;
   margin-top: 10px;
 
@@ -31,13 +31,13 @@
 .gc-profile-heading-md {
   font-family: $secondary-font;
   font-weight: 700;
-  font-size: 20pt;
+  font-size: 16pt;
   color: $dark-grey;
 }
 
 .gc-profile-heading-lg {
   font-family: $secondary-font;
-  font-size: 26pt;
+  font-size: 18pt;
   font-weight: 700;
   color: $dark-grey;
 }
@@ -117,8 +117,8 @@
   background: $light-grey;
   color: $dark-grey;
   display: inline-block;
-  height: 26px;
-  line-height: 26px;
+  height: 24px;
+  line-height: 24px;
   padding: 0 20px 0 23px;
   position: relative;
   margin: 0 10px 10px 0;
@@ -169,7 +169,7 @@
   @include breakpoint(tablet) {
     margin-left: 30px;
     margin-right: 30px;
-    margin-top: -60px;
+    margin-top: -52px;
   }
 }
 

@@ -1,18 +1,18 @@
 .gc-text {
   font-family: $primary-font;
-  font-size: 16px;
+  font-size: 14px;
   color: $dark-grey;
 
   &.gc-text--xs{
-    font-size: 12px;
+    font-size: 10px;
   }
 
   &.gc-text--sm{
-    font-size: 14px;
+    font-size: 12px;
   }
 
   &.gc-text--lg {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   &.gc-text--grey {
@@ -48,7 +48,7 @@
 
 .gc-profile-heading {
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   color: $green;
 
   @include breakpoint(tablet) {

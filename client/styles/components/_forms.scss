@@ -5,12 +5,12 @@
 }
 
 .gc-input {
-  height: 42px;
+  height: 36px;
   display: block;
   width: 100%;
-  margin-bottom: 7px;
+  margin-bottom: 4px;
   font-family: $primary-font;
-  font-size: 12pt;
+  font-size: 14px;
   color: $dark-grey;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 2px;
@@ -107,8 +107,13 @@ input[type=checkbox] {
 
 .gc-form-heading {
   font-family: $secondary-font;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: $green;
   margin-top: 0;
+}
+
+.checkbox {
+  margin-top: 7px;
+  margin-bottom: 7px;
 }

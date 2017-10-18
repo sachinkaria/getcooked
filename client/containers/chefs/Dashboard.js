@@ -31,7 +31,7 @@ class Dashboard extends React.Component {
         <DashboardNavBar location={this.props.location.pathname} />
         <div className="gc-dashboard-container">
           <Row>
-            <Col xsOffset={1} xs={10} sm={3} mdOffset={2} md={2}>
+            <Col xsOffset={1} xs={10} sm={3} mdOffset={1} md={2}>
               <Sidebar />
             </Col>
             <Col xs={10} xsOffset={1} smOffset={0} sm={7}>

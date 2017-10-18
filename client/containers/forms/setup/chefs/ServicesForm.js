@@ -62,7 +62,6 @@ class Categories extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <Panel>
             <p className="gc-form-heading gc-green">Service Type</p>
             <Row>
               {
@@ -79,8 +78,7 @@ class Categories extends Component {
                 ))
               }
             </Row>
-          </Panel>
-          <Panel>
+          <br />
             <p className="gc-form-heading">Events</p>
             <Row>
               {
@@ -97,7 +95,6 @@ class Categories extends Component {
                 ))
               }
             </Row>
-          </Panel>
         </form>
       </div>
     );

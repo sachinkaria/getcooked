@@ -36,7 +36,8 @@ const routes = (
     <Route path="/setup/photos" component={PhotosSetup} />
     <Route path="/setup/services" component={ServicesSetup} />
     <Route path="/setup/food" component={FoodSetup} />
-    <Route path="/dashboard/profile" component={Dashboard} />
+    <Route path="/dashboard/profile/basics" component={Dashboard} view="basics" />
+    <Route path="/dashboard/profile/services" component={Dashboard} view="services" />
   </Route>
 );
 

@@ -90,7 +90,7 @@ class BasicInfo extends Component {
             type="text"
           />
         </div>
-        <Col xs={4} xsOffset={4} sm={2} smOffset={5} >
+        <Col xs={4} xsOffset={4} sm={4} smOffset={4} >
           <Button block type="submit" className="gc-btn gc-btn--orange">
             Save
           </Button>

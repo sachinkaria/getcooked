@@ -1,54 +1,42 @@
 import React from 'react';
-import { Col, Panel, Row, TabContainer } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Col, Panel, Row } from 'react-bootstrap';
 import DashboardNavBar from '../../components/users/dashboard/Navbar';
-import * as actions from '../../actions/users';
+import Sidebar from '../../components/chefs/dashboard/Sidebar';
 import BasicsSetup from '../../containers/forms/setup/chefs/BasicsForm';
+import ServicesSetup from '../../containers/forms/setup/chefs/ServicesForm';
 
 
 class Dashboard extends React.Component {
-  componentWillMount() {
-    this.props.getCurrentUser();
+  constructor(props) {
+    super(props);
+    this.renderView = this.renderView.bind(this);
   }
-  renderContent() {
-    const USER = this.props.user;
 
-    // let endorsements = _.sortBy(USER.endorsements, 'number').reverse();
+  componentWillMount() {
+    this.renderView();
+  }
+
+  renderView() {
+    if (this.props.route.view === 'basics') {
+      return <BasicsSetup />;
+    } else if (this.props.route.view === 'services') {
+      return <ServicesSetup />;
+    }
+    return null;
+  }
+
+  render(){
     return (
       <div>
         <DashboardNavBar location={this.props.location.pathname} />
         <div className="gc-dashboard-container">
           <Row>
-            <Col xsOffset={1} xs={10} smOffset={2} sm={2}>
-              <Panel>
-                <ul className="gc-list gc-padding-none">
-                  <li>
-                    <Link className="gc-link-default">
-                      <p className="gc-text">Basic Details</p>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="gc-link-default">
-                      <p className="gc-text">Services</p>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="gc-link-default">
-                      <p className="gc-text">Food</p>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="gc-link-default">
-                      <p className="gc-text">Photos</p>
-                    </Link>
-                  </li>
-                </ul>
-              </Panel>
+            <Col xsOffset={1} xs={10} sm={3} mdOffset={2} md={2}>
+              <Sidebar />
             </Col>
-            <Col xs={10} xsOffset={1} smOffset={0} sm={6}>
+            <Col xs={10} xsOffset={1} smOffset={0} sm={7}>
               <Panel>
-                <BasicsSetup />
+                {this.renderView()}
               </Panel>
             </Col>
           </Row>
@@ -56,23 +44,7 @@ class Dashboard extends React.Component {
       </div>
     );
   }
+};
 
-  render() {
-    return (
-      (this.props.user) ?
-        <div>
-          {this.renderContent()}
-        </div>
-        :
-        <div>
-          Cannot find profile.
-        </div>
-    );
-  }
-}
 
-function mapStateToProps(state) {
-  return { user: state.user.data };
-}
-
-export default connect(mapStateToProps, actions)(Dashboard);
+export default Dashboard;

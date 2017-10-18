@@ -53,34 +53,46 @@ class BasicInfo extends Component {
         errorMessage={this.props.errorMessage}
       >
         <div>
-          <Field
-            name="firstName"
-            placeholder="First name"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="text"
-          />
-          <Field
-            name="lastName"
-            placeholder="Last name"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="text"
-          />
-          <Field
-            name="email"
-            placeholder="Email"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="text"
-          />
-          <Field
-            name="mobileNumber"
-            placeholder="Mobile number"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="number"
-          />
+          <label className="gc-text">First name</label>
+          <div>
+            <Field
+              name="firstName"
+              placeholder="e.g. John"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="text"
+            />
+          </div>
+          <label className="gc-text">Last name</label>
+          <div>
+            <Field
+              name="lastName"
+              placeholder="e.g. Smith"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="text"
+            />
+          </div>
+          <label className="gc-text">Email</label>
+          <div>
+            <Field
+              name="email"
+              placeholder="e.g. hello@johnsmith.com"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="text"
+            />
+          </div>
+          <label className="gc-text">Mobile number</label>
+          <div>
+            <Field
+              name="mobileNumber"
+              placeholder="e.g. 07912345678"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="number"
+            />
+          </div>
         </div>
       </Wizard>
     );

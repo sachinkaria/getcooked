@@ -56,41 +56,56 @@ class BasicInfo extends Component {
         errorMessage={this.props.errorMessage}
       >
         <div>
-          <Field
-            name="displayName"
-            placeholder="Profile name"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="text"
-          />
-          <Field
-            name="companyWebsite"
-            placeholder="Company website (not required)"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="string"
-          />
-          <Field
-            name="companyEmail"
-            placeholder="Company email"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="string"
-          />
-          <Field
-            name="companyPhoneNumber"
-            placeholder="Company phone number"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderField}
-            type="number"
-          />
-          <Field
-            name="description"
-            placeholder="Description"
-            className="form-control gc-input gc-margin-bottom"
-            component={renderInputBox}
-            type="text"
-          />
+          <label className="gc-text">Display name</label>
+          <div>
+            <Field
+              name="displayName"
+              placeholder="e.g. Catering Co."
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="text"
+            />
+          </div>
+          <label className="gc-text">Company website</label>
+          <div>
+            <Field
+              name="companyWebsite"
+              placeholder="e.g. www.mycateringcompany.com"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="string"
+            />
+          </div>
+          <label className="gc-text">Company email</label>
+          <div>
+            <Field
+              name="companyEmail"
+              placeholder="e.g. hello@cateringco.com"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="string"
+            />
+          </div>
+          <label className="gc-text">Company contact number</label>
+          <div>
+            <Field
+              name="companyPhoneNumber"
+              placeholder="e.g. 0201234567"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="number"
+            />
+          </div>
+          <label className="gc-text">Description</label>
+          <div>
+            <Field
+              name="description"
+              placeholder="Write something about your company.s"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderInputBox}
+              type="text"
+            />
+          </div>
         </div>
       </Wizard>
     );

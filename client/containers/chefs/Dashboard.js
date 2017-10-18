@@ -1,6 +1,8 @@
 import React from 'react';
-import { Col, Panel, Row } from 'react-bootstrap';
+import { Col, Panel, Row, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import classNames from 'classnames';
 import ContactDetails from '../../components/chefs/profile/ContactDetails';
 import Heading from '../../components/chefs/profile/Heading';
 import Services from '../../components/chefs/profile/Services';
@@ -11,7 +13,7 @@ import Description from '../../components/chefs/profile/Description';
 import * as actions from '../../actions/users';
 
 
-class Profile extends React.Component {
+class Dashboard extends React.Component {
   componentWillMount() {
     this.props.getCurrentUser();
   }
@@ -21,11 +23,27 @@ class Profile extends React.Component {
     // let endorsements = _.sortBy(USER.endorsements, 'number').reverse();
     return (
       <div>
+        <div>
+          <Navbar className="gc-dashboard-navbar">
+            <ul>
+              <li className="gc-dashboard-navbar-item">
+                <Link to={'/dashboard/profile'}>
+                  <p className={classNames('gc-text gc-light-grey', { 'gc-white': this.props.location.pathname === '/dashboard/profile' })}>Profile</p>
+                </Link>
+              </li>
+              <li className="gc-dashboard-navbar-item">
+                <Link to={'/dashboard/account'}>
+                  <p className={classNames('gc-text gc-light-grey', { 'gc-white': this.props.location.pathname === '/dashboard/account' })}>Account</p>
+                </Link>
+              </li>
+            </ul>
+          </Navbar>
+        </div>
         <Row>
           <CoverPicture photoUrl={USER.coverPhoto} />
         </Row>
         <Row>
-          <div className="gc-profile-body">
+          <div className="gc-profile-body gc-margin-top--lg">
             <Col sm={9} md={7} mdOffset={1}>
               <Panel className="gc-panel--translucent">
                 <Col xs={8} xsOffset={2} sm={3} smOffset={0} className="gc-padding-none">
@@ -77,4 +95,4 @@ function mapStateToProps(state) {
   return { user: state.user.data };
 }
 
-export default connect(mapStateToProps, actions)(Profile);
+export default connect(mapStateToProps, actions)(Dashboard);

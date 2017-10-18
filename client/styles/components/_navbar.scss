@@ -24,3 +24,29 @@
 .navbar-toggle {
   margin-top: 25px;
 }
+
+.gc-dashboard-navbar {
+  background-color: $dark-grey;
+  margin-top: -21px;
+  height: 40px;
+  width: 110%;
+  position: fixed;
+  z-index: 100;
+  border: none;
+
+  .gc-dashboard-navbar-item {
+    text-align: left;
+    list-style: none;
+    position: relative;
+    float: left;
+    padding: 14px 30px;
+  }
+
+  @include breakpoint(tablet) {
+    margin-top: -15px;
+  }
+
+  .container {
+    height: 40px;
+  }
+}

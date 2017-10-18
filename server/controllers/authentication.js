@@ -23,7 +23,7 @@ function setUserInfo(request) {
 exports.login = (req, res, next) => {
   const userInfo = setUserInfo(req.user);
   res.status(200).json({
-    token: 'JWT'.concat(generateToken(userInfo)),
+    token: 'JWT '.concat(generateToken(userInfo)),
     user: userInfo
   });
 };
@@ -112,7 +112,7 @@ exports.registerChef = (req, res, next) => {
     return res.status(422).send({ error: 'You must enter a password.' });
   }
 
-  User.findOne({ email: email }, (err, existingUser) => {
+  User.findOne({ email }, (err, existingUser) => {
     if (err) { return next(err); }
 
     // If user is not unique, return error
@@ -125,7 +125,7 @@ exports.registerChef = (req, res, next) => {
 
     user.role = 'chef';
 
-    user.save(function(err, user) {
+    user.save((err, user) => {
       if (err) { return next(err); }
 
       // Subscribe member to Mailchimp list
@@ -136,7 +136,7 @@ exports.registerChef = (req, res, next) => {
       let userInfo = setUserInfo(user);
 
       res.status(201).json({
-        token: 'JWT ' + generateToken(userInfo),
+        token: 'JWT '.concat(generateToken(userInfo)),
         user: userInfo
       });
     });

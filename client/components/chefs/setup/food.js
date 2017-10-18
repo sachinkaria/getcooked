@@ -77,46 +77,42 @@ class Services extends Component {
         onSkip={onSkip}
         errorMessage={this.props.errorMessage}
       >
-        <Row>
-          <Col xs={12} sm={11} smOffset={1}>
-            <Panel>
-              <p className="gc-form-heading">Food Services</p>
-              <Row>
-                {
-                  FOOD_SERVICES.map(item => (
-                    <Col sm={6} key={item}>
-                      <Field
-                        checked={this.isChecked(item, this.state.services)}
-                        name={item}
-                        type="checkbox"
-                        component={renderCheckbox}
-                        onChange={e => this.handler(e, 'services')}
-                      />
-                    </Col>
-                  ))
-                }
-              </Row>
-            </Panel>
-            <Panel>
-              <p className="gc-form-heading">Cuisines</p>
-              <Row>
-                {
-                  CUISINES.map(item => (
-                    <Col sm={6} key={item}>
-                      <Field
-                        checked={this.isChecked(item, this.state.cuisines)}
-                        name={item}
-                        type="checkbox"
-                        component={renderCheckbox}
-                        onChange={e => this.handler(e, 'cuisines')}
-                      />
-                    </Col>
-                  ))
-                }
-              </Row>
-            </Panel>
-          </Col>
-        </Row>
+        <Panel>
+          <p className="gc-form-heading">Food Services</p>
+          <Row>
+            {
+              FOOD_SERVICES.map(item => (
+                <Col sm={6} key={item}>
+                  <Field
+                    checked={this.isChecked(item, this.state.services)}
+                    name={item}
+                    type="checkbox"
+                    component={renderCheckbox}
+                    onChange={e => this.handler(e, 'services')}
+                  />
+                </Col>
+              ))
+            }
+          </Row>
+        </Panel>
+        <Panel>
+          <p className="gc-form-heading">Cuisines</p>
+          <Row>
+            {
+              CUISINES.map(item => (
+                <Col sm={6} key={item}>
+                  <Field
+                    checked={this.isChecked(item, this.state.cuisines)}
+                    name={item}
+                    type="checkbox"
+                    component={renderCheckbox}
+                    onChange={e => this.handler(e, 'cuisines')}
+                  />
+                </Col>
+              ))
+            }
+          </Row>
+        </Panel>
       </Wizard>
     );
   }

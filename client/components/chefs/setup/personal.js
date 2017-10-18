@@ -52,44 +52,34 @@ class BasicInfo extends Component {
         onSkip={onSkip}
         errorMessage={this.props.errorMessage}
       >
-        <Row>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="firstName"
-              placeholder="First name"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="text"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="lastName"
-              placeholder="Last name"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="text"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="email"
-              placeholder="Email"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="text"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="mobileNumber"
-              placeholder="Mobile number"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="number"
-            />
-          </Col>
-        </Row>
+        <Field
+          name="firstName"
+          placeholder="First name"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="text"
+        />
+        <Field
+          name="lastName"
+          placeholder="Last name"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="text"
+        />
+        <Field
+          name="email"
+          placeholder="Email"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="text"
+        />
+        <Field
+          name="mobileNumber"
+          placeholder="Mobile number"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="number"
+        />
       </Wizard>
     );
   }

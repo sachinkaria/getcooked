@@ -55,53 +55,41 @@ class BasicInfo extends Component {
         onBack={onBack}
         errorMessage={this.props.errorMessage}
       >
-        <Row>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="displayName"
-              placeholder="Profile name"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="text"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="companyWebsite"
-              placeholder="Company website (not required)"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="string"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="companyEmail"
-              placeholder="Company email"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="string"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="companyPhoneNumber"
-              placeholder="Company phone number"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderField}
-              type="number"
-            />
-          </Col>
-          <Col sm={11} smOffset={1}>
-            <Field
-              name="description"
-              placeholder="Description"
-              className="form-control gc-input gc-margin-bottom"
-              component={renderInputBox}
-              type="text"
-            />
-          </Col>
-        </Row>
+        <Field
+          name="displayName"
+          placeholder="Profile name"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="text"
+        />
+        <Field
+          name="companyWebsite"
+          placeholder="Company website (not required)"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="string"
+        />
+        <Field
+          name="companyEmail"
+          placeholder="Company email"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="string"
+        />
+        <Field
+          name="companyPhoneNumber"
+          placeholder="Company phone number"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderField}
+          type="number"
+        />
+        <Field
+          name="description"
+          placeholder="Description"
+          className="form-control gc-input gc-margin-bottom"
+          component={renderInputBox}
+          type="text"
+        />
       </Wizard>
     );
   }

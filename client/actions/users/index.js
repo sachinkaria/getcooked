@@ -12,7 +12,7 @@ export function updateUser(user, url) {
     axios.put(`${API_URL}/users`, user, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
-        hashHistory.push(url);
+        if (url) hashHistory.push(url);
       })
       .catch((error) => {
         errorHandler(dispatch, error.response);

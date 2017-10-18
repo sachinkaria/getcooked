@@ -10,10 +10,10 @@ function Wizard(props) {
       <div className="gc-progress-bar">
         <ProgressBar progress={props.progress} />
       </div>
-      <Col xs={10} xsOffset={1} sm={6} smOffset={1}>
+      <Col xs={10} xsOffset={1} sm={5} smOffset={2}>
         { props.onBack &&
         <Row>
-          <Col sm={6} smOffset={1}>
+          <Col sm={6}>
             <Link className="gc-link-default pull-left" to={props.onBack}>
               <Button className="gc-btn gc-btn--white gc-margin-bottom" bsSize="small" bsStyle="default">
                 Back
@@ -24,37 +24,33 @@ function Wizard(props) {
         }
         <form onSubmit={props.onSubmit}>
           {children}
-          <Row>
-            <Col sm={11} smOffset={1}>
-              <Row>
-                <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
-                  <p>{props.errorMessage}</p>
-                  <Button
-                    type="submit"
-                    bsSize="small"
-                    block
-                    className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top" >
-                    Next
+            <Row>
+              <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
+                <p>{props.errorMessage}</p>
+                <Button
+                  type="submit"
+                  bsSize="small"
+                  block
+                  className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top" >
+                  Next
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
+                <Link className="gc-link-default" to={props.onSkip}>
+                  <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
+                    Skip
                   </Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
-                  <Link className="gc-link-default" to={props.onSkip}>
-                    <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
-                      Skip
-                    </Button>
-                    <br />
-                  </Link>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+                  <br />
+                </Link>
+              </Col>
+            </Row>
         </form>
       </Col>
-      <Col xsHidden sm={4}>
+      <Col xsHidden sm={3}>
         <Row>
-          <Col sm={11}>
+          <Col>
             <Panel className="gc-panel">
               <h3 className="gc-profile-heading-sm gc-profile-heading-sm--green text-capitalize">{props.sideBarHeading}</h3>
               <p className="gc-text">{props.sideBarText}</p>

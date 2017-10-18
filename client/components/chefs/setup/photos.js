@@ -117,24 +117,20 @@ class Photos extends Component {
         onSkip={onSkip}
         errorMessage={this.props.errorMessage}
       >
-        <Row>
-          <Col xs={12} sm={11} smOffset={1}>
-            <Panel className="gc-panel-light">
-              <form>
-                <div className="gc-margin-bottom--lg">
-                  <p className="gc-form-heading">Profile Photo</p>
-                  {this.renderAlert()}
-                  <ImageUpload image={this.props.user.data.profilePhoto} onUpload={this.onProfileUpload} />
-                </div>
-                <div>
-                  <p className="gc-form-heading">Cover Photo</p>
-                  {this.renderAlert()}
-                  <ImageUpload type="cover" image={this.props.user.data.coverPhoto} onUpload={this.onCoverUpload} />
-                </div>
-              </form>
-            </Panel>
-          </Col>
-        </Row>
+        <Panel className="gc-panel-light">
+          <form>
+            <div className="gc-margin-bottom--lg">
+              <p className="gc-form-heading">Profile Photo</p>
+              {this.renderAlert()}
+              <ImageUpload image={this.props.user.data.profilePhoto} onUpload={this.onProfileUpload} />
+            </div>
+            <div>
+              <p className="gc-form-heading">Cover Photo</p>
+              {this.renderAlert()}
+              <ImageUpload type="cover" image={this.props.user.data.coverPhoto} onUpload={this.onCoverUpload} />
+            </div>
+          </form>
+        </Panel>
       </Wizard>
     );
   }

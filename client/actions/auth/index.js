@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, CURRENT_USER } from '../types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, UPDATE_USER } from '../types';
 import { errorHandler } from '../public';
-// const errorHandler = require('../public').errorHandler;
+import { getCurrentUser } from '../users';
 
 const API_URL = 'http://localhost:3000';
 
@@ -13,7 +13,8 @@ export function loginUser({ email, password }) {
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: AUTH_USER });
-        dispatch({ type: CURRENT_USER, payload: response.data.user });
+        dispatch({ type: UPDATE_USER, payload: response.data.user });
+        getCurrentUser();
         hashHistory.push('/chefs');
       })
       .catch(() => {
@@ -28,8 +29,8 @@ export function registerUser({ email, firstName, lastName, password }) {
     axios.post(`${API_URL}/users/create`, { email, firstName, lastName, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
         dispatch({ type: AUTH_USER });
+        dispatch({ type: UPDATE_USER, payload: response.data.user });
         hashHistory.push('/chefs');
       })
       .catch((error) => {
@@ -43,10 +44,9 @@ export function registerChef({ email, firstName, lastName, password, displayName
     axios.post(`${API_URL}/chefs/create`, { email, firstName, lastName, password, displayName, description })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        dispatch({ type: CURRENT_USER, payload: response.data.user });
+        dispatch({ type: UPDATE_USER, payload: response.data.user });
         dispatch({ type: AUTH_USER });
-        hashHistory.push('/setup-personal');
+        hashHistory.push('/setup/personal');
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR);
@@ -57,8 +57,8 @@ export function registerChef({ email, firstName, lastName, password, displayName
 export function logoutUser() {
   return (dispatch) => {
     dispatch({ type: UNAUTH_USER });
+    dispatch({ type: UPDATE_USER, payload: null });
     delete localStorage.token;
-    delete localStorage.user;
     hashHistory.push('/');
   };
 }

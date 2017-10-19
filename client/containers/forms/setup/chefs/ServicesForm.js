@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import _ from 'lodash';
-import { updateUser } from '../../../../actions/users';
+import { updateUser, getCurrentUser } from '../../../../actions/users';
 import { EVENTS, TYPES } from '../../../../utils/data';
 import renderCheckbox from '../../../../components/forms/renderCheckbox';
 
@@ -30,13 +30,17 @@ class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      serviceType: props.user.data.serviceType || [],
-      events: props.user.data.events || []
+      serviceType: props.user.data ? props.user.data.serviceType : [],
+      events: props.user.data ? props.user.data.events : []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handler = this.handler.bind(this);
     this.isChecked = this.isChecked.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.getCurrentUser();
   }
 
   handleFormSubmit() {
@@ -119,4 +123,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateUser })(form(Categories));
+export default connect(mapStateToProps, { updateUser, getCurrentUser })(form(Categories));

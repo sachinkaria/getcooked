@@ -32,8 +32,8 @@ class Categories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      serviceType: props.user.data.serviceType || [],
-      events: props.user.data.events || []
+      serviceType: props.user.data ? props.user.data.serviceType : [],
+      events: props.user.data ? props.user.data.events : []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);

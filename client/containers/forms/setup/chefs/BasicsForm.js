@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Col, Button } from 'react-bootstrap';
-import { updateUser } from '../../../../actions/users';
+import { updateUser, getCurrentUser } from '../../../../actions/users';
 import renderField from '../../../../components/forms/renderField';
 import renderInputBox from '../../../../components/forms/renderInputBox';
 
@@ -29,6 +29,10 @@ class BasicInfo extends Component {
   constructor() {
     super();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.getCurrentUser();
   }
 
   handleFormSubmit(formProps) {
@@ -112,4 +116,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateUser })(form(BasicInfo));
+export default connect(mapStateToProps, { updateUser, getCurrentUser })(form(BasicInfo));

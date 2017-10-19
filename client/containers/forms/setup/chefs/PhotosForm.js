@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { hashHistory } from 'react-router';
 import ImageUpload from '../../../../components/ImageUpload';
-import { uploadPhoto } from '../../../../actions/users';
+import { uploadPhoto, getCurrentUser } from '../../../../actions/users';
 import Steps from '../../../../components/chefs/setup/steps.json';
 
 const form = reduxForm({
@@ -39,6 +39,10 @@ class Photos extends Component {
     this.onProfileUpload = this.onProfileUpload.bind(this);
     this.onCoverUpload = this.onCoverUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.getCurrentUser();
   }
 
   onProfileUpload(e) {
@@ -103,12 +107,12 @@ class Photos extends Component {
         <div className="gc-margin-bottom--lg">
           <label className="gc-text">Profile Photo</label>
           {this.renderAlert()}
-          <ImageUpload image={this.props.user.data.profilePhoto} onUpload={this.onProfileUpload} />
+          <ImageUpload image={this.props.user.data ? this.props.user.data.profilePhoto : null} onUpload={this.onProfileUpload} />
         </div>
         <div>
           <label className="gc-text">Cover Photo</label>
           {this.renderAlert()}
-          <ImageUpload type="cover" image={this.props.user.data.coverPhoto} onUpload={this.onCoverUpload} />
+          <ImageUpload type="cover" image={this.props.user.data ? this.props.user.data.coverPhoto : null} onUpload={this.onCoverUpload} />
         </div>
       </form>
     );
@@ -128,4 +132,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {uploadPhoto})(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, getCurrentUser })(form(Photos));

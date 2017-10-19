@@ -32,8 +32,8 @@ class Services extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      services: props.user.data.services || [],
-      cuisines: props.user.data.cuisines || []
+      services: props.user.data ? props.user.data.services : [],
+      cuisines: props.user.data ? props.user.data.cuisines : []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);

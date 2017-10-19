@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import _ from 'lodash';
-import { updateUser } from '../../../../actions/users';
+import { updateUser, getCurrentUser } from '../../../../actions/users';
 import { FOOD_SERVICES, CUISINES } from '../../../../utils/data';
 import renderCheckbox from '../../../../components/forms/renderCheckbox';
 
@@ -22,7 +22,6 @@ function validate(formProps) {
   if (!formProps.description) {
     errors.lastName = 'Please enter a description';
   }
-
   return errors;
 }
 
@@ -30,13 +29,17 @@ class FoodServices extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      services: props.user.data.services || [],
-      cuisines: props.user.data.cuisines || []
+      services: props.user.data ? props.user.data.services : [],
+      cuisines: props.user.data ? props.user.data.cuisines : []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handler = this.handler.bind(this);
     this.isChecked = this.isChecked.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.getCurrentUser();
   }
 
   handleFormSubmit() {
@@ -119,4 +122,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateUser })(form(FoodServices));
+export default connect(mapStateToProps, { updateUser, getCurrentUser })(form(FoodServices));

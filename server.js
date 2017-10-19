@@ -4,6 +4,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./server/config/main');
+const chokidar = require('chokidar');
 const authRoutes = require('./server/routes/user');
 const bookingRoutes = require('./server/routes/booking');
 const chefRoutes = require('./server/routes/chef');
@@ -12,6 +13,18 @@ const conversationRoutes = require('./server/routes/conversation');
 // and create our instances
 const app = express();
 const router = express.Router();
+
+const watcher = chokidar.watch('./client');
+
+// clear server cache and reload frontend files
+watcher.on('ready', () => {
+  watcher.on('all', () => {
+    console.log('Clearing /client/ module cache from server');
+    Object.keys(require.cache).forEach( id => {
+      if (/[\/\\]client[\/\\]/.test(id)) delete require.cache[id];
+    });
+  });
+});
 
 // now we should configure the API to use bodyParser and look for
 // JSON data in the request body

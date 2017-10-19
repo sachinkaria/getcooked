@@ -2,7 +2,7 @@ import React from 'react';
 
 const Description = (props) => {
   return (
-    <p className="gc-text gc-grey">{props.description}</p>
+    <p className="gc-text">{props.description}</p>
   );
 };
 

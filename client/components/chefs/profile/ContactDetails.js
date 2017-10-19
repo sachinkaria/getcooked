@@ -9,20 +9,20 @@ const ContactDetails = (props) => {
       <div>
         { props.website &&
         <div className="gc-margin-bottom">
-          <Globe className="gc-icon gc-list-item gc-grey" />
-          <a target="_blank" href={props.website} className="gc-text gc-list-item gc-grey">Website</a>
+          <Globe className="gc-icon gc-list-item" />
+          <a target="_blank" href={props.website} className="gc-text gc-list-item">Website</a>
         </div>
         }
         {
           props.email &&
           <div className="gc-margin-bottom">
-            <Email className="gc-icon gc-list-item gc-grey" /><p className="gc-text gc-list-item gc-grey">Email</p>
+            <Email className="gc-icon gc-list-item" /><p className="gc-text gc-list-item">Email</p>
           </div>
         }
         {
           props.phone &&
           <div className="gc-margin-bottom">
-            <Phone className="gc-icon gc-list-item gc-grey" /><p className="gc-text gc-list-item gc-grey">{props.phone}</p>
+            <Phone className="gc-icon gc-list-item" /><p className="gc-text gc-list-item">{props.phone}</p>
           </div>
         }
       </div> : <p className="gc-text gc-bold">No contact details provided.</p>

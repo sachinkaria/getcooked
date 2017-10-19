@@ -2,8 +2,9 @@ import React from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import Sidebar from './Sidebar';
-import BasicsSetup from '../../../containers/forms/setup/chefs/BasicsForm';
-import ServicesSetup from '../../../containers/forms/setup/chefs/ServicesForm';
+import BasicsForm from '../../../containers/forms/setup/chefs/BasicsForm';
+import ServicesForm from '../../../containers/forms/setup/chefs/ServicesForm';
+import FoodForm from '../../../containers/forms/setup/chefs/FoodForm';
 
 
 class Dashboard extends React.Component {
@@ -18,9 +19,11 @@ class Dashboard extends React.Component {
 
   renderView() {
     if (this.props.route.view === 'basics') {
-      return <BasicsSetup />;
-    } else if (this.props.route.view === 'services') {
-      return <ServicesSetup />;
+      return <BasicsForm />;
+    } else if (this.props.route.view === 'service-type') {
+      return <ServicesForm />;
+    } else if (this.props.route.view === 'food-services') {
+      return <FoodForm />;
     }
     return null;
   }

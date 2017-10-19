@@ -13,13 +13,13 @@ const Sidebar = (props) => {
           </Link>
         </li>
         <li>
-          <Link to="/dashboard/profile/services" className="gc-link-default">
-            <p className={classNames('gc-text', { 'gc-green gc-bold': props.location.includes('services') })}>Services</p>
+          <Link to="/dashboard/profile/service-type" className="gc-link-default">
+            <p className={classNames('gc-text', { 'gc-green gc-bold': props.location.includes('service-type') })}>Services</p>
           </Link>
         </li>
         <li>
-          <Link className="gc-link-default">
-            <p className={classNames('gc-text', { 'gc-green gc-bold': props.location.includes('food') })}>Food</p>
+          <Link to="/dashboard/profile/food-services" className="gc-link-default">
+            <p className={classNames('gc-text', { 'gc-green gc-bold': props.location.includes('food-services') })}>Food</p>
           </Link>
         </li>
         <li>

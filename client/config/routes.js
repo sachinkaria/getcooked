@@ -15,7 +15,7 @@ import ServicesSetup from '../components/chefs/setup/services';
 import PhotosSetup from '../components/chefs/setup/photos';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
-import Dashboard from '../components/chefs/dashboard/index';
+import Dashboard from '../components/chefs/Dashboard/index';
 import Home from '../components/Home';
 import RequireAuth from '../components/auth/RequireAuth';
 
@@ -37,7 +37,8 @@ const routes = (
     <Route path="/setup/services" component={ServicesSetup} />
     <Route path="/setup/food" component={FoodSetup} />
     <Route path="/dashboard/profile/basics" component={Dashboard} view="basics" />
-    <Route path="/dashboard/profile/services" component={Dashboard} view="services" />
+    <Route path="/dashboard/profile/service-type" component={Dashboard} view="service-type" />
+    <Route path="/dashboard/profile/food-services" component={Dashboard} view="food-services" />
   </Route>
 );
 

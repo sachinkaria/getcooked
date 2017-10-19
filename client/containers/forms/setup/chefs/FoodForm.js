@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { updateUser } from '../../../../actions/users';
-import { EVENTS, TYPES } from '../../../../utils/data';
+import { FOOD_SERVICES, CUISINES } from '../../../../utils/data';
 import renderCheckbox from '../../../../components/forms/renderCheckbox';
 
 const form = reduxForm({
@@ -26,12 +26,12 @@ function validate(formProps) {
   return errors;
 }
 
-class Categories extends Component {
+class FoodServices extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      serviceType: props.user.data.serviceType || [],
-      events: props.user.data.events || []
+      services: props.user.data.services || [],
+      cuisines: props.user.data.cuisines || []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -62,34 +62,34 @@ class Categories extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <label className="gc-text">Service Type</label>
+          <label className="gc-text">Food Services</label>
           <Row>
             {
-              TYPES.map(item => (
+              FOOD_SERVICES.map(item => (
                 <Col sm={6} key={item}>
                   <Field
-                    checked={this.isChecked(item, this.state.serviceType)}
+                    checked={this.isChecked(item, this.state.services)}
                     name={item}
                     type="checkbox"
                     component={renderCheckbox}
-                    onChange={e => this.handler(e, 'serviceType')}
+                    onChange={e => this.handler(e, 'services')}
                   />
                 </Col>
               ))
             }
           </Row>
           <br />
-          <label className="gc-text">Events</label>
+          <label className="gc-text">Cuisines</label>
           <Row>
             {
-              EVENTS.map(item => (
+              CUISINES.map(item => (
                 <Col sm={6} key={item}>
                   <Field
-                    checked={this.isChecked(item, this.state.events)}
+                    checked={this.isChecked(item, this.state.cuisines)}
                     name={item}
                     type="checkbox"
                     component={renderCheckbox}
-                    onChange={e => this.handler(e, 'events')}
+                    onChange={e => this.handler(e, 'cuisines')}
                   />
                 </Col>
               ))
@@ -106,7 +106,7 @@ class Categories extends Component {
   }
 }
 
-Categories.propTypes = {
+FoodServices.propTypes = {
   user: React.PropTypes.object,
   updateUser: React.PropTypes.func,
   errorMessage: React.PropTypes.string
@@ -119,4 +119,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateUser })(form(Categories));
+export default connect(mapStateToProps, { updateUser })(form(FoodServices));

@@ -39,6 +39,7 @@ const routes = (
     <Route path="/dashboard/profile/basics" component={Dashboard} view="basics" />
     <Route path="/dashboard/profile/service-type" component={Dashboard} view="service-type" />
     <Route path="/dashboard/profile/food-services" component={Dashboard} view="food-services" />
+    <Route path="/dashboard/profile/photos" component={Dashboard} view="photos" />
   </Route>
 );
 

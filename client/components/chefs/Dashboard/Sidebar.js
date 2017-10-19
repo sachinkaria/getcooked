@@ -23,8 +23,8 @@ const Sidebar = (props) => {
           </Link>
         </li>
         <li>
-          <Link className="gc-link-default">
-            <p className={classNames('gc-text', { 'gc-green': props.location.includes('photos') })}>Photos</p>
+          <Link to="/dashboard/profile/photos" className="gc-link-default">
+            <p className={classNames('gc-text', { 'gc-green gc-bold': props.location.includes('photos') })}>Photos</p>
           </Link>
         </li>
       </ul>

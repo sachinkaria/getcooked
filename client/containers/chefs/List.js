@@ -16,11 +16,6 @@ class Chefs extends React.Component {
       return (
         <div>
           <Row>
-            <Col sm={6} smOffset={1} className="gc-margin-bottom">
-              <SearchBar />
-            </Col>
-          </Row>
-          <Row>
             <Col xs={10} xsOffset={1} className="gc-padding-none">
               {
                 this.props.chefs.map(chef => (

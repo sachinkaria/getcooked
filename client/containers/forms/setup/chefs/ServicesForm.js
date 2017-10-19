@@ -62,7 +62,7 @@ class Categories extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <p className="gc-form-heading gc-green">Service Type</p>
+          <label className="gc-text">Service Type</label>
           <Row>
             {
               TYPES.map(item => (
@@ -79,7 +79,7 @@ class Categories extends Component {
             }
           </Row>
           <br />
-          <p className="gc-form-heading">Events</p>
+          <label className="gc-text">Events</label>
           <Row>
             {
               EVENTS.map(item => (

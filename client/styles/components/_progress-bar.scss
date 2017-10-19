@@ -1,14 +1,14 @@
 .gc-progress-bar {
   width: 105%;
-  top: 80px;
+  top: 63px;
   position: fixed;
   z-index: 100;
 
   @include breakpoint(tablet) {
-    top: 77px;
+    top: 60px;
   }
 
   @include breakpoint(laptop) {
-    top: 72px;
+    top: 58px;
   }
 }

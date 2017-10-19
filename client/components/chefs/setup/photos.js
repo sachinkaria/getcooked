@@ -120,12 +120,12 @@ class Photos extends Component {
         <Panel className="gc-panel-light">
           <form>
             <div className="gc-margin-bottom--lg">
-              <p className="gc-form-heading">Profile Photo</p>
+              <label className="gc-text">Profile Photo</label>
               {this.renderAlert()}
               <ImageUpload image={this.props.user.data.profilePhoto} onUpload={this.onProfileUpload} />
             </div>
             <div>
-              <p className="gc-form-heading">Cover Photo</p>
+              <label className="gc-text">Cover Photo</label>
               {this.renderAlert()}
               <ImageUpload type="cover" image={this.props.user.data.coverPhoto} onUpload={this.onCoverUpload} />
             </div>

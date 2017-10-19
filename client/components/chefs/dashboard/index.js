@@ -1,9 +1,9 @@
 import React from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
-import DashboardNavBar from '../../components/users/dashboard/Navbar';
-import Sidebar from '../../components/chefs/dashboard/Sidebar';
-import BasicsSetup from '../../containers/forms/setup/chefs/BasicsForm';
-import ServicesSetup from '../../containers/forms/setup/chefs/ServicesForm';
+import DashboardNavBar from '../../users/dashboard/Navbar';
+import Sidebar from './Sidebar';
+import BasicsSetup from '../../../containers/forms/setup/chefs/BasicsForm';
+import ServicesSetup from '../../../containers/forms/setup/chefs/ServicesForm';
 
 
 class Dashboard extends React.Component {
@@ -32,7 +32,7 @@ class Dashboard extends React.Component {
         <div className="gc-dashboard-container">
           <Row>
             <Col xsOffset={1} xs={10} sm={3} mdOffset={1} md={2}>
-              <Sidebar />
+              <Sidebar location={this.props.location.pathname} />
             </Col>
             <Col xs={10} xsOffset={1} smOffset={0} sm={7}>
               <Panel>

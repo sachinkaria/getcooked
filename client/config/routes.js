@@ -15,7 +15,7 @@ import ServicesSetup from '../components/chefs/setup/services';
 import PhotosSetup from '../components/chefs/setup/photos';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
-import Dashboard from '../containers/chefs/Dashboard';
+import Dashboard from '../components/chefs/dashboard/index';
 import Home from '../components/Home';
 import RequireAuth from '../components/auth/RequireAuth';
 

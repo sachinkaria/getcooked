@@ -79,7 +79,7 @@ class Services extends Component {
       >
         <div>
           <Panel>
-            <p className="gc-form-heading">Food Services</p>
+            <label className="gc-text">Food Services</label>
             <Row>
               {
                 FOOD_SERVICES.map(item => (
@@ -97,7 +97,7 @@ class Services extends Component {
             </Row>
           </Panel>
           <Panel>
-            <p className="gc-form-heading">Cuisines</p>
+            <label className="gc-text">Cuisines</label>
             <Row>
               {
                 CUISINES.map(item => (

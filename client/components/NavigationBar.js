@@ -26,7 +26,7 @@ const NavigationBar = (props) => {
             (isAuthenticated() && showNav) && (
               <Nav pullRight>
                 <NavItem>
-                  <Link to={'/dashboard/profile/basics'}>
+                  <Link to={props.user.data && props.user.data.role === 'chef' ? '/dashboard/profile/basics' : 'dashboard/account/settings'}>
                     <p className="gc-text gc-text--dark-grey">Dashboard</p>
                   </Link>
                 </NavItem>

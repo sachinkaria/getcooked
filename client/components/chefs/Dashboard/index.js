@@ -1,5 +1,7 @@
 import React from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { getCurrentUser } from '../../../actions/users'
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import Sidebar from './Sidebar';
 import BasicsForm from '../../../containers/forms/setup/chefs/BasicsForm';
@@ -16,6 +18,7 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount() {
+    this.props.getCurrentUser();
     this.renderView();
   }
 
@@ -37,11 +40,11 @@ class Dashboard extends React.Component {
   render(){
     return (
       <div>
-        <DashboardNavBar location={this.props.location.pathname} />
+        <DashboardNavBar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
         <div className="gc-dashboard-container">
           <Row>
             <Col xsOffset={1} xs={10} sm={3} mdOffset={1} md={2}>
-              <Sidebar location={this.props.location.pathname} />
+              <Sidebar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
             </Col>
             <Col xs={10} xsOffset={1} smOffset={0} sm={7}>
               <Panel>
@@ -55,5 +58,10 @@ class Dashboard extends React.Component {
   }
 };
 
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  };
+}
 
-export default Dashboard;
+export default connect(mapStateToProps, { getCurrentUser })(Dashboard);

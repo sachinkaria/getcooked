@@ -8,11 +8,14 @@ const DashboardNavBar = (props) => {
     <div>
       <Navbar className="gc-dashboard-navbar">
         <ul>
-          <li className="gc-dashboard-navbar-item">
-            <Link to={'/dashboard/profile/basics'}>
-              <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('profile') })}>Profile</p>
-            </Link>
-          </li>
+          {
+            props.userRole === 'chef' &&
+            <li className="gc-dashboard-navbar-item">
+              <Link to={'/dashboard/profile/basics'}>
+                <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('profile') })}>Profile</p>
+              </Link>
+            </li>
+          }
           <li className="gc-dashboard-navbar-item">
             <Link to={'/dashboard/account/settings'}>
               <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('account') })}>Account</p>
@@ -25,11 +28,13 @@ const DashboardNavBar = (props) => {
 };
 
 DashboardNavBar.propTypes = {
-  location: React.PropTypes.string
+  location: React.PropTypes.string,
+  userRole: React.PropTypes.string
 };
 
 DashboardNavBar.defaultProps = {
-  location: '/home'
+  location: '/home',
+  userRole: 'user'
 };
 
 export default DashboardNavBar;

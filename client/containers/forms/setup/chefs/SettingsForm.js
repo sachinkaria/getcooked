@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
+import { Col, Row, Button } from 'react-bootstrap';
 import { updateUser, getCurrentUser } from '../../../../actions/users';
 import renderField from '../../../../components/forms/renderField';
 
@@ -82,6 +83,13 @@ class SettingsForm extends Component {
             type="number"
           />
         </div>
+        <Row>
+          <Col sm={4} smOffset={4} >
+            <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+              Save
+            </Button>
+          </Col>
+        </Row>
       </form>
     );
   }

@@ -7,7 +7,7 @@ const Sidebar = (props) => {
   return (
     <Panel>
       {
-        props.location.includes('profile') ?
+        (props.location.includes('profile') && props.userRole === 'chef') ?
           <ul className="gc-list gc-padding-none">
             <li>
               <Link to="/dashboard/profile/basics" className="gc-link-default">

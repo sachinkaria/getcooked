@@ -9,12 +9,12 @@ const DashboardNavBar = (props) => {
       <Navbar className="gc-dashboard-navbar">
         <ul>
           <li className="gc-dashboard-navbar-item">
-            <Link to={'/dashboard/profile'}>
+            <Link to={'/dashboard/profile/basics'}>
               <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('profile') })}>Profile</p>
             </Link>
           </li>
           <li className="gc-dashboard-navbar-item">
-            <Link to={'/dashboard/account'}>
+            <Link to={'/dashboard/account/settings'}>
               <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('account') })}>Account</p>
             </Link>
           </li>

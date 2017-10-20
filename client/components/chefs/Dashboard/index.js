@@ -6,6 +6,7 @@ import BasicsForm from '../../../containers/forms/setup/chefs/BasicsForm';
 import ServicesForm from '../../../containers/forms/setup/chefs/ServicesForm';
 import FoodForm from '../../../containers/forms/setup/chefs/FoodForm';
 import PhotosForm from '../../../containers/forms/setup/chefs/PhotosForm';
+import SettingsForm from '../../../containers/forms/setup/chefs/SettingsForm';
 
 
 class Dashboard extends React.Component {
@@ -27,6 +28,8 @@ class Dashboard extends React.Component {
       return <FoodForm />;
     } else if (this.props.route.view === 'photos') {
       return <PhotosForm />;
+    } else if (this.props.route.view === 'settings') {
+      return <SettingsForm />;
     }
     return null;
   }

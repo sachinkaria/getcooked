@@ -20,7 +20,7 @@ function imageUploader(options, type, callback) {
   function onOpen(err, Img) {
     const PROFILE_WIDTH = 600;
     const PROFILE_HEIGHT = 600;
-    const COVER_WIDTH = 2600;
+    const COVER_WIDTH = 2000;
     const COVER_HEIGHT = 800;
 
     if (err) {
@@ -46,7 +46,7 @@ function imageUploader(options, type, callback) {
       'x-amz-acl': 'public-read'
     };
 
-    const req = s3Client.put('/images/'.concat(FILE_NAME), header);
+    const req = s3Client.put(`/images/${options.userId}/`.concat(FILE_NAME), header);
 
     req.on('response', (res) => {
       if (res.statusCode === 200) {

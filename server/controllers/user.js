@@ -79,7 +79,8 @@ function uploadProfilePhoto(req, res) {
   utils.imageUploader({
     data_uri: req.body.data_uri,
     filename: req.body.filename,
-    filetype: req.body.filetype
+    filetype: req.body.filetype,
+    userId: req.user._id
   }, 'profile', (error, response) => {
     if (error) {
       console.log(error);
@@ -100,7 +101,8 @@ function uploadCoverPhoto(req, res) {
   utils.imageUploader({
     data_uri: req.body.data_uri,
     filename: req.body.filename,
-    filetype: req.body.filetype
+    filetype: req.body.filetype,
+    userId: req.user._id
   }, 'cover', (error, response) => {
     if (error) {
       console.log(error);

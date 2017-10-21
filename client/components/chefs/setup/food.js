@@ -10,23 +10,8 @@ import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
 const form = reduxForm({
-  form: 'setup-categories',
-  validate
+  form: 'setup-categories'
 });
-
-function validate(formProps) {
-  const errors = {};
-
-  if (!formProps.displayName) {
-    errors.firstName = 'Please enter a display name';
-  }
-
-  if (!formProps.description) {
-    errors.lastName = 'Please enter a description';
-  }
-
-  return errors;
-}
 
 class Services extends Component {
   constructor(props) {

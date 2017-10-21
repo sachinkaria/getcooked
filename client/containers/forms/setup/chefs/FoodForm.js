@@ -8,22 +8,8 @@ import { FOOD_SERVICES, CUISINES } from '../../../../utils/data';
 import renderCheckbox from '../../../../components/forms/renderCheckbox';
 
 const form = reduxForm({
-  form: 'setup-categories',
-  validate
+  form: 'setup-categories'
 });
-
-function validate(formProps) {
-  const errors = {};
-
-  if (!formProps.displayName) {
-    errors.firstName = 'Please enter a display name';
-  }
-
-  if (!formProps.description) {
-    errors.lastName = 'Please enter a description';
-  }
-  return errors;
-}
 
 class FoodServices extends Component {
   constructor(props) {

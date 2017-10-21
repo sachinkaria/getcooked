@@ -43,11 +43,11 @@ class Profile extends React.Component {
                 <div>
                   <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
                 </div>
-                <hr />
+                <hr className="light-grey" />
                 <div>
                   <Description description={CHEF.description} />
                 </div>
-                <hr />
+                <hr className="light-grey" />
                 <div>
                   <Row>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={0}>

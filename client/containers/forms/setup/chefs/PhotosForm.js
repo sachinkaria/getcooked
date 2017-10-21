@@ -40,7 +40,6 @@ class Photos extends Component {
     this.isChecked = this.isChecked.bind(this);
     this.onProfileUpload = this.onProfileUpload.bind(this);
     this.onCoverUpload = this.onCoverUpload.bind(this);
-    this.onMultiUpload = this.onMultiUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

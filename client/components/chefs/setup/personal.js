@@ -9,6 +9,7 @@ import Steps from './steps.json';
 
 const form = reduxForm({
   form: 'setup-personal',
+  fields: ['firstName', 'lastName', 'email', 'mobileNumber'],
   validate
 });
 
@@ -22,6 +23,15 @@ function validate(formProps) {
   if (!formProps.lastName) {
     errors.lastName = 'Please enter your last name';
   }
+
+  if (!formProps.email) {
+    errors.email = 'Please enter your email address';
+  }
+
+  if (!formProps.mobileNumber) {
+    errors.mobileNumber = 'Please enter your mobile number';
+  }
+
 
   return errors;
 }

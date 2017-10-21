@@ -8,23 +8,8 @@ import { EVENTS, TYPES } from '../../../../utils/data';
 import renderCheckbox from '../../../../components/forms/renderCheckbox';
 
 const form = reduxForm({
-  form: 'setup-categories',
-  validate
+  form: 'setup-categories'
 });
-
-function validate(formProps) {
-  const errors = {};
-
-  if (!formProps.displayName) {
-    errors.firstName = 'Please enter a display name';
-  }
-
-  if (!formProps.description) {
-    errors.lastName = 'Please enter a description';
-  }
-
-  return errors;
-}
 
 class Categories extends Component {
   constructor(props) {

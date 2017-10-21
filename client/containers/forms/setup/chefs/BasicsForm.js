@@ -8,6 +8,7 @@ import renderInputBox from '../../../../components/forms/renderInputBox';
 
 const form = reduxForm({
   form: 'setup-basic',
+  fields: ['displayName', 'companyWebsite', 'companyEmail', 'companyPhoneNumber', 'description'],
   validate
 });
 
@@ -15,11 +16,23 @@ function validate(formProps) {
   const errors = {};
 
   if (!formProps.displayName) {
-    errors.displayName = 'Please enter a display name';
+    errors.displayName = 'Please enter your display name';
+  }
+
+  if (!formProps.companyWebsite) {
+    errors.companyWebsite = 'Please enter your company website';
+  }
+
+  if (!formProps.companyEmail) {
+    errors.companyEmail = 'Please enter your company email';
+  }
+
+  if (!formProps.companyPhoneNumber) {
+    errors.companyPhoneNumber = 'Please enter your company phone number';
   }
 
   if (!formProps.description) {
-    errors.description = 'Please enter a description';
+    errors.description = 'Please enter your description';
   }
 
   return errors;
@@ -41,7 +54,6 @@ class BasicInfo extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         <label className="gc-text">Display name</label>

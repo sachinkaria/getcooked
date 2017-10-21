@@ -175,6 +175,14 @@
   color: $green;
 }
 
+.gc-red {
+  color: $colour-error;
+}
+
 .gc-white {
   color: white;
+}
+
+hr.light-grey{
+  border-top: 1px solid $light-grey;
 }

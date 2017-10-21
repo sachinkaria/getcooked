@@ -9,9 +9,8 @@ const Images = (props) => {
     <div>
       {NUMBER_OF_IMAGES > 0 && (
         <Col>
-          <h3 className="gc-center gc-margin-bottom">Photos <span
-            className="gc-profile-text-xs"
-          >({NUMBER_OF_IMAGES})</span></h3>
+          <h3 className="gc-center gc-margin-bottom">Photos
+            <span className="gc-profile-text-xs">({NUMBER_OF_IMAGES})</span></h3>
           <LightBox images={props.images} />
         </Col>
       )

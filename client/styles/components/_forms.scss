@@ -20,6 +20,10 @@
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 
+  &.gc-input-error {
+    border: 1px solid $colour-error;
+  }
+
   &.gc-input--lg {
     margin-bottom: 1px;
     height: 44px;
@@ -117,3 +121,4 @@ input[type=checkbox] {
   margin-top: 7px;
   margin-bottom: 7px;
 }
+

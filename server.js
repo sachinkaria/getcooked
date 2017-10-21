@@ -55,19 +55,30 @@ conversationRoutes(router);
 const server = http.createServer(app);
 const io = socket(server);
 
-require('./config/socket').initialiseSocket(io);
+require('./server/config/socket').initialiseSocket(io);
+
+// starts the server and listens for requests
+server
+  .listen(config.port)
+  .on('connection', (socketIo) => {
+    console.log('A client is connected!');
+    socketIo.setTimeout(30 * 1000);
+  });
+
 
 // Use our router configuration when we call /
 app.use('/', router);
 
 // starts the server and listens for requests
-app.listen(config.port, () => {
-  console.log(`api running on port ${config.port}`);
-});
+// app.listen(config.port, () => {
+//   console.log(`api running on port ${config.port}`);
+// });
 
 // db config
 mongoose.connect(config.database, {
   useMongoClient: true,
 });
+
+console.log(`api running on port ${config.port}`);
 
 // mongoose.connect('mongodb://sachinkaria:manchester04@ds161890.mlab.com:61890/get-cooked');

@@ -7,7 +7,7 @@ const ImageUpload = ({ ...props }) => (
   props.inProgress ? // eslint-disable-line no-nested-ternary
     <p>in progress</p> :
     !props.image ?
-      <ImageSelect onChange={props.onUpload} /> :
+      <ImageSelect multiple={props.multiple} onChange={props.onUpload} /> :
       <ImageRender
         type={props.type}
         image={props.image}

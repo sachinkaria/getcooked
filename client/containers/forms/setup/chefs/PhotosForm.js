@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { hashHistory } from 'react-router';
+import ss from 'socket.io-stream';
 import ImageUpload from '../../../../components/ImageUpload';
 import { uploadPhoto, getCurrentUser } from '../../../../actions/users';
 import Steps from '../../../../components/chefs/setup/steps.json';
+// import Socket from '../../../../components/Socket';
 
 const form = reduxForm({
   form: 'setup-photos',
@@ -38,6 +40,7 @@ class Photos extends Component {
     this.isChecked = this.isChecked.bind(this);
     this.onProfileUpload = this.onProfileUpload.bind(this);
     this.onCoverUpload = this.onCoverUpload.bind(this);
+    this.onMultiUpload = this.onMultiUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -79,6 +82,14 @@ class Photos extends Component {
     reader.readAsDataURL(file);
   };
 
+  // onMultiUpload(e) {
+  //   const STREAM = ss.createStream();
+  //   ss.createBlobReadStream(e.target.files[0]).pipe(STREAM);
+  //   ss(Socket).emit('upload-photo', STREAM, {
+  //     length: e.target.files[0].size
+  //   });
+  // };
+
   isChecked(item, state) {
     return state && state.indexOf(item) > -1;
   }
@@ -114,6 +125,11 @@ class Photos extends Component {
           {this.renderAlert()}
           <ImageUpload type="cover" image={this.props.user.data ? this.props.user.data.coverPhoto : null} onUpload={this.onCoverUpload} />
         </div>
+        {/*<div>*/}
+          {/*<label className="gc-text">Additional Photos</label>*/}
+          {/*{this.renderAlert()}*/}
+          {/*<ImageUpload multiple type="cover" onUpload={this.onMultiUpload} />*/}
+        {/*</div>*/}
       </form>
     );
   }

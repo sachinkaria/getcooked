@@ -5,7 +5,7 @@ import { Button, FormGroup } from 'react-bootstrap';
 
 const ImageSelect = ({ ...props }) => (
   <Button className="gc-padding-none">
-    <input type="file" className="custom-file-input" accept="image/*" onChange={props.onChange} />
+    <input multiple={props.multiple} type="file" className="custom-file-input" accept="image/*" onChange={props.onChange} />
   </Button>
 );
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Services = (props) => {
   return (
-    <div className="gc-margin-bottom gc-margin-top--sm gc-center">
+    <div className="gc-margin-bottom gc-center">
       <label className="gc-text gc-margin-bottom gc-form-heading gc-bold">{props.title}</label>
       <div className="gc-tags">
         { props.services.map(item =>

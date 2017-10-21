@@ -8,6 +8,7 @@ import ServiceTypes from '../../components/chefs/profile/ServiceTypes';
 import ProfilePicture from '../../components/chefs/profile/ProfilePicture';
 import CoverPicture from '../../components/chefs/profile/CoverPicture';
 import Description from '../../components/chefs/profile/Description';
+import Images from '../../components/chefs/profile/Images';
 import * as actions from '../../actions/public';
 
 
@@ -28,7 +29,7 @@ class Profile extends React.Component {
         <Row>
           <div className="gc-profile-body">
             <Col sm={9} md={7} mdOffset={1}>
-              <Panel className="gc-panel--translucent">
+              <Panel className="gc-panel--translucent gc-center">
                 <Row>
                   <div className="hidden-xs">
                     <Heading text={CHEF.displayName} />
@@ -43,11 +44,11 @@ class Profile extends React.Component {
                 <div>
                   <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
                 </div>
-                <hr className="light-grey" />
+                <hr className="grey" />
                 <div>
                   <Description description={CHEF.description} />
                 </div>
-                <hr className="light-grey" />
+                <hr className="grey" />
                 <div>
                   <Row>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
@@ -58,6 +59,14 @@ class Profile extends React.Component {
                     </Col>
                   </Row>
                 </div>
+                <hr className="grey" />
+                <div>
+                  <Images images={CHEF.images} />
+                </div>
+                <hr className="grey" />
+                <Row>
+                  <p className="gc-form-heading"> Reviews</p>
+                </Row>
               </Panel>
             </Col>
             <Col sm={3} xsHidden>

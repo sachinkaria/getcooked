@@ -44,16 +44,22 @@ class Dashboard extends React.Component {
         <DashboardNavBar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
         <div className="gc-dashboard-container">
           <Row>
-            <Col xsOffset={1} xs={10} sm={3} mdOffset={1} md={2}>
+            <Col sm={3} mdOffset={1} md={2}>
+              {
+                (this.props.user.data && this.props.user.data.role === 'chef') &&
+                <Link className="btn btn-block gc-btn gc-btn--orange gc-margin-top gc-margin-bottom visible-xs" to={`/chefs/${this.props.user.data._id}`}>
+                  View my profile
+                </Link>
+              }
               <Sidebar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
               {
-                (this.props.user.data && this.props.user.data.role) &&
-                <Link className="btn btn-block gc-btn gc-btn--orange gc-margin-top " to={`/chefs/${this.props.user.data._id}`}>
+                (this.props.user.data && this.props.user.data.role === 'chef') &&
+                <Link className="btn btn-block gc-btn gc-btn--orange gc-margin-top gc-margin-bottom hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
                   View my profile
                 </Link>
               }
             </Col>
-            <Col xs={10} xsOffset={1} smOffset={0} sm={7}>
+            <Col smOffset={0} sm={7}>
               <Panel>
                 {this.renderView()}
               </Panel>
@@ -67,7 +73,7 @@ class Dashboard extends React.Component {
 
 Dashboard.propTypes = {
   user: React.PropTypes.shape({ user: { data: {} } }).isRequired,
-  location: React.PropTypes.string.isRequired,
+  location: React.PropTypes.shape({ location: { pathname: '' } }).isRequired,
   getCurrentUser: React.PropTypes.func.isRequired
 };
 

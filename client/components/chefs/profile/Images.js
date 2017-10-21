@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import LightBox from '../../../containers/LightBox';
 
 const Images = (props) => {
@@ -8,11 +8,12 @@ const Images = (props) => {
   return (
     <div>
       {NUMBER_OF_IMAGES > 0 && (
-        <Col>
-          <h3 className="gc-center gc-margin-bottom">Photos
-            <span className="gc-profile-text-xs">({NUMBER_OF_IMAGES})</span></h3>
-          <LightBox images={props.images} />
-        </Col>
+        <Row>
+          <Col>
+            <h3 className="gc-center gc-form-heading gc-margin-bottom">Photos</h3>
+            <LightBox images={props.images} />
+          </Col>
+        </Row>
       )
       }
     </div>

@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./server/config/main');
 const chokidar = require('chokidar');
+const socket = require('socket.io');
+const http = require('http');
 const authRoutes = require('./server/routes/user');
 const bookingRoutes = require('./server/routes/booking');
 const chefRoutes = require('./server/routes/chef');
@@ -15,6 +17,7 @@ const app = express();
 const router = express.Router();
 
 const watcher = chokidar.watch('./client');
+
 
 // clear server cache and reload frontend files
 watcher.on('ready', () => {
@@ -49,6 +52,10 @@ bookingRoutes(router);
 chefRoutes(router);
 conversationRoutes(router);
 
+const server = http.createServer(app);
+const io = socket(server);
+
+require('./config/socket').initialiseSocket(io);
 
 // Use our router configuration when we call /
 app.use('/', router);

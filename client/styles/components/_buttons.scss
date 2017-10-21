@@ -5,6 +5,7 @@ $image-height: 200px;
   border: none;
   height: 36px;
   font-size: 14px;
+  font-weight: 700;
 
   &:focus {
     outline: none;
@@ -15,10 +16,20 @@ $image-height: 200px;
 
   &.gc-btn--white {
     background-color: white;
-    border: 2px solid $green;
+    border: 1px solid $green;
     color: $green;
-    font-weight: 700;
 
+    &:hover {
+      background-color: $lightest-grey;
+      border: 1px solid $green;
+      color: $green;
+    }
+
+    &:active:focus {
+      background-color: $lightest-grey;
+      border: 1px solid $green;
+      color: $green;
+    }
   }
 
   &.gc-btn--orange {
@@ -31,6 +42,11 @@ $image-height: 200px;
     }
 
     &:active {
+      background-color: $primary-colour--dark;
+      color: $white;
+    }
+
+    &:active:focus {
       background-color: $primary-colour--dark;
       color: $white;
     }

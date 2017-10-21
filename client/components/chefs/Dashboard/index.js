@@ -1,7 +1,8 @@
 import React from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { getCurrentUser } from '../../../actions/users'
+import { Link } from 'react-router';
+import { getCurrentUser } from '../../../actions/users';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import Sidebar from './Sidebar';
 import BasicsForm from '../../../containers/forms/setup/chefs/BasicsForm';
@@ -45,6 +46,12 @@ class Dashboard extends React.Component {
           <Row>
             <Col xsOffset={1} xs={10} sm={3} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
+              {
+                (this.props.user.data && this.props.user.data.role) &&
+                <Link className="btn btn-block gc-btn gc-btn--orange gc-margin-top " to={`/chefs/${this.props.user.data._id}`}>
+                  View my profile
+                </Link>
+              }
             </Col>
             <Col xs={10} xsOffset={1} smOffset={0} sm={7}>
               <Panel>
@@ -56,6 +63,12 @@ class Dashboard extends React.Component {
       </div>
     );
   }
+}
+
+Dashboard.propTypes = {
+  user: React.PropTypes.shape({ user: { data: {} } }).isRequired,
+  location: React.PropTypes.string.isRequired,
+  getCurrentUser: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

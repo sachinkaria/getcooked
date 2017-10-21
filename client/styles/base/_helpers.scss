@@ -33,6 +33,10 @@
   margin-bottom: 5px;
 }
 
+.gc-margin-bottom--sm {
+  margin-bottom: 10px;
+}
+
 .gc-margin-bottom {
   margin-bottom: 15px;
 }
@@ -95,6 +99,10 @@
 
 .gc-background-black{
   background-color: black;
+}
+
+.gc-background-light-grey {
+  background-color: $lightest-grey;
 }
 
 .gc-vertical-center{

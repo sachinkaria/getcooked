@@ -7,8 +7,6 @@ import { Router, hashHistory } from 'react-router';
 import reducers from './reducers/index';
 import routes from './config/routes';
 import { AUTH_USER } from './actions/types';
-import { getConversations } from './actions/messages';
-import { getBookings } from './actions/bookings';
 import { getCurrentUser } from './actions/users';
 
 require('./styles/main.scss');

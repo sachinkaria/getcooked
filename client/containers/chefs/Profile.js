@@ -29,19 +29,35 @@ class Profile extends React.Component {
           <div className="gc-profile-body">
             <Col sm={9} md={7} mdOffset={1}>
               <Panel className="gc-panel--translucent">
-                <Col xs={8} xsOffset={2} sm={3} smOffset={0} className="gc-padding-none">
-                  <ProfilePicture photoUrl={CHEF.profilePhoto} />
-                </Col>
-                <Col sm={9}>
+                <Row>
+                  <div className="hidden-xs">
+                    <Heading text={CHEF.displayName} />
+                  </div>
+                  <Col xs={8} xsOffset={2} sm={4} smOffset={4} className="gc-padding-none">
+                    <ProfilePicture photoUrl={CHEF.profilePhoto} />
+                  </Col>
+                </Row>
+                <div className="visible-xs">
                   <Heading text={CHEF.displayName} />
-                  <ServiceTypes serviceTypes={CHEF.serviceType} />
-                  <Services services={CHEF.services} />
-                  <Services services={CHEF.cuisines} />
-                </Col>
-                <Col>
+                </div>
+                <div>
+                  <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
+                </div>
+                <hr />
+                <div>
                   <Description description={CHEF.description} />
-                </Col>
-
+                </div>
+                <hr />
+                <div>
+                  <Row>
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
+                      <Services title="Services" services={CHEF.services.sort()} />
+                    </Col>
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
+                      <Services title="Cuisines" services={CHEF.cuisines.sort()} />
+                    </Col>
+                  </Row>
+                </div>
               </Panel>
             </Col>
             <Col sm={3} xsHidden>

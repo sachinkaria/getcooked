@@ -34,7 +34,7 @@ class Profile extends React.Component {
                   <div className="hidden-xs">
                     <Heading text={CHEF.displayName} />
                   </div>
-                  <Col xs={8} xsOffset={2} sm={4} smOffset={4} className="gc-padding-none">
+                  <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
                     <ProfilePicture photoUrl={CHEF.profilePhoto} />
                   </Col>
                 </Row>
@@ -53,6 +53,9 @@ class Profile extends React.Component {
                   <Row>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
                       <Services title="Services" services={CHEF.services.sort()} />
+                    </Col>
+                    <Col xs={12} className="visible-xs">
+                      <hr className="grey" />
                     </Col>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
                       <Services title="Cuisines" services={CHEF.cuisines.sort()} />

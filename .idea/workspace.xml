@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" afterPath="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/profile/Images.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/Images.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/profile/Services.js" afterPath="$PROJECT_DIR$/client/components/chefs/profile/Services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/containers/LightBox.js" afterPath="$PROJECT_DIR$/client/containers/LightBox.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/containers/chefs/Profile.js" afterPath="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_buttons.scss" afterPath="$PROJECT_DIR$/client/styles/components/_buttons.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_lightbox.scss" afterPath="$PROJECT_DIR$/client/styles/components/_lightbox.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,11 +27,21 @@
       <file leaf-file-name="Profile.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/containers/chefs/Profile.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="31" column="63" lean-forward="false" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+            <state relative-caret-position="417">
+              <caret line="55" column="21" lean-forward="false" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceTypes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,8 +59,8 @@
       <file leaf-file-name="Services.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/Services.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="60">
+              <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -149,7 +155,6 @@
         <option value="$PROJECT_DIR$/client/components/chefs/profile/Description.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_profile.scss" />
         <option value="$PROJECT_DIR$/client/components/chefs/profile/Heading.js" />
-        <option value="$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js" />
         <option value="$PROJECT_DIR$/client/components/ProgressBar/index.js" />
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/client/index.js" />
@@ -178,8 +183,9 @@
         <option value="$PROJECT_DIR$/client/containers/LightBox.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_lightbox.scss" />
         <option value="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" />
-        <option value="$PROJECT_DIR$/client/components/chefs/profile/Services.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_panel.scss" />
+        <option value="$PROJECT_DIR$/client/components/chefs/profile/Services.js" />
+        <option value="$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js" />
         <option value="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
       </list>
     </option>
@@ -774,12 +780,12 @@
       <workItem from="1508428395356" duration="7356000" />
       <workItem from="1508503855681" duration="7660000" />
       <workItem from="1508585133616" duration="6540000" />
-      <workItem from="1508601477307" duration="11189000" />
+      <workItem from="1508601477307" duration="11682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="558410000" />
+    <option name="totallyTimeSpent" value="558903000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-152" y="-1054" width="1280" height="734" extended-state="0" />
@@ -932,14 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="4" lean-forward="false" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1271,14 +1269,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/Services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/styles/components/_profile.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1295,10 +1285,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/Services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/profile/ServiceTypes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="57" lean-forward="false" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/containers/chefs/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="31" column="63" lean-forward="false" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+        <state relative-caret-position="417">
+          <caret line="55" column="21" lean-forward="false" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

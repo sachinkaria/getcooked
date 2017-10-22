@@ -30,6 +30,11 @@ const UserSchema = new Schema({
     enum: ['member', 'chef', 'admin'],
     default: 'member'
   },
+  status: {
+    type: String,
+    enum: ['pending', 'listed', 'unlisted'],
+    default: 'pending'
+  },
   profilePhoto: {
     type: String
   },

@@ -10,6 +10,7 @@ import ServicesForm from '../../../containers/forms/setup/chefs/ServicesForm';
 import FoodForm from '../../../containers/forms/setup/chefs/FoodForm';
 import PhotosForm from '../../../containers/forms/setup/chefs/PhotosForm';
 import SettingsForm from '../../../containers/forms/setup/chefs/SettingsForm';
+import Notification from '../../Notification';
 
 
 class Dashboard extends React.Component {
@@ -20,6 +21,7 @@ class Dashboard extends React.Component {
 
   componentWillMount() {
     this.props.getCurrentUser();
+
     this.renderView();
   }
 
@@ -39,25 +41,41 @@ class Dashboard extends React.Component {
   }
 
   render() {
+    const { user } = this.props;
+
+    if (!user.data) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div>
-        <DashboardNavBar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
+        <DashboardNavBar location={this.props.location.pathname} userRole={user.data.role} />
         <div className="gc-dashboard-container">
           {
-            (this.props.user.data && this.props.user.data.role === 'chef') &&
-              <Row>
-                <Col xs={6} xsOffset={3}>
-                  <Link className="btn btn-block gc-btn gc-btn-white gc-margin-bottom visible-xs" to={`/chefs/${this.props.user.data._id}`}>
-                    View my profile
-                  </Link>
-                </Col>
-              </Row>
+            (user.data.role === 'chef') &&
+              <div>
+                {user.data.status === 'pending' &&
+                <Row className="gc-center">
+                  <Col xs={10} xsOffset={1} sm={7} smOffset={3}>
+                    <Notification
+                      text="Your profile is under review. You will be notified as soon as it has been approved and listed."/>
+                  </Col>
+                </Row>
+                }
+                <Row>
+                  <Col xs={8} xsOffset={2} sm={6} smOffset={3}>
+                    <Link className="btn btn-block gc-btn gc-btn-white gc-margin-bottom visible-xs" to={`/chefs/${this.props.user.data._id}`}>
+                      View my profile
+                    </Link>
+                  </Col>
+                </Row>
+              </div>
           }
           <Row>
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
-              <Sidebar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
+              <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
               {
-                (this.props.user.data && this.props.user.data.role === 'chef') &&
+                (user.data.role === 'chef') &&
                 <Link className="btn btn-block gc-btn gc-btn-white gc-margin-top hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
                   View my profile
                 </Link>

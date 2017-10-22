@@ -35,6 +35,7 @@ $image-height: 200px;
   &.gc-btn--orange {
     background-color: $primary-colour;
     color: $white;
+    font-weight: 500;
 
     &:hover {
       background-color: $primary-colour--dark;

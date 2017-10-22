@@ -11,7 +11,9 @@ const Images = (props) => {
         <Row>
           <Col>
             <h3 className="gc-center gc-form-heading gc-margin-bottom">Photos</h3>
-            <LightBox images={props.images} />
+            <div style={{ paddingLeft: '10px', paddingRight: '10px' }}>
+              <LightBox images={props.images} />
+            </div>
           </Col>
         </Row>
       )

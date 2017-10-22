@@ -22,15 +22,15 @@ function validate(formProps) {
   }
 
   if (!formProps.companyWebsite) {
-    errors.companyWebsite = 'Please enter your company website';
+    errors.companyWebsite = 'Please enter your professional website';
   }
 
   if (!formProps.companyEmail) {
-    errors.companyEmail = 'Please enter your company email';
+    errors.companyEmail = 'Please enter your professional email';
   }
 
   if (!formProps.companyPhoneNumber) {
-    errors.companyPhoneNumber = 'Please enter your company phone number';
+    errors.companyPhoneNumber = 'Please enter your professional phone number';
   }
 
   if (!formProps.description) {
@@ -79,7 +79,7 @@ class BasicInfo extends Component {
               type="text"
             />
           </div>
-          <label className="gc-text">Company website</label>
+          <label className="gc-text">Professional website</label>
           <div>
             <Field
               name="companyWebsite"
@@ -89,7 +89,7 @@ class BasicInfo extends Component {
               type="string"
             />
           </div>
-          <label className="gc-text">Company email</label>
+          <label className="gc-text">Professional email</label>
           <div>
             <Field
               name="companyEmail"
@@ -99,7 +99,7 @@ class BasicInfo extends Component {
               type="string"
             />
           </div>
-          <label className="gc-text">Company contact number</label>
+          <label className="gc-text">Professional contact number</label>
           <div>
             <Field
               name="companyPhoneNumber"
@@ -113,7 +113,7 @@ class BasicInfo extends Component {
           <div>
             <Field
               name="description"
-              placeholder="Write something about your company.s"
+              placeholder="Write something about your company"
               className="form-control gc-input gc-margin-bottom"
               component={renderInputBox}
               type="text"

@@ -38,23 +38,27 @@ class Dashboard extends React.Component {
     return null;
   }
 
-  render(){
+  render() {
     return (
       <div>
         <DashboardNavBar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
         <div className="gc-dashboard-container">
+          {
+            (this.props.user.data && this.props.user.data.role === 'chef') &&
+              <Row>
+                <Col xs={6} xsOffset={3}>
+                  <Link className="btn btn-block gc-btn gc-btn-white gc-margin-bottom visible-xs" to={`/chefs/${this.props.user.data._id}`}>
+                    View my profile
+                  </Link>
+                </Col>
+              </Row>
+          }
           <Row>
-            <Col sm={3} mdOffset={1} md={2}>
-              {
-                (this.props.user.data && this.props.user.data.role === 'chef') &&
-                <Link className="btn btn-block gc-btn gc-btn--orange gc-margin-top gc-margin-bottom visible-xs" to={`/chefs/${this.props.user.data._id}`}>
-                  View my profile
-                </Link>
-              }
+            <Col sm={3} smOffset={1} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={this.props.user.data && this.props.user.data.role} />
               {
                 (this.props.user.data && this.props.user.data.role === 'chef') &&
-                <Link className="btn btn-block gc-btn gc-btn--orange gc-margin-top gc-margin-bottom hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
+                <Link className="btn btn-block gc-btn gc-btn-white gc-margin-top hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
                   View my profile
                 </Link>
               }

@@ -20,15 +20,15 @@ function validate(formProps) {
   }
 
   if (!formProps.companyWebsite) {
-    errors.companyWebsite = 'Please enter your company website';
+    errors.companyWebsite = 'Please enter your professional website';
   }
 
   if (!formProps.companyEmail) {
-    errors.companyEmail = 'Please enter your company email';
+    errors.companyEmail = 'Please enter your professional email';
   }
 
   if (!formProps.companyPhoneNumber) {
-    errors.companyPhoneNumber = 'Please enter your company phone number';
+    errors.companyPhoneNumber = 'Please enter your professional contact number';
   }
 
   if (!formProps.description) {
@@ -60,37 +60,37 @@ class BasicInfo extends Component {
         <div>
           <Field
             name="displayName"
-            placeholder="Profile name"
+            placeholder="e.g. Catering Co."
             className="form-control gc-input gc-margin-bottom"
             component={renderField}
             type="text"
           />
         </div>
-        <label className="gc-text">Company website</label>
+        <label className="gc-text">Professional website</label>
         <div>
           <Field
             name="companyWebsite"
-            placeholder="Company website (not required)"
+            placeholder="e.g. www.mycateringcompany.com"
             className="form-control gc-input gc-margin-bottom"
             component={renderField}
             type="string"
           />
         </div>
-        <label className="gc-text">Company email</label>
+        <label className="gc-text">Professional email</label>
         <div>
           <Field
             name="companyEmail"
-            placeholder="Company email"
+            placeholder="e.g. hello@cateringco.com"
             className="form-control gc-input gc-margin-bottom"
             component={renderField}
             type="string"
           />
         </div>
-        <label className="gc-text">Company phone number</label>
+        <label className="gc-text">Professional contact number</label>
         <div>
           <Field
             name="companyPhoneNumber"
-            placeholder="Company phone number"
+            placeholder="e.g. 0201234567"
             className="form-control gc-input gc-margin-bottom"
             component={renderField}
             type="number"
@@ -100,7 +100,7 @@ class BasicInfo extends Component {
         <div>
           <Field
             name="description"
-            placeholder="Description"
+            placeholder="Write something about your company"
             className="form-control gc-input gc-margin-bottom"
             component={renderInputBox}
             type="text"

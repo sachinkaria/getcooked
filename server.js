@@ -8,6 +8,7 @@ const chokidar = require('chokidar');
 const socket = require('socket.io');
 const http = require('http');
 const authRoutes = require('./server/routes/user');
+const adminRoutes = require('./server/routes/admin');
 const bookingRoutes = require('./server/routes/booking');
 const chefRoutes = require('./server/routes/chef');
 const conversationRoutes = require('./server/routes/conversation');
@@ -48,6 +49,7 @@ app.use((req, res, next) => {
 });
 
 authRoutes(router);
+adminRoutes(router);
 bookingRoutes(router);
 chefRoutes(router);
 conversationRoutes(router);

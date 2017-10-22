@@ -16,6 +16,7 @@ import PhotosSetup from '../components/chefs/setup/photos';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Dashboard from '../components/chefs/Dashboard/index';
+import AdminDashboard from '../components/admin/Dashboard/index';
 import Home from '../components/Home';
 import RequireAuth from '../components/auth/RequireAuth';
 import RequireRole from '../components/auth/RequireRole';
@@ -42,7 +43,7 @@ const routes = (
     <Route path="/dashboard/profile/food-services" component={RequireRole(Dashboard, 'chef')} view="food-services" />
     <Route path="/dashboard/profile/photos" component={RequireRole(Dashboard, 'chef')} view="photos" />
     <Route path="/dashboard/account/settings" component={RequireAuth(Dashboard)} view="settings" />
-    <Route path="/admin/dashboard" component={RequireRole(Dashboard, 'admin')} view="settings" />
+    <Route path="/admin/dashboard" component={RequireRole(AdminDashboard, 'admin')} view="settings" />
   </Route>
 );
 

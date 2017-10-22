@@ -12,3 +12,5 @@ export const GET_INBOX = 'get_inbox';
 export const GET_CONVERSATION = 'get_conversation';
 export const LIST_CHEFS = 'list_chefs';
 export const GET_CHEF = 'get_chef';
+export const ADMIN_LIST_CHEFS = 'admin_list_chefs';
+export const ADMIN_GET_CHEF = 'admin_get_chef';

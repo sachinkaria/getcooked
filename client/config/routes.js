@@ -18,6 +18,7 @@ import Logout from '../components/auth/Logout';
 import Dashboard from '../components/chefs/Dashboard/index';
 import Home from '../components/Home';
 import RequireAuth from '../components/auth/RequireAuth';
+import RequireRole from '../components/auth/RequireRole';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -36,11 +37,12 @@ const routes = (
     <Route path="/setup/photos" component={PhotosSetup} />
     <Route path="/setup/services" component={ServicesSetup} />
     <Route path="/setup/food" component={FoodSetup} />
-    <Route path="/dashboard/profile/basics" component={Dashboard} view="basics" />
-    <Route path="/dashboard/profile/service-type" component={Dashboard} view="service-type" />
-    <Route path="/dashboard/profile/food-services" component={Dashboard} view="food-services" />
-    <Route path="/dashboard/profile/photos" component={Dashboard} view="photos" />
-    <Route path="/dashboard/account/settings" component={Dashboard} view="settings" />
+    <Route path="/dashboard/profile/basics" component={RequireRole(Dashboard, 'chef')} view="basics" />
+    <Route path="/dashboard/profile/service-type" component={RequireRole(Dashboard, 'chef')} view="service-type" />
+    <Route path="/dashboard/profile/food-services" component={RequireRole(Dashboard, 'chef')} view="food-services" />
+    <Route path="/dashboard/profile/photos" component={RequireRole(Dashboard, 'chef')} view="photos" />
+    <Route path="/dashboard/account/settings" component={RequireAuth(Dashboard)} view="settings" />
+    <Route path="/admin/dashboard" component={RequireRole(Dashboard, 'admin')} view="settings" />
   </Route>
 );
 

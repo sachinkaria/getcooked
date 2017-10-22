@@ -10,17 +10,19 @@ const DashboardNavBar = (props) => {
         <ul>
           {
             props.userRole === 'chef' &&
-            <li className="gc-dashboard-navbar-item">
-              <Link to={'/dashboard/profile/basics'}>
-                <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('profile') })}>Profile</p>
-              </Link>
-            </li>
+              <div>
+                <li className="gc-dashboard-navbar-item">
+                  <Link to={'/dashboard/profile/basics'}>
+                    <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('profile') })}>Profile</p>
+                  </Link>
+                </li>
+                <li className="gc-dashboard-navbar-item">
+                  <Link to={'/dashboard/account/settings'}>
+                    <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('account') })}>Account</p>
+                  </Link>
+                </li>
+              </div>
           }
-          <li className="gc-dashboard-navbar-item">
-            <Link to={'/dashboard/account/settings'}>
-              <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('account') })}>Account</p>
-            </Link>
-          </li>
         </ul>
       </Navbar>
     </div>

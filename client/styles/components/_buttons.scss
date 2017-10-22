@@ -71,7 +71,7 @@ $image-height: 200px;
   &.gc-btn-white {
     border: 1px solid $light-grey;
     background-color: $white;
-    color: $green;
+    color: $dark-grey;
 
     &:hover {
       background-color: $lightest-grey;
@@ -208,7 +208,7 @@ input[type=file]:focus {
     padding: 0 5px;
     height: 35px;
     margin-top: -6px;
-    margin-right: -6px;
+    margin-right: -5px;
 
     &:hover {
       text-decoration: none;

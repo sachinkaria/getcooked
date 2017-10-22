@@ -7,6 +7,15 @@ import isAuthenticated from '../utils/isAuthenticated';
 
 const NavigationBar = (props) => {
   const showNav = !props.location.pathname.includes('setup');
+
+  function dashboardRoute(role) {
+    if (role === 'chef') {
+      return '/dashboard/profile/basics';
+    } else if (role === 'admin') {
+      return '/admin/dashboard';
+    }
+    return 'dashboard/account/settings';
+  }
   return (
     <div>
       <Navbar fixedTop className="gc-navbar">
@@ -26,7 +35,7 @@ const NavigationBar = (props) => {
             (isAuthenticated() && showNav) && (
               <Nav pullRight>
                 <NavItem>
-                  <Link to={props.user.data && props.user.data.role === 'chef' ? '/dashboard/profile/basics' : 'dashboard/account/settings'}>
+                  <Link to={dashboardRoute(props.user.data && props.user.data.role)}>
                     <p className="gc-text gc-text--dark-grey">Dashboard</p>
                   </Link>
                 </NavItem>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
@@ -46,16 +47,18 @@ class AdminDashboard extends React.Component {
                   (
                     <Panel key={chef.displayName}>
                       <Row>
-                        <Col xs={3} sm={2}>
+                        <Col xs={3} md={2}>
                           <ProfilePicture withoutMargins photoUrl={chef.profilePhoto} />
                         </Col>
-                        <Col xs={6} sm={7}>
+                        <Col xs={6} md={7}>
                           <p className="gc-text gc-bold gc-margin-none">{chef.displayName}</p>
                           <Status status={chef.status} />
                         </Col>
                         <Col xs={3} className="text-right">
                           <p className="gc-text gc-text--sm gc-bold gc-margin-none">{moment(chef.created).format('MMM Do YYYY')}</p>
-                          <Button block className="btn gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
+                          <Link to={`/admin/dashboard/chefs/${chef._id}`}>
+                            <Button block className="btn gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
+                          </Link>
                           <div className="gc-margin-top--xs">
                             {
                               (chef.status === 'pending') &&

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Col, Panel, Row } from 'react-bootstrap';
+import { Col, Panel, Row, Button } from 'react-bootstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
-import { adminListChefs } from '../../../actions/admin';
+import { adminListChefs, updateStatus } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ProfilePicture from '../../chefs/profile/ProfilePicture';
 import Status from '../../Status';
@@ -11,9 +11,17 @@ import Sidebar from '../../chefs/Dashboard/Sidebar';
 
 
 class AdminDashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.updateStatus = this.updateStatus.bind(this);
+  }
   componentWillMount() {
     this.props.getCurrentUser();
     this.props.adminListChefs();
+  }
+
+  updateStatus(status, id) {
+    this.props.updateStatus(status, id);
   }
 
   render() {
@@ -48,6 +56,17 @@ class AdminDashboard extends React.Component {
                         <Col xs={3} className="text-right">
                           <p className="gc-text gc-margin-none">{moment(chef.created).format('MMM Do YYYY')}</p>
                         </Col>
+                        <div className="text-right">
+                          <Button className="btn btn-primary btn-xs" onClick={() => this.updateStatus('approve', chef._id)}>
+                            Approve
+                          </Button>
+                          <Button className="btn btn-primary btn-xs" onClick={() => this.updateStatus('list', chef._id)}>
+                            List
+                          </Button>
+                          <Button className="btn btn-error btn-xs" onClick={() => this.updateStatus('unlist', chef._id)}>
+                            Unlist
+                          </Button>
+                        </div>
                       </Row>
                     </Panel>
                   )
@@ -75,4 +94,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentUser, adminListChefs })(AdminDashboard);
+export default connect(mapStateToProps, { getCurrentUser, adminListChefs, updateStatus })(AdminDashboard);

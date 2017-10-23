@@ -30,10 +30,9 @@ function approve(req, res) {
 
     if (chef.status === 'pending') {
       _.extend(chef, { status: 'listed' });
-      chef.save();
-      chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
-      res.jsonp(chef);
     }
+    chef.save();
+    chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
     res.jsonp(chef);
   });
 }
@@ -45,11 +44,9 @@ function list(req, res) {
 
     if (chef.status === 'unlisted') {
       _.extend(chef, { status: 'listed' });
-      chef.save();
-      chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
-      res.jsonp(chef);
     }
-
+    chef.save();
+    chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
     res.jsonp(chef);
   });
 }
@@ -61,11 +58,9 @@ function unlist(req, res) {
 
     if (chef.status === 'listed') {
       _.extend(chef, { status: 'unlisted' });
-      chef.save();
-      chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
-      res.jsonp(chef);
     }
-
+    chef.save();
+    chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
     res.jsonp(chef);
   });
 }

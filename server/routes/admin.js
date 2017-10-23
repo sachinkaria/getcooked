@@ -8,4 +8,7 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function (app) {
   app.get('/admin/chefs', requireAuth, AdminController.listChefs);
   app.get('/admin/chefs/:id', requireAuth, AdminController.getChef);
+  app.get('/admin/chefs/:id/list', requireAuth, AdminController.list);
+  app.get('/admin/chefs/:id/unlist', requireAuth, AdminController.unlist);
+  app.get('/admin/chefs/:id/approve', requireAuth, AdminController.approve);
 };

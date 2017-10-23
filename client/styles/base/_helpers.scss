@@ -159,6 +159,10 @@
   margin-right: 7px;
 }
 
+.gc-inline-block--without-margin {
+  display: inline-block;
+}
+
 .gc-dark-grey {
   color: $dark-grey;
 }
@@ -177,6 +181,18 @@
 
 .gc-red {
   color: $colour-error;
+}
+
+.gc-yellow {
+  color: $yellow;
+}
+
+.gc-dark-yellow {
+  color: $yellow;
+}
+
+.gc-light-green {
+  color: $light-green;
 }
 
 .gc-white {

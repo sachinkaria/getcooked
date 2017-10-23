@@ -177,8 +177,14 @@
 .gc-profile-photo {
   width: auto;
   height: auto;
+
   @include aspect-ratio(1, 1);
   @include breakpoint(mobileonly) {
     margin-top: -80px;
+  }
+
+  &.gc-profile-photo--without-margins {
+    margin-bottom: 0;
+    margin-top: 0;
   }
 }

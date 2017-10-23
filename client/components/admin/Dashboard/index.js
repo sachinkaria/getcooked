@@ -1,16 +1,15 @@
 import React from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
 import { adminListChefs } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
+import ProfilePicture from '../../chefs/profile/ProfilePicture';
+import Status from '../../Status';
 
 
 class AdminDashboard extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentWillMount() {
     this.props.getCurrentUser();
     this.props.adminListChefs();
@@ -33,15 +32,26 @@ class AdminDashboard extends React.Component {
               hello
             </Col>
             <Col smOffset={0} sm={7}>
-              <Panel>
+              <div>
                 {chefs.map(chef =>
                   (
-                    <div key={chef.displayName}>
-                      {chef.displayName}
-                    </div>
+                    <Panel key={chef.displayName}>
+                      <Row>
+                        <Col xs={3} sm={2}>
+                          <ProfilePicture withoutMargins photoUrl={chef.profilePhoto} />
+                        </Col>
+                        <Col xs={6} sm={7}>
+                          <p className="gc-text gc-bold gc-margin-none">{chef.displayName}</p>
+                          <Status status={chef.status} />
+                        </Col>
+                        <Col xs={3} className="text-right">
+                          <p className="gc-text gc-margin-none">{moment(chef.created).format('MMM Do YYYY')}</p>
+                        </Col>
+                      </Row>
+                    </Panel>
                   )
                 )}
-              </Panel>
+              </div>
             </Col>
           </Row>
         </div>

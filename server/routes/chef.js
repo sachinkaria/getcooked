@@ -1,5 +1,5 @@
 const AuthenticationController = require('../controllers/authentication');
-const ChefController = require('../controllers/chef');
+const ChefController = require('../controllers/chefs');
 
 module.exports = function (app) {
   app.post('/chefs/create', AuthenticationController.registerChef);

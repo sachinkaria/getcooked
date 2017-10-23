@@ -6,7 +6,7 @@ module.exports.listChefs = list;
 module.exports.getChef = read;
 
 function list(req, res) {
-  User.find({ role: 'chef' }).exec((err, chefs) => {
+  User.find({ role: 'chef', status: 'listed' }).exec((err, chefs) => {
     res.jsonp(chefs);
   });
 }

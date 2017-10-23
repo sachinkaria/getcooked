@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
               {
-                (user.data.role === 'chef') &&
+                (user.data.role === 'chef' && user.data.status !== 'pending') &&
                 <Link className="btn btn-block gc-btn gc-btn-white gc-margin-top hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
                   View my profile
                 </Link>

@@ -7,6 +7,7 @@ import { adminListChefs } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ProfilePicture from '../../chefs/profile/ProfilePicture';
 import Status from '../../Status';
+import Sidebar from '../../chefs/Dashboard/Sidebar';
 
 
 class AdminDashboard extends React.Component {
@@ -29,7 +30,7 @@ class AdminDashboard extends React.Component {
         <div className="gc-dashboard-container">
           <Row>
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
-              hello
+              <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
             </Col>
             <Col smOffset={0} sm={7}>
               <div>

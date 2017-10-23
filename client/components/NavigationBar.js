@@ -12,7 +12,7 @@ const NavigationBar = (props) => {
     if (role === 'chef') {
       return '/dashboard/profile/basics';
     } else if (role === 'admin') {
-      return '/admin/dashboard';
+      return '/admin/dashboard/chefs';
     }
     return 'dashboard/account/settings';
   }

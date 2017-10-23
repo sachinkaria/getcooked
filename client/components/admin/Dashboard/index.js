@@ -54,19 +54,29 @@ class AdminDashboard extends React.Component {
                           <Status status={chef.status} />
                         </Col>
                         <Col xs={3} className="text-right">
-                          <p className="gc-text gc-margin-none">{moment(chef.created).format('MMM Do YYYY')}</p>
+                          <p className="gc-text gc-text--sm gc-bold gc-margin-none">{moment(chef.created).format('MMM Do YYYY')}</p>
+                          <Button block className="btn gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
+                          <div className="gc-margin-top--xs">
+                            {
+                              (chef.status === 'pending') &&
+                              <Button block className="btn gc-btn gc-btn--sm btn-success" onClick={() => this.updateStatus('approve', chef._id)}>
+                                Approve
+                              </Button>
+                            }
+                            {
+                              (chef.status === 'unlisted') &&
+                              <Button block className="btn gc-btn gc-btn--sm gc-btn-blue" onClick={() => this.updateStatus('list', chef._id)}>
+                                List
+                              </Button>
+                            }
+                            {
+                              (chef.status === 'listed') &&
+                              <Button block className="btn gc-btn gc-btn--sm btn-danger" onClick={() => this.updateStatus('unlist', chef._id)}>
+                                Unlist
+                              </Button>
+                            }
+                          </div>
                         </Col>
-                        <div className="text-right">
-                          <Button className="btn btn-primary btn-xs" onClick={() => this.updateStatus('approve', chef._id)}>
-                            Approve
-                          </Button>
-                          <Button className="btn btn-primary btn-xs" onClick={() => this.updateStatus('list', chef._id)}>
-                            List
-                          </Button>
-                          <Button className="btn btn-error btn-xs" onClick={() => this.updateStatus('unlist', chef._id)}>
-                            Unlist
-                          </Button>
-                        </div>
                       </Row>
                     </Panel>
                   )

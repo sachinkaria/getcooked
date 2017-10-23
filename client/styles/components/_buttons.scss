@@ -7,6 +7,12 @@ $image-height: 200px;
   font-size: 14px;
   font-weight: 700;
 
+  &.gc-btn--sm {
+    height: 28px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
   &:focus {
     outline: none;
     &:active {

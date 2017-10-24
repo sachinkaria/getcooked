@@ -14,7 +14,7 @@ class Sidebar extends React.Component {
             </Link>
           </li>
           <li>
-            <Link to="/dashboard/dashboard/users" className="gc-link-default">
+            <Link to="/admin/dashboard/users" className="gc-link-default">
               <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('users') })}>
                 Users</p>
             </Link>

@@ -7,7 +7,7 @@ export default function (state = INITIAL_STATE, action) {
     case ADMIN_LIST_CHEFS:
       return { ...state, chefs: action.payload };
     case ADMIN_LIST_USERS:
-      return { ...state, chefs: action.payload };
+      return { ...state, users: action.payload };
     case UPDATE_CHEF_LIST:
       return {
         ...state,

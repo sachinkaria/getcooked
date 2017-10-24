@@ -61,7 +61,7 @@ class AdminDashboard extends React.Component {
                           <Col xs={3} className="text-right">
                             <p className="gc-text gc-text--sm gc-bold gc-margin-none">{moment(chef.created).format('MMM Do YYYY')}</p>
                             <Link to={`/admin/dashboard/chefs/${chef._id}`}>
-                              <Button block className="btn gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
+                              <Button block className="gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
                             </Link>
                             <div className="gc-margin-top--xs">
                               {
@@ -96,14 +96,14 @@ class AdminDashboard extends React.Component {
                   {users.map(userItem =>
                     (
                       <div key={userItem.email}>
-                        <p className="gc-text gc-bold">
-                          {userItem.firstName} {userItem.lastName}
+                        <p className="gc-text">
+                          Name: {userItem.firstName} {userItem.lastName}
                         </p>
                         <p className="gc-text">
-                          {userItem.email}
+                          Email: {userItem.email}
                         </p>
                         <p className="gc-text">
-                          {userItem.mobileNumber}
+                          Phone number: {userItem.mobileNumber}
                         </p>
                       </div>
                     )

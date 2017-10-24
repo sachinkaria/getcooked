@@ -88,6 +88,11 @@ $image-height: 200px;
       background-color: $lightest-grey;
       color: $dark-grey;
     }
+
+    &:active:focus {
+      background-color: $lightest-grey;
+      color: $dark-grey;
+    }
   }
 }
 

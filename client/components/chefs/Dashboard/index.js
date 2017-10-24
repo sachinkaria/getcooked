@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { getCurrentUser } from '../../../actions/users';
+import { getCurrentUser, updateUser } from '../../../actions/users';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import Sidebar from './Sidebar';
 import BasicsForm from '../../../containers/forms/setup/chefs/BasicsForm';
@@ -17,12 +17,16 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.renderView = this.renderView.bind(this);
+    this.updateUserStatus = this.updateUserStatus.bind(this);
   }
 
   componentWillMount() {
     this.props.getCurrentUser();
-
     this.renderView();
+  }
+
+  updateUserStatus(status) {
+    this.props.updateUser({ status });
   }
 
   renderView() {
@@ -50,36 +54,44 @@ class Dashboard extends React.Component {
       return <div>Loading...</div>;
     }
 
+    const USER_LISTED = user.data.status === 'listed';
+    const USER_PENDING = user.data.status === 'pending';
+    const IS_CHEF = user.data.role === 'chef';
+
     return (
       <div>
         <DashboardNavBar location={this.props.location.pathname} userRole={user.data.role} />
         <div className="gc-dashboard-container">
           {
-            (user.data.role === 'chef') &&
+            (IS_CHEF) &&
               <div>
-                {user.data.status === 'pending' &&
+                {USER_PENDING &&
                 <Row className="gc-center">
                   <Col xs={10} xsOffset={1} sm={7} smOffset={3}>
                     <Notification text={PROFILE_UNDER_REVIEW} />
                   </Col>
                 </Row>
                 }
-                {user.data.status !== 'pending' &&
+                {!USER_PENDING &&
                   <div>
-                    <Row className="gc-background-light-grey gc-center">
+                    <Row className="gc-center">
                       <Col xs={8} xsOffset={2} sm={6} smOffset={3}>
                         <p className="gc-text gc-grey visible-xs">
-                          {user.data.status === 'listed' ? PROFILE_LISTED : PROFILE_UNLISTED}
+                          {USER_LISTED ? PROFILE_LISTED : PROFILE_UNLISTED}
                         </p>
                       </Col>
                     </Row>
-                    <Row className="gc-background-light-grey">
+                    <Row>
                       <Col xs={8} xsOffset={2} sm={6} smOffset={3}>
                         <Link className="btn btn-block gc-btn gc-btn-white gc-margin-bottom--xs visible-xs" to={`/chefs/${this.props.user.data._id}`}>
                           View my profile
                         </Link>
-                        <Button block className="gc-btn gc-btn-white gc-margin-bottom visible-xs">
-                          {user.data.status === 'listed' ? 'Hide my profile' : 'Publish my profile'}
+                        <Button
+                          block
+                          className="gc-btn gc-btn-white gc-margin-bottom visible-xs"
+                          onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
+                        >
+                          {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
                         </Button>
                       </Col>
                     </Row>
@@ -91,19 +103,23 @@ class Dashboard extends React.Component {
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
               {
-                (user.data.role === 'chef' && user.data.status !== 'pending') &&
+                (IS_CHEF && !USER_PENDING) &&
                   <div>
-                    <Link className="btn btn-block gc-btn gc-btn-white gc-margin-top gc-margin-bottom--lg hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
+                    <Link className="btn btn-block gc-btn gc-btn-white gc-margin-bottom--lg hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
                       View my profile
                     </Link>
-                    <div className="hidden-xs gc-margin-top--lg">
-                      {user.data.status === 'listed' ?
+                    <div className="hidden-xs">
+                      {USER_LISTED ?
                         <Notification text={PROFILE_LISTED} />
                         :
                         <Notification text={PROFILE_UNLISTED} />}
                     </div>
-                    <Button block className="gc-btn gc-btn-white gc-margin-bottom hidden-xs">
-                      {user.data.status === 'listed' ? 'Hide my profile' : 'Publish my profile'}
+                    <Button
+                      block
+                      className="gc-btn gc-btn-white gc-margin-bottom hidden-xs"
+                      onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
+                    >
+                      {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
                     </Button>
                   </div>
               }
@@ -132,4 +148,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentUser })(Dashboard);
+export default connect(mapStateToProps, { getCurrentUser, updateUser })(Dashboard);

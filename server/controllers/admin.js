@@ -2,15 +2,22 @@ const _ = require('lodash');
 const User = require('../models/user');
 const ObjectId = require('mongodb').ObjectId;
 
-module.exports.listChefs = all;
+module.exports.listChefs = allChefs;
+module.exports.listUsers = allUsers;
 module.exports.getChef = read;
 module.exports.approve = approve;
 module.exports.list = list;
 module.exports.unlist = unlist;
 
-function all(req, res) {
+function allChefs(req, res) {
   User.find({ role: 'chef' }).exec((err, chefs) => {
     res.jsonp(chefs);
+  });
+}
+
+function allUsers(req, res) {
+  User.find({ role: 'member' }).exec((err, members) => {
+    res.jsonp(members);
   });
 }
 

@@ -1,10 +1,12 @@
-import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST } from '../actions/types';
+import { ADMIN_LIST_CHEFS, ADMIN_LIST_USERS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST } from '../actions/types';
 
-const INITIAL_STATE = { chefs: [], chef: null };
+const INITIAL_STATE = { chefs: [], chef: null, users: [] };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case ADMIN_LIST_CHEFS:
+      return { ...state, chefs: action.payload };
+    case ADMIN_LIST_USERS:
       return { ...state, chefs: action.payload };
     case UPDATE_CHEF_LIST:
       return {

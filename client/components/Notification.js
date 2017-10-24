@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 
 const Notifications = props => (
   <div className="gc-notification gc-margin-bottom--sm">
@@ -10,7 +8,7 @@ const Notifications = props => (
 
 
 Notifications.propTypes = {
-  text: PropTypes.string.isRequired
+  text: React.PropTypes.string.isRequired
 };
 
 export default Notifications;

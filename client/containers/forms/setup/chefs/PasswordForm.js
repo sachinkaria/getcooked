@@ -23,7 +23,7 @@ function validate(formProps) {
   }
 
   if (!formProps.verifyPassword || formProps.verifyPassword !== formProps.newPassword) {
-    errors.companyEmail = 'Your passwords do not match. Please enter the same password.';
+    errors.verifyPassword = 'Your passwords do not match. Please enter the same password.';
   }
 
   return errors;

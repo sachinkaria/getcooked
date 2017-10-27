@@ -124,7 +124,7 @@ function uploadCoverPhoto(req, res) {
 /**
  * Update Password
  */
-function updatePassword (req, res) {
+function updatePassword(req, res) {
   // Init Variables
   const passwordDetails = req.body;
 
@@ -132,56 +132,37 @@ function updatePassword (req, res) {
     if (passwordDetails.newPassword) {
       User.findById(req.user.id, (err, user) => {
         if (!err && user) {
-          if (user.authenticate(passwordDetails.currentPassword)) {
-            console.log('password authenticated');
-            if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
+          user.matchPassword(passwordDetails.currentPassword, (result) => {
+            if (result && passwordDetails.newPassword === passwordDetails.verifyPassword) {
               user.password = passwordDetails.newPassword;
-
               user.save((err) => {
                 if (err) {
                   return res.status(400).send({
                     message: err.message
                   });
                 }
-                req.login(user, (err) => {
-                  if (err) {
-                    res.status(400).send(err);
-                  } else {
-                    res.send({
-                      message: 'Password changed successfully'
-                    });
-                  }
-                });
+                res.send(user);
               });
             } else {
-              console.log('passwords dont match');
               res.status(400).send({
-                message: 'Passwords do not match'
+                message: 'Passwords do not match or your current password is incorrect'
               });
             }
-          } else {
-            console.log('current password incorrect');
-            res.status(400).send({
-              message: 'Current password is incorrect'
-            });
-          }
+          });
         } else {
-          console.log('user not found');
           res.status(400).send({
             message: 'User is not found'
           });
         }
       });
     } else {
-      console.log('no new password');
       res.status(400).send({
         message: 'Please provide a new password'
       });
     }
   } else {
-    console.log('user not signed in');
     res.status(400).send({
       message: 'User is not signed in'
     });
   }
-};
+}

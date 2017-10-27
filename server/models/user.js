@@ -69,8 +69,8 @@ const UserSchema = new Schema({
   cuisines: [{
     type: String
   }],
-  resetPasswordToken: {type: String},
-  resetPasswordExpires: {type: Date}
+  resetPasswordToken: { type: String },
+  resetPasswordExpires: { type: Date }
 },
 {
   timestamps: true
@@ -108,20 +108,15 @@ UserSchema.methods.comparePassword = function (candidatePassword, cb) {
 };
 
 /**
- * Create instance method for hashing a password
- */
-UserSchema.methods.hashPassword = function (password) {
-  if (this.salt && password) {
-    return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
-  }
-  return password;
-};
-
-/**
  * Create instance method for authenticating user
  */
-UserSchema.methods.authenticate = function (password) {
-  return this.password === this.hashPassword(password);
+UserSchema.methods.matchPassword = function (password, cb) {
+  bcrypt.compare(password, this.password, (err, isMatch) => {
+    if (err) {
+      cb(err);
+    }
+    cb(isMatch);
+  });
 };
 
 module.exports = mongoose.model('User', UserSchema);

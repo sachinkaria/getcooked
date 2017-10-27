@@ -70,7 +70,7 @@ class Dashboard extends React.Component {
               <div>
                 {USER_PENDING &&
                 <Row className="gc-center">
-                  <Col xs={10} xsOffset={1} sm={7} smOffset={3}>
+                  <Col xs={10} xsOffset={1} sm={7} smOffset={4} mdOffset={3}>
                     <Notification text={PROFILE_UNDER_REVIEW} />
                   </Col>
                 </Row>
@@ -78,7 +78,7 @@ class Dashboard extends React.Component {
                 {!USER_PENDING &&
                   <div>
                     <Row className="gc-center">
-                      <Col xs={10} xsOffset={1} sm={7} smOffset={3}>
+                      <Col xs={10} xsOffset={1} sm={7} smOffset={4} mdOffset={3}>
                         <Notification text={!USER_LISTED ? PROFILE_UNLISTED : PROFILE_LISTED} >
                           <Row>
                             <Col xs={8} xsOffset={2} sm={6} smOffset={3} md={4} mdOffset={4}>

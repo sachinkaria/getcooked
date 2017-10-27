@@ -51,7 +51,7 @@ export function updatePassword(password) {
       .then(() => {
         console.log('Your password has been updated');
       })
-      .catch((error) => {
+      .catch(() => {
         errorHandler(dispatch, 'There was a problem changing your password. Please try again.');
       });
   };

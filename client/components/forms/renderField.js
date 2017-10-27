@@ -8,7 +8,7 @@ const renderField = (field) => {
 
   return (
     <div className="gc-margin-bottom">
-      <input className={classes} placeholder={field.placeholder} {...field.input} />
+      <input className={classes} placeholder={field.placeholder} type={field.type} {...field.input} />
       {field.meta.touched && field.meta.error && <div className="gc-red">{field.meta.error}</div>}
     </div>
   )

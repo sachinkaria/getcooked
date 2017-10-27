@@ -4,18 +4,12 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { registerChef } from '../../../actions/auth';
+import renderField from '../../forms/renderField';
 
 const form = reduxForm({
   form: 'register',
   validate
 });
-
-const renderField = field => (
-  <div>
-    <input className="form-control gc-input gc-margin-bottom" placeholder={field.placeholder} {...field.input} />
-    {field.touched && field.error && <div className="error">{field.error}</div>}
-  </div>
-);
 
 function validate(formProps) {
   const errors = {};
@@ -68,20 +62,44 @@ class RegisterChef extends Component {
             {this.renderAlert()}
             <Row>
               <Col xs={12} sm={6} smOffset={3}>
-                <Field name="firstName" placeholder="First name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                <Field
+                  name="firstName"
+                  placeholder="First name"
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
               </Col>
               <Col xs={12} sm={6} smOffset={3}>
-                <Field name="lastName" placeholder="Last name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                <Field
+                  name="lastName"
+                  placeholder="Last name"
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
               </Col>
             </Row>
             <Row>
               <Col xs={12} sm={6} smOffset={3}>
-                <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                <Field
+                  name="email"
+                  placeholder="Email"
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
               </Col>
             </Row>
             <Row>
               <Col xs={12} sm={6} smOffset={3}>
-                <Field name="password" placeholder="Password" className="form-control gc-input gc-margin-bottom" component={renderField} type="password" />
+                <Field
+                  name="password"
+                  placeholder="Password"
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="password"
+                />
               </Col>
             </Row>
             <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>

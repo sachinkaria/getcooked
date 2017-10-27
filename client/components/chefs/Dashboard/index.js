@@ -75,24 +75,25 @@ class Dashboard extends React.Component {
                 {!USER_PENDING &&
                   <div>
                     <Row className="gc-center">
-                      <Col xs={8} xsOffset={2} sm={6} smOffset={3}>
-                        <p className="gc-text gc-grey visible-xs">
-                          {USER_LISTED ? PROFILE_LISTED : PROFILE_UNLISTED}
-                        </p>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col xs={8} xsOffset={2} sm={6} smOffset={3}>
-                        <Link className="btn btn-block gc-btn gc-btn-white gc-margin-bottom--xs visible-xs" to={`/chefs/${this.props.user.data._id}`}>
-                          View my profile
-                        </Link>
-                        <Button
-                          block
-                          className="gc-btn gc-btn-white gc-margin-bottom visible-xs"
-                          onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
-                        >
-                          {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
-                        </Button>
+                      <Col xs={10} xsOffset={1} sm={7} smOffset={3}>
+                        <Notification text={!USER_LISTED ? PROFILE_UNLISTED : PROFILE_LISTED} >
+                          <Row>
+                            <Col xs={8} xsOffset={2} sm={6} smOffset={3} md={4} mdOffset={4}>
+                              {USER_LISTED ?
+                                <Link className="btn btn-block gc-btn gc-btn--white gc-margin-top" to={`/chefs/${this.props.user.data._id}`}>
+                                  View my profile
+                                </Link> :
+                                <Button
+                                  block
+                                  className="gc-btn gc-btn--white gc-margin-top"
+                                  onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
+                                >
+                                  Publish my profile
+                                </Button>
+                              }
+                            </Col>
+                          </Row>
+                        </Notification>
                       </Col>
                     </Row>
                   </div>
@@ -103,20 +104,11 @@ class Dashboard extends React.Component {
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
               {
-                (IS_CHEF && !USER_PENDING) &&
+                (IS_CHEF && !USER_PENDING && USER_LISTED) &&
                   <div>
-                    <Link className="btn btn-block gc-btn gc-btn-white gc-margin-bottom--lg hidden-xs" to={`/chefs/${this.props.user.data._id}`}>
-                      View my profile
-                    </Link>
-                    <div className="hidden-xs">
-                      {USER_LISTED ?
-                        <Notification text={PROFILE_LISTED} />
-                        :
-                        <Notification text={PROFILE_UNLISTED} />}
-                    </div>
                     <Button
                       block
-                      className="gc-btn gc-btn-white gc-margin-bottom hidden-xs"
+                      className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom hidden-xs"
                       onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
                     >
                       {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
@@ -130,6 +122,21 @@ class Dashboard extends React.Component {
               </Panel>
             </Col>
           </Row>
+          {(!USER_PENDING && USER_LISTED) &&
+          <div className="visible-xs">
+            <Row>
+              <Col xs={8} xsOffset={2} sm={6} smOffset={3}>
+                <Button
+                  block
+                  className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom"
+                  onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
+                >
+                  {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
+                </Button>
+              </Col>
+            </Row>
+          </div>
+          }
         </div>
       </div>
     );

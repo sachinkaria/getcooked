@@ -93,6 +93,11 @@ $image-height: 200px;
       background-color: $lightest-grey;
       color: $dark-grey;
     }
+
+    &.gc-btn-white--error {
+      border: 1px solid $colour-error;
+      color: $colour-error;
+    }
   }
 }
 

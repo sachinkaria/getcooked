@@ -10,6 +10,7 @@ import ServicesForm from '../../../containers/forms/setup/chefs/ServicesForm';
 import FoodForm from '../../../containers/forms/setup/chefs/FoodForm';
 import PhotosForm from '../../../containers/forms/setup/chefs/PhotosForm';
 import SettingsForm from '../../../containers/forms/setup/chefs/SettingsForm';
+import PasswordForm from '../../../containers/forms/setup/chefs/PasswordForm';
 import Notification from '../../Notification';
 
 
@@ -40,6 +41,8 @@ class Dashboard extends React.Component {
       return <PhotosForm />;
     } else if (this.props.route.view === 'settings') {
       return <SettingsForm />;
+    } else if (this.props.route.view === 'password') {
+      return <PasswordForm />;
     }
     return null;
   }

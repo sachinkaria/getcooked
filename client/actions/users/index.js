@@ -45,6 +45,20 @@ export function getCurrentUser() {
   };
 }
 
+export function updatePassword(password) {
+  return function (dispatch) {
+    axios.put(`${API_URL}/users/password`, password, AUTH_HEADERS)
+      .then(() => {
+        console.log('Your password has been updated');
+      })
+      .catch((error) => {
+      console.log(error);
+        errorHandler(dispatch, error.response);
+      });
+  };
+}
+
+
 export function uploadToStream(file) {
   ss.createBlobReadStream(file).pipe(STREAM);
   ss(Socket).emit('upload-photos', STREAM, {

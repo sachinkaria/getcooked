@@ -19,6 +19,7 @@ const IMMUTABLE_FIELDS = [
 
 module.exports.uploadProfilePhoto = uploadProfilePhoto;
 module.exports.uploadCoverPhoto = uploadCoverPhoto;
+module.exports.updatePassword = updatePassword;
 
 /**
  * Update user details
@@ -121,9 +122,9 @@ function uploadCoverPhoto(req, res) {
 }
 
 /**
- * Change Password
+ * Update Password
  */
-exports.changePassword = function (req, res) {
+function updatePassword (req, res) {
   // Init Variables
   const passwordDetails = req.body;
 
@@ -132,6 +133,7 @@ exports.changePassword = function (req, res) {
       User.findById(req.user.id, (err, user) => {
         if (!err && user) {
           if (user.authenticate(passwordDetails.currentPassword)) {
+            console.log('password authenticated');
             if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
               user.password = passwordDetails.newPassword;
 
@@ -139,7 +141,7 @@ exports.changePassword = function (req, res) {
                 if (err) {
                   return res.status(400).send({
                     message: err.message
-                  })
+                  });
                 }
                 req.login(user, (err) => {
                   if (err) {
@@ -152,27 +154,32 @@ exports.changePassword = function (req, res) {
                 });
               });
             } else {
+              console.log('passwords dont match');
               res.status(400).send({
                 message: 'Passwords do not match'
               });
             }
           } else {
+            console.log('current password incorrect');
             res.status(400).send({
               message: 'Current password is incorrect'
             });
           }
         } else {
+          console.log('user not found');
           res.status(400).send({
             message: 'User is not found'
           });
         }
       });
     } else {
+      console.log('no new password');
       res.status(400).send({
         message: 'Please provide a new password'
       });
     }
   } else {
+    console.log('user not signed in');
     res.status(400).send({
       message: 'User is not signed in'
     });

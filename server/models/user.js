@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt-nodejs');
+const crypto = require('crypto');
 
 
 const UserSchema = new Schema({
@@ -93,7 +94,9 @@ UserSchema.pre('save', function (next) {
   });
 });
 
-// Method to compare password for login
+/**
+ * Compare password for login
+ */
 UserSchema.methods.comparePassword = function (candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     if (err) {
@@ -102,6 +105,23 @@ UserSchema.methods.comparePassword = function (candidatePassword, cb) {
 
     cb(null, isMatch);
   });
+};
+
+/**
+ * Create instance method for hashing a password
+ */
+UserSchema.methods.hashPassword = function (password) {
+  if (this.salt && password) {
+    return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+  }
+  return password;
+};
+
+/**
+ * Create instance method for authenticating user
+ */
+UserSchema.methods.authenticate = function (password) {
+  return this.password === this.hashPassword(password);
 };
 
 module.exports = mongoose.model('User', UserSchema);

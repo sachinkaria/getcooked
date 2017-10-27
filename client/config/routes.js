@@ -43,6 +43,7 @@ const routes = (
     <Route path="/dashboard/profile/food-services" component={RequireRole(Dashboard, 'chef')} view="food-services" />
     <Route path="/dashboard/profile/photos" component={RequireRole(Dashboard, 'chef')} view="photos" />
     <Route path="/dashboard/account/settings" component={RequireAuth(Dashboard)} view="settings" />
+    <Route path="/dashboard/account/password" component={RequireAuth(Dashboard)} view="password" />
     <Route path="/admin/dashboard/chefs" component={RequireRole(AdminDashboard, 'admin')} view="chefs" />
     <Route path="/admin/dashboard/users" component={RequireRole(AdminDashboard, 'admin')} view="users" />
     <Route path="/admin/dashboard/chefs/:id" component={RequireRole(Profile, 'admin')} view="chefs" />

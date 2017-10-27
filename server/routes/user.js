@@ -18,9 +18,10 @@ module.exports = function (app) {
 
   // Update route
   app.put('/users', requireAuth, User.update);
+  app.put('/users/password', requireAuth, User.updatePassword);
   app.post('/users/upload-photo/profile', requireAuth, User.uploadProfilePhoto);
   app.post('/users/upload-photo/cover', requireAuth, User.uploadCoverPhoto);
 
-  // Update route
+  // Get profile route
   app.get('/users/me', requireAuth, User.getCurrentUser);
 };

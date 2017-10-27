@@ -92,13 +92,11 @@ class SettingsForm extends Component {
             type="number"
           />
         </div>
-        <Row>
-          <Col sm={4} smOffset={4} >
-            <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
-              Save
-            </Button>
-          </Col>
-        </Row>
+        <Col xs={10} xsOffset={1} sm={4} smOffset={4} >
+          <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+            Save
+          </Button>
+        </Col>
       </form>
     );
   }

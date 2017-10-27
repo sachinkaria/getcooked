@@ -4,13 +4,17 @@
  * Module dependencies.
  */
 const _ = require('lodash');
+const mongoose = require('mongoose');
+
+const User = mongoose.model('User');
 
 const utils = require('./utils');
 
 const IMMUTABLE_FIELDS = [
   '_id',
   'roles',
-  'messages'
+  'messages',
+  'password'
 ];
 
 module.exports.uploadProfilePhoto = uploadProfilePhoto;
@@ -114,4 +118,63 @@ function uploadCoverPhoto(req, res) {
     user.save();
     res.jsonp(user);
   });
+}
+
+/**
+ * Change Password
+ */
+exports.changePassword = function (req, res) {
+  // Init Variables
+  const passwordDetails = req.body;
+
+  if (req.user) {
+    if (passwordDetails.newPassword) {
+      User.findById(req.user.id, (err, user) => {
+        if (!err && user) {
+          if (user.authenticate(passwordDetails.currentPassword)) {
+            if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
+              user.password = passwordDetails.newPassword;
+
+              user.save((err) => {
+                if (err) {
+                  return res.status(400).send({
+                    message: err.message
+                  })
+                }
+                req.login(user, (err) => {
+                  if (err) {
+                    res.status(400).send(err);
+                  } else {
+                    res.send({
+                      message: 'Password changed successfully'
+                    });
+                  }
+                });
+              });
+            } else {
+              res.status(400).send({
+                message: 'Passwords do not match'
+              });
+            }
+          } else {
+            res.status(400).send({
+              message: 'Current password is incorrect'
+            });
+          }
+        } else {
+          res.status(400).send({
+            message: 'User is not found'
+          });
+        }
+      });
+    } else {
+      res.status(400).send({
+        message: 'Please provide a new password'
+      });
+    }
+  } else {
+    res.status(400).send({
+      message: 'User is not signed in'
+    });
+  }
 };

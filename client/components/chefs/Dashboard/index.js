@@ -125,7 +125,7 @@ class Dashboard extends React.Component {
           {(!USER_PENDING && USER_LISTED) &&
           <div className="visible-xs">
             <Row>
-              <Col xs={8} xsOffset={2} sm={6} smOffset={3}>
+              <Col xs={6} xsOffset={3} sm={6} smOffset={3}>
                 <Button
                   block
                   className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom"

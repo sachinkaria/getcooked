@@ -75,7 +75,7 @@ class Dashboard extends React.Component {
                   </Col>
                 </Row>
                 }
-                {!USER_PENDING &&
+                {(!USER_PENDING && !this.props.location.pathname.includes('account')) &&
                   <div>
                     <Row className="gc-center">
                       <Col xs={10} xsOffset={1} sm={7} smOffset={4} mdOffset={3}>

@@ -13,8 +13,6 @@ function generateToken(user) {
 function setUserInfo(request) {
   return {
     _id: request._id,
-    firstName: request.firstName,
-    lastName: request.lastName,
     email: request.email,
     role: request.role
   };
@@ -34,18 +32,11 @@ exports.login = (req, res, next) => {
 exports.register = (req, res, next) => {
   // Check for registration errors
   const email = req.body.email;
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
   const password = req.body.password;
 
   // Return error if no email provided
   if (!email) {
     return res.status(422).send({ error: 'You must enter an email address.'});
-  }
-
-  // Return error if full name not provided
-  if (!firstName || !lastName) {
-    return res.status(422).send({ error: 'You must enter your full name.'});
   }
 
   // Return error if no password provided
@@ -92,19 +83,12 @@ exports.register = (req, res, next) => {
 exports.registerChef = (req, res, next) => {
   // Check for registration errors
   const email = req.body.email;
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
   const password = req.body.password;
 
 
   // Return error if no email provided
   if (!email) {
     return res.status(422).send({ error: 'You must enter an email address.'});
-  }
-
-  // Return error if full name not provided
-  if (!firstName || !lastName) {
-    return res.status(422).send({ error: 'You must enter your full name.'});
   }
 
   // Return error if no password provided

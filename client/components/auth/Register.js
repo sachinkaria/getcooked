@@ -14,14 +14,6 @@ const form = reduxForm({
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.firstName) {
-    errors.firstName = 'Please enter a first name';
-  }
-
-  if (!formProps.lastName) {
-    errors.lastName = 'Please enter a last name';
-  }
-
   if (!formProps.email) {
     errors.email = 'Please enter an email';
   }
@@ -53,21 +45,11 @@ class Register extends Component {
 
     return (
       <Col sm={8} smOffset={2} md={4} mdOffset={4}>
-        <Panel className="gc-panel-light">
+        <Panel className="gc-panel-light gc-center">
           <h4 className="gc-profile-heading-md gc-center">Sign up</h4>
-          <br />
-          <p className="gc-text gc-center"><Link to="/login">Already have an account? </Link></p>
-          <br />
-          <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <Link className="gc-text gc-link-default" to="/chef/register">I&apos;m a caterer </Link>
+          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
-            <Row>
-              <Col xs={12} sm={6} smOffset={3}>
-                <Field name="firstName" placeholder="First name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
-              </Col>
-              <Col xs={12} sm={6} smOffset={3}>
-                <Field name="lastName" placeholder="Last name" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
-              </Col>
-            </Row>
             <Row>
               <Col xs={12} sm={6} smOffset={3}>
                 <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
@@ -78,6 +60,7 @@ class Register extends Component {
                 <Field name="password" placeholder="Password" className="form-control gc-input gc-margin-bottom" component={renderField} type="password" />
               </Col>
             </Row>
+            <p className="gc-text gc-center"><Link to="/login">Already have an account? </Link></p>
             <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
           </form>
         </Panel>

@@ -16,12 +16,10 @@ const UserSchema = new Schema({
     required: true
   },
   firstName: {
-    type: String,
-    required: true
+    type: String
   },
   lastName: {
-    type: String,
-    required: true
+    type: String
   },
   mobileNumber: {
     type: Number

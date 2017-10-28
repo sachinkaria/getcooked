@@ -122,7 +122,7 @@ class Photos extends Component {
         <div>
           <label className="gc-text">Cover Photo</label>
           {this.renderAlert()}
-          <ImageUpload type="cover" image={this.props.user.data ? this.props.user.data.coverPhoto : null} onUpload={this.onCoverUpload} />
+          <ImageUpload image={this.props.user.data ? this.props.user.data.coverPhoto : null} onUpload={this.onCoverUpload} />
         </div>
         {/*<div>*/}
           {/*<label className="gc-text">Additional Photos</label>*/}

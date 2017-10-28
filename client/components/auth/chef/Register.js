@@ -14,14 +14,6 @@ const form = reduxForm({
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.firstName) {
-    errors.firstName = 'Please enter a first name';
-  }
-
-  if (!formProps.lastName) {
-    errors.lastName = 'Please enter a last name';
-  }
-
   if (!formProps.email) {
     errors.email = 'Please enter an email';
   }
@@ -56,30 +48,8 @@ class RegisterChef extends Component {
         <Panel className="gc-panel-light">
           <h4 className="gc-profile-heading-md gc-center">Sign up</h4>
           <br />
-          <p className="gc-text gc-center"><Link to="/login">Already have an account? </Link></p>
-          <br />
           <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
-            <Row>
-              <Col xs={12} sm={6} smOffset={3}>
-                <Field
-                  name="firstName"
-                  placeholder="First name"
-                  className="form-control gc-input gc-margin-bottom"
-                  component={renderField}
-                  type="text"
-                />
-              </Col>
-              <Col xs={12} sm={6} smOffset={3}>
-                <Field
-                  name="lastName"
-                  placeholder="Last name"
-                  className="form-control gc-input gc-margin-bottom"
-                  component={renderField}
-                  type="text"
-                />
-              </Col>
-            </Row>
             <Row>
               <Col xs={12} sm={6} smOffset={3}>
                 <Field
@@ -102,6 +72,7 @@ class RegisterChef extends Component {
                 />
               </Col>
             </Row>
+            <p className="gc-text gc-center"><Link to="/login">Already have an account? </Link></p>
             <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
           </form>
         </Panel>

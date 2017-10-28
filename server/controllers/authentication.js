@@ -55,9 +55,7 @@ exports.register = (req, res, next) => {
     // If email is unique and password was provided, create account
     const user = new User({
       email,
-      password,
-      firstName,
-      lastName
+      password
     });
 
     user.save((err, user) => {

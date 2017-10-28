@@ -32,7 +32,8 @@ export function registerUser({ email, firstName, lastName, password }) {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
-        hashHistory.push('/chefs');
+        window.location.reload();
+        hashHistory.push('/setup/personal');
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR);
@@ -47,6 +48,7 @@ export function registerChef({ email, firstName, lastName, password, displayName
         localStorage.setItem('token', response.data.token);
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         dispatch({ type: AUTH_USER });
+        window.location.reload();
         hashHistory.push('/setup/personal');
       })
       .catch((error) => {

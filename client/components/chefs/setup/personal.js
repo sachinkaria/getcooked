@@ -43,15 +43,18 @@ class BasicInfo extends Component {
   }
 
   handleFormSubmit(formProps) {
-    this.props.updateUser(formProps, Steps.personal.onNext);
+    const DASHBOARD = '/dashboard/account/settings';
+    this.props.updateUser(formProps, this.props.initialValues && this.props.initialValues.role === 'chef' ? Steps.personal.onNext : DASHBOARD);
   }
 
   render() {
+    const DASHBOARD = '/dashboard/account/settings';
     const { handleSubmit } = this.props;
+    const { initialValues } = this.props;
     const progress = (Steps.personal.number / (Steps.totalSteps + 1));
     const sideBarHeading = Steps.personal.name;
     const sideBarText = Steps.personal.description;
-    const onSkip = Steps.personal.onNext;
+    const onSkip = initialValues && initialValues.role === 'chef' ? Steps.personal.onNext : DASHBOARD;
 
     return (
       <Wizard
@@ -111,7 +114,8 @@ class BasicInfo extends Component {
 
 BasicInfo.propTypes = {
   updateUser: React.PropTypes.func,
-  errorMessage: React.PropTypes.string
+  errorMessage: React.PropTypes.string,
+  initialValues: React.PropTypes.shape({ role: '' })
 };
 
 function mapStateToProps(state) {

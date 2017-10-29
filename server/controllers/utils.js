@@ -24,7 +24,7 @@ function imageUploader(options, type, callback) {
     const COVER_HEIGHT = 800;
 
     if (err) {
-      console.log('opening image error', err);
+      callback(err);
     }
 
     Img = (type === 'profile') ? Img.scaleToFit(PROFILE_WIDTH, PROFILE_HEIGHT) : Img;

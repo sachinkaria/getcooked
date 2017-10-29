@@ -11,7 +11,7 @@ export function updateUser(user, url, showSuccess) {
     axios.put(`${API_URL}/users`, user, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
-        if (showSuccess) successHandler(dispatch, 'Your account has been updated.');
+        if (showSuccess) successHandler(dispatch, 'Your changes have been successfully saved.');
         if (url) hashHistory.push(url);
       })
       .catch((error) => {
@@ -41,7 +41,7 @@ export function getCurrentUser() {
         dispatch({ type: UPDATE_USER, payload: response.data });
       })
       .catch(() => {
-        errorHandler(dispatch, 'Sorry there was a problem with your account. Please sign in and try again.');
+        errorHandler(dispatch, 'Sorry there is a problem getting your account details. Please sign in and try again.');
       });
   };
 }

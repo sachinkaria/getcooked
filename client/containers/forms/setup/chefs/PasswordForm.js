@@ -40,7 +40,7 @@ class BasicInfo extends Component {
   }
 
   handleFormSubmit(formProps) {
-    this.props.updatePassword(formProps, null);
+    this.props.updatePassword(formProps, true);
   }
 
   render() {

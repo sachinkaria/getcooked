@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { connect } from 'react-redux';
 
 const ErrorHandler = (props) => {
-  const classes = classNames('gc-error', {
+  const classes = classNames('gc-alert gc-alert--error', {
     'gc-slide-down': props.error
   });
   return (
@@ -26,7 +26,7 @@ ErrorHandler.defaultProps = {
 };
 
 function mapStateToProps(state) {
-  return { error: state.auth.error };
+  return { error: state.public.error };
 }
 
 export default connect(mapStateToProps, null)(ErrorHandler);

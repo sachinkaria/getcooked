@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Navbar, Nav, Col, Row, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import ErrorHandler from '../containers/errors/ErrorHandler';
+import ErrorHandler from '../containers/ErrorHandler';
+import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
 
 const NavigationBar = (props) => {
@@ -30,6 +31,7 @@ const NavigationBar = (props) => {
           </Navbar.Header>
         </Col>
         <ErrorHandler />
+        <SuccessHandler />
         <Navbar.Collapse className="gc-navbar-dropdown">
           {
             (isAuthenticated() && showNav) && (

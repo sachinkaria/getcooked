@@ -29,7 +29,7 @@ class FoodServices extends Component {
   }
 
   handleFormSubmit() {
-    this.props.updateUser(this.state);
+    this.props.updateUser(this.state, null, true);
   }
 
   handler(event, category) {

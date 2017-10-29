@@ -1,16 +1,17 @@
 import axios from 'axios';
-import {hashHistory} from 'react-router';
-import {UPDATE_USER} from '../types';
-import {errorHandler} from '../public';
+import { hashHistory } from 'react-router';
+import { UPDATE_USER } from '../types';
+import { errorHandler, successHandler } from '../public';
 
 const API_URL = 'http://localhost:3000';
 const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 
-export function updateUser(user, url) {
+export function updateUser(user, url, showSuccess) {
   return function (dispatch) {
     axios.put(`${API_URL}/users`, user, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
+        if (showSuccess) successHandler(dispatch, 'Your account has been updated.');
         if (url) hashHistory.push(url);
       })
       .catch((error) => {
@@ -45,11 +46,11 @@ export function getCurrentUser() {
   };
 }
 
-export function updatePassword(password) {
+export function updatePassword(password, showSuccess) {
   return function (dispatch) {
     axios.put(`${API_URL}/users/password`, password, AUTH_HEADERS)
       .then(() => {
-        console.log('Your password has been updated');
+        if (showSuccess) successHandler(dispatch, 'Your password has been updated.');
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem changing your password. Please try again.');

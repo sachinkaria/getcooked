@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { LIST_CHEFS, GET_CHEF, SHOW_ERROR, HIDE_ERROR } from '../types';
-import { logoutUser } from '../auth';
+import { LIST_CHEFS, GET_CHEF, SHOW_ERROR, HIDE_ERROR, SHOW_SUCCESS, HIDE_SUCCESS } from '../types';
 
 const API_URL = 'http://localhost:3000';
 
@@ -10,7 +9,7 @@ export function errorHandler(dispatch, error) {
       type: SHOW_ERROR,
       payload: error
     });
-    logoutUser();
+
     setTimeout(() => {
       dispatch({
         type: HIDE_ERROR,
@@ -20,6 +19,21 @@ export function errorHandler(dispatch, error) {
   }
 }
 
+export function successHandler(dispatch, message) {
+  if (message) {
+    dispatch({
+      type: SHOW_SUCCESS,
+      payload: message
+    });
+
+    setTimeout(() => {
+      dispatch({
+        type: HIDE_SUCCESS,
+        payload: null
+      });
+    }, 5000);
+  }
+}
 
 export function listChefs() {
   return function (dispatch) {

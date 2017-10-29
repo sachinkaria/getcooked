@@ -44,7 +44,7 @@ class SettingsForm extends Component {
   }
 
   handleFormSubmit(formProps) {
-    this.props.updateUser(formProps);
+    this.props.updateUser(formProps, null, true);
   }
 
   render() {

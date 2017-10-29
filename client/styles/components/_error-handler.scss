@@ -1,4 +1,4 @@
-.gc-error {
+.gc-alert {
   height: 100px;
   background-color: $colour-error;
   color: white;
@@ -17,5 +17,13 @@
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+  }
+
+  &.gc-alert--error {
+    background-color: $colour-error;
+  }
+
+  &.gc-alert--success {
+    background-color: $light-green;
   }
 }

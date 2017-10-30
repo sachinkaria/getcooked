@@ -122,15 +122,14 @@ $image-height: 200px;
   content: 'Upload Image';
   color: $green;
   display: inline-block;
-  border-radius: 7px;
-  padding: 10px 0;
+  border-radius: 4px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
   text-shadow: 1px 1px #fff;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   background-color: white;
   width: 100%;
   text-align: center;
@@ -140,11 +139,12 @@ $image-height: 200px;
 }
 .custom-file-input:active {
   outline: 0;
-  border: 2px solid $green;
   background: transparent;
 }
 .custom-file-input:active::before {
-  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  border: 1px solid $green;
+  height: 36px;
+  //background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 input[type=file]:focus {

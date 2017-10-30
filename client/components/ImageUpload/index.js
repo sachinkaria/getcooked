@@ -18,14 +18,14 @@ const ImageUpload = ({ ...props }) => (
 
 ImageUpload.propTypes = {
   onUpload: PropTypes.func,
-  onRemove: PropTypes.func,
+  onDelete: PropTypes.func,
   image: PropTypes.string,
   inProgress: PropTypes.bool
 };
 
 ImageUpload.defaultProps = {
   onUpload: null,
-  onRemove: null,
+  onDelete: null,
   image: null,
   inProgress: null
 };

@@ -120,12 +120,14 @@ class Photos extends Component {
     return (
       <form>
         <div className="gc-margin-bottom--lg">
-          <label className="gc-text">Profile Photo</label>
+          <label className="gc-text clearfix">Profile Photo</label>
+          <br />
           {this.renderAlert()}
           <ImageUpload image={this.props.user.data ? this.props.user.data.profilePhoto || null : null} onDelete={() => this.onDelete('profile')} onUpload={this.onProfileUpload} />
         </div>
         <div>
-          <label className="gc-text">Cover Photo</label>
+          <label className="gc-text clearfix">Cover Photo</label>
+          <br />
           {this.renderAlert()}
           <ImageUpload type="cover" image={this.props.user.data ? this.props.user.data.coverPhoto || null : null} onDelete={() => this.onDelete('cover')} onUpload={this.onCoverUpload} />
         </div>

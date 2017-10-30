@@ -1,19 +1,19 @@
 const knox = require('knox');
 const jimp = require('jimp');
 
+const s3Client = knox.createClient({
+  key: 'key',
+  secret: 'secret',
+  bucket: 'getcooked',
+  endpoint: 'localhost',
+  port: 10001,
+  secure: false,
+  style: 'path',
+  region: 'eu'
+});
+
 function imageUploader(options, type, callback) {
   const buffer = new Buffer(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
-
-  const s3Client = knox.createClient({
-    key: 'key',
-    secret: 'secret',
-    bucket: 'getcooked',
-    endpoint: 'localhost',
-    port: 10001,
-    secure: false,
-    style: 'path',
-    region: 'eu'
-  });
 
   jimp.read(buffer, onOpen);
 
@@ -46,7 +46,7 @@ function imageUploader(options, type, callback) {
       'x-amz-acl': 'public-read'
     };
 
-    const req = s3Client.put(`/images/${options.userId}/`.concat(FILE_NAME), header);
+    const req = s3Client.put(`/images/user-${options.userId}/`.concat(FILE_NAME), header);
 
     req.on('response', (res) => {
       if (res.statusCode === 200) {
@@ -62,4 +62,16 @@ function imageUploader(options, type, callback) {
   }
 }
 
+function deleteImage(fileName, callback) {
+  s3Client.del(fileName)
+    .on('response', (res) => {
+      console.log('File deleted on S3 for filename: %s, status: %s', fileName, res.statusCode);
+      callback();
+    }).on('error', (error) => {
+    console.log('Problem deleting file on S3: %s', error.message);
+    callback(error);
+  }).end();
+}
+
 module.exports.imageUploader = imageUploader;
+module.exports.deleteImage = deleteImage;

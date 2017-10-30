@@ -19,6 +19,8 @@ const IMMUTABLE_FIELDS = [
 
 module.exports.uploadProfilePhoto = uploadProfilePhoto;
 module.exports.uploadCoverPhoto = uploadCoverPhoto;
+module.exports.deleteProfilePhoto = deleteProfilePhoto;
+module.exports.deleteCoverPhoto = deleteCoverPhoto;
 module.exports.updatePassword = updatePassword;
 
 /**
@@ -99,7 +101,7 @@ function uploadProfilePhoto(req, res) {
     user.save();
     res.jsonp(user);
   });
-};
+}
 
 /**
  * Upload cover picture
@@ -122,6 +124,44 @@ function uploadCoverPhoto(req, res) {
 
     user.save();
     res.jsonp(user);
+  });
+}
+
+/**
+ * Delete profile picture
+ */
+function deleteProfilePhoto(req, res) {
+  const USER = req.body.user;
+  const URL_PARTS = USER.profilePhoto.split('/');
+  const IMAGE_FILENAME = `/images/user-${USER.id}/${URL_PARTS[URL_PARTS.length - 1]}`;
+
+  utils.deleteImage(IMAGE_FILENAME, (err) => {
+    if (err) {
+      return res.status(400).send({
+        message: err
+      });
+    } else {
+      res.status(200).send();
+    }
+  });
+}
+
+/**
+ * Delete cover picture
+ */
+function deleteCoverPhoto(req, res) {
+  const USER = req.body.user;
+  const URL_PARTS = USER.coverPhoto.split('/');
+  const IMAGE_FILENAME = `/images/user-${USER.id}/${URL_PARTS[URL_PARTS.length - 1]}`;
+
+  utils.deleteImage(IMAGE_FILENAME, (err) => {
+    if (err) {
+      return res.status(400).send({
+        message: err
+      });
+    } else {
+      res.status(200).send();
+    }
   });
 }
 

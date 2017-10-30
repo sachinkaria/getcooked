@@ -43,6 +43,14 @@ class Profile extends React.Component {
                 </div>
                 <div>
                   <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
+                  <div className="visible-xs">
+                    <ContactDetails
+                      mobile
+                      website={CHEF.companyWebsite}
+                      email={CHEF.companyEmail}
+                      phone={CHEF.companyPhoneNumber}
+                    />
+                  </div>
                 </div>
                 <hr className="grey" />
                 <div>

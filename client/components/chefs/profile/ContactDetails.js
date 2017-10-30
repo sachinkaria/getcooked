@@ -1,28 +1,37 @@
 import React from 'react';
+import classNames from 'classnames';
 import Phone from 'react-icons/lib/fa/phone';
 import Email from 'react-icons/lib/fa/envelope-o';
 import Globe from 'react-icons/lib/fa/globe';
 
 const ContactDetails = (props) => {
+  const classes = classNames('gc-margin-bottom', {
+    'gc-inline-block': props.mobile
+  });
+
+  const EMAIL_LINK = 'mailto:'.concat(props.email);
+  const WEBSITE_LINK = 'http://'.concat(props.website);
+  const PHONE_LINK = 'tel:'.concat(props.phone);
+
   return (
     (props.website || props.email || props.phone) ?
       <div>
         { props.website &&
-        <div className="gc-margin-bottom">
+        <div className={classes}>
           <Globe className="gc-icon gc-list-item" />
-          <a target="_blank" href={props.website} className="gc-text gc-list-item">Website</a>
+          <a target="_blank" href={WEBSITE_LINK} className="gc-text gc-list-item">{props.website}</a>
         </div>
         }
         {
           props.email &&
-          <div className="gc-margin-bottom">
-            <Email className="gc-icon gc-list-item" /><p className="gc-text gc-list-item">Email</p>
+          <div className={classes}>
+            <Email className="gc-icon gc-list-item" /><a href={EMAIL_LINK} className="gc-text gc-list-item">{props.email}</a>
           </div>
         }
         {
           props.phone &&
-          <div className="gc-margin-bottom">
-            <Phone className="gc-icon gc-list-item" /><p className="gc-text gc-list-item">{props.phone}</p>
+          <div className={classes}>
+            <Phone className="gc-icon gc-list-item" /><a href={PHONE_LINK} className="gc-text gc-list-item">{props.phone}</a>
           </div>
         }
       </div> : <p className="gc-text gc-bold">No contact details provided.</p>

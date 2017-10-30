@@ -88,7 +88,9 @@ function uploadProfilePhoto(req, res) {
     userId: req.user._id
   }, 'profile', (error, response) => {
     if (error) {
-      console.log(error);
+      return res.status(400).send({
+        message: error
+      });
     }
 
     let user = req.user;
@@ -110,7 +112,9 @@ function uploadCoverPhoto(req, res) {
     userId: req.user._id
   }, 'cover', (error, response) => {
     if (error) {
-      console.log(error);
+      return res.status(400).send({
+        message: error
+      });
     }
 
     let user = req.user;
@@ -135,10 +139,10 @@ function updatePassword(req, res) {
           user.matchPassword(passwordDetails.currentPassword, (result) => {
             if (result && passwordDetails.newPassword === passwordDetails.verifyPassword) {
               user.password = passwordDetails.newPassword;
-              user.save((err) => {
-                if (err) {
+              user.save((error) => {
+                if (error) {
                   return res.status(400).send({
-                    message: err.message
+                    message: error.message
                   });
                 }
                 res.send(user);

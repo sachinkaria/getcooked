@@ -148,7 +148,7 @@ class Dashboard extends React.Component {
 
 Dashboard.propTypes = {
   user: React.PropTypes.shape({ user: { data: {} } }).isRequired,
-  location: React.PropTypes.shape({ location: { pathname: '' } }).isRequired,
+  location: React.PropTypes.shape({ location: { pathname: React.PropTypes.string } }).isRequired,
   getCurrentUser: React.PropTypes.func.isRequired
 };
 

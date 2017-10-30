@@ -131,7 +131,7 @@ function uploadCoverPhoto(req, res) {
  * Delete profile picture
  */
 function deleteProfilePhoto(req, res) {
-  const USER = req.body.user;
+  const USER = req.user;
   const URL_PARTS = USER.profilePhoto.split('/');
   const IMAGE_FILENAME = `/images/user-${USER.id}/${URL_PARTS[URL_PARTS.length - 1]}`;
 
@@ -140,9 +140,11 @@ function deleteProfilePhoto(req, res) {
       return res.status(400).send({
         message: err
       });
-    } else {
-      res.status(200).send();
     }
+    let user = req.user;
+    user = _.extend(user, { profilePhoto: undefined });
+    user.save();
+    res.jsonp(user);
   });
 }
 
@@ -150,7 +152,7 @@ function deleteProfilePhoto(req, res) {
  * Delete cover picture
  */
 function deleteCoverPhoto(req, res) {
-  const USER = req.body.user;
+  const USER = req.user;
   const URL_PARTS = USER.coverPhoto.split('/');
   const IMAGE_FILENAME = `/images/user-${USER.id}/${URL_PARTS[URL_PARTS.length - 1]}`;
 
@@ -159,9 +161,11 @@ function deleteCoverPhoto(req, res) {
       return res.status(400).send({
         message: err
       });
-    } else {
-      res.status(200).send();
     }
+    let user = req.user;
+    user = _.extend(user, { coverPhoto: undefined });
+    user.save();
+    res.jsonp(user);
   });
 }
 

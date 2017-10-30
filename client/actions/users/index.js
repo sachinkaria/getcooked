@@ -22,7 +22,20 @@ export function updateUser(user, url, showSuccess) {
 
 export function uploadPhoto(file, type) {
   return function (dispatch) {
-    axios.post(`${API_URL}/users/upload-photo/${type}`, file, AUTH_HEADERS)
+    axios.post(`${API_URL}/users/photos/${type}`, file, AUTH_HEADERS)
+      .then((response) => {
+        dispatch({ type: UPDATE_USER, payload: response.data });
+        // hashHistory.push(url);
+      })
+      .catch((error) => {
+        errorHandler(dispatch, error.response);
+      });
+  };
+}
+
+export function deletePhoto(type) {
+  return function (dispatch) {
+    axios.delete(`${API_URL}/users/photos/${type}`, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         // hashHistory.push(url);

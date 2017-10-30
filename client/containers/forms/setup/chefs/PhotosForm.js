@@ -4,7 +4,7 @@ import { reduxForm } from 'redux-form';
 import { hashHistory } from 'react-router';
 import ss from 'socket.io-stream';
 import ImageUpload from '../../../../components/ImageUpload';
-import { uploadPhoto, getCurrentUser } from '../../../../actions/users';
+import { uploadPhoto, getCurrentUser, deletePhoto } from '../../../../actions/users';
 import Steps from '../../../../components/chefs/setup/steps.json';
 // import Socket from '../../../../components/Socket';
 
@@ -41,6 +41,7 @@ class Photos extends Component {
     this.onProfileUpload = this.onProfileUpload.bind(this);
     this.onCoverUpload = this.onCoverUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
   componentWillMount() {
@@ -81,6 +82,10 @@ class Photos extends Component {
     reader.readAsDataURL(file);
   };
 
+  onDelete(type) {
+    this.props.deletePhoto(type);
+  }
+
   // onMultiUpload(e) {
   //   const STREAM = ss.createStream();
   //   ss.createBlobReadStream(e.target.files[0]).pipe(STREAM);
@@ -117,12 +122,12 @@ class Photos extends Component {
         <div className="gc-margin-bottom--lg">
           <label className="gc-text">Profile Photo</label>
           {this.renderAlert()}
-          <ImageUpload image={this.props.user.data ? this.props.user.data.profilePhoto : null} onUpload={this.onProfileUpload} />
+          <ImageUpload image={this.props.user.data ? this.props.user.data.profilePhoto || null : null} onDelete={() => this.onDelete('profile')} onUpload={this.onProfileUpload} />
         </div>
         <div>
           <label className="gc-text">Cover Photo</label>
           {this.renderAlert()}
-          <ImageUpload image={this.props.user.data ? this.props.user.data.coverPhoto : null} onUpload={this.onCoverUpload} />
+          <ImageUpload type="cover" image={this.props.user.data ? this.props.user.data.coverPhoto || null : null} onDelete={() => this.onDelete('cover')} onUpload={this.onCoverUpload} />
         </div>
         {/*<div>*/}
           {/*<label className="gc-text">Additional Photos</label>*/}
@@ -147,4 +152,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadPhoto, getCurrentUser })(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, getCurrentUser, deletePhoto })(form(Photos));

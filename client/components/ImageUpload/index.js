@@ -12,7 +12,7 @@ const ImageUpload = ({ ...props }) => (
         type={props.type}
         image={props.image}
         onChange={props.onUpload}
-        onRemove={props.onRemove}
+        onDelete={props.onDelete}
       />
 );
 

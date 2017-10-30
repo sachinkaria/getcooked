@@ -24,8 +24,7 @@ const ImageRender = ({ ...props }) => {
               <FaPencil />
             </p>
           </Button>
-          <Button type="button" className="btn-link bu-file-upload-btn bu-image-preview__edit-img-btn" >
-            <input type="file" accept="image/*" onChange={props.onChange} />
+          <Button onClick={props.onDelete} type="button" className="btn-link bu-file-upload-btn bu-image-preview__edit-img-btn" >
             <p style={{ fontSize: '22px' }}>
               <FaTrash />
             </p>

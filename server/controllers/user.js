@@ -91,7 +91,7 @@ function uploadProfilePhoto(req, res) {
   }, 'profile', (error, response) => {
     if (error) {
       return res.status(400).send({
-        message: error
+        message: error.message
       });
     }
 
@@ -115,7 +115,7 @@ function uploadCoverPhoto(req, res) {
   }, 'cover', (error, response) => {
     if (error) {
       return res.status(400).send({
-        message: error
+        message: error.message
       });
     }
 
@@ -138,7 +138,7 @@ function deleteProfilePhoto(req, res) {
   utils.deleteImage(IMAGE_FILENAME, (err) => {
     if (err) {
       return res.status(400).send({
-        message: err
+        message: err.message
       });
     }
     let user = req.user;
@@ -159,7 +159,7 @@ function deleteCoverPhoto(req, res) {
   utils.deleteImage(IMAGE_FILENAME, (err) => {
     if (err) {
       return res.status(400).send({
-        message: err
+        message: err.message
       });
     }
     let user = req.user;

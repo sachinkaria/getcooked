@@ -33,8 +33,7 @@ class Photos extends Component {
     this.state = {
       data_uri: '',
       filename: '',
-      filetype: '',
-      processing: ''
+      filetype: ''
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -123,7 +122,7 @@ class Photos extends Component {
           <br />
           {this.renderAlert()}
           <ImageUpload
-            inProgress={this.state.processing === 'profile' && !this.props.user.data.profilePhoto}
+            inProgress={this.state.processing === 'profile' && this.props.user.processing_file_upload}
             image={this.props.user.data ? this.props.user.data.profilePhoto || null : null}
             onDelete={() => this.onDelete('profile')}
             onUpload={this.onProfileUpload}
@@ -134,7 +133,7 @@ class Photos extends Component {
           <br />
           {this.renderAlert()}
           <ImageUpload
-            inProgress={this.state.processing === 'cover' && !this.props.user.data.coverPhoto}
+            inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}
             type="cover"
             image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}
             onDelete={() => this.onDelete('cover')}
@@ -149,7 +148,7 @@ class Photos extends Component {
 Photos.propTypes = {
   user: React.PropTypes.object.isRequired,
   uploadPhoto: React.PropTypes.func.isRequired,
-  errorMessage: React.PropTypes.string.isRequired,
+  errorMessage: React.PropTypes.string,
   deletePhoto: React.PropTypes.func.isRequired
 };
 

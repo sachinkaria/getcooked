@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { hashHistory } from 'react-router';
-import { UPDATE_USER } from '../types';
+import { UPDATE_USER, PROCESSING_FILE_UPLOAD, COMPLETED_FILE_UPLOAD } from '../types';
 import { errorHandler, successHandler } from '../public';
 
 const API_URL = 'http://localhost:3000';
@@ -22,15 +22,26 @@ export function updateUser(user, url, showSuccess) {
 
 export function uploadPhoto(file, type) {
   return function (dispatch) {
+    processingFileUpload(dispatch);
     axios.post(`${API_URL}/users/photos/${type}`, file, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
+        completedFileUpload(dispatch);
         // hashHistory.push(url);
       })
-      .catch((error) => {
-        errorHandler(dispatch, error.response);
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem saving your image. Please try again.');
+        completedFileUpload(dispatch);
       });
   };
+}
+
+export function processingFileUpload(dispatch) {
+  dispatch({ type: PROCESSING_FILE_UPLOAD });
+}
+
+export function completedFileUpload(dispatch) {
+  dispatch({ type: COMPLETED_FILE_UPLOAD });
 }
 
 export function deletePhoto(type) {
@@ -40,8 +51,8 @@ export function deletePhoto(type) {
         dispatch({ type: UPDATE_USER, payload: response.data });
         // hashHistory.push(url);
       })
-      .catch((error) => {
-        errorHandler(dispatch, error.response);
+      .catch(() => {
+        errorHandler(dispatch, 'There was a deleting your image. Please try again.');
       });
   };
 }

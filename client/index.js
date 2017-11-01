@@ -33,6 +33,7 @@ require('./images/food/food-9.jpg');
 require('./images/icons/wedding-cake.png');
 require('./images/default_profile.png');
 require('./images/icon-edit.png');
+require('./images/loading.svg');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

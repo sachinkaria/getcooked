@@ -33,7 +33,8 @@ class Photos extends Component {
     this.state = {
       data_uri: '',
       filename: '',
-      filetype: ''
+      filetype: '',
+      processing: ''
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -49,6 +50,8 @@ class Photos extends Component {
   }
 
   onProfileUpload(e) {
+    (this.props.user.data && this.props.user.data.profilePhoto) && this.onDelete('profile');
+
     const reader = new FileReader();
     const file = e.target.files[0];
 
@@ -56,7 +59,8 @@ class Photos extends Component {
       this.setState({
         data_uri: upload.target.result,
         filename: file.name,
-        filetype: file.type
+        filetype: file.type,
+        processing: 'profile'
       }, () => {
         this.handleFormSubmit('profile');
       });
@@ -66,6 +70,8 @@ class Photos extends Component {
   };
 
   onCoverUpload(e) {
+    (this.props.user.data && this.props.user.data.coverPhoto) && this.onDelete('cover');
+
     const reader = new FileReader();
     const file = e.target.files[0];
 
@@ -73,7 +79,8 @@ class Photos extends Component {
       this.setState({
         data_uri: upload.target.result,
         filename: file.name,
-        filetype: file.type
+        filetype: file.type,
+        processing: 'cover'
       }, () => {
         this.handleFormSubmit('cover');
       });
@@ -85,14 +92,6 @@ class Photos extends Component {
   onDelete(type) {
     this.props.deletePhoto(type);
   }
-
-  // onMultiUpload(e) {
-  //   const STREAM = ss.createStream();
-  //   ss.createBlobReadStream(e.target.files[0]).pipe(STREAM);
-  //   ss(Socket).emit('upload-photo', STREAM, {
-  //     length: e.target.files[0].size
-  //   });
-  // };
 
   isChecked(item, state) {
     return state && state.indexOf(item) > -1;
@@ -123,28 +122,35 @@ class Photos extends Component {
           <label className="gc-text clearfix">Profile Photo</label>
           <br />
           {this.renderAlert()}
-          <ImageUpload image={this.props.user.data ? this.props.user.data.profilePhoto || null : null} onDelete={() => this.onDelete('profile')} onUpload={this.onProfileUpload} />
+          <ImageUpload
+            inProgress={this.state.processing === 'profile' && !this.props.user.data.profilePhoto}
+            image={this.props.user.data ? this.props.user.data.profilePhoto || null : null}
+            onDelete={() => this.onDelete('profile')}
+            onUpload={this.onProfileUpload}
+          />
         </div>
         <div>
           <label className="gc-text clearfix">Cover Photo</label>
           <br />
           {this.renderAlert()}
-          <ImageUpload type="cover" image={this.props.user.data ? this.props.user.data.coverPhoto || null : null} onDelete={() => this.onDelete('cover')} onUpload={this.onCoverUpload} />
+          <ImageUpload
+            inProgress={this.state.processing === 'cover' && !this.props.user.data.coverPhoto}
+            type="cover"
+            image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}
+            onDelete={() => this.onDelete('cover')}
+            onUpload={this.onCoverUpload}
+          />
         </div>
-        {/*<div>*/}
-          {/*<label className="gc-text">Additional Photos</label>*/}
-          {/*{this.renderAlert()}*/}
-          {/*<ImageUpload multiple type="cover" onUpload={this.onMultiUpload} />*/}
-        {/*</div>*/}
       </form>
     );
   }
 }
 
 Photos.propTypes = {
-  user: React.PropTypes.object,
-  uploadPhoto: React.PropTypes.func,
-  errorMessage: React.PropTypes.string
+  user: React.PropTypes.object.isRequired,
+  uploadPhoto: React.PropTypes.func.isRequired,
+  errorMessage: React.PropTypes.string.isRequired,
+  deletePhoto: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

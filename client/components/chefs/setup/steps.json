@@ -1,35 +1,35 @@
 {
   "personal": {
     "number": 1,
-    "name": "personal details",
-    "description": "Your personal details will only be used for communication and authentication to your account. THey will never be published on your profile.",
+    "name": "account details",
+    "description": "Your personal details will only be used for communication and authentication to your account. They will never be published or accessible on your public profile.",
     "onNext": "/setup/basics"
   },
   "basic": {
     "number": 2,
     "name": "basic details",
-    "description": "Your personal details will only be used for communication and authentication to your account. THey will never be published on your profile.",
+    "description": "Your basic details such as your contact details and description will be published on your profile and will give everyone some basic information on your services as well as a way for them to contact you.",
     "onNext": "/setup/services",
     "onBack": "/setup/personal"
   },
   "services": {
     "number": 3,
     "name": "services offered",
-    "description": "Let people know what type of caterer you are and what types of events you're able to provide for. If you provide more than one type of service feel free to select multiple categories.",
+    "description": "Let people know what type of caterer you are and what types of events you're able to cater for. If you provide more than one type of service feel free to select multiple categories.",
     "onNext": "/setup/food",
     "onBack": "/setup/basics"
   },
   "food": {
     "number": 4,
     "name": "food services",
-    "description": "Select what type of food you provide or specialise in. This could range from simple specialising in one category or being able to cater to different requirements.",
+    "description": "Select what type of food you provide or specialise in. This could range from simple specialising in one category or being able to cater to a variety of different requirements. The more the merrier!",
     "onNext": "/setup/photos",
     "onBack": "/setup/services"
   },
   "photos": {
     "number": 5,
     "name": "photos",
-    "description": "These are you personal details used only to communication with you.",
+    "description": "Add your profile picture and your cover photo to your account. The recommended dimensions for your profile picture are 800x800px and for your cover photo 2000x500px.",
     "onNext": "/dashboard/profile/basics",
     "onBack": "/setup/food"
   },

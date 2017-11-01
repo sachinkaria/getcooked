@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { hashHistory } from 'react-router';
-import { Col, Panel, Row } from 'react-bootstrap';
+import { Panel } from 'react-bootstrap';
 import ImageUpload from '../../ImageUpload';
-import { uploadPhoto } from '../../../actions/users';
+import { uploadPhoto, deletePhoto } from '../../../actions/users';
 import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
@@ -33,7 +33,8 @@ class Photos extends Component {
     this.state = {
       data_uri: '',
       filename: '',
-      filetype: ''
+      filetype: '',
+      processing: ''
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -41,9 +42,16 @@ class Photos extends Component {
     this.onProfileUpload = this.onProfileUpload.bind(this);
     this.onCoverUpload = this.onCoverUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+  }
+
+  onDelete(type) {
+    this.props.deletePhoto(type);
   }
 
   onProfileUpload(e) {
+    (this.props.user.data && this.props.user.data.profilePhoto) && this.onDelete('profile');
+
     const reader = new FileReader();
     const file = e.target.files[0];
 
@@ -51,7 +59,8 @@ class Photos extends Component {
       this.setState({
         data_uri: upload.target.result,
         filename: file.name,
-        filetype: file.type
+        filetype: file.type,
+        processing: 'profile'
       }, () => {
         this.handleFormSubmit('profile');
       });
@@ -61,6 +70,8 @@ class Photos extends Component {
   };
 
   onCoverUpload(e) {
+    (this.props.user.data && this.props.user.data.coverPhoto) && this.onDelete('cover');
+
     const reader = new FileReader();
     const file = e.target.files[0];
 
@@ -68,7 +79,8 @@ class Photos extends Component {
       this.setState({
         data_uri: upload.target.result,
         filename: file.name,
-        filetype: file.type
+        filetype: file.type,
+        processing: 'cover'
       }, () => {
         this.handleFormSubmit('cover');
       });
@@ -105,7 +117,6 @@ class Photos extends Component {
     const sideBarText = Steps.photos.description;
     const onBack = Steps.photos.onBack;
     const onSkip = Steps.photos.onNext;
-    let uploaded;
 
     return (
       <Wizard
@@ -121,13 +132,26 @@ class Photos extends Component {
           <form>
             <div className="gc-margin-bottom--lg">
               <label className="gc-text">Profile Photo</label>
+              <br />
               {this.renderAlert()}
-              <ImageUpload image={this.props.user.data ? this.props.user.data.profilePhoto : null } onUpload={this.onProfileUpload} />
+              <ImageUpload
+                inProgress={this.state.processing === 'profile' && !this.props.user.data.profilePhoto}
+                image={this.props.user.data ? this.props.user.data.profilePhoto : null}
+                onUpload={this.onProfileUpload}
+                onDelete={() => this.onDelete('profile')}
+              />
             </div>
             <div>
               <label className="gc-text">Cover Photo</label>
+              <br />
               {this.renderAlert()}
-              <ImageUpload type="cover" image={this.props.user.data ? this.props.user.data.coverPhoto : null} onUpload={this.onCoverUpload} />
+              <ImageUpload
+                inProgress={this.state.processing === 'cover'}
+                type="cover"
+                image={this.props.user.data ? this.props.user.data.coverPhoto : null}
+                onUpload={this.onCoverUpload}
+                onDelete={() => this.onDelete('cover')}
+              />
             </div>
           </form>
         </Panel>
@@ -137,9 +161,10 @@ class Photos extends Component {
 }
 
 Photos.propTypes = {
-  user: React.PropTypes.object,
-  uploadPhoto: React.PropTypes.func,
-  errorMessage: React.PropTypes.string
+  user: React.PropTypes.object.isRequired,
+  uploadPhoto: React.PropTypes.func.isRequired,
+  errorMessage: React.PropTypes.string.isRequired,
+  deletePhoto: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -149,4 +174,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {uploadPhoto})(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, deletePhoto })(form(Photos));

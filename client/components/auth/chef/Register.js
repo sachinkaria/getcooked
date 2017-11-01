@@ -51,7 +51,7 @@ class RegisterChef extends Component {
           <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <Row>
-              <Col xs={12} sm={6} smOffset={3}>
+              <Col xs={12} sm={8} smOffset={2}>
                 <Field
                   name="email"
                   placeholder="Email"
@@ -62,7 +62,7 @@ class RegisterChef extends Component {
               </Col>
             </Row>
             <Row>
-              <Col xs={12} sm={6} smOffset={3}>
+              <Col xs={12} sm={8} smOffset={2}>
                 <Field
                   name="password"
                   placeholder="Password"

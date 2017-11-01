@@ -70,10 +70,15 @@ class Profile extends React.Component {
                     </Col>
                   </Row>
                 </div>
-                <hr className="grey" />
-                <div>
-                  <Images images={CHEF.images} />
-                </div>
+                {
+                  CHEF.images &&
+                    <div>
+                      <hr className="grey" />
+                      <div>
+                        <Images images={CHEF.images} />
+                      </div>
+                    </div>
+                }
                 <hr className="grey" />
                 <Row>
                   <p className="gc-form-heading"> Reviews</p>

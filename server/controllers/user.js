@@ -22,6 +22,7 @@ module.exports.uploadCoverPhoto = uploadCoverPhoto;
 module.exports.deleteProfilePhoto = deleteProfilePhoto;
 module.exports.deleteCoverPhoto = deleteCoverPhoto;
 module.exports.updatePassword = updatePassword;
+module.exports.uploadPhoto = uploadPhoto;
 
 /**
  * Update user details
@@ -78,6 +79,31 @@ exports.getCurrentUser = function (req, res) {
   }
   res.jsonp(user);
 };
+
+/**
+ * Upload photo
+ */
+function uploadPhoto(req, res) {
+  utils.imageUploader({
+    data_uri: req.body.data_uri,
+    filename: req.body.filename,
+    filetype: req.body.filetype,
+    userId: req.user._id
+  }, null, (error, response) => {
+    if (error) {
+      return res.status(400).send({
+        message: error.message
+      });
+    }
+
+    let user = req.user;
+    user.photos.push(response);
+    console.log(user.photos);
+
+    user.save();
+    res.jsonp(user);
+  });
+}
 
 /**
  * Upload profile picture

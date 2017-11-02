@@ -22,26 +22,42 @@ export function updateUser(user, url, showSuccess) {
 
 export function uploadPhoto(file, type) {
   return function (dispatch) {
-    processingFileUpload(dispatch);
+    dispatch(processingFileUpload());
     axios.post(`${API_URL}/users/photos/${type}`, file, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
-        completedFileUpload(dispatch);
+        dispatch(completedFileUpload());
         // hashHistory.push(url);
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem saving your image. Please try again.');
-        completedFileUpload(dispatch);
+        dispatch(completedFileUpload());
       });
   };
 }
 
-export function processingFileUpload(dispatch) {
-  dispatch({ type: PROCESSING_FILE_UPLOAD });
+export function uploadMultiplePhotos(file) {
+  return function (dispatch) {
+    dispatch(processingFileUpload());
+    axios.post(`${API_URL}/users/photos`, file, AUTH_HEADERS)
+      .then((response) => {
+        dispatch({ type: UPDATE_USER, payload: response.data });
+        dispatch(completedFileUpload());
+        // hashHistory.push(url);
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem saving your image. Please try again.');
+        dispatch(completedFileUpload());
+      });
+  };
 }
 
-export function completedFileUpload(dispatch) {
-  dispatch({ type: COMPLETED_FILE_UPLOAD });
+export function processingFileUpload() {
+  return ({ type: PROCESSING_FILE_UPLOAD });
+}
+
+export function completedFileUpload() {
+  return ({ type: COMPLETED_FILE_UPLOAD });
 }
 
 export function deletePhoto(type) {

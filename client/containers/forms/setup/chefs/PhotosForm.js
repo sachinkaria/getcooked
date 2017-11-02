@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { reduxForm} from 'redux-form';
 import { hashHistory } from 'react-router';
-import ss from 'socket.io-stream';
 import ImageUpload from '../../../../components/ImageUpload';
-import { uploadPhoto, getCurrentUser, deletePhoto } from '../../../../actions/users';
+import { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos } from '../../../../actions/users';
 import Steps from '../../../../components/chefs/setup/steps.json';
-// import Socket from '../../../../components/Socket';
 
 const form = reduxForm({
   form: 'setup-photos',
@@ -33,13 +31,15 @@ class Photos extends Component {
     this.state = {
       data_uri: '',
       filename: '',
-      filetype: ''
+      filetype: '',
+      images: []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.isChecked = this.isChecked.bind(this);
     this.onProfileUpload = this.onProfileUpload.bind(this);
     this.onCoverUpload = this.onCoverUpload.bind(this);
+    this.onImagesUpload = this.onImagesUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onDelete = this.onDelete.bind(this);
   }
@@ -88,6 +88,23 @@ class Photos extends Component {
     reader.readAsDataURL(file);
   };
 
+  onImagesUpload(e) {
+    Object.keys(e.target.files).forEach(function (key) {
+      const reader = new FileReader();
+      const FILE = e.target.files[key];
+      reader.onload = (upload) => {
+        this.setState({
+          data_uri: upload.target.result,
+          filename: FILE.name,
+          filetype: FILE.type
+        }, () => {
+          this.handleFormSubmit('multiple');
+        });
+      };
+      reader.readAsDataURL(FILE);
+    }.bind(this));
+  }
+
   onDelete(type) {
     this.props.deletePhoto(type);
   }
@@ -101,7 +118,11 @@ class Photos extends Component {
   }
 
   handleFormSubmit(type) {
-    this.props.uploadPhoto(this.state, type);
+    if (type === 'multiple') {
+      this.props.uploadMultiplePhotos(this.state);
+    } else {
+      this.props.uploadPhoto(this.state, type);
+    }
   }
 
   renderAlert() {
@@ -140,6 +161,14 @@ class Photos extends Component {
             onUpload={this.onCoverUpload}
           />
         </div>
+        <div>
+          <label className="gc-text">Photos</label>
+          <br />
+          <ImageUpload
+            multiple
+            onUpload={this.onImagesUpload}
+          />
+        </div>
       </form>
     );
   }
@@ -153,10 +182,11 @@ Photos.propTypes = {
 };
 
 function mapStateToProps(state) {
+  console.log(state.user.data);
   return {
     errorMessage: state.user.error,
     user: state.user
   };
 }
 
-export default connect(mapStateToProps, { uploadPhoto, getCurrentUser, deletePhoto })(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos })(form(Photos));

@@ -21,6 +21,7 @@ module.exports = function (app) {
   app.put('/users/password', requireAuth, User.updatePassword);
 
   // Upload photos
+  app.post('/users/photos', requireAuth, User.uploadPhoto);
   app.post('/users/photos/profile', requireAuth, User.uploadProfilePhoto);
   app.post('/users/photos/cover', requireAuth, User.uploadCoverPhoto);
 

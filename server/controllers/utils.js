@@ -20,15 +20,22 @@ function imageUploader(options, type, callback) {
   function onOpen(err, Img) {
     const PROFILE_WIDTH = 600;
     const PROFILE_HEIGHT = 600;
-    const COVER_WIDTH = 2000;
-    const COVER_HEIGHT = 800;
+    const COVER_WIDTH = 1440;
+    const COVER_HEIGHT = 960;
+    const STANDARD_WIDTH = 1440;
+    const STANDARD_HEIGHT = 960;
 
     if (err) {
       callback(err);
     }
 
-    Img = (type === 'profile') ? Img.scaleToFit(PROFILE_WIDTH, PROFILE_HEIGHT) : Img;
-    Img = (type === 'cover') ? Img.scaleToFit(COVER_WIDTH, COVER_HEIGHT) : Img;
+    if (type && type === 'profile') {
+      Img = Img.scaleToFit(PROFILE_WIDTH, PROFILE_HEIGHT);
+    } else if (type && type === 'cover') {
+      Img = Img.scaleToFit(COVER_WIDTH, COVER_HEIGHT);
+    } else {
+      Img = Img.scaleToFit(STANDARD_WIDTH, STANDARD_HEIGHT);
+    }
 
     Img.getBuffer(jimp.MIME_JPEG, uploadImage.bind(callback));
   }

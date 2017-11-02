@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { hashHistory } from 'react-router';
-import { Panel } from 'react-bootstrap';
+import { Panel, Row, Col, Thumbnail } from 'react-bootstrap';
 import ImageUpload from '../../ImageUpload';
-import { uploadPhoto, deletePhoto } from '../../../actions/users';
+import { uploadPhoto, deletePhoto, uploadMultiplePhotos } from '../../../actions/users';
 import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
@@ -43,6 +43,7 @@ class Photos extends Component {
     this.onCoverUpload = this.onCoverUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.onImagesUpload = this.onImagesUpload.bind(this);
   }
 
   onDelete(type) {
@@ -89,6 +90,23 @@ class Photos extends Component {
     reader.readAsDataURL(file);
   };
 
+  onImagesUpload(e) {
+    Object.keys(e.target.files).forEach(function (key) {
+      const reader = new FileReader();
+      const FILE = e.target.files[key];
+      reader.onload = (upload) => {
+        this.setState({
+          data_uri: upload.target.result,
+          filename: FILE.name,
+          filetype: FILE.type
+        }, () => {
+          this.handleFormSubmit('multiple');
+        });
+      };
+      reader.readAsDataURL(FILE);
+    }.bind(this));
+  }
+
   isChecked(item, state) {
     return state && state.indexOf(item) > -1;
   }
@@ -98,7 +116,11 @@ class Photos extends Component {
   }
 
   handleFormSubmit(type) {
-    this.props.uploadPhoto(this.state, type);
+    if (type === 'multiple') {
+      this.props.uploadMultiplePhotos(this.state);
+    } else {
+      this.props.uploadPhoto(this.state, type);
+    }
   }
 
   renderAlert() {
@@ -118,6 +140,12 @@ class Photos extends Component {
     const onBack = Steps.photos.onBack;
     const onSkip = Steps.photos.onNext;
 
+    if (!this.props.user.data) {
+      return (
+        <div>Loading...</div>
+      )
+    }
+    
     return (
       <Wizard
         onSubmit={this.handleSubmit}
@@ -153,6 +181,28 @@ class Photos extends Component {
                 onDelete={() => this.onDelete('cover')}
               />
             </div>
+            <div className="gc-margin-bottom--lg">
+              <label className="gc-text">Photos</label>
+              <br />
+              <ImageUpload
+                inProgress={this.state.processing === 'normal' && this.props.user.processing_file_upload}
+                multiple
+                onUpload={this.onImagesUpload}
+              />
+            </div>
+            <Row>
+              {this.props.user.data.photos.map(item =>
+                (
+                  <Col sm={4} key={item.src}>
+                    <Thumbnail
+                      className="gc-image-preview"
+                      style={{backgroundImage: `url(${item.src})`, backgroundSize: 'cover'}}
+                      onClick={null}
+                    />
+                  </Col>
+                )
+              )}
+            </Row>
           </form>
         </Panel>
       </Wizard>
@@ -174,4 +224,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadPhoto, deletePhoto })(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, deletePhoto, uploadMultiplePhotos })(form(Photos));

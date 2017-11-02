@@ -89,7 +89,7 @@ function uploadPhoto(req, res) {
     filename: req.body.filename,
     filetype: req.body.filetype,
     userId: req.user._id
-  }, null, (error, response) => {
+  }, 'photos', (error, response) => {
     if (error) {
       return res.status(400).send({
         message: error.message

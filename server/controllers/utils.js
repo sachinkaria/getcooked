@@ -53,7 +53,7 @@ function imageUploader(options, type, callback) {
       'x-amz-acl': 'public-read'
     };
 
-    const req = s3Client.put(`/images/user-${options.userId}/`.concat(FILE_NAME), header);
+    const req = s3Client.put(`/images/users/${options.userId}/${type}`.concat(FILE_NAME), header);
 
     req.on('response', (res) => {
       if (res.statusCode === 200) {

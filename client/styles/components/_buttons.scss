@@ -140,6 +140,7 @@ $image-height: 200px;
 .custom-file-input:active {
   outline: 0;
   background: transparent;
+
 }
 .custom-file-input:active::before {
   border: 1px solid $green;

@@ -174,9 +174,16 @@
   }
 }
 
+.gc-image-preview {
+  width: auto;
+  height: auto;
+  @include aspect-ratio(14, 9);
+}
+
 .gc-profile-photo {
   width: auto;
   height: auto;
+  border-radius: 0;
 
   @include aspect-ratio(1, 1);
   @include breakpoint(mobileonly) {

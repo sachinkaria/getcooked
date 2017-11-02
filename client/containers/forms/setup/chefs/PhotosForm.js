@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
+import { Row, Col, Thumbnail } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { reduxForm} from 'redux-form';
 import { hashHistory } from 'react-router';
@@ -162,25 +162,28 @@ class Photos extends Component {
             onUpload={this.onCoverUpload}
           />
         </div>
-        <div>
+        <div className="gc-margin-bottom--lg">
           <label className="gc-text">Photos</label>
           <br />
           <ImageUpload
+            inProgress={this.state.processing === 'normal' && this.props.user.processing_file_upload}
             multiple
             onUpload={this.onImagesUpload}
           />
         </div>
-        <div>
+        <Row>
           { this.props.user.data.photos.map(item =>
             (
-              <div key={item.src} className="gc-inline-block">
-                <div>
-                  <img alt={this.props.user.data.displayName} style={{ maxHeight: '150px', maxWidth: '150px' }} src={item.src} />
-                </div>
-              </div>
+              <Col sm={4} key={item.src}>
+                <Thumbnail
+                  className="gc-image-preview"
+                  style={{backgroundImage: `url(${item.src})`, backgroundSize: 'cover'}}
+                  onClick={null}
+                />
+              </Col>
             )
           )}
-        </div>
+        </Row>
       </form>
     );
   }

@@ -40,9 +40,9 @@ export function uploadMultiplePhotos(file) {
   return function (dispatch) {
     dispatch(processingFileUpload());
     axios.post(`${API_URL}/users/photos`, file, AUTH_HEADERS)
-      .then((response) => {
-        dispatch({ type: UPDATE_USER, payload: response.data });
+      .then(() => {
         dispatch(completedFileUpload());
+        dispatch(getCurrentUser());
         // hashHistory.push(url);
       })
       .catch(() => {

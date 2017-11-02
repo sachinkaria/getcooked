@@ -71,11 +71,11 @@ class Profile extends React.Component {
                   </Row>
                 </div>
                 {
-                  CHEF.images &&
+                  CHEF.photos &&
                     <div>
                       <hr className="grey" />
                       <div>
-                        <Images images={CHEF.images} />
+                        <Images images={CHEF.photos} />
                       </div>
                     </div>
                 }

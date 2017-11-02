@@ -96,9 +96,8 @@ function uploadPhoto(req, res) {
       });
     }
 
-    let user = req.user;
-    user.photos.push(response);
-    console.log(user.photos);
+    const user = req.user;
+    user.photos.push({ src: response });
 
     user.save();
     res.jsonp(user);

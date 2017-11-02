@@ -40,11 +40,11 @@ const UserSchema = new Schema({
   coverPhoto: {
     type: String
   },
-  photos: [
-    {
+  photos: [{
+    src: {
       type: String
     }
-  ],
+  }],
   companyEmail: {
     type: String
   },

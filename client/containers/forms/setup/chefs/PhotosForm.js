@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Panel } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { reduxForm} from 'redux-form';
 import { hashHistory } from 'react-router';
@@ -169,6 +170,17 @@ class Photos extends Component {
             onUpload={this.onImagesUpload}
           />
         </div>
+        <div>
+          { this.props.user.data.photos.map(item =>
+            (
+              <div key={item.src} className="gc-inline-block">
+                <div>
+                  <img alt={this.props.user.data.displayName} style={{ maxHeight: '150px', maxWidth: '150px' }} src={item.src} />
+                </div>
+              </div>
+            )
+          )}
+        </div>
       </form>
     );
   }
@@ -182,7 +194,6 @@ Photos.propTypes = {
 };
 
 function mapStateToProps(state) {
-  console.log(state.user.data);
   return {
     errorMessage: state.user.error,
     user: state.user

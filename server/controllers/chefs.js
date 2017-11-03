@@ -12,8 +12,8 @@ function list(req, res) {
 }
 
 function read(req, res) {
-  const id = req.params.id;
-  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+  const ID = req.params.id;
+  User.find({ _id: ObjectId(ID) }).exec((err, chefs) => {
     let chef = chefs[0];
     chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
     res.jsonp(chef);

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { hashHistory } from 'react-router';
-import { Panel, Row, Col, Thumbnail } from 'react-bootstrap';
+import FaTrash from 'react-icons/lib/fa/trash';
+import { Panel, Row, Col, Button } from 'react-bootstrap';
 import ImageUpload from '../../ImageUpload';
 import { uploadPhoto, deletePhoto, uploadMultiplePhotos } from '../../../actions/users';
 import Wizard from '../../Wizard';
@@ -46,8 +47,12 @@ class Photos extends Component {
     this.onImagesUpload = this.onImagesUpload.bind(this);
   }
 
-  onDelete(type) {
-    this.props.deletePhoto(type);
+  onDelete(type, item) {
+    if (type === 'cover' || 'profile') {
+      this.props.deletePhoto(type);
+    } else {
+      console.log(type, item);
+    }
   }
 
   onProfileUpload(e) {
@@ -193,12 +198,18 @@ class Photos extends Component {
             <Row>
               {this.props.user.data.photos.map(item =>
                 (
-                  <Col sm={4} key={item.src}>
-                    <Thumbnail
+                  <Col sm={4} key={item._id}>
+                    <div
                       className="gc-image-preview"
-                      style={{backgroundImage: `url(${item.src})`, backgroundSize: 'cover'}}
+                      style={{ backgroundImage: `url(${item.src})`, backgroundSize: 'cover' }}
                       onClick={null}
-                    />
+                    >
+                      <Button type="button">
+                        <p style={{ fontSize: '22px' }} onClick={() => this.onDelete('multiple', item)}>
+                          <FaTrash />
+                        </p>
+                      </Button>
+                    </div>
                   </Col>
                 )
               )}

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Row, Col, Thumbnail } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { reduxForm} from 'redux-form';
 import { hashHistory } from 'react-router';
+import FaTrash from 'react-icons/lib/fa/trash';
 import ImageUpload from '../../../../components/ImageUpload';
-import { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos } from '../../../../actions/users';
+import { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos, deleteMultiple } from '../../../../actions/users';
 import Steps from '../../../../components/chefs/setup/steps.json';
 
 const form = reduxForm({
@@ -106,8 +107,12 @@ class Photos extends Component {
     }.bind(this));
   }
 
-  onDelete(type) {
-    this.props.deletePhoto(type);
+  onDelete(type, item) {
+    if (type === 'multiple') {
+      this.props.deleteMultiple(item._id);
+    } else {
+      this.props.deletePhoto(type);
+    }
   }
 
   isChecked(item, state) {
@@ -174,12 +179,18 @@ class Photos extends Component {
         <Row>
           { this.props.user.data.photos.map(item =>
             (
-              <Col sm={4} key={item.src}>
-                <Thumbnail
+              <Col sm={4} key={item._id}>
+                <div
                   className="gc-image-preview"
-                  style={{backgroundImage: `url(${item.src})`, backgroundSize: 'cover'}}
+                  style={{ backgroundImage: `url(${item.src})`, backgroundSize: 'cover' }}
                   onClick={null}
-                />
+                >
+                  <Button type="button" onClick={() => this.onDelete('multiple', item)}>
+                    <p style={{ fontSize: '22px' }}>
+                      <FaTrash />
+                    </p>
+                  </Button>
+                </div>
               </Col>
             )
           )}
@@ -203,4 +214,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos })(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos, deleteMultiple })(form(Photos));

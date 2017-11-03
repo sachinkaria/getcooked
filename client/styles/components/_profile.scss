@@ -175,9 +175,36 @@
 }
 
 .gc-image-preview {
+  position: relative;
+  margin-bottom: 10px;
   width: auto;
   height: auto;
   @include aspect-ratio(14, 9);
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: $dark-grey;
+    font-weight: 600;
+    color: white;
+    padding: 0 5px;
+    height: 35px;
+
+    &:hover {
+      text-decoration: none;
+      color: $primary-colour;
+      background-color: $dark-grey;
+    }
+
+    &:hover:active {
+      text-decoration: none;
+      color: $primary-colour;
+      background-color: $dark-grey;
+    }
+  }
 }
 
 .gc-profile-photo {

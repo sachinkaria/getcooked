@@ -23,6 +23,7 @@ module.exports.deleteProfilePhoto = deleteProfilePhoto;
 module.exports.deleteCoverPhoto = deleteCoverPhoto;
 module.exports.updatePassword = updatePassword;
 module.exports.uploadPhoto = uploadPhoto;
+module.exports.deletePhoto = deletePhoto;
 
 /**
  * Update user details
@@ -153,12 +154,37 @@ function uploadCoverPhoto(req, res) {
 }
 
 /**
+ * Delete picture
+ */
+function deletePhoto(req, res) {
+  const PHOTO_ID = req.params.id;
+  const USER = req.user;
+  console.log(PHOTO_ID);
+  const PHOTO = _.filter(USER.photos, object => object._id.toString() === PHOTO_ID)[0];
+  const URL_PARTS = PHOTO.src.split('/');
+  const IMAGE_FILENAME = `/images/users/${USER.id}/photos/${URL_PARTS[URL_PARTS.length - 1]}`;
+
+  utils.deleteImage(IMAGE_FILENAME, (err) => {
+    if (err) {
+      return res.status(400).send({
+        message: err.message
+      });
+    }
+    let user = req.user;
+    user = _.extend(user, { profilePhoto: undefined });
+    user.save();
+    res.jsonp(user);
+  });
+}
+
+
+/**
  * Delete profile picture
  */
 function deleteProfilePhoto(req, res) {
   const USER = req.user;
   const URL_PARTS = USER.profilePhoto.split('/');
-  const IMAGE_FILENAME = `/images/user-${USER.id}/${URL_PARTS[URL_PARTS.length - 1]}`;
+  const IMAGE_FILENAME = `/images/users/${USER.id}/profile/${URL_PARTS[URL_PARTS.length - 1]}`;
 
   utils.deleteImage(IMAGE_FILENAME, (err) => {
     if (err) {
@@ -179,7 +205,7 @@ function deleteProfilePhoto(req, res) {
 function deleteCoverPhoto(req, res) {
   const USER = req.user;
   const URL_PARTS = USER.coverPhoto.split('/');
-  const IMAGE_FILENAME = `/images/user-${USER.id}/${URL_PARTS[URL_PARTS.length - 1]}`;
+  const IMAGE_FILENAME = `/images/users/${USER.id}/cover/${URL_PARTS[URL_PARTS.length - 1]}`;
 
   utils.deleteImage(IMAGE_FILENAME, (err) => {
     if (err) {

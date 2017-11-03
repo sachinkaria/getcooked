@@ -26,6 +26,7 @@ module.exports = function (app) {
   app.post('/users/photos/cover', requireAuth, User.uploadCoverPhoto);
 
   // Delete photos
+  app.delete('/users/photos/:id', requireAuth, User.deletePhoto);
   app.delete('/users/photos/profile', requireAuth, User.deleteProfilePhoto);
   app.delete('/users/photos/cover', requireAuth, User.deleteCoverPhoto);
 

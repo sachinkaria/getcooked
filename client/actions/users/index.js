@@ -73,6 +73,19 @@ export function deletePhoto(type) {
   };
 }
 
+export function deleteMultiple(id) {
+  return function (dispatch) {
+    axios.delete(`${API_URL}/users/photos/${id}`, AUTH_HEADERS)
+      .then((response) => {
+        dispatch({ type: UPDATE_USER, payload: response.data });
+        // hashHistory.push(url);
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a deleting your image. Please try again.');
+      });
+  };
+}
+
 
 export function getCurrentUser() {
   return function (dispatch) {

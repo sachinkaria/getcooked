@@ -159,8 +159,8 @@ function uploadCoverPhoto(req, res) {
 function deletePhoto(req, res) {
   const PHOTO_ID = req.params.id;
   const USER = req.user;
-  console.log(PHOTO_ID);
   const PHOTO = _.filter(USER.photos, object => object._id.toString() === PHOTO_ID)[0];
+  const PHOTO_INDEX = USER.photos.indexOf(PHOTO);
   const URL_PARTS = PHOTO.src.split('/');
   const IMAGE_FILENAME = `/images/users/${USER.id}/photos/${URL_PARTS[URL_PARTS.length - 1]}`;
 
@@ -170,10 +170,10 @@ function deletePhoto(req, res) {
         message: err.message
       });
     }
-    let user = req.user;
-    user = _.extend(user, { profilePhoto: undefined });
-    user.save();
-    res.jsonp(user);
+
+    USER.photos.splice(PHOTO_INDEX, 1);
+    USER.save();
+    res.jsonp(USER);
   });
 }
 

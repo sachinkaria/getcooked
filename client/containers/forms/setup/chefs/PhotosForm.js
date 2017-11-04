@@ -145,7 +145,7 @@ class Photos extends Component {
     return (
       <form>
         <div className="gc-margin-bottom--lg">
-          <label className="gc-text clearfix">Profile Photo</label>
+          <label className="gc-text gc-margin-bottom">Profile Photo</label>
           <br />
           {this.renderAlert()}
           <ImageUpload
@@ -155,8 +155,8 @@ class Photos extends Component {
             onUpload={this.onProfileUpload}
           />
         </div>
-        <div>
-          <label className="gc-text clearfix">Cover Photo</label>
+        <div className="gc-margin-bottom--lg">
+          <label className="gc-text gc-margin-bottom">Cover Photo</label>
           <br />
           {this.renderAlert()}
           <ImageUpload
@@ -167,9 +167,10 @@ class Photos extends Component {
             onUpload={this.onCoverUpload}
           />
         </div>
+        <br />
         <div className="gc-margin-bottom--lg">
           <label className="gc-text">Photos</label>
-          <br />
+          <p className="gc-text gc-grey">Share photos of your team, food, drinks and more. Give your viewers a visual idea of the delicous treats they can experience when they work with you!</p>
           <ImageUpload
             inProgress={this.state.processing === 'normal' && this.props.user.processing_file_upload}
             multiple

@@ -5,7 +5,7 @@ import { Button, FormGroup } from 'react-bootstrap';
 
 const ImageSelect = ({ ...props }) => (
   <Button className="gc-btn gc-btn--white gc-padding-none">
-    <input content={props.copy} multiple={props.multiple} type="file" className="custom-file-input" accept="image/*" onChange={props.onChange} />
+    <input id={props.multiple && 'multiple'} content={props.copy} multiple={props.multiple} type="file" className="custom-file-input" accept="image/*" onChange={props.onChange} />
   </Button>
 );
 

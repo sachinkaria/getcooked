@@ -5,7 +5,7 @@ import { hashHistory } from 'react-router';
 import FaTrash from 'react-icons/lib/fa/trash';
 import { Panel, Row, Col, Button } from 'react-bootstrap';
 import ImageUpload from '../../ImageUpload';
-import { uploadPhoto, deletePhoto, uploadMultiplePhotos } from '../../../actions/users';
+import { uploadPhoto, deletePhoto, uploadMultiplePhotos, deleteMultiple } from '../../../actions/users';
 import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
@@ -48,10 +48,10 @@ class Photos extends Component {
   }
 
   onDelete(type, item) {
-    if (type === 'cover' || 'profile') {
-      this.props.deletePhoto(type);
+    if (type === 'multiple') {
+      this.props.deleteMultiple(item._id);
     } else {
-      console.log(type, item);
+      this.props.deletePhoto(type);
     }
   }
 
@@ -148,9 +148,8 @@ class Photos extends Component {
     if (!this.props.user.data) {
       return (
         <div>Loading...</div>
-      )
+      );
     }
-    
     return (
       <Wizard
         onSubmit={this.handleSubmit}
@@ -164,7 +163,7 @@ class Photos extends Component {
         <Panel className="gc-panel-light">
           <form>
             <div className="gc-margin-bottom--lg">
-              <label className="gc-text">Profile Photo</label>
+              <label className="gc-text gc-margin-bottom">Profile Photo</label>
               <br />
               {this.renderAlert()}
               <ImageUpload
@@ -174,8 +173,8 @@ class Photos extends Component {
                 onDelete={() => this.onDelete('profile')}
               />
             </div>
-            <div>
-              <label className="gc-text">Cover Photo</label>
+            <div className="gc-margin-bottom--lg">
+              <label className="gc-text gc-margin-bottom">Cover Photo</label>
               <br />
               {this.renderAlert()}
               <ImageUpload
@@ -186,9 +185,10 @@ class Photos extends Component {
                 onDelete={() => this.onDelete('cover')}
               />
             </div>
+            <br />
             <div className="gc-margin-bottom--lg">
               <label className="gc-text">Photos</label>
-              <br />
+              <p className="gc-text gc-grey">Share photos of your team, food, drinks and more. Give your viewers a visual idea of the delicous treats they can experience when they work with you!</p>
               <ImageUpload
                 inProgress={this.state.processing === 'normal' && this.props.user.processing_file_upload}
                 multiple
@@ -198,7 +198,7 @@ class Photos extends Component {
             <Row>
               {this.props.user.data.photos.map(item =>
                 (
-                  <Col sm={4} key={item._id}>
+                  <Col sm={6} key={item._id}>
                     <div
                       className="gc-image-preview"
                       style={{ backgroundImage: `url(${item.src})`, backgroundSize: 'cover' }}
@@ -235,4 +235,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadPhoto, deletePhoto, uploadMultiplePhotos })(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, deletePhoto, uploadMultiplePhotos, deleteMultiple })(form(Photos));

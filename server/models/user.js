@@ -21,6 +21,11 @@ const UserSchema = new Schema({
   lastName: {
     type: String
   },
+  phoneCode: {
+    name: String,
+    dialCode: Number,
+    code: String
+  },
   mobileNumber: {
     type: Number
   },

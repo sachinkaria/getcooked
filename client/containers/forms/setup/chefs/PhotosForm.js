@@ -167,7 +167,6 @@ class Photos extends Component {
             onUpload={this.onCoverUpload}
           />
         </div>
-        <br />
         <div className="gc-margin-bottom--lg">
           <label className="gc-text">Photos</label>
           <p className="gc-text gc-grey">Share photos of your team, food, drinks and more. Give your viewers a visual idea of the delicous treats they can experience when they work with you!</p>

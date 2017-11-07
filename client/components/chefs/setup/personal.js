@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { Col, Row } from 'react-bootstrap';
 import { updateUser } from '../../../actions/users';
 import renderField from '../../forms/renderField';
 import Wizard from '../../Wizard';
 import Steps from './steps.json';
+import CODES from '../../../utils/country-codes.json';
 
 const form = reduxForm({
   form: 'setup-personal',
-  fields: ['firstName', 'lastName', 'email', 'mobileNumber'],
+  fields: ['firstName', 'lastName', 'email', 'phoneCode', 'mobileNumber'],
   validate
 });
 
@@ -97,6 +98,21 @@ class BasicInfo extends Component {
             />
           </div>
           <label className="gc-text">Mobile number</label>
+          <div>
+            <Field
+              name="phoneCode"
+              className="form-control gc-input"
+              component="select"
+            >
+              {CODES.map(code =>
+                (
+                  <option key={code.name} value={code}>
+                    {code.name}
+                  </option>
+                )
+              )}
+            </Field>
+          </div>
           <div>
             <Field
               name="mobileNumber"

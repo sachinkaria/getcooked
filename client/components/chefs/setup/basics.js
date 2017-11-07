@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Col, Row } from 'react-bootstrap';
 import { updateUser } from '../../../actions/users';
 import renderField from '../../forms/renderField';
 import renderInputBox from '../../forms/renderInputBox';

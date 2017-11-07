@@ -1,53 +1,30 @@
-/**
- * Created by sachinkaria on 18/03/2017.
- */
 import React from 'react';
-import { hashHistory } from 'react-router';
-import { ButtonToolbar, Button, Modal, Form, FormGroup, FormControl, Col, Row, ControlLabel, InputGroup } from 'react-bootstrap';
+import renderField from '../components/forms/renderField';
+import renderInputBox from '../components/forms/renderInputBox';
+import { Field, reduxForm } from 'redux-form';
+import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
+import { EVENTS } from '../utils/data';
 
-export default class BookingForm extends React.Component {
+const form = reduxForm({
+  form: 'booking',
+  fields: ['date', 'eventType']
+});
+
+class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { chefID: this.props.id, show: false, guests: '', type: '', info: '', date: null, confirmed: false, budget: '', errorMessage: '' };
+    this.state = { show: false };
     this.baseState = this.state;
 
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEmptySubmit = this.handleEmptySubmit.bind(this);
     this.resetForm = this.resetForm.bind(this);
     this.setDate = this.setDate.bind(this);
   }
 
   hideModal() {
     this.resetForm();
-  }
-
-  handleChange(event) {
-    const name = event.target.name;
-    this.setState(
-      {
-        [name]: event.target.value
-      }
-    );
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    if (localStorage.token) {
-    } else {
-      hashHistory.push('/register');
-    }
-    this.resetForm();
-  }
-
-  handleEmptySubmit(event) {
-    event.preventDefault();
-    this.setState({
-      errorMessage: 'Please complete all the fields before submitting your booking request.'
-    });
   }
 
   setDate(date) {
@@ -63,14 +40,12 @@ export default class BookingForm extends React.Component {
   }
 
   render() {
-    const submitHandler = (this.state.chefID && this.state.guests && this.state.date && this.state.budget) ? this.handleSubmit : this.handleEmptySubmit;
     return (
       <div>
         <Button className="gc-btn gc-btn--orange" block onClick={this.showModal}>
                   Request to book
         </Button>
         <Modal
-          {...this.props}
           show={this.state.show}
           onHide={this.hideModal}
           dialogClassName="custom-modal"
@@ -80,87 +55,66 @@ export default class BookingForm extends React.Component {
             <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">Request to book</Modal.Title>
             <p className="gc-center gc-text gc-text--grey">Please fill out the details of your event. This is just a request and you will not be charged until the booking is confirmed and you are invoiced.</p>
           </Modal.Header>
-          <Col xs={8} xsOffset={2}>
+          <Col sm={6} smOffset={3}>
             <Modal.Body>
               <Row>
-                <Form inline>
-                  <Col sm={4}>
-                    <ControlLabel className="gc-form-label">Date of event</ControlLabel>
-                  </Col>
-                  <Col sm={8}>
+                <form>
+                  <label className="gc-text">Date</label>
+                  <div>
                     <DatePicker name="date" onChange={this.setDate} />
+                  </div>
+                  <label className="gc-text">Postcode</label>
+                  <div className="gc-margin-bottom">
+                    <Field
+                      name="numberOfPeople"
+                      placeholder="e.g. SW1A 1AA"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="number"
+                    />
+                  </div>
+                  <label className="gc-text">Event Type</label>
+                  <div className="gc-margin-bottom">
+                    <Field
+                      name="eventType"
+                      className="form-control gc-input text-capitalize"
+                      component="select"
+                    >
+                      {EVENTS.map(code =>
+                        (
+                          <option key={code} value={code}>
+                            {code}
+                          </option>
+                        )
+                      )}
+                    </Field>
+                  </div>
+                  <label className="gc-text">Number of people (approx.)</label>
+                  <div className="gc-margin-bottom">
+                    <Field
+                      name="numberOfPeople"
+                      placeholder="e.g. 200"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="number"
+                    />
+                  </div>
+                  <label className="gc-text">Additional Information</label>
+                  <div className="gc-margin-bottom">
+                    <Field
+                      name="additionalInformation"
+                      placeholder="Please give any extra details about your event."
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderInputBox}
+                      type="text"
+                    />
+                  </div>
+                  <Col xs={10} xsOffset={1} sm={4} smOffset={4} >
+                    <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+                      Save
+                    </Button>
                   </Col>
-                  <Col sm={4}>
-                    <ControlLabel className="gc-form-label">Number of people</ControlLabel>
-                  </Col>
-                  <Col sm={8}>
-                    <FormGroup controlId="formControlsSelect">
-                      <FormControl bsClass="gc-input gc-margin-bottom" name="guests" componentClass="select" onChange={this.handleChange} value={this.state.guests} placeholder="Number of guests">
-                        <option value="">Select</option>
-                        <option value="0-10">0-10</option>
-                        <option value="10-20">10-20</option>
-                        <option value="20-50">20-50</option>
-                        <option value="50-10">50-100</option>
-                        <option value="100-200">100-200</option>
-                        <option value="200-500">200-500</option>
-                        <option value="500+">500+</option>
-                      </FormControl>
-                    </FormGroup>
-                  </Col>
-                  <Col sm={4}>
-                    <ControlLabel className="gc-form-label">Type of event</ControlLabel>
-                  </Col>
-                  <Col sm={8}>
-                    <FormGroup controlId="formControlsSelect">
-                      <FormControl bsClass="gc-input gc-margin-bottom" name="type" componentClass="select" onChange={this.handleChange} value={this.state.type} placeholder="Event type">
-                        <option value="">Select</option>
-                        <option value="Private Dinner">Private Dinner</option>
-                        <option value="Wedding">Wedding</option>
-                        <option value="Private Party">Private Party</option>
-                        <option value="Public Event">Public Event</option>
-                        <option value="Festival">Festival</option>
-                        <option value="Corporate Event">Corporate Event</option>
-                        <option value="BBQ">BBQ</option>
-                      </FormControl>
-                    </FormGroup>
-                  </Col>
-                  <Col sm={4}>
-                    <ControlLabel className="gc-form-label">Budget</ControlLabel>
-                  </Col>
-                  <Col sm={8}>
-                    <FormGroup controlId="formControlsSelect">
-                      <InputGroup className="gc-margin-bottom">
-                        <InputGroup.Addon>£</InputGroup.Addon>
-                        <FormControl
-                          bsClass="gc-input gc-input--radius-right"
-                          name="budget"
-                          type="number"
-                          value={this.state.budget}
-                          onChange={this.handleChange}
-                        />
-                      </InputGroup>
-                    </FormGroup>
-                  </Col>
-                  <Col sm={4}>
-                    <ControlLabel className="gc-form-label">Additional information</ControlLabel>
-                  </Col>
-                  <Col sm={8}>
-                    <FormGroup bsClass="full-width" controlId="formControlsSelect">
-                      <FormControl
-                        name="info"
-                        componentClass="textarea"
-                        bsClass="gc-input gc-input-box gc-margin-bottom"
-                        value={this.state.info}
-                        onChange={this.handleChange}
-                      />
-                    </FormGroup>
-                  </Col>
-                  <Col xs={4} xsOffset={4}>
-                    <Button bsSize="large" className="gc-btn gc-btn--orange" onClick={submitHandler} block >Submit request</Button>
-                    {this.state.errorMessage &&
-                    <span>{this.state.errorMessage}</span>}
-                  </Col>
-                </Form>
+                </form>
               </Row>
             </Modal.Body>
           </Col>
@@ -170,3 +124,5 @@ export default class BookingForm extends React.Component {
     );
   }
 }
+
+export default form(BookingForm);

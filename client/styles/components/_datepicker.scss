@@ -299,18 +299,18 @@
 
 .DateInput {
   font-family: $primary-font;
-  font-size: 12pt;
-  color: black;
+  font-size: 14px;
+  color: $dark-grey;
   background-color: rgba(255, 255, 255, 1);
   font-weight: 200;
   line-height: 14px;
   margin: 0;
-  padding: 8px;
+  padding: 6px;
   position: relative;
   display: inline-block;
   width: 150px;
   vertical-align: middle;
-border-radius: 5px}
+}
 
 .DateInput--with-caret::before,
 .DateInput--with-caret::after {
@@ -380,7 +380,7 @@ border-radius: 5px}
   position: relative;
   display: inline-block;
   margin-left: 0;
-  height: 40px;
+  height: 36px;
   text-align: center;
 }
 
@@ -414,7 +414,6 @@ border-radius: 5px}
   font: inherit;
   line-height: normal;
   overflow: visible;
-  padding: 0;
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -432,7 +431,6 @@ border-radius: 5px}
 .SingleDatePickerInput {
   background-color: #fff;
   border: 1px solid $light-grey;
-  border-radius: 5px;
 }
 
 .SingleDatePickerInput__clear-date {
@@ -446,6 +444,7 @@ border-radius: 5px}
   display: inline-block;
   vertical-align: middle;
   padding: 10px;
+  margin: 0 10px 0 5px;
   margin: 0 10px 0 5px;
 }
 

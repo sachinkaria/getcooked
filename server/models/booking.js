@@ -22,13 +22,13 @@ const BookingSchema = new Schema({
   },
   address: AddressSchema,
   date: Date,
-  numberOfPeople: Number,
-  eventType: {
+  number_of_people: Number,
+  event_type: {
     type: String,
     enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
     required: true
   },
-  additionalInformation: String
+  additional_information: String
 });
 
 module.exports = mongoose.model('Booking', BookingSchema);

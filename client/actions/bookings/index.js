@@ -7,7 +7,7 @@ const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 
 export function createBooking(booking) {
   return function (dispatch) {
-    axios.get(`${API_URL}/bookings/create`, booking, AUTH_HEADERS)
+    axios.post(`${API_URL}/bookings/create`, booking, AUTH_HEADERS)
       .then((response) => {
         console.log(response);
       })

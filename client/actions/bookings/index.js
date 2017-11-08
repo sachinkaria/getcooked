@@ -1,16 +1,15 @@
 import axios from 'axios';
-import { GET_BOOKINGS, AUTH_ERROR } from '../types';
-const errorHandler = require('../public').errorHandler;
+import { GET_BOOKINGS } from '../types';
+const { errorHandler, successHandler } = require('../public');
 
 const API_URL = 'http://localhost:3000';
 
 export function createBooking(booking) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
-  console.log('action create booking triggered', booking);
   return function (dispatch) {
     axios.post(`${API_URL}/bookings/create`, booking, AUTH_HEADERS)
-      .then((response) => {
-        console.log(response);
+      .then(() => {
+        successHandler(dispatch, 'Fantastic! You\'re booking request has been sent. You will be contacted shortly.');
       })
       .catch(() => {
         errorHandler(dispatch, 'Sorry, there was a problem creating your booking.');
@@ -25,10 +24,11 @@ export function getBookings() {
       .then((response) => {
         dispatch({
           type: GET_BOOKINGS,
-          payload: response.data.bookings
+          payload: response.data
         });
       })
       .catch((error) => {
+      console.log(error);
         errorHandler(dispatch, 'Sorry, there was a problem getting your bookings.');
       });
   };

@@ -9,7 +9,7 @@ const DashboardNavBar = (props) => {
       <Navbar className="gc-dashboard-navbar">
         <ul>
           {
-            props.userRole === 'chef' &&
+            props.userRole === 'chef' ?
               <div>
                 <li className="gc-dashboard-navbar-item">
                   <Link to={'/dashboard/profile/basics'}>
@@ -19,6 +19,24 @@ const DashboardNavBar = (props) => {
                 <li className="gc-dashboard-navbar-item">
                   <Link to={'/dashboard/account/settings'}>
                     <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('account') })}>Account</p>
+                  </Link>
+                </li>
+                <li className="gc-dashboard-navbar-item">
+                  <Link to={'/dashboard/bookings'}>
+                    <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('bookings') })}>Bookings</p>
+                  </Link>
+                </li>
+              </div>
+              :
+              <div>
+                <li className="gc-dashboard-navbar-item">
+                  <Link to={'/dashboard/account/settings'}>
+                    <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('account') })}>Account</p>
+                  </Link>
+                </li>
+                <li className="gc-dashboard-navbar-item">
+                  <Link to={'/dashboard/bookings'}>
+                    <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('bookings') })}>Bookings</p>
                   </Link>
                 </li>
               </div>

@@ -12,6 +12,7 @@ import PhotosForm from '../../../containers/forms/setup/chefs/PhotosForm';
 import SettingsForm from '../../../containers/forms/setup/chefs/SettingsForm';
 import PasswordForm from '../../../containers/forms/setup/chefs/PasswordForm';
 import Notification from '../../Notification';
+import Bookings from '../../bookings/List';
 
 
 class Dashboard extends React.Component {
@@ -43,6 +44,8 @@ class Dashboard extends React.Component {
       return <SettingsForm />;
     } else if (this.props.route.view === 'password') {
       return <PasswordForm />;
+    } else if (this.props.route.view === 'bookings') {
+      return <Bookings />;
     }
     return null;
   }

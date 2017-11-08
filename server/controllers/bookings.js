@@ -7,6 +7,8 @@ function list(req, res) {
   const user = req.user;
   Booking
     .find({ $or: [{ user: user._id }, { chef: user._id }] })
+    .populate('user', 'email mobileNumber firstName lastName')
+    .populate('chef', 'profilePhoto displayName')
     .sort('-lastUpdated')
     .exec((err, bookings) => {
       res.jsonp(bookings);
@@ -14,7 +16,6 @@ function list(req, res) {
 }
 
 function create(req, res) {
-  console.log('creating booking');
   const BOOKING = req.body;
   const USER_ID = req.user._id;
 
@@ -28,9 +29,7 @@ function create(req, res) {
   });
 
   booking.save((err) => {
-    console.log('saving booking', booking);
-    if (err) console.log(err);
-    console.log('booking saved');
+    if (err) return (err);
     res.jsonp(booking);
   });
 }

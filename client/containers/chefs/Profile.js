@@ -89,12 +89,10 @@ class Profile extends React.Component {
             <Col sm={3} xsHidden>
               <Panel className="gc-panel--translucent">
                 <Heading text="Contact" textAlign="left" />
-                <ContactDetails
-                  website={CHEF.companyWebsite}
-                  email={CHEF.companyEmail}
-                  phone={CHEF.companyPhoneNumber}
-                />
-                <BookingForm id={CHEF._id} />
+                <div className="gc-margin-bottom--sm">
+                  <BookingForm id={CHEF._id} />
+                </div>
+                <p className="gc-text gc-grey gc-center">Send an enquiry and find out if this caterer is available for your event.</p>
               </Panel>
             </Col>
           </div>

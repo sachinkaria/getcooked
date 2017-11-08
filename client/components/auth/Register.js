@@ -27,7 +27,7 @@ function validate(formProps) {
 
 class Register extends Component {
   handleFormSubmit(formProps) {
-    this.props.registerUser(formProps);
+    this.props.registerUser(formProps, this.props.redirect);
   }
 
   renderAlert() {
@@ -44,10 +44,10 @@ class Register extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <Col sm={8} smOffset={2} md={4} mdOffset={4}>
+      <Col>
         <Panel className="gc-panel-light gc-center">
           <h4 className="gc-profile-heading-md gc-center">Sign up</h4>
-          <Link className="gc-text gc-link-default" to="/chef/register">I&apos;m a caterer </Link>
+          {this.props.redirect && <Link className="gc-text gc-link-default" to="/chef/register">I&apos;m a caterer </Link>}
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <Row>

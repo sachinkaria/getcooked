@@ -25,15 +25,17 @@ export function loginUser({ email, password }) {
   };
 }
 
-export function registerUser({ email, firstName, lastName, password }) {
+export function registerUser({ email, firstName, lastName, password }, redirect) {
   return (dispatch) => {
     axios.post(`${API_URL}/users/create`, { email, firstName, lastName, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
-        window.location.reload();
-        hashHistory.push('/setup/personal');
+        if (redirect) {
+          window.location.reload();
+          hashHistory.push('/setup/personal');
+        }
       })
       .catch((error) => {
         errorHandler(dispatch, error.response, AUTH_ERROR);

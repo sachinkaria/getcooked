@@ -6,12 +6,13 @@ const API_URL = 'http://localhost:3000';
 const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 
 export function createBooking(booking) {
+  console.log('action create booking triggered', booking);
   return function (dispatch) {
     axios.post(`${API_URL}/bookings/create`, booking, AUTH_HEADERS)
       .then((response) => {
         console.log(response);
       })
-      .catch((error) => {
+      .catch(() => {
         errorHandler(dispatch, 'Sorry, there was a problem creating your booking.');
       });
   };

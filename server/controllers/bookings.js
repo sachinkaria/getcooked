@@ -14,11 +14,23 @@ function list(req, res) {
 }
 
 function create(req, res) {
+  console.log('creating booking');
   const BOOKING = req.body;
+  const USER_ID = req.user._id;
 
-  const booking = new Booking(BOOKING);
+  const booking = new Booking({
+    user: USER_ID,
+    chef: BOOKING.chef,
+    event_type: BOOKING.eventType,
+    date: BOOKING.date,
+    number_of_people: BOOKING.numberOfPeople,
+    additional_information: BOOKING.additionalInformation || null
+  });
+
   booking.save((err) => {
-    if (err) return (err);
+    console.log('saving booking', booking);
+    if (err) console.log(err);
+    console.log('booking saved');
     res.jsonp(booking);
   });
 }

@@ -114,5 +114,5 @@ export const TYPES = ['professional caterer', 'market stall', 'private chef', 'f
 export const FOOD_SERVICES = ['canapes', 'desserts', 'buffets', 'vegetarian', 'vegan', 'halal', 'kosher', 'nut free', 'gluten free', 'alcoholic drinks', 'non-alcoholic drinks'];
 export const EVENTS = ['corporate events', 'weddings', 'private dinners', 'parties', 'festivals', 'other'];
 export const CUISINES = ['american', 'chinese', 'french', 'greek', 'indian', 'italian', 'japanese', 'mediterranean', 'mexican', 'moroccan', 'spanish', 'thai', 'turkish', 'vietnamese', 'other'];
-
+export const EVENT_TYPE = ['select', 'private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'];
 export default data;

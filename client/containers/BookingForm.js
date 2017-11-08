@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
-import { EVENTS } from '../utils/data';
+import { EVENT_TYPE } from '../utils/data';
+import Register from '../components/auth/Register'
 import renderField from '../components/forms/renderField';
 import renderInputBox from '../components/forms/renderInputBox';
 import { createBooking } from '../actions/bookings';
@@ -17,8 +18,8 @@ const form = reduxForm({
 function validate(formProps) {
   const errors = {};
 
-  if (!formProps.eventType) {
-    errors.eventType = 'Please select a event type';
+  if (formProps.eventType === 'select') {
+    errors.eventType = 'Please select an event type';
   }
 
   if (!formProps.postcode) {
@@ -62,6 +63,7 @@ class BookingForm extends React.Component {
   }
 
   handleFormSubmit(formProps) {
+    console.log('submitting booking');
     formProps.chef = this.props.chef._id;
     formProps.date = this.state.date;
     this.props.createBooking(formProps);
@@ -69,6 +71,7 @@ class BookingForm extends React.Component {
 
   render() {
     const { handleSubmit } = this.props;
+
     return (
       <div>
         <Button className="gc-btn gc-btn--orange" block onClick={this.showModal}>
@@ -81,70 +84,75 @@ class BookingForm extends React.Component {
           bsSize="large"
         >
           <Modal.Header closeButton>
-            <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">Request to book</Modal.Title>
+            <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">Request a Booking</Modal.Title>
             <p className="gc-center gc-text gc-text--grey">Please fill out the details of your event. This is just a request and you will not be charged until the booking is confirmed and you are invoiced.</p>
           </Modal.Header>
-          <Col sm={6} smOffset={3}>
+          <Col sm={8} smOffset={2} md={6} mdOffset={3}>
             <Modal.Body>
-              <Row>
-                <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-                  <label className="gc-text">Date</label>
-                  <div>
-                    <DatePicker name="date" onChange={this.setDate} />
-                  </div>
-                  <label className="gc-text">Postcode</label>
-                  <div className="gc-margin-bottom">
-                    <Field
-                      name="postcode"
-                      placeholder="e.g. SW1A 1AA"
-                      className="form-control gc-input gc-margin-bottom"
-                      component={renderField}
-                      type="text"
-                    />
-                  </div>
-                  <label className="gc-text">Event Type</label>
-                  <div className="gc-margin-bottom">
-                    <Field
-                      name="eventType"
-                      className="form-control gc-input text-capitalize"
-                      component="select"
-                    >
-                      {EVENTS.map(code =>
-                        (
-                          <option key={code} value={code}>
-                            {code}
-                          </option>
-                        )
-                      )}
-                    </Field>
-                  </div>
-                  <label className="gc-text">Number of people (approx.)</label>
-                  <div className="gc-margin-bottom">
-                    <Field
-                      name="numberOfPeople"
-                      placeholder="e.g. 200"
-                      className="form-control gc-input gc-margin-bottom"
-                      component={renderField}
-                      type="number"
-                    />
-                  </div>
-                  <label className="gc-text">Additional Information</label>
-                  <div className="gc-margin-bottom">
-                    <Field
-                      name="additionalInformation"
-                      placeholder="Please give any extra details about your event."
-                      className="form-control gc-input gc-margin-bottom"
-                      component={renderInputBox}
-                      type="text"
-                    />
-                  </div>
-                  <Col xs={10} xsOffset={1} sm={6} smOffset={3} >
-                    <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
-                      Submit request
-                    </Button>
-                  </Col>
-                </form>
-              </Row>
+              {this.props.auth.authenticated ?
+                <Row>
+                  <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+                    <label className="gc-text">Date</label>
+                    <div>
+                      <DatePicker name="date" onChange={this.setDate} />
+                    </div>
+                    <label className="gc-text">Postcode</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="postcode"
+                        placeholder="e.g. SW1A 1AA"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="text"
+                      />
+                    </div>
+                    <label className="gc-text">Event Type</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="eventType"
+                        className="form-control gc-input text-capitalize"
+                        component="select"
+                      >
+                        {EVENT_TYPE.map(code =>
+                          (
+                            <option key={code} value={code}>
+                              {code}
+                            </option>
+                          )
+                        )}
+                      </Field>
+                    </div>
+                    <label className="gc-text">Number of people (approx.)</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="numberOfPeople"
+                        placeholder="e.g. 200"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="number"
+                      />
+                    </div>
+                    <label className="gc-text">Additional Information</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="additionalInformation"
+                        placeholder="Please give any extra details about your event."
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderInputBox}
+                        type="text"
+                      />
+                    </div>
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={3} >
+                      <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+                        Submit request
+                      </Button>
+                    </Col>
+                  </form>
+                </Row> :
+                <div>
+                  <Register />
+                </div>
+              }
             </Modal.Body>
           </Col>
           <Modal.Footer />
@@ -156,6 +164,7 @@ class BookingForm extends React.Component {
 
 function mapStateToProps(state) {
   return {
+    auth: state.auth,
     user: state.user,
     chef: state.public.chef
   };

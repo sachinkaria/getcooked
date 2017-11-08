@@ -29,7 +29,7 @@ const routes = (
     <Route path="/inbox" component={RequireAuth(Inbox)} />
     <Route path="/bookings" component={RequireAuth(Bookings)} />
     <Route path="/conversation/:id" component={Conversation} />
-    <Route path="/register" component={Register} />
+    <Route path="/register" component={Register} redirect />
     <Route path="/chef/register" component={RegisterChef} />
     <Route path="/login" component={Login} />
     <Route path="/logout" component={Logout} />

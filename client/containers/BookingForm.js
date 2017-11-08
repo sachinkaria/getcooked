@@ -4,7 +4,8 @@ import { Field, reduxForm } from 'redux-form';
 import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
 import { EVENT_TYPE } from '../utils/data';
-import Register from '../components/auth/Register'
+import Register from '../components/auth/Register';
+import Settings from '../containers/forms/setup/chefs/SettingsForm';
 import renderField from '../components/forms/renderField';
 import renderInputBox from '../components/forms/renderInputBox';
 import { createBooking } from '../actions/bookings';
@@ -63,7 +64,6 @@ class BookingForm extends React.Component {
   }
 
   handleFormSubmit(formProps) {
-    console.log('submitting booking');
     formProps.chef = this.props.chef._id;
     formProps.date = this.state.date;
     this.props.createBooking(formProps);
@@ -71,6 +71,7 @@ class BookingForm extends React.Component {
 
   render() {
     const { handleSubmit } = this.props;
+    const { user, auth } = this.props;
 
     return (
       <div>
@@ -89,7 +90,15 @@ class BookingForm extends React.Component {
           </Modal.Header>
           <Col sm={8} smOffset={2} md={6} mdOffset={3}>
             <Modal.Body>
-              {this.props.auth.authenticated ?
+              {
+                (!auth.authenticated && !user.data) &&
+                <Register />
+              }
+              {
+                (auth.authenticated && user.data && (!user.data.firstName || !user.data.email || !user.data.mobileNumber)) &&
+                <Settings />
+              }
+              {(auth.authenticated && user.data && user.data.firstName && user.data.email && user.data.mobileNumber) &&
                 <Row>
                   <form onSubmit={handleSubmit(this.handleFormSubmit)}>
                     <label className="gc-text">Date</label>
@@ -148,10 +157,7 @@ class BookingForm extends React.Component {
                       </Button>
                     </Col>
                   </form>
-                </Row> :
-                <div>
-                  <Register />
-                </div>
+                </Row>
               }
             </Modal.Body>
           </Col>

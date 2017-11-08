@@ -4,9 +4,9 @@ import { UPDATE_USER, PROCESSING_FILE_UPLOAD, COMPLETED_FILE_UPLOAD } from '../t
 import { errorHandler, successHandler } from '../public';
 
 const API_URL = 'http://localhost:3000';
-const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 
 export function updateUser(user, url, showSuccess) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     axios.put(`${API_URL}/users`, user, AUTH_HEADERS)
       .then((response) => {
@@ -21,6 +21,7 @@ export function updateUser(user, url, showSuccess) {
 }
 
 export function uploadPhoto(file, type) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     dispatch(processingFileUpload());
     axios.post(`${API_URL}/users/photos/${type}`, file, AUTH_HEADERS)
@@ -37,6 +38,7 @@ export function uploadPhoto(file, type) {
 }
 
 export function uploadMultiplePhotos(file) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     dispatch(processingFileUpload());
     axios.post(`${API_URL}/users/photos`, file, AUTH_HEADERS)
@@ -61,6 +63,7 @@ export function completedFileUpload() {
 }
 
 export function deletePhoto(type) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     axios.delete(`${API_URL}/users/photos/${type}`, AUTH_HEADERS)
       .then((response) => {
@@ -74,6 +77,7 @@ export function deletePhoto(type) {
 }
 
 export function deleteMultiple(id) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     axios.delete(`${API_URL}/users/photos/${id}`, AUTH_HEADERS)
       .then((response) => {
@@ -88,6 +92,7 @@ export function deleteMultiple(id) {
 
 
 export function getCurrentUser() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     axios.get(`${API_URL}/users/me`, AUTH_HEADERS)
       .then((response) => {
@@ -100,6 +105,7 @@ export function getCurrentUser() {
 }
 
 export function updatePassword(password, showSuccess) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     axios.put(`${API_URL}/users/password`, password, AUTH_HEADERS)
       .then(() => {
@@ -110,15 +116,4 @@ export function updatePassword(password, showSuccess) {
       });
   };
 }
-
-
-export function uploadToStream(file) {
-  ss.createBlobReadStream(file).pipe(STREAM);
-  ss(Socket).emit('upload-photos', STREAM, {
-    name: file.name,
-    type: file.type.split('/')[1],
-    mimeType: file.type,
-    length: file.size
-  });
-};
 

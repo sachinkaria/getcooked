@@ -12,10 +12,9 @@ export function loginUser({ email, password }) {
     axios.post(`${API_URL}/users/login`, { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        dispatch({ type: AUTH_USER });
+        dispatch({ type: AUTH_USER, payload: response.data.token });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         getCurrentUser();
-        window.location.reload();
         hashHistory.push('/chefs');
       })
       .catch(() => {
@@ -25,15 +24,14 @@ export function loginUser({ email, password }) {
   };
 }
 
-export function registerUser({ email, firstName, lastName, password }, redirect) {
+export function registerUser({ email, password }, redirect) {
   return (dispatch) => {
-    axios.post(`${API_URL}/users/create`, { email, firstName, lastName, password })
+    axios.post(`${API_URL}/users/create`, { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         if (redirect) {
-          window.location.reload();
           hashHistory.push('/setup/personal');
         }
       })
@@ -43,14 +41,13 @@ export function registerUser({ email, firstName, lastName, password }, redirect)
   };
 }
 
-export function registerChef({ email, firstName, lastName, password, displayName, description }) {
+export function registerChef({ email, password }) {
   return (dispatch) => {
-    axios.post(`${API_URL}/chefs/create`, { email, firstName, lastName, password, displayName, description })
+    axios.post(`${API_URL}/chefs/create`, { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         dispatch({ type: AUTH_USER });
-        window.location.reload();
         hashHistory.push('/setup/personal');
       })
       .catch((error) => {

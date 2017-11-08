@@ -27,7 +27,7 @@ function validate(formProps) {
 
 class Register extends Component {
   handleFormSubmit(formProps) {
-    this.props.registerUser(formProps, this.props.redirect);
+    this.props.registerUser(formProps, this.props.route && this.props.route.redirect);
   }
 
   renderAlert() {
@@ -42,28 +42,31 @@ class Register extends Component {
 
   render() {
     const { handleSubmit } = this.props;
+    const redirect = this.props.route && this.props.route.redirect;
 
     return (
-      <Col>
-        <Panel className="gc-panel-light gc-center">
-          <h4 className="gc-profile-heading-md gc-center">Sign up</h4>
-          {this.props.redirect && <Link className="gc-text gc-link-default" to="/chef/register">I&apos;m a caterer </Link>}
+      <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
+        <div className="gc-panel-light gc-center">
+          {redirect && <h4 className="gc-profile-heading-md gc-center">Sign up</h4>}
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <Row>
-              <Col xs={12} sm={6} smOffset={3}>
+              <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
                 <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
               </Col>
             </Row>
             <Row>
-              <Col xs={12} sm={6} smOffset={3}>
+              <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
                 <Field name="password" placeholder="Password" className="form-control gc-input gc-margin-bottom" component={renderField} type="password" />
               </Col>
             </Row>
-            <p className="gc-text gc-center"><Link to="/login">Already have an account? </Link></p>
-            <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
+            {redirect && <Link className="gc-text gc-link-default" to="/chef/register">I&apos;m a caterer </Link>}
+            <br />
+            <Link className="gc-text gc-center gc-link-default" to="/login">Already have an account? </Link>
+            <br />
+            <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-top">{redirect ? 'Register' : 'Continue'}</Button>
           </form>
-        </Panel>
+        </div>
       </Col>
     );
   }

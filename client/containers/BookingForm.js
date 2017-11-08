@@ -47,12 +47,18 @@ class BookingForm extends React.Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  hideModal() {
-    this.resetForm();
+  componentWillReceiveProps() {
+    if (this.props.user.sent_booking_request) {
+      this.hideModal();
+    }
   }
 
   setDate(date) {
     this.setState({ date });
+  }
+
+  hideModal() {
+    this.resetForm();
   }
 
   showModal() {

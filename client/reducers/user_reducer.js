@@ -5,10 +5,12 @@ import {
   GET_INBOX,
   GET_CONVERSATION,
   PROCESSING_FILE_UPLOAD,
-  COMPLETED_FILE_UPLOAD
+  COMPLETED_FILE_UPLOAD,
+  SENT_BOOKING_REQUEST,
+  RESET_BOOKING_REQUEST
 } from '../actions/types';
 
-const INITIAL_STATE = { bookings: [], inbox: [], conversation: [], data: null, processing_file_upload: false };
+const INITIAL_STATE = { bookings: [], inbox: [], conversation: [], data: null, processing_file_upload: false, sent_booking_request: false };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -26,6 +28,10 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, processing_file_upload: true };
     case COMPLETED_FILE_UPLOAD:
       return { ...state, processing_file_upload: false };
+    case SENT_BOOKING_REQUEST:
+      return { ...state, sent_booking_request: true };
+    case RESET_BOOKING_REQUEST:
+      return { ...state, sent_booking_request: false };
     default:
       break;
   }

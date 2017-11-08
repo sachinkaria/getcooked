@@ -35,7 +35,7 @@ class Bookings extends React.Component {
       );
     }
     return (
-      <p className="gc-profile-text-sm gc-center">{NO_BOOKINGS}</p>
+      <p className="gc-text gc-center">{NO_BOOKINGS}</p>
     )
   }
 

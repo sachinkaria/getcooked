@@ -33,17 +33,17 @@ class Dashboard extends React.Component {
 
   renderView() {
     if (this.props.route.view === 'basics') {
-      return <BasicsForm />;
+      return <Panel><BasicsForm /></Panel>;
     } else if (this.props.route.view === 'service-type') {
-      return <ServicesForm />;
+      return <Panel><ServicesForm /></Panel>;
     } else if (this.props.route.view === 'food-services') {
-      return <FoodForm />;
+      return <Panel><FoodForm /></Panel>;
     } else if (this.props.route.view === 'photos') {
-      return <PhotosForm />;
+      return <Panel><PhotosForm /></Panel>;
     } else if (this.props.route.view === 'settings') {
-      return <SettingsForm />;
+      return <Panel><SettingsForm /></Panel>;
     } else if (this.props.route.view === 'password') {
-      return <PasswordForm />;
+      return <Panel><PasswordForm /></Panel>;
     } else if (this.props.route.view === 'bookings') {
       return <Bookings />;
     }
@@ -69,7 +69,7 @@ class Dashboard extends React.Component {
         <DashboardNavBar location={this.props.location.pathname} userRole={user.data.role} />
         <div className="gc-dashboard-container">
           {
-            (IS_CHEF) &&
+            (IS_CHEF && !this.props.route.hideProfileStatus) &&
               <div>
                 {USER_PENDING &&
                 <Row className="gc-center">
@@ -123,9 +123,7 @@ class Dashboard extends React.Component {
               }
             </Col>
             <Col smOffset={0} sm={7}>
-              <Panel>
-                {this.renderView()}
-              </Panel>
+              {this.renderView()}
             </Col>
           </Row>
           {(!USER_PENDING && USER_LISTED) &&
@@ -152,7 +150,8 @@ class Dashboard extends React.Component {
 Dashboard.propTypes = {
   user: React.PropTypes.shape({ user: { data: {} } }).isRequired,
   location: React.PropTypes.shape({ location: { pathname: React.PropTypes.string } }).isRequired,
-  getCurrentUser: React.PropTypes.func.isRequired
+  getCurrentUser: React.PropTypes.func.isRequired,
+  route: React.PropTypes.shape({ hideProfileStatus: React.PropTypes.bool, view: React.PropTypes.string }).isRequired
 };
 
 function mapStateToProps(state) {

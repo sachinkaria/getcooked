@@ -2,9 +2,10 @@ body{
   font-family: $primary-font;
   overflow-x:hidden;
 }
+
 .container {
   width: 100%;
-  
+
   @include breakpoint (tablet) {
     width: 94%;
   }

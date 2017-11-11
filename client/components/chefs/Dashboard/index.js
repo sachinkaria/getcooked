@@ -45,7 +45,7 @@ class Dashboard extends React.Component {
     } else if (this.props.route.view === 'password') {
       return <Panel><PasswordForm /></Panel>;
     } else if (this.props.route.view === 'bookings') {
-      return <Bookings />;
+      return <Bookings itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
     }
     return null;
   }
@@ -110,7 +110,7 @@ class Dashboard extends React.Component {
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
               {
-                (IS_CHEF && !USER_PENDING && USER_LISTED) &&
+                (IS_CHEF && !USER_PENDING && USER_LISTED && !this.props.route.hideProfileStatus) &&
                   <div>
                     <Button
                       block

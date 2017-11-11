@@ -72,11 +72,38 @@ class Sidebar extends React.Component {
       </Panel>
     );
 
+    const BOOKINGS_SIDEBAR = (
+      <Panel>
+        <ul className="gc-list gc-padding-none">
+          <li>
+            <Link to="/dashboard/account/settings" className="gc-link-default">
+              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('settings') })}>
+                All</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard/account/settings" className="gc-link-default">
+              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('settings') })}>
+                Upcoming</p>
+            </Link>
+          </li>
+          <li>
+            <Link to="/dashboard/account/password" className="gc-link-default">
+              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('password') })}>
+                Past</p>
+            </Link>
+          </li>
+        </ul>
+      </Panel>
+    );
+
     if (this.props.userRole === 'admin') {
       return ADMIN_SIDEBAR;
     }
     else if (this.props.location.includes('profile') && this.props.userRole === 'chef') {
       return CHEF_SIDEBAR;
+    } else if (this.props.location.includes('bookings')) {
+      return BOOKINGS_SIDEBAR;
     }
     return USER_SIDEBAR;
   }

@@ -1,6 +1,6 @@
 import React from 'react';
-import {Col, Panel, Row} from 'react-bootstrap';
-import {connect} from 'react-redux';
+import { Col, Panel, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import ContactDetails from '../../components/chefs/profile/ContactDetails';
 import BookingForm from '../BookingForm';
 import Heading from '../../components/chefs/profile/Heading';

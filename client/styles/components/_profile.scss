@@ -157,7 +157,7 @@
   @include aspect-ratio(16,9);
 
   @include breakpoint(tablet) {
-    @include aspect-ratio(16,7);
+    @include aspect-ratio(16,6);
   }
 
   @include breakpoint(laptop) {

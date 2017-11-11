@@ -44,7 +44,7 @@ const routes = (
     <Route path="/dashboard/profile/photos" component={RequireRole(Dashboard, 'chef')} view="photos" />
     <Route path="/dashboard/account/settings" component={RequireAuth(Dashboard)} view="settings" />
     <Route path="/dashboard/account/password" component={RequireAuth(Dashboard)} view="password" />
-    <Route path="/dashboard/bookings" component={RequireAuth(Dashboard)} hideProfileStatus view="bookings" />
+    <Route path="/dashboard/bookings" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="bookings" />
     <Route path="/admin/dashboard/chefs" component={RequireRole(AdminDashboard, 'admin')} view="chefs" />
     <Route path="/admin/dashboard/users" component={RequireRole(AdminDashboard, 'admin')} view="users" />
     <Route path="/admin/dashboard/chefs/:id" component={RequireRole(Profile, 'admin')} view="chefs" />

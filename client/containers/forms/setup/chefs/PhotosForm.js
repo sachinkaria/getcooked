@@ -9,23 +9,8 @@ import { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos, deleteM
 import Steps from '../../../../components/chefs/setup/steps.json';
 
 const form = reduxForm({
-  form: 'setup-photos',
-  validate
+  form: 'setup-photos'
 });
-
-function validate(formProps) {
-  const errors = {};
-
-  if (!formProps.displayName) {
-    errors.firstName = 'Please enter a display name';
-  }
-
-  if (!formProps.description) {
-    errors.lastName = 'Please enter a description';
-  }
-
-  return errors;
-}
 
 class Photos extends Component {
   constructor(props) {

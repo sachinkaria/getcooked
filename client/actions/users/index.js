@@ -37,11 +37,11 @@ export function uploadPhoto(file, type) {
   };
 }
 
-export function uploadMultiplePhotos(file) {
+export function uploadMultiplePhotos(files) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     dispatch(processingFileUpload());
-    axios.post(`${API_URL}/users/photos`, file, AUTH_HEADERS)
+    axios.all(files.map(file => axios.post(`${API_URL}/users/photos`, file, AUTH_HEADERS)))
       .then(() => {
         dispatch(completedFileUpload());
         dispatch(getCurrentUser());

@@ -35,7 +35,8 @@ class Photos extends Component {
       data_uri: '',
       filename: '',
       filetype: '',
-      processing: ''
+      processing: '',
+      images: []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);

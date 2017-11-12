@@ -96,16 +96,26 @@ class Photos extends Component {
   };
 
   onImagesUpload(e) {
+    let FILE_NUMBER = 1;
+    const NUMBER_OF_FILES = e.target.files.length;
     Object.keys(e.target.files).forEach(function (key) {
       const reader = new FileReader();
       const FILE = e.target.files[key];
       reader.onload = (upload) => {
         this.setState({
-          data_uri: upload.target.result,
-          filename: FILE.name,
-          filetype: FILE.type
+          images: [...this.state.images, {
+            data_uri: upload.target.result,
+            filename: FILE.name,
+            filetype: FILE.type
+          }]
         }, () => {
-          this.handleFormSubmit('multiple');
+          if (FILE_NUMBER < NUMBER_OF_FILES) {
+            FILE_NUMBER += 1;
+          } else {
+            this.setState({ processing: 'normal' });
+            this.props.uploadMultiplePhotos(this.state.images);
+            this.setState({ images: [] });
+          }
         });
       };
       reader.readAsDataURL(FILE);

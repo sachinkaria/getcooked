@@ -1,4 +1,5 @@
 const Booking = require('../models/booking');
+const twilio = require('./twilio');
 
 module.exports.create = create;
 module.exports.list = list;
@@ -30,6 +31,12 @@ function create(req, res) {
 
   booking.save((err) => {
     if (err) return (err);
+
+    const CHEF = booking.chef;
+    const USER = booking.user;
+
+    const MESSAGE = `Hi ${CHEF.name}! You have a new enquiry from ${USER.firstName} ${USER.lastName}. You can check out more details about this enquiry on your dashboard.`
+    if (CHEF.mobileNumber) twilio.sendSMS(CHEF.mobileNumber, MESSAGE);
     res.jsonp(booking);
   });
 }

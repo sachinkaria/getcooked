@@ -1,4 +1,5 @@
 const Booking = require('../models/booking');
+const User = require('../models/user');
 const twilio = require('./twilio');
 
 module.exports.create = create;
@@ -18,10 +19,10 @@ function list(req, res) {
 
 function create(req, res) {
   const BOOKING = req.body;
-  const USER_ID = req.user._id;
+  const USER = req.user;
 
   const booking = new Booking({
-    user: USER_ID,
+    user: USER._id,
     chef: BOOKING.chef,
     event_type: BOOKING.eventType,
     date: BOOKING.date,
@@ -32,11 +33,12 @@ function create(req, res) {
   booking.save((err) => {
     if (err) return (err);
 
-    const CHEF = booking.chef;
-    const USER = booking.user;
+    User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber', (error, chef) => {
+      if (error) return (error);
 
-    const MESSAGE = `Hi ${CHEF.name}! You have a new enquiry from ${USER.firstName} ${USER.lastName}. You can check out more details about this enquiry on your dashboard.`
-    if (CHEF.mobileNumber) twilio.sendSMS(CHEF.mobileNumber, MESSAGE);
-    res.jsonp(booking);
+      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName} ${USER.lastName}. You can check out more details about this enquiry on your dashboard.`;
+      if (chef.mobileNumber) twilio.sendSMS(chef.mobileNumber, MESSAGE);
+      res.jsonp(booking);
+    });
   });
 }

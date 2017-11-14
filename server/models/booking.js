@@ -28,7 +28,11 @@ const BookingSchema = new Schema({
     enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
     required: true
   },
-  additional_information: String
+  additional_information: String,
+  read: {
+    type: Boolean,
+    default: false
+  }
 });
 
 module.exports = mongoose.model('Booking', BookingSchema);

@@ -1,19 +1,34 @@
 const Booking = require('../models/booking');
 const User = require('../models/user');
 const twilio = require('./twilio');
+const _ = require('lodash');
 
 module.exports.create = create;
 module.exports.list = list;
+module.exports.read = read;
 
 function list(req, res) {
   const user = req.user;
   Booking
     .find({ $or: [{ user: user._id }, { chef: user._id }] })
-    .populate('user', 'email mobileNumber firstName lastName')
+    .populate('user', 'firstName lastName')
     .populate('chef', 'profilePhoto displayName')
     .sort('-lastUpdated')
     .exec((err, bookings) => {
       res.jsonp(bookings);
+    });
+}
+
+function read(req, res) {
+  const BOOKING_ID = req.params.id;
+  Booking
+    .findOne({ _id: BOOKING_ID })
+    .populate('user', 'email mobileNumber firstName lastName')
+    .populate('chef', 'profilePhoto displayName')
+    .exec((err, booking) => {
+      booking = _.extend(booking, { read: true });
+      booking.save();
+      res.jsonp(booking);
     });
 }
 

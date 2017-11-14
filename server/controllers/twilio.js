@@ -14,6 +14,7 @@ function sendSMS(number, message) {
       body: message,
     },
     (err, msg) => {
+      if (err) console.log(err);
       console.log(msg.sid);
     }
   );

@@ -10,4 +10,5 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function(app) {
   app.get('/bookings', requireAuth, BookingsController.list);
   app.post('/bookings/create', requireAuth, BookingsController.create);
+  app.get('/bookings/:id', requireAuth, BookingsController.read);
 };

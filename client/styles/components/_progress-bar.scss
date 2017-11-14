@@ -1,8 +1,10 @@
 .gc-progress-bar {
-  width: 105%;
   top: 63px;
   position: fixed;
   z-index: 100;
+  width: 100vw;
+  margin-left: -50vw;
+  left: 50%;
 
   @include breakpoint(tablet) {
     top: 60px;

@@ -12,7 +12,7 @@ const ListItem = (props) => {
           <Row>
             <Col sm={3}>
               <Link to={`/chefs/${props.booking.chef._id}`}>
-                <img alt={props.booking.chef.displayName} src={props.booking.chef.profilePhoto} className="gc-thumbnail gc-margin-bottom--xs" />
+                <img alt={props.booking.chef.displayName} src={props.booking.chef.profilePhoto} className="gc-thumbnail gc-thumbnail--sm gc-margin-bottom--xs" />
               </Link>
             </Col>
             <Col sm={5} className="text-left">
@@ -24,7 +24,7 @@ const ListItem = (props) => {
             </Col>
             <Col sm={4} className="text-right">
               <p className="gc-text">{moment(props.booking.updated).format('MMMM Do YYYY')}</p>
-              <Link className="btn gc-btn gc-btn-white gc-margin-top">
+              <Link to={`/dashboard/bookings/${props.booking._id}`} className="btn gc-btn gc-btn-white gc-margin-top">
                 View Details
               </Link>
             </Col>
@@ -35,12 +35,20 @@ const ListItem = (props) => {
   }
   return (
     <Col xs={12}>
-      <Panel>
+      <Panel className={!props.booking.read && 'gc-panel--border'}>
         <Row>
           <Col md={6}>
             <div>
               <p className="gc-form-heading text-capitalize">{props.booking.user.firstName} {props.booking.user.lastName}</p>
+              <p className="gc-text">{props.booking.user.email}</p>
+              <p className="gc-text">{props.booking.user.mobileNumber}</p>
             </div>
+          </Col>
+          <Col>
+            <p className="gc-text">{moment(props.booking.updated).format('MMMM Do YYYY')}</p>
+            <Link to={`/dashboard/bookings/${props.booking._id}`} className="btn gc-btn gc-btn-white gc-margin-top">
+              View Details
+            </Link>
           </Col>
         </Row>
       </Panel>

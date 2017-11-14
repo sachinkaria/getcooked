@@ -97,13 +97,13 @@
   width: 100px;
   object-fit: cover;
   border-radius: 50px;
-}
 
-.gc-thumbnail--sm {
-  height: 36px;
-  width: 36px;
-  object-fit: cover;
-  border-radius: 18px;
+  &.gc-thumbnail--sm {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 40px;
+  }
 }
 
 .gc-tags {

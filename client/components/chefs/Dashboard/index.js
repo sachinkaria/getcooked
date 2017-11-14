@@ -13,6 +13,7 @@ import SettingsForm from '../../../containers/forms/setup/chefs/SettingsForm';
 import PasswordForm from '../../../containers/forms/setup/chefs/PasswordForm';
 import Notification from '../../Notification';
 import Bookings from '../../bookings/List';
+import BookingItem from '../../bookings/Item';
 
 
 class Dashboard extends React.Component {
@@ -46,6 +47,8 @@ class Dashboard extends React.Component {
       return <Panel><PasswordForm /></Panel>;
     } else if (this.props.route.view === 'bookings') {
       return <Bookings itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
+    } else if (this.props.route.view === 'view-booking') {
+      return <BookingItem id={this.props.params.id} itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
     }
     return null;
   }

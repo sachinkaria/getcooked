@@ -12,7 +12,7 @@ export function loginUser({ email, password }) {
     axios.post(`${API_URL}/users/login`, { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
-        dispatch({ type: AUTH_USER, payload: response.data.token });
+        dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         getCurrentUser();
         hashHistory.push('/chefs');

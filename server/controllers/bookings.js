@@ -11,7 +11,7 @@ function list(req, res) {
   const user = req.user;
   Booking
     .find({ $or: [{ user: user._id }, { chef: user._id }] })
-    .populate('user', 'firstName lastName')
+    .populate('user', 'firstName lastName email mobileNumber')
     .populate('chef', 'profilePhoto displayName')
     .sort('-lastUpdated')
     .exec((err, bookings) => {
@@ -26,8 +26,10 @@ function read(req, res) {
     .populate('user', 'email mobileNumber firstName lastName')
     .populate('chef', 'profilePhoto displayName')
     .exec((err, booking) => {
-      booking = _.extend(booking, { read: true });
-      booking.save();
+      if (!booking.read) {
+        booking.read = true;
+        booking.save();
+      }
       res.jsonp(booking);
     });
 }

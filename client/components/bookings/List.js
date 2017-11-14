@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import BookingItem from './Item';
+import BookingItem from './ListItem';
 import { getBookings } from '../../actions/bookings';
 
 const NO_BOOKINGS = 'You have no previous booking enquiries.';

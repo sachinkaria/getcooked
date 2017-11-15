@@ -76,21 +76,9 @@ class Sidebar extends React.Component {
       <Panel>
         <ul className="gc-list gc-padding-none">
           <li>
-            <Link to="/dashboard/account/settings" className="gc-link-default">
+            <Link to="/dashboard/bookings" className="gc-link-default">
               <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('settings') })}>
                 All</p>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/account/settings" className="gc-link-default">
-              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('settings') })}>
-                Upcoming</p>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard/account/password" className="gc-link-default">
-              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('password') })}>
-                Past</p>
             </Link>
           </li>
         </ul>

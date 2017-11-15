@@ -133,7 +133,7 @@
   }
 }
 
-.pull-right--t {
+.right-t {
   @include breakpoint(tablet) {
     text-align: right;
   }
@@ -201,4 +201,8 @@
 
 hr.light-grey{
   border-top: 1px solid $light-grey;
+}
+
+.gc-flex {
+  display: flex;
 }

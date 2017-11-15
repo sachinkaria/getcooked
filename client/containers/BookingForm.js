@@ -12,7 +12,7 @@ import { createBooking } from '../actions/bookings';
 
 const form = reduxForm({
   form: 'booking',
-  fields: ['date', 'eventType', 'postcode', 'numberOfPeople', 'additionalInformation'],
+  fields: ['date', 'eventType', 'postcode', 'numberOfPeople', 'budget', 'additionalInformation'],
   validate
 });
 
@@ -29,6 +29,10 @@ function validate(formProps) {
 
   if (!formProps.numberOfPeople) {
     errors.numberOfPeople = 'Please enter the approximate number of people';
+  }
+
+  if (!formProps.budget) {
+    errors.budget = 'Please enter your budget';
   }
 
   return errors;
@@ -92,7 +96,11 @@ class BookingForm extends React.Component {
         >
           <Modal.Header closeButton>
             <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">Request a Booking</Modal.Title>
-            <p className="gc-center gc-text gc-text--grey">Please fill out the details of your event. This is just a request and you will not be charged until the booking is confirmed and you are invoiced.</p>
+            <Row>
+              <Col sm={8} smOffset={2}>
+              <p className="gc-center gc-text gc-text--grey">Please fill out the details of your event. This is just a request and you will not be charged until the booking is confirmed and you are invoiced.</p>
+              </Col>
+            </Row>
           </Modal.Header>
           <Col sm={8} smOffset={2} md={6} mdOffset={3}>
             <Modal.Body>
@@ -142,6 +150,18 @@ class BookingForm extends React.Component {
                       <Field
                         name="numberOfPeople"
                         placeholder="e.g. 200"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="number"
+                      />
+                    </div>
+                    <label className="gc-text">Budget</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        addonText="£"
+                        withAddon
+                        name="budget"
+                        placeholder="e.g. 1500"
                         className="form-control gc-input gc-margin-bottom"
                         component={renderField}
                         type="number"

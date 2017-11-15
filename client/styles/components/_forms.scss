@@ -122,3 +122,12 @@ input[type=checkbox] {
   margin-bottom: 7px;
 }
 
+.gc-addon {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid $light-grey;
+  color: $grey;
+  background-color: $lightest-grey;
+  height: 36px;
+  width: 36px;
+}

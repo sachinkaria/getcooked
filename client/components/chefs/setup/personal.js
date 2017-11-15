@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
-import { Col, Row } from 'react-bootstrap';
 import { updateUser } from '../../../actions/users';
 import renderField from '../../forms/renderField';
 import Wizard from '../../Wizard';
@@ -45,6 +44,13 @@ class BasicInfo extends Component {
 
   handleFormSubmit(formProps) {
     const DASHBOARD = '/dashboard/account/settings';
+    const PHONE_CODE = formProps.phoneCode;
+
+    formProps.phoneCode = CODES.filter((item) => {
+      return item.dial_code === PHONE_CODE;
+    })[0];
+
+    console.log(formProps);
     this.props.updateUser(formProps, this.props.initialValues && this.props.initialValues.role === 'chef' ? Steps.personal.onNext : DASHBOARD);
   }
 
@@ -106,7 +112,7 @@ class BasicInfo extends Component {
             >
               {CODES.map(code =>
                 (
-                  <option key={code.name} value={code}>
+                  <option key={code.name} value={code.dial_code}>
                     {code.name}
                   </option>
                 )

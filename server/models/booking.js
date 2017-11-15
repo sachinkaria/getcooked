@@ -12,6 +12,10 @@ const AddressSchema = {
 };
 
 const BookingSchema = new Schema({
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
@@ -32,7 +36,8 @@ const BookingSchema = new Schema({
   read: {
     type: Boolean,
     default: false
-  }
+  },
+  budget: Number
 });
 
 module.exports = mongoose.model('Booking', BookingSchema);

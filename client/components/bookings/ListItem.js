@@ -15,15 +15,15 @@ const ListItem = (props) => {
                 <img alt={props.booking.chef.displayName} src={props.booking.chef.profilePhoto} className="gc-thumbnail gc-thumbnail--sm gc-margin-bottom--xs" />
               </Link>
             </Col>
-            <Col sm={5} className="text-left">
+            <Col sm={5} className="center-m left-t">
               <Link to={`/chefs/${props.booking.chef._id}`}>
                 <p className="gc-form-heading text-capitalize">{props.booking.chef.displayName}</p>
               </Link>
               <p className="gc-text"><span className="gc-bold">Event date:</span> {moment(props.booking.date).format('MMMM Do YYYY')}</p>
               <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{props.booking.event_type}</span></p>
             </Col>
-            <Col sm={4} className="text-right">
-              <p className="gc-text">{moment(props.booking.updated).format('MMMM Do YYYY')}</p>
+            <Col sm={4} className="center-m right-t">
+              <p className="gc-text hidden-xs">{moment(props.booking.createdAt).format('MMMM Do YYYY')}</p>
               <Link to={`/dashboard/bookings/${props.booking._id}`} className="btn gc-btn gc-btn-white gc-margin-top">
                 View Details
               </Link>
@@ -37,15 +37,13 @@ const ListItem = (props) => {
     <Col xs={12}>
       <Panel className={!props.booking.read && 'gc-panel--border'}>
         <Row>
-          <Col md={6}>
-            <div>
-              <p className="gc-form-heading text-capitalize">{props.booking.user.firstName} {props.booking.user.lastName}</p>
-              <p className="gc-text">{props.booking.user.email}</p>
-              <p className="gc-text">{props.booking.user.mobileNumber}</p>
-            </div>
+          <Col className="center-m left-t" md={6}>
+            <p className="gc-form-heading text-capitalize">{props.booking.user.firstName} {props.booking.user.lastName}</p>
+            <p className="gc-text">Email: {props.booking.user.email}</p>
+            <p className="gc-text">Mobile number: {props.booking.user.mobileNumber}</p>
           </Col>
-          <Col>
-            <p className="gc-text">{moment(props.booking.updated).format('MMMM Do YYYY')}</p>
+          <Col md={6} className="center-m right-t">
+            <p className="gc-text hidden-xs">{moment(props.booking.createdAt).format('MMMM Do YYYY')}</p>
             <Link to={`/dashboard/bookings/${props.booking._id}`} className="btn gc-btn gc-btn-white gc-margin-top">
               View Details
             </Link>

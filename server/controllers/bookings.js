@@ -13,7 +13,7 @@ function list(req, res) {
     .find({ $or: [{ user: user._id }, { chef: user._id }] })
     .populate('user', 'firstName lastName email mobileNumber')
     .populate('chef', 'profilePhoto displayName')
-    .sort('-lastUpdated')
+    .sort('-createdAt')
     .exec((err, bookings) => {
       res.jsonp(bookings);
     });
@@ -44,7 +44,8 @@ function create(req, res) {
     event_type: BOOKING.eventType,
     date: BOOKING.date,
     number_of_people: BOOKING.numberOfPeople,
-    additional_information: BOOKING.additionalInformation || null
+    additional_information: BOOKING.additionalInformation || null,
+    createdAt: Date.now()
   });
 
   booking.save((err) => {

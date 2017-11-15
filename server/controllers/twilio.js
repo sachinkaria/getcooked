@@ -10,12 +10,15 @@ function sendSMS(number, message) {
   client.messages.create(
     {
       to: number,
-      from: '+441244470582',
+      from: '+15005550006',
       body: message,
     },
     (err, msg) => {
-      if (err) console.log(err);
-      console.log(msg.sid);
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(msg.sid);
+      }
     }
   );
 }

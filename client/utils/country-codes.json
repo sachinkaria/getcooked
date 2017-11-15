@@ -1,4 +1,5 @@
 [
+  {"name":"Select a country", "dial_code": ""},
   {"name":"United Kingdom","dial_code":"44","code":"GB"},
   {"name":"Afghanistan","dial_code":"93","code":"AF"},
   {"name":"Albania","dial_code":"355","code":"AL"},
@@ -190,7 +191,6 @@
   {"name":"Yemen","dial_code":"967","code":"YE"},
   {"name":"Zambia","dial_code":"260","code":"ZM"},
   {"name":"Zimbabwe","dial_code":"263","code":"ZW"},
-  {"name":"land Islands","dial_code":"","code":"AX"},
   {"name":"Bolivia","dial_code":"591","code":"BO"},
   {"name":"Brunei Darussalam","dial_code":"673","code":"BN"},
   {"name":"Congo","dial_code":"243","code":"CD"},

@@ -47,10 +47,9 @@ class BasicInfo extends Component {
     const PHONE_CODE = formProps.phoneCode;
 
     formProps.phoneCode = CODES.filter((item) => {
-      return item.dial_code === PHONE_CODE;
+      return item.name === PHONE_CODE;
     })[0];
 
-    console.log(formProps);
     this.props.updateUser(formProps, this.props.initialValues && this.props.initialValues.role === 'chef' ? Steps.personal.onNext : DASHBOARD);
   }
 
@@ -58,6 +57,8 @@ class BasicInfo extends Component {
     const DASHBOARD = '/dashboard/account/settings';
     const { handleSubmit } = this.props;
     const { initialValues } = this.props;
+    if (initialValues && initialValues.phoneCode.name) initialValues.phoneCode = initialValues.phoneCode.name;
+
     const progress = (Steps.personal.number / (Steps.totalSteps + 1));
     const sideBarHeading = Steps.personal.name;
     const sideBarText = Steps.personal.description;
@@ -112,7 +113,7 @@ class BasicInfo extends Component {
             >
               {CODES.map(code =>
                 (
-                  <option key={code.name} value={code.dial_code}>
+                  <option key={code.name} value={code.name}>
                     {code.name}
                   </option>
                 )

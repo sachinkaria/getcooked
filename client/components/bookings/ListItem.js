@@ -37,12 +37,12 @@ const ListItem = (props) => {
     <Col xs={12}>
       <Panel className={!props.booking.read && 'gc-panel--border'}>
         <Row>
-          <Col className="center-m left-t" md={6}>
+          <Col className="center-m left-t" sm={6}>
             <p className="gc-form-heading text-capitalize">{props.booking.user.firstName} {props.booking.user.lastName}</p>
             <p className="gc-text">Email: {props.booking.user.email}</p>
             <p className="gc-text">Mobile number: {props.booking.user.mobileNumber}</p>
           </Col>
-          <Col md={6} className="center-m right-t">
+          <Col sm={6} className="center-m right-t">
             <p className="gc-text hidden-xs">{moment(props.booking.createdAt).format('MMMM Do YYYY')}</p>
             <Link to={`/dashboard/bookings/${props.booking._id}`} className="btn gc-btn gc-btn-white gc-margin-top">
               View Details

@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Col, Row, Button } from 'react-bootstrap';
 import { updateUser, getCurrentUser } from '../../../../actions/users';
 import renderField from '../../../../components/forms/renderField';
+import CODES from '../../../../utils/country-codes.json';
 
 const form = reduxForm({
   form: 'setup-personal',
@@ -44,11 +45,19 @@ class SettingsForm extends Component {
   }
 
   handleFormSubmit(formProps) {
+    const PHONE_CODE = formProps.phoneCode;
+
+    formProps.phoneCode = CODES.filter((item) => {
+      return item.name === PHONE_CODE;
+    })[0];
+
     this.props.updateUser(formProps, null, true);
   }
 
   render() {
     const { handleSubmit } = this.props;
+    const { initialValues } = this.props;
+    if (initialValues && initialValues.phoneCode.name) initialValues.phoneCode = initialValues.phoneCode.name;
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
@@ -83,6 +92,21 @@ class SettingsForm extends Component {
           />
         </div>
         <label className="gc-text">Mobile number</label>
+        <div>
+          <Field
+            name="phoneCode"
+            className="form-control gc-input"
+            component="select"
+          >
+            {CODES.map(code =>
+              (
+                <option key={code.name} value={code.name}>
+                  {code.name}
+                </option>
+              )
+            )}
+          </Field>
+        </div>
         <div>
           <Field
             name="mobileNumber"

@@ -10,7 +10,7 @@ function sendSMS(number, message) {
   client.messages.create(
     {
       to: number,
-      from: '+15005550006',
+      from: process.env.TWILIO_NUMBER,
       body: message,
     },
     (err, msg) => {

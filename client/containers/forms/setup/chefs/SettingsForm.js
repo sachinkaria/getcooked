@@ -58,7 +58,7 @@ class SettingsForm extends Component {
     const { handleSubmit } = this.props;
     const { initialValues } = this.props;
     if (initialValues && initialValues.phoneCode.name) initialValues.phoneCode = initialValues.phoneCode.name;
-
+    console.log(initialValues);
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         <label className="gc-text">First name</label>

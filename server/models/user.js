@@ -83,7 +83,15 @@ const UserSchema = new Schema({
   resetPasswordExpires: { type: Date }
 },
 {
-  timestamps: true
+  timestamps: true,
+  toObject: { virtuals: true },
+  toJSON: { virtuals: true }
+});
+
+UserSchema.virtual('contactNumber').get(function () {
+  if (this.phoneCode && this.mobileNumber) {
+    return '+'.concat(this.phoneCode.dialCode.toString() + this.mobileNumber.toString());
+  }
 });
 
 // Pre-save of user to database, hash password if password is modified or new

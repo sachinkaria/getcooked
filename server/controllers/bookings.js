@@ -44,8 +44,7 @@ function create(req, res) {
     event_type: BOOKING.eventType,
     date: BOOKING.date,
     number_of_people: BOOKING.numberOfPeople,
-    additional_information: BOOKING.additionalInformation || null,
-    createdAt: Date.now()
+    additional_information: BOOKING.additionalInformation || null
   });
 
   booking.save((err) => {
@@ -55,7 +54,7 @@ function create(req, res) {
       if (error) return (error);
 
       const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName} ${USER.lastName}. You can check out more details about this enquiry on your dashboard.`;
-      if (chef.mobileNumber) twilio.sendSMS(chef.mobileNumber, MESSAGE);
+      if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
       res.jsonp(booking);
     });
   });

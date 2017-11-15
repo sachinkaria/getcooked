@@ -57,7 +57,7 @@ class BasicInfo extends Component {
     const DASHBOARD = '/dashboard/account/settings';
     const { handleSubmit } = this.props;
     const { initialValues } = this.props;
-    if (initialValues && initialValues.phoneCode.name) initialValues.phoneCode = initialValues.phoneCode.name;
+    if (initialValues && initialValues.phoneCode && initialValues.phoneCode.name) initialValues.phoneCode = initialValues.phoneCode.name;
 
     const progress = (Steps.personal.number / (Steps.totalSteps + 1));
     const sideBarHeading = Steps.personal.name;
@@ -126,7 +126,7 @@ class BasicInfo extends Component {
               placeholder="e.g. 07912345678"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
-              type="number"
+              type="text"
             />
           </div>
         </div>

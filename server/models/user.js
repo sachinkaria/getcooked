@@ -89,8 +89,8 @@ const UserSchema = new Schema({
 });
 
 UserSchema.virtual('contactNumber').get(function () {
-  if (this.phoneCode && this.mobileNumber) {
-    return '+'.concat(this.phoneCode.dialCode.toString() + this.mobileNumber.toString());
+  if (this.phoneCode.dialCode && this.mobileNumber) {
+    return '+'.concat(this.phoneCode.dialCode.toString() + parseInt(this.mobileNumber, 12).toString());
   }
 });
 

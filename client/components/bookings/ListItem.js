@@ -35,7 +35,7 @@ const ListItem = (props) => {
   }
   return (
     <Col xs={12}>
-      <Panel className={!props.booking.read && 'gc-panel--border'}>
+      <Panel className={!props.booking.read && 'gc-panel--alert'}>
         <Row>
           <Col className="center-m left-t" sm={6}>
             <p className="gc-form-heading text-capitalize">{props.booking.user.firstName} {props.booking.user.lastName}</p>
@@ -43,7 +43,7 @@ const ListItem = (props) => {
             <p className="gc-text">Mobile number: {props.booking.user.mobileNumber}</p>
           </Col>
           <Col sm={6} className="center-m right-t">
-            <p className="gc-text hidden-xs">{moment(props.booking.createdAt).format('MMMM Do YYYY')}</p>
+            <p className="gc-text hidden-xs">Received: {moment(props.booking.createdAt).format('MMMM Do YYYY')}</p>
             <Link to={`/dashboard/bookings/${props.booking._id}`} className="btn gc-btn gc-btn-white gc-margin-top">
               View Details
             </Link>

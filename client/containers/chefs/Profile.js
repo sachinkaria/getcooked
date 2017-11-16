@@ -53,18 +53,18 @@ class Profile extends React.Component {
                     />
                   </div>
                 </div>
-                <hr className="grey" />
+                <hr className="light-grey" />
                 <div>
                   <Description description={CHEF.description} />
                 </div>
-                <hr className="grey" />
+                <hr className="light-grey" />
                 <div>
                   <Row>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
                       <Services title="Services" services={CHEF.services.sort()} />
                     </Col>
                     <Col xs={12} className="visible-xs">
-                      <hr className="grey" />
+                      <hr className="light-grey" />
                     </Col>
                     {
                       (CHEF.cuisines.length > 0) &&
@@ -75,7 +75,7 @@ class Profile extends React.Component {
                     {
                       (CHEF.cuisines.length > 0 && CHEF.additionalServices.length > 0) &&
                       <Col xs={12}>
-                        <hr className="grey" />
+                        <hr className="light-grey" />
                       </Col>
                     }
                     {
@@ -89,13 +89,13 @@ class Profile extends React.Component {
                 {
                   (CHEF.photos.length > 0) &&
                     <div>
-                      <hr className="grey" />
+                      <hr className="light-grey" />
                       <div>
                         <Images images={CHEF.photos} />
                       </div>
                     </div>
                 }
-                <hr className="grey" />
+                <hr className="light-grey" />
                 <Row>
                   <p className="gc-form-heading"> Reviews</p>
                 </Row>

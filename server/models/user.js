@@ -59,7 +59,7 @@ const UserSchema = new Schema({
     type: String
   },
   companyPhoneNumber: {
-    type: Number
+    type: String
   },
   displayName: {
     type: String
@@ -93,7 +93,7 @@ const UserSchema = new Schema({
 
 UserSchema.virtual('contactNumber').get(function () {
   if (this.phoneCode.dialCode && this.mobileNumber) {
-    return '+'.concat(this.phoneCode.dialCode.toString() + parseInt(this.mobileNumber, 12).toString());
+    return '+'.concat(this.phoneCode.dialCode.toString() + parseInt(this.mobileNumber, 10).toString());
   }
 });
 

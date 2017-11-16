@@ -93,7 +93,7 @@ class BasicInfo extends Component {
             placeholder="e.g. 0201234567"
             className="form-control gc-input gc-margin-bottom"
             component={renderField}
-            type="number"
+            type="string"
           />
         </div>
         <label className="gc-text">Description</label>

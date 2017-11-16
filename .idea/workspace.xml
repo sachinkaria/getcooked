@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/bookings/ListItem.js" afterPath="$PROJECT_DIR$/client/components/bookings/ListItem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/setup/basics.js" afterPath="$PROJECT_DIR$/client/components/chefs/setup/basics.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/containers/chefs/Profile.js" afterPath="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/containers/forms/setup/chefs/BasicsForm.js" afterPath="$PROJECT_DIR$/client/containers/forms/setup/chefs/BasicsForm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_buttons.scss" afterPath="$PROJECT_DIR$/client/styles/components/_buttons.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_panel.scss" afterPath="$PROJECT_DIR$/client/styles/components/_panel.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/controllers/bookings.js" afterPath="$PROJECT_DIR$/server/controllers/bookings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/models/user.js" afterPath="$PROJECT_DIR$/server/models/user.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,11 +29,33 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Profile.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/containers/chefs/Profile.js">
+      <file leaf-file-name="_panel.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/styles/components/_panel.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+            <state relative-caret-position="320">
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicsForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/containers/forms/setup/chefs/BasicsForm.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/models/user.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="95" column="89" lean-forward="false" selection-start-line="95" selection-start-column="89" selection-end-line="95" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -106,10 +136,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/components/forms/renderOption.js" />
         <option value="$PROJECT_DIR$/server/models/bookings.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_datepicker.scss" />
-        <option value="$PROJECT_DIR$/client/containers/forms/setup/chefs/BasicsForm.js" />
         <option value="$PROJECT_DIR$/client/components/auth/Register.js" />
         <option value="$PROJECT_DIR$/client/reducers/auth_reducer.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_error-handler.scss" />
@@ -131,10 +159,8 @@
         <option value="$PROJECT_DIR$/client/reducers/user_reducer.js" />
         <option value="$PROJECT_DIR$/client/actions/bookings/index.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_profile.scss" />
-        <option value="$PROJECT_DIR$/client/styles/components/_panel.scss" />
         <option value="$PROJECT_DIR$/client/actions/auth/index.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_progress-bar.scss" />
-        <option value="$PROJECT_DIR$/client/components/chefs/setup/basics.js" />
         <option value="$PROJECT_DIR$/client/components/Home.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/Dashboard/Sidebar.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_forms.scss" />
@@ -142,9 +168,7 @@
         <option value="$PROJECT_DIR$/client/components/forms/renderField.js" />
         <option value="$PROJECT_DIR$/client/components/bookings/Item.js" />
         <option value="$PROJECT_DIR$/client/utils/country-codes.json" />
-        <option value="$PROJECT_DIR$/client/components/bookings/ListItem.js" />
         <option value="$PROJECT_DIR$/server/models/booking.js" />
-        <option value="$PROJECT_DIR$/server/controllers/bookings.js" />
         <option value="$PROJECT_DIR$/server/controllers/twilio.js" />
         <option value="$PROJECT_DIR$/client/containers/forms/setup/chefs/SettingsForm.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/setup/personal.js" />
@@ -153,10 +177,16 @@
         <option value="$PROJECT_DIR$/client/components/chefs/ListItem.js" />
         <option value="$PROJECT_DIR$/client/containers/forms/setup/chefs/PhotosForm.js" />
         <option value="$PROJECT_DIR$/client/utils/data.js" />
-        <option value="$PROJECT_DIR$/server/models/user.js" />
         <option value="$PROJECT_DIR$/client/components/chefs/setup/services.js" />
         <option value="$PROJECT_DIR$/client/containers/forms/setup/chefs/ServicesForm.js" />
+        <option value="$PROJECT_DIR$/client/components/chefs/setup/basics.js" />
+        <option value="$PROJECT_DIR$/client/styles/components/_buttons.scss" />
         <option value="$PROJECT_DIR$/client/containers/chefs/Profile.js" />
+        <option value="$PROJECT_DIR$/client/components/bookings/ListItem.js" />
+        <option value="$PROJECT_DIR$/server/models/user.js" />
+        <option value="$PROJECT_DIR$/server/controllers/bookings.js" />
+        <option value="$PROJECT_DIR$/client/containers/forms/setup/chefs/BasicsForm.js" />
+        <option value="$PROJECT_DIR$/client/styles/components/_panel.scss" />
       </list>
     </option>
   </component>
@@ -462,7 +492,7 @@
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v4.1.2/bin/node" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
-    <property name="SearchEverywhereHistoryKey" value="profil&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;Ser&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/ServicesForm.js&#10;photo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;helper&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_helpers.scss&#10;persona&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;List&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/bookings/ListItem.js&#10;settings&#9;null&#9;null&#10;person&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;form&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_forms.scss&#10;help&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_helpers.scss&#10;side&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Dashboard/Sidebar.js&#10;Book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;personal&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;booking&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;home&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home.js&#10;basics&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/basics.js&#10;progre&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_progress-bar.scss&#10;gc-das&#9;null&#9;null&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_panel.scss&#10;dashb&#9;null&#9;null&#10;photos&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;routes&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/config/routes.js&#10;dashboard&#9;null&#9;null&#10;prof&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;body&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_body.scss&#10;book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;gc-text&#9;null&#9;null&#10;noti&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_notifications.scss&#10;Pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;Setting&#9;null&#9;null&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/utils/data.js&#10;basic&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/BasicsForm.js&#10;for&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_forms.scss&#10;per&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;bas&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/BasicsForm.js&#10;basi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/basics.js&#10;button&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_buttons.scss&#10;user&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/server/controllers/user.js&#10;pho&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/photos.js&#10;butt&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_buttons.scss&#10;phot&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;icon&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_icons.scss&#10;varia&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/utilities/_variables.scss&#10;custom-file&#9;null&#9;null&#10;custom-fil&#9;null&#9;null&#10;DASHB&#9;null&#9;null&#10;Image&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/ImageUpload/ImageRender.js&#10;profile&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="basic&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/BasicsForm.js&#10;grey&#9;null&#9;null&#10;profil&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;gc-panel&#9;null&#9;null&#10;list&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/bookings/ListItem.js&#10;listi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;basics&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/BasicsForm.js&#10;personal&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;Ser&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/ServicesForm.js&#10;photo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;helper&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_helpers.scss&#10;persona&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;List&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/bookings/ListItem.js&#10;settings&#9;null&#9;null&#10;person&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;form&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_forms.scss&#10;help&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_helpers.scss&#10;side&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Dashboard/Sidebar.js&#10;Book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;booking&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;home&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home.js&#10;progre&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_progress-bar.scss&#10;gc-das&#9;null&#9;null&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_panel.scss&#10;dashb&#9;null&#9;null&#10;photos&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;routes&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/config/routes.js&#10;dashboard&#9;null&#9;null&#10;prof&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;body&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_body.scss&#10;book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;gc-text&#9;null&#9;null&#10;noti&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_notifications.scss&#10;Pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;Setting&#9;null&#9;null&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/utils/data.js&#10;for&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_forms.scss&#10;per&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/personal.js&#10;bas&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/BasicsForm.js&#10;basi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/basics.js&#10;button&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_buttons.scss&#10;user&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/server/controllers/user.js&#10;pho&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/photos.js&#10;butt&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_buttons.scss&#10;phot&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;icon&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_icons.scss&#10;varia&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/utilities/_variables.scss&#10;custom-file&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -671,12 +701,12 @@
       <workItem from="1510523249206" duration="2318000" />
       <workItem from="1510610277404" duration="3314000" />
       <workItem from="1510658979145" duration="16707000" />
-      <workItem from="1510852252127" duration="940000" />
+      <workItem from="1510852252127" duration="3027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="716037000" />
+    <option name="totallyTimeSpent" value="718124000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="6" />
@@ -748,20 +778,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/utils/isAuthenticated.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/actions/public/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/bookings/List.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -862,16 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/setup/basics.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/actions/auth/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -880,17 +886,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/components/_panel.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/styles/components/_progress-bar.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -898,6 +898,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
           <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -905,6 +906,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="102" column="12" lean-forward="false" selection-start-line="102" selection-start-column="12" selection-end-line="102" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -926,6 +928,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="126" column="12" lean-forward="false" selection-start-line="126" selection-start-column="12" selection-end-line="126" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -941,6 +944,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -972,14 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
           <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/bookings/ListItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="40" column="56" lean-forward="false" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1038,26 +1034,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/setup/personal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="124" column="33" lean-forward="false" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/ListItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/config/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1066,34 +1042,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/base/_helpers.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="207" column="1" lean-forward="false" selection-start-line="207" selection-start-column="1" selection-end-line="207" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/controllers/chefs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/twilio.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="53" column="32" lean-forward="true" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1136,18 +1088,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/models/user.js">
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/setup/personal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+        <state relative-caret-position="330">
+          <caret line="124" column="33" lean-forward="false" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/containers/chefs/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="80" column="21" lean-forward="true" selection-start-line="80" selection-start-column="21" selection-end-line="80" selection-end-column="21" />
+        <state relative-caret-position="1115">
+          <caret line="97" column="41" lean-forward="false" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/twilio.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/components/_buttons.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="64" column="21" lean-forward="false" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/base/_helpers.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="201" column="13" lean-forward="false" selection-start-line="201" selection-start-column="3" selection-end-line="201" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/bookings/ListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="45" column="53" lean-forward="false" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/ListItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/setup/basics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="107" column="26" lean-forward="false" selection-start-line="107" selection-start-column="26" selection-end-line="107" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="95" column="89" lean-forward="false" selection-start-line="95" selection-start-column="89" selection-end-line="95" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/containers/forms/setup/chefs/BasicsForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="124" column="0" lean-forward="false" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/components/_panel.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
           <folding />
         </state>
       </provider>

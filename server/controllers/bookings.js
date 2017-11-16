@@ -50,7 +50,7 @@ function create(req, res) {
   booking.save((err) => {
     if (err) return (err);
 
-    User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber', (error, chef) => {
+    User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber phoneCode contactNumber', (error, chef) => {
       if (error) return (error);
 
       const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName} ${USER.lastName}. You can check out more details about this enquiry on your dashboard.`;

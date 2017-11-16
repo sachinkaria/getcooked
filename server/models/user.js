@@ -79,6 +79,9 @@ const UserSchema = new Schema({
   cuisines: [{
     type: String
   }],
+  additionalServices: [{
+    type: String
+  }],
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date }
 },

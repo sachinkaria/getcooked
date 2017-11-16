@@ -142,7 +142,6 @@ class Photos extends Component {
         <div className="gc-margin-bottom--lg">
           <label className="gc-text gc-margin-bottom">Cover Photo</label>
           <br />
-          {this.renderAlert()}
           <ImageUpload
             inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}
             type="cover"

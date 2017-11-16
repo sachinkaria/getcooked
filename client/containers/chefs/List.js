@@ -17,19 +17,22 @@ class Chefs extends React.Component {
         <div>
           <Row>
             <Col xs={10} xsOffset={1} className="gc-padding-none">
-              {
-                this.props.chefs.map(chef => (
-                  <ListItem
-                    id={chef._id}
-                    key={chef._id}
-                    profilePhoto={chef.profilePhoto}
-                    name={chef.displayName}
-                    rating={chef.rating}
-                    endorsements={chef.endorsements}
-                    numberOfRatings={chef.numberOfRatings}
-                  />
-                ))
-              }
+              <Row>
+                {
+                  this.props.chefs.map(chef => (
+                    <ListItem
+                      id={chef._id}
+                      key={chef._id}
+                      profilePhoto={chef.profilePhoto}
+                      name={chef.displayName}
+                      rating={chef.rating}
+                      endorsements={chef.endorsements}
+                      numberOfRatings={chef.numberOfRatings}
+                      serviceType={chef.serviceType}
+                    />
+                  ))
+                }
+              </Row>
             </Col>
           </Row>
         </div>

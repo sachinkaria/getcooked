@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Col, Panel, Row } from 'react-bootstrap';
 import _ from 'lodash';
 import { updateUser } from '../../../actions/users';
-import { EVENTS, TYPES } from '../../../utils/data';
+import { EVENTS, TYPES, ADDITIONAL_SERVICES } from '../../../utils/data';
 import renderCheckbox from '../../forms/renderCheckbox';
 import Wizard from '../../Wizard';
 import Steps from './steps.json';
@@ -18,7 +18,8 @@ class Categories extends Component {
     super(props);
     this.state = {
       serviceType: props.user.data ? props.user.data.serviceType : [],
-      events: props.user.data ? props.user.data.events : []
+      events: props.user.data ? props.user.data.events : [],
+      additionalServices: props.user.data ? props.user.data.additionalServices : []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -93,6 +94,24 @@ class Categories extends Component {
                       type="checkbox"
                       component={renderCheckbox}
                       onChange={e => this.handler(e, 'events')}
+                    />
+                  </Col>
+                ))
+              }
+            </Row>
+          </Panel>
+          <Panel>
+            <label className="gc-text">Additional Services</label>
+            <Row>
+              {
+                ADDITIONAL_SERVICES.map(item => (
+                  <Col sm={6} key={item}>
+                    <Field
+                      checked={this.isChecked(item, this.state.additionalServices)}
+                      name={item}
+                      type="checkbox"
+                      component={renderCheckbox}
+                      onChange={e => this.handler(e, 'additionalServices')}
                     />
                   </Col>
                 ))

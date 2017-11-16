@@ -115,4 +115,5 @@ export const FOOD_SERVICES = ['canapes', 'desserts', 'buffets', 'vegetarian', 'v
 export const EVENTS = ['corporate events', 'weddings', 'private dinners', 'parties', 'festivals', 'other'];
 export const CUISINES = ['american', 'chinese', 'french', 'greek', 'indian', 'italian', 'japanese', 'mediterranean', 'mexican', 'moroccan', 'spanish', 'thai', 'turkish', 'vietnamese', 'other'];
 export const EVENT_TYPE = ['select', 'private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'];
+export const ADDITIONAL_SERVICES = ['bar service', 'waiting staff', 'tableware', 'glassware'];
 export default data;

@@ -66,13 +66,28 @@ class Profile extends React.Component {
                     <Col xs={12} className="visible-xs">
                       <hr className="grey" />
                     </Col>
-                    <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
-                      <Services title="Cuisines" services={CHEF.cuisines.sort()} />
-                    </Col>
+                    {
+                      (CHEF.cuisines.length > 0) &&
+                      <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
+                        <Services title="Cuisines" services={CHEF.cuisines.sort()} />
+                      </Col>
+                    }
+                    {
+                      (CHEF.cuisines.length > 0 && CHEF.additionalServices.length > 0) &&
+                      <Col xs={12}>
+                        <hr className="grey" />
+                      </Col>
+                    }
+                    {
+                      (CHEF.additionalServices.length > 0) &&
+                      <Col xs={10} xsOffset={1} sm={6} smOffset={CHEF.cuisines.length > 0 ? 3 : 0}>
+                        <Services title="Additional Services" services={CHEF.additionalServices.sort()} />
+                      </Col>
+                    }
                   </Row>
                 </div>
                 {
-                  CHEF.photos &&
+                  (CHEF.photos.length > 0) &&
                     <div>
                       <hr className="grey" />
                       <div>

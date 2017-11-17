@@ -12,12 +12,12 @@ const ReviewSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
-  Overall: Number,
-  Food: Number,
-  Service: Number,
-  Value: Number,
-  Hygiene: Number,
-  additional_information: String
+  overall: Number,
+  food: Number,
+  service: Number,
+  value: Number,
+  hygiene: Number,
+  comment: String
 },
 {
   timestamps: true

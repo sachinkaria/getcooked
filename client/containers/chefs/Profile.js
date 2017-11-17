@@ -1,8 +1,10 @@
 import React from 'react';
-import { Col, Panel, Row } from 'react-bootstrap';
+import { Link } from 'react-router';
+import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ContactDetails from '../../components/chefs/profile/ContactDetails';
 import BookingForm from '../BookingForm';
+import ReviewForm from '../ReviewForm';
 import Heading from '../../components/chefs/profile/Heading';
 import Services from '../../components/chefs/profile/Services';
 import ServiceTypes from '../../components/chefs/profile/ServiceTypes';
@@ -10,6 +12,7 @@ import ProfilePicture from '../../components/chefs/profile/ProfilePicture';
 import CoverPicture from '../../components/chefs/profile/CoverPicture';
 import Description from '../../components/chefs/profile/Description';
 import Images from '../../components/chefs/profile/Images';
+import Reviews from '../../components/chefs/reviews/List';
 import * as actions from '../../actions/public';
 
 
@@ -20,7 +23,7 @@ class Profile extends React.Component {
 
   renderContent() {
     const CHEF = this.props.chef;
-
+    const REVIEWS = this.props.reviews || [];
     // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
     return (
       <div>
@@ -97,7 +100,16 @@ class Profile extends React.Component {
                 }
                 <hr className="light-grey" />
                 <Row>
-                  <p className="gc-form-heading"> Reviews</p>
+                  <p className="gc-form-heading">Reviews</p>
+                  {
+                    (REVIEWS.length > 0) ?
+                      <Reviews />
+                      :
+                      <div>
+                        <p className="gc-text gc-margin-bottom">There are no reviews for this profile yet.</p>
+                        <ReviewForm id={CHEF._id} />
+                      </div>
+                  }
                 </Row>
               </Panel>
             </Col>

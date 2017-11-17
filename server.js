@@ -11,6 +11,7 @@ const authRoutes = require('./server/routes/user');
 const adminRoutes = require('./server/routes/admin');
 const bookingRoutes = require('./server/routes/booking');
 const chefRoutes = require('./server/routes/chef');
+const reviewRoutes = require('./server/routes/review');
 const conversationRoutes = require('./server/routes/conversation');
 
 // and create our instances
@@ -53,6 +54,7 @@ adminRoutes(router);
 bookingRoutes(router);
 chefRoutes(router);
 conversationRoutes(router);
+reviewRoutes(router);
 
 const server = http.createServer(app);
 const io = socket(server);

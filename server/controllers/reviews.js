@@ -20,7 +20,7 @@ function create(req, res) {
 
   const review = new Review({
     user: USER._id,
-    chef: REVIEW.chef,
+    chef: req.params.id,
     overall: REVIEW.overall,
     food: REVIEW.food,
     service: REVIEW.service,

@@ -1,5 +1,8 @@
 const knox = require('knox');
 const jimp = require('jimp');
+const Review = require('../models/review');
+const ObjectId = require('mongodb').ObjectId;
+const _ = require('lodash');
 
 const s3Client = knox.createClient({
   key: 'key',
@@ -75,10 +78,33 @@ function deleteImage(fileName, callback) {
       console.log('File deleted on S3 for filename: %s, status: %s', fileName, res.statusCode);
       callback();
     }).on('error', (error) => {
-    console.log('Problem deleting file on S3: %s', error.message);
-    callback(error);
-  }).end();
+      console.log('Problem deleting file on S3: %s', error.message);
+      callback(error);
+    }).end();
 }
+
+function getChefRating(reviews) {
+  const LENGTH = reviews.length;
+  return (
+    _(reviews).groupBy('chef')
+      .map(obj => ({
+        overall: parseFloat(_.sumBy(obj, 'overall') / LENGTH).toFixed(2),
+        food: parseFloat(_.sumBy(obj, 'food') / LENGTH).toFixed(2),
+        value: parseFloat(_.sumBy(obj, 'value') / LENGTH).toFixed(2),
+        service: parseFloat(_.sumBy(obj, 'service') / LENGTH).toFixed(2),
+        hygiene: parseFloat(_.sumBy(obj, 'hygiene') / LENGTH).toFixed(2),
+      })
+      )
+      .value()[0]
+  );
+}
+
+function getChefReviews(reviews) {
+  return (reviews.map(obj => obj.comment && obj.comment));
+}
+
 
 module.exports.imageUploader = imageUploader;
 module.exports.deleteImage = deleteImage;
+module.exports.getChefRating = getChefRating;
+module.exports.getChefReviews = getChefReviews;

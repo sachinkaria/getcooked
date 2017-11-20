@@ -22,7 +22,7 @@ class Profile extends React.Component {
   }
 
   renderContent() {
-    const CHEF = this.props.chef;
+    const CHEF = this.props.chef.profile;
     const REVIEWS = this.props.reviews || [];
     // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
     return (
@@ -47,14 +47,6 @@ class Profile extends React.Component {
                 </div>
                 <div>
                   <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
-                  <div className="visible-xs">
-                    <ContactDetails
-                      mobile
-                      website={CHEF.companyWebsite}
-                      email={CHEF.companyEmail}
-                      phone={CHEF.companyPhoneNumber}
-                    />
-                  </div>
                 </div>
                 <hr className="light-grey" />
                 <div>
@@ -143,6 +135,7 @@ class Profile extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state.public.chef);
   return { chef: state.public.chef };
 }
 

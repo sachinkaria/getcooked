@@ -100,7 +100,11 @@ function getChefRating(reviews) {
 }
 
 function getChefReviews(reviews) {
-  return (reviews.map(obj => obj.comment && obj.comment));
+  return (reviews.map(obj => ({
+    name: obj.user.firstName,
+    description: obj.comment && obj.comment,
+  })
+));
 }
 
 

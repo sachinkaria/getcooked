@@ -16,15 +16,17 @@ function list(req, res) {
 function read(req, res) {
   const ID = req.params.id;
   User.find({ _id: ObjectId(ID) }).exec((err, chefs) => {
-    let chef = chefs[0];
+    const chef = chefs[0];
     let rating = null;
     let comments = [];
 
-    Review.find({ chef: chef._id }).exec((err, reviews) => {
+    Review.find({ chef: chef._id })
+      .populate('user', 'firstName')
+      .exec((err, reviews) => {
       rating = utils.getChefRating(reviews);
       comments = utils.getChefReviews(reviews);
 
-      profile = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
+      const profile = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
       res.jsonp({
         profile,
         rating,

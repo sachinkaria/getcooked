@@ -44,7 +44,13 @@ function create(req, res) {
     event_type: BOOKING.eventType,
     date: BOOKING.date,
     number_of_people: BOOKING.numberOfPeople,
-    additional_information: BOOKING.additionalInformation || null
+    additional_information: BOOKING.additionalInformation || null,
+    address: {
+      line1: BOOKING.address_line1,
+      line2: BOOKING.address_line2,
+      city: BOOKING.city,
+      postcode: BOOKING.postcode,
+    }
   });
 
   booking.save((err) => {

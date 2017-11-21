@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const AddressSchema = {
-  address_line1: String,
-  address_line2: String,
-  address_city: String,
-  address_country: String,
-  address_postcode: String
+  line1: String,
+  line2: String,
+  city: String,
+  country: String,
+  postcode: String
 };
 
 const BookingSchema = new Schema({

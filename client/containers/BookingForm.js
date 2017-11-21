@@ -12,7 +12,7 @@ import { createBooking } from '../actions/bookings';
 
 const form = reduxForm({
   form: 'booking',
-  fields: ['date', 'eventType', 'postcode', 'numberOfPeople', 'budget', 'additionalInformation'],
+  fields: ['date', 'eventType', 'address_line1', 'address_line2', 'city', 'postcode', 'numberOfPeople', 'budget', 'additionalInformation'],
   validate
 });
 
@@ -21,6 +21,18 @@ function validate(formProps) {
 
   if (formProps.eventType === 'select') {
     errors.eventType = 'Please select an event type';
+  }
+
+  if (!formProps.address_line1) {
+    errors.address_line1 = 'Please enter address name or number';
+  }
+
+  if (!formProps.address_line2) {
+    errors.address_line2 = 'Please enter address street';
+  }
+
+  if (!formProps.city) {
+    errors.city = 'Please enter a address city';
   }
 
   if (!formProps.postcode) {
@@ -119,11 +131,38 @@ class BookingForm extends React.Component {
                     <div>
                       <DatePicker name="date" onChange={this.setDate} />
                     </div>
-                    <label className="gc-text">Postcode</label>
+                    <label className="gc-text">Address</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="address_line1"
+                        placeholder="Name or Number"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="text"
+                      />
+                    </div>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="address_line2"
+                        placeholder="Street name"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="text"
+                      />
+                    </div>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="city"
+                        placeholder="City"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="text"
+                      />
+                    </div>
                     <div className="gc-margin-bottom">
                       <Field
                         name="postcode"
-                        placeholder="e.g. SW1A 1AA"
+                        placeholder="Postcode"
                         className="form-control gc-input gc-margin-bottom"
                         component={renderField}
                         type="text"
@@ -198,7 +237,7 @@ function mapStateToProps(state) {
   return {
     auth: state.auth,
     user: state.user,
-    chef: state.public.chef
+    chef: state.public.chef.profile
   };
 }
 

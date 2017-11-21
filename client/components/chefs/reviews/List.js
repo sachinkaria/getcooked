@@ -6,7 +6,7 @@ const ReviewList = (props) => {
     <div className="gc-tags">
       { props.reviews.map(item =>
         (
-          <ReviewItem name={item.name} description={item.description} />
+          <ReviewItem key={item.name} name={item.name} description={item.description} />
         )
       )}
     </div>

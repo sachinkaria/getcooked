@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import StarRatingComponent from 'react-star-rating-component';
 import ContactDetails from '../../components/chefs/profile/ContactDetails';
 import BookingForm from '../BookingForm';
 import ReviewForm from '../ReviewForm';
@@ -13,6 +14,7 @@ import CoverPicture from '../../components/chefs/profile/CoverPicture';
 import Description from '../../components/chefs/profile/Description';
 import Images from '../../components/chefs/profile/Images';
 import Reviews from '../../components/chefs/reviews/List';
+import Ratings from '../../components/chefs/profile/Ratings';
 import * as actions from '../../actions/public';
 
 
@@ -22,8 +24,12 @@ class Profile extends React.Component {
   }
 
   renderContent() {
+    const primaryColour = '#ff6851';
+    const emptyStarColor = '#e4e2e2';
     const CHEF = this.props.chef.profile;
-    const REVIEWS = this.props.reviews || [];
+    const REVIEWS = this.props.chef.comments || [];
+    const NUMBER_OF_REVIEWS = this.props.chef.comments.length;
+    const RATING = this.props.chef.rating;
     // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
     return (
       <div>
@@ -39,12 +45,23 @@ class Profile extends React.Component {
                     <Heading text={CHEF.displayName} />
                   </div>
                   <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
-                    <ProfilePicture photoUrl={CHEF.profilePhoto} />
+                    <ProfilePicture withoutMargins={(REVIEWS.length > 0) ? true : false} photoUrl={CHEF.profilePhoto} />
                   </Col>
                 </Row>
                 <div className="visible-xs">
                   <Heading text={CHEF.displayName} />
                 </div>
+                {
+                  (REVIEWS.length > 0) &&
+                  <StarRatingComponent
+                    className="gc-star-rating"
+                    starColor={primaryColour}
+                    emptyStarColor={emptyStarColor}
+                    name="overall"
+                    starCount={5}
+                    value={parseFloat(RATING.overall)}
+                  />
+                }
                 <div>
                   <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
                 </div>
@@ -92,10 +109,18 @@ class Profile extends React.Component {
                 }
                 <hr className="light-grey" />
                 <Row>
-                  <p className="gc-form-heading">Reviews</p>
+                  <h3 className="gc-form-heading">Reviews ({NUMBER_OF_REVIEWS})</h3>
+                  {
+                    (REVIEWS.length > 0) &&
+                    <Col xs={10} xsOffset={1}>
+                      <Ratings ratings={RATING} />
+                    </Col>
+                  }
+                </Row>
+                <Row>
                   {
                     (REVIEWS.length > 0) ?
-                      <Reviews />
+                      <Reviews reviews={REVIEWS} />
                       :
                       <div>
                         <p className="gc-text gc-margin-bottom">There are no reviews for this profile yet.</p>
@@ -135,7 +160,6 @@ class Profile extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.public.chef);
   return { chef: state.public.chef };
 }
 

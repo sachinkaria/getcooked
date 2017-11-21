@@ -1,13 +1,17 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
+import moment from 'moment';
 
 const ReviewItem = props => (
-  <div>
-    <Col xs={12}>
-      <h4>{props.name}</h4>
+  <Row className="text-left">
+    <Col sm={3}>
+      <p className="gc-text gc-bold gc-dark-grey gc-margin-none">{props.name}</p>
+      <p className="gc-text gc-bold gc-grey gc-profile-text-sm">{moment(props.date).format('Do MMM YYYY')} </p>
+    </Col>
+    <Col sm={9}>
       <p>{props.description}</p>
     </Col>
-  </div>
+  </Row>
 );
 
 ReviewItem.propTypes = {

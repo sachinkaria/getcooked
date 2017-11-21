@@ -65,18 +65,18 @@ class Profile extends React.Component {
                 <div>
                   <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
                 </div>
-                <hr className="light-grey" />
+                <hr />
                 <div>
                   <Description description={CHEF.description} />
                 </div>
-                <hr className="light-grey" />
+                <hr />
                 <div>
                   <Row>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
                       <Services title="Services" services={CHEF.services.sort()} />
                     </Col>
                     <Col xs={12} className="visible-xs">
-                      <hr className="light-grey" />
+                      <hr />
                     </Col>
                     {
                       (CHEF.cuisines.length > 0) &&
@@ -87,7 +87,7 @@ class Profile extends React.Component {
                     {
                       (CHEF.cuisines.length > 0 && CHEF.additionalServices.length > 0) &&
                       <Col xs={12}>
-                        <hr className="light-grey" />
+                        <hr />
                       </Col>
                     }
                     {
@@ -101,15 +101,15 @@ class Profile extends React.Component {
                 {
                   (CHEF.photos.length > 0) &&
                     <div>
-                      <hr className="light-grey" />
+                      <hr />
                       <div>
                         <Images images={CHEF.photos} />
                       </div>
                     </div>
                 }
-                <hr className="light-grey" />
-                <Row>
-                  <h3 className="gc-form-heading">Reviews ({NUMBER_OF_REVIEWS})</h3>
+                <hr />
+                <Row className="gc-margin-bottom--lg">
+                  <h3 className="gc-form-heading gc-margin-bottom--lg">Reviews ({NUMBER_OF_REVIEWS})</h3>
                   {
                     (REVIEWS.length > 0) &&
                     <Col xs={10} xsOffset={1}>

@@ -103,6 +103,7 @@ function getChefReviews(reviews) {
   return (reviews.map(obj => ({
     name: obj.user.firstName,
     description: obj.comment && obj.comment,
+    date: obj.createdAt
   })
 ));
 }

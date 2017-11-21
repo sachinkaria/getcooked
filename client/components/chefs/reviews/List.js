@@ -3,10 +3,13 @@ import ReviewItem from './Item';
 
 const ReviewList = (props) => {
   return (
-    <div className="gc-tags">
+    <div className="container">
       { props.reviews.map(item =>
         (
-          <ReviewItem key={item.name} name={item.name} description={item.description} />
+          <div>
+            <hr/>
+            <ReviewItem key={item.name} {...item} />
+          </div>
         )
       )}
     </div>

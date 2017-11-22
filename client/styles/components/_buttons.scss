@@ -6,6 +6,12 @@ $image-height: 200px;
   height: 36px;
   font-size: 14px;
   font-weight: 700;
+  border-radius: 3px;
+
+  &.gc-btn--sticky {
+    position: fixed;
+    bottom: 10px;
+  }
 
   &.gc-btn--sm {
     height: 28px;

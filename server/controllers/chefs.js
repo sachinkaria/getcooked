@@ -14,7 +14,8 @@ function list(req, res) {
     chefs.forEach(chef => (
       Review.find({ chef: chef._id })
         .populate('user', 'firstName')
-        .exec((err, reviews) => {
+        .exec((error, reviews) => {
+          if (error) return (error);
           const numberOfReviews = reviews.length;
           const rating = utils.getOverallRating(reviews);
           const profile = _.extend(chef.toJSON(), { rating, numberOfReviews });
@@ -35,16 +36,17 @@ function read(req, res) {
 
     Review.find({ chef: chef._id })
       .populate('user', 'firstName')
+      .sort('-createdAt')
       .exec((err, reviews) => {
-      rating = utils.getChefRating(reviews);
-      comments = utils.getChefReviews(reviews);
+        rating = utils.getChefRating(reviews);
+        comments = utils.getChefReviews(reviews);
 
-      const profile = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
-      res.jsonp({
-        profile,
-        rating,
-        comments
+        const profile = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
+        res.jsonp({
+          profile,
+          rating,
+          comments
+        });
       });
-    });
   });
 }

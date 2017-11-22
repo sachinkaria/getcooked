@@ -97,9 +97,16 @@ class BookingForm extends React.Component {
 
     return (
       <div>
-        <Button className="gc-btn gc-btn--orange" block onClick={this.showModal}>
-                  Request to book
-        </Button>
+        {
+          this.props.mobile ?
+            <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.showModal}>
+              Request to book
+            </Button>
+            :
+            <Button block className="gc-btn gc-btn--orange" onClick={this.showModal}>
+              Request to book
+            </Button>
+        }
         <Modal
           show={this.state.show}
           onHide={this.hideModal}
@@ -110,7 +117,10 @@ class BookingForm extends React.Component {
             <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">Request a Booking</Modal.Title>
             <Row>
               <Col sm={8} smOffset={2}>
-              <p className="gc-center gc-text gc-text--grey">Please fill out the details of your event. This is just a request and you will not be charged until the booking is confirmed and you are invoiced.</p>
+                <p className="gc-center gc-text gc-text--grey">
+                  Please fill out the details of your event.
+                  You will be contacted by email or phone once they have received your request.
+                </p>
               </Col>
             </Row>
           </Modal.Header>

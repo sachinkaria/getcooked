@@ -31,24 +31,21 @@ class Profile extends React.Component {
     // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
     return (
       <div>
-        <Row>
+        <Row className="hidden-xs">
           <CoverPicture photoUrl={CHEF.coverPhoto} />
         </Row>
         <Row>
           <div className="gc-profile-body">
             <Col sm={9} md={7} mdOffset={1}>
-              <Panel className="gc-panel--translucent gc-center">
+              <Panel className="gc-panel gc-panel--translucent gc-center">
                 <Row>
-                  <div className="hidden-xs">
+                  <div>
                     <Heading text={CHEF.displayName} />
                   </div>
                   <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
                     <ProfilePicture withoutMargins={(REVIEWS.length > 0) ? true : false} photoUrl={CHEF.profilePhoto} />
                   </Col>
                 </Row>
-                <div className="visible-xs">
-                  <Heading text={CHEF.displayName} />
-                </div>
                 {
                   (REVIEWS.length > 0) &&
                   <StarRatingComponent
@@ -128,14 +125,16 @@ class Profile extends React.Component {
                   }
                 </Row>
               </Panel>
+              <br />
             </Col>
+            <BookingForm mobile id={CHEF._id} />
             <Col sm={3} xsHidden>
-              <Panel className="gc-panel--translucent">
-                <div className="gc-margin-bottom--sm">
+              <Panel className="gc-panel gc-panel--translucent">
+                <div>
                   <BookingForm id={CHEF._id} />
                 </div>
-                <p className="gc-text gc-grey gc-center">Send an enquiry and find out if this caterer is available for your event.</p>
               </Panel>
+              <ReviewForm block id={CHEF._id} />
             </Col>
           </div>
         </Row>

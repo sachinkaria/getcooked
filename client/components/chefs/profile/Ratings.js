@@ -10,6 +10,7 @@ const Ratings = (props) => {
       <Col sm={6}>
         <p className="gc-text gc-bold gc-margin-none">Food</p>
         <StarRatingComponent
+          editing={false}
           className="gc-star-rating"
           starColor={primaryColour}
           emptyStarColor={emptyStarColor}
@@ -22,6 +23,7 @@ const Ratings = (props) => {
       <Col sm={6}>
         <p className="gc-text gc-bold gc-margin-none">Value</p>
         <StarRatingComponent
+          editing={false}
           className="gc-star-rating"
           starColor={primaryColour}
           emptyStarColor={emptyStarColor}
@@ -33,6 +35,7 @@ const Ratings = (props) => {
       <Col sm={6}>
         <p className="gc-text gc-bold gc-margin-none">Service</p>
         <StarRatingComponent
+          editing={false}
           className="gc-star-rating"
           starColor={primaryColour}
           emptyStarColor={emptyStarColor}
@@ -44,6 +47,7 @@ const Ratings = (props) => {
       <Col sm={6}>
         <p className="gc-text gc-bold gc-margin-none">Hygiene</p>
         <StarRatingComponent
+          editing={false}
           className="gc-star-rating"
           starColor={primaryColour}
           emptyStarColor={emptyStarColor}

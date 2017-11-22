@@ -3,6 +3,10 @@
   font-size: 14px;
   color: $dark-grey;
 
+  &.gc-text--slim {
+    font-weight: 300;
+  }
+
   &.gc-text--xs{
     font-size: 10px;
   }
@@ -33,7 +37,7 @@
 }
 
 .gc-bold {
-  font-weight: bolder;
+  font-weight: 700;
 }
 
 .gc-heading {

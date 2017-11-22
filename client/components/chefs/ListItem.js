@@ -25,7 +25,7 @@ const ListItem = (props) => {
             starColor={primaryColour}
             emptyStarColor={'#cecccc'}
             name={'rating'}
-          /><span className="gc-ratings-text">{props.numberOfRatings || 'No'} reviews</span>
+          /><span className="gc-grey gc-ratings-text">{props.numberOfReviews ? '(' + props.numberOfReviews + ')' : 'No reviews'}</span>
         </div>
       </Link>
     </Col>

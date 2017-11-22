@@ -108,8 +108,19 @@ function getChefReviews(reviews) {
 ));
 }
 
+function getOverallRating(reviews) {
+  let rating = 0;
+
+  reviews.forEach((review) => {
+    rating += review.overall;
+  });
+
+  return (rating / reviews.length);
+}
+
 
 module.exports.imageUploader = imageUploader;
 module.exports.deleteImage = deleteImage;
 module.exports.getChefRating = getChefRating;
 module.exports.getChefReviews = getChefReviews;
+module.exports.getOverallRating = getOverallRating;

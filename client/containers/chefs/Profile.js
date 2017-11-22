@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { Col, Panel, Row, Button } from 'react-bootstrap';
+import { Col, Panel, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
-import ContactDetails from '../../components/chefs/profile/ContactDetails';
 import BookingForm from '../BookingForm';
 import ReviewForm from '../ReviewForm';
 import Heading from '../../components/chefs/profile/Heading';
@@ -54,6 +52,7 @@ class Profile extends React.Component {
                 {
                   (REVIEWS.length > 0) &&
                   <StarRatingComponent
+                    editing={false}
                     className="gc-star-rating"
                     starColor={primaryColour}
                     emptyStarColor={emptyStarColor}
@@ -132,7 +131,6 @@ class Profile extends React.Component {
             </Col>
             <Col sm={3} xsHidden>
               <Panel className="gc-panel--translucent">
-                <Heading text="Contact" textAlign="left" />
                 <div className="gc-margin-bottom--sm">
                   <BookingForm id={CHEF._id} />
                 </div>

@@ -33,6 +33,8 @@ class BookingItem extends React.Component {
                 <p className="gc-text"><span className="gc-bold">Event date:</span> {moment(this.props.booking.date).format('MMMM Do YYYY')}</p>
                 <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{this.props.booking.event_type}</span></p>
                 <p className="gc-text"><span className="gc-bold">Number of guests (approx.):</span> {this.props.booking.number_of_people}</p>
+                <p className="gc-text"><span className="gc-bold">Address: </span>{this.props.booking.address.line1}, {this.props.booking.address.line2}, {this.props.booking.address.city}, {this.props.booking.address.postcode}</p>
+                <p className="gc-text"><span className="gc-bold">Budget (approx.):</span> £{this.props.booking.budget || 1500}</p>
               </div>
             </Col>
           </Row>

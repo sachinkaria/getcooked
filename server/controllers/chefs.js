@@ -8,8 +8,21 @@ module.exports.listChefs = list;
 module.exports.getChef = read;
 
 function list(req, res) {
-  User.find({ role: 'chef', status: 'listed' }).exec((err, chefs) => {
-    res.jsonp(chefs);
+  User.find({ role: 'chef', status: 'listed' }, 'profilePhoto displayName', (err, chefs) => {
+    const profiles = [];
+    let count = 0;
+    chefs.forEach(chef => (
+      Review.find({ chef: chef._id })
+        .populate('user', 'firstName')
+        .exec((err, reviews) => {
+          const numberOfReviews = reviews.length;
+          const rating = utils.getOverallRating(reviews);
+          const profile = _.extend(chef.toJSON(), { rating, numberOfReviews });
+          profiles.push(profile);
+          count += 1;
+          if (count === chefs.length) res.jsonp(profiles);
+        })
+    ));
   });
 }
 

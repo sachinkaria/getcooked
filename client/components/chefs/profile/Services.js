@@ -8,7 +8,7 @@ const Services = (props) => {
         { props.services.map(item =>
           (
             <div key={item} className="gc-inline-block">
-              <p className="text-capitalize gc-text">
+              <p className="text-capitalize gc-text gc-text--slim">
                 {item}
               </p>
             </div>

@@ -27,7 +27,7 @@ class Chefs extends React.Component {
                       name={chef.displayName}
                       rating={chef.rating}
                       endorsements={chef.endorsements}
-                      numberOfRatings={chef.numberOfRatings}
+                      numberOfReviews={chef.numberOfReviews}
                       serviceType={chef.serviceType}
                     />
                   ))

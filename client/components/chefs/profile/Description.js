@@ -3,7 +3,7 @@ import React from 'react';
 const Description = (props) => {
   return (
     <div className="gc-center">
-      <p className="gc-text">{props.description}</p>
+      <p className="gc-text gc-text--slim">{props.description}</p>
     </div>
   );
 };

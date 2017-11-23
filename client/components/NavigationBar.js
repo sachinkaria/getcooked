@@ -5,11 +5,30 @@ import { connect } from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
+import { getBookings } from '../actions/bookings';
 
-const NavigationBar = (props) => {
-  const showNav = !props.location.pathname.includes('setup');
+class NavigationBar extends React.Component{
+  constructor(props) {
+    super(props);
+    this.dashboardRoute = this.dashboardRoute.bind(this);
+  }
 
-  function dashboardRoute(role) {
+  componentWillMount() {
+    this.props.getBookings();
+  }
+
+  componentWillReceiveProps() {
+    if (this.props.user && this.props.bookings.length) {
+      const NEW_BOOKINGS = this.props.bookings.filter(booking => !booking.read);
+      if (NEW_BOOKINGS.length) {
+        document.title = `Get Cooked (${NEW_BOOKINGS.length})`;
+      } else {
+        document.title = 'Get Cooked';
+      }
+    }
+  }
+
+  dashboardRoute(role) {
     if (role === 'chef') {
       return '/dashboard/profile/basics';
     } else if (role === 'admin') {
@@ -17,6 +36,9 @@ const NavigationBar = (props) => {
     }
     return 'dashboard/account/settings';
   }
+
+  render() {
+  const showNav = !this.props.location.pathname.includes('setup');
   return (
     <div>
       <Navbar fixedTop className="gc-navbar">
@@ -37,8 +59,8 @@ const NavigationBar = (props) => {
             (isAuthenticated() && showNav) && (
               <Nav pullRight>
                 <NavItem>
-                  <Link to={dashboardRoute(props.user.data && props.user.data.role)}>
-                    <p className="gc-text gc-text--dark-grey">Dashboard</p>
+                  <Link to={this.dashboardRoute(this.props.user.data && this.props.user.data.role)}>
+                    <p className="gc-text gc-text--dark-grey">Dashboard <span>&#8226;</span></p>
                   </Link>
                 </NavItem>
               </Nav>
@@ -68,18 +90,19 @@ const NavigationBar = (props) => {
         </Navbar.Collapse>
       </Navbar>
       <div className="gc-container">
-        {props.children}
+        {this.props.children}
       </div>
     </div>
   );
+}
+
 };
 
 function mapStateToProps(state) {
   return {
     user: state.user,
-    inbox: state.user.inbox,
     bookings: state.user.bookings
   };
 }
 
-export default connect(mapStateToProps)(NavigationBar);
+export default connect(mapStateToProps, { getBookings })(NavigationBar);

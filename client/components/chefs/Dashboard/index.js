@@ -124,6 +124,9 @@ class Dashboard extends React.Component {
                     </Button>
                   </div>
               }
+              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to={'/logout'}>
+                Logout
+              </Link>
             </Col>
             <Col smOffset={0} sm={7}>
               {this.renderView()}
@@ -144,6 +147,13 @@ class Dashboard extends React.Component {
             </Row>
           </div>
           }
+          <Row className="visible-xs">
+            <Col xs={6} xsOffset={3} sm={6} smOffset={3}>
+              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom" to={'/logout'}>
+                Logout
+              </Link>
+            </Col>
+          </Row>
         </div>
       </div>
     );

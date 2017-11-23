@@ -50,6 +50,7 @@ class Chefs extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return { chefs: state.public.chefs };
 }
 

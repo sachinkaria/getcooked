@@ -8,6 +8,7 @@ import reducers from './reducers/index';
 import routes from './config/routes';
 import { AUTH_USER } from './actions/types';
 import { getCurrentUser } from './actions/users';
+import { getBookings } from './actions/bookings';
 
 require('./styles/main.scss');
 require('./images/logo-icon.png');
@@ -33,6 +34,7 @@ const token = localStorage.token;
 
 if (token) {
   store.dispatch(getCurrentUser());
+  store.dispatch(getBookings());
   store.dispatch({ type: AUTH_USER });
 }
 

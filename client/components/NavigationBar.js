@@ -41,11 +41,6 @@ const NavigationBar = (props) => {
                     <p className="gc-text gc-text--dark-grey">Dashboard</p>
                   </Link>
                 </NavItem>
-                <NavItem>
-                  <Link to={'/logout'}>
-                    <p className="gc-text gc-text--dark-grey">Logout</p>
-                  </Link>
-                </NavItem>
               </Nav>
             )
           }

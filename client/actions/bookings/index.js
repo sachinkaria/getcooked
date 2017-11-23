@@ -44,6 +44,7 @@ export function getBooking(id) {
           type: GET_BOOKING,
           payload: response.data
         });
+        dispatch(getBookings());
       })
       .catch(() => {
         errorHandler(dispatch, 'Sorry, there was a problem getting your booking.');

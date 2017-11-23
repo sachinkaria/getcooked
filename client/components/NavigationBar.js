@@ -1,16 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { Navbar, Nav, Col, Row, NavItem } from 'react-bootstrap';
+import {Link} from 'react-router';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
-import { getBookings } from '../actions/bookings';
+import {getBookings} from '../actions/bookings';
 
-class NavigationBar extends React.Component{
+
+class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
     this.dashboardRoute = this.dashboardRoute.bind(this);
+    this.state = {
+      newBookings: 0
+    };
   }
 
   componentWillMount() {
@@ -19,12 +23,15 @@ class NavigationBar extends React.Component{
 
   componentWillReceiveProps() {
     if (this.props.user && this.props.bookings.length) {
-      const NEW_BOOKINGS = this.props.bookings.filter(booking => !booking.read);
-      if (NEW_BOOKINGS.length) {
-        document.title = `Get Cooked (${NEW_BOOKINGS.length})`;
-      } else {
-        document.title = 'Get Cooked';
-      }
+      this.setState({
+        newBookings: this.props.bookings.filter(booking => !booking.read)
+      }, () => {
+        if (this.state.newBookings.length) {
+          document.title = `Get Cooked (${this.state.newBookings.length})`;
+        } else {
+          document.title = 'Get Cooked';
+        }
+      });
     }
   }
 
@@ -38,65 +45,77 @@ class NavigationBar extends React.Component{
   }
 
   render() {
-  const showNav = !this.props.location.pathname.includes('setup');
-  return (
-    <div>
-      <Navbar fixedTop className="gc-navbar">
-        <Col>
+    const showNav = !this.props.location.pathname.includes('setup');
+    return (
+      <div>
+        <Navbar fixedTop className="gc-navbar">
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/" className="gc-padding-none">
-                <img alt="Get Cooked" className="gc-logo-default" src="images/logo-icon.png" />
+                <img alt="Get Cooked" className="gc-logo-default" src="images/logo-icon.png"/>
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
-        </Col>
-        <ErrorHandler />
-        <SuccessHandler />
-        <Navbar.Collapse className="gc-navbar-dropdown">
-          {
-            (isAuthenticated() && showNav) && (
-              <Nav pullRight>
-                <NavItem>
-                  <Link to={this.dashboardRoute(this.props.user.data && this.props.user.data.role)}>
-                    <p className="gc-text gc-text--dark-grey">Dashboard <span>&#8226;</span></p>
-                  </Link>
-                </NavItem>
-              </Nav>
-            )
-          }
-          {
-            (!isAuthenticated() && showNav) && (
-              <Nav pullRight>
-                <NavItem>
-                  <Link to={'/chef/register'}>
-                    <p className="gc-text gc-text--dark-grey">I&apos;m a chef</p>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to={'/register'}>
-                    <p className="gc-text gc-text--dark-grey">Sign up</p>
-                  </Link>
-                </NavItem>
-                <NavItem>
-                  <Link to={'/login'}>
-                    <p className="gc-text gc-text--dark-grey">Login</p>
-                  </Link>
-                </NavItem>
-              </Nav>
-            )
-          }
-        </Navbar.Collapse>
-      </Navbar>
-      <div className="gc-container">
-        {this.props.children}
+          <ErrorHandler />
+          <SuccessHandler />
+          <Navbar.Collapse className="gc-navbar-dropdown">
+            {
+              (isAuthenticated() && showNav) && (
+                <div>
+                  <Nav pullRight>
+                    {this.state.newBookings.length > 0 &&
+                    <NavItem>
+                      <Link to={'/dashboard/bookings'}>
+                        <p className="gc-text gc-bold gc-text--dark-grey">
+                          New bookings ({this.state.newBookings.length})
+                        </p>
+                      </Link>
+                    </NavItem>
+                    }
+                    <NavItem>
+                      <Link to={this.dashboardRoute(this.props.user.data && this.props.user.data.role)}>
+                        <p className="gc-text gc-text--dark-grey">
+                          Dashboard
+                        </p>
+                      </Link>
+                    </NavItem>
+                  </Nav>
+                </div>
+              )
+            }
+            {
+              (!isAuthenticated() && showNav) && (
+                <Nav pullRight>
+                  <NavItem>
+                    <Link to={'/chef/register'}>
+                      <p className="gc-text gc-text--dark-grey">I&apos;m a chef</p>
+                    </Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link to={'/register'}>
+                      <p className="gc-text gc-text--dark-grey">Sign up</p>
+                    </Link>
+                  </NavItem>
+                  <NavItem>
+                    <Link to={'/login'}>
+                      <p className="gc-text gc-text--dark-grey">Login</p>
+                    </Link>
+                  </NavItem>
+                </Nav>
+              )
+            }
+          </Navbar.Collapse>
+        </Navbar>
+        <div className="gc-container">
+          {this.props.children}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 
-};
+}
+;
 
 function mapStateToProps(state) {
   return {

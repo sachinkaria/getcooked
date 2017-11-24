@@ -3,6 +3,10 @@
     position: fixed;
     top: 67px;
     border-radius: 0;
-    width: inherit;
+    width: 18.4%;
+
+    @include breakpoint(laptop) {
+      width: 20%;
+    }
   }
 }

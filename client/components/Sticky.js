@@ -30,7 +30,7 @@ export default class Sticky extends React.Component {
   }
 
   render() {
-    const { className, enter, exit, children, width } = this.props;
+    const { className, enter, exit, children } = this.props;
     return (
       <div
         className={`Sticky ${className}`}

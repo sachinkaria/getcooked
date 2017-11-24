@@ -18,11 +18,11 @@ class NavigationBar extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getBookings();
+    this.props.user.data && this.props.getBookings();
   }
 
   componentWillReceiveProps() {
-    if (this.props.user && this.props.bookings.length) {
+    if (this.props.user.data && this.props.bookings.length) {
       this.setState({
         newBookings: this.props.bookings.filter(booking => !booking.read)
       }, () => {

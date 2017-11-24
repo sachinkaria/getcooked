@@ -104,8 +104,8 @@ class Profile extends React.Component {
                     </div>
                 }
                 <hr />
-                <Row className="gc-margin-bottom--lg">
-                  <h3 className="gc-form-heading gc-margin-bottom--lg">Reviews ({NUMBER_OF_REVIEWS})</h3>
+                <Row className={NUMBER_OF_REVIEWS && 'gc-margin-bottom--lg'}>
+                  <h3 className={NUMBER_OF_REVIEWS > 0 ? 'gc-form-heading gc-margin-bottom--lg' : 'gc-form-heading'}>Reviews ({NUMBER_OF_REVIEWS})</h3>
                   {
                     (REVIEWS.length > 0) &&
                     <Col xs={10} xsOffset={1}>

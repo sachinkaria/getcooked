@@ -1,6 +1,7 @@
 const Booking = require('../models/booking');
 const User = require('../models/user');
 const twilio = require('./twilio');
+const moment = require('moment');
 const _ = require('lodash');
 
 module.exports.create = create;
@@ -50,7 +51,8 @@ function create(req, res) {
       line2: BOOKING.address_line2,
       city: BOOKING.city,
       postcode: BOOKING.postcode,
-    }
+    },
+    budget: BOOKING.budget
   });
 
   booking.save((err) => {
@@ -59,7 +61,7 @@ function create(req, res) {
     User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber phoneCode contactNumber', (error, chef) => {
       if (error) return (error);
 
-      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName} ${USER.lastName}. You can check out more details about this enquiry on your dashboard.`;
+      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName} for a event on the ${moment(booking.date).format('Do MMM YY')} for ${booking.number_of_people} people with a budget of £${booking.budget}. Login for more details.`;
       if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
       res.jsonp(booking);
     });

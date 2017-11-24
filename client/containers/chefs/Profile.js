@@ -13,6 +13,7 @@ import Description from '../../components/chefs/profile/Description';
 import Images from '../../components/chefs/profile/Images';
 import Reviews from '../../components/chefs/reviews/List';
 import Ratings from '../../components/chefs/profile/Ratings';
+import Sticky from '../../components/Sticky';
 import * as actions from '../../actions/public';
 
 
@@ -128,14 +129,16 @@ class Profile extends React.Component {
               <br />
             </Col>
             <BookingForm mobile id={CHEF._id} />
-            <Col sm={3} xsHidden>
-              <Panel className="gc-panel gc-panel--translucent">
-                <div>
-                  <BookingForm id={CHEF._id} />
-                </div>
-              </Panel>
-              <ReviewForm block id={CHEF._id} />
-            </Col>
+              <Col sm={3} xsHidden>
+                <Sticky enter="254">
+                <Panel className="gc-panel gc-panel--translucent">
+                  <div>
+                    <BookingForm id={CHEF._id} />
+                  </div>
+                </Panel>
+                <ReviewForm block id={CHEF._id} />
+                </Sticky>
+              </Col>
           </div>
         </Row>
       </div>

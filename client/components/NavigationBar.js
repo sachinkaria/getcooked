@@ -19,11 +19,11 @@ class NavigationBar extends React.Component {
   }
 
   componentWillMount() {
-    this.props.user.data && this.props.getBookings();
+    isAuthenticated() && this.props.getBookings();
   }
 
   componentWillReceiveProps() {
-    this.props.user.data && this.props.getBookings();
+    isAuthenticated() && this.props.getBookings();
     this.updateBookings();
   }
 

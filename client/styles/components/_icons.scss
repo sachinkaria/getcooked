@@ -14,6 +14,12 @@
   margin-right: 5px;
   margin-left: 5px;
 
+
+  &.gc-icon--md {
+    height: 32px;
+    width: 32px;
+  }
+
   &.gc-icon--xl {
     height: 70px;
     width: 70px;
@@ -29,6 +35,22 @@
 
   &.gc-icon--money{
     background-image: url("../images/icons/credit-card.png");
+  }
+
+  &.gc-icon--twitter{
+    background-image: url("../images/icons/twitter.svg");
+  }
+
+  &.gc-icon--facebook{
+    background-image: url("../images/icons/facebook.svg");
+  }
+
+  &.gc-icon--email{
+    background-image: url("../images/icons/email.svg");
+  }
+
+  &.gc-icon--instagram{
+    background-image: url("../images/icons/instagram.svg");
   }
 
   &.gc-icon--loading{

@@ -36,7 +36,7 @@ export function registerUser({ email, password }, redirect) {
         }
       })
       .catch((error) => {
-        errorHandler(dispatch, error.response, AUTH_ERROR);
+        errorHandler(dispatch, 'There was a problem signing up. Please try again.');
       });
   };
 }
@@ -51,7 +51,7 @@ export function registerChef({ email, password }) {
         hashHistory.push('/setup/personal');
       })
       .catch((error) => {
-        errorHandler(dispatch, error.response, AUTH_ERROR);
+        errorHandler(dispatch, 'There was a problem signing up. Please try again.');
       });
   };
 }

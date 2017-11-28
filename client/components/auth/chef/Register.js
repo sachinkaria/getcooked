@@ -45,9 +45,8 @@ class RegisterChef extends Component {
 
     return (
       <Col sm={8} smOffset={2} md={4} mdOffset={4}>
-        <Panel className="gc-panel-light">
-          <h4 className="gc-profile-heading-md gc-center">Sign up</h4>
-          <br />
+        <div>
+          <h4 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h4>
           <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <Row>
@@ -72,10 +71,14 @@ class RegisterChef extends Component {
                 />
               </Col>
             </Row>
-            <p className="gc-text gc-center"><Link to="/login">Already have an account? </Link></p>
+            <Row className="gc-margin-bottom--lg">
+              <Col>
+                <Link className="gc-text gc-bold" to="/login">Already have an account? </Link>
+              </Col>
+            </Row>
             <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
           </form>
-        </Panel>
+        </div>
       </Col>
     );
   }

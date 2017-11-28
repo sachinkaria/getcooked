@@ -8,7 +8,7 @@
   "basic": {
     "number": 2,
     "name": "basic details",
-    "description": "Your basic details such as your contact details and description will be published on your profile and will give everyone some basic information on your services as well as a way for them to contact you.",
+    "description": "Give viewers some basic information on your who you are as well as a way for them to contact you.",
     "onNext": "/setup/services",
     "onBack": "/setup/personal"
   },
@@ -29,7 +29,7 @@
   "photos": {
     "number": 5,
     "name": "photos",
-    "description": "Add your profile picture and your cover photo to your account. The recommended dimensions for your profile picture are 800x800px and for your cover photo 2000x500px.",
+    "description": "Add your profile picture and your cover photo to your account. The recommended dimensions for your profile picture are 800 x 800px and for your cover photo 2000 x 500px.",
     "onNext": "/dashboard/profile/basics",
     "onBack": "/setup/food"
   },

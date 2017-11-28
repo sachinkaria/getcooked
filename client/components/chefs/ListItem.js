@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Thumbnail } from 'react-bootstrap';
 import { Link } from 'react-router';
-import ServiceTypes from './profile/ServiceTypes'
 
 const StarRatingComponent = require('react-star-rating-component');
 
@@ -13,7 +12,7 @@ const ListItem = (props) => {
   };
 
   return (
-    <Col xs={12} sm={4} md={3} className="gc-profile-wrapper">
+    <Col xs={12} sm={4} md={props.isHome ? 4 : 3} className="gc-profile-wrapper">
       <Link to={`/chefs/${props.id}`}>
         <Thumbnail className="gc-profile-thumbnail img-responsive" style={styles} />
         <div className="gc-profile-infobox">
@@ -33,13 +32,15 @@ const ListItem = (props) => {
 };
 
 ListItem.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  profilePhoto: PropTypes.string.isRequired
+  id: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
+  isHome: React.PropTypes.bool,
+  profilePhoto: React.PropTypes.string.isRequired
 };
 
 ListItem.defaultProps = {
-  numberOfRatings: null
+  numberOfRatings: null,
+  isHome: false
 };
 
 export default ListItem;

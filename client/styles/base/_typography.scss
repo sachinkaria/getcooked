@@ -40,17 +40,29 @@
   font-weight: 700;
 }
 
-.gc-heading {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 46px;
-  font-weight: 600;
-  color: $green;
-  margin-bottom: 36px;
+.gc-title {
+  font-family: $primary-font;
+  font-size: 42px;
+  font-weight: 700;
+  color: $primary-colour;
   margin-top: 36px;
 
   @include breakpoint(tablet) {
-    margin-top: 40px;
-    font-size: 78px;
+    margin-top: 48px;
+    font-size: 64px;
+  }
+}
+
+.gc-heading {
+  font-family: $primary-font;
+  font-size: 32px;
+  font-weight: 700;
+  color: $dark-grey;
+  margin-bottom: 36px;
+  margin-top: 0;
+
+  @include breakpoint(tablet) {
+    font-size: 48px;
   }
 }
 

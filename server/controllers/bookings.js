@@ -22,12 +22,13 @@ function list(req, res) {
 
 function read(req, res) {
   const BOOKING_ID = req.params.id;
+  const USER = req.user;
   Booking
     .findOne({ _id: BOOKING_ID })
     .populate('user', 'email mobileNumber firstName lastName')
     .populate('chef', 'profilePhoto displayName')
     .exec((err, booking) => {
-      if (!booking.read) {
+      if (!booking.read && USER.role === 'chef') {
         booking.read = true;
         booking.save();
       }

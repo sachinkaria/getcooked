@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
-import {getBookings} from '../actions/bookings';
+import { getBookings } from '../actions/bookings';
 
 
 class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
     this.dashboardRoute = this.dashboardRoute.bind(this);
+    this.updateBookings = this.updateBookings.bind(this);
     this.state = {
       newBookings: 0
     };
@@ -22,6 +23,11 @@ class NavigationBar extends React.Component {
   }
 
   componentWillReceiveProps() {
+    this.props.user.data && this.props.getBookings();
+    this.updateBookings();
+  }
+
+  updateBookings() {
     if (this.props.user.data && this.props.bookings.length) {
       this.setState({
         newBookings: this.props.bookings.filter(booking => !booking.read)
@@ -46,6 +52,7 @@ class NavigationBar extends React.Component {
 
   render() {
     const showNav = !this.props.location.pathname.includes('setup');
+    const { user } = this.props;
     return (
       <div>
         <Navbar fixedTop className="gc-navbar">
@@ -61,10 +68,10 @@ class NavigationBar extends React.Component {
           <SuccessHandler />
           <Navbar.Collapse className="gc-navbar-dropdown">
             {
-              (isAuthenticated() && showNav) && (
+              (isAuthenticated() && user.data && showNav) && (
                 <div>
                   <Nav pullRight>
-                    {this.state.newBookings.length > 0 &&
+                    {user.data.role === 'chef' && this.state.newBookings.length > 0 &&
                     <NavItem>
                       <Link to={'/dashboard/bookings'}>
                         <p className="gc-text gc-bold gc-text--dark-grey">
@@ -74,7 +81,7 @@ class NavigationBar extends React.Component {
                     </NavItem>
                     }
                     <NavItem>
-                      <Link to={this.dashboardRoute(this.props.user.data && this.props.user.data.role)}>
+                      <Link to={this.dashboardRoute(user.data && user.data.role)}>
                         <p className="gc-text gc-text--dark-grey">
                           Dashboard
                         </p>

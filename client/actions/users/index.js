@@ -65,7 +65,7 @@ export function completedFileUpload() {
 export function deletePhoto(type) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
-    axios.delete(`${API_URL}/users/photos/${type}`, AUTH_HEADERS)
+    axios.delete(`${API_URL}/users/photo/${type}`, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         // hashHistory.push(url);

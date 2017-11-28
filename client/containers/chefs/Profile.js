@@ -44,7 +44,7 @@ class Profile extends React.Component {
                     <Heading text={CHEF.displayName} />
                   </div>
                   <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
-                    <ProfilePicture withoutMargins={(REVIEWS.length > 0) ? true : false} photoUrl={CHEF.profilePhoto} />
+                    <ProfilePicture withoutMargins={REVIEWS.length > 0} photoUrl={CHEF.profilePhoto} />
                   </Col>
                 </Row>
                 {
@@ -129,16 +129,18 @@ class Profile extends React.Component {
               <br />
             </Col>
             <BookingForm mobile id={CHEF._id} />
-              <Col sm={3} xsHidden>
-                <Sticky enter="254">
+            <Col sm={3} xsHidden>
+              <Sticky enter="254">
                 <Panel className="gc-panel gc-panel--translucent">
-                  <div>
+                  <div className="gc-center">
                     <BookingForm id={CHEF._id} />
+                    <p className="gc-text gc-text--slim gc-grey gc-margin-top">Contact this caterer and check their availability for
+                      your event.</p>
                   </div>
                 </Panel>
                 <ReviewForm block id={CHEF._id} />
-                </Sticky>
-              </Col>
+              </Sticky>
+            </Col>
           </div>
         </Row>
       </div>

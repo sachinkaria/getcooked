@@ -106,6 +106,7 @@ class Photos extends Component {
     if (type === 'multiple') {
       this.props.deleteMultiple(item._id);
     } else {
+      console.log(type);
       this.props.deletePhoto(type);
     }
   }

@@ -26,10 +26,9 @@ module.exports = function (app) {
   app.post('/users/photos/cover', requireAuth, User.uploadCoverPhoto);
 
   // Delete photos
+  app.delete('/users/photo/profile', requireAuth, User.deleteProfilePhoto);
+  app.delete('/users/photo/cover', requireAuth, User.deleteCoverPhoto);
   app.delete('/users/photos/:id', requireAuth, User.deletePhoto);
-  app.delete('/users/photos/profile', requireAuth, User.deleteProfilePhoto);
-  app.delete('/users/photos/cover', requireAuth, User.deleteCoverPhoto);
-
 
   // Get profile route
   app.get('/users/me', requireAuth, User.getCurrentUser);

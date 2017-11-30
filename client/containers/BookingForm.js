@@ -16,8 +16,19 @@ const form = reduxForm({
   validate
 });
 
-function validate(formProps) {
+function validate(formProps, props) {
   const errors = {};
+  const { chef } = props;
+
+  const PER_HEAD_BUDGET = parseInt(formProps.budget / formProps.numberOfPeople).toFixed(2);
+
+  if (chef.minimumPerHeadBudget && (PER_HEAD_BUDGET < chef.minimumPerHeadBudget)) {
+    errors.budget = `Your budget does not meet the minimum amount (£${chef.minimumPerHeadBudget}/ per person) required to book this caterer.`;
+  }
+
+  if (chef.minimumTotalBudget && (formProps.budget < chef.minimumTotalBudget)) {
+    errors.budget = `Your budget of does not meet the minimum amount (£${chef.minimumTotalBudget}) required to book this caterer.`;
+  }
 
   if (formProps.eventType === 'select') {
     errors.eventType = 'Please select an event type';
@@ -195,27 +206,35 @@ class BookingForm extends React.Component {
                       </Field>
                     </div>
                     <label className="gc-text">Number of people (approx.)</label>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        name="numberOfPeople"
-                        placeholder="e.g. 200"
-                        className="form-control gc-input gc-margin-bottom"
-                        component={renderField}
-                        type="number"
-                      />
-                    </div>
+                    <Row>
+                      <Col sm={6}>
+                        <div className="gc-margin-bottom">
+                          <Field
+                            name="numberOfPeople"
+                            placeholder="e.g. 200"
+                            className="form-control gc-input gc-margin-bottom"
+                            component={renderField}
+                            type="number"
+                          />
+                        </div>
+                      </Col>
+                    </Row>
                     <label className="gc-text">Budget</label>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        addonText="£"
-                        withAddon
-                        name="budget"
-                        placeholder="e.g. 1500"
-                        className="form-control gc-input gc-margin-bottom"
-                        component={renderField}
-                        type="number"
-                      />
-                    </div>
+                    <Row>
+                      <Col sm={6}>
+                        <div className="gc-margin-bottom">
+                          <Field
+                            addonText="£"
+                            withAddon
+                            name="budget"
+                            placeholder="e.g. 1500"
+                            className="form-control gc-input gc-margin-bottom"
+                            component={renderField}
+                            type="number"
+                          />
+                        </div>
+                      </Col>
+                    </Row>
                     <label className="gc-text">Additional Information</label>
                     <div className="gc-margin-bottom">
                       <Field

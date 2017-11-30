@@ -128,12 +128,12 @@ class Profile extends React.Component {
               </Panel>
               <br />
             </Col>
-            <BookingForm mobile id={CHEF._id} />
+            <BookingForm mobile />
             <Col sm={3} xsHidden>
               <Sticky enter="254">
                 <Panel className="gc-panel gc-panel--translucent">
                   <div className="gc-center">
-                    <BookingForm id={CHEF._id} />
+                    <BookingForm />
                     <p className="gc-profile-text-xs gc-bold gc-dark-grey gc-margin-top">Contact this caterer and check their availability for
                       your event.</p>
                   </div>

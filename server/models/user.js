@@ -82,6 +82,8 @@ const UserSchema = new Schema({
   additionalServices: [{
     type: String
   }],
+  minimumTotalBudget: Number,
+  minimumPerHeadBudget: Number,
   resetPasswordToken: { type: String },
   resetPasswordExpires: { type: Date }
 },

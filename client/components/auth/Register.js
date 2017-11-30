@@ -51,7 +51,7 @@ class Register extends Component {
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <div className="gc-margin-bottom--lg">
-              {redirect && <Link className="gc-text gc-bold" to="/chef/register">Are you a caterer? <span className="gc-orange">I&apos;m a caterer</span> </Link>}
+              {redirect && <Link className="gc-text gc-bold" to="/chef/register">Are you a caterer? <span className="gc-orange">Sign up as a caterer</span> </Link>}
             </div>
             <Row>
               <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>

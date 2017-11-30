@@ -3,9 +3,9 @@ import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS } 
 import { errorHandler } from '../public';
 
 const API_URL = 'http://localhost:3000';
-const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 
 export function adminListChefs() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.get(`${API_URL}/admin/chefs`, AUTH_HEADERS)
       .then((response) => {
@@ -21,6 +21,7 @@ export function adminListChefs() {
 }
 
 export function adminListUsers() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.get(`${API_URL}/admin/users`, AUTH_HEADERS)
       .then((response) => {
@@ -51,6 +52,7 @@ export function adminGetChef(id) {
 }
 
 export function updateStatus(status, id) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.get(`${API_URL}/admin/chefs/${id}/${status}`, AUTH_HEADERS)
       .then((response) => {

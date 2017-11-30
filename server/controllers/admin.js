@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const User = require('../models/user');
 const ObjectId = require('mongodb').ObjectId;
+const twilio = require('./twilio');
 
 module.exports.listChefs = allChefs;
 module.exports.listUsers = allUsers;
@@ -38,9 +39,14 @@ function approve(req, res) {
     if (chef.status === 'pending') {
       _.extend(chef, { status: 'listed' });
     }
-    chef.save();
-    chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
-    res.jsonp(chef);
+    chef.save((error) => {
+      if (error) return error;
+
+      const MESSAGE = `Hi ${chef.firstName}! Your profile has been approved and is now publicly listed. `;
+      if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
+      chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
+      res.jsonp(chef);
+    });
   });
 }
 

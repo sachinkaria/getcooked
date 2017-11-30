@@ -26,7 +26,7 @@ class Home extends React.Component {
               <Col className="gc-margin-bottom gc-padding-none">
                 <Row className="gc-center">
                   <Col>
-                    <h4 className="gc-profile-text-md gc-bold gc-margin-bottom--lg">Featured Chefs</h4>
+                    <h4 className="gc-profile-text-md gc-bold gc-margin-bottom--lg">Featured Caterers</h4>
                     <Row className="gc-margin-bottom--sm">
                       {
                         chefs.map(chef => (

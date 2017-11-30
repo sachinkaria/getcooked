@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { updateUser } from '../../../actions/users';
@@ -9,7 +10,7 @@ import Steps from './steps.json';
 
 const form = reduxForm({
   form: 'setup-basic',
-  fields: ['displayName', 'companyWebsite', 'companyEmail', 'companyPhoneNumber', 'description'],
+  fields: ['displayName', 'companyWebsite', 'companyEmail', 'companyPhoneNumber', 'minimumTotalBudget', 'minimumPerHeadBudget', 'description'],
   validate
 });
 
@@ -18,10 +19,6 @@ function validate(formProps) {
 
   if (!formProps.displayName) {
     errors.displayName = 'Please enter your display name';
-  }
-
-  if (!formProps.companyWebsite) {
-    errors.companyWebsite = 'Please enter your professional website';
   }
 
   if (!formProps.companyEmail) {
@@ -78,7 +75,7 @@ class BasicInfo extends Component {
               type="text"
             />
           </div>
-          <label className="gc-text">Professional website</label>
+          <label className="gc-text">Professional website (optional)</label>
           <div>
             <Field
               name="companyWebsite"
@@ -108,6 +105,40 @@ class BasicInfo extends Component {
               type="string"
             />
           </div>
+          <label className="gc-text">Minimum event budget (optional)</label>
+          <p className="gc-profile-text-xs gc-grey">You will only receive inquiries which meet this event budget.</p>
+          <Row>
+            <Col xs={6}>
+              <div>
+                <Field
+                  addonText="£"
+                  withAddon
+                  name="minimumTotalBudget"
+                  placeholder="e.g. 500"
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="number"
+                />
+              </div>
+            </Col>
+          </Row>
+          <label className="gc-text">Minimum per head budget (optional)</label>
+          <p className="gc-profile-text-xs gc-grey">You will only receive inquiries which meet this per head budget.</p>
+          <Row>
+            <Col xs={6}>
+              <div>
+                <Field
+                  addonText="£"
+                  withAddon
+                  name="minimumPerHeadBudget"
+                  placeholder="e.g. 7"
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="number"
+                />
+              </div>
+            </Col>
+          </Row>
           <label className="gc-text">Description</label>
           <div>
             <Field

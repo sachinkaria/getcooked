@@ -26,6 +26,7 @@
     "bootstrap": "^3.3.7",
     "chokidar": "^1.7.0",
     "classnames": "^2.2.5",
+    "concurrently": "^3.5.1",
     "crypto": "0.0.3",
     "css-loader": "^0.26.2",
     "es6-shim": "^0.35.3",

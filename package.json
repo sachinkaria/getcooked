@@ -8,6 +8,7 @@
     "server": "node server.js",
     "prod": "webpack -p",
     "start-dev": "concurrently \"npm run client\" \"npm run server\"",
+    "start": "concurrently \"npm run client\" \"npm run server\"",
     "lint": "eslint -c .eslintrc.yml *.js client --cache --quiet"
   },
   "engines": {

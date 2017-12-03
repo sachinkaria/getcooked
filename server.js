@@ -61,6 +61,14 @@ const io = socket(server);
 
 require('./server/config/socket').initialiseSocket(io);
 
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('dist'));
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  });
+}
+
 // starts the server and listens for requests
 server
   .listen(config.port)

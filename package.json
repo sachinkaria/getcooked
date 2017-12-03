@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "client": "webpack-dev-server",
+    "build": "webpack -p",
     "server": "node server.js",
-    "prod": "webpack -p",
+    "start": "node server.js",
     "start-dev": "concurrently \"npm run client\" \"npm run server\"",
-    "start": "concurrently \"npm run client\" \"npm run server\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build",
     "lint": "eslint -c .eslintrc.yml *.js client --cache --quiet"
   },
   "engines": {

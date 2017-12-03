@@ -21,6 +21,5 @@ module.exports = {
         {test: /\.scss$/, loaders: ['style-loader', 'css-loader','postcss-loader', 'sass-loader','resolve-url-loader']}
         ]
   },
-  plugins: [HTMLWebpackPluginConfig],
-    watch: true
+  plugins: [HTMLWebpackPluginConfig]
 };

@@ -9,6 +9,7 @@
     "server": "node server.js",
     "start": "node server.js",
     "start-dev": "concurrently \"npm run client\" \"npm run server\"",
+    "heroku-postbuild": "npm run build",
     "lint": "eslint -c .eslintrc.yml *.js client --cache --quiet"
   },
   "engines": {

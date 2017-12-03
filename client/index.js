@@ -40,6 +40,6 @@ if (token) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory} routes={routes} />
+    <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory} routes={routes} />
   </Provider>,
   document.getElementById('app'));

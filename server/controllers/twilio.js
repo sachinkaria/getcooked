@@ -1,6 +1,7 @@
 // Twilio Credentials
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_TOKEN;
+const config = require('../config/main');
+const accountSid = config.twilio_account_sid;
+const authToken = config.twilio_token;
 
 // require the Twilio module and create a REST client
 const client = require('twilio')(accountSid, authToken);

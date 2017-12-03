@@ -5,7 +5,7 @@ import moment from 'moment';
 const ReviewItem = props => (
   <Row className="text-left">
     <Col sm={3}>
-      <p className="gc-text gc-margin-none">{props.name}</p>
+      <p className="gc-text gc-bold gc-green gc-margin-none">{props.name}</p>
       <p className="gc-text gc-bold gc-profile-text-xs">{moment(props.date).format('Do MMM YYYY')} </p>
     </Col>
     <Col sm={9}>

@@ -134,7 +134,7 @@ class Profile extends React.Component {
                 <Panel className="gc-panel gc-panel--translucent">
                   <div className="gc-center">
                     <BookingForm />
-                    <p className="gc-profile-text-xs gc-bold gc-dark-grey gc-margin-top">Contact this caterer and check their availability for
+                    <p className="gc-profile-text-xs gc-dark-grey gc-margin-top">Contact this caterer and check their availability for
                       your event.</p>
                   </div>
                 </Panel>

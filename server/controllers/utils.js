@@ -1,15 +1,16 @@
 const knox = require('knox');
 const jimp = require('jimp');
 const Review = require('../models/review');
+const config = require('../config/main');
 const ObjectId = require('mongodb').ObjectId;
 const _ = require('lodash');
 
 const s3Client = knox.createClient({
-  key: 'key',
-  secret: 'secret',
-  bucket: 'getcooked',
-  endpoint: 'localhost',
-  port: 10001,
+  key: config.aws_key,
+  secret: config.aws_secret,
+  bucket: config.aws_bucket,
+  endpoint: config.aws_endpoint,
+  port: config.aws_port,
   secure: false,
   style: 'path',
   region: 'eu'

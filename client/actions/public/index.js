@@ -42,7 +42,8 @@ export function listChefs() {
           payload: response.data
         });
       })
-      .catch(() => {
+      .catch((err) => {
+      console.log(err);
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
       });
   };
@@ -57,7 +58,8 @@ export function getChef(id) {
           payload: response.data
         });
       })
-      .catch(() => {
+      .catch((err) => {
+      console.log(err);
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
       });
   };

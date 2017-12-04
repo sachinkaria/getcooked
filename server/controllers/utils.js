@@ -13,7 +13,7 @@ const s3Client = knox.createClient({
   port: config.aws_port,
   secure: false,
   style: 'path',
-  region: 'eu'
+  region: config.aws_region
 });
 
 function imageUploader(options, type, callback) {

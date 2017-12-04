@@ -11,8 +11,8 @@ const s3Client = knox.createClient({
   bucket: config.aws_bucket,
   endpoint: config.aws_endpoint,
   port: config.aws_port,
-  secure: false,
-  style: 'path',
+  secure: config.aws_secure,
+  style: config.aws_style,
   region: config.aws_region
 });
 

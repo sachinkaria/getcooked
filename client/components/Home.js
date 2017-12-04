@@ -29,6 +29,7 @@ class Home extends React.Component {
                     <h4 className="gc-profile-text-md gc-bold gc-margin-bottom--lg">Featured Caterers</h4>
                     <Row className="gc-margin-bottom--sm">
                       {
+                        (chefs.length > 0) &&
                         chefs.map(chef => (
                           <ListItem
                             isHome

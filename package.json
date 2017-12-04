@@ -9,7 +9,7 @@
     "server": "node server.js",
     "start": "node server.js",
     "start-dev": "concurrently \"npm run client\" \"npm run server\"",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build",
     "lint": "eslint -c .eslintrc.yml *.js client --cache --quiet"
   },
   "engines": {
@@ -81,7 +81,9 @@
     "socket.io-stream": "^0.9.1",
     "style-loader": "^0.13.2",
     "twilio": "^3.9.3",
-    "babel-core": "^6.4.5",
+    "babel-core": "^6.4.5"
+  },
+  "devDependencies": {
     "babel-loader": "^6.2.1",
     "babel-plugin-transform-es2015-destructuring": "^6.23.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -96,7 +98,5 @@
     "sass-loader": "^6.0.2",
     "webpack": "2.2.1",
     "webpack-dev-server": "^1.14.1"
-  },
-  "devDependencies": {
   }
 }

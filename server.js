@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const config = require('./server/config/main');
 const chokidar = require('chokidar');
-const socket = require('socket.io');
-const http = require('http');
 const authRoutes = require('./server/routes/user');
 const adminRoutes = require('./server/routes/admin');
 const bookingRoutes = require('./server/routes/booking');
@@ -56,11 +54,6 @@ chefRoutes(router);
 conversationRoutes(router);
 reviewRoutes(router);
 
-const server = http.createServer(app);
-const io = socket(server);
-
-require('./server/config/socket').initialiseSocket(io);
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('dist'));
   const path = require('path');
@@ -70,13 +63,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // starts the server and listens for requests
-server
-  .listen(config.port)
-  .on('connection', (socketIo) => {
-    console.log('A client is connected!');
-    socketIo.setTimeout(30 * 1000);
-  });
-
+app.listen(config.port, () => {
+  console.log(`api running on port ${config.port}`);
+});
 
 // Use our router configuration when we call /
 app.use('/', router);
@@ -91,6 +80,5 @@ mongoose.connect(config.database, {
   useMongoClient: true,
 });
 
-console.log(`api running on port ${config.port}`);
 
 // mongoose.connect('mongodb://sachinkaria:manchester04@ds161890.mlab.com:61890/get-cooked');

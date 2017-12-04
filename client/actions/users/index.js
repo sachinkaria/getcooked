@@ -3,12 +3,10 @@ import { hashHistory } from 'react-router';
 import { UPDATE_USER, PROCESSING_FILE_UPLOAD, COMPLETED_FILE_UPLOAD } from '../types';
 import { errorHandler, successHandler } from '../public';
 
-const API_URL = 'http://localhost:3000';
-
 export function updateUser(user, url, showSuccess) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
-    axios.put(`${API_URL}/users`, user, AUTH_HEADERS)
+    axios.put('/api/users', user, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         if (showSuccess) successHandler(dispatch, 'Your changes have been successfully saved.');
@@ -24,7 +22,7 @@ export function uploadPhoto(file, type) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     dispatch(processingFileUpload());
-    axios.post(`${API_URL}/users/photos/${type}`, file, AUTH_HEADERS)
+    axios.post(`/api/users/photos/${type}`, file, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         dispatch(completedFileUpload());
@@ -41,7 +39,7 @@ export function uploadMultiplePhotos(files) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
     dispatch(processingFileUpload());
-    axios.all(files.map(file => axios.post(`${API_URL}/users/photos`, file, AUTH_HEADERS)))
+    axios.all(files.map(file => axios.post('/api/users/photos', file, AUTH_HEADERS)))
       .then(() => {
         dispatch(completedFileUpload());
         dispatch(getCurrentUser());
@@ -65,7 +63,7 @@ export function completedFileUpload() {
 export function deletePhoto(type) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
-    axios.delete(`${API_URL}/users/photo/${type}`, AUTH_HEADERS)
+    axios.delete(`/api/users/photo/${type}`, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         // hashHistory.push(url);
@@ -79,7 +77,7 @@ export function deletePhoto(type) {
 export function deleteMultiple(id) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
-    axios.delete(`${API_URL}/users/photos/${id}`, AUTH_HEADERS)
+    axios.delete(`/api/users/photos/${id}`, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         // hashHistory.push(url);
@@ -94,7 +92,7 @@ export function deleteMultiple(id) {
 export function getCurrentUser() {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
-    axios.get(`${API_URL}/users/me`, AUTH_HEADERS)
+    axios.get('/api/users/me', AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
       })
@@ -107,7 +105,7 @@ export function getCurrentUser() {
 export function updatePassword(password, showSuccess) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
   return function (dispatch) {
-    axios.put(`${API_URL}/users/password`, password, AUTH_HEADERS)
+    axios.put('/api/users/password', password, AUTH_HEADERS)
       .then(() => {
         if (showSuccess) successHandler(dispatch, 'Your password has been updated.');
       })

@@ -1,13 +1,8 @@
 {
   "name": "get-cooked",
   "version": "1.0.0",
-  "description": "",
+  "description": "Cater your events with the coolest chefs around.",
   "main": "index.js",
-  "proxy": {
-    "/api/": {
-      "target": "http://localhost:3000"
-    }
-  },
   "scripts": {
     "client": "webpack-dev-server",
     "build": "webpack -p",
@@ -85,8 +80,7 @@
     "socket.io-client": "^2.0.3",
     "socket.io-stream": "^0.9.1",
     "style-loader": "^0.13.2",
-    "twilio": "^3.9.3",
-
+    "twilio": "^3.9.3"
   },
   "devDependencies": {
     "babel-core": "^6.4.5",

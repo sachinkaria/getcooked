@@ -11,25 +11,25 @@ const requireLogin = passport.authenticate('local', { session: false });
 
 module.exports = function (app) {
   // Registration route
-  app.post('/users/create', AuthenticationController.register);
+  app.post('/api/users/create', AuthenticationController.register);
 
   // Login route
-  app.post('/users/login', requireLogin, AuthenticationController.login);
+  app.post('/api/users/login', requireLogin, AuthenticationController.login);
 
   // Update route
-  app.put('/users', requireAuth, User.update);
-  app.put('/users/password', requireAuth, User.updatePassword);
+  app.put('/api/users', requireAuth, User.update);
+  app.put('/api/users/password', requireAuth, User.updatePassword);
 
   // Upload photos
-  app.post('/users/photos', requireAuth, User.uploadPhoto);
-  app.post('/users/photos/profile', requireAuth, User.uploadProfilePhoto);
-  app.post('/users/photos/cover', requireAuth, User.uploadCoverPhoto);
+  app.post('/api/users/photos', requireAuth, User.uploadPhoto);
+  app.post('/api/users/photos/profile', requireAuth, User.uploadProfilePhoto);
+  app.post('/api/users/photos/cover', requireAuth, User.uploadCoverPhoto);
 
   // Delete photos
-  app.delete('/users/photo/profile', requireAuth, User.deleteProfilePhoto);
-  app.delete('/users/photo/cover', requireAuth, User.deleteCoverPhoto);
-  app.delete('/users/photos/:id', requireAuth, User.deletePhoto);
+  app.delete('/api/users/photo/profile', requireAuth, User.deleteProfilePhoto);
+  app.delete('/api/users/photo/cover', requireAuth, User.deleteCoverPhoto);
+  app.delete('/api/users/photos/:id', requireAuth, User.deletePhoto);
 
   // Get profile route
-  app.get('/users/me', requireAuth, User.getCurrentUser);
+  app.get('/api/users/me', requireAuth, User.getCurrentUser);
 };

@@ -9,8 +9,8 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 
 
 module.exports = function(app) {
-    app.get('/conversations', requireAuth, ConversationController.list);
-    app.post('/conversations/create', requireAuth, ConversationController.create);
-    app.get('/conversations/:id/messages', requireAuth, ConversationController.get);
-    app.post('/conversations/:id/messages/create', requireAuth, MessageController.create);
+    app.get('/api/conversations', requireAuth, ConversationController.list);
+    app.post('/api/conversations/create', requireAuth, ConversationController.create);
+    app.get('/api/conversations/:id/messages', requireAuth, ConversationController.get);
+    app.post('/api/conversations/:id/messages/create', requireAuth, MessageController.create);
 };

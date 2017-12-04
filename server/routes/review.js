@@ -8,6 +8,6 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 
 
 module.exports = function(app) {
-  app.get('/chefs/:id/reviews', requireAuth, ReviewsController.list);
-  app.post('/chefs/:id/reviews/create', requireAuth, ReviewsController.create);
+  app.get('/api/chefs/:id/reviews', requireAuth, ReviewsController.list);
+  app.post('/api/chefs/:id/reviews/create', requireAuth, ReviewsController.create);
 };

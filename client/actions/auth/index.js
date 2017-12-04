@@ -4,12 +4,9 @@ import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, UPDATE_USER } from '../types';
 import { errorHandler } from '../public';
 import { getCurrentUser } from '../users';
 
-const API_URL = 'http://localhost:3000';
-
-
 export function loginUser({ email, password }) {
   return (dispatch) => {
-    axios.post(`${API_URL}/users/login`, { email, password })
+    axios.post('/api/users/login', { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: AUTH_USER });
@@ -26,7 +23,7 @@ export function loginUser({ email, password }) {
 
 export function registerUser({ email, password }, redirect) {
   return (dispatch) => {
-    axios.post(`${API_URL}/users/create`, { email, password })
+    axios.post('api/users/create', { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: AUTH_USER });
@@ -43,7 +40,7 @@ export function registerUser({ email, password }, redirect) {
 
 export function registerChef({ email, password }) {
   return (dispatch) => {
-    axios.post(`${API_URL}/chefs/create`, { email, password })
+    axios.post('/api/chefs/create', { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: UPDATE_USER, payload: response.data.user });

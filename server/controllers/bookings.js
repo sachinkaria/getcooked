@@ -62,7 +62,7 @@ function create(req, res) {
     User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber phoneCode contactNumber', (error, chef) => {
       if (error) return (error);
 
-      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName} for a event on the ${moment(booking.date).format('Do MMM YY')} for ${booking.number_of_people} people with a budget of £${booking.budget}. Login for more details.`;
+      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.number_of_people}, Budget: £${booking.budget}.`;
       if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
       res.jsonp(booking);
     });

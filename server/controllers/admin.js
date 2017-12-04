@@ -42,7 +42,7 @@ function approve(req, res) {
     chef.save((error) => {
       if (error) return error;
 
-      const MESSAGE = `Hi ${chef.firstName}! Your profile has been approved and is now publicly listed. `;
+      const MESSAGE = `Hi ${chef.firstName}! Congratulations! Your Get Cooked profile has been approved and is now publicly listed.`;
       if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
       chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
       res.jsonp(chef);

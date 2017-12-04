@@ -37,6 +37,7 @@ export function listChefs() {
   return function (dispatch) {
     axios.get('/api/chefs')
       .then((response) => {
+      console.log(response);
         dispatch({
           type: LIST_CHEFS,
           payload: response.data
@@ -53,6 +54,7 @@ export function getChef(id) {
   return function (dispatch) {
     axios.get(`/api/chefs/${id}`)
       .then((response) => {
+        console.log(response);
         dispatch({
           type: GET_CHEF,
           payload: response.data

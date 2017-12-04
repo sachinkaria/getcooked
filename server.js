@@ -23,7 +23,7 @@ const watcher = chokidar.watch('./client');
 watcher.on('ready', () => {
   watcher.on('all', () => {
     console.log('Clearing /client/ module cache from server');
-    Object.keys(require.cache).forEach( id => {
+    Object.keys(require.cache).forEach(id => {
       if (/[\/\\]client[\/\\]/.test(id)) delete require.cache[id];
     });
   });
@@ -37,7 +37,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 // To prevent errors from Cross Origin Resource Sharing, we will set
 // our headers to allow CORS with middleware like so:
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.setHeader('Access-Control-Allow-Origin', (process.env.NODE_ENV !== 'production') ? 'https://getcooked-test.herokuapp.com' : 'http://localhost:8080');
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Authorization, Access-Control-Request-Method, Access-Control-Request-Headers');
@@ -57,7 +57,7 @@ reviewRoutes(router);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('dist'));
   const path = require('path');
-  app.get('*', (req, res) => {
+  app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
   });
 }

@@ -23,8 +23,10 @@ class NavigationBar extends React.Component {
   }
 
   componentWillReceiveProps() {
-    isAuthenticated() && this.props.getBookings();
-    this.updateBookings();
+    setTimeout(() => {
+      isAuthenticated() && this.props.getBookings();
+      this.updateBookings();
+    }, 10000);
   }
 
   updateBookings() {

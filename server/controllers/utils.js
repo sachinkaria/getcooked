@@ -57,7 +57,6 @@ function imageUploader(options, type, callback) {
       'x-amz-acl': 'public-read'
     };
 
-    console.log(`uploading ${type} image to s3`);
     const req = s3Client.put(`/images/users/${options.userId}/${type}/`.concat(FILE_NAME), header);
 
     req.on('response', (res) => {

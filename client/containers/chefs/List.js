@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ListItem from '../../components/chefs/ListItem';
-import SearchBar from '../../components/SearchBar';
 import * as actions from '../../actions/public';
 
 

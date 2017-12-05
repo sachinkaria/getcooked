@@ -17,7 +17,7 @@ const ListItem = (props) => {
         <Thumbnail className="gc-profile-thumbnail img-responsive" style={styles} />
         <div className="gc-profile-infobox">
           <h3 className="gc-profile-heading-sm gc-pull-left gc-margin-bottom--xs">{props.name}</h3>
-          <p className="gc-profile-text-xs gc-clear-left gc-green">{props.tagLine}</p>
+          <p className="gc-profile-text-xs gc-clear-left">{props.tagLine}</p>
           <div className="gc-position-bottom">
             <StarRatingComponent
               className="gc-pull-left"

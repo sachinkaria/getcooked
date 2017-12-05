@@ -38,6 +38,7 @@ class Home extends React.Component {
                             profilePhoto={chef.profilePhoto}
                             name={chef.displayName}
                             rating={chef.rating}
+                            tagLine={chef.tagLine}
                             endorsements={chef.endorsements}
                             numberOfReviews={chef.numberOfReviews}
                             serviceType={chef.serviceType}

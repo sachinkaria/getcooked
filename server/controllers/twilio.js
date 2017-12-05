@@ -11,7 +11,7 @@ function sendSMS(number, message) {
   client.messages.create(
     {
       to: number,
-      from: process.env.TWILIO_NUMBER,
+      from: config.twilio_number,
       body: message,
     },
     (err, msg) => {

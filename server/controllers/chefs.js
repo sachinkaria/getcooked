@@ -8,7 +8,7 @@ module.exports.listChefs = list;
 module.exports.getChef = read;
 
 function list(req, res) {
-  User.find({ role: 'chef', status: 'listed' }, 'profilePhoto displayName', (err, chefs) => {
+  User.find({ role: 'chef', status: 'listed' }, 'profilePhoto displayName tagLine', (err, chefs) => {
     const profiles = [];
     let count = 0;
     chefs.forEach(chef => (

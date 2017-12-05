@@ -50,22 +50,22 @@
 
 
 .gc-profile-wrapper{
-  height:56vw;
-  margin-bottom: 80px;
+  height: 60vw;
+  margin-bottom: 120px;
 
   @include breakpoint(tablet){
-    height:18vw;
+    height: 18vw;
+    margin-bottom: 130px;
   }
 
   @include breakpoint(laptop){
-    height:14vw;
+    height: 14vw;
   }
 }
 
 .gc-profile-thumbnail {
   height: 100%;
   padding-bottom: 10%;
-  position:relative;
   background-size: cover;
   background-position: center;
   margin-bottom: 0;
@@ -73,15 +73,21 @@
 }
 
 .gc-profile-infobox{
-  overflow: hidden;
+  padding: 0 10px;
+  position: relative;
+  min-height: 100px;
   max-height: 100px;
   background-color: rgba(255, 255, 255, 0.8);
-  position: relative;
   width: 100%;
   top: 0;
   border-bottom: 1px rgba(0, 0, 0, 0.1) solid;
   border-left: 1px rgba(0, 0, 0, 0.1) solid;
   border-right: 1px rgba(0, 0, 0, 0.1) solid;
+
+  @include breakpoint(tablet) {
+    min-height: 120px;
+    max-height: 120px;
+  }
 }
 
 .gc-badge{

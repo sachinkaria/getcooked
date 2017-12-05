@@ -25,6 +25,7 @@ class Chefs extends React.Component {
                       key={chef._id}
                       profilePhoto={chef.profilePhoto}
                       name={chef.displayName}
+                      tagLine={chef.tagLine}
                       rating={chef.rating}
                       endorsements={chef.endorsements}
                       numberOfReviews={chef.numberOfReviews}

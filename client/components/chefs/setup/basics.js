@@ -10,7 +10,7 @@ import Steps from './steps.json';
 
 const form = reduxForm({
   form: 'setup-basic',
-  fields: ['displayName', 'companyWebsite', 'companyEmail', 'companyPhoneNumber', 'minimumTotalBudget', 'minimumPerHeadBudget', 'description'],
+  fields: ['displayName', 'companyWebsite', 'companyEmail', 'companyPhoneNumber', 'minimumTotalBudget', 'minimumPerHeadBudget', 'tagLine', 'description'],
   validate
 });
 
@@ -139,6 +139,17 @@ class BasicInfo extends Component {
               </div>
             </Col>
           </Row>
+          <label className="gc-text">Tagline</label>
+          <p className="gc-profile-text-xs gc-grey">Describe your service in one sentence.</p>
+          <div>
+            <Field
+              name="tagLine"
+              placeholder="e.g. Delicious waffles on wheels. Ice cream included."
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="text"
+            />
+          </div>
           <label className="gc-text">Description</label>
           <div>
             <Field

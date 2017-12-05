@@ -8,7 +8,7 @@ const StarRatingComponent = require('react-star-rating-component');
 const ListItem = (props) => {
   const primaryColour = '#ff6851';
   const styles = {
-    backgroundImage: `url(${props.profilePhoto})`,
+    backgroundImage: `url(${props.profilePhoto})`
   };
 
   return (
@@ -16,15 +16,18 @@ const ListItem = (props) => {
       <Link to={`/chefs/${props.id}`}>
         <Thumbnail className="gc-profile-thumbnail img-responsive" style={styles} />
         <div className="gc-profile-infobox">
-          <h3 className="gc-profile-heading-sm gc-margin-left-xs gc-pull-left gc-clear-left">{props.name}</h3>
-          <StarRatingComponent
-            className="gc-margin-left-xs gc-pull-left gc-clear-left"
-            starCount={5}
-            value={props.rating}
-            starColor={primaryColour}
-            emptyStarColor={'#cecccc'}
-            name={'rating'}
-          /><span className="gc-grey gc-ratings-text">{props.numberOfReviews ? '(' + props.numberOfReviews + ')' : 'No reviews'}</span>
+          <h3 className="gc-profile-heading-sm gc-pull-left gc-margin-bottom--xs">{props.name}</h3>
+          <p className="gc-profile-text-xs gc-clear-left gc-green">{props.tagLine}</p>
+          <div className="gc-position-bottom">
+            <StarRatingComponent
+              className="gc-pull-left"
+              starCount={5}
+              value={props.rating}
+              starColor={primaryColour}
+              emptyStarColor={'#cecccc'}
+              name={'rating'}
+            /><span className="gc-grey gc-ratings-text">{props.numberOfReviews ? '(' + props.numberOfReviews + ')' : 'No reviews'}</span>
+          </div>
         </div>
       </Link>
     </Col>
@@ -34,6 +37,7 @@ const ListItem = (props) => {
 ListItem.propTypes = {
   id: React.PropTypes.string.isRequired,
   name: React.PropTypes.string.isRequired,
+  tagLine: React.PropTypes.string.isRequired,
   isHome: React.PropTypes.bool,
   profilePhoto: React.PropTypes.string.isRequired
 };

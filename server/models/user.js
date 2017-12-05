@@ -64,6 +64,9 @@ const UserSchema = new Schema({
   displayName: {
     type: String
   },
+  tagLine: {
+    type: String
+  },
   description: {
     type: String
   },

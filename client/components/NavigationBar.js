@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
+import { isChef } from '../utils/helpers';
 import { getBookings } from '../actions/bookings';
 
 
@@ -19,14 +20,14 @@ class NavigationBar extends React.Component {
   }
 
   componentWillMount() {
-    isAuthenticated() && this.props.getBookings();
+   if (isAuthenticated() && isChef()) this.props.getBookings();
   }
 
   componentWillReceiveProps() {
     setTimeout(() => {
-      isAuthenticated() && this.props.getBookings();
+      if (isAuthenticated() && isChef()) this.props.getBookings();
       this.updateBookings();
-    }, 10000);
+    }, 30000);
   }
 
   updateBookings() {
@@ -61,7 +62,7 @@ class NavigationBar extends React.Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/" className="gc-padding-none">
-                <img alt="Get Cooked" className="gc-logo-default" src="images/logo-icon.png"/>
+                <img alt="Get Cooked" className="gc-logo-default" src="/images/logo-icon.png" />
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />

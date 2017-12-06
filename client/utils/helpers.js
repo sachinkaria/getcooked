@@ -1,4 +1,1 @@
-export default function getProfileData(id, data) {
-  const result = data.filter(obj => obj.id === id);
-  return result[0];
-}
+export const isChef = () => localStorage.user && JSON.parse(localStorage.user).role === 'chef';

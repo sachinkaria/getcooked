@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 export default function (ComposedComponent, role) {
   class RequireRole extends Component {
     componentWillMount() {
       const { user } = this.props;
       if (user.data && (user.data.role !== role)) {
-        hashHistory.push('/');
+        browserHistory.push('/');
       }
     }
 
     componentWillUpdate(nextProps) {
       const { user } = nextProps;
       if (user.data && (user.data.role !== role)) {
-        hashHistory.push('/');
+        browserHistory.push('/');
       }
     }
 

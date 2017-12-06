@@ -26,28 +26,28 @@ const routes = (
     <IndexRoute component={Home} />
     <Route path="/chefs" component={ProfileList} />
     <Route path="/chefs/:id" component={Profile} />
-    <Route path="/inbox" component={RequireAuth(Inbox)} />
-    <Route path="/bookings" component={RequireAuth(Bookings)} />
+    <Route exact path="/inbox" component={RequireAuth(Inbox)} />
+    <Route exact path="/bookings" component={RequireAuth(Bookings)} />
     <Route path="/conversation/:id" component={Conversation} />
-    <Route path="/register" component={Register} redirect />
+    <Route exact path="/register" component={Register} redirect />
     <Route path="/chef/register" component={RegisterChef} />
     <Route path="/login" component={Login} />
-    <Route path="/logout" component={Logout} />
-    <Route path="/setup/personal" component={PersonalSetup} />
-    <Route path="/setup/basics" component={BasicSetup} />
-    <Route path="/setup/photos" component={PhotosSetup} />
-    <Route path="/setup/services" component={ServicesSetup} />
-    <Route path="/setup/food" component={FoodSetup} />
-    <Route path="/dashboard/profile/basics" component={RequireRole(Dashboard, 'chef')} view="basics" />
-    <Route path="/dashboard/profile/service-type" component={RequireRole(Dashboard, 'chef')} view="service-type" />
-    <Route path="/dashboard/profile/food-services" component={RequireRole(Dashboard, 'chef')} view="food-services" />
-    <Route path="/dashboard/profile/photos" component={RequireRole(Dashboard, 'chef')} view="photos" />
-    <Route path="/dashboard/account/settings" component={RequireAuth(Dashboard)} view="settings" />
-    <Route path="/dashboard/account/password" component={RequireAuth(Dashboard)} view="password" />
-    <Route path="/dashboard/bookings" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="bookings" />
+    <Route exact path="/logout" component={Logout} />
+    <Route exact path="/setup/personal" component={PersonalSetup} />
+    <Route exact path="/setup/basics" component={BasicSetup} />
+    <Route exact path="/setup/photos" component={PhotosSetup} />
+    <Route exact path="/setup/services" component={ServicesSetup} />
+    <Route exact path="/setup/food" component={FoodSetup} />
+    <Route exact path="/dashboard/profile/basics" component={RequireRole(Dashboard, 'chef')} view="basics" />
+    <Route exact path="/dashboard/profile/service-type" component={RequireRole(Dashboard, 'chef')} view="service-type" />
+    <Route exact path="/dashboard/profile/food-services" component={RequireRole(Dashboard, 'chef')} view="food-services" />
+    <Route exact path="/dashboard/profile/photos" component={RequireRole(Dashboard, 'chef')} view="photos" />
+    <Route exact path="/dashboard/account/settings" component={RequireAuth(Dashboard)} view="settings" />
+    <Route exact path="/dashboard/account/password" component={RequireAuth(Dashboard)} view="password" />
+    <Route exact path="/dashboard/bookings" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="bookings" />
     <Route path="/dashboard/bookings/:id" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="view-booking" />
-    <Route path="/admin/dashboard/chefs" component={RequireRole(AdminDashboard, 'admin')} view="chefs" />
-    <Route path="/admin/dashboard/users" component={RequireRole(AdminDashboard, 'admin')} view="users" />
+    <Route exact path="/admin/dashboard/chefs" component={RequireRole(AdminDashboard, 'admin')} view="chefs" />
+    <Route exact path="/admin/dashboard/users" component={RequireRole(AdminDashboard, 'admin')} view="users" />
     <Route path="/admin/dashboard/chefs/:id" component={RequireRole(Profile, 'admin')} view="chefs" />
   </Route>
 );

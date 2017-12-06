@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, UPDATE_USER } from '../types';
 import { errorHandler } from '../public';
 import { getCurrentUser } from '../users';
@@ -12,7 +12,7 @@ export function loginUser({ email, password }) {
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         getCurrentUser();
-        hashHistory.push('/chefs');
+        browserHistory.push('/chefs');
       })
       .catch(() => {
         const ERROR = 'Sorry the email or password was incorrect. Please try again.';
@@ -29,7 +29,7 @@ export function registerUser({ email, password }, redirect) {
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         if (redirect) {
-          hashHistory.push('/setup/personal');
+          browserHistory.push('/setup/personal');
         }
       })
       .catch((error) => {
@@ -45,7 +45,7 @@ export function registerChef({ email, password }) {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         dispatch({ type: AUTH_USER });
-        hashHistory.push('/setup/personal');
+        browserHistory.push('/setup/personal');
       })
       .catch((error) => {
         errorHandler(dispatch, 'There was a problem signing up. Please try again.');
@@ -58,6 +58,6 @@ export function logoutUser() {
     dispatch({ type: UNAUTH_USER });
     dispatch({ type: UPDATE_USER, payload: null });
     delete localStorage.token;
-    hashHistory.push('/');
+    browserHistory.push('/');
   };
 }

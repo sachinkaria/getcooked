@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 
 export default function (ComposedComponent) {
   class Authentication extends Component {
     componentWillMount() {
       if (!this.props.authenticated) {
-        hashHistory.push('/login');
+        browserHistory.push('/login');
       }
     }
 
     componentWillUpdate(nextProps) {
       if (!nextProps.authenticated) {
-        hashHistory.push('/login');
+        browserHistory.push('/login');
       }
     }
 

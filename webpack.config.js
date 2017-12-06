@@ -14,10 +14,11 @@ module.exports = {
     filename: 'index_bundle.js'
   },
   devServer: {
+    historyApiFallback: true,
     inline: true,
-    contentBase: './dist',
+    contentBase: './client',
     port: 8080,
-    proxy: { '/api/**': { target: 'http://localhost:3000', secure: false }  }
+    proxy: { '/api/**': { target: 'http://localhost:3000', secure: false } }
   },
   module: {
     loaders: [

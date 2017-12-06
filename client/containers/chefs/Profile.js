@@ -44,21 +44,18 @@ class Profile extends React.Component {
                     <Heading text={CHEF.displayName} />
                   </div>
                   <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
-                    <ProfilePicture withoutMargins={REVIEWS.length > 0} photoUrl={CHEF.profilePhoto} />
+                    <ProfilePicture withoutMargins photoUrl={CHEF.profilePhoto} />
                   </Col>
                 </Row>
-                {
-                  (REVIEWS.length > 0) &&
-                  <StarRatingComponent
-                    editing={false}
-                    className="gc-star-rating"
-                    starColor={primaryColour}
-                    emptyStarColor={emptyStarColor}
-                    name="overall"
-                    starCount={5}
-                    value={parseFloat(RATING.overall)}
-                  />
-                }
+                <StarRatingComponent
+                  editing={false}
+                  className="gc-star-rating"
+                  starColor={primaryColour}
+                  emptyStarColor={emptyStarColor}
+                  name="overall"
+                  starCount={5}
+                  value={(RATING && parseFloat(RATING.overall)) || 0}
+                />
                 <div>
                   <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
                 </div>

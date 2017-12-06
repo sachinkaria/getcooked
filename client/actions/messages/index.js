@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { GET_INBOX, GET_CONVERSATION, AUTH_ERROR } from '../types';
 
 const API_URL = 'http://localhost:3000';
@@ -61,7 +61,7 @@ function sendMessageUpdateConversation({ _conversationId, body }) {
 function newMessage(dispatch, { _conversationId, body }) {
   axios.post(`${API_URL}/conversations/${_conversationId}/messages/create`, { body }, AUTH_HEADERS)
     .then(() => {
-      hashHistory.push(`/conversation/${_conversationId}`);
+      browserHistory.push(`/conversation/${_conversationId}`);
     })
     .catch((error) => {
       errorHandler(dispatch, error.response, AUTH_ERROR);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import FaTrash from 'react-icons/lib/fa/trash';
 import { Panel, Row, Col, Button } from 'react-bootstrap';
 import ImageUpload from '../../ImageUpload';
@@ -114,7 +114,7 @@ class Photos extends Component {
   }
 
   handleSubmit() {
-    hashHistory.push(Steps.photos.onNext);
+    browserHistory.push(Steps.photos.onNext);
   }
 
   handleFormSubmit(type) {

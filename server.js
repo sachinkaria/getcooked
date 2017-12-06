@@ -2,6 +2,7 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 const bodyParser = require('body-parser');
 const config = require('./server/config/main');
 const chokidar = require('chokidar');
@@ -54,12 +55,14 @@ chefRoutes(router);
 conversationRoutes(router);
 reviewRoutes(router);
 
+// Use our router configuration when we call /
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('dist'));
-  const path = require('path');
-  app.get('/', (req, res) => {
+  app.use(express.static('dist'), router);
+  app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
   });
+} else {
+  app.use('/', router);
 }
 
 // starts the server and listens for requests
@@ -67,18 +70,7 @@ app.listen(config.port, () => {
   console.log(`api running on port ${config.port}`);
 });
 
-// Use our router configuration when we call /
-app.use('/', router);
-
-// starts the server and listens for requests
-// app.listen(config.port, () => {
-//   console.log(`api running on port ${config.port}`);
-// });
-
 // db config
 mongoose.connect(config.database, {
   useMongoClient: true,
 });
-
-
-// mongoose.connect('mongodb://sachinkaria:manchester04@ds161890.mlab.com:61890/get-cooked');

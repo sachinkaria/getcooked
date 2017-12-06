@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
-import { hashHistory, Link } from 'react-router';
+import { browserHistory, Link } from 'react-router';
 import { connect } from 'react-redux';
 import * as actions from '../actions/public';
 import ListItem from './chefs/ListItem';
@@ -13,14 +13,14 @@ class Home extends React.Component {
 
   render() {
     const chefs = this.props.chefs.slice(0,3);
-    localStorage.token && hashHistory.push('/chefs');
+    localStorage.token && browserHistory.push('/chefs');
     return (
       <div>
         <section
           className="section-main"
         >
           <Row>
-            <Col xs={10} xsOffset={1} sm={8} smOffset={2} >
+            <Col xs={10} xsOffset={1} md={8} mdOffset={2} >
               <h1 className="text-left gc-title">Get Cooked</h1>
               <h2 className="text-left gc-heading">Cater your events with the coolest chefs around.</h2>
               <Col className="gc-margin-bottom gc-padding-none">

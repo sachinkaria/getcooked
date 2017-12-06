@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import { UPDATE_USER, PROCESSING_FILE_UPLOAD, COMPLETED_FILE_UPLOAD } from '../types';
 import { errorHandler, successHandler } from '../public';
 
@@ -10,7 +10,7 @@ export function updateUser(user, url, showSuccess) {
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         if (showSuccess) successHandler(dispatch, 'Your changes have been successfully saved.');
-        if (url) hashHistory.push(url);
+        if (url) browserHistory.push(url);
       })
       .catch((error) => {
         errorHandler(dispatch, error.response);
@@ -26,7 +26,7 @@ export function uploadPhoto(file, type) {
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
         dispatch(completedFileUpload());
-        // hashHistory.push(url);
+        // browserHistory.push(url);
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem saving your image. Please try again.');
@@ -43,7 +43,7 @@ export function uploadMultiplePhotos(files) {
       .then(() => {
         dispatch(completedFileUpload());
         dispatch(getCurrentUser());
-        // hashHistory.push(url);
+        // browserHistory.push(url);
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem saving your image. Please try again.');
@@ -66,7 +66,7 @@ export function deletePhoto(type) {
     axios.delete(`/api/users/photo/${type}`, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
-        // hashHistory.push(url);
+        // browserHistory.push(url);
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a deleting your image. Please try again.');
@@ -80,7 +80,7 @@ export function deleteMultiple(id) {
     axios.delete(`/api/users/photos/${id}`, AUTH_HEADERS)
       .then((response) => {
         dispatch({ type: UPDATE_USER, payload: response.data });
-        // hashHistory.push(url);
+        // browserHistory.push(url);
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a deleting your image. Please try again.');

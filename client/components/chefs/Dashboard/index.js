@@ -124,7 +124,7 @@ class Dashboard extends React.Component {
                     </Button>
                   </div>
               }
-              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to={'/logout'}>
+              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to='/logout'>
                 Logout
               </Link>
             </Col>

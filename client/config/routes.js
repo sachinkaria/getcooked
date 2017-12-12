@@ -5,7 +5,6 @@ import NavigationBar from '../components/NavigationBar';
 import Bookings from '../components/bookings/List';
 import Profile from '../containers/chefs/Profile';
 import Inbox from '../components/messages/Inbox';
-import Conversation from '../components/messages/Conversation';
 import Register from '../components/auth/Register';
 import RegisterChef from '../components/auth/chef/Register';
 import PersonalSetup from '../components/chefs/setup/personal';

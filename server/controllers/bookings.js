@@ -56,15 +56,17 @@ function create(req, res) {
     budget: BOOKING.budget
   });
 
-  booking.save((err) => {
-    if (err) return (err);
+  User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber phoneCode contactNumber', (error, chef) => {
+    if (error) return (error);
 
-    User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber phoneCode contactNumber', (error, chef) => {
-      if (error) return (error);
-
-      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.number_of_people}, Budget: £${booking.budget}.`;
-      if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
-      res.jsonp(booking);
-    });
+    const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
+    const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.number_of_people}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+    if (chef.contactNumber) {
+      twilio.sendSMS(chef.contactNumber, MESSAGE);
+      booking.save((err) => {
+        if (err) return (err);
+        res.jsonp(booking);
+      });
+    }
   });
 }

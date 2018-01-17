@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/Home.js" afterPath="$PROJECT_DIR$/client/components/Home.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.js" afterPath="$PROJECT_DIR$/client/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_home.scss" afterPath="$PROJECT_DIR$/client/styles/components/_home.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/NavigationBar.js" afterPath="$PROJECT_DIR$/client/components/NavigationBar.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NavigationBar.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="NavigationBar.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/NavigationBar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+            <state relative-caret-position="364">
+              <caret line="103" column="28" lean-forward="false" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -54,10 +52,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Home.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
+            <state relative-caret-position="120">
               <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
               <folding />
             </state>
@@ -140,7 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loading</find>
       <find>upload</find>
       <find>content</find>
       <find>},{</find>
@@ -170,6 +167,7 @@
       <find>console</find>
       <find>hashHistory</find>
       <find>logou</find>
+      <find>sign</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -244,7 +242,6 @@
         <option value="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/client/utils/helpers.js" />
-        <option value="$PROJECT_DIR$/client/components/NavigationBar.js" />
         <option value="$PROJECT_DIR$/client/actions/auth/index.js" />
         <option value="$PROJECT_DIR$/client/config/routes.js" />
         <option value="$PROJECT_DIR$/server/controllers/chefs.js" />
@@ -252,6 +249,7 @@
         <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/client/index.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_home.scss" />
+        <option value="$PROJECT_DIR$/client/components/NavigationBar.js" />
         <option value="$PROJECT_DIR$/client/components/Home.js" />
       </list>
     </option>
@@ -664,16 +662,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="840829000" />
+    <option name="totallyTimeSpent" value="841317000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21683876" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271028" sideWeight="0.51310563" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24766356" sideWeight="0.48689437" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24766356" sideWeight="0.48689437" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1083,14 +1081,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/NavigationBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/styles/components/_home.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1111,8 +1101,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
+        <state relative-caret-position="120">
           <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/NavigationBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="103" column="28" lean-forward="false" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
           <folding />
         </state>
       </provider>

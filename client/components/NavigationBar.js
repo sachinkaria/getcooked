@@ -99,12 +99,7 @@ class NavigationBar extends React.Component {
                 <Nav pullRight>
                   <NavItem>
                     <Link to={'/chef/register'}>
-                      <p className="gc-text gc-text--dark-grey">I&apos;m a caterer</p>
-                    </Link>
-                  </NavItem>
-                  <NavItem>
-                    <Link to={'/register'}>
-                      <p className="gc-text gc-text--dark-grey">Sign up</p>
+                      <p className="gc-text gc-text--dark-grey">Sign up as a caterer</p>
                     </Link>
                   </NavItem>
                   <NavItem>

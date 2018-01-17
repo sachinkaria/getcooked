@@ -14,7 +14,7 @@ const renderField = (field) => {
     <div className="gc-margin-bottom">
       <div className={inputClasses}>
         {field.withAddon && <span className="gc-addon">{field.addonText}</span>}
-        <input className={classes} placeholder={field.placeholder} type={field.type} {...field.input} />
+        <input maxLength={field.maxLength && field.maxLength} className={classes} placeholder={field.placeholder} type={field.type} {...field.input} />
       </div>
       {field.meta.touched && field.meta.error && <div className="gc-red">{field.meta.error}</div>}
     </div>

@@ -127,7 +127,7 @@ class BasicInfo extends Component {
             </div>
           </Col>
         </Row>
-        <label className="gc-text">Tagline</label>
+        <label className="gc-text">Tagline (max. 70 characters)</label>
         <p className="gc-profile-text-xs gc-grey">Describe your service in one sentence.</p>
         <div>
           <Field
@@ -136,6 +136,7 @@ class BasicInfo extends Component {
             className="form-control gc-input gc-margin-bottom"
             component={renderField}
             type="text"
+            maxLength="70"
           />
         </div>
         <label className="gc-text">Description</label>

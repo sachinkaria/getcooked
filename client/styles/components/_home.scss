@@ -2,8 +2,22 @@
   margin-top: -20px;
 }
 
+.section-grey {
+  background-color: $lightest-grey;
+  padding: 10px;
+}
+
 .section-footer {
   background-color: $dark-grey;
   margin-left: -5%;
   margin-right: -5%;
+}
+
+.gc-section-heading {
+  font-family: $primary-font;
+  font-weight: 700;
+  font-size: 32px;
+  color: $dark-grey;
+  padding-top: 20px;
+  margin-bottom: 25px;
 }

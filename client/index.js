@@ -25,6 +25,10 @@ require('./images/cocktail.svg');
 require('./images/icons/wedding-cake.png');
 require('./images/default_profile.png');
 require('./images/icon-edit.png');
+require('./images/event.png');
+require('./images/ingredients.png');
+require('./images/search.png');
+require('./images/bell.png');
 require('./images/loading.svg');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);

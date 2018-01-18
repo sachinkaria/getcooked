@@ -151,8 +151,11 @@ class Profile extends React.Component {
           {this.renderContent()}
         </div>
         :
-        <div>
-          Cannot find profile.
+        <div className="text-center">
+          <span className="gc-icon gc-icon--xl gc-icon--loading" />
+          <div>
+            Loading...
+          </div>
         </div>
     );
   }

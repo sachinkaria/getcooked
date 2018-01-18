@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-import { Col, Panel, Row, Button } from 'react-bootstrap';
-import { Link } from 'react-router';
-import { registerUser } from '../../actions/auth';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Field, reduxForm} from 'redux-form';
+import {Col, Panel, Row, Button} from 'react-bootstrap';
+import {Link} from 'react-router';
+import {registerUser} from '../../actions/auth';
 import renderField from '../forms/renderField';
 
 const form = reduxForm({
@@ -20,6 +20,10 @@ function validate(formProps) {
 
   if (!formProps.password) {
     errors.password = 'Please enter a password';
+  }
+
+  if (!formProps.verifyPassword || formProps.verifyPassword !== formProps.password) {
+    errors.verifyPassword = 'Your passwords do not match. Please enter the same password.';
   }
 
   return errors;
@@ -41,7 +45,7 @@ class Register extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
     const redirect = this.props.route && this.props.route.redirect;
 
     return (
@@ -51,16 +55,31 @@ class Register extends Component {
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <div className="gc-margin-bottom--lg">
-              {redirect && <Link className="gc-text gc-bold" to="/chef/register">Are you a caterer? <span className="gc-orange">Sign up as a caterer</span> </Link>}
+              {redirect &&
+              <Link className="gc-text gc-bold" to="/chef/register">Are you a caterer? <span className="gc-orange">Sign up as a caterer</span>
+              </Link>}
             </div>
             <Row>
               <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
-                <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="text" />
+                <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="text"/>
               </Col>
             </Row>
             <Row>
               <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
-                <Field name="password" placeholder="Password" className="form-control gc-input" component={renderField} type="password" />
+                <Field name="password" placeholder="Password" className="form-control gc-input" component={renderField} type="password"/>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
+                <div>
+                  <Field
+                    name="verifyPassword"
+                    placeholder="Confirm password"
+                    className="form-control gc-input gc-margin-bottom"
+                    component={renderField}
+                    type="password"
+                  />
+                </div>
               </Col>
             </Row>
             <Link className="gc-text gc-bold" to="/login">Already have an account? </Link>
@@ -80,4 +99,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { registerUser })(form(Register));
+export default connect(mapStateToProps, {registerUser})(form(Register));

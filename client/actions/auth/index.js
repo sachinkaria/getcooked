@@ -24,7 +24,7 @@ export function loginUser({ email, password }) {
 
 export function registerUser({ email, password }, redirect) {
   return (dispatch) => {
-    axios.post('api/users/create', { email, password })
+    axios.post('/api/users/create', { email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));

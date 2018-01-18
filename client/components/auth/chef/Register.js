@@ -22,6 +22,10 @@ function validate(formProps) {
     errors.password = 'Please enter a password';
   }
 
+  if (!formProps.verifyPassword || formProps.verifyPassword !== formProps.password) {
+    errors.verifyPassword = 'Your passwords do not match. Please enter the same password.';
+  }
+
   return errors;
 }
 
@@ -69,6 +73,19 @@ class RegisterChef extends Component {
                   component={renderField}
                   type="password"
                 />
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12} sm={8} smOffset={2}>
+                <div>
+                  <Field
+                    name="verifyPassword"
+                    placeholder="Confirm password"
+                    className="form-control gc-input gc-margin-bottom"
+                    component={renderField}
+                    type="password"
+                  />
+                </div>
               </Col>
             </Row>
             <Row className="gc-margin-bottom--lg">

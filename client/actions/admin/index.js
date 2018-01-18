@@ -36,7 +36,7 @@ export function adminListUsers() {
 
 export function adminGetChef(id) {
   return function (dispatch) {
-    axios.get('/api/admin/chefs/${id}')
+    axios.get(`/api/admin/chefs/${id}`)
       .then((response) => {
         dispatch({
           type: ADMIN_GET_CHEF,

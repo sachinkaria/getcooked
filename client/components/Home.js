@@ -72,7 +72,7 @@ class Home extends React.Component {
                   </p>
                 </Col>
               </Row>
-              <hr />
+              <br />
               <Row>
                 <Col className="text-center" sm={6}>
                   <img alt="Send a booking request" src="/images/event.png" />
@@ -86,7 +86,7 @@ class Home extends React.Component {
                   </p>
                 </Col>
               </Row>
-              <hr />
+              <br />
               <Row>
                 <Col className="text-center" sm={6} smPush={6}>
                   <img alt="Design your menu" src="/images/ingredients.png" />
@@ -100,7 +100,7 @@ class Home extends React.Component {
                   </p>
                 </Col>
               </Row>
-              <hr />
+              <br />
               <Row>
                 <Col className="text-center" sm={6}>
                   <img alt="Share and enjoy food" src="/images/bell.png" />
@@ -112,6 +112,30 @@ class Home extends React.Component {
                   <p className="gc-text">
                     Share and enjoy food with your guests anytime, anywhere.
                   </p>
+                </Col>
+              </Row>
+            </section>
+            <hr />
+            <section>
+              <Row>
+                <Col sm={6} smPush={6}>
+                  <img style={{ width: '100%', 'paddingTop': '15px' }} alt="Cater events around you" src="/images/catering.jpg" />
+                </Col>
+                <Col sm={6} smPull={6}>
+                  <h2 className="gc-section-heading gc-padding-none">Are you a caterer?</h2>
+                  <p className="gc-text">
+                    Plan, organise and share food at events around London.
+                    Connect and design your menu with event hosts around you.
+                    Receive bookings for events directly
+                    through our platform and share your food.
+                  </p>
+                  <Row>
+                    <Col sm={8}>
+                      <Button block className="gc-btn gc-btn--orange gc-margin-top--lg">
+                        Find out more
+                      </Button>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </section>

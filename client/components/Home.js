@@ -116,7 +116,7 @@ class Home extends React.Component {
               </Row>
             </section>
             <hr />
-            <section>
+            <section className="gc-margin-bottom--lg">
               <Row>
                 <Col sm={6} smPush={6}>
                   <img style={{ width: '100%', 'paddingTop': '15px' }} alt="Cater events around you" src="/images/catering.jpg" />
@@ -148,7 +148,7 @@ class Home extends React.Component {
 ;
 
 function mapStateToProps(state) {
-  return {chefs: state.public.chefs};
+  return { chefs: state.public.chefs };
 }
 
 export default connect(mapStateToProps, actions)(Home);

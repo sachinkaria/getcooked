@@ -1,6 +1,11 @@
+html {
+  height: 100%;
+}
+
 body{
   font-family: $primary-font;
   overflow-x:hidden;
+  min-height: 100%;
 }
 
 .container {
@@ -18,6 +23,7 @@ body{
 
 .gc-container {
   margin-top: 82px;
+  min-height: 100vh - 12vh;
 
   @include breakpoint(tablet) {
     margin-top: 75px;

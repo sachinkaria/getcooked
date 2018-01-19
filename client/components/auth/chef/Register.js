@@ -48,55 +48,57 @@ class RegisterChef extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <Col sm={8} smOffset={2} md={4} mdOffset={4}>
-        <div>
-          <h4 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h4>
-          <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-            {this.renderAlert()}
-            <Row>
-              <Col xs={12} sm={8} smOffset={2}>
-                <Field
-                  name="email"
-                  placeholder="Email"
-                  className="form-control gc-input gc-margin-bottom"
-                  component={renderField}
-                  type="text"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} sm={8} smOffset={2}>
-                <Field
-                  name="password"
-                  placeholder="Password"
-                  className="form-control gc-input gc-margin-bottom"
-                  component={renderField}
-                  type="password"
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} sm={8} smOffset={2}>
-                <div>
+      <Row>
+        <Col sm={8} smOffset={2} md={4} mdOffset={4}>
+          <div>
+            <h4 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h4>
+            <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+              {this.renderAlert()}
+              <Row>
+                <Col xs={12} sm={8} smOffset={2}>
                   <Field
-                    name="verifyPassword"
-                    placeholder="Confirm password"
+                    name="email"
+                    placeholder="Email"
+                    className="form-control gc-input gc-margin-bottom"
+                    component={renderField}
+                    type="text"
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} sm={8} smOffset={2}>
+                  <Field
+                    name="password"
+                    placeholder="Password"
                     className="form-control gc-input gc-margin-bottom"
                     component={renderField}
                     type="password"
                   />
-                </div>
-              </Col>
-            </Row>
-            <Row className="gc-margin-bottom--lg">
-              <Col>
-                <Link className="gc-text gc-bold" to="/login">Already have an account? </Link>
-              </Col>
-            </Row>
-            <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
-          </form>
-        </div>
-      </Col>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} sm={8} smOffset={2}>
+                  <div>
+                    <Field
+                      name="verifyPassword"
+                      placeholder="Confirm password"
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderField}
+                      type="password"
+                    />
+                  </div>
+                </Col>
+              </Row>
+              <Row className="gc-margin-bottom--lg">
+                <Col>
+                  <Link className="gc-text gc-bold" to="/login">Already have an account? </Link>
+                </Col>
+              </Row>
+              <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
+            </form>
+          </div>
+        </Col>
+      </Row>
     );
   }
 }

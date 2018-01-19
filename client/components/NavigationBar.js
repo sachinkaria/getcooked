@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
@@ -115,6 +115,54 @@ class NavigationBar extends React.Component {
         <div className="gc-container">
           {this.props.children}
         </div>
+        <br />
+        <Row className="gc-footer text-center">
+          <Col sm={8} smOffset={2}>
+            <Row>
+              <Col sm={4}>
+                <li className="gc-list">
+                  <ul className="gc-text gc-white gc-padding-none">
+                    Terms and Conditions
+                  </ul>
+                  <ul className="gc-text gc-white gc-padding-none">
+                    Privacy Policy
+                  </ul>
+                </li>
+              </Col>
+              <Col sm={4}>
+                <li className="gc-list">
+                  <ul className="gc-text gc-white gc-padding-none">
+                    Facebook
+                  </ul>
+                  <ul className="gc-text gc-white gc-padding-none">
+                    Instagram
+                  </ul>
+                  <ul className="gc-text gc-white gc-padding-none">
+                    Twitter
+                  </ul>
+                </li>
+              </Col>
+              <Col sm={4}>
+                <li className="gc-list">
+                  <ul className="gc-text gc-white gc-padding-none">
+                    Contact us
+                  </ul>
+                  <ul className="gc-text gc-white gc-padding-none">
+                    Blog
+                  </ul>
+                </li>
+              </Col>
+            </Row>
+            <br />
+            <Row>
+              <Col className="text-center">
+                <p className="gc-text gc-white">
+                  All rights reserved Get Cooked Ltd
+                </p>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </div>
     );
   }

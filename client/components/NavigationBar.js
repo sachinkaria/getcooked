@@ -116,7 +116,7 @@ class NavigationBar extends React.Component {
           {this.props.children}
         </div>
         <br />
-        <Row className="gc-footer text-center">
+        <Row className="gc-section gc-section--footer text-center">
           <Col sm={8} smOffset={2}>
             <Row>
               <Col sm={4}>
@@ -157,7 +157,7 @@ class NavigationBar extends React.Component {
             <Row>
               <Col className="text-center">
                 <p className="gc-text gc-white">
-                  All rights reserved Get Cooked Ltd
+                  &copy; Get Cooked Ltd. All rights reserved.
                 </p>
               </Col>
             </Row>

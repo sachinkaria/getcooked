@@ -16,9 +16,9 @@ class Home extends React.Component {
     localStorage.token && browserHistory.push('/chefs');
     return (
       <div>
-        <Row>
-          <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-            <section className="section-main">
+        <section className="gc-section gc-section--main">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
               <h1 className="text-left gc-title">Get Cooked</h1>
               <h2 className="text-left gc-heading">Cater your events with the coolest chefs around.</h2>
               <div className="gc-margin-bottom gc-padding-none">
@@ -54,13 +54,17 @@ class Home extends React.Component {
                   </Row>
                 </div>
               </div>
-            </section>
-            <hr />
-            <section>
+            </Col>
+          </Row>
+        </section>
+        <br />
+        <section className="gc-section gc-section--grey">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
               <h2 className="gc-section-heading">How it works</h2>
               <Row>
                 <Col sm={6} smPush={6} className="text-center">
-                  <img alt="Find a caterer" src="/images/search.png" />
+                  <img alt="Find a caterer" src="/images/search.png"/>
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -75,7 +79,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6}>
-                  <img alt="Send a booking request" src="/images/event.png" />
+                  <img alt="Send a booking request" src="/images/event.png"/>
                 </Col>
                 <Col sm={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -83,19 +87,21 @@ class Home extends React.Component {
                   </h3>
                   <p className="gc-text">
                     Simply fill out the details of your event and the caterer will get in touch!
+                    Direct contact gives you a more personalised experience.
                   </p>
                 </Col>
               </Row>
               <br />
               <Row>
                 <Col className="text-center" sm={6} smPush={6}>
-                  <img alt="Design your menu" src="/images/ingredients.png" />
+                  <img alt="Design your menu" src="/images/ingredients.png"/>
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h3 className="gc-profile-text-md gc-bold">
                     3. Design your menu
                   </h3>
                   <p className="gc-text">
+                    Get to know you caterer or chef before you decide to book them.
                     Directly interact with your caterer to plan and design your menu.
                   </p>
                 </Col>
@@ -103,7 +109,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6}>
-                  <img alt="Share and enjoy food" src="/images/bell.png" />
+                  <img alt="Share and enjoy food" src="/images/bell.png"/>
                 </Col>
                 <Col sm={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -114,12 +120,20 @@ class Home extends React.Component {
                   </p>
                 </Col>
               </Row>
-            </section>
-            <hr />
-            <section className="gc-margin-bottom--lg">
+            </Col>
+          </Row>
+        </section>
+        <br />
+        <section className="gc-margin-bottom--lg gc-section">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
               <Row>
                 <Col sm={6} smPush={6}>
-                  <img style={{ width: '100%', 'paddingTop': '15px' }} alt="Cater events around you" src="/images/catering.jpg" />
+                  <img
+                    style={{ width: '100%', paddingTop: '15px' }}
+                    alt="Cater events around you"
+                    src="/images/catering.jpg"
+                  />
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h2 className="gc-section-heading gc-padding-none">Are you a caterer?</h2>
@@ -138,9 +152,9 @@ class Home extends React.Component {
                   </Row>
                 </Col>
               </Row>
-            </section>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </section>
       </div>
     );
   }
@@ -148,7 +162,7 @@ class Home extends React.Component {
 ;
 
 function mapStateToProps(state) {
-  return { chefs: state.public.chefs };
+  return {chefs: state.public.chefs};
 }
 
 export default connect(mapStateToProps, actions)(Home);

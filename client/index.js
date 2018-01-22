@@ -31,6 +31,8 @@ require('./images/search.png');
 require('./images/bell.png');
 require('./images/loading.svg');
 require('./images/catering.jpg');
+require('./images/chef.svg');
+require('./images/food.png');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

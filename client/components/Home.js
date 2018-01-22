@@ -4,7 +4,6 @@ import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
 import * as actions from '../actions/public';
 import ListItem from './chefs/ListItem';
-import primaryBackground from '../images/home/background.jpg';
 
 class Home extends React.Component {
   componentWillMount() {
@@ -16,11 +15,11 @@ class Home extends React.Component {
     localStorage.token && browserHistory.push('/chefs');
     return (
       <div>
-        <section className="gc-section gc-section--main">
+        <section className="gc-section gc-section--main text-left">
           <Row>
             <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
-              <h1 className="text-left gc-title">Get Cooked</h1>
-              <h2 className="text-left gc-heading">Cater your events with the coolest chefs around.</h2>
+              <h1 className="gc-title">Get Cooked</h1>
+              <h2 className="gc-heading">Cater your events with the coolest chefs around.</h2>
               <div className="gc-margin-bottom gc-padding-none">
                 <div className="gc-center">
                   <h3 className="gc-profile-text-md gc-bold gc-margin-bottom--lg">Featured Caterers</h3>
@@ -58,13 +57,13 @@ class Home extends React.Component {
           </Row>
         </section>
         <br />
-        <section className="gc-section gc-section--grey">
+        <section className="gc-section gc-section--grey center-m">
           <Row>
             <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
               <h2 className="gc-section-heading">How it works</h2>
               <Row>
                 <Col sm={6} smPush={6} className="text-center">
-                  <img alt="Find a caterer" src="/images/search.png"/>
+                  <img className="gc-info-icon" alt="Find a caterer" src="/images/search.png"/>
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -79,7 +78,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6}>
-                  <img alt="Send a booking request" src="/images/event.png"/>
+                  <img className="gc-info-icon" alt="Send a booking request" src="/images/event.png"/>
                 </Col>
                 <Col sm={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -94,7 +93,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6} smPush={6}>
-                  <img alt="Design your menu" src="/images/ingredients.png"/>
+                  <img className="gc-info-icon" alt="Design your menu" src="/images/ingredients.png"/>
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -109,7 +108,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6}>
-                  <img alt="Share and enjoy food" src="/images/bell.png"/>
+                  <img className="gc-info-icon" alt="Share and enjoy food" src="/images/bell.png"/>
                 </Col>
                 <Col sm={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -145,9 +144,11 @@ class Home extends React.Component {
                   </p>
                   <Row>
                     <Col sm={8}>
-                      <Button block className="gc-btn gc-btn--orange gc-margin-top--lg">
-                        Find out more
-                      </Button>
+                      <Link to="/caterers/about">
+                        <Button block className="gc-btn gc-btn--orange gc-margin-top--lg">
+                          Find out more
+                        </Button>
+                      </Link>
                     </Col>
                   </Row>
                 </Col>

@@ -58,3 +58,10 @@
   }
 }
 
+.gc-info-icon {
+  width: 64px;
+
+  @include breakpoint(tablet) {
+    width: 128px;
+  }
+}

@@ -17,19 +17,21 @@ import Logout from '../components/auth/Logout';
 import Dashboard from '../components/chefs/Dashboard/index';
 import AdminDashboard from '../components/admin/Dashboard/index';
 import Home from '../components/Home';
+import Caterer from '../components/Caterer';
 import RequireAuth from '../components/auth/RequireAuth';
 import RequireRole from '../components/auth/RequireRole';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
-    <IndexRoute component={Home}/>
-    <Route path="/chefs" component={ProfileList}/>
-    <Route path="/chefs/:id" component={Profile}/>
+    <IndexRoute component={Home} />
+    <Route path="/chefs" component={ProfileList} />
+    <Route path="/chefs/:id" component={Profile} />
     <Route exact path="/inbox" component={RequireAuth(Inbox)}/>
     <Route exact path="/bookings" component={RequireAuth(Bookings)}/>
     <Route exact path="register" component={Register} redirect/>
-    <Route path="chef">
-      <Route path="register" component={RegisterChef}/>
+    <Route path="caterers">
+      <Route path="about" component={Caterer} />
+      <Route path="register" component={RegisterChef} />
     </Route>
     <Route path="/login" component={Login}/>
     <Route exact path="/logout" component={Logout}/>

@@ -88,6 +88,10 @@
   &:hover {
     text-decoration: none;
   }
+
+  &.gc-link-default--white {
+    color: $white;
+  }
 }
 
 .gc-list-item {

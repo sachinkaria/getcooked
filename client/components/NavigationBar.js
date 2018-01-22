@@ -7,6 +7,7 @@ import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
 import { isChef } from '../utils/helpers';
 import { getBookings } from '../actions/bookings';
+import Footer from './Footer';
 
 
 class NavigationBar extends React.Component {
@@ -116,53 +117,7 @@ class NavigationBar extends React.Component {
           {this.props.children}
         </div>
         <br />
-        <Row className="gc-section gc-section--footer text-center">
-          <Col sm={8} smOffset={2}>
-            <Row>
-              <Col sm={4}>
-                <li className="gc-list">
-                  <ul className="gc-text gc-white gc-padding-none">
-                    Terms and Conditions
-                  </ul>
-                  <ul className="gc-text gc-white gc-padding-none">
-                    Privacy Policy
-                  </ul>
-                </li>
-              </Col>
-              <Col sm={4}>
-                <li className="gc-list">
-                  <ul className="gc-text gc-white gc-padding-none">
-                    Facebook
-                  </ul>
-                  <ul className="gc-text gc-white gc-padding-none">
-                    Instagram
-                  </ul>
-                  <ul className="gc-text gc-white gc-padding-none">
-                    Twitter
-                  </ul>
-                </li>
-              </Col>
-              <Col sm={4}>
-                <li className="gc-list">
-                  <ul className="gc-text gc-white gc-padding-none">
-                    Contact us
-                  </ul>
-                  <ul className="gc-text gc-white gc-padding-none">
-                    Blog
-                  </ul>
-                </li>
-              </Col>
-            </Row>
-            <br />
-            <Row>
-              <Col className="text-center">
-                <p className="gc-text gc-white">
-                  &copy; Get Cooked Ltd. All rights reserved.
-                </p>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+        <Footer />
       </div>
     );
   }

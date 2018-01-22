@@ -46,7 +46,7 @@ class Home extends React.Component {
                   <Row>
                     <Col sm={4} smOffset={4}>
                       <Link to={'/chefs'}>
-                        <Button block className="gc-btn gc-btn--orange gc-btn--search gc-margin-bottom--lg">
+                        <Button block className="gc-btn gc-btn--orange gc-btn--search">
                           View more
                         </Button>
                       </Link>
@@ -124,7 +124,7 @@ class Home extends React.Component {
           </Row>
         </section>
         <br />
-        <section className="gc-margin-bottom--lg gc-section">
+        <section className="gc-section">
           <Row>
             <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
               <Row>
@@ -136,7 +136,7 @@ class Home extends React.Component {
                   />
                 </Col>
                 <Col sm={6} smPull={6}>
-                  <h2 className="gc-section-heading gc-padding-none">Are you a caterer?</h2>
+                  <h2 className="gc-section-heading gc-padding-none">Are you a caterer or private chef?</h2>
                   <p className="gc-text">
                     Plan, organise and share food at events around London.
                     Connect and design your menu with event hosts around you.

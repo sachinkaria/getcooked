@@ -20,5 +20,6 @@ module.exports = {
   aws_secure: process.env.SECURE || true,
   aws_style: process.env.STYLE || 'virtualHosted',
   sendGridKey: process.env.SENDGRID_KEY,
-  slackUsersWebHookUrl: process.env.SLACK_USERS_WEBHOOK
+  slackUsersWebHookUrl: process.env.SLACK_USERS_WEBHOOK,
+  slackBookingsWebHookUrl: process.env.SLACK_BOOKINGS_WEBHOOK
 };

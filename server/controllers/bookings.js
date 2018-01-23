@@ -3,6 +3,8 @@ const User = require('../models/user');
 const twilio = require('./twilio');
 const moment = require('moment');
 const _ = require('lodash');
+const request = require('superagent');
+const config = require('../config/main');
 
 module.exports.create = create;
 module.exports.list = list;
@@ -65,8 +67,20 @@ function create(req, res) {
       twilio.sendSMS(chef.contactNumber, MESSAGE);
       booking.save((err) => {
         if (err) return (err);
+        sendSignupSlackNotification(USER);
         res.jsonp(booking);
       });
     }
   });
+}
+
+function sendSignupSlackNotification(user) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(config.slackBookingsWebHookUrl)
+      .send({
+        text: `${user.email} just sent a new booking request.`
+      })
+      .end();
+  }
 }

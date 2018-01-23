@@ -18,5 +18,6 @@ module.exports = {
   aws_port: process.env.AWS_PORT,
   aws_region: process.env.AWS_REGION,
   aws_secure: process.env.SECURE || true,
-  aws_style: process.env.STYLE || 'virtualHosted'
+  aws_style: process.env.STYLE || 'virtualHosted',
+  sendGridKey: process.env.SENDGRID_KEY
 };

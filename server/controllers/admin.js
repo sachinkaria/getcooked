@@ -2,6 +2,8 @@ const _ = require('lodash');
 const User = require('../models/user');
 const ObjectId = require('mongodb').ObjectId;
 const twilio = require('./twilio');
+const Mailer = require('../services/mailer');
+const approvalTemplate = require('../services/emailTemplates/approvalTemplate');
 
 module.exports.listChefs = allChefs;
 module.exports.listUsers = allUsers;
@@ -42,8 +44,15 @@ function approve(req, res) {
     chef.save((error) => {
       if (error) return error;
 
-      const MESSAGE = `Hi ${chef.firstName}! Congratulations! Your Get Cooked profile has been approved and is now publicly listed.`;
-      if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
+      const emailData = {
+        subject: 'Congratulations! Your profile has been approved.',
+        recipient: chef.email
+      };
+
+      // send email to approve profile
+      const mailer = new Mailer(emailData, approvalTemplate(chef));
+      mailer.send();
+
       chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
       res.jsonp(chef);
     });

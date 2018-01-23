@@ -10,10 +10,11 @@ module.exports = {
   port: process.env.PORT || 3000,
   twilio_account_sid: process.env.TWILIO_ACCOUNT_SID || 'AC1f9b1e64fada50b398d028d44653a48d',
   twilio_token: process.env.TWILIO_TOKEN || '5d90b358c5c7b1e9f0ab8ed31b00f435',
-  twilio_number: process.env.TWILIO_TOKEN || 'Get Cooked',
+  twilio_number: process.env.TWILIO_NUMBER || 'Get Cooked',
   aws_key: process.env.AWS_KEY || 'key',
   aws_secret: process.env.AWS_SECRET || 'secret',
   aws_bucket: process.env.AWS_BUCKET || 'getcooked',
   aws_endpoint: process.env.AWS_ENDPOINT || 'localhost',
-  aws_port: process.env.AWS_PORT || '10001'
+  aws_port: process.env.AWS_PORT || '10001',
+  sendGridKey: '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'
 };

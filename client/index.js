@@ -12,10 +12,6 @@ import { getBookings } from './actions/bookings';
 
 require('./styles/main.scss');
 require('./images/logo-icon.png');
-require('./images/1.jpg');
-require('./images/2.jpg');
-require('./images/3.jpg');
-require('./images/4.jpg');
 require('./images/cover-photo.jpg');
 require('./images/chef.svg');
 require('./images/barbecue.svg');
@@ -31,6 +27,7 @@ require('./images/search.png');
 require('./images/bell.png');
 require('./images/loading.svg');
 require('./images/catering.jpg');
+require('./images/catering-2.jpg');
 require('./images/chef.svg');
 require('./images/food.png');
 

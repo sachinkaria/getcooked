@@ -35,7 +35,7 @@ export default function Footer() {
                 <a className="gc-link-default gc-link-default--white" href="mailto:team@getcooked.co?Subject=Website%20Enquiry" target="_top">Contact Us</a>
               </ul>
               <ul className="gc-text gc-white gc-padding-none">
-                Blog
+                Blog (coming soon)
               </ul>
             </li>
           </Col>

@@ -99,8 +99,8 @@ class NavigationBar extends React.Component {
               (!isAuthenticated() && showNav) && (
                 <Nav pullRight>
                   <NavItem>
-                    <Link to={'/caterers/register'}>
-                      <p className="gc-text gc-text--dark-grey">Sign up as a caterer</p>
+                    <Link to={'/caterers/about'}>
+                      <p className="gc-text gc-text--dark-grey">Register as a caterer</p>
                     </Link>
                   </NavItem>
                   <NavItem>

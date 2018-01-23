@@ -1,9 +1,10 @@
 'use strict';
 
-const jwt = require('jsonwebtoken'),
-  crypto = require('crypto'),
-  User = require('../models/user'),
-  config = require('../config/main');
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const User = require('../models/user');
+const config = require('../config/main');
+const request = require('superagent');
 
 function generateToken(user) {
   return jwt.sign(user, config.jwt_secret, {});
@@ -68,6 +69,8 @@ exports.register = (req, res, next) => {
 
       const userInfo = setUserInfo(user);
 
+      sendSignupSlackNotification(user, 'event host');
+
       res.status(201).json({
         token: 'JWT '.concat(generateToken(userInfo)),
         user: userInfo
@@ -117,6 +120,8 @@ exports.registerChef = (req, res, next) => {
 
       let userInfo = setUserInfo(user);
 
+      sendSignupSlackNotification(user, 'caterer');
+
       res.status(201).json({
         token: 'JWT '.concat(generateToken(userInfo)),
         user: userInfo
@@ -148,3 +153,14 @@ exports.roleAuthorization = (role) => {
     });
   };
 };
+
+function sendSignupSlackNotification(user, role) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(config.slackUsersWebHookUrl)
+      .send({
+        text: `${user.email} just joined Get Cooked as a ${role}.`
+      })
+      .end();
+  }
+}

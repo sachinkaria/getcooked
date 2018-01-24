@@ -13,20 +13,20 @@ module.exports.list = list;
 module.exports.unlist = unlist;
 
 function allChefs(req, res) {
-  User.find({ role: 'chef' }).exec((err, chefs) => {
+  User.find({role: 'chef'}).exec((err, chefs) => {
     res.jsonp(chefs);
   });
 }
 
 function allUsers(req, res) {
-  User.find({ role: 'member' }).exec((err, members) => {
+  User.find({role: 'member'}).exec((err, members) => {
     res.jsonp(members);
   });
 }
 
 function read(req, res) {
   const id = req.params.id;
-  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+  User.find({_id: ObjectId(id)}).exec((err, chefs) => {
     let chef = chefs[0];
     chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
     res.jsonp(chef);
@@ -39,7 +39,7 @@ function approve(req, res) {
     let chef = chefs[0];
 
     if (chef.status === 'pending') {
-      _.extend(chef, { status: 'listed' });
+      _.extend(chef, {status: 'listed'});
     }
     chef.save((error) => {
       if (error) return error;

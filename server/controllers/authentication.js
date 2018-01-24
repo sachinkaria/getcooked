@@ -5,6 +5,9 @@ const crypto = require('crypto');
 const User = require('../models/user');
 const config = require('../config/main');
 const request = require('superagent');
+const async = require('async');
+const Mailer = require('../services/mailer');
+const resetPasswordTemplate = require('../services/emailTemplates/resetPasswordTemplate');
 
 function generateToken(user) {
   return jwt.sign(user, config.jwt_secret, {});
@@ -152,6 +155,78 @@ exports.roleAuthorization = (role) => {
       return next('Unauthorized');
     });
   };
+};
+
+exports.forgotPassword = (req, res, next) => {
+  async.waterfall([
+    (done) => {
+      crypto.randomBytes(20, (err, buf) => {
+        const token = buf.toString('hex');
+        done(err, token);
+      });
+    },
+    (token, done) => {
+      User.findOne({ email: req.body.email }, (err, user) => {
+        if (!user) {
+          res.send(err);
+          return res.redirect('/forgot');
+        }
+
+
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+        user.save((err) => {
+          done(err, token, user);
+        });
+      });
+    },
+    (token, user, done) => {
+      const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/reset/${token}`);
+      const emailData = {
+        subject: 'Password reset',
+        recipient: user.email
+      };
+
+      // send email to approve profile
+      const mailer = new Mailer(emailData, resetPasswordTemplate(HOSTNAME, user));
+      mailer.send();
+      done();
+    }
+  ], (err) => {
+    if (err) return next(err);
+    res.redirect('/forgot');
+  });
+};
+
+exports.resetPassword = (req, res) => {
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    if (!user) {
+      res.send(err);
+      return res.redirect('/forgot');
+    }
+    res.redirect(`/reset/${req.params.token}`, {
+      user: req.user
+    });
+  });
+};
+
+exports.changePassword = (req, res) => {
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, (err, user) => {
+    if (!user) {
+      res.send(err);
+      return res.redirect('back');
+    }
+
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+
+    user.save((error) => {
+      if (err) return (error);
+      return res.redirect('/forgot');
+    });
+  });
 };
 
 function sendSignupSlackNotification(user, role) {

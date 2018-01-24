@@ -85,9 +85,9 @@ class Caterer extends React.Component {
                     <Row>
                       <Col xs={12}>
                         <h3 className="gc-heading gc-padding-small gc-margin-none">
-                          £20<span className="gc-profile-text-lg"> /month</span>
-                          <p className="gc-profile-text-md">
-                            (after your first booking)
+                          £20<span className="gc-profile-text-lg"> /month*</span>
+                          <p className="gc-profile-text-sm">
+                            *your subscription only starts after you receive your first booking
                           </p>
                         </h3>
                       </Col>

@@ -157,7 +157,9 @@ exports.roleAuthorization = (role) => {
   };
 };
 
-exports.forgotPassword = (req, res, next) => {
+exports.forgotPassword = (req, res) => {
+  const email = req.body.email;
+
   async.waterfall([
     (done) => {
       crypto.randomBytes(20, (err, buf) => {
@@ -166,17 +168,16 @@ exports.forgotPassword = (req, res, next) => {
       });
     },
     (token, done) => {
-      User.findOne({ email: req.body.email }, (err, user) => {
+      User.findOne({ email }, (err, user) => {
         if (!user) {
           res.send(err);
-          return res.redirect('/forgot');
         }
-
 
         user.resetPasswordToken = token;
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
 
         user.save((err) => {
+          console.log('user saved');
           done(err, token, user);
         });
       });
@@ -189,18 +190,21 @@ exports.forgotPassword = (req, res, next) => {
       };
 
       // send email to approve profile
+      console.log('sending password reset email');
       const mailer = new Mailer(emailData, resetPasswordTemplate(HOSTNAME, user));
       mailer.send();
-      done();
+      res.send({ token });
     }
   ], (err) => {
-    if (err) return next(err);
-    res.redirect('/forgot');
+    if (err) {
+      console.log('error');
+      res.redirect('/forgot');
+    }
   });
 };
 
 exports.resetPassword = (req, res) => {
-  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, (err, user) => {
     if (!user) {
       res.send(err);
       return res.redirect('/forgot');
@@ -224,7 +228,7 @@ exports.changePassword = (req, res) => {
 
     user.save((error) => {
       if (err) return (error);
-      return res.redirect('/forgot');
+      return res.sendStatus(200);
     });
   });
 };

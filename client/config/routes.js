@@ -6,6 +6,8 @@ import Bookings from '../components/bookings/List';
 import Profile from '../containers/chefs/Profile';
 import Inbox from '../components/messages/Inbox';
 import Register from '../components/auth/Register';
+import ForgotPassword from '../components/auth/ForgotPassword';
+import ResetPassword from '../components/auth/ResetPassword';
 import RegisterChef from '../components/auth/chef/Register';
 import PersonalSetup from '../components/chefs/setup/personal';
 import BasicSetup from '../components/chefs/setup/basics';
@@ -29,12 +31,14 @@ const routes = (
     <Route exact path="/inbox" component={RequireAuth(Inbox)}/>
     <Route exact path="/bookings" component={RequireAuth(Bookings)}/>
     <Route exact path="register" component={Register} redirect/>
+    <Route exact path="forgot" component={ForgotPassword} />
+    <Route exact path="reset/:token" component={ResetPassword} />
     <Route path="caterers">
       <Route path="about" component={Caterer} />
       <Route path="register" component={RegisterChef} />
     </Route>
-    <Route path="/login" component={Login}/>
-    <Route exact path="/logout" component={Logout}/>
+    <Route path="/login" component={Login} />
+    <Route exact path="/logout" component={Logout}  />
     <Route path="setup">
       <Route exact path="personal" component={PersonalSetup}/>
       <Route exact path="basics" component={BasicSetup}/>

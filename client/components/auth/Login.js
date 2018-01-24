@@ -51,6 +51,8 @@ class Login extends Component {
               <Row className="gc-margin-bottom--lg">
                 <Col>
                   <Link className="gc-text gc-bold" to="/register">Don&apos;t have an account?</Link>
+                  <br />
+                  <Link className="gc-text gc-bold" to="/forgot">Forgot your password?</Link>
                 </Col>
               </Row>
               <Row>

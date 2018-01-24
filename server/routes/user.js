@@ -30,6 +30,10 @@ module.exports = function (app) {
   app.delete('/api/users/photo/cover', requireAuth, User.deleteCoverPhoto);
   app.delete('/api/users/photos/:id', requireAuth, User.deletePhoto);
 
+  // Password reset routes
+  app.post('/api/forgot', AuthenticationController.forgotPassword);
+  app.post('/api/reset/:token', AuthenticationController.changePassword);
+
   // Get profile route
   app.get('/api/users/me', requireAuth, User.getCurrentUser);
 };

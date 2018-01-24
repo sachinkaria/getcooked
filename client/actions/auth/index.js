@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, UPDATE_USER } from '../types';
-import { errorHandler } from '../public';
+import { errorHandler, successHandler } from '../public';
 import { getCurrentUser } from '../users';
 
 export function loginUser({ email, password }) {
@@ -52,6 +52,32 @@ export function registerChef({ email, password }) {
       })
       .catch((error) => {
         errorHandler(dispatch, 'There was a problem signing up. Please try again.');
+      });
+  };
+}
+
+export function forgotPassword({ email }) {
+  return (dispatch) => {
+    axios.post('/api/forgot', { email })
+      .then((response) => {
+      successHandler(dispatch, 'An email has been sent to your address. Please follow the link from there.');
+      browserHistory.push('/');
+      })
+      .catch((error) => {
+        errorHandler(dispatch, 'This email does not exist. Please enter a valid email address.');
+      });
+  };
+}
+
+export function resetPassword({ password }, token) {
+  return (dispatch) => {
+    axios.post(`/api/reset/${token}`, { password })
+      .then((response) => {
+        successHandler(dispatch, 'Your password has been successfully saved. Please login to continue.');
+        browserHistory.push('/login');
+      })
+      .catch((error) => {
+        errorHandler(dispatch, 'There was an error resetting your password. Please try again.');
       });
   };
 }

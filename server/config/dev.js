@@ -16,5 +16,6 @@ module.exports = {
   aws_bucket: process.env.AWS_BUCKET || 'getcooked',
   aws_endpoint: process.env.AWS_ENDPOINT || 'localhost',
   aws_port: process.env.AWS_PORT || '10001',
-  sendGridKey: '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'
+  sendGridKey: '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',
+  stripe_secret_key: 'sk_test_DURHL3BvKBlILOjwzXbgwAE4'
 };

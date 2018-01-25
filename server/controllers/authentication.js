@@ -190,8 +190,7 @@ exports.forgotPassword = (req, res) => {
       };
 
       // send email to approve profile
-      console.log('sending password reset email');
-      const mailer = new Mailer(emailData, resetPasswordTemplate(HOSTNAME, user));
+      const mailer = new Mailer(emailData, resetPasswordTemplate(HOSTNAME));
       mailer.send();
       res.send({ token });
     }

@@ -15,9 +15,14 @@ function createBasicSubscription(user) {
 
 function updatePaymentDetails(user, details) {
   const CUSTOMER_ID = user.stripe.customerId;
-  return stripe.customers.update({CUSTOMER_ID}, details);
+  return stripe.customers.update({ CUSTOMER_ID }, details);
+}
+
+function cancelSubscription(id) {
+  return stripe.subscriptions.del(id);
 }
 
 module.exports = createCustomer;
 module.exports = createBasicSubscription;
+module.exports = cancelSubscription;
 module.exports = updatePaymentDetails;

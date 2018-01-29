@@ -85,6 +85,20 @@ const UserSchema = new Schema({
   additionalServices: [{
     type: String
   }],
+  stripe: {
+    id: String
+  },
+  subscription: {
+    id: String,
+    status: {
+      type: String,
+      enum: ['pending', 'active', 'cancelled'],
+      default: 'pending'
+    },
+    plan: String,
+    discount: String,
+    currency: String
+  },
   minimumTotalBudget: Number,
   minimumPerHeadBudget: Number,
   resetPasswordToken: { type: String },

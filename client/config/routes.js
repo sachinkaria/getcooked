@@ -14,6 +14,7 @@ import BasicSetup from '../components/chefs/setup/basics';
 import FoodSetup from '../components/chefs/setup/food';
 import ServicesSetup from '../components/chefs/setup/services';
 import PhotosSetup from '../components/chefs/setup/photos';
+import PaymentSetup from '../components/chefs/setup/payment';
 import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Dashboard from '../components/chefs/Dashboard/index';
@@ -45,6 +46,7 @@ const routes = (
       <Route exact path="photos" component={PhotosSetup}/>
       <Route exact path="services" component={ServicesSetup}/>
       <Route exact path="food" component={FoodSetup}/>
+      <Route exact path="payment" component={PaymentSetup}/>
     </Route>
     <Route path="dashboard">
       <Route path="profile" >

@@ -10,4 +10,5 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function (app) {
   // Registration route
   app.post('/api/stripe/customers', requireAuth, StripeController.createCustomer);
+  app.post('/api/stripe/sources', requireAuth, StripeController.createSource);
 };

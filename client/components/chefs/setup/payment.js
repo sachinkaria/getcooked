@@ -24,14 +24,20 @@ class CheckoutForm extends React.Component {
     ev.preventDefault();
     const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
     axios.post('/api/stripe/customers', { email: localStorage.user.email }, AUTH_HEADERS).then((response) => {
-      console.log(response);
+      this.props.stripe.createSource(this.state.card, {
+        owner: {
+          email: localStorage.user.email,
+        },
+      }).then((source) => {
+        axios.post('/api/stripe/sources', source, AUTH_HEADERS).then((result) => {
+          console.log(result);
+        }).catch((err) => {
+          console.log(err);
+        });
+      });
     }).catch((err) => {
       console.log(err);
     });
-
-    // this.props.stripe.createSource(this.state.card).then((token) => {
-    //   console.log('Received Stripe token:', token);
-    // });
   }
 
   render() {

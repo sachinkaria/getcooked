@@ -86,7 +86,8 @@ const UserSchema = new Schema({
     type: String
   }],
   stripe: {
-    id: String
+    customerId: String,
+    sourceId: String
   },
   subscription: {
     id: String,

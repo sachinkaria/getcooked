@@ -3,7 +3,7 @@ const stripe = require('stripe')(keys.stripe_secret_key);
 
 function createCustomer(user) {
   const email = user.email;
-  return stripe.customers.create({ email });
+
 }
 
 function createBasicSubscription(user) {

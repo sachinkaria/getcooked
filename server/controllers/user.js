@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 
 const utils = require('./utils');
+const stripe = require('../services/stripe');
 
 const IMMUTABLE_FIELDS = [
   '_id',
@@ -265,3 +266,5 @@ function updatePassword(req, res) {
     });
   }
 }
+
+

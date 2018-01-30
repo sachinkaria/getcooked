@@ -12,6 +12,7 @@ const bookingRoutes = require('./server/routes/booking');
 const chefRoutes = require('./server/routes/chef');
 const reviewRoutes = require('./server/routes/review');
 const conversationRoutes = require('./server/routes/conversation');
+const stripeRoutes = require('./server/routes/stripe');
 
 // and create our instances
 const app = express();
@@ -54,6 +55,7 @@ bookingRoutes(router);
 chefRoutes(router);
 conversationRoutes(router);
 reviewRoutes(router);
+stripeRoutes(router);
 
 // Use our router configuration when we call /
 if (process.env.NODE_ENV === 'production') {

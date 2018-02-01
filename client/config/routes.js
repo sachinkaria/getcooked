@@ -23,6 +23,7 @@ import Home from '../components/Home';
 import Caterer from '../components/Caterer';
 import RequireAuth from '../components/auth/RequireAuth';
 import RequireRole from '../components/auth/RequireRole';
+import StripeWrapper from '../components/StripeWrapper';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -46,7 +47,7 @@ const routes = (
       <Route exact path="photos" component={PhotosSetup}/>
       <Route exact path="services" component={ServicesSetup}/>
       <Route exact path="food" component={FoodSetup}/>
-      <Route exact path="payment" component={PaymentSetup}/>
+      <Route exact path="payment" component={StripeWrapper(PaymentSetup)} />
     </Route>
     <Route path="dashboard">
       <Route path="profile" >

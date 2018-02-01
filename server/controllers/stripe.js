@@ -20,7 +20,7 @@ function createCustomer(req, res) {
       const customerId = response.id;
       user = _.extend(user, { stripe: { customerId }});
       user.save();
-      res.jsonp(user);
+      res.send(user);
     });
   } else {
     res.jsonp(user);

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import { Panel } from 'react-bootstrap';
 import Wizard from '../../Wizard';
+import PaymentForm from '../../forms/PaymentForm';
 import Steps from './steps.json';
 
 class CheckoutForm extends React.Component {
@@ -22,7 +22,7 @@ class CheckoutForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  componentWillReceiveProps() {
+  componentDidMount() {
     this.setState({ elements: this.props.stripe.elements() }, () => {
       this.setState({ card: this.state.elements.create('card') }, () => {
         this.state.card.mount('#card-element');
@@ -51,7 +51,6 @@ class CheckoutForm extends React.Component {
           },
         },
       }).then((source) => {
-        console.log(source);
         axios.post('/api/stripe/sources', source, AUTH_HEADERS).then((result) => {
           console.log(result);
         }).catch((err) => {
@@ -79,51 +78,17 @@ class CheckoutForm extends React.Component {
         onSkip={onSkip}
         onBack={onBack}
       >
-        <Panel>
-          <div>
-            <label className="gc-margin-bottom">
-              Credit or debit card
-            </label>
-            <div id="card-element" className="gc-margin-bottom" />
-            <div id="card-errors" role="alert" />
-            <label>
-              Name
-            </label>
-            <input type="text" className="gc-input" name="name" value={this.state.name} onChange={this.handleChange.bind(this)} />
-            <label>
-              Address line 1
-            </label>
-            <input type="text" className="gc-input" name="addressLine1"  value={this.state.addressLine1} onChange={this.handleChange} />
-            <label>
-              Address line 2
-            </label>
-            <input type="text" className="gc-input" name="addressLine2" value={this.state.addressLine2} onChange={this.handleChange} />
-            <label>
-              City
-            </label>
-            <input type="text" className="gc-input" name="city" value={this.state.city} onChange={this.handleChange} />
-            <label>
-              Postcode
-            </label>
-            <input type="text" className="gc-input" name="postcode" value={this.state.postcode} onChange={this.handleChange} />
-          </div>
-        </Panel>
+        <PaymentForm
+          name={this.state.name}
+          city={this.state.city}
+          addressLine1={this.state.addressLine1}
+          addressLine2={this.state.addressLine2}
+          postcode={this.state.postcode}
+          onChange={this.handleChange}
+        />
       </Wizard>
     );
   }
 }
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = { stripe: window.Stripe('pk_test_wlrAJ1iylIKBVemPVv5tuIaL') };
-  }
-
-  render() {
-    return (
-      <CheckoutForm stripe={this.state.stripe}/>
-    );
-  }
-}
-
-export default App;
+export default CheckoutForm;

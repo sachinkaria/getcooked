@@ -32,7 +32,7 @@ class NavigationBar extends React.Component {
   }
 
   updateBookings() {
-    if (this.props.user.data && this.props.bookings.length) {
+    if (this.props.user.data && this.props.bookings.length && isChef()) {
       this.setState({
         newBookings: this.props.bookings.filter(booking => !booking.read)
       }, () => {

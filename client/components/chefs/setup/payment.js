@@ -31,18 +31,27 @@ class CheckoutForm extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ [value]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(ev) {
     ev.preventDefault();
     const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
-    axios.post('/api/stripe/customers', { email: localStorage.user.email }, AUTH_HEADERS).then((response) => {
+    axios.post('/api/stripe/customers', {
+      email: localStorage.user.email,
+    }, AUTH_HEADERS).then(() => {
       this.props.stripe.createSource(this.state.card, {
         owner: {
-          email: localStorage.user.email,
+          address: {
+            line1: this.state.addressLine1,
+            line2: this.state.addressLine2,
+            city: this.state.city,
+            country: this.state.country,
+            postal_code: this.state.postcode
+          },
         },
       }).then((source) => {
+        console.log(source);
         axios.post('/api/stripe/sources', source, AUTH_HEADERS).then((result) => {
           console.log(result);
         }).catch((err) => {
@@ -80,23 +89,23 @@ class CheckoutForm extends React.Component {
             <label>
               Name
             </label>
-            <input type="text" className="gc-input" value={this.state.name} onChange={this.handleChange} />
+            <input type="text" className="gc-input" name="name" value={this.state.name} onChange={this.handleChange.bind(this)} />
             <label>
               Address line 1
             </label>
-            <input type="text" className="gc-input" value={this.state.addressLine1} onChange={this.handleChange} />
+            <input type="text" className="gc-input" name="addressLine1"  value={this.state.addressLine1} onChange={this.handleChange} />
             <label>
               Address line 2
             </label>
-            <input type="text" className="gc-input" value={this.state.addressLine2} onChange={this.handleChange} />
+            <input type="text" className="gc-input" name="addressLine2" value={this.state.addressLine2} onChange={this.handleChange} />
             <label>
               City
             </label>
-            <input type="text" className="gc-input" value={this.state.city} onChange={this.handleChange} />
+            <input type="text" className="gc-input" name="city" value={this.state.city} onChange={this.handleChange} />
             <label>
               Postcode
             </label>
-            <input type="text" className="gc-input" value={this.state.postcode} onChange={this.handleChange} />
+            <input type="text" className="gc-input" name="postcode" value={this.state.postcode} onChange={this.handleChange} />
           </div>
         </Panel>
       </Wizard>

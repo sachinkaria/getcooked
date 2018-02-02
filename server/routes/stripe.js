@@ -11,4 +11,5 @@ module.exports = function (app) {
   // Registration route
   app.post('/api/stripe/customers', requireAuth, StripeController.createCustomer);
   app.post('/api/stripe/sources', requireAuth, StripeController.createSource);
+  app.get('/api/stripe/sources/:id', requireAuth, StripeController.getSource);
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import {Panel} from 'react-bootstrap';
 import {Link} from 'react-router';
 import classNames from 'classnames';
+import { isChef } from '../../../utils/helpers';
 
 class Sidebar extends React.Component {
   render() {
@@ -38,6 +39,13 @@ class Sidebar extends React.Component {
                 Password</p>
             </Link>
           </li>
+          {
+            isChef &&
+            <Link to="/dashboard/account/subscription" className="gc-link-default">
+              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('subscription') })}>
+                Subscription</p>
+            </Link>
+          }
         </ul>
       </Panel>
     );

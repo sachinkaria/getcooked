@@ -59,6 +59,7 @@ const routes = (
       <Route path="account">
         <Route exact path="settings" component={RequireAuth(Dashboard)} view="settings" />
         <Route exact path="password" component={RequireAuth(Dashboard)} view="password" />
+        <Route exact path="subscription" component={RequireRole(Dashboard, 'chef')} view="subscription" />
       </Route>
       <Route exact path="bookings" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="bookings"/>
       <Route path="bookings/:id" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="view-booking"/>

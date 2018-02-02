@@ -5,10 +5,30 @@ const stripe = require('stripe')(keys.stripe_secret_key);
 
 module.exports.createCustomer = createCustomer;
 module.exports.createSource = createSource;
+module.exports.getSource = getSource;
 
 /**
  * Update customer id for user
  */
+
+function getSource(req, res) {
+  const SOURCE_ID = req.params.id;
+
+  stripe.sources.retrieve(
+    SOURCE_ID,
+    (err, response) => {
+      if (err) return (err);
+
+      const card = {
+        brand: response.card.brand,
+        last4: response.card.last4,
+        expMonth: response.card.exp_month,
+        expYear: response.card.exp_year
+      };
+      return res.jsonp({ card });
+    }
+  );
+}
 function createCustomer(req, res) {
   let user = req.user;
 

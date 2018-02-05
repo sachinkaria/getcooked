@@ -1,5 +1,5 @@
 const _ = require('lodash');
-
+const request = require('superagent');
 const keys = require('../config/main');
 const stripe = require('stripe')(keys.stripe_secret_key);
 
@@ -54,6 +54,8 @@ function createCustomer(req, res) {
     stripe.customers.create({ email: req.user.email }, (err, response) => {
       if (err) return err;
 
+      sendNewStripeCustomerSlackWebhook(user);
+
       const customerId = response.id;
       user = _.extend(user, { stripe: { customerId }});
       user.save();
@@ -73,6 +75,8 @@ function createSource(req, res) {
   if (!req.user.stripe.sourceId) {
     stripe.customers.createSource(customerId, { source }, (err, newSource) => {
       if (err) return err;
+
+      sendNewStripeSourceSlackWebhook(user);
 
       const sourceId = newSource.id;
       const sourceClientSecret = newSource.client_secret;
@@ -123,3 +127,24 @@ function cancelSubscription(req, res) {
   });
 }
 
+function sendNewStripeSourceSlackWebhook(user) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(keys.slackStripeWebHookUrl)
+      .send({
+        text: `${user.email} just added a new payment card.`
+      })
+      .end();
+  }
+}
+
+function sendNewStripeCustomerSlackWebhook(user) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(keys.slackStripeWebHookUrl)
+      .send({
+        text: `${user.email} just signed up as a stripe customer.`
+      })
+      .end();
+  }
+}

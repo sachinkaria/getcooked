@@ -22,13 +22,13 @@ const BookingSchema = new Schema({
     },
     address: AddressSchema,
     date: Date,
-    number_of_people: Number,
-    event_type: {
+    numberOfPeople: Number,
+    eventType: {
       type: String,
       enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
       required: true
     },
-    additional_information: String,
+    additionalInformation: String,
     read: {
       type: Boolean,
       default: false

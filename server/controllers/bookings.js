@@ -47,10 +47,10 @@ function create(req, res) {
   const booking = new Booking({
     user: USER._id,
     chef: BOOKING.chef,
-    event_type: BOOKING.eventType,
+    eventType: BOOKING.eventType,
     date: BOOKING.date,
-    number_of_people: BOOKING.numberOfPeople,
-    additional_information: BOOKING.additionalInformation || null,
+    numberOfPeople: BOOKING.numberOfPeople,
+    additionalInformation: BOOKING.additionalInformation || null,
     address: {
       line1: BOOKING.address_line1,
       line2: BOOKING.address_line2,
@@ -73,7 +73,7 @@ function create(req, res) {
       }, (err, subscription) => {
         if (err) return err;
 
-        console.log('subscription added', subscription);
+        console.log('Subscription added', subscription);
 
         chef.subscription.id = subscription.id;
         chef.subscription.plan = subscription.plan.id;
@@ -82,25 +82,25 @@ function create(req, res) {
         chef.save();
 
         const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-        const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.number_of_people}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+        const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
         if (chef.contactNumber) {
           twilio.sendSMS(chef.contactNumber, MESSAGE);
           booking.save((saveErr) => {
             if (saveErr) return (saveErr);
 
-            sendSignupSlackNotification(USER);
+            sendNewBookingSlackNotification(USER);
             return res.jsonp(booking);
           });
         }
       });
     } else {
       const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.number_of_people}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
       if (chef.contactNumber) {
         twilio.sendSMS(chef.contactNumber, MESSAGE);
         booking.save((err) => {
           if (err) return (err);
-          sendSignupSlackNotification(USER);
+          sendNewBookingSlackNotification(USER);
           return res.jsonp(booking);
         });
       }
@@ -108,7 +108,7 @@ function create(req, res) {
   });
 }
 
-function sendSignupSlackNotification(user) {
+function sendNewBookingSlackNotification(user) {
   if (process.env.NODE_ENV === 'production') {
     request
       .post(config.slackBookingsWebHookUrl)

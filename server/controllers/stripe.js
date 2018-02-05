@@ -7,6 +7,8 @@ module.exports.createCustomer = createCustomer;
 module.exports.createSource = createSource;
 module.exports.getSource = getSource;
 module.exports.getSubscription = getSubscription;
+module.exports.cancelSubscription = cancelSubscription;
+module.exports.resumeSubscription = resumeSubscription;
 
 /**
  * Update customer id for user
@@ -81,5 +83,43 @@ function createSource(req, res) {
   } else {
     res.jsonp(user);
   }
+}
+
+function resumeSubscription(req, res) {
+  const USER = req.user;
+
+  console.log('Adding subscription to user ', USER.stripe.customerId);
+  stripe.subscriptions.create({
+    customer: USER.stripe.customerId,
+    items: [{
+      plan: 'basic_monthly'
+    }]
+  }, (err, subscription) => {
+    if (err) return err;
+
+    USER.subscription.id = subscription.id;
+    USER.subscription.plan = subscription.plan.id;
+    USER.subscription.currency = subscription.plan.currency;
+    USER.subscription.status = 'active';
+    USER.status = 'listed';
+    USER.save();
+    res.sendStatus(200);
+  });
+}
+
+function cancelSubscription(req, res) {
+  const USER = req.user;
+  const SUBSCRIPTION_ID = USER.subscription.id;
+  console.log('Cancelling subscription for user ', USER.stripe.customerId);
+
+  stripe.subscriptions.del(SUBSCRIPTION_ID);
+  USER.subscription.status = 'cancelled';
+  USER.subscription.id = undefined;
+  USER.subscription.plan = undefined;
+  USER.status = 'unlisted';
+  USER.save((err) => {
+    if (err) return err;
+    res.sendStatus(200);
+  });
 }
 

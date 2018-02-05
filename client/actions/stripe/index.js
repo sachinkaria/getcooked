@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
 import { getCurrentUser } from '../users';
-import { UPDATE_SOURCE, UPDATE_SUBSCRIPTION, UPDATE_END_DATE, UPDATE_USER } from '../types';
+import { UPDATE_SOURCE, UPDATE_SUBSCRIPTION, UPDATE_END_DATE } from '../types';
 
-const { errorHandler } = require('../public');
+const { errorHandler, successHandler } = require('../public');
 
 export function getSource(id) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
@@ -49,4 +49,26 @@ export function createSource(source, route) {
   };
 }
 
+export function cancelSubscription() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post('/api/stripe/subscriptions/cancel', {}, AUTH_HEADERS).then(() => {
+      getCurrentUser();
+      successHandler(dispatch, 'Your subscription has successfully been cancelled.');
+    }).catch(() => {
+      errorHandler(dispatch, 'Sorry, there was a problem saving your cards details.');
+    });
+  };
+}
 
+export function resumeSubscription() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post('/api/stripe/subscriptions/resume', {}, AUTH_HEADERS).then(() => {
+      getCurrentUser();
+      successHandler(dispatch, 'Your subscription has successfully been resumed.');
+    }).catch(() => {
+      errorHandler(dispatch, 'Sorry, there was a problem saving your cards details.');
+    });
+  };
+}

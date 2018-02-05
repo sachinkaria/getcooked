@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { Panel, Row, Col, Button } from 'react-bootstrap';
 import { getCurrentUser } from '../../../../actions/users';
-import { getSubscription, getSource } from '../../../../actions/stripe';
+import { getSubscription, getSource, cancelSubscription, resumeSubscription } from '../../../../actions/stripe';
 
 class SettingsForm extends Component {
+  constructor(props) {
+    super(props);
+    this.cancelSubscription = this.cancelSubscription.bind(this);
+    this.resumeSubscription = this.resumeSubscription.bind(this);
+  }
   componentWillMount() {
     this.props.getCurrentUser();
     this.state = {
@@ -23,6 +29,14 @@ class SettingsForm extends Component {
     if (this.props.user.subscription.status === 'active') {
       this.props.getSubscription(this.props.user.subscription.id);
     }
+  }
+
+  cancelSubscription() {
+    this.props.cancelSubscription();
+  }
+
+  resumeSubscription() {
+    this.props.resumeSubscription();
   }
 
   renderContent() {
@@ -58,11 +72,17 @@ class SettingsForm extends Component {
             </Row>
             <hr />
             <Row className="text-center">
-              <Col xs={6}>
-                <Button className="gc-btn gc-btn-white">Edit Payment Method</Button>
-              </Col>
-              <Col xs={6}>
-                <Button className="gc-btn btn-danger">Cancel Subscription</Button>
+              <Col xs={6} xsOffset={3}>
+                {card && user.subscription.status === 'active' &&
+                <Button onClick={this.cancelSubscription} className="gc-btn gc-btn-white gc-btn-white--error" block>Pause Subscription</Button>
+                }
+                {card && user.subscription.status === 'cancelled' &&
+                  <Button onClick={this.resumeSubscription} className="gc-btn gc-btn-white gc-btn-white--error" block>Resume Subscription</Button>
+                }
+                {
+                  !card && user.subscription.status === 'pending' &&
+                  <Link to="/setup/payment" className="gc-btn gc-btn-white gc-btn-white--error" block>Add payment details</Link>
+                }
               </Col>
             </Row>
           </div>
@@ -91,6 +111,7 @@ class SettingsForm extends Component {
 SettingsForm.propTypes = {
   getCurrentUser: React.PropTypes.func.isRequired,
   getSubscription: React.PropTypes.func.isRequired,
+  cancelSubscription: React.PropTypes.func.isRequired,
   getSource: React.PropTypes.func.isRequired,
   subscriptionEndDate: React.PropTypes.number,
   errorMessage: React.PropTypes.string
@@ -113,4 +134,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentUser, getSubscription, getSource })(SettingsForm);
+export default connect(mapStateToProps, { getCurrentUser, getSubscription, getSource, cancelSubscription, resumeSubscription })(SettingsForm);

@@ -6,6 +6,7 @@ const stripe = require('stripe')(keys.stripe_secret_key);
 module.exports.createCustomer = createCustomer;
 module.exports.createSource = createSource;
 module.exports.getSource = getSource;
+module.exports.getSubscription = getSubscription;
 
 /**
  * Update customer id for user
@@ -26,6 +27,20 @@ function getSource(req, res) {
         expYear: response.card.exp_year
       };
       return res.jsonp({ card });
+    }
+  );
+}
+
+function getSubscription(req, res) {
+  const SUBSCRIPTION_ID = req.params.id;
+
+  stripe.subscriptions.retrieve(
+    SUBSCRIPTION_ID,
+    (err, subscription) => {
+      if (err) return err;
+      const plan = subscription.plan;
+      const currentPeriodEnd = subscription.current_period_end;
+      res.jsonp({ plan, currentPeriodEnd });
     }
   );
 }

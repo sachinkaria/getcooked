@@ -23,3 +23,6 @@ export const ADMIN_LIST_CHEFS = 'admin_list_chefs';
 export const ADMIN_GET_CHEF = 'admin_get_chef';
 export const UPDATE_CHEF_LIST = 'update_chef_list';
 export const ADMIN_LIST_USERS = 'update_list_users';
+export const UPDATE_SOURCE = 'update_source';
+export const UPDATE_SUBSCRIPTION = 'update_subscription';
+export const UPDATE_END_DATE = 'update_end_date';

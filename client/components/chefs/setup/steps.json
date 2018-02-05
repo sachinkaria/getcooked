@@ -8,7 +8,7 @@
   "basic": {
     "number": 2,
     "name": "basic details",
-    "description": "Give viewers some basic information on your who you are as well as a way for them to contact you.",
+    "description": "Give customers some basic information on your who you are as well as a way for them to contact you.",
     "onNext": "/setup/services",
     "onBack": "/setup/personal"
   },
@@ -35,8 +35,8 @@
   },
   "payment": {
     "number": 6,
-    "name": "payment",
-    "description": "Add your payments details. Please you will not be charged until you have received your first enquiry.",
+    "name": "payment details",
+    "description": "Add your payments details. Please note you will NOT be charged until you have received your first enquiry.",
     "onNext": "/dashboard/profile/basics",
     "onBack": "/setup/photos"
   },

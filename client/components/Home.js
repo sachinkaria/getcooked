@@ -100,7 +100,7 @@ class Home extends React.Component {
                     3. Design your menu
                   </h3>
                   <p className="gc-text">
-                    Get to know you caterer or chef before you decide to book them.
+                    Get to know your caterer or chef before you decide to book them.
                     Directly interact with your caterer to plan and design your menu.
                   </p>
                 </Col>

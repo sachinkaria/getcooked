@@ -53,7 +53,7 @@ class Caterer extends React.Component {
                           Cater events.
                         </h4>
                         <p className="gc-text">
-                          Cater your event. Share your food at dinners, weddings, parties and more.
+                          Cater events around you. Share your food at dinners, weddings, parties and more.
                         </p>
                       </Col>
                     </Row>
@@ -99,7 +99,7 @@ class Caterer extends React.Component {
                           Online Bookings
                         </p>
                         <p className="gc-text">
-                          Email and SMS alerts make it easy to receive and view bookings requests on any device.
+                          Email and SMS alerts make it easy to receive and view booking requests on any device.
                         </p>
                       </Col>
                       <Col sm={4}>
@@ -112,10 +112,10 @@ class Caterer extends React.Component {
                       </Col>
                       <Col sm={4}>
                         <p className="gc-profile-text-md gc-bold">
-                          Custom Filters
+                          Custom Requirements
                         </p>
                         <p className="gc-text">
-                          Customise your minimum requirements and filter bookings that won't be worth your time and
+                          Customise your minimum requirements and filter bookings that would not be worth your time and
                           energy.
                         </p>
                       </Col>
@@ -123,7 +123,7 @@ class Caterer extends React.Component {
                     <br />
                     <Row>
                       <Col xs={12}>
-                        <p className="gc-profile-text-md gc-bold">No additional fees. No contract. Pause your
+                        <p className="gc-profile-text-md gc-bold">No additional fees. No contracts. Pause your
                           subscription at any time.</p>
                       </Col>
                     </Row>

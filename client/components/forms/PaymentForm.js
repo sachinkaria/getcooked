@@ -4,6 +4,7 @@ import { Panel } from 'react-bootstrap';
 function PaymentForm({ ...props }) {
   return (
     <Panel>
+      <h3 className="gc-text">Please note your subscription will not start until you have received your first enquiry. You will not be charged until you start receiving bookings!</h3>
       <div>
         <label className="gc-margin-bottom">
           Credit or debit card

@@ -92,6 +92,7 @@ class SettingsForm extends Component {
   }
 
   render() {
+    const { user, card, plan, subscriptionEndDate } = this.props;
     return (
       (this.props.user) ?
         <div>

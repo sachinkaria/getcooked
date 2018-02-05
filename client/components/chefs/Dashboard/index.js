@@ -59,14 +59,14 @@ class Dashboard extends React.Component {
   render() {
     const PROFILE_UNDER_REVIEW = 'Your profile is under review. You will be notified as soon as it has been approved and listed.';
     const PROFILE_LISTED = 'Congrats! Your profile is currently published and is publicly shareable.';
-    const PROFILE_UNLISTED = 'Note: Your profile is currently not published and will not be publicly visible.';
+    const PROFILE_UNLISTED = 'Note: Your profile is currently not published and will not be publicly visible. Please update your payments details before listing your profile.';
     const { user } = this.props;
 
     if (!user.data) {
       return <div>Loading...</div>;
     }
 
-    const USER_LISTED = user.data.status === 'listed';
+    const USER_LISTED = (user.data.status === 'listed' && user.data.subscription.status === 'pending' || 'active');
     const USER_PENDING = user.data.status === 'pending';
     const IS_CHEF = user.data.role === 'chef';
 

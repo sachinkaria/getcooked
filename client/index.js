@@ -42,8 +42,11 @@ if (token) {
   store.dispatch({ type: AUTH_USER });
 }
 
+console.log(process.env.REACT_APP_STRIPE_KEY);
+
 ReactDOM.render(
   <Provider store={store}>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory} routes={routes} />
   </Provider>,
   document.getElementById('app'));
+

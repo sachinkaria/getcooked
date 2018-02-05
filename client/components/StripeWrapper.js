@@ -4,7 +4,7 @@ export default function (ComposedComponent) {
   return class extends React.Component {
     constructor() {
       super();
-      this.state = { stripe: window.Stripe('pk_test_wlrAJ1iylIKBVemPVv5tuIaL') };
+      this.state = { stripe: window.Stripe(process.env.REACT_APP_STRIPE_KEY) };
     }
 
     render() {

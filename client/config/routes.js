@@ -28,7 +28,7 @@ import StripeWrapper from '../components/StripeWrapper';
 const routes = (
   <Route path="/" component={NavigationBar}>
     <IndexRoute component={Home} />
-    <Route path="/chefs" component={ProfileList} />
+    {/*<Route path="/chefs" component={ProfileList} />*/}
     <Route path="/chefs/:id" component={Profile} />
     <Route exact path="/inbox" component={RequireAuth(Inbox)}/>
     <Route exact path="/bookings" component={RequireAuth(Bookings)}/>

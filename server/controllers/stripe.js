@@ -69,7 +69,7 @@ function createSource(req, res) {
   const customerId = req.user.stripe.customerId;
 
   if (!req.user.stripe.sourceId) {
-    stripe.customers.createSource(customerId, {source}, (err, newSource) => {
+    stripe.customers.createSource(customerId, { source }, (err, newSource) => {
       if (err) return err;
 
       const sourceId = newSource.id;

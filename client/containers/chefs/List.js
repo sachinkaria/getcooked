@@ -48,7 +48,7 @@ class Chefs extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {chefs: state.public.chefs};
+  return { chefs: state.public.chefs };
 }
 
 export default connect(mapStateToProps, actions)(Chefs);

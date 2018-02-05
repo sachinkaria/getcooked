@@ -37,7 +37,11 @@ class SettingsForm extends Component {
               charged<span className="gc-bold">&nbsp;£20&nbsp;</span>on your preferred payment method below.</p>
           </div>
           :
-          <p className="gc-text">Your subscription is currently not active.</p>
+          <p className="gc-text">
+            Your subscription is currently not active.
+            Your subscription will start after you receive your first booking request.
+            Please ensure your payment details are upto date.
+          </p>
         }
         {card &&
           <div>
@@ -83,12 +87,11 @@ class SettingsForm extends Component {
     );
   }
 }
+
 SettingsForm.propTypes = {
   getCurrentUser: React.PropTypes.func.isRequired,
   getSubscription: React.PropTypes.func.isRequired,
   getSource: React.PropTypes.func.isRequired,
-  card: React.PropTypes.obj,
-  plan: React.PropTypes.obj,
   subscriptionEndDate: React.PropTypes.number,
   errorMessage: React.PropTypes.string
 };

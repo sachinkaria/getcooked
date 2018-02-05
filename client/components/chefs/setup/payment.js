@@ -1,8 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
 import Wizard from '../../Wizard';
 import PaymentForm from '../../forms/PaymentForm';
 import Steps from './steps.json';
+import { createSource } from '../../../actions/stripe';
+import { errorHandler } from '../../../actions/public';
+
 
 class CheckoutForm extends React.Component {
   constructor(props) {
@@ -34,32 +38,28 @@ class CheckoutForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit(ev) {
+  handleSubmit (ev) {
     ev.preventDefault();
     const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
-    axios.post('/api/stripe/customers', {
-      email: localStorage.user.email,
-    }, AUTH_HEADERS).then(() => {
-      this.props.stripe.createSource(this.state.card, {
-        owner: {
-          address: {
-            line1: this.state.addressLine1,
-            line2: this.state.addressLine2,
-            city: this.state.city,
-            country: this.state.country,
-            postal_code: this.state.postcode
+      axios.post('/api/stripe/customers', {
+        email: localStorage.user.email,
+      }, AUTH_HEADERS).then(() => {
+        this.props.stripe.createSource(this.state.card, {
+          owner: {
+            address: {
+              line1: this.state.addressLine1,
+              line2: this.state.addressLine2,
+              city: this.state.city,
+              country: this.state.country,
+              postal_code: this.state.postcode
+            },
           },
-        },
-      }).then((source) => {
-        axios.post('/api/stripe/sources', source, AUTH_HEADERS).then((result) => {
-          console.log(result);
-        }).catch((err) => {
-          console.log(err);
+        }).then((source) => {
+          this.props.createSource(source, '/dashboard/profile/basics');
         });
+      }).catch(() => {
+        this.props.errorHandler(this.props.dispatch, 'Sorry, there was a problem saving your cards details.');
       });
-    }).catch((err) => {
-      console.log(err);
-    });
   }
 
   render() {
@@ -91,4 +91,15 @@ class CheckoutForm extends React.Component {
   }
 }
 
-export default CheckoutForm;
+CheckoutForm.propTypes = {
+  createSource: React.PropTypes.func.isRequired,
+  errorHandler: React.PropTypes.func.isRequired
+};
+
+function mapStateToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+export default connect(mapStateToProps, { createSource, errorHandler })(CheckoutForm);

@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router';
-import { Navbar, Nav, NavItem, Row, Col } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import {Navbar, Nav, NavItem } from 'react-bootstrap';
+import {connect} from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
-import { isChef } from '../utils/helpers';
-import { getBookings } from '../actions/bookings';
+import {isChef} from '../utils/helpers';
+import {getBookings} from '../actions/bookings';
 import Footer from './Footer';
 
 
@@ -21,7 +21,7 @@ class NavigationBar extends React.Component {
   }
 
   componentWillMount() {
-   if (isAuthenticated() && isChef()) this.props.getBookings();
+    if (isAuthenticated() && isChef()) this.props.getBookings();
   }
 
   componentWillReceiveProps() {
@@ -63,7 +63,7 @@ class NavigationBar extends React.Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/" className="gc-padding-none">
-                <img alt="Get Cooked" className="gc-logo-default" src="/images/logo-icon.png" />
+                <img alt="Get Cooked" className="gc-logo-default" src="/images/logo-icon.png"/>
               </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
@@ -76,20 +76,16 @@ class NavigationBar extends React.Component {
                 <div>
                   <Nav pullRight>
                     {user.data.role === 'chef' && this.state.newBookings.length > 0 &&
-                    <NavItem>
-                      <Link to={'/dashboard/bookings'}>
-                        <p className="gc-text gc-bold gc-text--dark-grey">
-                          New bookings ({this.state.newBookings.length})
-                        </p>
-                      </Link>
+                    <NavItem href="'/dashboard/bookings'">
+                      <p className="gc-text gc-bold gc-text--dark-grey">
+                        New bookings ({this.state.newBookings.length})
+                      </p>
                     </NavItem>
                     }
-                    <NavItem>
-                      <Link to={this.dashboardRoute(user.data && user.data.role)}>
-                        <p className="gc-text gc-text--dark-grey">
-                          Dashboard
-                        </p>
-                      </Link>
+                    <NavItem href={this.dashboardRoute(user.data && user.data.role)}>
+                      <p className="gc-text gc-text--dark-grey">
+                        Dashboard
+                      </p>
                     </NavItem>
                   </Nav>
                 </div>
@@ -98,15 +94,11 @@ class NavigationBar extends React.Component {
             {
               (!isAuthenticated() && showNav) && (
                 <Nav pullRight>
-                  <NavItem>
-                    <Link to={'/caterers/about'}>
-                      <p className="gc-text gc-text--dark-grey">Register as a caterer</p>
-                    </Link>
+                  <NavItem href="/caterers/about">
+                    <p className="gc-text gc-text--dark-grey">Register as a caterer</p>
                   </NavItem>
-                  <NavItem>
-                    <Link to={'/login'}>
-                      <p className="gc-text gc-text--dark-grey">Login</p>
-                    </Link>
+                  <NavItem href="/login">
+                    <p className="gc-text gc-text--dark-grey">Login</p>
                   </NavItem>
                 </Nav>
               )
@@ -121,9 +113,7 @@ class NavigationBar extends React.Component {
       </div>
     );
   }
-
 }
-;
 
 function mapStateToProps(state) {
   return {
@@ -132,4 +122,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getBookings })(NavigationBar);
+export default connect(mapStateToProps, {getBookings})(NavigationBar);

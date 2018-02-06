@@ -13,7 +13,7 @@ export function loginUser({ email, password }) {
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         getCurrentUser();
-        browserHistory.push('/chefs');
+        browserHistory.push('/');
       })
       .catch(() => {
         const ERROR = 'Sorry the email or password was incorrect. Please try again.';

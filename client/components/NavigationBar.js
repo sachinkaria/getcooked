@@ -51,7 +51,7 @@ class NavigationBar extends React.Component {
     } else if (role === 'admin') {
       return '/admin/dashboard/chefs';
     }
-    return 'dashboard/account/settings';
+    return '/dashboard/account/settings';
   }
 
   render() {

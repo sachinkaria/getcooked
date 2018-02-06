@@ -39,14 +39,20 @@ app.use(bodyParser.json({ limit: '30mb' }));
 // To prevent errors from Cross Origin Resource Sharing, we will set
 // our headers to allow CORS with middleware like so:
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', (process.env.NODE_ENV !== 'production') ? 'https://getcooked-test.herokuapp.com' : 'http://localhost:8080');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Authorization, Access-Control-Request-Method, Access-Control-Request-Headers');
 
   // and remove cacheing so we get the most recent data
   res.setHeader('Cache-Control', 'no-cache');
-  next();
+  
+  if (req.header('x-forwarded-proto') !== 'https') {
+    res.redirect(`https://${req.header('host')}${req.url}`);
+  }
+  else {
+    next();
+  }
 });
 
 authRoutes(router);

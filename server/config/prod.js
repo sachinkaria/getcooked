@@ -23,5 +23,5 @@ module.exports = {
   slackUsersWebHookUrl: process.env.SLACK_USERS_WEBHOOK,
   slackBookingsWebHookUrl: process.env.SLACK_BOOKINGS_WEBHOOK,
   slackStripeWebHookUrl: process.env.SLACK_STRIPE_WEBHOOK,
-  stripe_secret_key: process.env.REACT_APP_STRIPE_KEY
+  stripe_secret_key: process.env.STRIPE_SECRET_KEY
 };

@@ -77,6 +77,7 @@ class CheckoutForm extends React.Component {
         sideBarText={sideBarText}
         onSkip={onSkip}
         onBack={onBack}
+        disableSkip
       >
         <PaymentForm
           name={this.state.name}

@@ -36,16 +36,19 @@ function Wizard(props) {
               </Button>
             </Col>
           </Row>
-          <Row>
-            <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
-              <Link className="gc-link-default" to={props.onSkip}>
-                <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
-                  Skip
-                </Button>
-                <br />
-              </Link>
-            </Col>
-          </Row>
+          {
+            !props.disableSkip &&
+            <Row>
+              <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
+                <Link className="gc-link-default" to={props.onSkip}>
+                  <Button className="gc-btn gc-btn--white" bsSize="small" block bsStyle="default">
+                    Skip
+                  </Button>
+                  <br />
+                </Link>
+              </Col>
+            </Row>
+          }
         </form>
       </Col>
       <Col xsHidden sm={4} md={3} className="gc-margin-top">
@@ -64,17 +67,24 @@ function Wizard(props) {
 
 Wizard.propTypes = {
   children: React.PropTypes.element.isRequired,
-  progress: React.PropTypes.number,
-  onSubmit: React.PropTypes.func,
+  progress: React.PropTypes.number.isRequired,
+  onSubmit: React.PropTypes.func.isRequired,
   onSkip: React.PropTypes.string,
   onBack: React.PropTypes.string,
   sideBarHeading: React.PropTypes.string,
   sideBarText: React.PropTypes.string,
-  errorMessage: React.PropTypes.string
+  errorMessage: React.PropTypes.string,
+  disableSkip: React.PropTypes.bool
 };
 
 Wizard.defaultProps = {
-  children: <div>No view inserted</div>
+  children: <div>No view inserted</div>,
+  disableSkip: false,
+  sideBarText: '',
+  sideBarHeading: '',
+  onBack: null,
+  onSkip: null,
+  errorMessage: null
 };
 
 

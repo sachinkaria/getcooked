@@ -46,6 +46,7 @@ function getSubscription(req, res) {
     }
   );
 }
+
 function createCustomer(req, res) {
   let user = req.user;
 
@@ -53,12 +54,10 @@ function createCustomer(req, res) {
     console.log('Creating customer');
     stripe.customers.create({ email: req.user.email }, (err, response) => {
       if (err) return err;
-
-      sendNewStripeCustomerSlackWebhook(user);
-
       const customerId = response.id;
       user = _.extend(user, { stripe: { customerId }});
       user.save();
+      // sendNewStripeCustomerSlackWebhook(user);
       res.send(user);
     });
   } else {
@@ -76,12 +75,11 @@ function createSource(req, res) {
     stripe.customers.createSource(customerId, { source }, (err, newSource) => {
       if (err) return err;
 
-      sendNewStripeSourceSlackWebhook(user);
-
       const sourceId = newSource.id;
       const sourceClientSecret = newSource.client_secret;
       user = _.extend(user, { stripe: { customerId, sourceId, sourceClientSecret } });
       user.save();
+      sendNewStripeSourceSlackWebhook(user);
       res.jsonp(user);
     });
   } else {
@@ -132,7 +130,7 @@ function sendNewStripeSourceSlackWebhook(user) {
     request
       .post(keys.slackStripeWebHookUrl)
       .send({
-        text: `${user.email} just added a new payment card.`
+        text: `${user.email} just signed up as a stripe customer and added a new payment card.`
       })
       .end();
   }

@@ -20,7 +20,7 @@ const ListItem = (props) => {
                 <p className="gc-form-heading text-capitalize">{props.booking.chef.displayName}</p>
               </Link>
               <p className="gc-text"><span className="gc-bold">Event date:</span> {moment(props.booking.date).format('MMMM Do YYYY')}</p>
-              <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{props.booking.event_type}</span></p>
+              <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{props.booking.eventType}</span></p>
             </Col>
             <Col sm={4} className="center-m right-t">
               <p className="gc-text hidden-xs">{moment(props.booking.createdAt).format('MMMM Do YYYY')}</p>

@@ -31,20 +31,20 @@ class BookingItem extends React.Component {
             <Col>
               <div>
                 <p className="gc-text"><span className="gc-bold">Event date:</span> {moment(this.props.booking.date).format('MMMM Do YYYY')}</p>
-                <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{this.props.booking.event_type}</span></p>
-                <p className="gc-text"><span className="gc-bold">Number of guests (approx.):</span> {this.props.booking.number_of_people}</p>
+                <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{this.props.booking.eventType}</span></p>
+                <p className="gc-text"><span className="gc-bold">Number of guests (approx.):</span> {this.props.booking.numberOfPeople}</p>
                 <p className="gc-text"><span className="gc-bold">Address: </span>{this.props.booking.address.line1}, {this.props.booking.address.line2}, {this.props.booking.address.city}, {this.props.booking.address.postcode}</p>
                 <p className="gc-text"><span className="gc-bold">Budget (approx.):</span> £{this.props.booking.budget || 1500}</p>
               </div>
             </Col>
           </Row>
           {
-            this.props.booking.additional_information &&
+            this.props.booking.additionalInformation &&
             <Row className="gc-margin-top gc-center">
               <Col xs={12}>
                 <p className="gc-text gc-bold">Additional Information</p>
                 <p className="gc-text gc-dark-grey">
-                  {this.props.booking.additional_information}
+                  {this.props.booking.additionalInformation}
                 </p>
               </Col>
             </Row>
@@ -58,8 +58,10 @@ class BookingItem extends React.Component {
           <Col md={6}>
             <div>
               <p className="gc-form-heading text-capitalize">
-                {this.props.booking.user.firstName} {this.props.booking.user.lastName}
+                  Customer Details
               </p>
+              <p className="gc-text"><span className="gc-bold">Full name: </span>
+                {this.props.booking.user.firstName} {this.props.booking.user.lastName}</p>
               <p className="gc-text"><span className="gc-bold">Mobile number: </span>
                 +44 {this.props.booking.user.mobileNumber}</p>
               <p className="gc-text"><span className="gc-bold">Email address: </span> {this.props.booking.user.email}</p>
@@ -71,19 +73,19 @@ class BookingItem extends React.Component {
               <p className="gc-form-heading">Event details</p>
               <p className="gc-text"><span className="gc-bold">Event date:</span> {moment(this.props.booking.date).format('MMMM Do YYYY')}</p>
               <p className="gc-text"><span className="gc-bold">Address: </span>{this.props.booking.address.line1}, {this.props.booking.address.line2}, {this.props.booking.address.city}, {this.props.booking.address.postcode}</p>
-              <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{this.props.booking.event_type}</span></p>
-              <p className="gc-text"><span className="gc-bold">Number of guests (approx.):</span> {this.props.booking.number_of_people}</p>
+              <p className="gc-text"><span className="gc-bold">Type of event:</span> <span className="text-capitalize">{this.props.booking.eventType}</span></p>
+              <p className="gc-text"><span className="gc-bold">Number of guests (approx.):</span> {this.props.booking.numberOfPeople}</p>
               <p className="gc-text"><span className="gc-bold">Budget (approx.):</span> £{this.props.booking.budget || 1500}</p>
             </div>
           </Col>
         </Row>
         {
-          this.props.booking.additional_information &&
+          this.props.booking.additionalInformation &&
           <Row className="gc-margin-top">
             <Col xs={12}>
               <p className="gc-text gc-bold">Additional Information</p>
               <p className="gc-text gc-dark-grey">
-                {this.props.booking.additional_information}
+                {this.props.booking.additionalInformation}
               </p>
             </Col>
           </Row>

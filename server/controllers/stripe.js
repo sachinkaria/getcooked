@@ -57,7 +57,7 @@ function createCustomer(req, res) {
       const customerId = response.id;
       user = _.extend(user, { stripe: { customerId }});
       user.save();
-      // sendNewStripeCustomerSlackWebhook(user);
+      sendNewStripeCustomerSlackWebhook(user);
       res.send(user);
     });
   } else {
@@ -130,7 +130,7 @@ function sendNewStripeSourceSlackWebhook(user) {
     request
       .post(keys.slackStripeWebHookUrl)
       .send({
-        text: `${user.email} just signed up as a stripe customer and added a new payment card.`
+        text: `${user.email} just added a new payment card.`
       })
       .end();
   }

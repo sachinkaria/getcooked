@@ -14,35 +14,6 @@ class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
     this.dashboardRoute = this.dashboardRoute.bind(this);
-    this.updateBookings = this.updateBookings.bind(this);
-    this.state = {
-      newBookings: 0
-    };
-  }
-
-  componentWillMount() {
-    if (isAuthenticated() && isChef()) this.props.getBookings();
-  }
-
-  componentWillReceiveProps() {
-    setTimeout(() => {
-      if (isAuthenticated() && isChef()) this.props.getBookings();
-      this.updateBookings();
-    }, 30000);
-  }
-
-  updateBookings() {
-    if (this.props.user.data && this.props.bookings.length && isChef()) {
-      this.setState({
-        newBookings: this.props.bookings.filter(booking => !booking.read)
-      }, () => {
-        if (this.state.newBookings.length) {
-          document.title = `Get Cooked (${this.state.newBookings.length})`;
-        } else {
-          document.title = 'Get Cooked';
-        }
-      });
-    }
   }
 
   dashboardRoute(role) {
@@ -75,13 +46,6 @@ class NavigationBar extends React.Component {
               (isAuthenticated() && user.data && showNav) && (
                 <div>
                   <Nav pullRight>
-                    {user.data.role === 'chef' && this.state.newBookings.length > 0 &&
-                    <NavItem href="'/dashboard/bookings'">
-                      <p className="gc-text gc-bold gc-text--dark-grey">
-                        New bookings ({this.state.newBookings.length})
-                      </p>
-                    </NavItem>
-                    }
                     <NavItem href={this.dashboardRoute(user.data && user.data.role)}>
                       <p className="gc-text gc-text--dark-grey">
                         Dashboard
@@ -122,4 +86,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getBookings})(NavigationBar);
+export default connect(mapStateToProps, { getBookings })(NavigationBar);

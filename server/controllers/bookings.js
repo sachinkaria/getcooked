@@ -15,7 +15,7 @@ module.exports.read = read;
 function list(req, res) {
   const user = req.user;
   Booking
-    .find({$or: [{user: user._id}, {chef: user._id}]})
+    .find({$or: [{ user: user._id }, { chef: user._id }]})
     .populate('user', 'firstName lastName email mobileNumber')
     .populate('chef', 'profilePhoto displayName')
     .sort('-createdAt')
@@ -63,7 +63,7 @@ function create(req, res) {
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber phoneCode contactNumber stripe subscription', (error, chef) => {
     if (error) return (error);
 
-    if (chef.subscription.status !== 'active') {
+    if (chef.subscription.status !== 'active' && chef.stripe.customerId) {
       console.log('Adding subscription to user', chef.stripe.customerId);
       stripe.subscriptions.create({
         customer: chef.stripe.customerId,
@@ -79,23 +79,27 @@ function create(req, res) {
         chef.subscription.plan = subscription.plan.id;
         chef.subscription.currency = subscription.plan.currency;
         chef.subscription.status = 'active';
-        chef.save();
+        chef.save((err) => {
+          if (err) return err;
 
-        const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-        const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
-        if (chef.contactNumber) {
-          twilio.sendSMS(chef.contactNumber, MESSAGE);
-          booking.save((saveErr) => {
-            if (saveErr) return (saveErr);
+          const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
+          const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+          if (chef.contactNumber) {
+            twilio.sendSMS(chef.contactNumber, MESSAGE);
+            booking.save((saveErr) => {
+              if (saveErr) return (saveErr);
 
-            sendNewBookingSlackNotification(USER);
-            return res.jsonp(booking);
-          });
-        }
+              sendNewBookingSlackNotification(USER);
+              return res.jsonp(booking);
+            });
+          }
+        });
+
       });
     } else {
       const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
       const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+      chef.status = 'unlisted';
       if (chef.contactNumber) {
         twilio.sendSMS(chef.contactNumber, MESSAGE);
         booking.save((err) => {

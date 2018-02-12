@@ -6,7 +6,7 @@ import { Panel, Row, Col, Button } from 'react-bootstrap';
 import { getCurrentUser } from '../../../../actions/users';
 import { getSubscription, getSource, cancelSubscription, resumeSubscription } from '../../../../actions/stripe';
 
-class SettingsForm extends Component {
+class SubscriptionForm extends Component {
   constructor(props) {
     super(props);
     this.cancelSubscription = this.cancelSubscription.bind(this);
@@ -22,7 +22,7 @@ class SettingsForm extends Component {
   }
 
   componentWillReceiveProps() {
-    if (this.props.user.stripe.sourceId) {
+    if (this.props.user.stripe && this.props.user.stripe.sourceId) {
       this.props.getSource(this.props.user.stripe.sourceId);
     }
 
@@ -57,7 +57,7 @@ class SettingsForm extends Component {
             Please ensure your payment details are upto date.
           </p>
         }
-        {card &&
+        {card ?
           <div>
             <hr />
             <Row>
@@ -86,15 +86,21 @@ class SettingsForm extends Component {
               </Col>
             </Row>
           </div>
+          :
+          <div className="gc-center">
+            <Link to="/setup/payment" className="btn gc-btn btn-success">
+              Add new card
+            </Link>
+          </div>
         }
       </div>
     );
   }
 
   render() {
-    const { user, card, plan, subscriptionEndDate } = this.props;
+    const { user } = this.props;
     return (
-      (this.props.user) ?
+      (user) ?
         <div>
           {this.renderContent()}
         </div>
@@ -109,7 +115,7 @@ class SettingsForm extends Component {
   }
 }
 
-SettingsForm.propTypes = {
+SubscriptionForm.propTypes = {
   getCurrentUser: React.PropTypes.func.isRequired,
   getSubscription: React.PropTypes.func.isRequired,
   cancelSubscription: React.PropTypes.func.isRequired,
@@ -118,7 +124,7 @@ SettingsForm.propTypes = {
   errorMessage: React.PropTypes.string
 };
 
-SettingsForm.defaultProps = {
+SubscriptionForm.defaultProps = {
   errorMessage: null,
   card: null,
   plan: null,
@@ -135,4 +141,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentUser, getSubscription, getSource, cancelSubscription, resumeSubscription })(SettingsForm);
+export default connect(mapStateToProps, { getCurrentUser, getSubscription, getSource, cancelSubscription, resumeSubscription })(SubscriptionForm);

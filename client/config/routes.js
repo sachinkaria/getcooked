@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, IndexRoute} from 'react-router';
 import ProfileList from '../containers/chefs/List';
 import NavigationBar from '../components/NavigationBar';
+import Terms from '../components/Terms';
 import Bookings from '../components/bookings/List';
 import Profile from '../containers/chefs/Profile';
 import Inbox from '../components/messages/Inbox';
@@ -30,6 +31,7 @@ const routes = (
     <IndexRoute component={Home} />
     {/*<Route path="/chefs" component={ProfileList} />*/}
     <Route path="/chefs/:id" component={Profile} />
+    <Route path="/terms" component={Terms} />
     <Route exact path="/inbox" component={RequireAuth(Inbox)}/>
     <Route exact path="/bookings" component={RequireAuth(Bookings)}/>
     <Route exact path="register" component={Register} redirect/>

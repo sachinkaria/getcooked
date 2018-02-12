@@ -47,12 +47,12 @@ app.use((req, res, next) => {
   // and remove cacheing so we get the most recent data
   res.setHeader('Cache-Control', 'no-cache');
   
-  if (req.header('x-forwarded-proto') !== 'https') {
+  if (process.env.NODE_ENV === 'production' && req.header('x-forwarded-proto') !== 'https') {
     res.redirect(`https://${req.header('host')}${req.url}`);
-  }
-  else {
+  } else {
     next();
   }
+
 });
 
 authRoutes(router);

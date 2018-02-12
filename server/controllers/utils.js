@@ -48,7 +48,7 @@ function imageUploader(options, type, callback) {
   function uploadImage(cb, img) {
 
     const FILE_LENGTH = img.length;
-    const FILE_NAME = options.filename;
+    const FILE_NAME = options.filename.split(' ').join('-');
     const FILE_TYPE = options.filetype;
 
     const header = {

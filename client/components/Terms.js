@@ -104,6 +104,21 @@ function Terms() {
               <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you must stop using the service.</p>
 
               <br />
+              <h2 className="gc-profile-heading-sm">Bookings</h2>
+
+              <p>All catering services featured on our Website is booked directly with the relevant Caterer, not Get Cooked</p>
+
+              <p>We rely on the information provided to us by the Caterers and are not responsible for any services that may or may not be offered.</p>
+
+              <p>If you have any specific requirements when booking your catering services, you must communicate those requirements directly to your Caterer.</p>
+
+              <p>You acknowledge that: </p>
+
+              <p>(a) whilst we may perform limited checks on Caterers who wish to register with us, we are not in a position to required confirm the identity of Caterers or to verify the status of the facilities and catering services they offer</p>
+
+              <p>(b) we do not have control over the quality of the facilities and catering services provided by Caterers, nor of the integrity, responsibility or actions of Caterers.</p>
+
+              <br />
               <h2 className="gc-profile-heading-sm">Privacy Policy and Cookie Policy</h2>
 
               <p>Please refer to our Privacy Policy and Cookies Policy. You agree that they constitute part of these terms. You must read our Privacy Policy and Cookies Policy before you use the Service.</p>

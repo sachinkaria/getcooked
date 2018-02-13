@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 export default function Footer() {
   return (
@@ -9,10 +10,10 @@ export default function Footer() {
           <Col sm={4}>
             <li className="gc-list">
               <ul className="gc-text gc-white gc-padding-none">
-                Terms and Conditions
+                <Link className="gc-link-default gc-link-default--white" to="/terms">Terms and Conditions</Link>
               </ul>
               <ul className="gc-text gc-white gc-padding-none">
-                Privacy Policy
+                <Link className="gc-link-default gc-link-default--white" to="/privacy">Privacy Policy</Link>
               </ul>
             </li>
           </Col>

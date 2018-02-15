@@ -27,13 +27,17 @@ function Wizard(props) {
           <Row>
             <Col xs={8} xsOffset={2} md={4} mdOffset={4}>
               <p>{props.errorMessage}</p>
-              <Button
-                type="submit"
-                bsSize="small"
-                block
-                className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top" >
-                Next
-              </Button>
+              {!props.loading ?
+                <Button
+                  type="submit"
+                  bsSize="small"
+                  block
+                  className="btn gc-btn gc-btn--orange gc-margin-bottom--xs gc-margin-top" >
+                  Next
+                </Button>
+                :
+                <span className="gc-icon gc-icon--xl gc-icon--loading text-center" />
+              }
             </Col>
           </Row>
           {

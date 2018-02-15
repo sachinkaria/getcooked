@@ -1,11 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import Wizard from '../../Wizard';
 import PaymentForm from '../../forms/PaymentForm';
 import Steps from './steps.json';
-import { createSource } from '../../../actions/stripe';
-import { errorHandler } from '../../../actions/public';
+import {createSource} from '../../../actions/stripe';
+import {errorHandler} from '../../../actions/public';
 
 
 class CheckoutForm extends React.Component {
@@ -19,7 +19,8 @@ class CheckoutForm extends React.Component {
       addressLine2: '',
       city: '',
       country: 'United Kingdom',
-      postcode: ''
+      postcode: '',
+      loading: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,39 +28,41 @@ class CheckoutForm extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ elements: this.props.stripe.elements() }, () => {
-      this.setState({ card: this.state.elements.create('card') }, () => {
+    this.setState({elements: this.props.stripe.elements()}, () => {
+      this.setState({card: this.state.elements.create('card')}, () => {
         this.state.card.mount('#card-element');
       });
     });
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({[event.target.name]: event.target.value});
   }
 
-  handleSubmit (ev) {
+  handleSubmit(ev) {
     ev.preventDefault();
-    const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
-      axios.post('/api/stripe/customers', {
-        email: localStorage.user.email,
-      }, AUTH_HEADERS).then(() => {
-        this.props.stripe.createSource(this.state.card, {
-          owner: {
-            address: {
-              line1: this.state.addressLine1,
-              line2: this.state.addressLine2,
-              city: this.state.city,
-              country: this.state.country,
-              postal_code: this.state.postcode
-            },
+    const AUTH_HEADERS = {headers: {Authorization: localStorage.token}};
+    axios.post('/api/stripe/customers', {
+      email: localStorage.user.email,
+    }, AUTH_HEADERS).then(() => {
+      this.setState({loading: true});
+      this.props.stripe.createSource(this.state.card, {
+        owner: {
+          address: {
+            line1: this.state.addressLine1,
+            line2: this.state.addressLine2,
+            city: this.state.city,
+            country: this.state.country,
+            postal_code: this.state.postcode
           },
-        }).then((source) => {
-          this.props.createSource(source, '/dashboard/profile/basics');
-        });
-      }).catch(() => {
-        this.props.errorHandler(this.props.dispatch, 'Sorry, there was a problem saving your cards details.');
+        },
+      }).then((source) => {
+        this.props.createSource(source, '/dashboard/profile/basics');
       });
+    }).catch(() => {
+      this.setState({ loading: false });
+      this.props.errorHandler(this.props.dispatch, 'Sorry, there was a problem saving your cards details.');
+    });
   }
 
   render() {
@@ -77,6 +80,7 @@ class CheckoutForm extends React.Component {
         sideBarText={sideBarText}
         onSkip={onSkip}
         onBack={onBack}
+        loading={this.state.loading}
         disableSkip
       >
         <PaymentForm
@@ -103,4 +107,4 @@ function mapStateToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, { createSource, errorHandler })(CheckoutForm);
+export default connect(mapStateToProps, {createSource, errorHandler})(CheckoutForm);

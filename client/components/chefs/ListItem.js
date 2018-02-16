@@ -8,7 +8,8 @@ const StarRatingComponent = require('react-star-rating-component');
 const ListItem = (props) => {
   const primaryColour = '#ff6851';
   const styles = {
-    backgroundImage: `url(${props.profilePhoto})`
+    backgroundImage: `url(${props.profilePhoto})`,
+    backgroundSize: 'cover'
   };
 
   return (

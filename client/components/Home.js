@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import {Row, Col, Button} from 'react-bootstrap';
 import {browserHistory, Link} from 'react-router';
 import {connect} from 'react-redux';
@@ -11,7 +12,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const chefs = this.props.chefs.slice(0, 3);
+    const chefs = _.shuffle(this.props.chefs).slice(0,3);
     // localStorage.token && browserHistory.push('/chefs');
     return (
       <div>

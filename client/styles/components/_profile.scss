@@ -50,16 +50,16 @@
 
 
 .gc-profile-wrapper{
-  height: 60vw;
+  height: 68vw;
   margin-bottom: 120px;
 
   @include breakpoint(tablet){
-    height: 18vw;
+    height: 22vw;
     margin-bottom: 130px;
   }
 
   @include breakpoint(laptop){
-    height: 14vw;
+    height: 18vw;
   }
 }
 

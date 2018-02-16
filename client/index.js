@@ -10,6 +10,7 @@ import { AUTH_USER } from './actions/types';
 import { getCurrentUser } from './actions/users';
 import { getBookings } from './actions/bookings';
 
+require('babel-polyfill');
 require('./styles/main.scss');
 require('./images/logo-icon.png');
 require('./images/cover-photo.jpg');

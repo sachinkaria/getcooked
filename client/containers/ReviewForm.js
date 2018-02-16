@@ -62,7 +62,7 @@ class ReviewForm extends React.Component {
 
     return (
       <div>
-        <Button block={this.props.block} className="gc-btn gc-btn-white" onClick={this.showModal}>
+        <Button disabled block={this.props.block} className="gc-btn gc-btn-white" onClick={this.showModal}>
           Write a review
         </Button>
         <Modal

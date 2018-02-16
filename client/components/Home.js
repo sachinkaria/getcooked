@@ -7,12 +7,12 @@ import ListItem from './chefs/ListItem';
 
 class Home extends React.Component {
   componentWillMount() {
-    // this.props.listChefs();
+    this.props.listChefs();
   }
 
   render() {
-    // const chefs = this.props.chefs.slice(0, 3);
-    // localStorage.token && browserHistory.push('/chefs');
+    const chefs = this.props.chefs.slice(0, 3);
+    localStorage.token && browserHistory.push('/chefs');
     return (
       <div>
         <section className="gc-section gc-section--main text-left">
@@ -20,28 +20,28 @@ class Home extends React.Component {
             <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
               <h1 className="gc-title">Get Cooked</h1>
               <h2 className="gc-heading">Cater your events with the coolest chefs around.</h2>
-              {/*<div className="gc-margin-bottom gc-padding-none">*/}
-                {/*<div className="gc-center">*/}
-                  {/*<h3 className="gc-profile-text-md gc-bold gc-margin-bottom--lg">Featured Caterers</h3>*/}
-                  {/*<Row className="gc-margin-bottom--sm">*/}
-                    {/*{*/}
-                      {/*(chefs.length > 0) &&*/}
-                      {/*chefs.map(chef => (*/}
-                        {/*<ListItem*/}
-                          {/*isHome*/}
-                          {/*id={chef._id}*/}
-                          {/*key={chef._id}*/}
-                          {/*profilePhoto={chef.profilePhoto}*/}
-                          {/*name={chef.displayName}*/}
-                          {/*rating={chef.rating}*/}
-                          {/*tagLine={chef.tagLine}*/}
-                          {/*endorsements={chef.endorsements}*/}
-                          {/*numberOfReviews={chef.numberOfReviews}*/}
-                          {/*serviceType={chef.serviceType}*/}
-                        {/*/>*/}
-                      {/*))*/}
-                    {/*}*/}
-                  {/*</Row>*/}
+              <div className="gc-margin-bottom gc-padding-none">
+                <div className="gc-center">
+                  <h3 className="gc-profile-text-md gc-bold gc-margin-bottom--lg">Featured Caterers</h3>
+                  <Row className="gc-margin-bottom--sm">
+                    {
+                      (chefs.length > 0) &&
+                      chefs.map(chef => (
+                        <ListItem
+                          isHome
+                          id={chef._id}
+                          key={chef._id}
+                          profilePhoto={chef.profilePhoto}
+                          name={chef.displayName}
+                          rating={chef.rating}
+                          tagLine={chef.tagLine}
+                          endorsements={chef.endorsements}
+                          numberOfReviews={chef.numberOfReviews}
+                          serviceType={chef.serviceType}
+                        />
+                      ))
+                    }
+                  </Row>
                   {/*<Row>*/}
                     {/*<Col sm={4} smOffset={4}>*/}
                       {/*<Link to={'/chefs'}>*/}
@@ -51,8 +51,8 @@ class Home extends React.Component {
                       {/*</Link>*/}
                     {/*</Col>*/}
                   {/*</Row>*/}
-                {/*</div>*/}
-              {/*</div>*/}
+                </div>
+              </div>
             </Col>
           </Row>
         </section>

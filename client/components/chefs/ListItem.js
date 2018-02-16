@@ -9,7 +9,8 @@ const ListItem = (props) => {
   const primaryColour = '#ff6851';
   const styles = {
     backgroundImage: `url(${props.profilePhoto})`,
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    backgroundPosition: 'top'
   };
 
   return (

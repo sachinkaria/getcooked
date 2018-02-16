@@ -12,7 +12,7 @@ class Home extends React.Component {
 
   render() {
     const chefs = this.props.chefs.slice(0, 3);
-    localStorage.token && browserHistory.push('/chefs');
+    // localStorage.token && browserHistory.push('/chefs');
     return (
       <div>
         <section className="gc-section gc-section--main text-left">

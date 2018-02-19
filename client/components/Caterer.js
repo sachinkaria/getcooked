@@ -63,7 +63,7 @@ class Caterer extends React.Component {
               <Row>
                 <Col sm={4} smOffset={4}>
                   <Link to="/caterers/register">
-                    <Button block className="gc-btn gc-btn--orange">
+                    <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })}  block className="gc-btn gc-btn--orange">
                       Get started
                     </Button>
                   </Link>
@@ -130,7 +130,7 @@ class Caterer extends React.Component {
                     <Row>
                       <Col sm={4} smOffset={4}>
                         <Link to="/caterers/register">
-                          <Button block className="gc-btn gc-btn--orange gc-margin-top--lg">
+                          <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })} block className="gc-btn gc-btn--orange gc-margin-top--lg">
                             Get started
                           </Button>
                         </Link>

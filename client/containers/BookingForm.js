@@ -110,11 +110,11 @@ class BookingForm extends React.Component {
       <div>
         {
           this.props.mobile ?
-            <Button disabled block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.showModal}>
+            <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.showModal}>
               Book now
             </Button>
             :
-            <Button disabled block className="gc-btn gc-btn--orange" onClick={this.showModal}>
+            <Button block className="gc-btn gc-btn--orange" onClick={this.showModal}>
               Book now
             </Button>
         }

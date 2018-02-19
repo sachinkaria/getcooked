@@ -1,62 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Get Cooked</title>
-  <meta name="description" content="Book the best caterers in London. Plan and cater events organised by you, anytime, anywhere.">
+    <meta charset="UTF-8">
+    <title>Get Cooked</title>
+    <meta name="description"
+          content="Book the best caterers in London. Plan and cater events organised by you, anytime, anywhere.">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Cater your events with the coolest chefs around.">
-  <meta property="og:description" content="Book the best caterers in London. Plan and cater events organised by you, anytime, anywhere.">
-  <meta property="og:image" alt="get cooked helps you find and book caterers" content="http://getcooked.co/images/facebook-image.jpg">
-  <meta property="og:url" content="http://getcooked.co">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cater your events with the coolest chefs around.">
+    <meta property="og:description"
+          content="Book the best caterers in London. Plan and cater events organised by you, anytime, anywhere.">
+    <meta property="og:image" alt="get cooked helps you find and book caterers"
+          content="http://getcooked.co/images/facebook-image.jpg">
+    <meta property="og:url" content="http://getcooked.co">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <link rel="stylesheet" src="node_modules/react-star-rating/dist/css/react-star-rating.min.css">
-  <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css" integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
-  <link rel="icon" type="image/png" href="/images/logo-icon.png" />
-  <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
-  <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" src="node_modules/react-star-rating/dist/css/react-star-rating.min.css">
+    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
+          integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="/images/logo-icon.png"/>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- start Mixpanel -->
-  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
-  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
-  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
-mixpanel.init("65f6d76c5922979972106f6f44055354");</script>
-  <!-- end Mixpanel -->
+    <!-- start Mixpanel -->
+    <script type="text/javascript">(function (e, a) {
+      if (!a.__SV) {
+        var b = window;
+        try {
+          var c, l, i, j = b.location, g = j.hash;
+          c = function (a, b) {
+            return (l = a.match(RegExp(b + "=([^&]*)"))) ? l[1] : null
+          };
+          g && c(g, "state") && (i = JSON.parse(decodeURIComponent(c(g, "state"))), "mpeditor" === i.action && (b.sessionStorage.setItem("_mpcehash", g), history.replaceState(i.desiredHash || "", e.title, j.pathname + j.search)))
+        } catch (m) {
+        }
+        var k, h;
+        window.mixpanel = a;
+        a._i = [];
+        a.init = function (b, c, f) {
+          function e(b, a) {
+            var c = a.split(".");
+            2 == c.length && (b = b[c[0]], a = c[1]);
+            b[a] = function () {
+              b.push([a].concat(Array.prototype.slice.call(arguments,
+                0)))
+            }
+          }
 
-  <!-- start Hotjar -->
-  <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:771267,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
-  <!-- end Hotjar -->
+          var d = a;
+          "undefined" !== typeof f ? d = a[f] = [] : f = "mixpanel";
+          d.people = d.people || [];
+          d.toString = function (b) {
+            var a = "mixpanel";
+            "mixpanel" !== f && (a += "." + f);
+            b || (a += " (stub)");
+            return a
+          };
+          d.people.toString = function () {
+            return d.toString(1) + ".people (stub)"
+          };
+          k = "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+          for (h = 0; h < k.length; h++)e(d, k[h]);
+          a._i.push([b, c, f])
+        };
+        a.__SV = 1.2;
+        b = e.createElement("script");
+        b.type = "text/javascript";
+        b.async = !0;
+        b.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+        c = e.getElementsByTagName("script")[0];
+        c.parentNode.insertBefore(b, c)
+      }
+    })(document, window.mixpanel || []);
+    </script>
+    <!-- end Mixpanel -->
 
-  <!-- Google analytics verification -->
-  <meta name="google-site-verification" content="_gOP_UPqcC-DD2c54EVNL-08b1b1aFFJY5bc1wydhEk" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108194117-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- start Heap -->
+    <script type="text/javascript">
+      window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=t.forceSSL||"https:"===document.location.protocol,a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=(r?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+e+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","removeEventProperty","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+    </script>
+    <!-- end Heap -->
 
-    gtag('config', 'UA-108194117-1');
-  </script>
+    <!-- start Hotjar -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () {
+            (h.hj.q = h.hj.q || []).push(arguments)
+          };
+        h._hjSettings = {hjid: 771267, hjsv: 6};
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+    <!-- end Hotjar -->
+
+    <!-- Google analytics verification -->
+    <meta name="google-site-verification" content="_gOP_UPqcC-DD2c54EVNL-08b1b1aFFJY5bc1wydhEk"/>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108194117-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-108194117-1');
+    </script>
 
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <div id="app"></div>
-  </div>
+</div>
 </body>
 </html>

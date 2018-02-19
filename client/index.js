@@ -35,6 +35,8 @@ require('./images/food.png');
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
+heap.load(process.env.REACT_APP_HEAP);
+
 const token = localStorage.token;
 
 if (token) {

@@ -57,7 +57,7 @@ class Login extends Component {
               </Row>
               <Row>
                 <Col sm={4} smOffset={4}>
-                  <Button type="submit" block bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-bottom">Login</Button>
+                  <Button onClick={() => heap.track('Sign In')} type="submit" block bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-bottom">Login</Button>
                 </Col>
               </Row>
             </form>

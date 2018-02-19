@@ -94,7 +94,7 @@ class RegisterChef extends Component {
                   <Link className="gc-text gc-bold" to="/login">Already have an account? </Link>
                 </Col>
               </Row>
-              <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
+              <Button onClick={() => heap.track('Sign Up', { role: 'caterer' })} type="submit" bsSize="large" className="btn gc-btn gc-btn--orange">Register</Button>
             </form>
           </div>
         </Col>

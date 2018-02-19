@@ -41,6 +41,7 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
+    heap.track('Submit Payment Details');
     const AUTH_HEADERS = {headers: {Authorization: localStorage.token}};
     axios.post('/api/stripe/customers', {
       email: localStorage.user.email,

@@ -29,6 +29,9 @@ class Profile extends React.Component {
     const REVIEWS = this.props.chef.comments || [];
     const NUMBER_OF_REVIEWS = this.props.chef.comments.length;
     const RATING = this.props.chef.rating;
+
+    heap.track('View Caterer', { name: CHEF.displayName, id: this.props.params.id });
+
     // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
     return (
       <div>

@@ -72,6 +72,7 @@ class BookingForm extends React.Component {
     this.resetForm = this.resetForm.bind(this);
     this.setDate = this.setDate.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   componentWillReceiveProps() {
@@ -79,6 +80,12 @@ class BookingForm extends React.Component {
       this.hideModal();
     }
   }
+
+  onClick() {
+    heap.track('Click Book Now');
+    this.showModal();
+  }
+
 
   setDate(date) {
     this.setState({ date });
@@ -110,11 +117,11 @@ class BookingForm extends React.Component {
       <div>
         {
           this.props.mobile ?
-            <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.showModal}>
+            <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.onClick}>
               Book now
             </Button>
             :
-            <Button block className="gc-btn gc-btn--orange" onClick={this.showModal}>
+            <Button block className="gc-btn gc-btn--orange" onClick={this.onClick}>
               Book now
             </Button>
         }
@@ -246,7 +253,7 @@ class BookingForm extends React.Component {
                       />
                     </div>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={3} >
-                      <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+                      <Button onClick={() => heap.track('Submit Booking', { chef_id: this.props.chef._id })} block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
                         Submit request
                       </Button>
                     </Col>

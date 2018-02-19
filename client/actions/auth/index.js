@@ -13,6 +13,8 @@ export function loginUser({ email, password }) {
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         getCurrentUser();
+
+        heap.identify(response.data.user.email);
         browserHistory.push('/');
       })
       .catch(() => {

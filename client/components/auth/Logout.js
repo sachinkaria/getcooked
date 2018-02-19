@@ -4,6 +4,7 @@ import * as actions from '../../actions/auth';
 
 class Logout extends Component {
   componentWillMount() {
+    heap.track('Sign Out');
     this.props.logoutUser();
   }
 

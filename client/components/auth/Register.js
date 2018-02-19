@@ -84,7 +84,7 @@ class Register extends Component {
             </Row>
             <Link className="gc-text gc-bold" to="/login">Already have an account? </Link>
             <br />
-            <Button type="submit" bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-top">{redirect ? 'Sign Up' : 'Continue'}</Button>
+            <Button onClick={() => heap.track('Sign Up', { role: 'user' })} type="submit" bsSize="large" className="btn gc-btn gc-btn--orange gc-margin-top">{redirect ? 'Sign Up' : 'Continue'}</Button>
           </form>
         </div>
       </Col>

@@ -16,10 +16,10 @@ class Caterer extends React.Component {
               <Row>
                 <Col sm={10}>
                   <h1 className="gc-title">
-                    Become a caterer.
+                    Grow your catering business.
                   </h1>
                   <h2 className="gc-heading">
-                    Plan, organise and share your food at events around you.
+                    Receive online bookings and cater events around you.
                   </h2>
                 </Col>
               </Row>
@@ -32,7 +32,7 @@ class Caterer extends React.Component {
                         <h4 className="gc-profile-text-md gc-bold">
                           Create a profile.
                         </h4>
-                        <p className="gc-text gc-margin-bottom--lg">
+                        <p className="gc-text gc-text--lg gc-margin-bottom--lg">
                           Profiles include information, pictures, sample menus, ratings and reviews.
                         </p>
                       </Col>
@@ -42,7 +42,7 @@ class Caterer extends React.Component {
                         <h4 className="gc-profile-text-md gc-bold">
                           Receive bookings.
                         </h4>
-                        <p className="gc-text gc-margin-bottom--lg">
+                        <p className="gc-text gc-text--lg gc-margin-bottom--lg">
                           Receive and review online bookings to cater events around London.
                         </p>
                       </Col>
@@ -52,7 +52,7 @@ class Caterer extends React.Component {
                         <h4 className="gc-profile-text-md gc-bold">
                           Cater events.
                         </h4>
-                        <p className="gc-text">
+                        <p className="gc-text gc-text--lg">
                           Cater events around you. Share your food at dinners, weddings, parties and more.
                         </p>
                       </Col>
@@ -63,7 +63,7 @@ class Caterer extends React.Component {
               <Row>
                 <Col sm={4} smOffset={4}>
                   <Link to="/caterers/register">
-                    <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })}  block className="gc-btn gc-btn--orange">
+                    <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })}  block className="gc-btn gc-btn--lg gc-btn--orange">
                       Get started
                     </Button>
                   </Link>
@@ -86,7 +86,7 @@ class Caterer extends React.Component {
                       <Col xs={12}>
                         <h3 className="gc-heading gc-padding-small gc-margin-none">
                           £20<span className="gc-profile-text-lg"> /month*</span>
-                          <p className="gc-profile-text-sm">
+                          <p className="gc-profile-text-md">
                             *your subscription only starts after you receive your first booking
                           </p>
                         </h3>
@@ -98,7 +98,7 @@ class Caterer extends React.Component {
                         <p className="gc-profile-text-md gc-bold">
                           Online Bookings
                         </p>
-                        <p className="gc-text">
+                        <p className="gc-text gc-text--lg">
                           Email and SMS alerts make it easy to receive and view booking requests on any device.
                         </p>
                       </Col>
@@ -106,17 +106,16 @@ class Caterer extends React.Component {
                         <p className="gc-profile-text-md gc-bold">
                           Ratings & Reviews
                         </p>
-                        <p className="gc-text">
+                        <p className="gc-text gc-text--lg">
                           Build trust with your hosts by receiving ratings and reviews from your happy customers.
                         </p>
                       </Col>
                       <Col sm={4}>
                         <p className="gc-profile-text-md gc-bold">
-                          Custom Requirements
+                          Direct Contact
                         </p>
-                        <p className="gc-text">
-                          Customise your minimum requirements and filter bookings that would not be worth your time and
-                          energy.
+                        <p className="gc-text gc-text--lg">
+                          Customer contact details allow you communicate directly and provide a personalised experience.
                         </p>
                       </Col>
                     </Row>
@@ -130,7 +129,7 @@ class Caterer extends React.Component {
                     <Row>
                       <Col sm={4} smOffset={4}>
                         <Link to="/caterers/register">
-                          <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })} block className="gc-btn gc-btn--orange gc-margin-top--lg">
+                          <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })} block className="gc-btn gc-btn--lg gc-btn--orange gc-margin-top--lg">
                             Get started
                           </Button>
                         </Link>

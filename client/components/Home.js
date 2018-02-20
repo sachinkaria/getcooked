@@ -70,7 +70,7 @@ class Home extends React.Component {
                   <h3 className="gc-profile-text-md gc-bold">
                     1. Find a Caterer
                   </h3>
-                  <p className="gc-text">
+                  <p className="gc-text gc-text--lg">
                     Our collection of profiles make it easy to find a great caterer or private chef for your event.
                     Compare their photos, ratings, reviews and more.
                   </p>
@@ -85,7 +85,7 @@ class Home extends React.Component {
                   <h3 className="gc-profile-text-md gc-bold">
                     2. Send a booking request
                   </h3>
-                  <p className="gc-text">
+                  <p className="gc-text gc-text--lg">
                     Simply fill out the details of your event and the caterer will get in touch!
                     Direct contact gives you a more personalised experience.
                   </p>
@@ -100,7 +100,7 @@ class Home extends React.Component {
                   <h3 className="gc-profile-text-md gc-bold">
                     3. Design your menu
                   </h3>
-                  <p className="gc-text">
+                  <p className="gc-text gc-text--lg">
                     Get to know your caterer or chef before you decide to book them.
                     Directly interact with your caterer to plan and design your menu.
                   </p>
@@ -115,7 +115,7 @@ class Home extends React.Component {
                   <h3 className="gc-profile-text-md gc-bold">
                     4. Share and enjoy food
                   </h3>
-                  <p className="gc-text">
+                  <p className="gc-text gc-text--lg">
                     Share and enjoy food with your guests anytime, anywhere.
                   </p>
                 </Col>
@@ -137,7 +137,7 @@ class Home extends React.Component {
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h2 className="gc-section-heading gc-padding-none">Are you a caterer or private chef?</h2>
-                  <p className="gc-text">
+                  <p className="gc-text gc-text--lg">
                     Plan, organise and share food at events around London.
                     Connect and design your menu with event hosts around you.
                     Receive bookings for events directly

@@ -19,6 +19,12 @@ $image-height: 200px;
     font-weight: 600;
   }
 
+  &.gc-btn--lg {
+    height: 42px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
   &:focus {
     outline: none;
     &:active {

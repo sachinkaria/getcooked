@@ -115,7 +115,7 @@ class Caterer extends React.Component {
                           Direct Contact
                         </p>
                         <p className="gc-text gc-text--lg">
-                          Customer contact details allow you communicate directly and provide a personalised experience.
+                          Customer contact details let you speak to them directly and provide a personalised experience.
                         </p>
                       </Col>
                     </Row>

@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
 import isAuthenticated from '../utils/isAuthenticated';
-import {isChef} from '../utils/helpers';
 import {getBookings} from '../actions/bookings';
 import Footer from './Footer';
 

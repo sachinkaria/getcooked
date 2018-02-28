@@ -40,7 +40,7 @@ class Sidebar extends React.Component {
             </Link>
           </li>
           {
-            isChef &&
+            isChef() &&
             <Link to="/dashboard/account/subscription" className="gc-link-default">
               <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('subscription') })}>
                 Subscription</p>

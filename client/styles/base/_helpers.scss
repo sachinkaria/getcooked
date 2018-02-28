@@ -214,3 +214,10 @@ hr.light-grey{
 .gc-equal-height{
   height: 100%;
 }
+
+.gc-hr--xl {
+  opacity: 0;
+    @include breakpoint(tablet) {
+      padding: 0 80px;
+    }
+}

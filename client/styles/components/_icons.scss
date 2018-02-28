@@ -62,6 +62,13 @@
   width: 64px;
 
   @include breakpoint(tablet) {
-    width: 128px;
+    width: 84px;
+  }
+
+  &.gc-info-icon--lg {
+    @include breakpoint(tablet) {
+      width: 128px;
+    }
+
   }
 }

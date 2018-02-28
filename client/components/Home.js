@@ -64,7 +64,7 @@ class Home extends React.Component {
               <h2 className="gc-section-heading">How it works</h2>
               <Row>
                 <Col sm={6} smPush={6} className="text-center">
-                  <img className="gc-info-icon" alt="Find a caterer" src="/images/search.png"/>
+                  <img className="gc-info-icon gc-info-icon--lg" alt="Find a caterer" src="/images/search.png"/>
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -79,7 +79,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6}>
-                  <img className="gc-info-icon" alt="Send a booking request" src="/images/event.png"/>
+                  <img className="gc-info-icon gc-info-icon--lg" alt="Send a booking request" src="/images/event.png"/>
                 </Col>
                 <Col sm={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -94,7 +94,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6} smPush={6}>
-                  <img className="gc-info-icon" alt="Design your menu" src="/images/ingredients.png"/>
+                  <img className="gc-info-icon gc-info-icon--lg" alt="Design your menu" src="/images/ingredients.png"/>
                 </Col>
                 <Col sm={6} smPull={6}>
                   <h3 className="gc-profile-text-md gc-bold">
@@ -109,7 +109,7 @@ class Home extends React.Component {
               <br />
               <Row>
                 <Col className="text-center" sm={6}>
-                  <img className="gc-info-icon" alt="Share and enjoy food" src="/images/bell.png"/>
+                  <img className="gc-info-icon gc-info-icon--lg" alt="Share and enjoy food" src="/images/bell.png"/>
                 </Col>
                 <Col sm={6}>
                   <h3 className="gc-profile-text-md gc-bold">

@@ -64,7 +64,7 @@ class Caterer extends React.Component {
                 <Col sm={4} smOffset={4}>
                   <Link to="/caterers/register">
                     <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })}  block className="gc-btn gc-btn--lg gc-btn--orange">
-                      Get started
+                      Get started for free
                     </Button>
                   </Link>
                 </Col>
@@ -84,33 +84,42 @@ class Caterer extends React.Component {
                   <Panel className="gc-panel gc-panel--translucent text-center">
                     <Row>
                       <Col xs={12}>
+                        <hr className="gc-hr--xl"/>
                         <h3 className="gc-heading gc-padding-small gc-margin-none">
-                          £20<span className="gc-profile-text-lg"> /month*</span>
-                          <p className="gc-profile-text-md">
+                          <span className="gc-profile-text-lg">Just</span> £20<span className="gc-profile-text-lg"> per month*</span>
+                          <p className="gc-profile-text-md gc-bold gc-margin-top">No additional fees. No contracts. Cancel your
+                            subscription at any time.</p>
+                          <p className="gc-text gc-text--lg gc-bold">
                             *your subscription only starts after you receive your first booking
                           </p>
                         </h3>
+                        <hr className="gc-hr--xl" />
                       </Col>
                     </Row>
                     <br />
                     <Row>
                       <Col sm={4}>
+                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/event.png"/>
                         <p className="gc-profile-text-md gc-bold">
                           Online Bookings
                         </p>
-                        <p className="gc-text gc-text--lg">
+                        <p className="gc-text gc-text--lg gc-margin-bottom--lg">
                           Email and SMS alerts make it easy to receive and view booking requests on any device.
                         </p>
                       </Col>
+                      <br className="visible-xs" />
                       <Col sm={4}>
+                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/review.png"/>
                         <p className="gc-profile-text-md gc-bold">
                           Ratings & Reviews
                         </p>
-                        <p className="gc-text gc-text--lg">
+                        <p className="gc-text gc-text--lg gc-margin-bottom--lg">
                           Build trust with your hosts by receiving ratings and reviews from your happy customers.
                         </p>
                       </Col>
+                      <br className="visible-xs" />
                       <Col sm={4}>
+                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/phone.png"/>
                         <p className="gc-profile-text-md gc-bold">
                           Direct Contact
                         </p>
@@ -119,18 +128,11 @@ class Caterer extends React.Component {
                         </p>
                       </Col>
                     </Row>
-                    <br />
-                    <Row>
-                      <Col xs={12}>
-                        <p className="gc-profile-text-md gc-bold">No additional fees. No contracts. Pause your
-                          subscription at any time.</p>
-                      </Col>
-                    </Row>
                     <Row>
                       <Col sm={4} smOffset={4}>
                         <Link to="/caterers/register">
                           <Button onClick={() => heap.track('Click Sign Up', { role: 'caterer' })} block className="gc-btn gc-btn--lg gc-btn--orange gc-margin-top--lg">
-                            Get started
+                            Get started for free
                           </Button>
                         </Link>
                       </Col>

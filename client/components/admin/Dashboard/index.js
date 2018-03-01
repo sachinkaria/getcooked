@@ -49,7 +49,7 @@ class AdminDashboard extends React.Component {
                 <div>
                   {chefs.map(chef =>
                     (
-                      <Panel key={chef.displayName}>
+                      <Panel key={chef._id}>
                         <Row>
                           <Col xs={3} md={2}>
                             <ProfilePicture withoutMargins photoUrl={chef.profilePhoto} />
@@ -57,9 +57,14 @@ class AdminDashboard extends React.Component {
                           <Col xs={6} md={7}>
                             <p className="gc-text gc-bold gc-margin-none">{chef.displayName}</p>
                             <Status status={chef.status} />
+                            <p>Name: {chef.firstName.concat(' ').concat(chef.lastName)}</p>
+                            <p>Email: {chef.email}</p>
+                            <p>Contact Number: {chef.contactNumber}</p>
+                            <p>Subscription: {chef.subscription.status}</p>
+
                           </Col>
                           <Col xs={3} className="text-right">
-                            <p className="gc-text gc-text--sm gc-bold gc-margin-none">Updated: {moment(chef.updated).format('MMM Do YYYY')}</p>
+                            <p className="gc-text gc-text--sm gc-bold gc-margin-none">Updated: {moment(chef.updatedAt).format('MMM Do YYYY')}</p>
                             <Link to={`/admin/dashboard/chefs/${chef._id}`}>
                               <Button block className="gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
                             </Link>

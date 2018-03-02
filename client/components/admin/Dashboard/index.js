@@ -57,7 +57,7 @@ class AdminDashboard extends React.Component {
                           <Col xs={6} md={7}>
                             <p className="gc-text gc-bold gc-margin-none">{chef.displayName}</p>
                             <Status status={chef.status} />
-                            <p>Name: {chef.firstName.concat(' ').concat(chef.lastName)}</p>
+                            <p>Name: {chef.firstName ? chef.firstName + ' ' + chef.lastName : 'NO NAME'} </p>
                             <p>Email: {chef.email}</p>
                             <p>Contact Number: {chef.contactNumber}</p>
                             <p>Subscription: {chef.subscription.status}</p>

@@ -30,7 +30,6 @@ import StripeWrapper from '../components/StripeWrapper';
 const routes = (
   <Route path="/" component={NavigationBar}>
     <IndexRoute component={Home} />
-    {/*<Route path="/chefs" component={ProfileList} />*/}
     <Route path="/chefs/:id" component={Profile} />
     <Route path="/terms" component={Terms} />
     <Route path="/privacy" component={Privacy} />
@@ -39,6 +38,7 @@ const routes = (
     <Route exact path="register" component={Register} redirect/>
     <Route exact path="forgot" component={ForgotPassword} />
     <Route exact path="reset/:token" component={ResetPassword} />
+    <Route path="/caterers" component={ProfileList} />
     <Route path="caterers">
       <Route path="about" component={Caterer} />
       <Route path="register" component={RegisterChef} />

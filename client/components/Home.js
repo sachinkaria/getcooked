@@ -43,15 +43,15 @@ class Home extends React.Component {
                       ))
                     }
                   </Row>
-                  {/*<Row>*/}
-                    {/*<Col sm={4} smOffset={4}>*/}
-                      {/*<Link to={'/chefs'}>*/}
-                        {/*<Button block className="gc-btn gc-btn--orange gc-btn--search">*/}
-                          {/*View more*/}
-                        {/*</Button>*/}
-                      {/*</Link>*/}
-                    {/*</Col>*/}
-                  {/*</Row>*/}
+                  <Row>
+                    <Col sm={4} smOffset={4}>
+                      <Link to={'/caterers'}>
+                        <Button block className="gc-btn gc-btn--orange gc-btn--search">
+                          View more
+                        </Button>
+                      </Link>
+                    </Col>
+                  </Row>
                 </div>
               </div>
             </Col>

@@ -2,6 +2,7 @@
 
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
+const _ = require('lodash');
 const User = require('../models/user');
 const config = require('../config/main');
 const request = require('superagent');
@@ -35,7 +36,7 @@ exports.login = (req, res, next) => {
 
 exports.register = (req, res, next) => {
   // Check for registration errors
-  const email = req.body.email;
+  const email = _.lowerCase(req.body.email);
   const password = req.body.password;
 
   // Return error if no email provided
@@ -86,7 +87,7 @@ exports.register = (req, res, next) => {
 
 exports.registerChef = (req, res, next) => {
   // Check for registration errors
-  const email = req.body.email;
+  const email = _.lowerCase(req.body.email);
   const password = req.body.password;
 
 

@@ -83,7 +83,6 @@ class CheckoutForm extends React.Component {
         onSkip={onSkip}
         onBack={onBack}
         loading={this.state.loading}
-        disableSkip
       >
         <PaymentForm
           name={this.state.name}

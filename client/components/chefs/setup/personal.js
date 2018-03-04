@@ -72,6 +72,7 @@ class BasicInfo extends Component {
         sideBarText={sideBarText}
         onSkip={onSkip}
         errorMessage={this.props.errorMessage}
+        disableSkip
       >
         <div>
           <label className="gc-text">First name</label>

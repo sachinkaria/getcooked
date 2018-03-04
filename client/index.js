@@ -35,6 +35,7 @@ require('./images/review.png');
 require('./images/phone.png');
 require('./images/facebook-logo.jpg');
 require('./images/facebook-meta-logo.jpg');
+require('./images/powered_by_stripe.svg');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

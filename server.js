@@ -35,6 +35,7 @@ watcher.on('ready', () => {
 // JSON data in the request body
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(bodyParser.json({ limit: '30mb' }));
+app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
 
 // To prevent errors from Cross Origin Resource Sharing, we will set
 // our headers to allow CORS with middleware like so:

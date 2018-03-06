@@ -13,7 +13,6 @@ import { getBookings } from './actions/bookings';
 require('babel-polyfill');
 require('./styles/main.scss');
 require('./images/logo-icon.png');
-require('./images/cover-photo.jpg');
 require('./images/chef.svg');
 require('./images/barbecue.svg');
 require('./images/vegan.svg');
@@ -33,8 +32,6 @@ require('./images/chef.svg');
 require('./images/food.png');
 require('./images/review.png');
 require('./images/phone.png');
-require('./images/facebook-logo.jpg');
-require('./images/facebook-meta-logo.jpg');
 require('./images/powered_by_stripe.svg');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);

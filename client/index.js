@@ -39,6 +39,11 @@ const store = createStoreWithMiddleware(reducers);
 
 heap.load(process.env.REACT_APP_HEAP);
 
+window.Intercom("boot", {
+  app_id: process.env.REACT_APP_INTERCOM_ID
+});
+
+
 const token = localStorage.token;
 
 if (token) {

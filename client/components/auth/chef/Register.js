@@ -61,7 +61,7 @@ class RegisterChef extends Component {
                     placeholder="Email"
                     className="form-control gc-input gc-margin-bottom"
                     component={renderField}
-                    type="text"
+                    type="email"
                   />
                 </Col>
               </Row>

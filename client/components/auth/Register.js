@@ -61,7 +61,7 @@ class Register extends Component {
             </div>
             <Row>
               <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
-                <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="text"/>
+                <Field name="email" placeholder="Email" className="form-control gc-input gc-margin-bottom" component={renderField} type="email"/>
               </Col>
             </Row>
             <Row>

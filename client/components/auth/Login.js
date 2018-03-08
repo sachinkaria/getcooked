@@ -35,7 +35,7 @@ class Login extends Component {
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
               <Row>
                 <Col sm={8} smOffset={2}>
-                  <Field placeholder="Email" name="email" className="form-control gc-input gc-margin-bottom" component="input" type="text" />
+                  <Field placeholder="Email" name="email" className="form-control gc-input gc-margin-bottom" component="input" type="email" />
                 </Col>
               </Row>
               <Row>

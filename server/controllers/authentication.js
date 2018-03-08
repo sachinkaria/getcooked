@@ -36,7 +36,7 @@ exports.login = (req, res, next) => {
 
 exports.register = (req, res, next) => {
   // Check for registration errors
-  const email = _.lowerCase(req.body.email);
+  const email = req.body.email;
   const password = req.body.password;
 
   // Return error if no email provided
@@ -87,7 +87,7 @@ exports.register = (req, res, next) => {
 
 exports.registerChef = (req, res, next) => {
   // Check for registration errors
-  const email = _.lowerCase(req.body.email);
+  const email = req.body.email;
   const password = req.body.password;
 
 
@@ -110,7 +110,10 @@ exports.registerChef = (req, res, next) => {
     }
 
     // If email is unique and password was provided, create account
-    let user = new User(req.body);
+    const user = new User({
+      email,
+      password
+    });
 
     user.role = 'chef';
 
@@ -122,7 +125,7 @@ exports.registerChef = (req, res, next) => {
 
       // Respond with JWT if user was created
 
-      let userInfo = setUserInfo(user);
+      const userInfo = setUserInfo(user);
 
       sendSignupSlackNotification(user, 'caterer');
 
@@ -197,7 +200,6 @@ exports.forgotPassword = (req, res) => {
     }
   ], (err) => {
     if (err) {
-      console.log('error');
       res.redirect('/forgot');
     }
   });

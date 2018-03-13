@@ -2,11 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 
 const Heading = (props) => {
-  const classes = classNames({
-    'gc-center': !props.textAlign,
-    'gc-profile-heading-md': true,
-    'gc-margin-bottom': true,
-    'gc-green': true
+  const classes = classNames('gc-profile-heading-md gc-margin-bottom gc-green text-capitalize', {
+    'gc-center': !props.textAlign
   });
   return <p className={classes}>{props.text}</p>;
 };
@@ -17,7 +14,8 @@ Heading.propTypes = {
 };
 
 Heading.defaultProps = {
-  text: ''
+  text: '',
+  textAlign: false
 };
 
 

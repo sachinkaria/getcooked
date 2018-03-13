@@ -62,7 +62,7 @@ function create(req, res) {
     budget: BOOKING.budget
   });
 
-  User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber phoneCode contactNumber stripe subscription', (error, chef) => {
+  User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {
     if (error) return (error);
 
     if (chef.subscription.status !== 'active' && chef.stripe.customerId) {
@@ -99,7 +99,7 @@ function create(req, res) {
       });
     } else {
       const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-      const PAYMENT_HOSTNAME = 'http://'.concat(req.headers.host).concat('/setup/payment');
+      const hostname = 'http://'.concat(req.headers.host).concat('/setup/payment');
       const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
       const EMAIL_DATA = {
         subject: 'Update your payment details.',
@@ -110,7 +110,7 @@ function create(req, res) {
         if (err) return err;
         if (chef.contactNumber) {
           twilio.sendSMS(chef.contactNumber, MESSAGE);
-          const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, PAYMENT_HOSTNAME));
+          const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, hostname));
           mailer.send();
           booking.save((err) => {
             if (err) return (err);

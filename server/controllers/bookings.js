@@ -6,6 +6,8 @@ const _ = require('lodash');
 const request = require('superagent');
 const config = require('../config/main');
 const stripe = require('stripe')(config.stripe_secret_key);
+const Mailer = require('../services/mailer');
+const paymentDetailsTemplate = require('../services/emailTemplates/updatePaymentTemplate');
 
 
 module.exports.create = create;
@@ -79,8 +81,8 @@ function create(req, res) {
         chef.subscription.plan = subscription.plan.id;
         chef.subscription.currency = subscription.plan.currency;
         chef.subscription.status = 'active';
-        chef.save((err) => {
-          if (err) return err;
+        chef.save((saveErr) => {
+          if (saveErr) return saveErr;
 
           const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
           const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
@@ -94,20 +96,29 @@ function create(req, res) {
             });
           }
         });
-
       });
     } else {
       const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
+      const PAYMENT_HOSTNAME = 'http://'.concat(req.headers.host).concat('/setup/payment');
       const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+      const EMAIL_DATA = {
+        subject: 'Update your payment details.',
+        recipient: chef.companyEmail
+      };
       chef.status = 'unlisted';
-      if (chef.contactNumber) {
-        twilio.sendSMS(chef.contactNumber, MESSAGE);
-        booking.save((err) => {
-          if (err) return (err);
-          sendNewBookingSlackNotification(USER);
-          return res.jsonp(booking);
-        });
-      }
+      chef.save((err) => {
+        if (err) return err;
+        if (chef.contactNumber) {
+          twilio.sendSMS(chef.contactNumber, MESSAGE);
+          const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, PAYMENT_HOSTNAME));
+          mailer.send();
+          booking.save((err) => {
+            if (err) return (err);
+            sendNewBookingSlackNotification(USER);
+            return res.jsonp(booking);
+          });
+        }
+      });
     }
   });
 }

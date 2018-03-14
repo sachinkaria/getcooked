@@ -1,29 +1,69 @@
 import React from 'react';
-import { Col, Panel, Row, Button } from 'react-bootstrap';
-import { Link } from 'react-router';
-import moment from 'moment';
+import { Col, Panel, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
-import { adminListChefs, updateStatus, adminListUsers } from '../../../actions/admin';
+import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
-import ProfilePicture from '../../chefs/profile/ProfilePicture';
-import Status from '../../Status';
+import ChefItem from './ChefItem';
+import UserItem from './UserItem';
 import Sidebar from '../../chefs/Dashboard/Sidebar';
 
 
 class AdminDashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selectedChef: '',
+      data_uri: '',
+      filename: '',
+      filetype: '',
+      processing: '',
+      images: []
+    };
     this.updateStatus = this.updateStatus.bind(this);
+    this.onImagesUpload = this.onImagesUpload.bind(this);
+    this.selectChef = this.selectChef.bind(this);
   }
+
   componentWillMount() {
     this.props.getCurrentUser();
     this.props.adminListChefs();
     this.props.adminListUsers();
   }
 
+  onImagesUpload(e) {
+    let FILE_NUMBER = 1;
+    const NUMBER_OF_FILES = e.target.files.length;
+    Object.keys(e.target.files).forEach(function (key) {
+      const reader = new FileReader();
+      const FILE = e.target.files[key];
+      reader.onload = (upload) => {
+        this.setState({
+          images: [...this.state.images, {
+            data_uri: upload.target.result,
+            filename: FILE.name,
+            filetype: FILE.type
+          }]
+        }, () => {
+          if (FILE_NUMBER < NUMBER_OF_FILES) {
+            FILE_NUMBER += 1;
+          } else {
+            this.setState({ processing: 'normal' });
+            this.props.adminUploadPhotos(this.state.images, this.state.selectedChef);
+            this.setState({ images: [] });
+          }
+        });
+      };
+      reader.readAsDataURL(FILE);
+    }.bind(this));
+  }
+
   updateStatus(status, id) {
     this.props.updateStatus(status, id);
+  }
+
+  selectChef(selectedChef) {
+    this.setState({ selectedChef });
   }
 
   render() {
@@ -49,48 +89,19 @@ class AdminDashboard extends React.Component {
                 <div>
                   {chefs.map(chef =>
                     (
-                      <Panel key={chef._id}>
-                        <Row>
-                          <Col xs={3} md={2}>
-                            <ProfilePicture withoutMargins photoUrl={chef.profilePhoto} />
-                          </Col>
-                          <Col xs={6} md={7}>
-                            <p className="gc-text gc-bold gc-margin-none">{chef.displayName}</p>
-                            <Status status={chef.status} />
-                            <p>Name: {chef.firstName ? chef.firstName + ' ' + chef.lastName : 'NO NAME'} </p>
-                            <p>Email: {chef.email}</p>
-                            <p>Contact Number: {chef.contactNumber}</p>
-                            <p>Subscription: {chef.subscription.status}</p>
-
-                          </Col>
-                          <Col xs={3} className="text-right">
-                            <p className="gc-text gc-text--sm gc-bold gc-margin-none">Updated: {moment(chef.updatedAt).format('MMM Do YYYY')}</p>
-                            <Link to={`/admin/dashboard/chefs/${chef._id}`}>
-                              <Button block className="gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
-                            </Link>
-                            <div className="gc-margin-top--xs">
-                              {
-                                (chef.status === 'pending') &&
-                                <Button block className="btn gc-btn gc-btn--sm btn-success" onClick={() => this.updateStatus('approve', chef._id)}>
-                                  Approve
-                                </Button>
-                              }
-                              {
-                                (chef.status === 'unlisted') &&
-                                <Button block className="btn gc-btn gc-btn--sm gc-btn-blue" onClick={() => this.updateStatus('list', chef._id)}>
-                                  List
-                                </Button>
-                              }
-                              {
-                                (chef.status === 'listed') &&
-                                <Button block className="btn gc-btn gc-btn--sm btn-danger" onClick={() => this.updateStatus('unlist', chef._id)}>
-                                  Unlist
-                                </Button>
-                              }
-                            </div>
-                          </Col>
-                        </Row>
-                      </Panel>
+                      <ChefItem
+                        id={chef._id}
+                        key={chef._id}
+                        firstName={chef.firstName}
+                        lastName={chef.lastName}
+                        email={chef.email}
+                        contactNumber={chef.contactNumber}
+                        subscription={chef.subscription}
+                        profilePhoto={chef.profilePhoto}
+                        status={chef.status}
+                        onImagesUpload={this.onImagesUpload}
+                        selectChef={this.selectChef}
+                      />
                     )
                   )}
                 </div>
@@ -100,17 +111,12 @@ class AdminDashboard extends React.Component {
                 <Panel>
                   {users.map(userItem =>
                     (
-                      <div key={userItem.email}>
-                        <p className="gc-text">
-                          Name: {userItem.firstName} {userItem.lastName}
-                        </p>
-                        <p className="gc-text">
-                          Email: {userItem.email}
-                        </p>
-                        <p className="gc-text">
-                          Phone number: {userItem.mobileNumber}
-                        </p>
-                      </div>
+                      <UserItem
+                        firstName={userItem.firstName}
+                        lastName={userItem.lastName}
+                        email={userItem.email}
+                        mobileNumber={userItem.mobileNumber}
+                      />
                     )
                   )}
                 </Panel>
@@ -125,9 +131,10 @@ class AdminDashboard extends React.Component {
 
 AdminDashboard.propTypes = {
   user: React.PropTypes.shape({ user: { data: {} } }).isRequired,
-  location: React.PropTypes.shape({ location: { pathname: '' } }).isRequired,
+  location: React.PropTypes.shape({ location: { pathname: React.PropTypes.string } }).isRequired,
   getCurrentUser: React.PropTypes.func.isRequired,
-  adminListChefs: React.PropTypes.func.isRequired
+  adminListChefs: React.PropTypes.func.isRequired,
+  adminListUsers: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -138,4 +145,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentUser, adminListChefs, updateStatus, adminListUsers })(AdminDashboard);
+export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos})(AdminDashboard);

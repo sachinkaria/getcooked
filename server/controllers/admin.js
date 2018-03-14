@@ -2,6 +2,7 @@ const _ = require('lodash');
 const User = require('../models/user');
 const ObjectId = require('mongodb').ObjectId;
 const twilio = require('./twilio');
+const utils = require('./utils');
 const Mailer = require('../services/mailer');
 const approvalTemplate = require('../services/emailTemplates/approvalTemplate');
 
@@ -11,6 +12,7 @@ module.exports.getChef = read;
 module.exports.approve = approve;
 module.exports.list = list;
 module.exports.unlist = unlist;
+module.exports.uploadPhotos = uploadPhotos;
 
 function allChefs(req, res) {
   User.find({role: 'chef'}).exec((err, chefs) => {
@@ -84,5 +86,27 @@ function unlist(req, res) {
     chef.save();
     chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
     res.jsonp(chef);
+  });
+}
+
+function uploadPhotos(req, res) {
+  const id = req.params.id;
+  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+    const chef = chefs[0];
+    utils.imageUploader({
+      data_uri: req.body.data_uri,
+      filename: req.body.filename,
+      filetype: req.body.filetype,
+      userId: req.user._id
+    }, 'photos', (error, response) => {
+      if (error) {
+        return res.status(400).send({
+          message: error.message
+        });
+      }
+      chef.photos.push({ src: response });
+      chef.save();
+      res.jsonp(chef);
+    });
   });
 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS } from '../types';
-import { errorHandler } from '../public';
+import { errorHandler, processingFileUpload, completedFileUpload } from '../public';
 
 export function adminListChefs() {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
@@ -62,6 +62,21 @@ export function updateStatus(status, id) {
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
+      });
+  };
+}
+
+export function adminUploadPhotos(files, id) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
+  return function (dispatch) {
+    dispatch(processingFileUpload());
+    axios.all(files.map(file => axios.post(`/api/admin/chefs/${id}/photos`, file, AUTH_HEADERS)))
+      .then(() => {
+        dispatch(completedFileUpload());
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem saving your image. Please try again.');
+        dispatch(completedFileUpload());
       });
   };
 }

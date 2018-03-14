@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LIST_CHEFS, GET_CHEF, SHOW_ERROR, HIDE_ERROR, SHOW_SUCCESS, HIDE_SUCCESS } from '../types';
+import { LIST_CHEFS, GET_CHEF, SHOW_ERROR, HIDE_ERROR, SHOW_SUCCESS, HIDE_SUCCESS, PROCESSING_FILE_UPLOAD, COMPLETED_FILE_UPLOAD } from '../types';
 
 export function errorHandler(dispatch, error) {
   if (error) {
@@ -61,4 +61,12 @@ export function getChef(id) {
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
       });
   };
+}
+
+export function processingFileUpload() {
+  return ({ type: PROCESSING_FILE_UPLOAD });
+}
+
+export function completedFileUpload() {
+  return ({ type: COMPLETED_FILE_UPLOAD });
 }

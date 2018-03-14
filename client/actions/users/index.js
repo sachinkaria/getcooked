@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { UPDATE_USER, PROCESSING_FILE_UPLOAD, COMPLETED_FILE_UPLOAD } from '../types';
-import { errorHandler, successHandler } from '../public';
+import { UPDATE_USER } from '../types';
+import { errorHandler, successHandler, processingFileUpload, completedFileUpload } from '../public';
 
 export function updateUser(user, url, showSuccess) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
@@ -50,14 +50,6 @@ export function uploadMultiplePhotos(files) {
         dispatch(completedFileUpload());
       });
   };
-}
-
-export function processingFileUpload() {
-  return ({ type: PROCESSING_FILE_UPLOAD });
-}
-
-export function completedFileUpload() {
-  return ({ type: COMPLETED_FILE_UPLOAD });
 }
 
 export function deletePhoto(type) {

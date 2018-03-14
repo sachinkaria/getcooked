@@ -4,7 +4,6 @@ module.exports = (chef, user, booking, hostname) => {
   return `
     <html>
         <p>Hello ${chef.firstName},</p>
-        <br>
         <p>You have received a booking request!. The details are below:</p>
         <ul>
           <li>

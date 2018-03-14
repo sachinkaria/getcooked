@@ -8,6 +8,7 @@ const config = require('../config/main');
 const stripe = require('stripe')(config.stripe_secret_key);
 const Mailer = require('../services/mailer');
 const paymentDetailsTemplate = require('../services/emailTemplates/updatePaymentTemplate');
+const enquiryTemplate = require('../services/emailTemplates/bookingEnquiryTemplate');
 
 
 module.exports.create = create;
@@ -75,8 +76,6 @@ function create(req, res) {
       }, (err, subscription) => {
         if (err) return err;
 
-        console.log('Subscription added', subscription);
-
         chef.subscription.id = subscription.id;
         chef.subscription.plan = subscription.plan.id;
         chef.subscription.currency = subscription.plan.currency;
@@ -86,15 +85,21 @@ function create(req, res) {
 
           const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
           const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
-          if (chef.contactNumber) {
-            twilio.sendSMS(chef.contactNumber, MESSAGE);
-            booking.save((saveErr) => {
-              if (saveErr) return (saveErr);
+          const ENQUIRY_EMAIL_DATA = {
+            subject: 'New booking request',
+            recipient: chef.companyEmail
+          };
 
-              sendNewBookingSlackNotification(USER);
-              return res.jsonp(booking);
-            });
-          }
+          const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, enquiryTemplate(chef, USER, booking, HOSTNAME));
+          enquiryMailer.send();
+
+          if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
+          booking.save((bookingErr) => {
+            if (bookingErr) return (bookingErr);
+
+            sendNewBookingSlackNotification(USER);
+            return res.jsonp(booking);
+          });
         });
       });
     } else {
@@ -102,22 +107,29 @@ function create(req, res) {
       const hostname = 'http://'.concat(req.headers.host).concat('/setup/payment');
       const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
       const EMAIL_DATA = {
-        subject: 'Update your payment details.',
+        subject: 'Update your payment details',
         recipient: chef.companyEmail
       };
+      const ENQUIRY_EMAIL_DATA = {
+        subject: 'New booking request',
+        recipient: chef.companyEmail
+      };
+
       chef.status = 'unlisted';
       chef.save((err) => {
+        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, enquiryTemplate(chef, USER, booking, HOSTNAME));
+        enquiryMailer.send();
+
+        const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, hostname));
+        mailer.send();
+
         if (err) return err;
-        if (chef.contactNumber) {
-          twilio.sendSMS(chef.contactNumber, MESSAGE);
-          const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, hostname));
-          mailer.send();
-          booking.save((err) => {
-            if (err) return (err);
-            sendNewBookingSlackNotification(USER);
-            return res.jsonp(booking);
-          });
-        }
+        if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
+        booking.save((saveErr) => {
+          if (saveErr) return (saveErr);
+          sendNewBookingSlackNotification(USER);
+          return res.jsonp(booking);
+        });
       });
     }
   });

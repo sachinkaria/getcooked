@@ -99,8 +99,10 @@ class AdminDashboard extends React.Component {
                         subscription={chef.subscription}
                         profilePhoto={chef.profilePhoto}
                         status={chef.status}
+                        updatedAt={chef.updatedAt}
                         onImagesUpload={this.onImagesUpload}
                         selectChef={this.selectChef}
+                        updateStatus={this.updateStatus}
                       />
                     )
                   )}

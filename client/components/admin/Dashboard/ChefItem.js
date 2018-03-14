@@ -36,19 +36,19 @@ function ChefItem({ ...chef }) {
           <div className="gc-margin-top--xs">
             {
               (chef.status === 'pending') &&
-              <Button block className="btn gc-btn gc-btn--sm btn-success" onClick={() => this.updateStatus('approve', chef.id)}>
+              <Button block className="btn gc-btn gc-btn--sm btn-success" onClick={() => chef.updateStatus('approve', chef.id)}>
                 Approve
               </Button>
             }
             {
               (chef.status === 'unlisted') &&
-              <Button block className="btn gc-btn gc-btn--sm gc-btn-blue" onClick={() => this.updateStatus('list', chef.id)}>
+              <Button block className="btn gc-btn gc-btn--sm gc-btn-blue" onClick={() => chef.updateStatus('list', chef.id)}>
                 List
               </Button>
             }
             {
               (chef.status === 'listed') &&
-              <Button block className="btn gc-btn gc-btn--sm btn-danger" onClick={() => this.updateStatus('unlist', chef.id)}>
+              <Button block className="btn gc-btn gc-btn--sm btn-danger" onClick={() => chef.updateStatus('unlist', chef.id)}>
                 Unlist
               </Button>
             }
@@ -61,10 +61,10 @@ function ChefItem({ ...chef }) {
 
 
 ChefItem.propTypes = {
-  status: React.PropTypes.string,
-  firstName: React.PropTypes.string,
-  lastName: React.PropTypes.string,
-  contactNumber: React.PropTypes.string
+  status: React.PropTypes.string.isRequired,
+  firstName: React.PropTypes.string.isRequired,
+  lastName: React.PropTypes.string.isRequired,
+  contactNumber: React.PropTypes.string.isRequired
 };
 
 export default ChefItem;

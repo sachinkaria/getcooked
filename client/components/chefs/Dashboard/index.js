@@ -15,6 +15,7 @@ import SubscriptionForm from '../../../containers/forms/setup/chefs/Subscription
 import Notification from '../../Notification';
 import Bookings from '../../bookings/List';
 import BookingItem from '../../bookings/Item';
+import Summary from './Summary';
 
 
 class Dashboard extends React.Component {
@@ -34,6 +35,31 @@ class Dashboard extends React.Component {
   }
 
   renderView() {
+    switch (this.props.route.view) {
+      case 'summary':
+        return <Panel><Summary user={this.props.user.data} /></Panel>;
+      case 'basics':
+        return <Panel><BasicsForm /></Panel>;
+      case 'service-type':
+        return <Panel><ServicesForm /></Panel>;
+      case 'food-services':
+        return <Panel><FoodForm /></Panel>;
+      case 'photos':
+        return <Panel><PhotosForm /></Panel>;
+      case 'settings':
+        return <Panel><SettingsForm /></Panel>;
+      case 'password':
+        return <Panel><PasswordForm /></Panel>;
+      case 'subscription':
+        return <Panel><SubscriptionForm /></Panel>;
+      case 'bookings':
+        return <Bookings itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
+      case 'view-booking':
+        return <BookingItem id={this.props.params.id} itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
+      default:
+        return <Panel><Summary user={this.props.user.data} /></Panel>;
+    }
+
     if (this.props.route.view === 'basics') {
       return <Panel><BasicsForm /></Panel>;
     } else if (this.props.route.view === 'service-type') {

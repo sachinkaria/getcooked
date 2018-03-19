@@ -74,7 +74,7 @@ class Summary extends React.Component {
               {
                 this.state.incompleteFields.length > 0 &&
                 <Col xs={12} sm={5} smOffset={1}>
-                  <Panel>
+                  <Panel className="gc-panel">
                     <Panel.Heading>
                       <Row>
                         <h4 className="gc-text gc-bold gc-center gc-margin-none">Missing information</h4>

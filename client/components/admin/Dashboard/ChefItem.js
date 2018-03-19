@@ -8,7 +8,8 @@ import ImageUpload from '../../ImageUpload';
 
 function ChefItem({ ...chef }) {
   return (
-    <Panel>
+    <Panel className="gc-panel">
+      <Panel.Body>
       <Row>
         <Col xs={3} md={2}>
           <ProfilePicture withoutMargins photoUrl={chef.profilePhoto} />
@@ -55,6 +56,7 @@ function ChefItem({ ...chef }) {
           </div>
         </Col>
       </Row>
+      </Panel.Body>
     </Panel>
   );
 }

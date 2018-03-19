@@ -42,6 +42,7 @@ class Profile extends React.Component {
           <div className="gc-profile-body">
             <Col sm={9} md={7} mdOffset={1}>
               <Panel className="gc-panel gc-panel--translucent gc-center">
+                <Panel.Body>
                 <Row>
                   <div>
                     <Heading text={CHEF.displayName} />
@@ -125,6 +126,7 @@ class Profile extends React.Component {
                       </div>
                   }
                 </Row>
+                </Panel.Body>
               </Panel>
               <br />
             </Col>
@@ -132,11 +134,13 @@ class Profile extends React.Component {
             <Col sm={3} xsHidden>
               <Sticky enter="254">
                 <Panel className="gc-panel gc-panel--translucent">
+                  <Panel.Body>
                   <div className="gc-center">
                     <BookingForm />
                     <p className="gc-profile-text-xs gc-dark-grey gc-margin-top">Contact this caterer and check their availability for
                       your event.</p>
                   </div>
+                  </Panel.Body>
                 </Panel>
                 <ReviewForm block id={CHEF._id} />
               </Sticky>

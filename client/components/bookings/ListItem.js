@@ -8,7 +8,7 @@ const ListItem = (props) => {
   if (props.itemType === 'chefItem') {
     return (
       <Col sm={12}>
-        <Panel>
+        <Panel className="gc-panel">
           <Panel.Body>
           <Row>
             <Col sm={3}>

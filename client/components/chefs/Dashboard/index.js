@@ -37,19 +37,19 @@ class Dashboard extends React.Component {
   renderView() {
     switch (this.props.route.view) {
       case 'basics':
-        return <Panel><BasicsForm /></Panel>;
+        return <Panel className="gc-panel"><Panel.Body><BasicsForm /></Panel.Body></Panel>;
       case 'service-type':
-        return <Panel><ServicesForm /></Panel>;
+        return <Panel className="gc-panel"><Panel.Body><ServicesForm /></Panel.Body></Panel>;
       case 'food-services':
-        return <Panel><FoodForm /></Panel>;
+        return <Panel className="gc-panel"><Panel.Body><FoodForm /></Panel.Body></Panel>;
       case 'photos':
-        return <Panel><PhotosForm /></Panel>;
+        return <Panel className="gc-panel"><Panel.Body><PhotosForm /></Panel.Body></Panel>;
       case 'settings':
-        return <Panel><SettingsForm /></Panel>;
+        return <Panel className="gc-panel"><Panel.Body><SettingsForm /></Panel.Body></Panel>;
       case 'password':
-        return <Panel><PasswordForm /></Panel>;
+        return <Panel className="gc-panel"><Panel.Body><PasswordForm /></Panel.Body></Panel>;
       case 'subscription':
-        return <Panel><SubscriptionForm /></Panel>;
+        return <Panel className="gc-panel"><Panel.Body><SubscriptionForm /></Panel.Body></Panel>;
       case 'bookings':
         return <Bookings itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
       case 'view-booking':

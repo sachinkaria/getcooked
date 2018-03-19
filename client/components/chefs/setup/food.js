@@ -63,7 +63,8 @@ class Services extends Component {
         errorMessage={this.props.errorMessage}
       >
         <div>
-          <Panel>
+          <Panel className="gc-panel">
+            <Panel.Body>
             <label className="gc-text">Food Services</label>
             <Row>
               {
@@ -80,8 +81,10 @@ class Services extends Component {
                 ))
               }
             </Row>
+            </Panel.Body>
           </Panel>
-          <Panel>
+          <Panel className="gc-panel">
+            <Panel.Body>
             <label className="gc-text">Cuisines</label>
             <Row>
               {
@@ -98,6 +101,7 @@ class Services extends Component {
                 ))
               }
             </Row>
+            </Panel.Body>
           </Panel>
         </div>
       </Wizard>

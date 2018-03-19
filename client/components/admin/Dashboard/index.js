@@ -110,7 +110,7 @@ class AdminDashboard extends React.Component {
               }
               {
                 this.props.location.pathname.includes('users') &&
-                <Panel>
+                <Panel className="gc-panel">
                   {users.map(userItem =>
                     (
                       <UserItem

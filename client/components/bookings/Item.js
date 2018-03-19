@@ -14,7 +14,7 @@ class BookingItem extends React.Component {
   renderView() {
     if (this.props.itemType === 'chefItem') {
       return (
-        <Panel>
+        <Panel className="gc-panel">
           <Panel.Body>
           <Row className="gc-center">
             <Col>
@@ -55,7 +55,7 @@ class BookingItem extends React.Component {
       );
     }
     return (
-      <Panel>
+      <Panel className="gc-panel">
         <Panel.Body>
         <Row>
           <Col md={6}>

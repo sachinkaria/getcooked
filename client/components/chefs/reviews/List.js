@@ -4,14 +4,18 @@ import ReviewItem from './Item';
 const ReviewList = (props) => {
   return (
     <div className="container">
-      { props.reviews.map(item =>
-        (
-          <div key={item.name}>
-            <hr />
-            <ReviewItem key={item.name} {...item} />
-          </div>
-        )
-      )}
+      {
+        props.reviews.map((item) => {
+          if (item.description) {
+            return (
+              <div key={item.name}>
+                <hr />
+                <ReviewItem key={item.name} {...item} />
+              </div>
+            );
+          }
+        })
+      }
     </div>
   );
 };

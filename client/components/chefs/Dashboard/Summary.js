@@ -104,6 +104,10 @@ class Summary extends React.Component {
                   width={'200px'}
                   color={parseInt(this.state.progress) === 1 ? 'rgb(48, 190, 157)' : 'rgb(240, 184, 47)'}
                 />
+                {
+                  parseInt(this.state.progress) === 1 &&
+                  <p className="gc-text gc-center gc-margin-top">Your profile is up to date!</p>
+                }
               </Col>
             </Row>
           </Panel.Body>

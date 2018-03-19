@@ -12,7 +12,7 @@ const DashboardNavBar = (props) => {
             props.userRole === 'chef' ?
               <div>
                 <li className="gc-dashboard-navbar-item">
-                  <Link to={'/dashboard/profile/basics'}>
+                  <Link to={'/dashboard/profile/summary'}>
                     <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('profile') })}>Profile</p>
                   </Link>
                 </li>

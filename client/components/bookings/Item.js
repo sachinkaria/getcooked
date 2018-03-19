@@ -15,6 +15,7 @@ class BookingItem extends React.Component {
     if (this.props.itemType === 'chefItem') {
       return (
         <Panel>
+          <Panel.Body>
           <Row className="gc-center">
             <Col>
               <Link to={`/chefs/${this.props.booking.chef._id}`}>
@@ -49,11 +50,13 @@ class BookingItem extends React.Component {
               </Col>
             </Row>
           }
+          </Panel.Body>
         </Panel>
       );
     }
     return (
       <Panel>
+        <Panel.Body>
         <Row>
           <Col md={6}>
             <div>
@@ -90,6 +93,7 @@ class BookingItem extends React.Component {
             </Col>
           </Row>
         }
+        </Panel.Body>
       </Panel>
     );
   }

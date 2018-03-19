@@ -17,7 +17,7 @@ class NavigationBar extends React.Component {
 
   dashboardRoute(role) {
     if (role === 'chef') {
-      return '/dashboard/profile/basics';
+      return '/dashboard/profile/summary';
     } else if (role === 'admin') {
       return '/admin/dashboard/chefs';
     }

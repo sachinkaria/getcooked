@@ -3,6 +3,7 @@ import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { getCurrentUser, updateUser } from '../../../actions/users';
+import { getBookings } from '../../../actions/bookings';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import Sidebar from './Sidebar';
 import BasicsForm from '../../../containers/forms/setup/chefs/BasicsForm';
@@ -27,7 +28,6 @@ class Dashboard extends React.Component {
 
   componentWillMount() {
     this.props.getCurrentUser();
-    this.renderView();
   }
 
   updateUserStatus(status) {
@@ -36,8 +36,6 @@ class Dashboard extends React.Component {
 
   renderView() {
     switch (this.props.route.view) {
-      case 'summary':
-        return <Panel><Summary user={this.props.user.data} /></Panel>;
       case 'basics':
         return <Panel><BasicsForm /></Panel>;
       case 'service-type':
@@ -57,29 +55,8 @@ class Dashboard extends React.Component {
       case 'view-booking':
         return <BookingItem id={this.props.params.id} itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
       default:
-        return <Panel><Summary user={this.props.user.data} /></Panel>;
+        return <Summary user={this.props.user.data} />;
     }
-
-    if (this.props.route.view === 'basics') {
-      return <Panel><BasicsForm /></Panel>;
-    } else if (this.props.route.view === 'service-type') {
-      return <Panel><ServicesForm /></Panel>;
-    } else if (this.props.route.view === 'food-services') {
-      return <Panel><FoodForm /></Panel>;
-    } else if (this.props.route.view === 'photos') {
-      return <Panel><PhotosForm /></Panel>;
-    } else if (this.props.route.view === 'settings') {
-      return <Panel><SettingsForm /></Panel>;
-    } else if (this.props.route.view === 'password') {
-      return <Panel><PasswordForm /></Panel>;
-    } else if (this.props.route.view === 'subscription') {
-      return <Panel><SubscriptionForm /></Panel>;
-    } else if (this.props.route.view === 'bookings') {
-      return <Bookings itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
-    } else if (this.props.route.view === 'view-booking') {
-      return <BookingItem id={this.props.params.id} itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
-    }
-    return null;
   }
 
   render() {
@@ -168,7 +145,7 @@ class Dashboard extends React.Component {
                     </Button>
                   </div>
               }
-              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to='/logout'>
+              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to="/logout">
                 Logout
               </Link>
             </Col>
@@ -205,10 +182,7 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
-  user: React.PropTypes.shape({ user: { data: {} } }).isRequired,
-  location: React.PropTypes.shape({ location: { pathname: React.PropTypes.string } }).isRequired,
   getCurrentUser: React.PropTypes.func.isRequired,
-  route: React.PropTypes.shape({ hideProfileStatus: React.PropTypes.bool, view: React.PropTypes.string }).isRequired
 };
 
 function mapStateToProps(state) {
@@ -217,4 +191,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentUser, updateUser })(Dashboard);
+export default connect(mapStateToProps, { getCurrentUser, updateUser, getBookings })(Dashboard);

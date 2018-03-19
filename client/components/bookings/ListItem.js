@@ -9,6 +9,7 @@ const ListItem = (props) => {
     return (
       <Col sm={12}>
         <Panel>
+          <Panel.Body>
           <Row>
             <Col sm={3}>
               <Link to={`/chefs/${props.booking.chef._id}`}>
@@ -29,6 +30,7 @@ const ListItem = (props) => {
               </Link>
             </Col>
           </Row>
+          </Panel.Body>
         </Panel>
       </Col>
     );
@@ -36,6 +38,7 @@ const ListItem = (props) => {
   return (
     <Col xs={12}>
       <Panel className={!props.booking.read && 'gc-panel--alert'}>
+        <Panel.Body>
         <Row>
           <Col className="center-m left-t" sm={6}>
             <p className="gc-form-heading text-capitalize">{props.booking.user.firstName} {props.booking.user.lastName}</p>
@@ -49,6 +52,7 @@ const ListItem = (props) => {
             </Link>
           </Col>
         </Row>
+        </Panel.Body>
       </Panel>
     </Col>
   );

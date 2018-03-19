@@ -7,7 +7,8 @@ import { isChef } from '../../../utils/helpers';
 class Sidebar extends React.Component {
   render() {
     const ADMIN_SIDEBAR = (
-      <Panel>
+      <Panel className="gc-panel">
+        <Panel.Body>
         <ul className="gc-list gc-padding-none">
           <li>
             <Link to="/admin/dashboard/chefs" className="gc-link-default">
@@ -21,11 +22,13 @@ class Sidebar extends React.Component {
             </Link>
           </li>
         </ul>
+        </Panel.Body>
       </Panel>
     );
 
     const USER_SIDEBAR = (
-      <Panel>
+      <Panel className="gc-panel">
+        <Panel.Body>
         <ul className="gc-list gc-padding-none">
           <li>
             <Link to="/dashboard/account/settings" className="gc-link-default">
@@ -47,12 +50,19 @@ class Sidebar extends React.Component {
             </Link>
           }
         </ul>
+        </Panel.Body>
       </Panel>
     );
 
     const CHEF_SIDEBAR = (
-      <Panel>
+      <Panel className="gc-panel">
+        <Panel.Body>
         <ul className="gc-list gc-padding-none">
+          <li>
+            <Link to="/dashboard/profile/summary" className="gc-link-default">
+              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('summary') })}>Summary</p>
+            </Link>
+          </li>
           <li>
             <Link to="/dashboard/profile/basics" className="gc-link-default">
               <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('basics') })}>Basic
@@ -77,19 +87,22 @@ class Sidebar extends React.Component {
             </Link>
           </li>
         </ul>
+        </Panel.Body>
       </Panel>
     );
 
     const BOOKINGS_SIDEBAR = (
-      <Panel>
-        <ul className="gc-list gc-padding-none">
-          <li>
-            <Link to="/dashboard/bookings" className="gc-link-default">
-              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('settings') })}>
-                All</p>
-            </Link>
-          </li>
-        </ul>
+      <Panel className="gc-panel">
+        <Panel.Body>
+          <ul className="gc-list gc-padding-none">
+            <li>
+              <Link to="/dashboard/bookings" className="gc-link-default">
+                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('settings') })}>
+                  All</p>
+              </Link>
+            </li>
+          </ul>
+        </Panel.Body>
       </Panel>
     );
 

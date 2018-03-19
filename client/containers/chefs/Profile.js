@@ -32,100 +32,111 @@ class Profile extends React.Component {
 
     heap.track('View Caterer', { name: CHEF.displayName, id: this.props.params.id });
 
-    // let endorsements = _.sortBy(CHEF.endorsements, 'number').reverse();
     return (
       <div>
         <Row className="hidden-xs">
-          <CoverPicture photoUrl={CHEF.coverPhoto} />
+          <CoverPicture photoUrl={CHEF.coverPhoto}/>
         </Row>
         <Row>
           <div className="gc-profile-body">
             <Col sm={9} md={7} mdOffset={1}>
               <Panel className="gc-panel gc-panel--translucent gc-center">
                 <Panel.Body>
-                <Row>
-                  <div>
-                    <Heading text={CHEF.displayName} />
-                  </div>
-                  <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
-                    <ProfilePicture withoutMargins photoUrl={CHEF.profilePhoto} />
-                  </Col>
-                </Row>
-                <StarRatingComponent
-                  editing={false}
-                  className="gc-star-rating"
-                  starColor={primaryColour}
-                  emptyStarColor={emptyStarColor}
-                  name="overall"
-                  starCount={5}
-                  value={(RATING && parseFloat(RATING.overall)) || 0}
-                />
-                <div>
-                  <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
-                </div>
-                <hr />
-                <div>
-                  <Description description={CHEF.description} />
-                </div>
-                <hr />
-                <div>
                   <Row>
-                    <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
-                      <Services title="Services" services={CHEF.services.sort()} />
+                    <div>
+                      <Heading text={CHEF.displayName}/>
+                    </div>
+                    <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
+                      <ProfilePicture withoutMargins photoUrl={CHEF.profilePhoto}/>
                     </Col>
-                    <Col xs={12} className="visible-xs">
-                      <hr />
-                    </Col>
-                    {
-                      (CHEF.cuisines.length > 0) &&
+                  </Row>
+                  <StarRatingComponent
+                    editing={false}
+                    className="gc-star-rating"
+                    starColor={primaryColour}
+                    emptyStarColor={emptyStarColor}
+                    name="overall"
+                    starCount={5}
+                    value={(RATING && parseFloat(RATING.overall)) || 0}
+                  />
+                  <div>
+                    <ServiceTypes serviceTypes={CHEF.serviceType.sort()} />
+                  </div>
+                  <hr />
+                  <div>
+                    <Description description={CHEF.description} />
+                  </div>
+                  <hr />
+                  <div>
+                    <Row>
                       <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
-                        <Services title="Cuisines" services={CHEF.cuisines.sort()} />
+                        <Services title="Services" services={CHEF.services.sort()} />
                       </Col>
-                    }
-                    {
-                      (CHEF.cuisines.length > 0 && CHEF.additionalServices.length > 0) &&
-                      <Col xs={12}>
+                      <Col xs={12} className="visible-xs">
                         <hr />
                       </Col>
-                    }
-                    {
-                      (CHEF.additionalServices.length > 0) &&
-                      <Col xs={10} xsOffset={1} sm={6} smOffset={CHEF.cuisines.length > 0 ? 3 : 0}>
-                        <Services title="Additional Services" services={CHEF.additionalServices.sort()} />
-                      </Col>
-                    }
-                  </Row>
-                </div>
-                {
-                  (CHEF.photos.length > 0) &&
+                      {
+                        (CHEF.cuisines.length > 0) &&
+                        <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
+                          <Services title="Cuisines" services={CHEF.cuisines.sort()} />
+                        </Col>
+                      }
+                      {
+                        <Col xs={12}>
+                          <hr />
+                        </Col>
+                      }
+                      {
+                        (CHEF.events.length > 0) &&
+                        <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
+                          <Services title="Events" services={CHEF.events} />
+                        </Col>
+                      }
+                      {
+                        (CHEF.cuisines.length > 0 && CHEF.additionalServices.length > 0) &&
+                        <Col className="visible-xs" xs={12}>
+                          <hr />
+                        </Col>
+                      }
+                      {
+                        (CHEF.additionalServices.length > 0) &&
+                        <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
+                          <Services title="Additional Services" services={CHEF.additionalServices.sort()} />
+                        </Col>
+                      }
+                    </Row>
+                  </div>
+                  {
+                    (CHEF.photos.length > 0) &&
                     <div>
                       <hr />
                       <div>
                         <Images images={CHEF.photos} />
                       </div>
                     </div>
-                }
-                <hr />
-                <Row className={NUMBER_OF_REVIEWS && 'gc-margin-bottom--lg'}>
-                  <h3 className={NUMBER_OF_REVIEWS > 0 ? 'gc-form-heading gc-margin-bottom--lg' : 'gc-form-heading'}>Reviews ({NUMBER_OF_REVIEWS})</h3>
-                  {
-                    (REVIEWS.length > 0) &&
-                    <Col xs={10} xsOffset={1}>
-                      <Ratings ratings={RATING} />
-                    </Col>
                   }
-                </Row>
-                <Row>
-                  {
-                    (REVIEWS.length > 0) ?
-                      <Reviews reviews={REVIEWS} />
-                      :
-                      <div>
-                        <p className="gc-text gc-margin-bottom">There are no reviews for this profile yet.</p>
-                        <ReviewForm id={CHEF._id} />
-                      </div>
-                  }
-                </Row>
+                  <hr />
+                  <Row className={NUMBER_OF_REVIEWS && 'gc-margin-bottom--lg'}>
+                    <h3 className={NUMBER_OF_REVIEWS > 0 ? 'gc-form-heading gc-margin-bottom--lg' : 'gc-form-heading'}>
+                      Reviews ({NUMBER_OF_REVIEWS})</h3>
+                    {
+                      (REVIEWS.length > 0) &&
+                      <Col xs={10} xsOffset={1}>
+                        <Ratings ratings={RATING} />
+                      </Col>
+                    }
+                  </Row>
+                  <Row>
+                    {
+                      (REVIEWS.length > 0) ?
+                        <Reviews reviews={REVIEWS} />
+                        :
+                        <div>
+                          <p className="gc-text gc-margin-bottom">There are no reviews for this profile yet.</p>
+                          <ReviewForm id={CHEF._id} />
+                        </div>
+                    }
+                  </Row>
                 </Panel.Body>
               </Panel>
               <br />
@@ -135,11 +146,12 @@ class Profile extends React.Component {
               <Sticky enter="254">
                 <Panel className="gc-panel gc-panel--translucent">
                   <Panel.Body>
-                  <div className="gc-center">
-                    <BookingForm />
-                    <p className="gc-profile-text-xs gc-dark-grey gc-margin-top">Contact this caterer and check their availability for
-                      your event.</p>
-                  </div>
+                    <div className="gc-center">
+                      <BookingForm />
+                      <p className="gc-profile-text-xs gc-dark-grey gc-margin-top">Contact this caterer and check their
+                        availability for
+                        your event.</p>
+                    </div>
                   </Panel.Body>
                 </Panel>
                 <ReviewForm block id={CHEF._id} />

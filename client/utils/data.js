@@ -9,6 +9,7 @@ export const PROFILE_FIELDS = [
   { name: 'events', field: 'events', path: '/dashboard/profile/service-type', required: true },
   { name: 'services', field: 'services', path: '/dashboard/profile/food-services', required: true },
   { name: 'description', field: 'description', path: '/dashboard/profile/basics', required: true },
+  { name: 'payment details', field: 'stripe', path: '/dashboard/account/subscription', required: true },
   { name: 'additional services', field: 'additionalServices', path: '/dashboard/profile/service-type' }
 ];
 

@@ -88,7 +88,7 @@ class Profile extends React.Component {
                       }
                       {
                         (CHEF.events.length > 0) &&
-                        <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
+                        <Col xs={10} xsOffset={1} sm={6} smOffset={CHEF.additionalServices.length > 0 ? 0 : 3}>
                           <Services title="Events" services={CHEF.events} />
                         </Col>
                       }

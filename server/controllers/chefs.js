@@ -41,7 +41,7 @@ function read(req, res) {
         rating = utils.getChefRating(reviews);
         comments = utils.getChefReviews(reviews);
 
-        const profile = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
+        const profile = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName', 'stripe', 'subscription']);
         res.jsonp({
           profile,
           rating,

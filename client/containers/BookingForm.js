@@ -76,13 +76,14 @@ class BookingForm extends React.Component {
   }
 
   componentWillReceiveProps() {
+    console.log(this.props.chef.id, this.props.chef.displayName);
     if (this.props.user.sent_booking_request) {
       this.hideModal();
     }
   }
 
   onClick() {
-    heap.track('Click Book Now');
+    heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
     this.showModal();
   }
 
@@ -253,7 +254,7 @@ class BookingForm extends React.Component {
                       />
                     </div>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={3} >
-                      <Button onClick={() => heap.track('Submit Booking', { chef_id: this.props.chef._id })} block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+                      <Button onClick={() => heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName })} block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
                         Submit request
                       </Button>
                     </Col>

@@ -37,7 +37,7 @@
     "number": 6,
     "name": "payment details",
     "description": "Add your payments details. Please note you will NOT be charged until you have received your first enquiry.",
-    "onNext": "/dashboard/profile/basics",
+    "onNext": "/dashboard/profile/summary",
     "onBack": "/setup/photos"
   },
   "totalSteps": 6

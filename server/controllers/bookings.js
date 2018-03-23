@@ -67,9 +67,14 @@ function create(req, res) {
     if (error) return (error);
 
     if (chef.subscription.status !== 'active' && chef.stripe.customerId) {
+      const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
+      const SUBSCRIPTION_START_DATE = moment(TIME).unix();
+
       console.log('Adding subscription to user', chef.stripe.customerId);
       stripe.subscriptions.create({
         customer: chef.stripe.customerId,
+        billing_cycle_anchor: SUBSCRIPTION_START_DATE,
+        coupon: 'free_month',
         items: [{
           plan: 'basic_monthly'
         }]
@@ -115,13 +120,16 @@ function create(req, res) {
         recipient: chef.companyEmail
       };
 
-      chef.status = 'unlisted';
+      if (!chef.stripe.customerId) chef.status = 'unlisted';
+
       chef.save((err) => {
         const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, enquiryTemplate(chef, USER, booking, HOSTNAME));
         enquiryMailer.send();
 
-        const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, hostname));
-        mailer.send();
+        if (!chef.stripe.customerId) {
+          const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, hostname));
+          mailer.send();
+        }
 
         if (err) return err;
         if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);

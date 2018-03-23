@@ -89,10 +89,14 @@ function createSource(req, res) {
 
 function resumeSubscription(req, res) {
   const USER = req.user;
+  const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
+  const SUBSCRIPTION_START_DATE = moment(TIME).unix();
 
   console.log('Adding subscription to user ', USER.stripe.customerId);
   stripe.subscriptions.create({
     customer: USER.stripe.customerId,
+    billing_cycle_anchor: SUBSCRIPTION_START_DATE,
+    coupon: 'free_month',
     items: [{
       plan: 'basic_monthly'
     }]

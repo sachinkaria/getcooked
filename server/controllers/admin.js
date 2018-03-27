@@ -1,4 +1,8 @@
 const _ = require('lodash');
+
+const keys = require('../config/main');
+
+const stripe = require('stripe')(keys.stripe_secret_key);
 const User = require('../models/user');
 const ObjectId = require('mongodb').ObjectId;
 const twilio = require('./twilio');
@@ -13,6 +17,7 @@ module.exports.approve = approve;
 module.exports.list = list;
 module.exports.unlist = unlist;
 module.exports.uploadPhotos = uploadPhotos;
+module.exports.addMonthlyCoupons = addMonthlyCoupons;
 
 function allChefs(req, res) {
   User.find({role: 'chef'}).exec((err, chefs) => {
@@ -37,7 +42,7 @@ function read(req, res) {
 
 function approve(req, res) {
   const id = req.params.id;
-  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+  User.find({_id: ObjectId(id)}).exec((err, chefs) => {
     let chef = chefs[0];
 
     if (chef.status === 'pending') {
@@ -63,11 +68,11 @@ function approve(req, res) {
 
 function list(req, res) {
   const id = req.params.id;
-  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+  User.find({_id: ObjectId(id)}).exec((err, chefs) => {
     let chef = chefs[0];
 
     if (chef.status === 'unlisted') {
-      _.extend(chef, { status: 'listed' });
+      _.extend(chef, {status: 'listed'});
     }
     chef.save();
     chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
@@ -77,11 +82,11 @@ function list(req, res) {
 
 function unlist(req, res) {
   const id = req.params.id;
-  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+  User.find({_id: ObjectId(id)}).exec((err, chefs) => {
     let chef = chefs[0];
 
     if (chef.status === 'listed') {
-      _.extend(chef, { status: 'unlisted' });
+      _.extend(chef, {status: 'unlisted'});
     }
     chef.save();
     chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
@@ -91,7 +96,7 @@ function unlist(req, res) {
 
 function uploadPhotos(req, res) {
   const id = req.params.id;
-  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+  User.find({_id: ObjectId(id)}).exec((err, chefs) => {
     const chef = chefs[0];
     utils.imageUploader({
       data_uri: req.body.data_uri,
@@ -104,9 +109,40 @@ function uploadPhotos(req, res) {
           message: error.message
         });
       }
-      chef.photos.push({ src: response });
+      chef.photos.push({src: response});
       chef.save();
       res.jsonp(chef);
+    });
+  });
+}
+
+function addMonthlyCoupons(req, res) {
+  let CHEFS = [];
+  User.find({ role: 'chef', 'subscription.status': 'active' }, 'id displayName subscription stripe', (err, chefs) => {
+    if (err) return err;
+
+    utils.getChefsWithoutMonthlyBookings(chefs, (chefsWithoutBookings) => {
+      CHEFS = chefsWithoutBookings;
+      async function addCoupon() {
+        for (const chef of CHEFS) {
+          const SUBSCRIPTION_ID = chef.subscription.id;
+          await stripe.subscriptions.update(SUBSCRIPTION_ID, {
+            coupon: 'free_month'
+          }, (error, subscription) => {
+            if (error) return error;
+            console.log('Stripe coupon added for stripe customer', subscription.customer);
+          });
+        }
+      }
+
+      if (CHEFS.length > 0) {
+        addCoupon().then((asyncErr) => {
+          if (asyncErr) return asyncErr;
+          res.sendStatus(200);
+        });
+      } else {
+        res.sendStatus(200);
+      }
     });
   });
 }

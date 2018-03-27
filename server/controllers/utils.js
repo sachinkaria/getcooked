@@ -1,6 +1,8 @@
 const knox = require('knox');
 const jimp = require('jimp');
+const moment = require('moment');
 const Review = require('../models/review');
+const Booking = require('../models/booking');
 const config = require('../config/main');
 const ObjectId = require('mongodb').ObjectId;
 const _ = require('lodash');
@@ -119,9 +121,39 @@ function getOverallRating(reviews) {
   return (rating / reviews.length);
 }
 
+function getChefsWithoutMonthlyBookings(chefs, cb) {
+  const CHEFS_WITHOUT_BOOKINGS = [];
+  const DATE_START = moment().startOf('month');
+  function asyncLoop(i, callback) {
+    if (i < chefs.length) {
+      const chef = chefs[i];
+      console.log('Checking for bookings for', chef.id);
+      Booking
+        .find({ $or: [{ user: chef.id }, { chef: chef.id }], createdAt: { $gte: DATE_START } })
+        .exec((err, bookings) => {
+          if (err) {
+            console.log('Error getting bookings', err);
+            return err;
+         }
+          if (bookings.length === 0) {
+            CHEFS_WITHOUT_BOOKINGS.push(chef);
+            asyncLoop(i + 1, callback);
+          } else {
+            asyncLoop(i + 1, callback);
+          }
+        });
+    } else {
+      callback();
+    }
+  }
+  return asyncLoop(0, () => {
+    cb(CHEFS_WITHOUT_BOOKINGS);
+  });
+}
 
 module.exports.imageUploader = imageUploader;
 module.exports.deleteImage = deleteImage;
 module.exports.getChefRating = getChefRating;
 module.exports.getChefReviews = getChefReviews;
 module.exports.getOverallRating = getOverallRating;
+module.exports.getChefsWithoutMonthlyBookings = getChefsWithoutMonthlyBookings;

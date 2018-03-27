@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS } from '../types';
-import { errorHandler, processingFileUpload, completedFileUpload } from '../public';
+import { errorHandler, successHandler, processingFileUpload, completedFileUpload } from '../public';
 
 export function adminListChefs() {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
@@ -77,6 +77,18 @@ export function adminUploadPhotos(files, id) {
       .catch(() => {
         errorHandler(dispatch, 'There was a problem saving your image. Please try again.');
         dispatch(completedFileUpload());
+      });
+  };
+}
+export function updateMonthlyCoupons() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.get('/api/admin/stripe/coupons', AUTH_HEADERS)
+      .then(() => {
+        successHandler(dispatch, 'Monthly coupons successfully updated.');
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
       });
   };
 }

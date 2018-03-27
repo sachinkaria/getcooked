@@ -1,8 +1,8 @@
 import React from 'react';
-import { Col, Panel, Row } from 'react-bootstrap';
+import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
-import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos } from '../../../actions/admin';
+import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ChefItem from './ChefItem';
 import UserItem from './UserItem';
@@ -84,6 +84,7 @@ class AdminDashboard extends React.Component {
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
             </Col>
             <Col smOffset={0} sm={7}>
+              <Button onClick={this.props.updateMonthlyCoupons}>Add Coupons</Button>
               {
                 this.props.location.pathname.includes('chefs') &&
                 <div>
@@ -147,4 +148,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos})(AdminDashboard);
+export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons})(AdminDashboard);

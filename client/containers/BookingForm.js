@@ -76,7 +76,6 @@ class BookingForm extends React.Component {
   }
 
   componentWillReceiveProps() {
-    console.log(this.props.chef.id, this.props.chef.displayName);
     if (this.props.user.sent_booking_request) {
       this.hideModal();
     }

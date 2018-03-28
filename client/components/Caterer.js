@@ -92,12 +92,11 @@ function Caterer() {
                           <span className="gc-profile-text-lg">Just</span> £20<span className="gc-profile-text-lg"> per month</span>
                         </h3>
                         <p className="gc-profile-text-md gc-bold gc-margin-top">No additional fees. No contracts. Cancel your subscription at any time.</p>
-                        <hr className="gc-hr--xl" />
                         <Row>
                           <Col xs={12} sm={8} smOffset={2}>
-                            <Panel className="gc-panel gc-panel--bold">
+                            <Panel className="gc-panel gc-panel--bold gc-margin-top">
                               <Panel.Body>
-                                <p className="gc-text gc-text--lg gc-bold">
+                                <p className="gc-text gc-text--lg gc-bold gc-margin-none">
                                   Your subscription only starts after you receive your first booking and you will only be charged for months that you have received bookings.
                                 </p>
                               </Panel.Body>

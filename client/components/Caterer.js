@@ -35,7 +35,7 @@ function Caterer() {
                         Profiles include information, pictures, sample menus, ratings and reviews.
                       </p>
                     </Col>
-                    <br className="visible-xs"/>
+                    <br className="visible-xs" />
                     <Col sm={4}>
                       <img className="gc-info-icon" alt="Share and enjoy food" src="/images/event.png" />
                       <h4 className="gc-profile-text-md gc-bold">
@@ -76,7 +76,7 @@ function Caterer() {
       </section>
       <section className="gc-section" style={priceSectionStyle}>
         <Row>
-          <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
+          <Col xs={12} sm={8} smOffset={2}>
             <h2 className="gc-section-heading gc-white">
               ONE PRICE, NO ADDITIONAL FEES.
             </h2>
@@ -89,15 +89,21 @@ function Caterer() {
                       <Col xs={12}>
                         <hr className="gc-hr--xl" />
                         <h3 className="gc-heading gc-padding-small gc-margin-none">
-                          <span className="gc-profile-text-lg">Just</span> £20<span className="gc-profile-text-lg"> per month*</span>
-                          <p className="gc-profile-text-md gc-bold gc-margin-top">No additional fees. No contracts.
-                            Cancel your
-                            subscription at any time.</p>
-                          <p className="gc-text gc-text--lg gc-bold">
-                            *your subscription only starts after you receive your first booking
-                          </p>
+                          <span className="gc-profile-text-lg">Just</span> £20<span className="gc-profile-text-lg"> per month</span>
                         </h3>
+                        <p className="gc-profile-text-md gc-bold gc-margin-top">No additional fees. No contracts. Cancel your subscription at any time.</p>
                         <hr className="gc-hr--xl" />
+                        <Row>
+                          <Col xs={12} sm={8} smOffset={2}>
+                            <Panel className="gc-panel gc-panel--bold">
+                              <Panel.Body>
+                                <p className="gc-text gc-text--lg gc-bold">
+                                  Your subscription only starts after you receive your first booking and you will only be charged for months that you have received bookings.
+                                </p>
+                              </Panel.Body>
+                            </Panel>
+                          </Col>
+                        </Row>
                       </Col>
                     </Row>
                     <br />
@@ -148,6 +154,23 @@ function Caterer() {
                 </Panel>
               </Col>
             </Row>
+          </Col>
+        </Row>
+      </section>
+      <section className="gc-section">
+        <Row>
+          <Col xs={12} sm={8} smOffset={2}>
+            <Panel className="gc-panel gc-panel--alert">
+              <Panel.Body>
+                <h2 className="gc-section-heading gc-center">
+                  FAQs and Contact Us
+                </h2>
+                <p className="gc-text gc-text--lg gc-center">
+                  If you are still unsure about our services please feel free to drop us an <a className="gc-link-default" href="mailto:team@getcooked.co?Subject=Website%20Enquiry" target="_top">team@getcooked.co</a>. Alternatively you can
+                  ask us any questions via chat or check out our <a className="gc-link-default" target="_blank" href="https://intercom.help/get-cooked/faqs-caterers">FAQs</a>.
+                </p>
+              </Panel.Body>
+            </Panel>
           </Col>
         </Row>
       </section>

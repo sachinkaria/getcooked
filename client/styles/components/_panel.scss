@@ -1,5 +1,9 @@
 .gc-panel {
   border-radius: 0px;
+
+  .gc-panel--bold {
+    border: 3px solid $green;
+  }
 }
 .gc-panel--light {
   background-color: $lightest-grey;

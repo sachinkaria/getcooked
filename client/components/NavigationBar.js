@@ -57,6 +57,9 @@ class NavigationBar extends React.Component {
             {
               (!isAuthenticated() && showNav) && (
                 <Nav pullRight>
+                  <NavItem target="_blank" href="https://intercom.help/get-cooked">
+                    <p className="gc-text gc-text--dark-grey">FAQs</p>
+                  </NavItem>
                   <NavItem href="/caterers/about">
                     <p className="gc-text gc-text--dark-grey">Register as a caterer</p>
                   </NavItem>

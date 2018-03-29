@@ -15,6 +15,9 @@ export default function Footer() {
               <ul className="gc-text gc-white gc-padding-none">
                 <Link className="gc-link-default gc-link-default--white" to="/privacy">Privacy Policy</Link>
               </ul>
+              <ul className="gc-text gc-white gc-padding-none">
+                <Link className="gc-link-default gc-link-default--white" target="_blank" href="https://intercom.help/get-cooked">FAQs</Link>
+              </ul>
             </li>
           </Col>
           <Col sm={4}>

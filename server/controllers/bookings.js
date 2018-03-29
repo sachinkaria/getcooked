@@ -2,6 +2,7 @@ const Booking = require('../models/booking');
 const User = require('../models/user');
 const twilio = require('./twilio');
 const moment = require('moment');
+const ObjectId = require('mongodb').ObjectId;
 const _ = require('lodash');
 const request = require('superagent');
 const config = require('../config/main');
@@ -14,11 +15,13 @@ const enquiryTemplate = require('../services/emailTemplates/bookingEnquiryTempla
 module.exports.create = create;
 module.exports.list = list;
 module.exports.read = read;
+module.exports.accept = accept;
+module.exports.decline = decline;
 
 function list(req, res) {
   const user = req.user;
   Booking
-    .find({$or: [{ user: user._id }, { chef: user._id }]})
+    .find({ $or: [{ user: user._id }, { chef: user._id }] })
     .populate('user', 'firstName lastName email mobileNumber')
     .populate('chef', 'profilePhoto displayName')
     .sort('-createdAt')
@@ -27,12 +30,31 @@ function list(req, res) {
     });
 }
 
+function accept(req, res) {
+  const id = req.params.id;
+  Booking.findOne({ _id: ObjectId(id) }).exec((err, booking) => {
+    _.extend(booking, { accepted: true });
+    booking.save();
+    res.jsonp(booking);
+  });
+}
+
+function decline(req, res) {
+  const id = req.params.id;
+  Booking.findOne({ _id: ObjectId(id) }).exec((err, booking) => {
+    _.extend(booking, { accepted: false });
+    booking.save();
+    res.jsonp(booking);
+  });
+}
+
 function read(req, res) {
   const BOOKING_ID = req.params.id;
   const USER = req.user;
   Booking
-    .findOne({_id: BOOKING_ID})
-    .populate('user', 'email mobileNumber firstName lastName')
+    .findOne({ _id: BOOKING_ID })
+    .populate('user', 'email mobileNumber firstName lastName', { accepted: true })
+    .populate('user', 'firstName', { accepted: false })
     .populate('chef', 'profilePhoto displayName')
     .exec((err, booking) => {
       if (!booking.read && USER.role === 'chef') {

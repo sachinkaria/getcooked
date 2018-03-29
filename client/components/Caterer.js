@@ -62,9 +62,10 @@ function Caterer() {
             <Row>
               <Col sm={4} smOffset={4}>
                 <Link to="/caterers/register">
-                  <Button onClick={() => heap.track('Click Sign Up', {role: 'caterer'})}
-                          block
-                          className="gc-btn gc-btn--lg gc-btn--orange"
+                  <Button
+                    onClick={() => heap.track('Click Sign Up', { role: 'caterer' })}
+                    block
+                    className="gc-btn gc-btn--lg gc-btn--orange"
                   >
                     Get started for free
                   </Button>
@@ -108,7 +109,7 @@ function Caterer() {
                     <br />
                     <Row>
                       <Col sm={4}>
-                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/event.png"/>
+                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/event.png" />
                         <p className="gc-profile-text-md gc-bold">
                           Online Bookings
                         </p>
@@ -118,7 +119,7 @@ function Caterer() {
                       </Col>
                       <br className="visible-xs" />
                       <Col sm={4}>
-                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/review.png"/>
+                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/review.png" />
                         <p className="gc-profile-text-md gc-bold">
                           Ratings & Reviews
                         </p>
@@ -128,7 +129,7 @@ function Caterer() {
                       </Col>
                       <br className="visible-xs" />
                       <Col sm={4}>
-                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/phone.png"/>
+                        <img className="gc-info-icon" alt="Share and enjoy food" src="/images/phone.png" />
                         <p className="gc-profile-text-md gc-bold">
                           Direct Contact
                         </p>
@@ -140,9 +141,10 @@ function Caterer() {
                     <Row>
                       <Col sm={4} smOffset={4}>
                         <Link to="/caterers/register">
-                          <Button onClick={() => heap.track('Click Sign Up', {role: 'caterer'})}
-                                  block
-                                  className="gc-btn gc-btn--lg gc-btn--orange gc-margin-top--lg"
+                          <Button
+                            onClick={() => heap.track('Click Sign Up', { role: 'caterer' })}
+                            block
+                            className="gc-btn gc-btn--lg gc-btn--orange gc-margin-top--lg"
                           >
                             Get started for free
                           </Button>
@@ -166,7 +168,7 @@ function Caterer() {
                 </h2>
                 <p className="gc-text gc-text--lg gc-center">
                   If you are still unsure about our services please feel free to drop us an <a className="gc-link-default" href="mailto:team@getcooked.co?Subject=Website%20Enquiry" target="_top">team@getcooked.co</a>. Alternatively you can
-                  ask us any questions via chat or check out our <a className="gc-link-default" target="_blank" href="https://intercom.help/get-cooked/faqs-caterers">FAQs</a>.
+                  ask us any questions via chat or check out our <a className="gc-link-default" rel="noopener noreferrer" target="_blank" href="https://intercom.help/get-cooked/faqs-caterers">FAQs</a>.
                 </p>
               </Panel.Body>
             </Panel>

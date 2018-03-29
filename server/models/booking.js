@@ -12,32 +12,33 @@ const AddressSchema = {
 };
 
 const BookingSchema = new Schema({
-    user: {
-      type: Schema.ObjectId,
-      ref: 'User'
-    },
-    chef: {
-      type: Schema.ObjectId,
-      ref: 'User'
-    },
-    address: AddressSchema,
-    date: Date,
-    numberOfPeople: Number,
-    eventType: {
-      type: String,
-      enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
-      required: true
-    },
-    additionalInformation: String,
-    read: {
-      type: Boolean,
-      default: false
-    },
-    budget: Number
+  user: {
+    type: Schema.ObjectId,
+    ref: 'User'
   },
-  {
-    timestamps: true
-  }
+  chef: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+  address: AddressSchema,
+  date: Date,
+  numberOfPeople: Number,
+  eventType: {
+    type: String,
+    enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
+    required: true
+  },
+  additionalInformation: String,
+  read: {
+    type: Boolean,
+    default: false
+  },
+  accepted: Boolean,
+  budget: Number
+},
+{
+  timestamps: true
+}
 );
 
 module.exports = mongoose.model('Booking', BookingSchema);

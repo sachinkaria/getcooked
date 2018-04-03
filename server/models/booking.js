@@ -33,7 +33,11 @@ const BookingSchema = new Schema({
     type: Boolean,
     default: false
   },
-  accepted: Boolean,
+  status: {
+    type: String,
+    enum: ['pending', 'accepted', 'declined'],
+    default: 'pending'
+  },
   budget: Number
 },
 {

@@ -22,7 +22,7 @@ function list(req, res) {
   const user = req.user;
   Booking
     .find({ $or: [{ user: user._id }, { chef: user._id }] })
-    .populate('user', 'firstName lastName email mobileNumber')
+    .populate('user', 'firstName')
     .populate('chef', 'profilePhoto displayName')
     .sort('-createdAt')
     .exec((err, bookings) => {
@@ -31,18 +31,20 @@ function list(req, res) {
 }
 
 function accept(req, res) {
-  const id = req.params.id;
-  Booking.findOne({ _id: ObjectId(id) }).exec((err, booking) => {
-    _.extend(booking, { accepted: true });
+  const BOOKING_ID = req.params.id;
+  Booking.findOne({ _id: BOOKING_ID })
+    .populate('user', 'firstName email mobileNumber')
+    .exec((err, booking) => {
+    _.extend(booking, { status: 'accepted' });
     booking.save();
     res.jsonp(booking);
   });
 }
 
 function decline(req, res) {
-  const id = req.params.id;
-  Booking.findOne({ _id: ObjectId(id) }).exec((err, booking) => {
-    _.extend(booking, { accepted: false });
+  const BOOKING_ID = req.params.id;
+  Booking.findOne({ _id: BOOKING_ID }).exec((err, booking) => {
+    _.extend(booking, { status: 'declined' });
     booking.save();
     res.jsonp(booking);
   });
@@ -53,14 +55,14 @@ function read(req, res) {
   const USER = req.user;
   Booking
     .findOne({ _id: BOOKING_ID })
-    .populate('user', 'email mobileNumber firstName lastName', { accepted: true })
-    .populate('user', 'firstName', { accepted: false })
+    .populate('user', 'email mobileNumber firstName lastName')
     .populate('chef', 'profilePhoto displayName')
     .exec((err, booking) => {
       if (!booking.read && USER.role === 'chef') {
         booking.read = true;
         booking.save();
       }
+
       res.jsonp(booking);
     });
 }

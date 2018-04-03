@@ -118,6 +118,13 @@
     object-fit: cover;
     border-radius: 40px;
   }
+
+  &.gc-thumbnail--xs {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
 }
 
 .gc-tags {

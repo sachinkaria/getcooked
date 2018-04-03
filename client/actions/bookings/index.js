@@ -51,3 +51,34 @@ export function getBooking(id) {
   };
 }
 
+export function accept(id) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.get(`/api/bookings/${id}/accept`, AUTH_HEADERS)
+      .then((response) => {
+        dispatch({
+          type: GET_BOOKING,
+          payload: response.data
+        });
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
+      });
+  };
+}
+
+export function decline(id) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.get(`/api/bookings/${id}/decline`, AUTH_HEADERS)
+      .then((response) => {
+        dispatch({
+          type: GET_BOOKING,
+          payload: response.data
+        });
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
+      });
+  };
+}

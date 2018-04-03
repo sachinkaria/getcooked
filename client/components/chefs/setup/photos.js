@@ -158,7 +158,7 @@ class Photos extends Component {
         errorMessage={this.props.errorMessage}
       >
         <Panel className="gc-panel-light">
-          <div>
+          <Panel.Body>
             <div className="gc-margin-bottom--lg">
               <label className="gc-text gc-margin-bottom">Profile Photo</label>
               <br />
@@ -210,7 +210,7 @@ class Photos extends Component {
                 )
               )}
             </Row>
-          </div>
+          </Panel.Body>
         </Panel>
       </Wizard>
     );

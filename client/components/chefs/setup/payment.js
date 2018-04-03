@@ -59,7 +59,7 @@ class CheckoutForm extends React.Component {
           },
         },
       }).then((source) => {
-        this.props.createSource(source, '/dashboard/profile/basics');
+        this.props.createSource(source, '/dashboard/profile/summary');
       });
     }).catch(() => {
       this.setState({ loading: false });

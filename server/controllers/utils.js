@@ -127,15 +127,16 @@ function getChefsWithoutMonthlyBookings(chefs, cb) {
   function asyncLoop(i, callback) {
     if (i < chefs.length) {
       const chef = chefs[i];
-      console.log('Checking for bookings for', chef.id);
+      console.log('Checking for bookings for', chef.displayName);
       Booking
-        .find({ $or: [{ user: chef.id }, { chef: chef.id }], createdAt: { $gte: DATE_START } })
+        .find({ $or: [{ user: chef.id }, { chef: chef.id }], updatedAt: { $gte: DATE_START } })
         .exec((err, bookings) => {
           if (err) {
             console.log('Error getting bookings', err);
             return err;
          }
-          if (bookings.length === 0) {
+         const ACCEPTED_BOOKINGS = bookings.filter(booking => booking.status === 'accepted');
+          if (ACCEPTED_BOOKINGS.length === 0) {
             CHEFS_WITHOUT_BOOKINGS.push(chef);
             asyncLoop(i + 1, callback);
           } else {

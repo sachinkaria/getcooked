@@ -132,10 +132,35 @@ class Home extends React.Component {
                   <img
                     style={{ width: '100%', paddingTop: '15px' }}
                     alt="Cater events around you"
-                    src="/images/catering.jpg"
+                    src="/images/dinner.jpg"
                   />
                 </Col>
                 <Col sm={6} smPull={6}>
+                  <h2 className="gc-section-heading gc-padding-none">Who we are</h2>
+                  <p className="gc-text gc-text--lg">
+                    Get Cooked is a platform to provide professional chefs and culinary experts
+                    the opportunity to share their awesome food at unique events around them.
+                    To give professionals, brands, food lovers a space to connect, share ideas
+                    and work together.
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </section>
+        <br />
+        <section className="gc-section gc-section--grey">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
+              <Row>
+                <Col sm={6}>
+                  <img
+                    style={{ width: '100%', paddingTop: '15px' }}
+                    alt="Cater events around you"
+                    src="/images/catering.jpg"
+                  />
+                </Col>
+                <Col sm={6}>
                   <h2 className="gc-section-heading gc-padding-none">Are you a caterer or private chef?</h2>
                   <p className="gc-text gc-text--lg">
                     Plan, organise and share food at events around London.

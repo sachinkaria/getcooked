@@ -21,7 +21,7 @@ import Login from '../components/auth/Login';
 import Logout from '../components/auth/Logout';
 import Dashboard from '../components/chefs/Dashboard/index';
 import AdminDashboard from '../components/admin/Dashboard/index';
-import Home from '../components/Home';
+import Home from '../components/Home/';
 import Caterer from '../components/Caterer';
 import RequireAuth from '../components/auth/RequireAuth';
 import RequireRole from '../components/auth/RequireRole';

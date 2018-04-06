@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, IndexRoute} from 'react-router';
+import { Route, IndexRoute } from 'react-router';
 import ProfileList from '../containers/chefs/List';
 import NavigationBar from '../components/NavigationBar';
 import Terms from '../components/Terms';
@@ -22,7 +22,7 @@ import Logout from '../components/auth/Logout';
 import Dashboard from '../components/chefs/Dashboard/index';
 import AdminDashboard from '../components/admin/Dashboard/index';
 import Home from '../components/Home/';
-import Caterer from '../components/Caterer';
+import Caterer from '../components/Caterer/';
 import RequireAuth from '../components/auth/RequireAuth';
 import RequireRole from '../components/auth/RequireRole';
 import StripeWrapper from '../components/StripeWrapper';

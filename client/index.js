@@ -34,6 +34,7 @@ require('./images/review.png');
 require('./images/phone.png');
 require('./images/powered_by_stripe.svg');
 require('./images/dinner.jpg');
+require('./images/grow-your-business.jpg');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

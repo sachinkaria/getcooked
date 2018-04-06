@@ -19,8 +19,8 @@ function WhoWeAre() {
               <h2 className="gc-section-heading gc-padding-none">Who we are</h2>
               <p className="gc-text gc-text--lg">
                 Get Cooked is a platform to provide professional chefs and culinary experts
-                the opportunity to share their awesome food at unique events around them.
-                To give professionals, brands, food lovers a space to connect, share ideas
+                the opportunity to share their food at unique events around them.
+                To give professionals, brands and food lovers a space to connect, share ideas
                 and work together.
               </p>
             </Col>

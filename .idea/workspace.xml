@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/Caterer/Contact.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/Caterer/HowItWorks.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/Caterer/Main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/components/Caterer/Pricing.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/client/components/Caterer.js" afterPath="$PROJECT_DIR$/client/components/Caterer/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/Home/WhoWeAre.js" afterPath="$PROJECT_DIR$/client/components/Home/WhoWeAre.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/config/routes.js" afterPath="$PROJECT_DIR$/client/config/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.js" afterPath="$PROJECT_DIR$/client/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_home.scss" afterPath="$PROJECT_DIR$/client/styles/components/_home.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_panel.scss" afterPath="$PROJECT_DIR$/client/styles/components/_panel.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/Caterer/Pricing.js" afterPath="$PROJECT_DIR$/client/components/Caterer/Pricing.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -56,8 +46,8 @@
       <file leaf-file-name="Pricing.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/components/Caterer/Pricing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+            <state relative-caret-position="584">
+              <caret line="75" column="87" lean-forward="false" selection-start-line="75" selection-start-column="87" selection-end-line="75" selection-end-column="87" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -774,7 +764,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1091535000" />
+    <option name="totallyTimeSpent" value="1091807000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1291,8 +1281,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/Caterer/Pricing.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="21" column="64" lean-forward="false" selection-start-line="21" selection-start-column="64" selection-end-line="21" selection-end-column="64" />
+        <state relative-caret-position="584">
+          <caret line="75" column="87" lean-forward="false" selection-start-line="75" selection-start-column="87" selection-end-line="75" selection-end-column="87" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

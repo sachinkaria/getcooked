@@ -35,7 +35,7 @@ function Pricing() {
                     </Col>
                   </Row>
                   <br />
-                  <Row>
+                  <Row className="gc-margin-bottom--lg">
                     <Col sm={4}>
                       <img className="gc-info-icon" alt="Share and enjoy food" src="/images/event.png" />
                       <p className="gc-profile-text-md gc-bold">
@@ -47,22 +47,22 @@ function Pricing() {
                     </Col>
                     <br className="visible-xs" />
                     <Col sm={4}>
-                      <img className="gc-info-icon" alt="Share and enjoy food" src="/images/review.png" />
-                      <p className="gc-profile-text-md gc-bold">
-                        Ratings & Reviews
-                      </p>
-                      <p className="gc-text gc-text--lg gc-margin-bottom--lg">
-                        Build trust by receiving ratings and reviews from your happy customers.
-                      </p>
-                    </Col>
-                    <br className="visible-xs" />
-                    <Col sm={4}>
                       <img className="gc-info-icon" alt="Share and enjoy food" src="/images/phone.png" />
                       <p className="gc-profile-text-md gc-bold">
                         Direct Contact
                       </p>
                       <p className="gc-text gc-text--lg">
                         Contact the customer directly and provide a personalised experience.
+                      </p>
+                    </Col>
+                    <br className="visible-xs" />
+                    <Col sm={4}>
+                      <img className="gc-info-icon" alt="Share and enjoy food" src="/images/review.png" />
+                      <p className="gc-profile-text-md gc-bold">
+                        Ratings & Reviews
+                      </p>
+                      <p className="gc-text gc-text--lg">
+                        Build trust by receiving ratings and reviews from your happy customers.
                       </p>
                     </Col>
                   </Row>

@@ -5,7 +5,7 @@ import ListItem from '../chefs/ListItem';
 
 function HowItWorks() {
   return (
-    <section className="gc-section center-m">
+    <section className="gc-section text-center">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
           <h2 className="gc-section-heading">

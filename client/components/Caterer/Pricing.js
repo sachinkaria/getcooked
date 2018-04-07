@@ -8,7 +8,7 @@ function Pricing() {
     backgroundSize: 'cover'
   };
   return (
-    <section className="gc-section center-m" style={priceSectionStyle}>
+    <section className="gc-section text-center" style={priceSectionStyle}>
       <Row>
         <Col xs={12} sm={8} smOffset={2}>
           <h2 className="gc-section-heading gc-white">

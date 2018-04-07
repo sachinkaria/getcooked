@@ -3,7 +3,7 @@ import { Row, Col, Panel } from 'react-bootstrap';
 
 function Contact() {
   return (
-    <section className="gc-section gc-section--grey">
+    <section className="gc-section gc-section--grey text-center">
       <Row>
         <Col xs={12} sm={8} smOffset={2}>
           <Panel className="gc-panel gc-panel--alert">

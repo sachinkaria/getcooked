@@ -12,7 +12,7 @@ function Main() {
     <section style={style} className="gc-section gc-section--main">
       <Row>
         <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
-          <Row>
+          <Row style={{ paddingTop: '85px' }}>
             <Col sm={10}>
               <h1 className="gc-title">
                 Grow your catering business.
@@ -22,7 +22,7 @@ function Main() {
               </h2>
             </Col>
           </Row>
-          <Row>
+          <Row style={{ paddingBottom: '85px' }}>
             <Col sm={4} smOffset={4}>
               <Link to="/caterers/register">
                 <Button

@@ -3,10 +3,10 @@ import { Row, Col, Panel } from 'react-bootstrap';
 
 function Contact() {
   return (
-    <section className="gc-section">
+    <section className="gc-section gc-section--grey">
       <Row>
         <Col xs={12} sm={8} smOffset={2}>
-          <Panel className="gc-panel">
+          <Panel className="gc-panel gc-panel--alert">
             <Panel.Body>
               <h2 className="gc-section-heading">
                 FAQs and Contact Us

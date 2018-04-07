@@ -9,7 +9,7 @@ function Main() {
     backgroundSize: 'cover'
   };
   return (
-    <section style={style} className="gc-section gc-section--main gc-section--grey">
+    <section style={style} className="gc-section gc-section--main">
       <Row>
         <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
           <Row>

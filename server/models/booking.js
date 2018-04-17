@@ -12,37 +12,40 @@ const AddressSchema = {
 };
 
 const BookingSchema = new Schema({
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
+    user: {
+      type: Schema.ObjectId,
+      ref: 'User'
+    },
+    chef: {
+      type: Schema.ObjectId,
+      ref: 'User'
+    },
+    address: AddressSchema,
+    date: Date,
+    numberOfPeople: Number,
+    eventType: {
+      type: String,
+      enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
+      required: true
+    },
+    additionalInformation: String,
+    read: {
+      type: Boolean,
+      default: false
+    },
+    status: {
+      type: String,
+      enum: ['pending', 'accepted', 'declined'],
+      default: 'pending'
+    },
+    budget: Number,
+    services: [{
+      type: String
+    }],
   },
-  chef: {
-    type: Schema.ObjectId,
-    ref: 'User'
-  },
-  address: AddressSchema,
-  date: Date,
-  numberOfPeople: Number,
-  eventType: {
-    type: String,
-    enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
-    required: true
-  },
-  additionalInformation: String,
-  read: {
-    type: Boolean,
-    default: false
-  },
-  status: {
-    type: String,
-    enum: ['pending', 'accepted', 'declined'],
-    default: 'pending'
-  },
-  budget: Number
-},
-{
-  timestamps: true
-}
+  {
+    timestamps: true
+  }
 );
 
 module.exports = mongoose.model('Booking', BookingSchema);

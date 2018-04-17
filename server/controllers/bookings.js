@@ -84,7 +84,8 @@ function create(req, res) {
       city: BOOKING.city,
       postcode: BOOKING.postcode,
     },
-    budget: BOOKING.budget
+    budget: BOOKING.budget,
+    services: BOOKING.services
   });
 
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {

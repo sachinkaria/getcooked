@@ -15,7 +15,7 @@ Heading.propTypes = {
 
 Heading.defaultProps = {
   text: '',
-  textAlign: false
+  textAlign: null
 };
 
 

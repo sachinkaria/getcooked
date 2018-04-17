@@ -1,18 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import _ from 'lodash';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
-import { EVENT_TYPE } from '../utils/data';
+import { EVENT_TYPE, TYPES } from '../utils/data';
 import Register from '../components/auth/Register';
 import Settings from '../containers/forms/setup/chefs/SettingsForm';
 import renderField from '../components/forms/renderField';
 import renderInputBox from '../components/forms/renderInputBox';
+import renderCheckbox from '../components/forms/renderCheckbox';
 import { createBooking } from '../actions/bookings';
 
 const form = reduxForm({
   form: 'booking',
-  fields: ['date', 'eventType', 'address_line1', 'address_line2', 'city', 'postcode', 'numberOfPeople', 'budget', 'additionalInformation'],
+  fields: ['date', 'eventType', 'address_line1', 'address_line2', 'city', 'postcode', 'numberOfPeople', 'budget', 'additionalInformation', 'services'],
   validate
 });
 
@@ -64,7 +66,7 @@ function validate(formProps, props) {
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false };
+    this.state = { show: false, services: [] };
     this.baseState = this.state;
 
     this.showModal = this.showModal.bind(this);
@@ -106,7 +108,22 @@ class BookingForm extends React.Component {
   handleFormSubmit(formProps) {
     formProps.chef = this.props.chef._id;
     formProps.date = this.state.date;
+    formProps.services = this.state.services;
     this.props.createBooking(formProps);
+  }
+
+  handler(event, category) {
+    if (event.target.checked) {
+      this.state[category] = this.state[category].concat(event.target.name);
+      this.setState(this.state);
+    } else {
+      this.state[category] = _.pull(this.state[category], (event.target.name));
+      this.setState(this.state);
+    }
+  }
+
+  isChecked(item, state) {
+    return state && state.indexOf(item) > -1;
   }
 
   render() {
@@ -241,6 +258,23 @@ class BookingForm extends React.Component {
                           />
                         </div>
                       </Col>
+                    </Row>
+                    <label className="gc-text">Services Required</label>
+                    <Row className="gc-margin-bottom">
+                      {
+                        TYPES.map(item => (
+                            <Col sm={6} key={item}>
+                              <Field
+                                checked={this.isChecked(item, this.state.services)}
+                                name={item}
+                                type="checkbox"
+                                component={renderCheckbox}
+                                onChange={e => this.handler(e, 'services')}
+                              />
+                            </Col>
+                          )
+                        )
+                      }
                     </Row>
                     <label className="gc-text">Additional Information</label>
                     <div className="gc-margin-bottom">

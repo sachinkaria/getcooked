@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
-import { EVENT_TYPE, TYPES } from '../utils/data';
+import { EVENT_TYPE, EVENT_SERVICES } from '../utils/data';
 import Register from '../components/auth/Register';
 import Settings from '../containers/forms/setup/chefs/SettingsForm';
 import renderField from '../components/forms/renderField';
@@ -262,7 +262,7 @@ class BookingForm extends React.Component {
                     <label className="gc-text">Services Required</label>
                     <Row className="gc-margin-bottom">
                       {
-                        TYPES.map(item => (
+                        EVENT_SERVICES.map(item => (
                             <Col sm={6} key={item}>
                               <Field
                                 checked={this.isChecked(item, this.state.services)}

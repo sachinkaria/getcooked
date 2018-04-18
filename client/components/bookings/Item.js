@@ -42,65 +42,6 @@ class BookingItem extends React.Component {
     const {booking} = this.props;
     const STATUS = this.getStatus();
 
-
-    if (this.props.itemType === 'chefItem') {
-      return (
-        <Panel className="gc-panel">
-          <Panel.Body>
-            <Row className="gc-center">
-              <Col>
-                <Link to={`/chefs/${booking.chef._id}`}>
-                  <img
-                    alt={booking.chef.displayName}
-                    src={booking.chef.profilePhoto}
-                    className="gc-thumbnail gc-margin-bottom--xs"
-                  />
-                  <p className="gc-form-heading text-capitalize">{booking.chef.displayName}</p>
-                </Link>
-              </Col>
-            </Row>
-            <Row className="gc-center">
-              <Col>
-                <div>
-                  <p className="gc-text"><span
-                    className="gc-bold">Event date:</span> {moment(booking.date).format('MMMM Do YYYY')}</p>
-                  <p className="gc-text">
-                    <span className="gc-bold">
-                      Type of event:
-                    </span>
-                    <span className="text-capitalize">
-                      {booking.eventType}
-                    </span>
-                  </p>
-                  <p className="gc-text">
-                    <span className="gc-bold">
-                      Number of guests (approx.):
-                    </span>
-                    {booking.numberOfPeople}
-                  </p>
-                  <p className="gc-text"><span
-                    className="gc-bold">Address: </span>{booking.address.line1}, {booking.address.line2}, {booking.address.city}, {booking.address.postcode}
-                  </p>
-                  <p className="gc-text"><span className="gc-bold">Budget (approx.):</span>
-                    £{booking.budget || 1500}</p>
-                </div>
-              </Col>
-            </Row>
-            {
-              booking.additionalInformation &&
-              <Row className="gc-margin-top gc-center">
-                <Col xs={12}>
-                  <p className="gc-text gc-bold">Additional Information</p>
-                  <p className="gc-text gc-dark-grey">
-                    {booking.additionalInformation}
-                  </p>
-                </Col>
-              </Row>
-            }
-          </Panel.Body>
-        </Panel>
-      );
-    }
     return (
       <div>
         { (booking.status === 'pending') &&
@@ -164,12 +105,12 @@ class BookingItem extends React.Component {
                   <Col xs={12} sm={4}>
                     <p className="gc-text gc-grey">Status</p>
                     <p className="gc-text">{STATUS}</p>
-                    <hr className="visible-xs"/>
+                    <hr className="visible-xs" />
                   </Col>
                   <Col xs={12} sm={4}>
                     <p className="gc-text gc-grey">Date</p>
                     <p className="gc-text">{moment(booking.date).format('MMMM Do YYYY')}</p>
-                    <hr className="visible-xs"/>
+                    <hr className="visible-xs" />
                   </Col>
                   <Col xs={12} sm={4}>
                     <p className="gc-text gc-grey">Event Address</p>
@@ -197,6 +138,37 @@ class BookingItem extends React.Component {
                   <Col xs={12} sm={4}>
                     <p className="gc-text gc-grey">Budget</p>
                     <p className="gc-text">£{booking.budget || 1500}</p>
+                  </Col>
+                </Row>
+                <hr />
+                <Row>
+                  <Col xs={12} sm={4}>
+                    <p className="gc-text gc-grey">Services Required</p>
+                    <div className="gc-margin-bottom">
+                      {
+                        booking.services.map((service) => {
+                          return (
+                            <p className="text-capitalize gc-margin-none">
+                              {service}
+                            </p>
+                          );
+                        })
+                      }
+                    </div>
+                  </Col>
+                  <Col xs={12} sm={4}>
+                    <p className="gc-text gc-grey">Type of Food</p>
+                    <div className="gc-margin-bottom">
+                      {
+                        booking.foodServices.map((service) => {
+                          return (
+                            <p className="text-capitalize gc-margin-none">
+                              {service}
+                            </p>
+                          );
+                        })
+                      }
+                    </div>
                   </Col>
                 </Row>
                 {
@@ -228,7 +200,6 @@ class BookingItem extends React.Component {
     );
   }
 }
-;
 
 
 BookingItem.propTypes = {

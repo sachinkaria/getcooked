@@ -137,17 +137,17 @@ class BookingItem extends React.Component {
                     src="/images/default_profile.png"
                     className="gc-thumbnail gc-thumbnail--lg"
                   />
-                  <p className="gc-text">{booking.user.firstName}</p>
+                  <p className="gc-text">{booking.contactDetails.firstName}</p>
                 </Col>
                 <Col xs={12} sm={6}>
                   <div>
                     <p className="gc-text gc-grey">Mobile number</p>
                     <p className="gc-text">
-                      {booking.user.mobileNumber}
+                      {booking.contactDetails.mobileNumber}
                     </p>
                     <p className="gc-text gc-grey">Email address</p>
                     <p className="gc-text">
-                      {booking.user.email}
+                      {booking.contactDetails.email}
                     </p>
                   </div>
                 </Col>

@@ -76,7 +76,7 @@ class ListItem extends React.Component {
               </Col>
               <Col className="center-m left-t" sm={5}>
                 <p className="gc-text text-capitalize gc-margin-none">
-                  {booking.user.firstName}
+                  {booking.contactDetails.firstName}
                 </p>
                 <p className="gc-text hidden-xs gc-margin-none">
                   {moment(booking.createdAt).format('MMMM Do YYYY')}

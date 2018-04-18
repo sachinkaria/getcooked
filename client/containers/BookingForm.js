@@ -1,12 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import classNames from 'classnames';
 import _ from 'lodash';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
-import { EVENT_TYPE, EVENT_SERVICES } from '../utils/data';
-import Register from '../components/auth/Register';
-import Settings from '../containers/forms/setup/chefs/SettingsForm';
+import { EVENT_TYPE, EVENT_SERVICES, CUISINES } from '../utils/data';
+import ContactDetailsForm from '../containers/forms/booking/ContactDetailsForm';
 import renderField from '../components/forms/renderField';
 import renderInputBox from '../components/forms/renderInputBox';
 import renderCheckbox from '../components/forms/renderCheckbox';
@@ -14,7 +14,7 @@ import { createBooking } from '../actions/bookings';
 
 const form = reduxForm({
   form: 'booking',
-  fields: ['date', 'eventType', 'address_line1', 'address_line2', 'city', 'postcode', 'numberOfPeople', 'budget', 'additionalInformation', 'services'],
+  fields: ['date', 'eventType', 'address_line1', 'address_line2', 'city', 'postcode', 'numberOfPeople', 'budget', 'additionalInformation', 'services', 'cuisines'],
   validate
 });
 
@@ -24,11 +24,11 @@ function validate(formProps, props) {
 
   const PER_HEAD_BUDGET = parseInt(formProps.budget / formProps.numberOfPeople).toFixed(2);
 
-  if (chef.minimumPerHeadBudget && (PER_HEAD_BUDGET < chef.minimumPerHeadBudget)) {
+  if (chef && chef.minimumPerHeadBudget && (PER_HEAD_BUDGET < chef.minimumPerHeadBudget)) {
     errors.budget = `Your budget does not meet the minimum amount (£${chef.minimumPerHeadBudget}/ per person) required to book this caterer.`;
   }
 
-  if (chef.minimumTotalBudget && (formProps.budget < chef.minimumTotalBudget)) {
+  if (chef && chef.minimumTotalBudget && (formProps.budget < chef.minimumTotalBudget)) {
     errors.budget = `Your budget of does not meet the minimum amount (£${chef.minimumTotalBudget}) required to book this caterer.`;
   }
 
@@ -66,7 +66,7 @@ function validate(formProps, props) {
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false, services: [] };
+    this.state = { show: false, services: [], foodServices: [], showEventForm: false };
     this.baseState = this.state;
 
     this.showModal = this.showModal.bind(this);
@@ -75,6 +75,7 @@ class BookingForm extends React.Component {
     this.setDate = this.setDate.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.submitContactDetails = this.submitContactDetails.bind(this);
   }
 
   componentWillReceiveProps() {
@@ -84,7 +85,7 @@ class BookingForm extends React.Component {
   }
 
   onClick() {
-    heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
+    this.props.chef && heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
     this.showModal();
   }
 
@@ -106,9 +107,11 @@ class BookingForm extends React.Component {
   }
 
   handleFormSubmit(formProps) {
-    formProps.chef = this.props.chef._id;
+    formProps.chef = this.props.chef && this.props.chef._id;
     formProps.date = this.state.date;
     formProps.services = this.state.services;
+    formProps.foodServices = this.state.foodServices;
+    formProps.contactDetails = JSON.parse(localStorage.getItem('contactDetails'));
     this.props.createBooking(formProps);
   }
 
@@ -126,20 +129,28 @@ class BookingForm extends React.Component {
     return state && state.indexOf(item) > -1;
   }
 
+  submitContactDetails() {
+    this.setState({
+      showEventForm: true
+    });
+  }
+
   render() {
     const { handleSubmit } = this.props;
-    const { user, auth } = this.props;
+    const classes = classNames('gc-btn gc-btn--orange', {
+      'gc-btn--lg': this.props.large
+    });
 
     return (
       <div>
         {
           this.props.mobile ?
             <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.onClick}>
-              Contact now
+              {this.props.action}
             </Button>
             :
-            <Button block className="gc-btn gc-btn--orange" onClick={this.onClick}>
-              Contact now
+            <Button block className={classes} onClick={this.onClick}>
+              {this.props.action}
             </Button>
         }
         <Modal
@@ -149,7 +160,7 @@ class BookingForm extends React.Component {
           bsSize="large"
         >
           <Modal.Header closeButton>
-            <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">Request a Booking</Modal.Title>
+            <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">{this.props.action}</Modal.Title>
             <Row>
               <Col sm={8} smOffset={2}>
                 <p className="gc-center gc-text gc-text--grey">
@@ -162,14 +173,10 @@ class BookingForm extends React.Component {
           <Col sm={8} smOffset={2} md={6} mdOffset={3}>
             <Modal.Body>
               {
-                (!auth.authenticated && !user.data) &&
-                <Register />
+                (this.state.showEventForm === false) &&
+                <ContactDetailsForm onSubmit={this.submitContactDetails} />
               }
-              {
-                (auth.authenticated && user.data && (!user.data.firstName || !user.data.email || !user.data.mobileNumber)) &&
-                <Settings />
-              }
-              {(auth.authenticated && user.data && user.data.firstName && user.data.email && user.data.mobileNumber) &&
+              {this.state.showEventForm &&
                 <Row>
                   <form onSubmit={handleSubmit(this.handleFormSubmit)}>
                     <label className="gc-text">Date</label>
@@ -229,7 +236,7 @@ class BookingForm extends React.Component {
                         )}
                       </Field>
                     </div>
-                    <label className="gc-text">Number of people (approx.)</label>
+                    <label className="gc-text">Number of Guests (approx.)</label>
                     <Row>
                       <Col sm={6}>
                         <div className="gc-margin-bottom">
@@ -243,7 +250,7 @@ class BookingForm extends React.Component {
                         </div>
                       </Col>
                     </Row>
-                    <label className="gc-text">Budget</label>
+                    <label className="gc-text">Estimated Budget</label>
                     <Row>
                       <Col sm={6}>
                         <div className="gc-margin-bottom">
@@ -263,24 +270,39 @@ class BookingForm extends React.Component {
                     <Row className="gc-margin-bottom">
                       {
                         EVENT_SERVICES.map(item => (
-                            <Col sm={6} key={item}>
-                              <Field
-                                checked={this.isChecked(item, this.state.services)}
-                                name={item}
-                                type="checkbox"
-                                component={renderCheckbox}
-                                onChange={e => this.handler(e, 'services')}
-                              />
-                            </Col>
-                          )
-                        )
+                          <Col xs={6} key={item}>
+                            <Field
+                              checked={this.isChecked(item, this.state.services)}
+                              name={item}
+                              type="checkbox"
+                              component={renderCheckbox}
+                              onChange={e => this.handler(e, 'services')}
+                            />
+                          </Col>
+                        ))
+                      }
+                    </Row>
+                    <label className="gc-text">Type of Food</label>
+                    <Row className="gc-margin-bottom">
+                      {
+                        CUISINES.map(item => (
+                          <Col xs={6} key={item}>
+                            <Field
+                              checked={this.isChecked(item, this.state.foodServices)}
+                              name={item}
+                              type="checkbox"
+                              component={renderCheckbox}
+                              onChange={e => this.handler(e, 'foodServices')}
+                            />
+                          </Col>
+                        ))
                       }
                     </Row>
                     <label className="gc-text">Additional Information</label>
                     <div className="gc-margin-bottom">
                       <Field
                         name="additionalInformation"
-                        placeholder="Please give any extra details about your event."
+                        placeholder="Please give any extra details about your event and any special requirements you might have."
                         className="form-control gc-input gc-margin-bottom"
                         component={renderInputBox}
                         type="text"
@@ -303,11 +325,15 @@ class BookingForm extends React.Component {
   }
 }
 
+BookingForm.PropTypes = {
+  action: String.isRequired
+};
+
 function mapStateToProps(state) {
   return {
     auth: state.auth,
     user: state.user,
-    chef: state.public.chef.profile
+    chef: state.public.chef && state.public.chef.profile
   };
 }
 

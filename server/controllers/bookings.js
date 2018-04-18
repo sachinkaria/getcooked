@@ -69,7 +69,7 @@ function read(req, res) {
 
 function create(req, res) {
   const BOOKING = req.body;
-  const USER = req.user;
+  const USER = BOOKING.contactDetails;
 
   const booking = new Booking({
     user: USER._id,
@@ -85,7 +85,9 @@ function create(req, res) {
       postcode: BOOKING.postcode,
     },
     budget: BOOKING.budget,
-    services: BOOKING.services
+    services: BOOKING.services,
+    foodServices: BOOKING.foodServices,
+    contactDetails: BOOKING.contactDetails
   });
 
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {

@@ -11,15 +11,28 @@ const AddressSchema = {
   postcode: String
 };
 
+const ContactSchema = {
+  firstName: String,
+  lastName: String,
+  email: String,
+  mobileNumber: {
+    type: String,
+    trim: true,
+    default: ''
+  },
+  phoneCode: {
+    name: String,
+    dialCode: Number,
+    code: String
+  }
+};
+
 const BookingSchema = new Schema({
-    user: {
-      type: Schema.ObjectId,
-      ref: 'User'
-    },
     chef: {
       type: Schema.ObjectId,
       ref: 'User'
     },
+    contactDetails: ContactSchema,
     address: AddressSchema,
     date: Date,
     numberOfPeople: Number,
@@ -40,6 +53,9 @@ const BookingSchema = new Schema({
     },
     budget: Number,
     services: [{
+      type: String
+    }],
+    foodServices: [{
       type: String
     }],
   },

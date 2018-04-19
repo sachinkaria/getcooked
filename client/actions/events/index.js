@@ -8,7 +8,7 @@ export function createEvent(event) {
     axios.post('/api/events/create', event)
       .then(() => {
         dispatch({ type: SENT_BOOKING_REQUEST });
-        successHandler(dispatch, 'Fantastic! You\'re event request has been sent. You will be contacted shortly.');
+        successHandler(dispatch, 'Fantastic! Your event request has been sent. You will be contacted shortly.');
         dispatch({ type: RESET_BOOKING_REQUEST });
       })
       .catch(() => {

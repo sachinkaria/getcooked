@@ -9,7 +9,7 @@ export function createBooking(booking) {
     axios.post('/api/bookings/create', booking, AUTH_HEADERS)
       .then(() => {
         dispatch({ type: SENT_BOOKING_REQUEST });
-        successHandler(dispatch, 'Fantastic! You\'re booking request has been sent. You will be contacted shortly.');
+        successHandler(dispatch, 'Fantastic! Your booking request has been sent. You will be contacted shortly.');
         dispatch({ type: RESET_BOOKING_REQUEST });
       })
       .catch(() => {

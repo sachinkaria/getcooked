@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 import BookingForm from '../../containers/BookingForm';
 import ListItem from '../chefs/ListItem';
 
-function Main({ chefs }) {
+function Main({ eventSubmit, chefs }) {
   const style = {
     backgroundImage: 'url(/images/dining.jpg)',
     backgroundSize: 'cover'
@@ -20,7 +20,7 @@ function Main({ chefs }) {
               <div className="gc-center">
                 <Row style={{ paddingBottom: '60px', paddingTop: '25px' }}>
                   <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
-                    <BookingForm large action="Get Quotes" />
+                    <BookingForm withoutChef onSubmit={eventSubmit} large action="Get Quotes" />
                   </Col>
                 </Row>
               </div>

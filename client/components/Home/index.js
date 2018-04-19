@@ -1,7 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/public';
+import { listChefs } from '../../actions/public';
+import { createEvent } from '../../actions/events';
 import Main from './Main';
 import HowItWorks from './HowItWorks';
 import WhoWeAre from './WhoWeAre';
@@ -16,7 +17,7 @@ class Home extends React.Component {
     const chefs = _.shuffle(this.props.chefs).slice(0, 3);
     return (
       <div>
-        <Main chefs={chefs} />
+        <Main eventSubmit={this.props.createEvent} chefs={chefs} />
         <br />
         <HowItWorks />
         <br />
@@ -33,5 +34,5 @@ function mapStateToProps(state) {
   return { chefs: state.public.chefs };
 }
 
-export default connect(mapStateToProps, actions)(Home);
+export default connect(mapStateToProps, { listChefs, createEvent })(Home);
 

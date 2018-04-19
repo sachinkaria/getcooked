@@ -85,7 +85,11 @@ class BookingForm extends React.Component {
   }
 
   onClick() {
-    this.props.chef && heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
+    if (!this.props.withoutChef) {
+      heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
+    } else {
+      heap.track('Click Get Quotes');
+    }
     this.showModal();
   }
 
@@ -107,12 +111,12 @@ class BookingForm extends React.Component {
   }
 
   handleFormSubmit(formProps) {
-    formProps.chef = this.props.chef && this.props.chef._id;
+    formProps.chef = (!this.props.withoutChef && this.props.chef) && this.props.chef._id;
     formProps.date = this.state.date;
     formProps.services = this.state.services;
     formProps.foodServices = this.state.foodServices;
     formProps.contactDetails = JSON.parse(localStorage.getItem('contactDetails'));
-    this.props.createBooking(formProps);
+    this.props.onSubmit(formProps) || this.props.createBooking(formProps);
   }
 
   handler(event, category) {
@@ -309,7 +313,7 @@ class BookingForm extends React.Component {
                       />
                     </div>
                     <Col xs={10} xsOffset={1} sm={6} smOffset={3} >
-                      <Button onClick={() => heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName })} block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+                      <Button onClick={() => !this.props.withoutChef ? heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) : heap.track('Submit Event')} block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
                         Submit request
                       </Button>
                     </Col>
@@ -326,7 +330,8 @@ class BookingForm extends React.Component {
 }
 
 BookingForm.PropTypes = {
-  action: String.isRequired
+  action: String.isRequired,
+  withoutChef: Boolean
 };
 
 function mapStateToProps(state) {

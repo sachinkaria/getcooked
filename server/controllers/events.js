@@ -35,7 +35,7 @@ function create(req, res) {
 function sendNewBookingSlackNotification(user) {
   if (process.env.NODE_ENV === 'production') {
     request
-      .post(config.slackBookingsWebHookUrl)
+      .post(config.slackEventsWebHookUrl)
       .send({
         text: `${user.firstName} (${user.email}) just created a new event.`
       })

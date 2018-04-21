@@ -9,6 +9,7 @@ const requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = function (app) {
   app.get('/api/admin/chefs', requireAuth, Authentication.roleAuthorization('admin'), AdminController.listChefs);
   app.get('/api/admin/users', requireAuth, Authentication.roleAuthorization('admin'), AdminController.listUsers);
+  app.get('/api/admin/events', requireAuth, Authentication.roleAuthorization('admin'), AdminController.listEvents);
   app.get('/api/admin/stripe/coupons', requireAuth, Authentication.roleAuthorization('admin'), AdminController.addMonthlyCoupons);
   app.get('/api/admin/chefs/:id', requireAuth, Authentication.roleAuthorization('admin'), AdminController.getChef);
   app.get('/api/admin/chefs/:id/list', requireAuth, Authentication.roleAuthorization('admin'), AdminController.list);

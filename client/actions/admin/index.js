@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS } from '../types';
+import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS, ADMIN_LIST_EVENTS } from '../types';
 import { errorHandler, successHandler, processingFileUpload, completedFileUpload } from '../public';
 
 export function adminListChefs() {
@@ -19,12 +19,29 @@ export function adminListChefs() {
 }
 
 export function adminListUsers() {
+  return adminListEvents();
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.get('/api/admin/users', AUTH_HEADERS)
       .then((response) => {
         dispatch({
           type: ADMIN_LIST_USERS,
+          payload: response.data
+        });
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'Sorry there was an error.');
+      });
+  };
+}
+
+export function adminListEvents() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.get('/api/admin/events', AUTH_HEADERS)
+      .then((response) => {
+        dispatch({
+          type: ADMIN_LIST_EVENTS,
           payload: response.data
         });
       })

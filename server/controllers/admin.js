@@ -4,6 +4,7 @@ const keys = require('../config/main');
 
 const stripe = require('stripe')(keys.stripe_secret_key);
 const User = require('../models/user');
+const Event = require('../models/event');
 const ObjectId = require('mongodb').ObjectId;
 const twilio = require('./twilio');
 const utils = require('./utils');
@@ -12,7 +13,8 @@ const approvalTemplate = require('../services/emailTemplates/approvalTemplate');
 
 module.exports.listChefs = allChefs;
 module.exports.listUsers = allUsers;
-module.exports.getChef = read;
+module.exports.listEvents = allEvents;
+module.exports.getChef = getChef;
 module.exports.approve = approve;
 module.exports.list = list;
 module.exports.unlist = unlist;
@@ -26,12 +28,18 @@ function allChefs(req, res) {
 }
 
 function allUsers(req, res) {
-  User.find({role: 'member'}).exec((err, members) => {
+  User.find({ role: 'member' }).exec((err, members) => {
     res.jsonp(members);
   });
 }
 
-function read(req, res) {
+function allEvents(req, res) {
+  Event.find({}).exec((err, events) => {
+    res.jsonp(events);
+  });
+}
+
+function getChef(req, res) {
   const id = req.params.id;
   User.find({_id: ObjectId(id)}).exec((err, chefs) => {
     let chef = chefs[0];

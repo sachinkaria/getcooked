@@ -168,8 +168,8 @@ class BookingForm extends React.Component {
             <Row>
               <Col sm={8} smOffset={2}>
                 <p className="gc-center gc-text gc-text--grey">
-                  Please fill out the details of your event.
-                  You will be contacted by email or phone once they have received your request.
+                  Please complete your contact details and give us some information on your event.
+                  Once you have submitted your event you will contacted by caterers that match your requirements.
                 </p>
               </Col>
             </Row>

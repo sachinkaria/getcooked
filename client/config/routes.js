@@ -71,8 +71,9 @@ const routes = (
     </Route>
     <Route path="admin">
       <Route path="dashboard">
-        <Route path="chefs" component={RequireRole(AdminDashboard, 'admin')} view="chefs"/>
-        <Route path="users" component={RequireRole(AdminDashboard, 'admin')} view="users"/>
+        <Route path="chefs" component={RequireRole(AdminDashboard, 'admin')} view="chefs" />
+        <Route path="users" component={RequireRole(AdminDashboard, 'admin')} view="users" />
+        <Route path="events" component={RequireRole(AdminDashboard, 'admin')} view="events" />
         <Route path="chefs/:id" component={RequireRole(Profile, 'admin')} view="chefs"/>
       </Route>
     </Route>

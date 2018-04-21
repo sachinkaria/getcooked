@@ -9,19 +9,26 @@ class Sidebar extends React.Component {
     const ADMIN_SIDEBAR = (
       <Panel className="gc-panel">
         <Panel.Body>
-        <ul className="gc-list gc-padding-none">
-          <li>
-            <Link to="/admin/dashboard/chefs" className="gc-link-default">
-              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('chefs') })}>Chefs</p>
-            </Link>
-          </li>
-          <li>
-            <Link to="/admin/dashboard/users" className="gc-link-default">
-              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('users') })}>
-                Users</p>
-            </Link>
-          </li>
-        </ul>
+          <ul className="gc-list gc-padding-none">
+            <li>
+              <Link to="/admin/dashboard/chefs" className="gc-link-default">
+                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('chefs') })}>
+                  Chefs</p>
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/dashboard/users" className="gc-link-default">
+                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('users') })}>
+                  Users</p>
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/dashboard/events" className="gc-link-default">
+                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('events') })}>
+                  Events</p>
+              </Link>
+            </li>
+          </ul>
         </Panel.Body>
       </Panel>
     );

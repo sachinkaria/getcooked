@@ -2,10 +2,11 @@ import React from 'react';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
-import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons } from '../../../actions/admin';
+import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ChefItem from './ChefItem';
 import UserItem from './UserItem';
+import EventItem from './EventItem';
 import Sidebar from '../../chefs/Dashboard/Sidebar';
 
 
@@ -29,6 +30,7 @@ class AdminDashboard extends React.Component {
     this.props.getCurrentUser();
     this.props.adminListChefs();
     this.props.adminListUsers();
+    this.props.adminListEvents();
   }
 
   onImagesUpload(e) {
@@ -68,8 +70,7 @@ class AdminDashboard extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { chefs } = this.props;
-    const { users } = this.props;
+    const { chefs, users, events } = this.props;
 
     if (!user.data) {
       return <div>Loading...</div>;
@@ -124,6 +125,19 @@ class AdminDashboard extends React.Component {
                   )}
                 </Panel>
               }
+              {
+                this.props.location.pathname.includes('events') &&
+                <div>
+                  {events.map(item =>
+                    (
+                      <EventItem
+                        userItem={item.contactDetails}
+                        booking={item}
+                      />
+                    )
+                  )}
+                </div>
+              }
             </Col>
           </Row>
         </div>
@@ -144,8 +158,9 @@ function mapStateToProps(state) {
   return {
     user: state.user,
     chefs: state.admin.chefs,
-    users: state.admin.users
+    users: state.admin.users,
+    events: state.admin.events
   };
 }
 
-export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons})(AdminDashboard);
+export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents})(AdminDashboard);

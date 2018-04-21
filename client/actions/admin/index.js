@@ -19,7 +19,6 @@ export function adminListChefs() {
 }
 
 export function adminListUsers() {
-  return adminListEvents();
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.get('/api/admin/users', AUTH_HEADERS)

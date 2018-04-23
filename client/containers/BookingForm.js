@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
 import _ from 'lodash';
+import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
@@ -148,14 +149,22 @@ class BookingForm extends React.Component {
     return (
       <div>
         {
-          this.props.mobile ?
+          this.props.mobile &&
             <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.onClick}>
               {this.props.action}
             </Button>
-            :
-            <Button block className={classes} onClick={this.onClick}>
+        }
+        {
+          (!this.props.mobile && !this.props.navbar) &&
+          <Button block className={classes} onClick={this.onClick}>
+            {this.props.action}
+          </Button>
+        }
+        {
+          this.props.navbar &&
+            <p className="gc-text gc-text--dark-grey" onClick={this.onClick}>
               {this.props.action}
-            </Button>
+            </p>
         }
         <Modal
           show={this.state.show}
@@ -331,7 +340,8 @@ class BookingForm extends React.Component {
 
 BookingForm.PropTypes = {
   action: String.isRequired,
-  withoutChef: Boolean
+  withoutChef: Boolean,
+  navbar: Boolean
 };
 
 function mapStateToProps(state) {

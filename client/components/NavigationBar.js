@@ -4,8 +4,10 @@ import {Navbar, Nav, NavItem } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
+import BookingForm from '../containers/BookingForm';
 import isAuthenticated from '../utils/isAuthenticated';
 import {getBookings} from '../actions/bookings';
+import {createEvent} from '../actions/events';
 import Footer from './Footer';
 
 
@@ -57,8 +59,13 @@ class NavigationBar extends React.Component {
             {
               (!isAuthenticated() && showNav) && (
                 <Nav pullRight>
-                  <NavItem target="_blank" href="https://intercom.help/get-cooked">
-                    <p className="gc-text gc-text--dark-grey">FAQs</p>
+                  <NavItem>
+                    <BookingForm
+                      onSubmit={this.props.createEvent}
+                      withoutChef
+                      navbar
+                      action="Get Quotes"
+                    />
                   </NavItem>
                   <NavItem href="/caterers/about">
                     <p className="gc-text gc-text--dark-grey">Register as a caterer</p>
@@ -88,4 +95,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getBookings })(NavigationBar);
+export default connect(mapStateToProps, { getBookings, createEvent })(NavigationBar);

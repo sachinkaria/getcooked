@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS, ADMIN_LIST_EVENTS } from '../types';
+import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS, ADMIN_LIST_EVENTS, SENT_BOOKING_REQUEST, RESET_BOOKING_REQUEST } from '../types';
 import { errorHandler, successHandler, processingFileUpload, completedFileUpload } from '../public';
 
 export function adminListChefs() {
@@ -105,6 +105,21 @@ export function updateMonthlyCoupons() {
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
+      });
+  };
+}
+
+export function adminCreateBooking(booking) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post('/api/admin/bookings/create', booking, AUTH_HEADERS)
+      .then(() => {
+        dispatch({ type: SENT_BOOKING_REQUEST });
+        successHandler(dispatch, 'The event has been forwarded.');
+        dispatch({ type: RESET_BOOKING_REQUEST });
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'Sorry, there was a problem creating your booking.');
       });
   };
 }

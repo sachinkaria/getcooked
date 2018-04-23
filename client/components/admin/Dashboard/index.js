@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
-import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents } from '../../../actions/admin';
+import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents, adminCreateBooking } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ChefItem from './ChefItem';
 import UserItem from './UserItem';
@@ -105,6 +105,7 @@ class AdminDashboard extends React.Component {
                         onImagesUpload={this.onImagesUpload}
                         selectChef={this.selectChef}
                         updateStatus={this.updateStatus}
+                        createBooking={this.props.adminCreateBooking}
                       />
                     )
                   )}
@@ -115,12 +116,13 @@ class AdminDashboard extends React.Component {
                 <Panel className="gc-panel">
                   {users.map(userItem =>
                     (
-                      <UserItem
-                        firstName={userItem.firstName}
-                        lastName={userItem.lastName}
-                        email={userItem.email}
-                        mobileNumber={userItem.mobileNumber}
-                      />
+                        <UserItem
+                          key={userItem._id}
+                          firstName={userItem.firstName}
+                          lastName={userItem.lastName}
+                          email={userItem.email}
+                          mobileNumber={userItem.mobileNumber}
+                        />
                     )
                   )}
                 </Panel>
@@ -131,6 +133,7 @@ class AdminDashboard extends React.Component {
                   {events.map(item =>
                     (
                       <EventItem
+                        key={item._id}
                         userItem={item.contactDetails}
                         booking={item}
                       />
@@ -163,4 +166,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents})(AdminDashboard);
+export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents, adminCreateBooking })(AdminDashboard);

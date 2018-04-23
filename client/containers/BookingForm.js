@@ -116,7 +116,7 @@ class BookingForm extends React.Component {
     formProps.services = this.state.services;
     formProps.foodServices = this.state.foodServices;
     formProps.contactDetails = JSON.parse(localStorage.getItem('contactDetails'));
-    this.props.onSubmit(formProps) || this.props.createBooking(formProps);
+    this.props.onSubmit(formProps);
   }
 
   handler(event, category) {

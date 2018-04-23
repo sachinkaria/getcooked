@@ -5,6 +5,7 @@ const keys = require('../config/main');
 const stripe = require('stripe')(keys.stripe_secret_key);
 const User = require('../models/user');
 const Event = require('../models/event');
+const BookingController = require('./bookings');
 const ObjectId = require('mongodb').ObjectId;
 const twilio = require('./twilio');
 const utils = require('./utils');
@@ -20,6 +21,7 @@ module.exports.list = list;
 module.exports.unlist = unlist;
 module.exports.uploadPhotos = uploadPhotos;
 module.exports.addMonthlyCoupons = addMonthlyCoupons;
+module.exports.createBooking = createBooking;
 
 function allChefs(req, res) {
   User.find({role: 'chef'}).exec((err, chefs) => {
@@ -90,7 +92,7 @@ function list(req, res) {
 
 function unlist(req, res) {
   const id = req.params.id;
-  User.find({_id: ObjectId(id)}).exec((err, chefs) => {
+  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
     let chef = chefs[0];
 
     if (chef.status === 'listed') {
@@ -100,6 +102,10 @@ function unlist(req, res) {
     chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);
     res.jsonp(chef);
   });
+}
+
+function createBooking(req, res) {
+  return BookingController.create(req, res);
 }
 
 function uploadPhotos(req, res) {

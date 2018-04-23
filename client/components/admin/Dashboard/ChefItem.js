@@ -12,7 +12,7 @@ function ChefItem({...chef}) {
       <Panel.Body>
         <Row>
           <Col xs={3} md={2}>
-            <ProfilePicture withoutMargins photoUrl={chef.profilePhoto}/>
+            <ProfilePicture withoutMargins photoUrl={chef.profilePhoto} />
           </Col>
           <Col xs={6} md={7}>
             <p className="gc-text gc-bold gc-margin-none">{chef.displayName}</p>
@@ -38,22 +38,31 @@ function ChefItem({...chef}) {
             <div className="gc-margin-top--xs">
               {
                 (chef.status === 'pending') &&
-                <Button block className="btn gc-btn gc-btn--sm btn-success"
-                        onClick={() => chef.updateStatus('approve', chef.id)}>
+                <Button
+                  block
+                  className="btn gc-btn gc-btn--sm btn-success"
+                  onClick={() => chef.updateStatus('approve', chef.id)}
+                >
                   Approve
                 </Button>
               }
               {
                 (chef.status === 'unlisted') &&
-                <Button block className="btn gc-btn gc-btn--sm gc-btn-blue"
-                        onClick={() => chef.updateStatus('list', chef.id)}>
+                <Button
+                  block
+                  className="btn gc-btn gc-btn--sm gc-btn-blue"
+                  onClick={() => chef.updateStatus('list', chef.id)}
+                >
                   List
                 </Button>
               }
               {
                 (chef.status === 'listed') &&
-                <Button block className="btn gc-btn gc-btn--sm btn-danger"
-                        onClick={() => chef.updateStatus('unlist', chef.id)}>
+                <Button
+                  block
+                  className="btn gc-btn gc-btn--sm btn-danger"
+                  onClick={() => chef.updateStatus('unlist', chef.id)}
+                >
                   Unlist
                 </Button>
               }
@@ -61,12 +70,12 @@ function ChefItem({...chef}) {
                 localStorage.event &&
                 <Button
                   block
-                  className="btn gc-btn gc-btn--sm"
+                  className="btn gc-btn gc-btn--sm btn-primary"
                   onClick={() => {
                     const EVENT = localStorage.getItem('event');
-                    let BOOKING = JSON.parse(EVENT);
+                    const BOOKING = JSON.parse(EVENT);
                     BOOKING.chef = chef.id;
-                    chef.createBooking(BOOKING)
+                    chef.createBooking(BOOKING);
                   }}
                 >
                   Send Booking

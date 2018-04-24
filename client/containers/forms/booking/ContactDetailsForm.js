@@ -28,7 +28,6 @@ function validate(formProps) {
   if (!formProps.mobileNumber) {
     errors.mobileNumber = 'Please enter your mobile number';
   }
-  
   return errors;
 }
 

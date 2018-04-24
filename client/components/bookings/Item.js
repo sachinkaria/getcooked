@@ -19,10 +19,6 @@ class BookingItem extends React.Component {
     this.props.getBooking(this.props.id);
   }
 
-  declineBooking() {
-    this.props.decline(this.props.id);
-  }
-
   getStatus() {
     switch (this.props.booking.status) {
       case 'accepted':
@@ -34,6 +30,10 @@ class BookingItem extends React.Component {
     }
   }
 
+  declineBooking() {
+    this.props.decline(this.props.id);
+  }
+
   acceptBooking() {
     this.props.accept(this.props.id);
   }
@@ -41,6 +41,7 @@ class BookingItem extends React.Component {
   renderView() {
     const {booking} = this.props;
     const STATUS = this.getStatus();
+    console.log(booking);
 
     return (
       <div>

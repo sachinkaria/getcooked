@@ -28,11 +28,7 @@ function validate(formProps) {
   if (!formProps.mobileNumber) {
     errors.mobileNumber = 'Please enter your mobile number';
   }
-
-  if (!formProps.phoneCode || formProps.phoneCode === 'Select a country') {
-    errors.phoneCode = 'Please select a country';
-  }
-
+  
   return errors;
 }
 

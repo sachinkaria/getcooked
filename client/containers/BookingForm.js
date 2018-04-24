@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import classNames from 'classnames';
 import _ from 'lodash';
-import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Modal, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
@@ -67,7 +66,7 @@ function validate(formProps, props) {
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false, services: [], foodServices: [], showEventForm: false };
+    this.state = { show: false, services: [], foodServices: [], hideEventForm: false };
     this.baseState = this.state;
 
     this.showModal = this.showModal.bind(this);
@@ -76,7 +75,7 @@ class BookingForm extends React.Component {
     this.setDate = this.setDate.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onClick = this.onClick.bind(this);
-    this.submitContactDetails = this.submitContactDetails.bind(this);
+    this.submitEventDetails = this.submitEventDetails.bind(this);
   }
 
   componentWillReceiveProps() {
@@ -116,8 +115,10 @@ class BookingForm extends React.Component {
     formProps.date = this.state.date;
     formProps.services = this.state.services;
     formProps.foodServices = this.state.foodServices;
-    formProps.contactDetails = JSON.parse(sessionStorage.getItem('contactDetails'));
-    this.props.onSubmit(formProps);
+    sessionStorage.setItem('eventDetails', JSON.stringify(formProps));
+    this.setState({
+      hideEventForm: true
+    });
   }
 
   handler(event, category) {
@@ -134,10 +135,8 @@ class BookingForm extends React.Component {
     return state && state.indexOf(item) > -1;
   }
 
-  submitContactDetails() {
-    this.setState({
-      showEventForm: true
-    });
+  submitEventDetails(event) {
+    this.props.onSubmit(event);
   }
 
   render() {
@@ -177,8 +176,8 @@ class BookingForm extends React.Component {
             <Row>
               <Col sm={8} smOffset={2}>
                 <p className="gc-center gc-text gc-text--grey">
-                  Please complete your contact details and give us some information on your event.
-                  Once you have submitted your event you will contacted by caterers that match your requirements.
+                  Please provide us with some information on your event and your contact details.
+                  Once you have submitted your request you will contacted by caterers that match your requirements.
                 </p>
               </Col>
             </Row>
@@ -186,17 +185,21 @@ class BookingForm extends React.Component {
           <Col sm={8} smOffset={2} md={6} mdOffset={3}>
             <Modal.Body>
               {
-                (this.state.showEventForm === false) &&
-                <ContactDetailsForm onSubmit={this.submitContactDetails} />
+                (this.state.hideEventForm) &&
+                <ContactDetailsForm
+                  withoutChef={this.props.withoutChef}
+                  chef={this.props.chef}
+                  onSubmit={this.submitEventDetails}
+                />
               }
-              {this.state.showEventForm &&
+              {!this.state.hideEventForm &&
                 <Row>
                   <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-                    <label className="gc-text">Date</label>
+                    <label className="gc-text">Event Date</label>
                     <div>
                       <DatePicker name="date" onChange={this.setDate} />
                     </div>
-                    <label className="gc-text">Address</label>
+                    <label className="gc-text">Event Address</label>
                     <div className="gc-margin-bottom">
                       <Field
                         name="address_line1"
@@ -321,8 +324,12 @@ class BookingForm extends React.Component {
                         type="text"
                       />
                     </div>
-                    <Col xs={10} xsOffset={1} sm={6} smOffset={3} >
-                      <Button onClick={() => !this.props.withoutChef ? heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) : heap.track('Submit Event')} block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+                      <Button
+                        block
+                        type="submit"
+                        className="gc-btn gc-btn--orange gc-margin-top"
+                      >
                         Submit request
                       </Button>
                     </Col>

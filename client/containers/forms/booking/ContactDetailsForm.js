@@ -39,13 +39,14 @@ class ContactDetailsForm extends Component {
 
   handleFormSubmit(formProps) {
     const PHONE_CODE = formProps.phoneCode;
-
+    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
     formProps.phoneCode = CODES.filter((item) => {
       return item.name === PHONE_CODE;
     })[0];
+    EVENT.contactDetails = formProps;
 
     sessionStorage.setItem('contactDetails', JSON.stringify(formProps));
-    this.props.onSubmit();
+    this.props.onSubmit(EVENT);
   }
 
   render() {
@@ -109,7 +110,12 @@ class ContactDetailsForm extends Component {
             />
           </div>
           <Col xs={10} xsOffset={1} sm={4} smOffset={4} >
-            <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
+
+            <Button
+              onClick={() => !this.props.withoutChef ? heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) : heap.track('Submit Event')}
+              block
+              type="submit"
+              className="gc-btn gc-btn--orange gc-margin-top">
               Next
             </Button>
           </Col>

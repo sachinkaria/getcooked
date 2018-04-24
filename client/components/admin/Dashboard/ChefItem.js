@@ -67,12 +67,12 @@ function ChefItem({...chef}) {
                 </Button>
               }
               {
-                localStorage.event &&
+                sessionStorage.event &&
                 <Button
                   block
                   className="btn gc-btn gc-btn--sm btn-primary"
                   onClick={() => {
-                    const EVENT = localStorage.getItem('event');
+                    const EVENT = sessionStorage.getItem('event');
                     const BOOKING = JSON.parse(EVENT);
                     BOOKING.chef = chef.id;
                     chef.createBooking(BOOKING);

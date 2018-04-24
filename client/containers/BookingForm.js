@@ -116,7 +116,7 @@ class BookingForm extends React.Component {
     formProps.date = this.state.date;
     formProps.services = this.state.services;
     formProps.foodServices = this.state.foodServices;
-    formProps.contactDetails = JSON.parse(localStorage.getItem('contactDetails'));
+    formProps.contactDetails = JSON.parse(sessionStorage.getItem('contactDetails'));
     this.props.onSubmit(formProps);
   }
 

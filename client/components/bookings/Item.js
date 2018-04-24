@@ -51,8 +51,8 @@ class BookingItem extends React.Component {
               <Row>
                 <Col xs={12}>
                   <p className="gc-text gc-margin-bottom--lg">
-                    Are you able to cater for this event? Accepting the
-                    booking request will give you access to contact details.
+                    Are you available to cater for this event? Please confirm your availability to contact the event host and find out more information.
+                    Note: You are NOT obliged to cater the event if you have confirmed your availability.
                   </p>
                 </Col>
               </Row>

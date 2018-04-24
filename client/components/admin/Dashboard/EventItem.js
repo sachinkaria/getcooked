@@ -90,8 +90,8 @@ function EventItem({userItem, booking}) {
                 </div>
               </Col>
               <Col xs={12} sm={4}>
-                <Link to='/admin/dashboard/chefs'>
-                  <Button onClick={localStorage.setItem('event', JSON.stringify(booking))}>Send to Caterers</Button>
+                <Link to={'/admin/dashboard/chefs'}>
+                  <Button onClick={sessionStorage.setItem('event', JSON.stringify(booking))}>Send to Caterers</Button>
                 </Link>
               </Col>
             </Row>

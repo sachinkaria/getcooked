@@ -44,7 +44,7 @@ class ContactDetailsForm extends Component {
       return item.name === PHONE_CODE;
     })[0];
 
-    localStorage.setItem('contactDetails', JSON.stringify(formProps));
+    sessionStorage.setItem('contactDetails', JSON.stringify(formProps));
     this.props.onSubmit();
   }
 
@@ -120,7 +120,7 @@ class ContactDetailsForm extends Component {
 }
 
 function mapStateToProps() {
-  const CONTACT_DETAILS = localStorage.getItem('contactDetails');
+  const CONTACT_DETAILS = sessionStorage.getItem('contactDetails');
   return {
     initialValues: JSON.parse(CONTACT_DETAILS)
   };

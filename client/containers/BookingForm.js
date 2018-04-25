@@ -199,12 +199,11 @@ class BookingForm extends React.Component {
                     <div>
                       <DatePicker name="date" onChange={this.setDate} />
                     </div>
-                    <label className="gc-text">Event Address</label>
+                    <label className="gc-text gc-dark-grey">Event Address</label>
                     <div className="gc-margin-bottom">
                       <Field
                         name="address_line1"
                         placeholder="Name or Number"
-                        className="form-control gc-input gc-margin-bottom"
                         component={renderField}
                         type="text"
                       />
@@ -213,7 +212,6 @@ class BookingForm extends React.Component {
                       <Field
                         name="address_line2"
                         placeholder="Street name"
-                        className="form-control gc-input gc-margin-bottom"
                         component={renderField}
                         type="text"
                       />
@@ -222,7 +220,6 @@ class BookingForm extends React.Component {
                       <Field
                         name="city"
                         placeholder="City"
-                        className="form-control gc-input gc-margin-bottom"
                         component={renderField}
                         type="text"
                       />
@@ -231,7 +228,6 @@ class BookingForm extends React.Component {
                       <Field
                         name="postcode"
                         placeholder="Postcode"
-                        className="form-control gc-input gc-margin-bottom"
                         component={renderField}
                         type="text"
                       />

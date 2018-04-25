@@ -5,21 +5,27 @@
 }
 
 .gc-input {
-  height: 36px;
+  height: 42px;
   display: block;
   width: 100%;
   margin-bottom: 4px;
   font-family: $primary-font;
-  font-size: 14px;
+  font-weight: 200;
+  font-size: 16px;
   color: $dark-grey;
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 1px;
-  border-bottom: 1px solid $light-grey;
+  border-radius: 2px;
+  border: 1px solid $light-grey;
 
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
   -webkit-appearance: none !important;
+
+  &.gc-input--clear {
+    border: none;
+    border-bottom: 1px solid $light-grey;
+  }
 
   &.gc-input-error {
     border: 1px solid $colour-error;
@@ -84,12 +90,16 @@
 input[type=checkbox] {
   cursor: pointer;
   position: relative;
-  -webkit-appearance: none;
   height: 15px;
   width: 15px;
   vertical-align: bottom;
   border-radius: 2px;
   border: 1px solid $light-grey;
+
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-appearance: none !important;
 
   &:checked:before {
     content: '';
@@ -124,10 +134,15 @@ input[type=checkbox] {
 
 .gc-addon {
   flex: 1;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid $light-grey;
   color: $grey;
   background-color: $lightest-grey;
-  height: 36px;
-  width: 36px;
+  height: 42px;
+  width: 42px;
+
+  &.gc-addon--clear {
+    background-color: white;
+    border: none;
+  }
 }

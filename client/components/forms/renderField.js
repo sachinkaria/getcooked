@@ -3,7 +3,8 @@ import classNames from 'classnames';
 
 const renderField = (field) => {
   const classes = classNames('form-control gc-input', {
-    'gc-input-error': field.meta.touched && field.meta.error
+    'gc-input-error': field.meta.touched && field.meta.error,
+    'gc-input--clear': field.clear
   });
 
   const inputClasses = classNames({

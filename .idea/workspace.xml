@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/styles/components/_modal.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/Home/Main.js" afterPath="$PROJECT_DIR$/client/components/Home/Main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/containers/BookingForm.js" afterPath="$PROJECT_DIR$/client/containers/BookingForm.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_all.scss" afterPath="$PROJECT_DIR$/client/styles/components/_all.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/components/_forms.scss" afterPath="$PROJECT_DIR$/client/styles/components/_forms.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,14 +21,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BookingForm.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BookingForm.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/containers/BookingForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="156" column="43" lean-forward="false" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
+            <state relative-caret-position="30">
+              <caret line="144" column="36" lean-forward="true" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_forms.scss" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/styles/components/_forms.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -179,7 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/components/chefs/setup/photos.js" />
         <option value="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" />
         <option value="$PROJECT_DIR$/client/components/Home.js" />
         <option value="$PROJECT_DIR$/client/components/StepsColumn.js" />
@@ -230,6 +235,7 @@
         <option value="$PROJECT_DIR$/client/containers/BookingForm.js" />
         <option value="$PROJECT_DIR$/client/styles/components/_all.scss" />
         <option value="$PROJECT_DIR$/client/styles/components/_modal.scss" />
+        <option value="$PROJECT_DIR$/client/styles/components/_forms.scss" />
       </list>
     </option>
   </component>
@@ -509,7 +515,7 @@
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v4.1.2/bin/node" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
-    <property name="SearchEverywhereHistoryKey" value="Home&#9;null&#9;null&#10;Ch&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;EventI&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/EventItem.js&#10;Bo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;bookitem&#9;null&#9;null&#10;Bookin&#9;null&#9;null&#10;STRIPE&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/server/controllers/stripe.js&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/utils/data.js&#10;bOO&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;Main&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;Nav&#9;null&#9;null&#10;Book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;Profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;route&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/config/routes.js&#10;admin&#9;null&#9;null&#10;Boo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;ma&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;main&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;Pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;BookingI&#9;null&#9;null&#10;Profil&#9;null&#9;null&#10;set&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/SettingsForm.js&#10;booki&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;home&#9;null&#9;null&#10;Heading&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/profile/Heading.js&#10;index&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/index.js&#10;typ&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_typography.scss&#10;caterer&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Caterer.js&#10;photo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/photos.js&#10;photos&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;payment&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/payment.js&#10;gc-bold&#9;null&#9;null&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_panel.scss&#10;booking&#9;null&#9;null&#10;na&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;FOO&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Footer.js&#10;navi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;footer&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Footer.js&#10;BOO&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;listitem&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;dash&#9;null&#9;null&#10;naviga&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;summ&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Dashboard/Summary.js&#10;rou&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/config/routes.js&#10;nav&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/users/dashboard/Navbar.js&#10;gc-list&#9;null&#9;null&#10;gc-list-i&#9;null&#9;null&#10;gc-panel&#9;null&#9;null&#10;bookingitem&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="forms&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_forms.scss&#10;Home&#9;null&#9;null&#10;Ch&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;EventI&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/EventItem.js&#10;Bo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;bookitem&#9;null&#9;null&#10;Bookin&#9;null&#9;null&#10;STRIPE&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/server/controllers/stripe.js&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/utils/data.js&#10;bOO&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;Main&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;Nav&#9;null&#9;null&#10;Book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;Profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;route&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/config/routes.js&#10;admin&#9;null&#9;null&#10;Boo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;ma&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;main&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;Pro&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;BookingI&#9;null&#9;null&#10;Profil&#9;null&#9;null&#10;set&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/SettingsForm.js&#10;booki&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;home&#9;null&#9;null&#10;Heading&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/profile/Heading.js&#10;index&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/index.js&#10;typ&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_typography.scss&#10;caterer&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Caterer.js&#10;photo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/photos.js&#10;photos&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/PhotosForm.js&#10;payment&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/payment.js&#10;gc-bold&#9;null&#9;null&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_panel.scss&#10;booking&#9;null&#9;null&#10;na&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;FOO&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Footer.js&#10;navi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;footer&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Footer.js&#10;BOO&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;listitem&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;dash&#9;null&#9;null&#10;naviga&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;summ&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/Dashboard/Summary.js&#10;rou&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/config/routes.js&#10;nav&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/users/dashboard/Navbar.js&#10;gc-list&#9;null&#9;null&#10;gc-list-i&#9;null&#9;null&#10;gc-panel&#9;null&#9;null" />
     <property name="js.last.introduce.type" value="LET" />
   </component>
   <component name="RecentsManager">
@@ -753,21 +759,21 @@
       <workItem from="1521977017527" duration="11756000" />
       <workItem from="1523108170477" duration="3584000" />
       <workItem from="1523976473383" duration="23790000" />
-      <workItem from="1524643990900" duration="1653000" />
+      <workItem from="1524643990900" duration="2231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1126799000" />
+    <option name="totallyTimeSpent" value="1127377000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32962668" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271028" sideWeight="0.51310563" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24766356" sideWeight="0.48689437" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24766356" sideWeight="0.48689437" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.4954792" order="3" side_tool="false" content_ui="tabs" />
@@ -830,13 +836,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/styles/components/_buttons.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="142" column="13" lean-forward="false" selection-start-line="142" selection-start-column="13" selection-end-line="142" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/models/conversation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1197,11 +1196,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/containers/BookingForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="156" column="43" lean-forward="false" selection-start-line="156" selection-start-column="43" selection-end-line="156" selection-end-column="43" />
+        <state relative-caret-position="30">
+          <caret line="144" column="36" lean-forward="true" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/components/_forms.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="37" lean-forward="false" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+          <folding />
         </state>
       </provider>
     </entry>

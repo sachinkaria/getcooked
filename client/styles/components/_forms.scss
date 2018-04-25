@@ -13,12 +13,13 @@
   font-size: 14px;
   color: $dark-grey;
   background-color: rgba(255, 255, 255, 1);
-  border-radius: 2px;
-  border: 1px solid $light-grey;
-  border-image: initial;
+  border-radius: 1px;
+  border-bottom: 1px solid $light-grey;
+
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
+  -webkit-appearance: none !important;
 
   &.gc-input-error {
     border: 1px solid $colour-error;
@@ -59,7 +60,6 @@
   font-size: 12pt;
   margin-bottom: 10px;
   font-family: $primary-font;
-
 
   @include placeholder {
     color: red;

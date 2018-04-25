@@ -131,7 +131,7 @@ class BookingForm extends React.Component {
     }
   }
 
-  isChecked(item, state) {
+  isChecked (item, state) {
     return state && state.indexOf(item) > -1;
   }
 
@@ -146,7 +146,7 @@ class BookingForm extends React.Component {
     });
 
     return (
-      <div>
+      <div className="modal-container">
         {
           this.props.mobile &&
             <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.onClick}>

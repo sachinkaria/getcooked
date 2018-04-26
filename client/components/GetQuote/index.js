@@ -1,40 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
-import StepsColumn from '../StepsColumn';
+import { createEvent } from '../../actions/events';
+import BookingForm from '../../containers/BookingForm';
+import { MODAL } from '../../utils/data';
 
-function GetQuote() {
+function GetQuote(props) {
   return (
-    <section className="gc-section center-m">
+    <section className="gc-section--main">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-          <h2 className="gc-section-heading gc-center">Get Quotes</h2>
+          <h1 className="gc-section-heading gc-center">Get Quotes</h1>
+          <h4 className="gc-text gc-text--lg gc-text--grey gc-center">{MODAL.DESCRIPTION}</h4>
           <br />
-          <Row>
-            <StepsColumn
-              columnWidth={4}
-              imageSrc="/images/search.png"
-              heading="Search"
-              text="Our collection of profiles make it easy to find the perfect caterer for your event.
-"
-            />
-            <StepsColumn
-              columnWidth={4}
-              imageSrc="/images/phone.png"
-              heading="Contact"
-              text="Check the caterers availability by directly contacting them with your event details."
-            />
-            <StepsColumn
-              columnWidth={4}
-              imageSrc="/images/ingredients.png"
-              heading="Feast"
-              text="Share and enjoy food at events organised by anytime, anywhere."
-            />
-          </Row>
+          <BookingForm
+            withoutChef
+            onSubmit={props.createEvent}
+            large
+            action="Get Quotes"
+            endRoute="/"
+          />
         </Col>
       </Row>
     </section>
   );
 }
 
-export default GetQuote;
+function mapStateToProps() {
+  return {};
+}
 
+export default connect(mapStateToProps, { createEvent })(GetQuote);

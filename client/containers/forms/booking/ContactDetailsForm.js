@@ -112,11 +112,11 @@ class ContactDetailsForm extends Component {
           <Col xs={10} xsOffset={1} sm={4} smOffset={4} >
 
             <Button
-              onClick={() => !this.props.withoutChef ? heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) : heap.track('Submit Event')}
+              onClick={ () => this.props.withoutChef ? heap.track('Submit Event') : heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) }
               block
               type="submit"
               className="gc-btn gc-btn--orange gc-margin-top">
-              Next
+              Get Quotes
             </Button>
           </Col>
         </form>

@@ -30,6 +30,7 @@ export default class DatePicker extends React.Component {
           onDateChange={this.onDateChange}
           onFocusChange={this.onFocusChange}
           placeholder="Select a Date"
+          numberOfMonths={1}
         />
       </div>
     );

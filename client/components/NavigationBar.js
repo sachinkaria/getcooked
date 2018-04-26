@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router';
-import {Navbar, Nav, NavItem } from 'react-bootstrap';
+import {Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
+import Modal from '../containers/Modal';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
 import BookingForm from '../containers/BookingForm';
@@ -9,6 +10,7 @@ import isAuthenticated from '../utils/isAuthenticated';
 import {getBookings} from '../actions/bookings';
 import {createEvent} from '../actions/events';
 import Footer from './Footer';
+import { MODAL } from '../utils/data';
 
 
 class NavigationBar extends React.Component {
@@ -60,12 +62,30 @@ class NavigationBar extends React.Component {
               (!isAuthenticated() && showNav) && (
                 <Nav pullRight>
                   <NavItem>
-                    <BookingForm
-                      onSubmit={this.props.createEvent}
-                      withoutChef
-                      navbar
-                      action="Get Quotes"
-                    />
+                    <div className="hidden-xs">
+                      <Modal
+                        large
+                        navbar
+                        title={MODAL.TITLE}
+                        description={MODAL.DESCRIPTION}
+                        buttonText={MODAL.ACTION}
+                        onClick={heap.track('Click Get Quotes')}
+                      >
+                        <BookingForm
+                          withoutChef
+                          onSubmit={this.props.createEvent}
+                          large
+                          action="Get Quotes"
+                        />
+                      </Modal>
+                    </div>
+                    <div className="visible-xs">
+                      <Link to={'/get-quotes'}>
+                        <p className="gc-text gc-text--dark-grey">
+                          Get Quotes
+                        </p>
+                      </Link>
+                    </div>
                   </NavItem>
                   <NavItem href="/caterers/about">
                     <p className="gc-text gc-text--dark-grey">Register as a caterer</p>

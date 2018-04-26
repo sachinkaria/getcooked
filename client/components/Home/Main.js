@@ -3,6 +3,8 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
 import BookingForm from '../../containers/BookingForm';
 import ListItem from '../chefs/ListItem';
+import Modal from '../../containers/Modal';
+import { MODAL } from '../../utils/data';
 
 function Main({ eventSubmit, chefs }) {
   const style = {
@@ -21,7 +23,20 @@ function Main({ eventSubmit, chefs }) {
                 <Row style={{ paddingBottom: '60px', paddingTop: '25px' }}>
                   <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
                     <div className="hidden-xs">
-                      <BookingForm withoutChef onSubmit={eventSubmit} large action="Get Quotes" />
+                      <Modal
+                        large
+                        title={MODAL.TITLE}
+                        description={MODAL.DESCRIPTION}
+                        buttonText={MODAL.ACTION}
+                        onClick={heap.track('Click Get Quotes')}
+                      >
+                        <BookingForm
+                          withoutChef
+                          onSubmit={eventSubmit}
+                          large
+                          action="Get Quotes"
+                        />
+                      </Modal>
                     </div>
                     <div className="visible-xs">
                       <Link to={'/get-quotes'}>

@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
 import _ from 'lodash';
 import { Field, reduxForm } from 'redux-form';
-import { Button, Modal, Col, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import DatePicker from './DatePicker';
 import { EVENT_TYPE, EVENT_SERVICES, CUISINES } from '../utils/data';
 import ContactDetailsForm from '../containers/forms/booking/ContactDetailsForm';
@@ -65,13 +64,12 @@ class BookingForm extends React.Component {
     this.state = { show: false, services: [], foodServices: [], hideEventForm: false };
     this.baseState = this.state;
 
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
     this.resetForm = this.resetForm.bind(this);
     this.setDate = this.setDate.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.onClick = this.onClick.bind(this);
     this.submitEventDetails = this.submitEventDetails.bind(this);
+    this.isChecked = this.isChecked.bind(this);
   }
 
   componentWillReceiveProps() {
@@ -86,20 +84,10 @@ class BookingForm extends React.Component {
     } else {
       heap.track('Click Get Quotes');
     }
-    this.showModal();
   }
-
 
   setDate(date) {
     this.setState({ date });
-  }
-
-  hideModal() {
-    this.resetForm();
-  }
-
-  showModal() {
-    this.setState({ show: true });
   }
 
   resetForm() {
@@ -114,6 +102,8 @@ class BookingForm extends React.Component {
     sessionStorage.setItem('eventDetails', JSON.stringify(formProps));
     this.setState({
       hideEventForm: true
+    }, () => {
+      window.scrollTo(0, 0);
     });
   }
 
@@ -132,206 +122,162 @@ class BookingForm extends React.Component {
   }
 
   submitEventDetails(event) {
-    this.props.onSubmit(event);
+    this.props.onSubmit(event, this.props.endRoute);
+    this.props.closeModal();
   }
 
   render() {
     const { handleSubmit } = this.props;
-    const classes = classNames('gc-btn gc-btn--orange', {
-      'gc-btn--lg': this.props.large
-    });
-
     return (
-      <div className="modal-container">
+      <div>
         {
-          this.props.mobile &&
-            <Button block className="gc-btn gc-btn--sticky gc-btn--orange visible-xs" onClick={this.onClick}>
-              {this.props.action}
-            </Button>
+          (this.state.hideEventForm) &&
+          <ContactDetailsForm
+            withoutChef={this.props.withoutChef}
+            chef={this.props.chef}
+            onSubmit={this.submitEventDetails}
+          />
         }
-        {
-          (!this.props.mobile && !this.props.navbar) &&
-          <Button block className={classes} onClick={this.onClick}>
-            {this.props.action}
-          </Button>
-        }
-        {
-          this.props.navbar &&
-            <p className="gc-text gc-text--dark-grey" onClick={this.onClick}>
-              {this.props.action}
-            </p>
-        }
-        <Modal
-          show={this.state.show}
-          onHide={this.hideModal}
-          dialogClassName="custom-modal"
-          bsSize="large"
-        >
-          <Modal.Header closeButton>
-            <Modal.Title className="gc-profile-heading-md gc-center gc-margin-bottom">{this.props.action}</Modal.Title>
+        {!this.state.hideEventForm &&
+        <Row>
+          <form onSubmit={handleSubmit(this.handleFormSubmit)}>
+            <label className="gc-text">Event Date</label>
+            <div>
+              <DatePicker name="date" onChange={this.setDate} />
+            </div>
+            <label className="gc-text gc-dark-grey">Event Address</label>
+            <div className="gc-margin-bottom">
+              <Field
+                name="address_line1"
+                placeholder="Name or Number"
+                component={renderField}
+                type="text"
+              />
+            </div>
+            <div className="gc-margin-bottom">
+              <Field
+                name="address_line2"
+                placeholder="Street name"
+                component={renderField}
+                type="text"
+              />
+            </div>
+            <div className="gc-margin-bottom">
+              <Field
+                name="city"
+                placeholder="City"
+                component={renderField}
+                type="text"
+              />
+            </div>
+            <div className="gc-margin-bottom">
+              <Field
+                name="postcode"
+                placeholder="Postcode"
+                component={renderField}
+                type="text"
+              />
+            </div>
+            <label className="gc-text">Event Type</label>
+            <div className="gc-margin-bottom">
+              <Field
+                name="eventType"
+                className="form-control gc-input text-capitalize"
+                component="select"
+              >
+                {EVENT_TYPE.map(code =>
+                  (
+                    <option key={code} value={code}>
+                      {code}
+                    </option>
+                  )
+                )}
+              </Field>
+            </div>
+            <label className="gc-text">Number of Guests (approx.)</label>
             <Row>
-              <Col sm={8} smOffset={2}>
-                <p className="gc-center gc-text gc-text--grey">
-                  Please provide us with some information on your event and your contact details.
-                  Once you have submitted your request you will contacted by caterers that match your requirements.
-                </p>
+              <Col sm={6}>
+                <div className="gc-margin-bottom">
+                  <Field
+                    name="numberOfPeople"
+                    placeholder="e.g. 200"
+                    className="form-control gc-input gc-margin-bottom"
+                    component={renderField}
+                    type="number"
+                  />
+                </div>
               </Col>
             </Row>
-          </Modal.Header>
-          <Col sm={8} smOffset={2} md={6} mdOffset={3}>
-            <Modal.Body>
+            <label className="gc-text">Estimated Budget</label>
+            <Row>
+              <Col sm={6}>
+                <div className="gc-margin-bottom">
+                  <Field
+                    addonText="£"
+                    withAddon
+                    name="budget"
+                    placeholder="e.g. 1500"
+                    className="form-control gc-input gc-margin-bottom"
+                    component={renderField}
+                    type="number"
+                  />
+                </div>
+              </Col>
+            </Row>
+            <label className="gc-text">Services Required</label>
+            <Row className="gc-margin-bottom">
               {
-                (this.state.hideEventForm) &&
-                <ContactDetailsForm
-                  withoutChef={this.props.withoutChef}
-                  chef={this.props.chef}
-                  onSubmit={this.submitEventDetails}
-                />
+                EVENT_SERVICES.map(item => (
+                  <Col xs={6} key={item}>
+                    <Field
+                      checked={this.isChecked(item, this.state.services)}
+                      name={item}
+                      type="checkbox"
+                      component={renderCheckbox}
+                      onChange={e => this.handler(e, 'services')}
+                    />
+                  </Col>
+                ))
               }
-              {!this.state.hideEventForm &&
-                <Row>
-                  <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-                    <label className="gc-text">Event Date</label>
-                    <div>
-                      <DatePicker name="date" onChange={this.setDate} />
-                    </div>
-                    <label className="gc-text gc-dark-grey">Event Address</label>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        name="address_line1"
-                        placeholder="Name or Number"
-                        component={renderField}
-                        type="text"
-                      />
-                    </div>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        name="address_line2"
-                        placeholder="Street name"
-                        component={renderField}
-                        type="text"
-                      />
-                    </div>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        name="city"
-                        placeholder="City"
-                        component={renderField}
-                        type="text"
-                      />
-                    </div>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        name="postcode"
-                        placeholder="Postcode"
-                        component={renderField}
-                        type="text"
-                      />
-                    </div>
-                    <label className="gc-text">Event Type</label>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        name="eventType"
-                        className="form-control gc-input text-capitalize"
-                        component="select"
-                      >
-                        {EVENT_TYPE.map(code =>
-                          (
-                            <option key={code} value={code}>
-                              {code}
-                            </option>
-                          )
-                        )}
-                      </Field>
-                    </div>
-                    <label className="gc-text">Number of Guests (approx.)</label>
-                    <Row>
-                      <Col sm={6}>
-                        <div className="gc-margin-bottom">
-                          <Field
-                            name="numberOfPeople"
-                            placeholder="e.g. 200"
-                            className="form-control gc-input gc-margin-bottom"
-                            component={renderField}
-                            type="number"
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-                    <label className="gc-text">Estimated Budget</label>
-                    <Row>
-                      <Col sm={6}>
-                        <div className="gc-margin-bottom">
-                          <Field
-                            addonText="£"
-                            withAddon
-                            name="budget"
-                            placeholder="e.g. 1500"
-                            className="form-control gc-input gc-margin-bottom"
-                            component={renderField}
-                            type="number"
-                          />
-                        </div>
-                      </Col>
-                    </Row>
-                    <label className="gc-text">Services Required</label>
-                    <Row className="gc-margin-bottom">
-                      {
-                        EVENT_SERVICES.map(item => (
-                          <Col xs={6} key={item}>
-                            <Field
-                              checked={this.isChecked(item, this.state.services)}
-                              name={item}
-                              type="checkbox"
-                              component={renderCheckbox}
-                              onChange={e => this.handler(e, 'services')}
-                            />
-                          </Col>
-                        ))
-                      }
-                    </Row>
-                    <label className="gc-text">Type of Food</label>
-                    <Row className="gc-margin-bottom">
-                      {
-                        CUISINES.map(item => (
-                          <Col xs={6} key={item}>
-                            <Field
-                              checked={this.isChecked(item, this.state.foodServices)}
-                              name={item}
-                              type="checkbox"
-                              component={renderCheckbox}
-                              onChange={e => this.handler(e, 'foodServices')}
-                            />
-                          </Col>
-                        ))
-                      }
-                    </Row>
-                    <label className="gc-text">Additional Information</label>
-                    <div className="gc-margin-bottom">
-                      <Field
-                        name="additionalInformation"
-                        placeholder="Please give any extra details about your event and any special requirements you might have."
-                        className="form-control gc-input gc-margin-bottom"
-                        component={renderInputBox}
-                        type="text"
-                      />
-                    </div>
-                    <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
-                      <Button
-                        block
-                        type="submit"
-                        className="gc-btn gc-btn--orange gc-margin-top"
-                      >
-                        Submit request
-                      </Button>
-                    </Col>
-                  </form>
-                </Row>
+            </Row>
+            <label className="gc-text">Type of Food</label>
+            <Row className="gc-margin-bottom">
+              {
+                CUISINES.map(item => (
+                  <Col xs={6} key={item}>
+                    <Field
+                      checked={this.isChecked(item, this.state.foodServices)}
+                      name={item}
+                      type="checkbox"
+                      component={renderCheckbox}
+                      onChange={e => this.handler(e, 'foodServices')}
+                    />
+                  </Col>
+                ))
               }
-            </Modal.Body>
-          </Col>
-          <Modal.Footer />
-        </Modal>
+            </Row>
+            <label className="gc-text">Additional Information</label>
+            <div className="gc-margin-bottom">
+              <Field
+                name="additionalInformation"
+                placeholder="Please give any extra details about your event and any special requirements you might have."
+                className="form-control gc-input gc-margin-bottom"
+                component={renderInputBox}
+                type="text"
+              />
+            </div>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+              <Button
+                block
+                type="submit"
+                className="gc-btn gc-btn--orange gc-margin-top"
+              >
+                Next
+              </Button>
+            </Col>
+          </form>
+        </Row>
+        }
       </div>
     );
   }
@@ -340,7 +286,7 @@ class BookingForm extends React.Component {
 BookingForm.PropTypes = {
   action: String.isRequired,
   withoutChef: Boolean,
-  navbar: Boolean
+  endRoute: String
 };
 
 function mapStateToProps(state) {

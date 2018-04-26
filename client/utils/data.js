@@ -19,3 +19,14 @@ export const CUISINES = ['american', 'african', 'BBQ', 'chinese', 'caribbean', '
 export const EVENT_TYPE = ['select', 'private dinner', 'private lunch', 'corporate event', 'wedding', 'party', 'festival', 'BBQ', 'other'];
 export const ADDITIONAL_SERVICES = ['bar service', 'waiting staff', 'tableware', 'glassware'];
 export const EVENT_SERVICES = ['on-site catering', 'mobile catering', 'buffet', 'private chef', 'bar service', 'waiting staff', 'tableware', 'glassware'];
+export const MODAL = {
+  TITLE: 'Get Quotes',
+  ACTION: 'Get Quotes',
+  DESCRIPTION: 'Please provide us with some information on your event and your contact details. Once you have submitted your request you will contacted by caterers that match your requirements.'
+};
+
+export const BOOKING_MODAL = {
+  TITLE: 'Contact Now',
+  ACTION: 'Contact Now',
+  DESCRIPTION: 'Please provide us with some information on your event and your contact details. Once you have submitted your request you will contacted by your caterer.'
+};

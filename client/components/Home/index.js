@@ -27,8 +27,7 @@ class Home extends React.Component {
       </div>
     );
   }
-}
-;
+};
 
 function mapStateToProps(state) {
   return { chefs: state.public.chefs };

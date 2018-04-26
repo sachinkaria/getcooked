@@ -14,6 +14,8 @@ import Images from '../../components/chefs/profile/Images';
 import Reviews from '../../components/chefs/reviews/List';
 import Ratings from '../../components/chefs/profile/Ratings';
 import Sticky from '../../components/Sticky';
+import Modal from '../../containers/Modal';
+import { BOOKING_MODAL } from '../../utils/data';
 import { getChef } from '../../actions/public';
 import { createBooking } from '../../actions/bookings';
 
@@ -142,16 +144,37 @@ class Profile extends React.Component {
               </Panel>
               <br />
             </Col>
-            <BookingForm onSubmit={this.props.createBooking} action="Contact now" mobile />
+            <Modal
+              mobile
+              title={BOOKING_MODAL.TITLE}
+              description={BOOKING_MODAL.DESCRIPTION}
+              buttonText={BOOKING_MODAL.ACTION}
+              onClick={heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName })}
+            >
+            <BookingForm
+              onSubmit={this.props.createBooking}
+              action="Contact now"
+            />
+            </Modal>
             <Col sm={3} xsHidden>
               <Sticky enter="254">
                 <Panel className="gc-panel gc-panel--translucent">
                   <Panel.Body>
                     <div className="gc-center">
-                      <BookingForm onSubmit={this.props.createBooking} action="Contact now" />
-                      <p className="gc-profile-text-xs gc-dark-grey gc-margin-top">Contact this caterer and check their
-                        availability for
-                        your event.</p>
+                      <Modal
+                        title={BOOKING_MODAL.TITLE}
+                        description={BOOKING_MODAL.DESCRIPTION}
+                        buttonText={BOOKING_MODAL.ACTION}
+                        onClick={heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName })}
+                      >
+                        <BookingForm
+                          onSubmit={this.props.createBooking}
+                          action="Contact now"
+                        />
+                      </Modal>
+                      <p className="gc-profile-text-xs gc-dark-grey gc-margin-top">
+                        Contact this caterer and check their availability for your event.
+                      </p>
                     </div>
                   </Panel.Body>
                 </Panel>

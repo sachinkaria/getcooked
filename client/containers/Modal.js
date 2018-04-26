@@ -27,6 +27,8 @@ class ModalDynamic extends React.Component {
       'gc-btn--lg': this.props.large
     });
 
+    const { children } = this.props;
+
     return (
       <div>
         {
@@ -48,23 +50,29 @@ class ModalDynamic extends React.Component {
           </p>
         }
 
-        <Modal show={this.state.show} onHide={this.handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>{this.props.title}</Modal.Title>
+        <Modal
+          dialogClassName="custom-modal"
+          bsSize="large"
+          show={this.state.show}
+          onHide={this.handleClose}
+        >
+          <Modal.Header closeButton className="gc-center">
+            <Modal.Title className="gc-bold">{this.props.title}</Modal.Title>
             <Row>
               <Col sm={8} smOffset={2}>
-                <p className="gc-center gc-text gc-text--grey">
+                <p className="gc-text gc-text--lg gc-text--grey">
                   {this.props.description}
                 </p>
               </Col>
             </Row>
           </Modal.Header>
           <Modal.Body>
-            {this.props.children}
+            <Row>
+              <Col xs={8} xsOffset={2}>
+                {React.cloneElement(children, { closeModal: this.handleClose })}
+              </Col>
+            </Row>
           </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.handleClose}>Close</Button>
-          </Modal.Footer>
         </Modal>
       </div>
     );

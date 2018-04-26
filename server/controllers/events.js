@@ -26,7 +26,10 @@ function create(req, res) {
   });
 
   event.save((bookingErr) => {
-    if (bookingErr) return (bookingErr);
+    if (bookingErr) {
+      console.log(bookingErr);
+      return (bookingErr);
+    }
     sendNewBookingSlackNotification(USER);
     return res.jsonp(event);
   });

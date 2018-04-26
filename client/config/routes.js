@@ -4,6 +4,7 @@ import ProfileList from '../containers/chefs/List';
 import NavigationBar from '../components/NavigationBar';
 import Terms from '../components/Terms';
 import Privacy from '../components/Privacy';
+import GetQuote from '../components/GetQuote';
 import Bookings from '../components/bookings/List';
 import Profile from '../containers/chefs/Profile';
 import Inbox from '../components/messages/Inbox';
@@ -33,6 +34,7 @@ const routes = (
     <Route path="/chefs/:id" component={Profile} />
     <Route path="/terms" component={Terms} />
     <Route path="/privacy" component={Privacy} />
+    <Route path="/get-quotes" component={GetQuote} />
     <Route exact path="/inbox" component={RequireAuth(Inbox)}/>
     <Route exact path="/bookings" component={RequireAuth(Bookings)}/>
     <Route exact path="register" component={Register} redirect/>

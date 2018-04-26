@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import _ from 'lodash';
 import { Field, reduxForm } from 'redux-form';
@@ -34,10 +34,6 @@ function validate(formProps, props) {
 
   if (formProps.eventType === 'select') {
     errors.eventType = 'Please select an event type';
-  }
-
-  if (!formProps.address_line1) {
-    errors.address_line1 = 'Please enter address name or number';
   }
 
   if (!formProps.address_line2) {
@@ -131,7 +127,7 @@ class BookingForm extends React.Component {
     }
   }
 
-  isChecked (item, state) {
+  isChecked(item, state) {
     return state && state.indexOf(item) > -1;
   }
 

@@ -20,7 +20,16 @@ function Main({ eventSubmit, chefs }) {
               <div className="gc-center">
                 <Row style={{ paddingBottom: '60px', paddingTop: '25px' }}>
                   <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
-                    <BookingForm withoutChef onSubmit={eventSubmit} large action="Get Quotes" />
+                    <div className="hidden-xs">
+                      <BookingForm withoutChef onSubmit={eventSubmit} large action="Get Quotes" />
+                    </div>
+                    <div className="visible-xs">
+                      <Link to={'/get-quotes'}>
+                        <Button block className="gc-btn gc-btn--orange gc-btn--lg">
+                          Get Quotes
+                        </Button>
+                      </Link>
+                    </div>
                   </Col>
                 </Row>
               </div>

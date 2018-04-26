@@ -38,7 +38,7 @@ const BookingSchema = new Schema({
     numberOfPeople: Number,
     eventType: {
       type: String,
-      enum: ['private dinner', 'corporate event', 'wedding', 'party', 'festival', 'other'],
+      enum: ['private dinner', 'private lunch', 'corporate event', 'wedding', 'party', 'festival', 'BBQ', 'other'],
       required: true
     },
     additionalInformation: String,

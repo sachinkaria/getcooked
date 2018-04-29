@@ -35,12 +35,8 @@ function validate(formProps, props) {
     errors.eventType = 'Please select an event type';
   }
 
-  if (!formProps.address_line2) {
-    errors.address_line2 = 'Please enter address street';
-  }
-
-  if (!formProps.city) {
-    errors.city = 'Please enter a address city';
+  if (!formProps.address_line1) {
+    errors.address_line1 = 'Please enter street address';
   }
 
   if (!formProps.postcode) {
@@ -149,23 +145,7 @@ class BookingForm extends React.Component {
             <div className="gc-margin-bottom">
               <Field
                 name="address_line1"
-                placeholder="Name or Number"
-                component={renderField}
-                type="text"
-              />
-            </div>
-            <div className="gc-margin-bottom">
-              <Field
-                name="address_line2"
-                placeholder="Street name"
-                component={renderField}
-                type="text"
-              />
-            </div>
-            <div className="gc-margin-bottom">
-              <Field
-                name="city"
-                placeholder="City"
+                placeholder="Street address"
                 component={renderField}
                 type="text"
               />

@@ -29,15 +29,12 @@ function EventItem({userItem, booking}) {
               <Col xs={12} sm={4}>
                 <p className="gc-text gc-grey">Date</p>
                 <p className="gc-text">{moment(booking.date).format('MMMM Do YYYY')}</p>
-                <hr className="visible-xs"/>
+                <hr className="visible-xs" />
               </Col>
               <Col xs={12} sm={4}>
                 <p className="gc-text gc-grey">Event Address</p>
                 <p className="gc-text gc-margin-none">
                   {booking.address.line1} {booking.address.line2},
-                </p>
-                <p className="gc-text gc-margin-none">
-                  {booking.address.city},
                 </p>
                 <p className="gc-text">
                   {booking.address.postcode}

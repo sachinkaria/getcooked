@@ -118,9 +118,6 @@ class BookingItem extends React.Component {
                     <p className="gc-text gc-margin-none">
                       {booking.address.line1} {booking.address.line2},
                     </p>
-                    <p className="gc-text gc-margin-none">
-                      {booking.address.city},
-                    </p>
                     <p className="gc-text">
                       {booking.address.postcode}
                     </p>

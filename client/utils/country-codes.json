@@ -1,5 +1,4 @@
 [
-  {"name":"Select a country", "dialCode": 0},
   {"name":"United Kingdom","dialCode":44,"code":"GB"},
   {"name":"Afghanistan","dialCode":93,"code":"AF"},
   {"name":"Albania","dialCode":355,"code":"AL"},

@@ -1,15 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import _ from 'lodash';
-import { Field, reduxForm } from 'redux-form';
-import { Button, Col, Row } from 'react-bootstrap';
+import {Field, reduxForm} from 'redux-form';
+import {Button, Col, Row} from 'react-bootstrap';
 import DatePicker from './DatePicker';
-import { EVENT_TYPE, EVENT_SERVICES, CUISINES } from '../utils/data';
+import {EVENT_TYPE, EVENT_SERVICES, CUISINES} from '../utils/data';
 import ContactDetailsForm from '../containers/forms/booking/ContactDetailsForm';
 import renderField from '../components/forms/renderField';
 import renderInputBox from '../components/forms/renderInputBox';
 import renderCheckbox from '../components/forms/renderCheckbox';
-import { createBooking } from '../actions/bookings';
+import {createBooking} from '../actions/bookings';
 
 const form = reduxForm({
   form: 'booking',
@@ -19,7 +19,7 @@ const form = reduxForm({
 
 function validate(formProps, props) {
   const errors = {};
-  const { chef } = props;
+  const {chef} = props;
 
   const PER_HEAD_BUDGET = parseInt(formProps.budget / formProps.numberOfPeople).toFixed(2);
 
@@ -57,7 +57,7 @@ function validate(formProps, props) {
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { show: false, services: [], foodServices: [], hideEventForm: false };
+    this.state = {show: false, services: [], foodServices: [], hideEventForm: false};
     this.baseState = this.state;
 
     this.resetForm = this.resetForm.bind(this);
@@ -76,14 +76,14 @@ class BookingForm extends React.Component {
 
   onClick() {
     if (!this.props.withoutChef) {
-      heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
+      heap.track('Click Book Now', {chef_id: this.props.chef.id, chef_name: this.props.chef.displayName});
     } else {
       heap.track('Click Get Quotes');
     }
   }
 
   setDate(date) {
-    this.setState({ date });
+    this.setState({date});
   }
 
   resetForm() {
@@ -123,7 +123,7 @@ class BookingForm extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const {handleSubmit} = this.props;
     return (
       <div>
         {
@@ -139,41 +139,53 @@ class BookingForm extends React.Component {
           <form onSubmit={handleSubmit(this.handleFormSubmit)}>
             <label className="gc-text">Event Date</label>
             <div>
-              <DatePicker name="date" onChange={this.setDate} />
+              <DatePicker name="date" onChange={this.setDate}/>
             </div>
             <label className="gc-text gc-dark-grey">Event Address</label>
-            <div className="gc-margin-bottom">
-              <Field
-                name="address_line1"
-                placeholder="Street address"
-                component={renderField}
-                type="text"
-              />
-            </div>
-            <div className="gc-margin-bottom">
-              <Field
-                name="postcode"
-                placeholder="Postcode"
-                component={renderField}
-                type="text"
-              />
-            </div>
+            <Row>
+              <Col sm={6}>
+                <div className="gc-margin-bottom">
+                  <Field
+                    name="address_line1"
+                    placeholder="Street address"
+                    component={renderField}
+                    type="text"
+                  />
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={6}>
+                <div className="gc-margin-bottom">
+                  <Field
+                    name="postcode"
+                    placeholder="Postcode"
+                    component={renderField}
+                    type="text"
+                  />
+                </div>
+              </Col>
+            </Row>
             <label className="gc-text">Event Type</label>
-            <div className="gc-margin-bottom">
-              <Field
-                name="eventType"
-                className="form-control gc-input text-capitalize"
-                component="select"
-              >
-                {EVENT_TYPE.map(code =>
-                  (
-                    <option key={code} value={code}>
-                      {code}
-                    </option>
-                  )
-                )}
-              </Field>
-            </div>
+            <Row>
+              <Col sm={6}>
+                <div className="gc-margin-bottom">
+                  <Field
+                    name="eventType"
+                    className="form-control gc-input text-capitalize"
+                    component="select"
+                  >
+                    {EVENT_TYPE.map(code =>
+                      (
+                        <option key={code} value={code}>
+                          {code}
+                        </option>
+                      )
+                    )}
+                  </Field>
+                </div>
+              </Col>
+            </Row>
             <label className="gc-text">Number of Guests (approx.)</label>
             <Row>
               <Col sm={6}>
@@ -277,4 +289,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { createBooking })(form(BookingForm));
+export default connect(mapStateToProps, {createBooking})(form(BookingForm));

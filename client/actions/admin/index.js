@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS, ADMIN_LIST_EVENTS, SENT_BOOKING_REQUEST, RESET_BOOKING_REQUEST } from '../types';
+import { ADMIN_LIST_CHEFS, ADMIN_GET_CHEF, UPDATE_CHEF_LIST, ADMIN_LIST_USERS, ADMIN_LIST_EVENTS, ADMIN_LIST_BOOKINGS, SENT_BOOKING_REQUEST, RESET_BOOKING_REQUEST } from '../types';
 import { errorHandler, successHandler, processingFileUpload, completedFileUpload } from '../public';
 
 export function adminListChefs() {
@@ -41,6 +41,22 @@ export function adminListEvents() {
       .then((response) => {
         dispatch({
           type: ADMIN_LIST_EVENTS,
+          payload: response.data
+        });
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'Sorry there was an error.');
+      });
+  };
+}
+
+export function adminListBookings() {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.get('/api/admin/bookings', AUTH_HEADERS)
+      .then((response) => {
+        dispatch({
+          type: ADMIN_LIST_BOOKINGS,
           payload: response.data
         });
       })

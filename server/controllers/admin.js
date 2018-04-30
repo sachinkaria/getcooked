@@ -5,6 +5,7 @@ const keys = require('../config/main');
 const stripe = require('stripe')(keys.stripe_secret_key);
 const User = require('../models/user');
 const Event = require('../models/event');
+const Booking = require('../models/booking');
 const BookingController = require('./bookings');
 const ObjectId = require('mongodb').ObjectId;
 const twilio = require('./twilio');
@@ -15,6 +16,7 @@ const approvalTemplate = require('../services/emailTemplates/approvalTemplate');
 module.exports.listChefs = allChefs;
 module.exports.listUsers = allUsers;
 module.exports.listEvents = allEvents;
+module.exports.listBookings = allBookings;
 module.exports.getChef = getChef;
 module.exports.approve = approve;
 module.exports.list = list;
@@ -24,7 +26,7 @@ module.exports.addMonthlyCoupons = addMonthlyCoupons;
 module.exports.createBooking = createBooking;
 
 function allChefs(req, res) {
-  User.find({role: 'chef'}).exec((err, chefs) => {
+  User.find({ role: 'chef' }).exec((err, chefs) => {
     res.jsonp(chefs);
   });
 }
@@ -38,6 +40,14 @@ function allUsers(req, res) {
 function allEvents(req, res) {
   Event.find({}).exec((err, events) => {
     res.jsonp(events);
+  });
+}
+
+function allBookings(req, res) {
+  Booking.find({})
+    .populate('chef', 'profilePhoto displayName')
+    .exec((err, bookings) => {
+    res.jsonp(bookings);
   });
 }
 

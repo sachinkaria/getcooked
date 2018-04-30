@@ -17,6 +17,7 @@ module.exports.listChefs = allChefs;
 module.exports.listUsers = allUsers;
 module.exports.listEvents = allEvents;
 module.exports.listBookings = allBookings;
+module.exports.listBookingsByChef = allBookingsByChef;
 module.exports.getChef = getChef;
 module.exports.approve = approve;
 module.exports.list = list;
@@ -49,6 +50,15 @@ function allBookings(req, res) {
     .exec((err, bookings) => {
     res.jsonp(bookings);
   });
+}
+
+function allBookingsByChef(req, res) {
+  const ID = req.params.id;
+  Booking.find({ chef: ObjectId(ID) })
+    .populate('chef', 'profilePhoto displayName')
+    .exec((err, bookings) => {
+      res.jsonp(bookings);
+    });
 }
 
 function getChef(req, res) {

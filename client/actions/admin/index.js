@@ -66,6 +66,22 @@ export function adminListBookings() {
   };
 }
 
+export function adminListBookingsByChef(id) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.get(`/api/admin/chefs/${id}/bookings`, AUTH_HEADERS)
+      .then((response) => {
+        dispatch({
+          type: ADMIN_LIST_BOOKINGS,
+          payload: response.data
+        });
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'Sorry there was an error.');
+      });
+  };
+}
+
 export function adminGetChef(id) {
   return function (dispatch) {
     axios.get(`/api/admin/chefs/${id}`)

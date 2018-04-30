@@ -17,5 +17,6 @@ module.exports = function (app) {
   app.get('/api/admin/chefs/:id/list', requireAuth, Authentication.roleAuthorization('admin'), AdminController.list);
   app.get('/api/admin/chefs/:id/unlist', requireAuth, Authentication.roleAuthorization('admin'), AdminController.unlist);
   app.get('/api/admin/chefs/:id/approve', requireAuth, Authentication.roleAuthorization('admin'), AdminController.approve);
+  app.get('/api/admin/chefs/:id/bookings', requireAuth, Authentication.roleAuthorization('admin'), AdminController.listBookingsByChef);
   app.post('/api/admin/chefs/:id/photos', requireAuth, Authentication.roleAuthorization('admin'), AdminController.uploadPhotos);
 };

@@ -2,11 +2,22 @@ import React from 'react';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
-import { adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents, adminCreateBooking } from '../../../actions/admin';
+import {
+  adminListChefs,
+  updateStatus,
+  adminListUsers,
+  adminUploadPhotos,
+  updateMonthlyCoupons,
+  adminListEvents,
+  adminCreateBooking,
+  adminListBookings,
+  adminListBookingsByChef
+} from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ChefItem from './ChefItem';
 import UserItem from './UserItem';
 import EventItem from './EventItem';
+import BookingItem from './BookingItem';
 import Sidebar from '../../chefs/Dashboard/Sidebar';
 
 
@@ -24,6 +35,7 @@ class AdminDashboard extends React.Component {
     this.updateStatus = this.updateStatus.bind(this);
     this.onImagesUpload = this.onImagesUpload.bind(this);
     this.selectChef = this.selectChef.bind(this);
+    this.handleChefSelect = this.handleChefSelect.bind(this);
   }
 
   componentWillMount() {
@@ -31,6 +43,7 @@ class AdminDashboard extends React.Component {
     this.props.adminListChefs();
     this.props.adminListUsers();
     this.props.adminListEvents();
+    this.props.adminListBookings();
   }
 
   onImagesUpload(e) {
@@ -68,9 +81,22 @@ class AdminDashboard extends React.Component {
     this.setState({ selectedChef });
   }
 
+  handleChefSelect(e) {
+    const selectedChef = e.target.value;
+    if (selectedChef.length === 1) {
+      this.setState({ selectedChef: ''}, () => {
+        this.props.adminListBookings();
+      });
+    } else {
+      this.setState({ selectedChef }, () => {
+        this.props.adminListBookingsByChef(this.state.selectedChef);
+      });
+    }
+  }
+
   render() {
     const { user } = this.props;
-    const { chefs, users, events } = this.props;
+    const { chefs, users, events, bookings } = this.props;
 
     if (!user.data) {
       return <div>Loading...</div>;
@@ -85,10 +111,10 @@ class AdminDashboard extends React.Component {
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
             </Col>
             <Col smOffset={0} sm={7}>
-              <Button onClick={this.props.updateMonthlyCoupons}>Add Coupons</Button>
               {
                 this.props.location.pathname.includes('chefs') &&
                 <div>
+                  <Button onClick={this.props.updateMonthlyCoupons}>Add Coupons</Button>
                   {chefs.map(chef =>
                     (
                       <ChefItem
@@ -116,13 +142,13 @@ class AdminDashboard extends React.Component {
                 <Panel className="gc-panel">
                   {users.map(userItem =>
                     (
-                        <UserItem
-                          key={userItem._id}
-                          firstName={userItem.firstName}
-                          lastName={userItem.lastName}
-                          email={userItem.email}
-                          mobileNumber={userItem.mobileNumber}
-                        />
+                      <UserItem
+                        key={userItem._id}
+                        firstName={userItem.firstName}
+                        lastName={userItem.lastName}
+                        email={userItem.email}
+                        mobileNumber={userItem.mobileNumber}
+                      />
                     )
                   )}
                 </Panel>
@@ -135,6 +161,32 @@ class AdminDashboard extends React.Component {
                       <EventItem
                         key={item._id}
                         userItem={item.contactDetails}
+                        booking={item}
+                      />
+                    )
+                  )}
+                </div>
+              }
+              {
+                this.props.location.pathname.includes('bookings') &&
+                <div>
+                  <select
+                    className="form-control gc-input"
+                    value={this.state.selectedChef}
+                    onChange={this.handleChefSelect}
+                  >
+                    <option value={0}>All</option>
+                    {chefs.map(item =>
+                      (
+                        <option key={item._id} value={item._id}>{item.displayName}</option>
+                      )
+                    )}
+                  </select>
+                  {bookings.map(item =>
+                    (
+                      <BookingItem
+                        key={item._id}
+                        chefItem={item.chef}
                         booking={item}
                       />
                     )
@@ -154,7 +206,9 @@ AdminDashboard.propTypes = {
   location: React.PropTypes.shape({ location: { pathname: React.PropTypes.string } }).isRequired,
   getCurrentUser: React.PropTypes.func.isRequired,
   adminListChefs: React.PropTypes.func.isRequired,
-  adminListUsers: React.PropTypes.func.isRequired
+  adminListUsers: React.PropTypes.func.isRequired,
+  adminListEvents: React.PropTypes.func.isRequired,
+  adminListBookings: React.PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -162,8 +216,20 @@ function mapStateToProps(state) {
     user: state.user,
     chefs: state.admin.chefs,
     users: state.admin.users,
-    events: state.admin.events
+    events: state.admin.events,
+    bookings: state.admin.bookings
   };
 }
 
-export default connect(mapStateToProps, {getCurrentUser, adminListChefs, updateStatus, adminListUsers, adminUploadPhotos, updateMonthlyCoupons, adminListEvents, adminCreateBooking })(AdminDashboard);
+export default connect(mapStateToProps, {
+  getCurrentUser,
+  adminListChefs,
+  updateStatus,
+  adminListUsers,
+  adminUploadPhotos,
+  updateMonthlyCoupons,
+  adminListEvents,
+  adminCreateBooking,
+  adminListBookings,
+  adminListBookingsByChef
+})(AdminDashboard);

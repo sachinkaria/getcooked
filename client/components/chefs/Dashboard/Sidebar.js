@@ -28,6 +28,12 @@ class Sidebar extends React.Component {
                   Events</p>
               </Link>
             </li>
+            <li>
+              <Link to="/admin/dashboard/bookings" className="gc-link-default">
+                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('bookings') })}>
+                  Bookings</p>
+              </Link>
+            </li>
           </ul>
         </Panel.Body>
       </Panel>

@@ -182,7 +182,7 @@ class AdminDashboard extends React.Component {
                       )
                     )}
                   </select>
-                  {bookings.map(item =>
+                  {bookings && bookings.map(item =>
                     (
                       <BookingItem
                         key={item._id}

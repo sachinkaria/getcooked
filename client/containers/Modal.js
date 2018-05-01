@@ -52,7 +52,7 @@ class ModalDynamic extends React.Component {
 
         <Modal
           dialogClassName="custom-modal"
-          bsSize="large"
+          bsSize="medium"
           show={this.state.show}
           onHide={this.handleClose}
         >

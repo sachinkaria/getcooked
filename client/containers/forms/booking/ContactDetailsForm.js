@@ -109,8 +109,7 @@ class ContactDetailsForm extends Component {
               type="number"
             />
           </div>
-          <Col xs={10} xsOffset={1} sm={4} smOffset={4} >
-
+          <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <Button
               onClick={ () => this.props.withoutChef ? heap.track('Submit Event') : heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) }
               block

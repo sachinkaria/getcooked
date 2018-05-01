@@ -10,6 +10,7 @@ import renderField from '../components/forms/renderField';
 import renderInputBox from '../components/forms/renderInputBox';
 import renderCheckbox from '../components/forms/renderCheckbox';
 import {createBooking} from '../actions/bookings';
+import ProgressBar from '../components/ProgressBar';
 
 const form = reduxForm({
   form: 'booking',
@@ -57,7 +58,7 @@ function validate(formProps, props) {
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {show: false, services: [], foodServices: [], hideEventForm: false};
+    this.state = { show: false, services: [], foodServices: [], hideEventForm: false, slide: 1 };
     this.baseState = this.state;
 
     this.resetForm = this.resetForm.bind(this);
@@ -97,7 +98,8 @@ class BookingForm extends React.Component {
     formProps.foodServices = this.state.foodServices;
     sessionStorage.setItem('eventDetails', JSON.stringify(formProps));
     this.setState({
-      hideEventForm: true
+      hideEventForm: true,
+      slide: 4
     }, () => {
       window.scrollTo(0, 0);
     });
@@ -124,8 +126,16 @@ class BookingForm extends React.Component {
 
   render() {
     const {handleSubmit} = this.props;
+    const styles = {
+      marginLeft: '-114px',
+      marginRight: '-114px',
+      marginTop: '-20px'
+    };
     return (
       <div>
+        <div style={styles}>
+          <ProgressBar progress={this.state.slide / 5} />
+        </div>
         {
           (this.state.hideEventForm) &&
           <ContactDetailsForm
@@ -137,136 +147,155 @@ class BookingForm extends React.Component {
         {!this.state.hideEventForm &&
         <Row>
           <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-            <label className="gc-text">Event Date</label>
-            <div>
-              <DatePicker name="date" onChange={this.setDate}/>
-            </div>
-            <label className="gc-text gc-dark-grey">Event Address</label>
-            <Row>
-              <Col sm={6}>
-                <div className="gc-margin-bottom">
-                  <Field
-                    name="address_line1"
-                    placeholder="Street address"
-                    component={renderField}
-                    type="text"
-                  />
+            {
+              this.state.slide === 1 &&
+                <div>
+                  <label className="gc-text">Event Date</label>
+                  <div>
+                    <DatePicker name="date" onChange={this.setDate} />
+                  </div>
+                  <label className="gc-text gc-dark-grey">Event Address</label>
+                      <div className="gc-margin-bottom">
+                        <Field
+                          name="address_line1"
+                          placeholder="Street address"
+                          component={renderField}
+                          type="text"
+                        />
+                      </div>
+                      <div className="gc-margin-bottom">
+                        <Field
+                          name="postcode"
+                          placeholder="Postcode"
+                          component={renderField}
+                          type="text"
+                        />
+                      </div>
+                  <Row>
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+                      <Button
+                        block
+                        onClick={() => this.setState({ slide: 2 })}
+                        className="gc-btn gc-btn--orange gc-margin-top"
+                      >
+                        Next
+                      </Button>
+                    </Col>
+                  </Row>
                 </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm={6}>
-                <div className="gc-margin-bottom">
-                  <Field
-                    name="postcode"
-                    placeholder="Postcode"
-                    component={renderField}
-                    type="text"
-                  />
-                </div>
-              </Col>
-            </Row>
-            <label className="gc-text">Event Type</label>
-            <Row>
-              <Col sm={6}>
-                <div className="gc-margin-bottom">
-                  <Field
-                    name="eventType"
-                    className="form-control gc-input text-capitalize"
-                    component="select"
-                  >
-                    {EVENT_TYPE.map(code =>
-                      (
-                        <option key={code} value={code}>
-                          {code}
-                        </option>
-                      )
-                    )}
-                  </Field>
-                </div>
-              </Col>
-            </Row>
-            <label className="gc-text">Number of Guests (approx.)</label>
-            <Row>
-              <Col sm={6}>
-                <div className="gc-margin-bottom">
-                  <Field
-                    name="numberOfPeople"
-                    placeholder="e.g. 200"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderField}
-                    type="number"
-                  />
-                </div>
-              </Col>
-            </Row>
-            <label className="gc-text">Estimated Budget</label>
-            <Row>
-              <Col sm={6}>
-                <div className="gc-margin-bottom">
-                  <Field
-                    addonText="£"
-                    withAddon
-                    name="budget"
-                    placeholder="e.g. 1500"
-                    className="form-control gc-input gc-margin-bottom"
-                    component={renderField}
-                    type="number"
-                  />
-                </div>
-              </Col>
-            </Row>
-            <label className="gc-text">Services Required</label>
-            <Row className="gc-margin-bottom">
-              {
-                EVENT_SERVICES.map(item => (
-                  <Col xs={6} key={item}>
-                    <Field
-                      checked={this.isChecked(item, this.state.services)}
-                      name={item}
-                      type="checkbox"
-                      component={renderCheckbox}
-                      onChange={e => this.handler(e, 'services')}
-                    />
+            }
+            {
+              this.state.slide === 2 &&
+              <div>
+                <label className="gc-text">Event Type</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="eventType"
+                        className="form-control gc-input text-capitalize"
+                        component="select"
+                      >
+                        {EVENT_TYPE.map(code =>
+                          (
+                            <option key={code} value={code}>
+                              {code}
+                            </option>
+                          )
+                        )}
+                      </Field>
+                    </div>
+                <label className="gc-text">Number of Guests (approx.)</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        name="numberOfPeople"
+                        placeholder="e.g. 200"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="number"
+                      />
+                    </div>
+                <label className="gc-text">Estimated Budget</label>
+                    <div className="gc-margin-bottom">
+                      <Field
+                        addonText="£"
+                        withAddon
+                        name="budget"
+                        placeholder="e.g. 1500"
+                        className="form-control gc-input gc-margin-bottom"
+                        component={renderField}
+                        type="number"
+                      />
+                    </div>
+                <Row>
+                  <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+                    <Button
+                      block
+                      onClick={() => this.setState({ slide: 3 })}
+                      className="gc-btn gc-btn--orange gc-margin-top"
+                    >
+                      Next
+                    </Button>
                   </Col>
-                ))
-              }
-            </Row>
-            <label className="gc-text">Type of Food</label>
-            <Row className="gc-margin-bottom">
-              {
-                CUISINES.map(item => (
-                  <Col xs={6} key={item}>
+                </Row>
+              </div>
+            }
+            {
+              this.state.slide === 3 &&
+                <div>
+                  <label className="gc-text">Services Required</label>
+                  <Row className="gc-margin-bottom">
+                    {
+                      EVENT_SERVICES.map(item => (
+                        <Col xs={6} key={item}>
+                          <Field
+                            checked={this.isChecked(item, this.state.services)}
+                            name={item}
+                            type="checkbox"
+                            component={renderCheckbox}
+                            onChange={e => this.handler(e, 'services')}
+                          />
+                        </Col>
+                      ))
+                    }
+                  </Row>
+                  <label className="gc-text">Type of Food</label>
+                  <Row className="gc-margin-bottom">
+                    {
+                      CUISINES.map(item => (
+                        <Col xs={6} key={item}>
+                          <Field
+                            checked={this.isChecked(item, this.state.foodServices)}
+                            name={item}
+                            type="checkbox"
+                            component={renderCheckbox}
+                            onChange={e => this.handler(e, 'foodServices')}
+                          />
+                        </Col>
+                      ))
+                    }
+                  </Row>
+                  <label className="gc-text">Additional Information</label>
+                  <div className="gc-margin-bottom">
                     <Field
-                      checked={this.isChecked(item, this.state.foodServices)}
-                      name={item}
-                      type="checkbox"
-                      component={renderCheckbox}
-                      onChange={e => this.handler(e, 'foodServices')}
+                      name="additionalInformation"
+                      placeholder="Please give any extra details about your event and any special requirements you might have."
+                      className="form-control gc-input gc-margin-bottom"
+                      component={renderInputBox}
+                      type="text"
                     />
-                  </Col>
-                ))
-              }
-            </Row>
-            <label className="gc-text">Additional Information</label>
-            <div className="gc-margin-bottom">
-              <Field
-                name="additionalInformation"
-                placeholder="Please give any extra details about your event and any special requirements you might have."
-                className="form-control gc-input gc-margin-bottom"
-                component={renderInputBox}
-                type="text"
-              />
-            </div>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
-              <Button
-                block
-                type="submit"
-                className="gc-btn gc-btn--orange gc-margin-top"
-              >
-                Next
-              </Button>
-            </Col>
+                  </div>
+                  <Row>
+                    <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
+                      <Button
+                        block
+                        type="submit"
+                        className="gc-btn gc-btn--orange gc-margin-top"
+                      >
+                        Next
+                      </Button>
+                    </Col>
+                  </Row>
+                </div>
+            }
           </form>
         </Row>
         }

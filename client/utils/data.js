@@ -22,7 +22,7 @@ export const EVENT_SERVICES = ['on-site catering', 'mobile catering', 'buffet', 
 export const MODAL = {
   TITLE: 'Get Quotes',
   ACTION: 'Get Quotes',
-  DESCRIPTION: 'Please provide us with some information on your event and your contact details. Once you have submitted your request you will contacted by caterers that match your requirements.'
+  DESCRIPTION: 'Please provide us with some information on your event and your contact details.'
 };
 
 export const BOOKING_MODAL = {

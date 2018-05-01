@@ -10,8 +10,8 @@ function GetQuote(props) {
     <section className="gc-section--main">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-          <h1 className="gc-section-heading gc-center">Get Quotes</h1>
-          <h4 className="gc-text gc-text--lg gc-text--grey gc-center">{MODAL.DESCRIPTION}</h4>
+          <h1 className="gc-section-heading gc-center gc-margin-none">Get Quotes</h1>
+          <h4 className="gc-text gc-text--lg gc-text--grey gc-center gc-margin-bottom--lg">{MODAL.DESCRIPTION}</h4>
           <br />
           <BookingForm
             withoutChef

@@ -54,7 +54,7 @@ function Main({ eventSubmit, chefs }) {
       </section>
       <section className="gc-section">
         <Row className="gc-margin-bottom--sm">
-          <Col xs={12} sm={10} smOffset={1}>
+          <Col xs={12} sm={8} smOffset={2}>
             <h3 className="gc-section-heading gc-center">Featured Caterers</h3>
             {
               (chefs.length > 0) &&

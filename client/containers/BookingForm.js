@@ -234,6 +234,13 @@ class BookingForm extends React.Component {
                     >
                       Next
                     </Button>
+                    <Button
+                      block
+                      onClick={() => this.setState({ slide: 1 })}
+                      className="gc-btn gc-btn-white gc-margin-top"
+                    >
+                      Back
+                    </Button>
                   </Col>
                 </Row>
               </div>
@@ -291,6 +298,13 @@ class BookingForm extends React.Component {
                         className="gc-btn gc-btn--orange gc-margin-top"
                       >
                         Next
+                      </Button>
+                      <Button
+                        block
+                        onClick={() => this.setState({ slide: 2 })}
+                        className="gc-btn gc-btn-white gc-margin-top"
+                      >
+                        Back
                       </Button>
                     </Col>
                   </Row>

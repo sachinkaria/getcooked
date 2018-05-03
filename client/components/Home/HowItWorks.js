@@ -12,22 +12,22 @@ function HowItWorks() {
           <Row>
             <StepsColumn
               columnWidth={4}
-              imageSrc="/images/search.png"
-              heading="Search"
-              text="Our collection of profiles make it easy to find the perfect caterer for your event.
+              imageSrc="/images/phone.png"
+              heading="Contact"
+              text="Our collection of profiles makes it easy to find the perfect caterer for your event.
 "
             />
             <StepsColumn
               columnWidth={4}
-              imageSrc="/images/phone.png"
-              heading="Contact"
-              text="Check the caterers availability by directly contacting them with your event details."
+              imageSrc="/images/checklist.png"
+              heading="Plan"
+              text="Plan your event directly with your caterer and enjoy a personlised experience."
             />
             <StepsColumn
               columnWidth={4}
               imageSrc="/images/ingredients.png"
               heading="Feast"
-              text="Share and enjoy food at events organised by anytime, anywhere."
+              text="Share and enjoy food at events organised by you anytime, anywhere."
             />
           </Row>
         </Col>

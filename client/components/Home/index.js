@@ -7,6 +7,7 @@ import Main from './Main';
 import HowItWorks from './HowItWorks';
 import WhoWeAre from './WhoWeAre';
 import AreYouACaterer from './AreYouACaterer';
+import FeaturedCaterers from './FeaturedCaterers';
 
 class Home extends React.Component {
   componentWillMount() {
@@ -17,7 +18,9 @@ class Home extends React.Component {
     const chefs = _.shuffle(this.props.chefs).slice(0, 3);
     return (
       <div>
-        <Main eventSubmit={this.props.createEvent} chefs={chefs} />
+        <Main eventSubmit={this.props.createEvent} />
+        <br />
+        <FeaturedCaterers chefs={chefs} />
         <br />
         <HowItWorks />
         <br />

@@ -28,7 +28,15 @@ module.exports.createBooking = createBooking;
 
 function allChefs(req, res) {
   User.find({ role: 'chef' }).exec((err, chefs) => {
-    res.jsonp(chefs);
+    const CHEFS = [];
+    chefs.forEach((chef) => {
+      chef.findAcceptedBookings(function(err, bookings) {
+        const CHEF_OBJECT = chef.toObject();
+        CHEF_OBJECT.acceptedBookings = bookings;
+        CHEFS.push(CHEF_OBJECT);
+        if (CHEFS.length === chefs.length) res.jsonp(CHEFS);
+      });
+    });
   });
 }
 
@@ -54,7 +62,7 @@ function allBookings(req, res) {
 
 function allBookingsByChef(req, res) {
   const ID = req.params.id;
-  Booking.find({ chef: ObjectId(ID) })
+  Booking.find({chef: ObjectId(ID)})
     .populate('chef', 'profilePhoto displayName')
     .exec((err, bookings) => {
       res.jsonp(bookings);

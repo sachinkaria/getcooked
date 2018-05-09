@@ -132,6 +132,7 @@ class AdminDashboard extends React.Component {
                         selectChef={this.selectChef}
                         updateStatus={this.updateStatus}
                         createBooking={this.props.adminCreateBooking}
+                        acceptedBookings={chef.acceptedBookings}
                       />
                     )
                   )}

@@ -125,7 +125,7 @@ class BookingForm extends React.Component {
   }
 
   render() {
-    const {handleSubmit, pristine} = this.props;
+    const { handleSubmit, pristine } = this.props;
     const styles = {
       marginLeft: '-114px',
       marginRight: '-114px',

@@ -7,6 +7,7 @@ import Status from '../../Status';
 import ImageUpload from '../../ImageUpload';
 
 function ChefItem({...chef}) {
+  console.log({...chef});
   return (
     <Panel className="gc-panel">
       <Panel.Body>
@@ -21,6 +22,7 @@ function ChefItem({...chef}) {
             <p>Email: {chef.email}</p>
             <p>Contact Number: {chef.contactNumber}</p>
             <p>Subscription: {chef.subscription && chef.subscription.status}</p>
+            <p>Accepted Bookings (this month): {chef.acceptedBookings.length}</p>
             <div onClick={() => chef.selectChef(chef.id)}>
               <ImageUpload
                 inProgress={false}

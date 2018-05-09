@@ -2,115 +2,125 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Booking = require('./booking');
 const bcrypt = require('bcrypt-nodejs');
 const crypto = require('crypto');
+const moment = require('moment');
 
 
 const UserSchema = new Schema({
-  email: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  firstName: {
-    type: String
-  },
-  lastName: {
-    type: String
-  },
-  phoneCode: {
-    name: String,
-    dialCode: Number,
-    code: String
-  },
-  mobileNumber: {
-    type: String,
-    trim: true,
-    default: ''
-  },
-  role: {
-    type: String,
-    enum: ['member', 'chef', 'admin'],
-    default: 'member'
-  },
-  status: {
-    type: String,
-    enum: ['pending', 'listed', 'unlisted'],
-    default: 'pending'
-  },
-  profilePhoto: {
-    type: String
-  },
-  coverPhoto: {
-    type: String
-  },
-  photos: [{
-    src: {
+    email: {
+      type: String,
+      required: true
+    },
+    password: {
+      type: String,
+      required: true
+    },
+    firstName: {
       type: String
-    }
-  }],
-  companyEmail: {
-    type: String
-  },
-  companyWebsite: {
-    type: String
-  },
-  companyPhoneNumber: {
-    type: String
-  },
-  displayName: {
-    type: String
-  },
-  tagLine: {
-    type: String
-  },
-  description: {
-    type: String
-  },
-  serviceType: [{
-    type: String
-  }],
-  services: [{
-    type: String
-  }],
-  events: [{
-    type: String
-  }],
-  cuisines: [{
-    type: String
-  }],
-  additionalServices: [{
-    type: String
-  }],
-  stripe: {
-    customerId: String,
-    sourceId: String,
-    sourceClientSecret: String
-  },
-  subscription: {
-    id: String,
+    },
+    lastName: {
+      type: String
+    },
+    phoneCode: {
+      name: String,
+      dialCode: Number,
+      code: String
+    },
+    mobileNumber: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    role: {
+      type: String,
+      enum: ['member', 'chef', 'admin'],
+      default: 'member'
+    },
     status: {
       type: String,
-      enum: ['pending', 'active', 'cancelled'],
+      enum: ['pending', 'listed', 'unlisted'],
       default: 'pending'
     },
-    plan: String,
-    discount: String,
-    currency: String
+    profilePhoto: {
+      type: String
+    },
+    coverPhoto: {
+      type: String
+    },
+    photos: [{
+      src: {
+        type: String
+      }
+    }],
+    companyEmail: {
+      type: String
+    },
+    companyWebsite: {
+      type: String
+    },
+    companyPhoneNumber: {
+      type: String
+    },
+    displayName: {
+      type: String
+    },
+    tagLine: {
+      type: String
+    },
+    description: {
+      type: String
+    },
+    serviceType: [{
+      type: String
+    }],
+    services: [{
+      type: String
+    }],
+    events: [{
+      type: String
+    }],
+    cuisines: [{
+      type: String
+    }],
+    additionalServices: [{
+      type: String
+    }],
+    stripe: {
+      customerId: String,
+      sourceId: String,
+      sourceClientSecret: String
+    },
+    subscription: {
+      id: String,
+      status: {
+        type: String,
+        enum: ['pending', 'active', 'cancelled'],
+        default: 'pending'
+      },
+      plan: String,
+      discount: String,
+      currency: String
+    },
+    minimumTotalBudget: Number,
+    minimumPerHeadBudget: Number,
+    resetPasswordToken: {type: String},
+    resetPasswordExpires: {type: Date}
   },
-  minimumTotalBudget: Number,
-  minimumPerHeadBudget: Number,
-  resetPasswordToken: { type: String },
-  resetPasswordExpires: { type: Date }
-},
-{
-  timestamps: true,
-  toObject: { virtuals: true },
-  toJSON: { virtuals: true }
-});
+  {
+    timestamps: true,
+    toObject: { virtuals: true, getters: true },
+    toJSON: { virtuals: true, getters: true }
+  });
+
+UserSchema.methods.findAcceptedBookings = function (cb) {
+  const DATE_START = moment().startOf('month');
+  return Booking
+    .find({ $or: [{ user: this.id }, { chef: this.id }], updatedAt: { $gte: DATE_START } })
+    .lean()
+    .exec(cb);
+};
 
 UserSchema.virtual('contactNumber').get(function () {
   if (this.phoneCode.dialCode && this.mobileNumber) {

@@ -7,7 +7,6 @@ import Status from '../../Status';
 import ImageUpload from '../../ImageUpload';
 
 function ChefItem({...chef}) {
-  console.log({...chef});
   return (
     <Panel className="gc-panel">
       <Panel.Body>

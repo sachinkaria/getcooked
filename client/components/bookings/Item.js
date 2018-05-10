@@ -31,17 +31,20 @@ class BookingItem extends React.Component {
   }
 
   declineBooking() {
+    const { booking } = this.props;
+    heap.track('Declined Booking', { caterer: booking.chef.displayName });
     this.props.decline(this.props.id);
   }
 
   acceptBooking() {
+    const { booking } = this.props;
+    heap.track('Accepted Booking', { caterer: booking.chef.displayName });
     this.props.accept(this.props.id);
   }
 
   renderView() {
-    const {booking} = this.props;
+    const { booking } = this.props;
     const STATUS = this.getStatus();
-    console.log(booking);
 
     return (
       <div>

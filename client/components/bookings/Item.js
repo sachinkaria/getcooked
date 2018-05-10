@@ -22,11 +22,11 @@ class BookingItem extends React.Component {
   getStatus() {
     switch (this.props.booking.status) {
       case 'accepted':
-        return (<p className="gc-text text-capitalize gc-light-green">Accepted</p>);
+        return (<span className="gc-text text-capitalize gc-light-green">Accepted</span>);
       case 'declined':
-        return (<p className="gc-text text-capitalize gc-red">Declined</p>);
+        return (<span className="gc-text text-capitalize gc-red">Declined</span>);
       default:
-        return (<p className="gc-text text-capitalize gc-yellow">Pending</p>);
+        return (<span className="gc-text text-capitalize gc-yellow">Pending</span>);
     }
   }
 
@@ -149,7 +149,7 @@ class BookingItem extends React.Component {
                       {
                         booking.services.map((service) => {
                           return (
-                            <p className="text-capitalize gc-margin-none">
+                            <p key={service} className="text-capitalize gc-margin-none">
                               {service}
                             </p>
                           );
@@ -163,7 +163,7 @@ class BookingItem extends React.Component {
                       {
                         booking.foodServices.map((service) => {
                           return (
-                            <p className="text-capitalize gc-margin-none">
+                            <p key={service} className="text-capitalize gc-margin-none">
                               {service}
                             </p>
                           );
@@ -213,4 +213,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getBooking, accept, decline})(BookingItem);
+export default connect(mapStateToProps, { getBooking, accept, decline })(BookingItem);

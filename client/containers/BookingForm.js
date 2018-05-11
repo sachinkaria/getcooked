@@ -152,7 +152,7 @@ class BookingForm extends React.Component {
               <div>
                 <label className="gc-text">Event Date</label>
                 <div>
-                  <DatePicker name="date" onChange={this.setDate}/>
+                  <DatePicker name="date" onChange={this.setDate} />
                 </div>
                 <label className="gc-text gc-dark-grey">Event Address</label>
                 <div className="gc-margin-bottom">

@@ -78,7 +78,12 @@ function create(req, res) {
     date: BOOKING.date,
     numberOfPeople: BOOKING.numberOfPeople,
     additionalInformation: BOOKING.additionalInformation || null,
-    address: BOOKING.address,
+    address: BOOKING.address || {
+      line1: BOOKING.address_line1,
+      line2: BOOKING.address_line2,
+      city: BOOKING.city,
+      postcode: BOOKING.postcode,
+    },
     budget: BOOKING.budget,
     services: BOOKING.services,
     foodServices: BOOKING.foodServices,

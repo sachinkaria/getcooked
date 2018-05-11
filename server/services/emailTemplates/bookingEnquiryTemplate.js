@@ -19,7 +19,7 @@ module.exports = (chef, user, booking, hostname) => {
             Budget: £${booking.budget}
           </li>
            <li>
-            Location: ${booking.address.line1}, ${booking.address.line2}, ${booking.address.city}, ${booking.address.postcode}
+            Location: ${booking.address.line1}, ${booking.address.postcode}
           </li>
         </ul>
         <p>

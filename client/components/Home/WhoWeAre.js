@@ -20,7 +20,7 @@ function WhoWeAre() {
               <p className="gc-text gc-text--lg">
                 Get Cooked provides professional caterers and culinary experts
                 the opportunity to share their food at unique events around them.
-                We give professionals, brands and food lovers a space to connect, share ideas
+                We give professionals, brands, event organisers and food lovers a space to connect, share food
                 and work together.
               </p>
             </Col>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router';
@@ -29,6 +30,10 @@ class Login extends Component {
 
     return (
       <Row>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Login | Get Cooked</title>
+        </Helmet>
         <Col sm={8} smOffset={2} md={4} mdOffset={4}>
           <div className="gc-center">
             <h1 className="gc-profile-heading-md gc-margin-bottom--lg">Login</h1>

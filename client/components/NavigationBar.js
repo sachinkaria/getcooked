@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import {Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import {connect} from 'react-redux';
+import { Helmet } from 'react-helmet';
 import Modal from '../containers/Modal';
 import ErrorHandler from '../containers/ErrorHandler';
 import SuccessHandler from '../containers/SuccessHandler';
@@ -33,6 +34,15 @@ class NavigationBar extends React.Component {
     const { user } = this.props;
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Get Cooked</title>
+          <meta property="og:type" content="website" />
+          <meta name="description" content="Cater your events with the coolest chefs around. Compare and book professional caterers for your events." />
+          <meta property="og:description" content="Cater your events with the coolest chefs around. Compare and book professional caterers for your events." />
+          <meta property="og:image" alt="get cooked helps you find and book caterers" content="https://scontent.flhr4-2.fna.fbcdn.net/v/t31.0-8/22904747_10159544920385357_7464408184009395937_o.jpg?oh=6ed6793c237ea32cf39212adf179997b&oe=5B11E87F" />
+          <meta property="og:url" content="https://www.getcooked.co" />
+        </Helmet>
         <Navbar fixedTop className="gc-navbar">
           <Navbar.Header>
             <Navbar.Brand>

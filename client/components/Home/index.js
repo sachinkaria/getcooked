@@ -1,6 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { listChefs } from '../../actions/public';
 import { createEvent } from '../../actions/events';
 import Main from './Main';
@@ -18,6 +19,10 @@ class Home extends React.Component {
     const chefs = _.shuffle(this.props.chefs).slice(0, 3);
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Cater your events | Get Cooked</title>
+        </Helmet>
         <Main eventSubmit={this.props.createEvent} />
         <br />
         <FeaturedCaterers chefs={chefs} />

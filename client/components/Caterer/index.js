@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Main from './Main';
 import HowItWorks from './HowItWorks';
 import Pricing from './Pricing';
@@ -8,6 +9,12 @@ import Contact from './Contact';
 function Caterer() {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Join us | Get Cooked</title>
+        <meta property="description" content="Grow your catering business. Receive online bookings to cater events around you." />
+        <meta property="og:description" content="Grow your catering business. Receive online bookings to cater events around you." />
+      </Helmet>
       <Main />
       <HowItWorks />
       <Pricing />

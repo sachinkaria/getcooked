@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Helmet } from 'react-helmet';
 import {connect} from 'react-redux';
 import {Field, reduxForm} from 'redux-form';
 import {Col, Panel, Row, Button} from 'react-bootstrap';
@@ -50,6 +51,10 @@ class Register extends Component {
 
     return (
       <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Sign Up | Get Cooked</title>
+        </Helmet>
         <div className="gc-panel-light gc-center">
           {redirect && <h1 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h1>}
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>

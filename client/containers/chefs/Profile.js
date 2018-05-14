@@ -2,6 +2,8 @@ import React from 'react';
 import { Col, Panel, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import StarRatingComponent from 'react-star-rating-component';
+import { Helmet } from 'react-helmet';
+import _ from 'lodash';
 import BookingForm from '../BookingForm';
 import ReviewForm from '../ReviewForm';
 import Heading from '../../components/chefs/profile/Heading';
@@ -37,6 +39,11 @@ class Profile extends React.Component {
 
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{_.startCase(_.toLower(CHEF.displayName))} | Get Cooked</title>
+          <meta property="og:image" alt="Book the best caterers around" content={CHEF.coverPhoto} />
+        </Helmet>
         <Row className="hidden-xs">
           <CoverPicture photoUrl={CHEF.coverPhoto}/>
         </Row>

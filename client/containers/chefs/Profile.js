@@ -47,7 +47,7 @@ class Profile extends React.Component {
                 <Panel.Body>
                   <Row>
                     <div>
-                      <Heading text={CHEF.displayName}/>
+                      <Heading text={CHEF.displayName} />
                     </div>
                     <Col xs={6} xsOffset={3} sm={4} smOffset={4} className="gc-padding-none">
                       <ProfilePicture withoutMargins photoUrl={CHEF.profilePhoto}/>

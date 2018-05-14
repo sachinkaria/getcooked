@@ -16,9 +16,9 @@ function AreYouACaterer() {
               />
             </Col>
             <Col sm={6}>
-              <h2 className="gc-section-heading gc-padding-none">
+              <h3 className="gc-section-heading gc-padding-none">
                 Are you a caterer or private chef?
-              </h2>
+              </h3>
               <p className="gc-text gc-text--lg">
                 Plan, organise and share food at events around London.
                 Connect and design your menu with event hosts around you.

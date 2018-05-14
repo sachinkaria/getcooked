@@ -31,7 +31,7 @@ class Login extends Component {
       <Row>
         <Col sm={8} smOffset={2} md={4} mdOffset={4}>
           <div className="gc-center">
-            <h4 className="gc-profile-heading-md gc-margin-bottom--lg">Login</h4>
+            <h1 className="gc-profile-heading-md gc-margin-bottom--lg">Login</h1>
             <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
               <Row>
                 <Col sm={8} smOffset={2}>

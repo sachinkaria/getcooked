@@ -11,9 +11,9 @@ function Pricing() {
     <section className="gc-section text-center" style={priceSectionStyle}>
       <Row>
         <Col xs={12} sm={10} smOffset={1} md={8} mdOffset={2}>
-          <h2 className="gc-section-heading gc-white">
+          <h3 className="gc-section-heading gc-white">
             ONE PRICE, NO ADDITIONAL FEES.
-          </h2>
+          </h3>
           <Row>
             <Col xs={12}>
               <Panel className="gc-panel gc-panel--translucent">

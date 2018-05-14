@@ -51,7 +51,7 @@ class Register extends Component {
     return (
       <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
         <div className="gc-panel-light gc-center">
-          {redirect && <h4 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h4>}
+          {redirect && <h1 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h1>}
           <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
             {this.renderAlert()}
             <div className="gc-margin-bottom--lg">

@@ -16,7 +16,7 @@ function WhoWeAre() {
               />
             </Col>
             <Col sm={6} smPull={6}>
-              <h2 className="gc-section-heading gc-padding-none">Who we are</h2>
+              <h3 className="gc-section-heading gc-padding-none">Who we are</h3>
               <p className="gc-text gc-text--lg">
                 Get Cooked provides professional caterers and culinary experts
                 the opportunity to share their food at unique events around them.

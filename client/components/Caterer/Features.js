@@ -8,16 +8,16 @@ function Features() {
     <section className="gc-section text-center">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-          <h2 className="gc-section-heading">
+          <h3 className="gc-section-heading">
             Features
-          </h2>
+          </h3>
           <br />
           <Row>
             <Col sm={4}>
               <img className="gc-info-icon" alt="Share and enjoy food" src="/images/event.png" />
-              <p className="gc-profile-text-md gc-bold">
+              <h4 className="gc-profile-text-md gc-bold">
                 Online Bookings
-              </p>
+              </h4>
               <p className="gc-text gc-text--lg gc-margin-bottom--lg">
                 Email and SMS alerts make it easy to receive and view booking requests.
               </p>
@@ -25,9 +25,9 @@ function Features() {
             <br className="visible-xs" />
             <Col sm={4}>
               <img className="gc-info-icon" alt="Share and enjoy food" src="/images/phone.png" />
-              <p className="gc-profile-text-md gc-bold">
+              <h4 className="gc-profile-text-md gc-bold">
                 Direct Contact
-              </p>
+              </h4>
               <p className="gc-text gc-text--lg">
                 Contact the customer directly and provide a personalised experience.
               </p>
@@ -35,9 +35,9 @@ function Features() {
             <br className="visible-xs" />
             <Col sm={4}>
               <img className="gc-info-icon" alt="Share and enjoy food" src="/images/review.png" />
-              <p className="gc-profile-text-md gc-bold">
+              <h4 className="gc-profile-text-md gc-bold">
                 Ratings & Reviews
-              </p>
+              </h4>
               <p className="gc-text gc-text--lg">
                 Build trust by receiving ratings and reviews from your happy customers.
               </p>

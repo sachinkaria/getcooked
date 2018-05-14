@@ -7,7 +7,7 @@ function HowItWorks() {
     <section className="gc-section gc-section--grey center-m">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-          <h2 className="gc-section-heading gc-center">How it works</h2>
+          <h3 className="gc-section-heading gc-center">How it works</h3>
           <br />
           <Row>
             <StepsColumn

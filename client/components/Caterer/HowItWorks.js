@@ -8,9 +8,9 @@ function HowItWorks() {
     <section className="gc-section text-center">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-          <h2 className="gc-section-heading">
+          <h3 className="gc-section-heading">
             How it works
-          </h2>
+          </h3>
           <br />
           <Row>
             <Col sm={4}>

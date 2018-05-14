@@ -12,7 +12,7 @@ function Caterer() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Join us | Get Cooked</title>
-        <meta property="description" content="Grow your catering business. Receive online bookings to cater events around you." />
+        <meta name="description" content="Grow your catering business. Receive online bookings to cater events around you." />
         <meta property="og:description" content="Grow your catering business. Receive online bookings to cater events around you." />
       </Helmet>
       <Main />

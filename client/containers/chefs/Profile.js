@@ -45,7 +45,7 @@ class Profile extends React.Component {
           <meta property="og:image" alt="Book the best caterers around" content={CHEF.coverPhoto} />
         </Helmet>
         <Row className="hidden-xs">
-          <CoverPicture photoUrl={CHEF.coverPhoto}/>
+          <CoverPicture photoUrl={CHEF.coverPhoto} />
         </Row>
         <Row>
           <div className="gc-profile-body">

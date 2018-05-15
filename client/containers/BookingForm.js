@@ -176,7 +176,7 @@ class BookingForm extends React.Component {
                     <Button
                       disabled={pristine}
                       block
-                      onClick={() => this.setState({slide: 2}, () => heap.track('Get Quotes - Step 1'))}
+                      onClick={() => this.setState({slide: 2}, () => this.props.withoutChef && heap.track('Get Quotes - Step 1'))}
                       className="gc-btn gc-btn--orange gc-margin-top"
                     >
                       Next
@@ -230,7 +230,7 @@ class BookingForm extends React.Component {
                   <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
                     <Button
                       block
-                      onClick={() => this.setState({slide: 3}, heap.track('Get Quotes - Step 2'))}
+                      onClick={() => this.setState({slide: 3}, this.props.withoutChef && heap.track('Get Quotes - Step 2'))}
                       className="gc-btn gc-btn--orange gc-margin-top"
                     >
                       Next
@@ -297,7 +297,7 @@ class BookingForm extends React.Component {
                       block
                       type="submit"
                       className="gc-btn gc-btn--orange gc-margin-top"
-                      onClick={() => heap.track('Get Quotes - Step 3')}
+                      onClick={() => this.props.withoutChef && heap.track('Get Quotes - Step 3')}
                     >
                       Next
                     </Button>

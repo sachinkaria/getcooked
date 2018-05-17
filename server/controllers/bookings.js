@@ -35,6 +35,7 @@ function accept(req, res) {
   const BOOKING_ID = req.params.id;
   Booking.findOne({ _id: BOOKING_ID })
     .populate('user', 'firstName email mobileNumber')
+    .populate('chef', 'id displayName')
     .exec((err, booking) => {
       _.extend(booking, {status: 'accepted'});
       booking.save();

@@ -9,6 +9,7 @@ module.exports = (chef, user, booking, hostname) => {
         <p>
           You can check out their profile on Get Cooked at ${hostname}. They will be in touch shortly via the contact details you provided to get some more information on your event.
         </p>
+        <br>
         <p>Regards,</p>
         <p>Get Cooked</p>
     </html>

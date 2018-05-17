@@ -27,7 +27,6 @@ module.exports = (chef, user, booking, hostname) => {
           your availability you will receive the contact details for the client.
         </p>
         <br>
-        <p>Regards,</p>
         <p>Get Cooked</p>
     </html>
 `;

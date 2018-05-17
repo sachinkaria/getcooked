@@ -39,12 +39,13 @@ function accept(req, res) {
     .exec((err, booking) => {
       _.extend(booking, {status: 'accepted'});
       booking.save();
-      const ENQUIRY_EMAIL_DATA = {
-        subject: `Interest - ${booking.chef.displayName}`,
-        recipient: booking.contactDetails.email
-      };
       const CHEF = booking.chef;
       const USER = booking.contactDetails;
+
+      const ENQUIRY_EMAIL_DATA = {
+        subject: `Interest - ${_.startCase(_.toLower(CHEF.displayName))}`,
+        recipient: USER.email
+      };
       const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/chefs/${CHEF.id}`);
       const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(booking.chef, USER, booking, HOSTNAME));
       enquiryMailer.send();

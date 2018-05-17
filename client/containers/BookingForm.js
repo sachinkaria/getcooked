@@ -58,7 +58,7 @@ function validate(formProps, props) {
 class BookingForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {show: false, services: [], foodServices: [], hideEventForm: false, slide: 1};
+    this.state = {show: false, services: [], foodServices: ['other'], hideEventForm: false, slide: 1};
     this.baseState = this.state;
 
     this.resetForm = this.resetForm.bind(this);

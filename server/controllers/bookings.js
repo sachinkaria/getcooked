@@ -10,6 +10,7 @@ const stripe = require('stripe')(config.stripe_secret_key);
 const Mailer = require('../services/mailer');
 const paymentDetailsTemplate = require('../services/emailTemplates/updatePaymentTemplate');
 const enquiryTemplate = require('../services/emailTemplates/bookingEnquiryTemplate');
+const acceptedBookingTemplate = require('../services/emailTemplates/acceptedBookingTemplate');
 
 
 module.exports.create = create;
@@ -35,10 +36,19 @@ function accept(req, res) {
   Booking.findOne({ _id: BOOKING_ID })
     .populate('user', 'firstName email mobileNumber')
     .exec((err, booking) => {
-    _.extend(booking, { status: 'accepted' });
-    booking.save();
-    res.jsonp(booking);
-  });
+      _.extend(booking, {status: 'accepted'});
+      booking.save();
+      const ENQUIRY_EMAIL_DATA = {
+        subject: `Interest - ${booking.chef.displayName}`,
+        recipient: booking.contactDetails.email
+      };
+      const CHEF = booking.chef;
+      const USER = booking.contactDetails;
+      const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/chefs/${CHEF.id}`);
+      const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(booking.chef, USER, booking, HOSTNAME));
+      enquiryMailer.send();
+      res.jsonp(booking);
+    });
 }
 
 function decline(req, res) {

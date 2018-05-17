@@ -26,7 +26,6 @@ module.exports = (chef, user, booking, hostname) => {
           You can access your bookings for more information and confirm your availability via your dashboard at: ${hostname}. Once you confirm
           your availability you will receive the contact details for the client.
         </p>
-        <br>
         <p>Get Cooked</p>
     </html>
 `;

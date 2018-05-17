@@ -43,7 +43,7 @@ function accept(req, res) {
       const USER = booking.contactDetails;
 
       const ENQUIRY_EMAIL_DATA = {
-        subject: `Interest - ${_.startCase(_.toLower(CHEF.displayName))}`,
+        subject: `Event Catering - ${_.startCase(_.toLower(CHEF.displayName))}`,
         recipient: USER.email
       };
       const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/chefs/${CHEF.id}`);

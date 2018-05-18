@@ -37,6 +37,9 @@ require('./images/dinner.jpg');
 require('./images/grow-your-business.jpg');
 require('./images/dining.jpg');
 require('./images/checklist.png');
+require('./images/icon-facebook.png');
+require('./images/icon-twitter.png');
+require('./images/icon-instagram.png');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

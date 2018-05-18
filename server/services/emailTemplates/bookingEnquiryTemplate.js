@@ -16,24 +16,24 @@ module.exports = (chef, user, booking, hostname) => {
 <div style="border-radius: 6px; background-color: #efefef; padding: 10px; width: 350px;">
         <ul style="list-style-type: none;margin-left: 0; padding: 0;">
           <li>
-            <p>Name</p>
-            <p style="font-style: italic;">${user.firstName} ${user.lastName}</p>
+            <p style="margin: 0; padding: 0;">Name</p>
+            <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">${user.firstName} ${user.lastName}</p>
           </li>
           <li>
-            <p style="display: table-cell; width: 30%;">Date</p>
-            <p style="font-style: italic;">${moment(booking.date).format('Do MMM YY')}</p>
+            <p style="margin: 0; padding: 0;">Date</p>
+            <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">${moment(booking.date).format('Do MMM YY')}</p>
           </li>
           <li>
-            <p style="display: table-cell; width: 30%;">Guests</span>
-            <p style="font-style: italic;">${booking.numberOfPeople}</p>
+            <p style="margin: 0; padding: 0;">Number of guests</p>
+            <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">${booking.numberOfPeople}</p>
           </li>
           <li>
-            <p style="display: table-cell; width: 30%;">Budget</p>
-            <p style="font-style: italic;">£${booking.budget} total budget</p>
+            <p style="margin: 0; padding: 0;">Budget</p>
+            <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">£${booking.budget} total budget</p>
           </li>
           <li>
-            <p>Location</p>
-            <p style="font-style: italic;">${booking.address.line1}, ${booking.address.postcode}</p>
+            <p style="margin: 0; padding: 0;">Location</p>
+            <p style="font-style: italic; margin: 0; padding: 0;">${booking.address.line1}, ${booking.address.postcode}</p>
           </li>
         </ul>
 </div>

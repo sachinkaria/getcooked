@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/controllers/bookings.js" afterPath="$PROJECT_DIR$/server/controllers/bookings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" afterPath="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,10 +22,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="bookings.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bookings.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1980">
+            <state relative-caret-position="1545">
               <caret line="132" column="41" lean-forward="false" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
               <folding />
             </state>
@@ -44,14 +44,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bookingEnquiryTemplate.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bookingEnquiryTemplate.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
               <folding>
-                <marker date="1526651662000" expanded="true" signature="109:111" ph="..." />
-                <marker date="1526651662000" expanded="true" signature="109:4701" ph="..." />
+                <marker date="1526651951000" expanded="true" signature="109:111" ph="..." />
+                <marker date="1526651951000" expanded="true" signature="109:4939" ph="..." />
               </folding>
             </state>
           </provider>
@@ -60,7 +60,7 @@
       <file leaf-file-name="acceptedBookingTemplate.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/acceptedBookingTemplate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="620">
               <caret line="54" column="92" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="79" selection-end-column="2" />
               <folding>
                 <marker date="1526647970000" expanded="true" signature="138:984" ph="..." />
@@ -265,8 +265,8 @@
         <option value="$PROJECT_DIR$/server/services/emailTemplates/updatePaymentTemplate.js" />
         <option value="$PROJECT_DIR$/server/services/emailTemplates/approvalTemplate.js" />
         <option value="$PROJECT_DIR$/server/services/emailTemplates/acceptedBookingTemplate.js" />
-        <option value="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" />
         <option value="$PROJECT_DIR$/server/controllers/bookings.js" />
+        <option value="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" />
       </list>
     </option>
   </component>
@@ -755,7 +755,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1186113000" />
+    <option name="totallyTimeSpent" value="1186258000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1177,9 +1177,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1545">
+          <caret line="132" column="41" lean-forward="false" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/acceptedBookingTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="620">
           <caret line="54" column="92" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="79" selection-end-column="2" />
           <folding>
             <marker date="1526647970000" expanded="true" signature="138:984" ph="..." />
@@ -1223,20 +1231,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
           <folding>
-            <marker date="1526651662000" expanded="true" signature="109:111" ph="..." />
-            <marker date="1526651662000" expanded="true" signature="109:4701" ph="..." />
+            <marker date="1526651951000" expanded="true" signature="109:111" ph="..." />
+            <marker date="1526651951000" expanded="true" signature="109:4939" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1980">
-          <caret line="132" column="41" lean-forward="false" selection-start-line="132" selection-start-column="41" selection-end-line="132" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>

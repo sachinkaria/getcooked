@@ -155,7 +155,7 @@ function create(req, res) {
         recipient: chef.companyEmail
       };
       const ENQUIRY_EMAIL_DATA = {
-        subject: 'New booking request',
+        subject: 'New Booking Request',
         recipient: chef.companyEmail
       };
 

@@ -29,7 +29,7 @@ module.exports = (chef, user, booking, hostname) => {
           </li>
           <li>
             <p style="margin: 0; padding: 0;">Budget</p>
-            <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">£${booking.budget} total budget</p>
+            <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">£${booking.budget}</p>
           </li>
           <li>
             <p style="margin: 0; padding: 0;">Location</p>
@@ -51,7 +51,7 @@ module.exports = (chef, user, booking, hostname) => {
                     height: 30px;
                     width: 30px;
                     display: inline-block;
-                    background-image: url('https://getcooked-test.herokuapp.com/images/icon-facebook.png');
+                    background-image: url('https://www.getcooked.co/images/icon-facebook.png');
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 30px;"
@@ -64,7 +64,7 @@ module.exports = (chef, user, booking, hostname) => {
                     height: 30px;
                     width: 30px;
                     display: inline-block;
-                    background-image: url('https://getcooked-test.herokuapp.com/images/icon-instagram.png');
+                    background-image: url('https://www.getcooked.co/images/icon-instagram.png');
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 30px;"
@@ -77,7 +77,7 @@ module.exports = (chef, user, booking, hostname) => {
                     height: 30px;
                     width: 30px;
                     display: inline-block;
-                    background-image: url('https://getcooked-test.herokuapp.com/images/icon-twitter.png');
+                    background-image: url('https://www.getcooked.co/images/icon-twitter.png');
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 30px;"

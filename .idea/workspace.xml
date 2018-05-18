@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" afterPath="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,11 +46,11 @@
       <file leaf-file-name="bookingEnquiryTemplate.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" column="158" lean-forward="false" selection-start-line="35" selection-start-column="158" selection-end-line="35" selection-end-column="158" />
+            <state relative-caret-position="195">
+              <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
               <folding>
-                <marker date="1526649713000" expanded="true" signature="109:111" ph="..." />
-                <marker date="1526649713000" expanded="true" signature="109:4280" ph="..." />
+                <marker date="1526650731000" expanded="true" signature="109:111" ph="..." />
+                <marker date="1526650731000" expanded="true" signature="109:5424" ph="..." />
               </folding>
             </state>
           </provider>
@@ -434,6 +433,38 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="getcooked" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="getcooked" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -718,12 +749,12 @@
       <workItem from="1524760091629" duration="7302000" />
       <workItem from="1525083374139" duration="11246000" />
       <workItem from="1525950658123" duration="1127000" />
-      <workItem from="1526570054120" duration="6020000" />
+      <workItem from="1526570054120" duration="6639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1185038000" />
+    <option name="totallyTimeSpent" value="1185657000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1199,11 +1230,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="158" lean-forward="false" selection-start-line="35" selection-start-column="158" selection-end-line="35" selection-end-column="158" />
+        <state relative-caret-position="195">
+          <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
           <folding>
-            <marker date="1526649713000" expanded="true" signature="109:111" ph="..." />
-            <marker date="1526649713000" expanded="true" signature="109:4280" ph="..." />
+            <marker date="1526650731000" expanded="true" signature="109:111" ph="..." />
+            <marker date="1526650731000" expanded="true" signature="109:5424" ph="..." />
           </folding>
         </state>
       </provider>

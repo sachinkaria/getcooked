@@ -16,19 +16,34 @@ module.exports = (chef, user, booking, hostname) => {
 <div style="border-radius: 6px; background-color: #efefef; padding: 10px; width: 350px;">
         <ul style="list-style-type: none;margin-left: 0; padding: 0;">
           <li>
-            ${user.firstName} ${user.lastName}
+            <div style="display: table;>
+            <span style="display: table-cell; width: 30%;">Name</span>
+            <span style="display: table-cell; width: 70%; text-align: right; font-style: italic;">${user.firstName} ${user.lastName}</span>
+            </div>
           </li>
           <li>
-            ${moment(booking.date).format('Do MMM YY')}
+            <div style="display: table;>
+            <span style="display: table-cell; width: 30%;">Date</span>
+            <span style="display: table-cell; width: 70%; text-align: right; font-style: italic;">${moment(booking.date).format('Do MMM YY')}</span>
+            </div>
           </li>
           <li>
-            ${booking.numberOfPeople} guests
+            <div style="display: table;>
+              <span style="display: table-cell; width: 30%;">Guests</span>
+              <span style="display: table-cell; width: 70%; text-align: right; font-style: italic;">${booking.numberOfPeople}</span>
+            </div>
           </li>
           <li>
-            £${booking.budget} total budget
+             <div style="display: table;>
+                <span style="display: table-cell; width: 30%;">Budget</span>
+                <span style="display: table-cell; width: 70%; text-align: right; font-style: italic;">£${booking.budget} total budget</span>
+            </div>
           </li>
            <li>
-            ${booking.address.line1}, ${booking.address.postcode}
+             <div style="display: table;>
+                <span style="display: table-cell; width: 30%;">Location</span>
+                <span style="display: table-cell; width: 70%; text-align: right; font-style: italic;">${booking.address.line1}, ${booking.address.postcode}</span>
+             </div>
           </li>
         </ul>
 </div>

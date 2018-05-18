@@ -26,7 +26,7 @@ module.exports = (chef, user, booking, hostname) => {
                     height: 30px;
                     width: 30px;
                     display: inline-block;
-                    background-image: url('https://getcooked-test.herokuapp.com/images/facebook.png');
+                    background-image: url('https://getcooked-test.herokuapp.com/images/icon-facebook.png');
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 30px;"
@@ -39,7 +39,7 @@ module.exports = (chef, user, booking, hostname) => {
                     height: 30px;
                     width: 30px;
                     display: inline-block;
-                    background-image: url('https://getcooked-test.herokuapp.com/images/instagram.png');
+                    background-image: url('https://getcooked-test.herokuapp.com/images/icon-instagram.png');
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 30px;"
@@ -52,7 +52,7 @@ module.exports = (chef, user, booking, hostname) => {
                     height: 30px;
                     width: 30px;
                     display: inline-block;
-                    background-image: url('https://getcooked-test.herokuapp.com/images/twitter.png');
+                    background-image: url('https://getcooked-test.herokuapp.com/images/icon-twitter.png');
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: 30px;"

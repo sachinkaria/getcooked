@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -46,11 +44,11 @@
       <file leaf-file-name="bookingEnquiryTemplate.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+            <state relative-caret-position="300">
+              <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
               <folding>
-                <marker date="1526650731000" expanded="true" signature="109:111" ph="..." />
-                <marker date="1526650731000" expanded="true" signature="109:5424" ph="..." />
+                <marker date="1526651264000" expanded="true" signature="109:111" ph="..." />
+                <marker date="1526651264000" expanded="true" signature="109:4856" ph="..." />
               </folding>
             </state>
           </provider>
@@ -754,7 +752,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1185657000" />
+    <option name="totallyTimeSpent" value="1185812000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1230,11 +1228,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="43" column="71" lean-forward="false" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+        <state relative-caret-position="300">
+          <caret line="42" column="12" lean-forward="false" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
           <folding>
-            <marker date="1526650731000" expanded="true" signature="109:111" ph="..." />
-            <marker date="1526650731000" expanded="true" signature="109:5424" ph="..." />
+            <marker date="1526651264000" expanded="true" signature="109:111" ph="..." />
+            <marker date="1526651264000" expanded="true" signature="109:4856" ph="..." />
           </folding>
         </state>
       </provider>

@@ -37,7 +37,7 @@ module.exports = (chef, user, booking, hostname) => {
           </li>
         </ul>
 </div>
-        <p>
+        <p style="color: #5e5e5e;">
           You can access your bookings for more information and confirm your availability via your dashboard <a href="${hostname}" title="Get Cooked dashboard" style="text-decoration:none; color:#f05125">here</a>. Once you confirm your availability you will receive the contact details for the client.
         </p>
     </article>

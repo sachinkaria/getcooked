@@ -11,7 +11,7 @@ module.exports = (chef, user, booking, hostname) => {
 
 <section style="max-width:600px;margin:auto;padding:20px;border-bottom: 1px solid #ffc9ba;border-top: 1px solid #ffc9ba; font-family:Verdana, Geneva, sans-serif; font-size:14px;color: #5e5e5e;" >
     <article>
-        <p style="font-size: 20px;"><a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">${_.startCase(_.toLower(chef.displayName))}</a> is interested in catering your ${booking.eventType} on ${moment(booking.date).format('Do MMM YYYY')}.</p>
+        <p style="font-size: 20px; color: #5e5e5e;"><a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">${_.startCase(_.toLower(chef.displayName))}</a> is interested in catering your ${booking.eventType} on ${moment(booking.date).format('Do MMM YYYY')}.</p>
         <p>
           You can check out their Get Cooked profile <a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">here</a>. They will be in touch shortly via the contact details you provided to get some more information on your event.
         </p>

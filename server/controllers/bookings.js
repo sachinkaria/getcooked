@@ -130,7 +130,7 @@ function create(req, res) {
           const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
           const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
           const ENQUIRY_EMAIL_DATA = {
-            subject: 'New booking request',
+            subject: 'New Booking Request',
             recipient: chef.companyEmail
           };
 

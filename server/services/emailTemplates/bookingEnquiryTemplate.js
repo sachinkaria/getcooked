@@ -17,32 +17,22 @@ module.exports = (chef, user, booking, hostname) => {
         <ul style="list-style-type: none;margin-left: 0; padding: 0;">
           <li>
             <p>Name</p>
-          </li>
-          <li>
             <p style="font-style: italic;">${user.firstName} ${user.lastName}</p>
           </li>
           <li>
             <p style="display: table-cell; width: 30%;">Date</p>
-          </li>
-          <li>
             <p style="font-style: italic;">${moment(booking.date).format('Do MMM YY')}</p>
           </li>
           <li>
             <p style="display: table-cell; width: 30%;">Guests</span>
-          </li>
-          <li>
             <p style="font-style: italic;">${booking.numberOfPeople}</p>
           </li>
           <li>
             <p style="display: table-cell; width: 30%;">Budget</p>
-          </li>
-          <li>
             <p style="font-style: italic;">£${booking.budget} total budget</p>
           </li>
           <li>
             <p>Location</p>
-          </li>
-          <li>
             <p style="font-style: italic;">${booking.address.line1}, ${booking.address.postcode}</p>
           </li>
         </ul>

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/images/facebook.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/images/instagram.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/images/twitter.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/emailTemplates/acceptedBookingTemplate.js" afterPath="$PROJECT_DIR$/server/services/emailTemplates/acceptedBookingTemplate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" afterPath="$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -51,11 +47,11 @@
       <file leaf-file-name="bookingEnquiryTemplate.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1385">
-              <caret line="96" column="9" lean-forward="false" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+            <state relative-caret-position="525">
+              <caret line="35" column="158" lean-forward="false" selection-start-line="35" selection-start-column="158" selection-end-line="35" selection-end-column="158" />
               <folding>
-                <marker date="1526649245000" expanded="true" signature="109:111" ph="..." />
-                <marker date="1526649245000" expanded="true" signature="109:4303" ph="..." />
+                <marker date="1526649713000" expanded="true" signature="109:111" ph="..." />
+                <marker date="1526649713000" expanded="true" signature="109:4280" ph="..." />
               </folding>
             </state>
           </provider>
@@ -722,12 +718,12 @@
       <workItem from="1524760091629" duration="7302000" />
       <workItem from="1525083374139" duration="11246000" />
       <workItem from="1525950658123" duration="1127000" />
-      <workItem from="1526570054120" duration="5706000" />
+      <workItem from="1526570054120" duration="6020000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1184724000" />
+    <option name="totallyTimeSpent" value="1185038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1203,11 +1199,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/bookingEnquiryTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1385">
-          <caret line="96" column="9" lean-forward="false" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+        <state relative-caret-position="525">
+          <caret line="35" column="158" lean-forward="false" selection-start-line="35" selection-start-column="158" selection-end-line="35" selection-end-column="158" />
           <folding>
-            <marker date="1526649245000" expanded="true" signature="109:111" ph="..." />
-            <marker date="1526649245000" expanded="true" signature="109:4303" ph="..." />
+            <marker date="1526649713000" expanded="true" signature="109:111" ph="..." />
+            <marker date="1526649713000" expanded="true" signature="109:4280" ph="..." />
           </folding>
         </state>
       </provider>

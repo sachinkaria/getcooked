@@ -33,7 +33,7 @@ module.exports = (chef, user, booking, hostname) => {
         </ul>
 </div>
         <p>
-          You can access your bookings for more information and confirm your availability via your dashboard <a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">here</a>. Once you confirm your availability you will receive the contact details for the client.
+          You can access your bookings for more information and confirm your availability via your dashboard <a href="${hostname}" title="Get Cooked dashboard" style="text-decoration:none; color:#f05125">here</a>. Once you confirm your availability you will receive the contact details for the client.
         </p>
     </article>
 </section>

@@ -13,12 +13,26 @@ module.exports = (chef, user, booking, hostname) => {
     <article>
         <p style="font-size: 20px; color: #5e5e5e;"><a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">${_.startCase(_.toLower(chef.displayName))}</a> is interested in catering your ${booking.eventType} on ${moment(booking.date).format('Do MMM YYYY')}.</p>
         <p>
-          You can check out their Get Cooked profile <a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">here</a>. They will be in touch shortly via the contact details you provided to get some more information on your event.
+<div  style="margin: 50px;">
+
+<a href="https://www.getcooked.co" title="Get Cooked"><span style="background-image: url('${chef.profilePhoto}');background-repeat:no-repeat;background-size:120px;background-position:center;display:block;height: 120px;width:120px;margin:auto;border-radius: 60px;">
+</span>
+</a>
+<a href="https://www.getcooked.co" title="Get Cooked" style="text-decoration:none;display:block;margin:auto; text-align: center; margin-bottom:5px;font-family:Verdana, Geneva, sans-serif;font-size: 16px; color: #5e5e5e;">
+<span style="margin:auto; text-align: center;display: inline-block;vertical-align: top;">
+<p style="text-decoration: none; font-family:Verdana, Geneva, sans-serif;">${_.startCase(_.toLower(chef.displayName))}</p>
+<a style="text-decoration: none;" href="${hostname}">
+<button style="display:block;margin:auto; text-align: center; padding:20px ;width:200px; border-radius: 4px; height: 36px;font-size: 16px; padding: 0; background-color: #f05125; color:white; margin: auto; ">View Profile</button>
+<a/>
+</span>
+</div>
+          They will be in touch shortly via the contact details you provided to get some more information on your event.
         </p>
     </article>
 </section>
 
 <footer style="max-width:600px;margin:auto;padding:20px;text-align:center;font-size: 12px;">
+<p style="font-family:Verdana, Geneva, sans-serif; font-size:14px;color: #5e5e5e;">Follow us</p>
     <ul style="display:table; margin: 0 auto; list-style:none; width: 200px; text-align: center;padding:0;">
 <li style="display: table-cell; width: 33.33%;">
             <a href="https://www.facebook.com/getcookedapp">

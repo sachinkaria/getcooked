@@ -10,7 +10,7 @@ module.exports = (chef, hostname) => {
 
 <section style="max-width:600px;margin:auto;padding:20px;border-bottom: 1px solid #ffc9ba;border-top: 1px solid #ffc9ba; font-family:Verdana, Geneva, sans-serif; font-size:14px;color: #5e5e5e;" >
     <article>
-        <p style="text-align: center; font-size: 20px; color: #5e5e5e;">Congratulations! You're profile has been approved and listed. You'll be notified via the contact details you provided when you receive booking requests.</p>
+        <p style="text-align: center; font-size: 20px; color: #5e5e5e;">Congratulations! Your profile has been approved and listed. You'll be notified via the contact details you provided when you receive booking requests.</p>
 <div  style="margin: 50px;">
 <a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}"><span style="background-image: url('${chef.profilePhoto}');background-repeat:no-repeat;background-size:120px;background-position:center;display:block;height: 120px;width:120px;margin:auto;border-radius: 60px;">
 </a>

@@ -40,12 +40,15 @@ class ContactDetailsForm extends Component {
   handleFormSubmit(formProps) {
     const PHONE_CODE = formProps.phoneCode;
     const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
+
     formProps.phoneCode = CODES.filter((item) => {
       return item.name === PHONE_CODE;
     })[0];
-    EVENT.contactDetails = formProps;
 
+    EVENT.contactDetails = formProps;
+    EVENT.chef = (!this.props.withoutChef && this.props.chef) && this.props.chef._id;
     sessionStorage.setItem('contactDetails', JSON.stringify(formProps));
+
     this.props.onSubmit(EVENT);
   }
 
@@ -111,7 +114,7 @@ class ContactDetailsForm extends Component {
           </div>
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <Button
-              onClick={ () => this.props.withoutChef ? heap.track('Submit Event') : heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) }
+              onClick={() => this.props.withoutChef ? heap.track('Submit Event') : heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) }
               block
               type="submit"
               className="gc-btn gc-btn--orange gc-margin-top">

@@ -37,7 +37,7 @@ function accept(req, res) {
     .populate('user', 'firstName email mobileNumber')
     .populate('chef', 'id displayName profilePhoto')
     .exec((err, booking) => {
-      _.extend(booking, {status: 'accepted'});
+      _.extend(booking, { status: 'accepted' });
       booking.save();
       const CHEF = booking.chef;
       const USER = booking.contactDetails;

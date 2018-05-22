@@ -14,20 +14,20 @@ module.exports = (chef, user, booking, hostname) => {
         <p style="font-size: 20px; color: #5e5e5e;"><a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">${_.startCase(_.toLower(chef.displayName))}</a> is interested in catering your ${booking.eventType} on ${moment(booking.date).format('Do MMM YYYY')}.</p>
         <p>
 <div  style="margin: 50px;">
-
-<a href="https://www.getcooked.co" title="Get Cooked"><span style="background-image: url('${chef.profilePhoto}');background-repeat:no-repeat;background-size:120px;background-position:center;display:block;height: 120px;width:120px;margin:auto;border-radius: 60px;">
-</span>
+<a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}"><span style="background-image: url('${chef.profilePhoto}');background-repeat:no-repeat;background-size:120px;background-position:center;display:block;height: 120px;width:120px;margin:auto;border-radius: 60px;">
 </a>
-<a href="https://www.getcooked.co" title="Get Cooked" style="text-decoration:none;display:block;margin:auto; text-align: center; margin-bottom:5px;font-family:Verdana, Geneva, sans-serif;font-size: 16px; color: #5e5e5e;">
+<a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none;display:block;margin:auto; text-align: center; margin-bottom:5px;font-family:Verdana, Geneva, sans-serif;font-size: 16px; color: #5e5e5e;">
 <span style="margin:auto; text-align: center;display: inline-block;vertical-align: top;">
 <p style="text-decoration: none; font-family:Verdana, Geneva, sans-serif;">${_.startCase(_.toLower(chef.displayName))}</p>
+<a/>
 <a style="text-decoration: none;" href="${hostname}">
 <button style="display:block;margin:auto; text-align: center; padding:20px ;width:200px; border-radius: 4px; height: 36px;font-size: 16px; padding: 0; background-color: #f05125; color:white; margin: auto; ">View Profile</button>
 <a/>
 </span>
 </div>
-          They will be in touch shortly via the contact details you provided to get some more information on your event.
-        </p>
+<p>
+   They will be in touch shortly via the contact details you provided to get some more information on your event.
+</p>
     </article>
 </section>
 

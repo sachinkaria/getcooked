@@ -95,7 +95,8 @@ function approve(req, res) {
       };
 
       // send email to approve profile
-      const mailer = new Mailer(emailData, approvalTemplate(chef));
+      const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/chefs/${chef._id}`);
+      const mailer = new Mailer(emailData, approvalTemplate(chef, HOSTNAME));
       mailer.send();
 
       chef = _.omit(chef.toObject(), ['email', 'password', 'mobileNumber', 'firstName', 'lastName']);

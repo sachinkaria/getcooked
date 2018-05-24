@@ -31,7 +31,7 @@ import StripeWrapper from '../components/StripeWrapper';
 const routes = (
   <Route path="/" component={NavigationBar}>
     <IndexRoute component={Home} />
-    <Route path="/chefs/:id" component={Profile} />
+    <Route path="/caterers/:id" component={Profile} />
     <Route path="/terms" component={Terms} />
     <Route path="/privacy" component={Privacy} />
     <Route path="/get-quotes" component={GetQuote} />
@@ -77,7 +77,7 @@ const routes = (
         <Route path="users" component={RequireRole(AdminDashboard, 'admin')} view="users" />
         <Route path="events" component={RequireRole(AdminDashboard, 'admin')} view="events" />
         <Route path="bookings" component={RequireRole(AdminDashboard, 'admin')} view="bookings" />
-        <Route path="chefs/:id" component={RequireRole(Profile, 'admin')} view="chefs" />
+        <Route path="caterers/:id" component={RequireRole(Profile, 'admin')} view="chefs" />
       </Route>
     </Route>
   </Route>

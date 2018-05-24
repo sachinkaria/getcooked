@@ -36,7 +36,7 @@ function Pricing() {
                     <Col sm={4}>
                       <h4 className="gc-profile-text-md gc-bold">No contracts.</h4>
                       <p className="gc-text gc-text--lg gc-margin-bottom--lg">
-                        No obligations, contracts or online payments. Plam your event directly with your event host.
+                        No obligations, contracts or online payments. Plan your event directly with your event host.
                       </p>
                     </Col>
                     <Col sm={4}>

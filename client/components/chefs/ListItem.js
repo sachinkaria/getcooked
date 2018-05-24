@@ -15,7 +15,7 @@ const ListItem = (props) => {
 
   return (
     <Col xs={12} sm={4} md={props.isHome ? 4 : 3} className="gc-profile-wrapper">
-      <Link href={`/chefs/${props.id}`}>
+      <Link href={`/caterers/${props.id}`}>
         <Thumbnail className="gc-profile-thumbnail img-responsive" style={styles} />
         <div className="gc-profile-infobox">
           <h3 className="gc-profile-heading-sm gc-pull-left gc-margin-bottom--xs text-capitalize">{props.name}</h3>

@@ -33,7 +33,7 @@ function ChefItem({...chef}) {
           <Col xs={3} className="text-right">
             <p className="gc-text gc-text--sm gc-bold gc-margin-none">
               Updated: {moment(chef.updatedAt).format('MMM Do YYYY')}</p>
-            <Link to={`/admin/dashboard/chefs/${chef.id}`}>
+            <Link to={`/admin/dashboard/caterers/${chef.id}`}>
               <Button block className="gc-btn gc-btn--sm gc-btn-white gc-margin-top--xs">View Profile</Button>
             </Link>
             <div className="gc-margin-top--xs">

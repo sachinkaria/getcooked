@@ -46,7 +46,7 @@ function accept(req, res) {
         subject: `Event Catering - ${_.startCase(_.toLower(CHEF.displayName))}`,
         recipient: USER.email
       };
-      const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/caterers/${CHEF.id}`);
+      const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/caterers/profile/${CHEF.id}`);
       const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(booking.chef, USER, booking, HOSTNAME));
       enquiryMailer.send();
       res.jsonp(booking);

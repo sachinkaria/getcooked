@@ -54,7 +54,6 @@ app.use((req, res, next) => {
   } else {
     next();
   }
-
 });
 
 authRoutes(router);
@@ -69,6 +68,10 @@ eventsRoutes(router);
 // Use our router configuration when we call /
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('dist'), router);
+  app.get('/*.js', (req, res) => {
+    req.url = req.url + '.gz';
+    res.set('Content-Encoding', 'gzip');
+  });
   app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
   });

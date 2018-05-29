@@ -34,7 +34,7 @@ class Profile extends React.Component {
     const REVIEWS = this.props.chef.comments || [];
     const NUMBER_OF_REVIEWS = this.props.chef.comments.length;
     const RATING = this.props.chef.rating;
-
+    const CANONICAL_URL = 'https://www.getcooked.co/caterers/profile/'.concat(this.props.params.id);
     heap.track('View Caterer', { name: CHEF.displayName, id: this.props.params.id });
 
     return (
@@ -43,6 +43,7 @@ class Profile extends React.Component {
           <meta charSet="utf-8" />
           <title>{_.startCase(_.toLower(CHEF.displayName))} | Get Cooked</title>
           <meta property="og:image" alt="Book the best caterers around" content={CHEF.coverPhoto} />
+          <link rel="canonical" href={CANONICAL_URL} />
         </Helmet>
         <Row className="hidden-xs">
           <CoverPicture photoUrl={CHEF.coverPhoto} />

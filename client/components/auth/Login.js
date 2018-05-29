@@ -33,6 +33,7 @@ class Login extends Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Login | Get Cooked</title>
+          <link rel="canonical" href="https://www.getcooked.co/login" />
         </Helmet>
         <Col sm={8} smOffset={2} md={4} mdOffset={4}>
           <div className="gc-center">

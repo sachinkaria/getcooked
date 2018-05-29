@@ -22,6 +22,7 @@ class Home extends React.Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Cater your events | Get Cooked</title>
+          <link rel="canonical" href="https://www.getcooked.co" />
         </Helmet>
         <Main eventSubmit={this.props.createEvent} />
         <br />

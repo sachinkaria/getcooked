@@ -54,6 +54,7 @@ class Register extends Component {
         <Helmet>
           <meta charSet="utf-8" />
           <title>Sign Up | Get Cooked</title>
+          <link rel="canonical" href="https://www.getcooked.co/register" />
         </Helmet>
         <div className="gc-panel-light gc-center">
           {redirect && <h1 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h1>}

@@ -1,9 +1,15 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Row, Col } from 'react-bootstrap';
 
 function Terms() {
   return (
     <section className="gc-section gc-section--main gc-section--grey">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Terms and Conditions | Get Cooked</title>
+        <link rel="canonical" href="https://www.getcooked.co/terms" />
+      </Helmet>
       <Row>
         <Col xs={10} xsOffset={1} sm={8} smOffset={2}>
           <Row>

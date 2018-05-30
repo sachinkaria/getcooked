@@ -15,7 +15,7 @@ module.exports = {
   ],
   output: {
     path: __dirname + '/dist',
-    filename: 'index_bundle.js.gz',
+    filename: 'index_bundle.js',
     publicPath: '/'
   },
   devServer: {

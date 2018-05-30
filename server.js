@@ -69,8 +69,6 @@ eventsRoutes(router);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('dist'), router);
   app.get('/*', (req, res) => {
-    req.url = req.url + '.gz';
-    res.set('Content-Encoding', 'gzip');
     res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
   });
 } else {

@@ -7,7 +7,6 @@
     <meta name="description" content="Cater your events with the coolest chefs around. Compare and book professional caterers for your events." />
     <meta name="keywords" content="professional catering book a caterer private chefs wedding bbq party corporate">
     <link rel="icon" type="image/png" href="/images/logo-icon.png"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" lazyload>
     <link rel="stylesheet" src="node_modules/react-star-rating/dist/css/react-star-rating.min.css">
     <script src="https://js.stripe.com/v3/"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,8 +29,7 @@
       gtag('config', 'UA-108194117-1');
     </script>
 
-
-    <!-- Event snippet for Caterer Acquisition conversion page
+    <!-- Event snippet for Submit Event Quote conversion page
     In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
     <script>
       function gtag_report_conversion(url) {
@@ -41,12 +39,15 @@
           }
         };
         gtag('event', 'conversion', {
-          'send_to': 'AW-1007901507/W6OuCOP67H0Qw7bN4AM',
+          'send_to': 'AW-1007901507/ibKOCIn-uIMBEMO2zeAD',
+          'transaction_id': 'submit_quote',
           'event_callback': callback
         });
         return false;
       }
     </script>
+
+
 
     <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/r59zq8hc';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
 </head>
@@ -54,10 +55,11 @@
 <div class="container">
     <div id="app"></div>
 </div>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
-      integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous" lazyload>
-<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet" lazyload>
-<link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700" rel="stylesheet" lazyload>
-<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet" lazyload>
+      integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Muli:200,300,400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
 </body>
 </html>

@@ -33,6 +33,7 @@ class BookingForm extends React.Component {
     } else {
       heap.track('Click Get Quotes');
     }
+    gtag_report_conversion();
     this.props.onSubmit(event, this.props.endRoute);
     this.props.closeModal();
   }

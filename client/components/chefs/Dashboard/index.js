@@ -109,7 +109,7 @@ class Dashboard extends React.Component {
                           <Row>
                             <Col xs={8} xsOffset={2} sm={6} smOffset={3} md={4} mdOffset={4}>
                               {USER_LISTED ?
-                                <Link className="btn btn-block gc-btn gc-btn--white gc-margin-top" to={`/chefs/${this.props.user.data._id}`}>
+                                <Link className="btn btn-block gc-btn gc-btn--white gc-margin-top" to={`/caterers/profile/${this.props.user.data._id}`}>
                                   View my profile
                                 </Link> :
                                 <Button

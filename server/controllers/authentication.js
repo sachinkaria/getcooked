@@ -174,7 +174,7 @@ exports.forgotPassword = (req, res) => {
     (token, done) => {
       User.findOne({ email }, (err, user) => {
         if (!user) {
-          res.send(err);
+          return res.sendStatus(500);
         }
 
         user.resetPasswordToken = token;

@@ -27,9 +27,9 @@ function FeaturedChefs({ chefs }) {
             ))
           }
           <Row>
-            <Col sm={4} smOffset={4}>
+            <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
               <Link to={'/caterers'}>
-                <Button block className="gc-btn gc-btn--orange gc-btn--search gc-margin-top">
+                <Button block className="gc-btn gc-btn--orange gc-btn--lg gc-margin-top">
                   View more
                 </Button>
               </Link>

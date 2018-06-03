@@ -73,6 +73,12 @@
     @include breakpoint(tablet) {
       width: 128px;
     }
+  }
 
+  &.gc-info-icon--sm {
+    @include breakpoint(tablet) {
+      width: 48px;
+    }
   }
 }
+

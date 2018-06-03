@@ -1,23 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Row, Col } from 'react-bootstrap';
 
 
-function StepsColumn({...props}) {
+function StepsColumn({ ...props }) {
+  const style = classNames('gc-info-icon', {
+    'gc-info-icon-sm': props.size === 'small'
+  });
+
   return (
     <Col className="gc-margin-bottom--lg" xs={12} sm={props.columnWidth}>
       <Row>
         <Col xs={12} className="text-center">
           <img
-            className="gc-info-icon"
+            className={style}
             alt="Find a caterer"
             src={props.imageSrc}
           />
         </Col>
         <Col xs={12} className="gc-center">
-          <h3 className="gc-profile-text-md gc-bold">
+          <h4 className="gc-profile-text-md gc-bold">
             {props.heading}
-          </h3>
+          </h4>
           <p className="gc-text gc-text--lg">
             {props.text}
           </p>

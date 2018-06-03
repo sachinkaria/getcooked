@@ -27,6 +27,7 @@ import Caterer from '../components/Caterer/';
 import RequireAuth from '../components/auth/RequireAuth';
 import RequireRole from '../components/auth/RequireRole';
 import StripeWrapper from '../components/StripeWrapper';
+import Post from '../components/Blog/7-things-to-know-about-catering';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -44,6 +45,9 @@ const routes = (
     <Route path="caterers">
       <Route path="about" component={Caterer} />
       <Route path="register" component={RegisterChef} />
+    </Route>
+    <Route path="/blog">
+      <Route exact path="7-things-to-consider-when-booking-a-caterer" component={Post} />
     </Route>
     <Route path="/login" component={Login} />
     <Route exact path="/logout" component={Logout}  />

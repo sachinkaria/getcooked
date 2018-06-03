@@ -1,6 +1,5 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import StepsColumn from '../StepsColumn';
 
 function WhoWeAre() {
   return (
@@ -19,9 +18,8 @@ function WhoWeAre() {
               <h3 className="gc-section-heading gc-padding-none">Who we are</h3>
               <p className="gc-text gc-text--lg">
                 Get Cooked give you the opportunity to share food with professional caterers at events organised by you.
-                Compare and book the best caterers around for weddings, parties, corporate events,
-                private dinners and more. We give professionals, brands, event organisers and food lovers a space to connect, share food
-                and work together.
+                Compare and book the best <span className="gc-bold">professional, sustainable and bespoke caterers</span> around. Book caterers for your <span className="gc-bold">
+                weddings, parties, corporate events, private dinners</span> and more.
               </p>
             </Col>
           </Row>

@@ -20,9 +20,9 @@ function AreYouACaterer() {
                 Are you a caterer or private chef?
               </h3>
               <p className="gc-text gc-text--lg">
-                Plan, organise and share food at events around London.
+                Plan, organise and <span className="gc-bold">share food at events</span> around London.
                 Connect and design your menu with event hosts around you.
-                Receive bookings for events directly
+                <span className="gc-bold"> Receive bookings for events</span> directly
                 through our platform and share your food.
               </p>
               <Row>

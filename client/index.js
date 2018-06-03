@@ -40,6 +40,10 @@ require('./images/checklist.png');
 require('./images/icon-facebook.png');
 require('./images/icon-twitter.png');
 require('./images/icon-instagram.png');
+require('./images/icon-chefhat.png');
+require('./images/icon-organic.png');
+require('./images/icon-hands.png');
+require('./images/icon-recycling.png');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

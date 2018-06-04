@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 import '../../images/catering-3.jpg';
 
 
-function Post() {
+function BookingACaterer() {
   return (
     <section className="gc-section">
       <Helmet>
@@ -98,5 +98,5 @@ function Post() {
   );
 }
 
-export default Post;
+export default BookingACaterer;
 

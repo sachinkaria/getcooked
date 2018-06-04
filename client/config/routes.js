@@ -27,7 +27,8 @@ import Caterer from '../components/Caterer/';
 import RequireAuth from '../components/auth/RequireAuth';
 import RequireRole from '../components/auth/RequireRole';
 import StripeWrapper from '../components/StripeWrapper';
-import Post from '../components/Blog/7-things-to-know-about-catering';
+import BookingACaterer from '../components/Blog/7-things-to-know-about-catering';
+import SustainableCatering from '../components/Blog/What-is-sustainable-catering';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -47,7 +48,8 @@ const routes = (
       <Route path="register" component={RegisterChef} />
     </Route>
     <Route path="/blog">
-      <Route exact path="7-things-to-consider-when-booking-a-caterer" component={Post} />
+      <Route exact path="7-things-to-consider-when-booking-a-caterer" component={BookingACaterer} />
+      <Route exact path="what-is-sustainable-catering" component={SustainableCatering} />
     </Route>
     <Route path="/login" component={Login} />
     <Route exact path="/logout" component={Logout}  />

@@ -17,9 +17,9 @@ function WhoWeAre() {
             <Col sm={6} smPull={6}>
               <h3 className="gc-section-heading gc-padding-none">Who we are</h3>
               <p className="gc-text gc-text--lg">
-                Get Cooked give you the opportunity to share food with professional caterers at events organised by you.
-                Compare and book the best <span className="gc-bold">professional, sustainable and bespoke caterers</span> around. Book caterers for your <span className="gc-bold">
-                weddings, parties, corporate events, private dinners</span> and more.
+                Get Cooked gives you the opportunity to book professional caterers for events organised by you.
+                Compare and book the best professional, sustainable and bespoke caterers around. Book caterers for your
+                weddings, parties, corporate events, private dinners and more.
               </p>
             </Col>
           </Row>

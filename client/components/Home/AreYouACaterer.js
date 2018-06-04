@@ -20,10 +20,9 @@ function AreYouACaterer() {
                 Are you a caterer or private chef?
               </h3>
               <p className="gc-text gc-text--lg">
-                Plan, organise and <span className="gc-bold">share food at events</span> around London.
-                Connect and design your menu with event hosts around you.
-                <span className="gc-bold"> Receive bookings for events</span> directly
-                through our platform and share your food.
+                Plan, organise and share food at events around London.
+                Connect and share your food with event organisers. Receive bookings directly
+                through our platform and cater events around you.
               </p>
               <Row>
                 <Col sm={8}>

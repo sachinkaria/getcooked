@@ -23,7 +23,7 @@ function SustainableCatering() {
         <Col xs={12} md={8} mdOffset={2}>
           <Row>
             <Col xs={12}>
-              <h1 className="gc-section-heading gc-padding-none">What is sustainable catering?</h1>
+              <h1 className="gc-section-heading gc-padding-none">What is Sustainable Catering?</h1>
               <p className="gc-text gc-text--lg gc-grey">4th June 2018</p>
             </Col>
             <Col xs={12} sm={8} smOffset={2}>

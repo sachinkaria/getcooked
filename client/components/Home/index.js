@@ -9,6 +9,7 @@ import HowItWorks from './HowItWorks';
 import WhoWeAre from './WhoWeAre';
 import AreYouACaterer from './AreYouACaterer';
 import FeaturedCaterers from './FeaturedCaterers';
+import Blog from './Blog';
 
 class Home extends React.Component {
   componentWillMount() {
@@ -33,6 +34,7 @@ class Home extends React.Component {
         <WhoWeAre />
         <br />
         <AreYouACaterer />
+        <Blog />
       </div>
     );
   }

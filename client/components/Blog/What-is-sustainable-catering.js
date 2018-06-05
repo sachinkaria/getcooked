@@ -2,6 +2,7 @@
  * Created by sachinkaria on 03/06/2018.
  */
 import React from 'react';
+import { Link } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/carrots.jpg';
@@ -52,16 +53,16 @@ function SustainableCatering() {
               </p>
               <h2 className="gc-profile-text-md gc-bold">Organic produce</h2>
               <p className="gc-text gc-text--lg">
-                Conventional farming methods that don’t require the use of chemicals can help maintain soil
+                Conventional farming methods that don&#39;t require the use of chemicals can help maintain soil
                 quality and reduce harmful pollutants. Organically grown herbs, fruits, vegetables and meat
                 can help keep farms healthy. Meals should be catered using mostly certified organic ingredients
                 that coincide with international organic standards. You can always ask your caterer for their certified sources.
               </p>
               <h2 className="gc-profile-text-md gc-bold">Reusable, Recyclable and Biodegradable tableware</h2>
               <p className="gc-text gc-text--lg">
-                Sustainable catering also means reducing material waste. With plastic being one of the worlds biggest
-                environmental issues it’s important that tableware, glassware and any other materials used
-                are either biodegradable or recyclable (if they’re single use) or completely reusable. With large events such as
+                Sustainability also means reducing material waste. With plastic being one of the worlds biggest
+                environmental issues it&#39;s important that tableware, glassware and any other materials used
+                are either biodegradable or recyclable (if they&#39;re single use) or completely reusable. With large events such as
                 weddings or corporate events, reducing the amount of material that is contaminated and disposed of is crucial.
               </p>
               <h2 className="gc-profile-text-md gc-bold">Vegan and Vegetarian</h2>
@@ -80,6 +81,17 @@ function SustainableCatering() {
                 Post-consumer food waste should be used for composting and crucial anti-contamination steps
                 should be carried out to reduce un-usable food.
               </p>
+              <h2 className="gc-profile-text-md gc-bold">Summary</h2>
+              <p className="gc-text gc-text--lg">
+                Catering companies that engage in some or all of these practices can be considered more sustainable than
+                if they don&#39;t. It&#39;s important that when booking a caterer for your events you ask them about where and how they
+                source and recycle the food that will eventually be served. Questions regarding seasonal menus, where their ingredients come from,
+                and how they prepare and dispose of food will give you a good idea of whether they&#39;re sustainable or not.
+              </p>
+              <br />
+              <h3 className="gc-text gc-text--lg gc-bold">
+                Check out and book sustainable and bespoke caterers for your next event <Link to={'/caterers'} activeClassName="gc-orange" className="gc-text gc-text--lg gc-orange">here</Link>.
+              </h3>
             </Col>
           </Row>
         </Col>

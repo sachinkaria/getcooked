@@ -2,6 +2,7 @@
  * Created by sachinkaria on 03/06/2018.
  */
 import React from 'react';
+import { Link } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/catering-3.jpg';
@@ -43,52 +44,56 @@ function BookingACaterer() {
               <p className="gc-text gc-text--lg">
                 Here are 7 things you should think about when you&#39;re choosing and booking a caterer:
               </p>
-              <h2 className="gc-profile-text-md gc-bold">Consider your catering requirements before you start looking</h2>
+              <h2 className="gc-profile-text-md gc-bold">1. Consider your catering requirements before you start looking</h2>
               <p className="gc-text gc-text--lg">
                 Although most experienced caterers will be able to assist you with this step,
                 it&#39;s a good idea for you to make a list of what you&#39;ll
                 require on the day. Are there any special dietary requirements you&#39;ll need to cater for?
                 Will there be children in attendance? Will it be buffet catering or sit-down catering? Do you need alcohol?
               </p>
-              <h2 className="gc-profile-text-md gc-bold">Know what kind of venue you&#39;ll be hosting in</h2>
+              <h2 className="gc-profile-text-md gc-bold">2. Know what kind of venue you&#39;ll be hosting in</h2>
               <p className="gc-text gc-text--lg">
                 Know where you&#39;re hosting your event and check if the venue allows outside catering. Does the venue
                 have a kitchen or will you require mobile catering? Check what type of prep facilities are available.
                 Know if you need any additional glassware, tableware or any additional deco.
               </p>
-              <h2 className="gc-profile-text-md gc-bold">Plan your budget</h2>
+              <h2 className="gc-profile-text-md gc-bold">3. Plan your budget</h2>
               <p className="gc-text gc-text--lg">
                 Plan your total budget and the per head budget you have in mind.
                 The per head budget will give you a good idea of the quality and quantity of food,
                 drink and service you expect for each person at your event. There can be a major difference
                 between a £30 and £80 per head budget. Also make sure you remember to include VAT when estimating budgets.
               </p>
-              <h2 className="gc-profile-text-md gc-bold">Know what additional services you require</h2>
+              <h2 className="gc-profile-text-md gc-bold">4. Know what additional services you require</h2>
               <p className="gc-text gc-text--lg">
                 Do you need waiting staff? Are you planning on having alcohol and a bar? Depending on
                 what type of event you&#39;re hosting you may likely need some extra services. Know whether
                 your caterer is able to provide these additional services or whether you&#39;ll have to book
                 them separately.
               </p>
-              <h2 className="gc-profile-text-md gc-bold">Go try the food</h2>
+              <h2 className="gc-profile-text-md gc-bold">5. Go try the food</h2>
               <p className="gc-text gc-text--lg">
                 The last thing you want at your event is terrible food – so get out there and
                 try it! Visit the restaurant or food truck, or if they&#39;re a professional catering
                 business you can always schedule a tasting. For larger events like weddings you will likely have a
                 few tasting sessions before committing.
               </p>
-              <h2 className="gc-profile-text-md gc-bold">Ask about their experience</h2>
+              <h2 className="gc-profile-text-md gc-bold">6. Ask about their experience</h2>
               <p className="gc-text gc-text--lg">
                 Check out their profiles, websites and social media channels. Ask them
                 about events they have catered in the past. You need to figure out if they
                 can handle what you&#39;re asking of them and if they&#39;ve done similar events in the past.
               </p>
-              <h2 className="gc-profile-text-md gc-bold">Check out their sources</h2>
+              <h2 className="gc-profile-text-md gc-bold">7. Check out their sources</h2>
               <p className="gc-text gc-text--lg">
                 Be sustainable and expect the same from the people you work with.
                 Where does your caterer get their produce from? Is it fresh and sustainably
                 produced? Check out some of the sources they get their produce from just to ensure
                 you&#39;re aware of where it&#39;s all coming from.
+              </p>
+              <br />
+              <p className="gc-text gc-text--lg gc-bold">
+                To get catering quotes from sustainable and bespoke caterers for your next event click <Link to={'/'} activeClassName="gc-orange" className="gc-text gc-text--lg">here</Link>.
               </p>
             </Col>
           </Row>

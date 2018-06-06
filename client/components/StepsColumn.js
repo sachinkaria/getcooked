@@ -15,7 +15,7 @@ function StepsColumn({ ...props }) {
         <Col xs={12} className="text-center">
           <img
             className={style}
-            alt="Find a caterer"
+            alt={props.heading}
             src={props.imageSrc}
           />
         </Col>

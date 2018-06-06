@@ -20,7 +20,7 @@ function WhoWeWorkWith() {
               imageSrc="/images/icon-hands.png"
               heading="Bespoke"
               size="small"
-              text="Personalised service giving you tailored requirements."
+              text="Flexible service alongside personal and tailored menus."
             />
             <StepsColumn
               columnWidth={3}

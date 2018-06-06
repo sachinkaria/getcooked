@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 function AreYouACaterer() {
   return (
-    <section className="gc-section gc-section--grey">
+    <section className="gc-section">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
           <Row>

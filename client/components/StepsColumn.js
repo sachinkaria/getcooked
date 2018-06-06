@@ -6,7 +6,7 @@ import { Row, Col } from 'react-bootstrap';
 
 function StepsColumn({ ...props }) {
   const style = classNames('gc-info-icon', {
-    'gc-info-icon-sm': props.size === 'small'
+    'gc-info-icon--sm': props.size === 'small'
   });
 
   return (

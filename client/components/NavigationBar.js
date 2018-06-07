@@ -36,10 +36,10 @@ class NavigationBar extends React.Component {
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Get Cooked</title>
+          <title>Get Cooked | Cater Your Events</title>
           <meta property="og:type" content="website" />
-          <meta name="description" content="Cater your events with the coolest chefs around. Compare and book professional caterers for your events." />
-          <meta property="og:description" content="Cater your events with the coolest chefs around. Compare and book professional caterers for your events." />
+          <meta name="description" content="Cater your events with the coolest chefs around. Compare and book professional, sustainable and bespoke caterers for any occasion." />
+          <meta property="og:description" content="Cater your events with the coolest chefs around. Compare and book professional, sustainable and bespoke caterers for any occasion." />
           <meta property="og:image" alt="get cooked helps you find and book caterers" content="https://scontent.flhr4-2.fna.fbcdn.net/v/t31.0-8/22904747_10159544920385357_7464408184009395937_o.jpg?oh=6ed6793c237ea32cf39212adf179997b&oe=5B11E87F" />
           <meta property="og:url" content="https://www.getcooked.co" />
         </Helmet>

@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
@@ -213,9 +214,10 @@ AdminDashboard.propTypes = {
 };
 
 function mapStateToProps(state) {
+  const CHEFS = _.orderBy(state.admin.chefs, ['acceptedBookings', 'displayName'], ['desc', 'asc']);
   return {
     user: state.user,
-    chefs: state.admin.chefs,
+    chefs: CHEFS,
     users: state.admin.users,
     events: state.admin.events,
     bookings: state.admin.bookings

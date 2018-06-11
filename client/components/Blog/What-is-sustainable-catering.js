@@ -92,6 +92,24 @@ function SustainableCatering() {
               <h3 className="gc-text gc-text--lg gc-bold">
                 Check out and book sustainable and bespoke caterers for your next event <Link to={'/caterers'} activeClassName="gc-orange" className="gc-text gc-text--lg gc-orange">here</Link>.
               </h3>
+              <br />
+              <h4 className="gc-text gc-text--lg gc-bold">
+                Additional resources on this topic
+              </h4>
+              <ul className="gc-list list-unstyled">
+                <li className="gc-margin-none gc-padding-none gc-text">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.gov.uk/government/publications/healthier-and-more-sustainable-catering-a-toolkit-for-serving-food-to-adults">Healthy and Sustainable Catering</a>
+                </li>
+                <li className="gc-margin-none gc-padding-none gc-text">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.foodethicscouncil.org/uploads/publications/Catering%20for%20Sustainability_Full_Report(1).pdf">Catering for Sustainability</a>
+                </li>
+                <li className="gc-margin-none gc-padding-none gc-text">
+                  <a target="_blank" rel="noopener noreferrer" href="https://info.lse.ac.uk/staff/services/catering/lse-catering-and-the-environment">Environmental, Sustainable and Healthy Food Policy and Targets</a>
+                </li>
+                <li className="gc-margin-none gc-padding-none gc-text">
+                  <a target="_blank" rel="noopener noreferrer" href="https://www.ncass.org.uk/mobile-catering-home/content/get-profitable/sustainability-tips-for-caterers">12 Sustainability Tips That Don&#39;t Cost The Earth</a>
+                </li>
+              </ul>
             </Col>
           </Row>
         </Col>

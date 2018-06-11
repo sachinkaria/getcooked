@@ -29,6 +29,7 @@ import RequireRole from '../components/auth/RequireRole';
 import StripeWrapper from '../components/StripeWrapper';
 import BookingACaterer from '../components/Blog/7-things-to-know-about-catering';
 import SustainableCatering from '../components/Blog/What-is-sustainable-catering';
+import Blockchain from '../components/Blog/How-blockchain-can-change-the-supply-chain';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -37,9 +38,9 @@ const routes = (
     <Route path="/terms" component={Terms} />
     <Route path="/privacy" component={Privacy} />
     <Route path="/get-quotes" component={GetQuote} />
-    <Route exact path="/inbox" component={RequireAuth(Inbox)}/>
-    <Route exact path="/bookings" component={RequireAuth(Bookings)}/>
-    <Route exact path="register" component={Register} redirect/>
+    <Route exact path="/inbox" component={RequireAuth(Inbox)} />
+    <Route exact path="/bookings" component={RequireAuth(Bookings)} />
+    <Route exact path="register" component={Register} redirect />
     <Route exact path="forgot" component={ForgotPassword} />
     <Route exact path="reset/:token" component={ResetPassword} />
     <Route path="/caterers" component={ProfileList} />
@@ -50,15 +51,16 @@ const routes = (
     <Route path="/blog">
       <Route exact path="7-things-to-consider-when-booking-a-caterer" component={BookingACaterer} />
       <Route exact path="what-is-sustainable-catering" component={SustainableCatering} />
+      <Route exact path="how-blockchain-can-change-the-food-supply-chain" component={Blockchain} />
     </Route>
     <Route path="/login" component={Login} />
-    <Route exact path="/logout" component={Logout}  />
+    <Route exact path="/logout" component={Logout} />
     <Route path="setup">
-      <Route exact path="personal" component={PersonalSetup}/>
-      <Route exact path="basics" component={BasicSetup}/>
-      <Route exact path="photos" component={PhotosSetup}/>
-      <Route exact path="services" component={ServicesSetup}/>
-      <Route exact path="food" component={FoodSetup}/>
+      <Route exact path="personal" component={PersonalSetup} />
+      <Route exact path="basics" component={BasicSetup} />
+      <Route exact path="photos" component={PhotosSetup} />
+      <Route exact path="services" component={ServicesSetup} />
+      <Route exact path="food" component={FoodSetup} />
       <Route exact path="payment" component={StripeWrapper(PaymentSetup)} />
     </Route>
     <Route path="dashboard">

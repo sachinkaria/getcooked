@@ -105,7 +105,7 @@ function create(req, res) {
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {
     if (error) return (error);
 
-    if (chef.subscription.status !== 'active' && chef.stripe.customerId) {
+    if (chef.subscription.status !== 'active' && chef.stripe.customerId && chef.stripe.sourceId) {
       const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
       const SUBSCRIPTION_START_DATE = moment(TIME).unix();
 
@@ -151,7 +151,7 @@ function create(req, res) {
       const hostname = 'http://'.concat(req.headers.host).concat('/setup/payment');
       const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
       const EMAIL_DATA = {
-        subject: 'Update your payment details',
+        subject: 'Update Your Payment Details',
         recipient: chef.companyEmail
       };
       const ENQUIRY_EMAIL_DATA = {

@@ -14,10 +14,18 @@ function Blockchain() {
         <meta charSet="utf-8" />
         <title>How Blockchain Can Change the Food Supply Chain | Get Cooked</title>
         <link rel="canonical" href="https://www.getcooked.co/blog/how-blockchain-can-change-the-food-supply-chain" />
-        <meta name="description" content="What determines a sustainable caterer? Food and dinnerware contributes as an significant source of waste." />
-        <meta property="og:description" content="What determines a sustainable caterer? Food and dinnerware contributes as an significant source of waste." />
-        <meta property="og:image" alt="What is sustainable catering" content="https://www.getcooked.co/images/carrots.jpg" />
-        <meta property="og:url" content="https://www.getcooked.co/blog/what-is-sustainable-catering" />
+        <meta
+          name="description"
+          content="When it comes to blockchain technology most of us are still curious to see real
+                world implications and benefits that it can bring to certain industries."
+        />
+        <meta
+          property="og:description"
+          content="When it comes to blockchain technology most of us are still curious to see real
+                world implications and benefits that it can bring to certain industries."
+        />
+        <meta property="og:image" alt="how can blockchain change the food supply chain" content="https://www.getcooked.co/images/blockchaim.jpg" />
+        <meta property="og:url" content="https://www.getcooked.co/blog/how-blockchain-can-change-the-food-supply-chain" />
       </Helmet>
       <Row>
         <Col xs={12} md={8} mdOffset={2}>

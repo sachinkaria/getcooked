@@ -30,6 +30,7 @@ import StripeWrapper from '../components/StripeWrapper';
 import BookingACaterer from '../components/Blog/7-things-to-know-about-catering';
 import SustainableCatering from '../components/Blog/What-is-sustainable-catering';
 import Blockchain from '../components/Blog/How-blockchain-can-change-the-supply-chain';
+import Blog from '../components/Blog/List';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -48,7 +49,8 @@ const routes = (
       <Route path="about" component={Caterer} />
       <Route path="register" component={RegisterChef} />
     </Route>
-    <Route path="/blog">
+    <Route path="/blog" component={Blog} />
+    <Route path="blog">
       <Route exact path="7-things-to-consider-when-booking-a-caterer" component={BookingACaterer} />
       <Route exact path="what-is-sustainable-catering" component={SustainableCatering} />
       <Route exact path="how-blockchain-can-change-the-food-supply-chain" component={Blockchain} />

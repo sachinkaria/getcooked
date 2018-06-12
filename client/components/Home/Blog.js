@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router';
+import { Row, Col, Button } from 'react-bootstrap';
 import BlogThumbnail from '../BlogThumbnail';
 import '../../images/carrots.jpg';
 import '../../images/catering-3.jpg';
@@ -25,6 +26,13 @@ function Blog() {
                 heading=" What is Sustainable Catering?"
                 path={'/blog/what-is-sustainable-catering'}
               />
+            </Col>
+          </Row>
+          <Row className="gc-margin-top">
+            <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
+              <Link to={'/blog'}>
+                <Button block className="gc-btn gc-btn--orange">View more</Button>
+              </Link>
             </Col>
           </Row>
         </Col>

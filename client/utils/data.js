@@ -30,3 +30,24 @@ export const BOOKING_MODAL = {
   ACTION: 'Contact Now',
   DESCRIPTION: 'Please provide us with some information on your event and your contact details. Once you have submitted your request you will contacted by your caterer.'
 };
+
+export const POSTS = [
+  {
+    title: 'How Blockchain Can Change the Food Supply Chain',
+    image: '/images/blockchain.jpg',
+    date: '11th June 2018',
+    src: '/blog/how-blockchain-can-change-the-food-supply-chain'
+  },
+  {
+    title: '7 Things to Consider When Booking a Caterer',
+    image: '/images/catering-3.jpg',
+    date: '4th June 2018',
+    src: '/blog/7-things-to-consider-when-booking-a-caterer'
+  },
+  {
+    title: 'What is Sustainable Catering?',
+    image: '/images/carrots.jpg',
+    date: '4th June 2018',
+    src: '/blog/what-is-sustainable-catering'
+  }
+];

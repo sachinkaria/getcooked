@@ -17,7 +17,7 @@ function SustainableCatering() {
         <link rel="canonical" href="https://www.getcooked.co/blog/7-things-to-consider-when-booking-a-caterer" />
         <meta name="description" content="What determines a sustainable caterer? Food and dinnerware contributes as an significant source of waste." />
         <meta property="og:description" content="What determines a sustainable caterer? Food and dinnerware contributes as an significant source of waste." />
-        <meta property="og:image" alt="What is sustainable catering" content="https://www.getcooked.co/images/carrots.jpg" />
+        <meta property="og:image" alt="What is sustainable catering" content="https://scontent.flhr4-1.fna.fbcdn.net/v/t1.0-9/35265999_603932393338990_4796899555285139456_n.jpg?_nc_cat=0&oh=647c4a569390e488f7b31d2142e4575c&oe=5BBDB8EE" />
         <meta property="og:url" content="https://www.getcooked.co/blog/what-is-sustainable-catering" />
       </Helmet>
       <Row>

@@ -12,7 +12,7 @@ function Caterer() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Join us | Get Cooked</title>
-        <link rel="canonical" href="https://www.getcooked.co" />
+        <link rel="canonical" href="https://www.getcooked.co/caterers/about" />
         <meta name="description" content="Grow your catering business. Receive online bookings to cater events around you." />
         <meta property="og:description" content="Grow your catering business. Receive online bookings to cater events around you." />
       </Helmet>

@@ -6,7 +6,8 @@ import { Link } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/catering-3.jpg';
-
+import { POSTS } from '../../utils/data';
+import ListItem from './ListItem';
 
 function BookingACaterer() {
   return (
@@ -95,6 +96,24 @@ function BookingACaterer() {
               <p className="gc-text gc-text--lg gc-bold">
                 To get catering quotes from sustainable and bespoke caterers for your next event click <Link to={'/'} activeClassName="gc-orange" className="gc-text gc-text--lg">here</Link>.
               </p>
+            </Col>
+          </Row>
+          <hr />
+          <Row>
+            <Col xs={12}>
+              <h2 className="gc-profile-text-md gc-bold">Similar posts</h2>
+              <ListItem
+                title={POSTS[0].title}
+                image={POSTS[0].image}
+                src={POSTS[0].src}
+                date={POSTS[0].date}
+              />
+              <ListItem
+                title={POSTS[2].title}
+                image={POSTS[2].image}
+                src={POSTS[2].src}
+                date={POSTS[2].date}
+              />
             </Col>
           </Row>
         </Col>

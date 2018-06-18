@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/carrots.jpg';
+import { POSTS } from '../../utils/data';
+import ListItem from './ListItem';
 
 
 function SustainableCatering() {
@@ -110,6 +112,24 @@ function SustainableCatering() {
                   <a target="_blank" rel="noopener noreferrer" href="https://www.ncass.org.uk/mobile-catering-home/content/get-profitable/sustainability-tips-for-caterers">12 Sustainability Tips That Don&#39;t Cost The Earth</a>
                 </li>
               </ul>
+            </Col>
+          </Row>
+          <hr />
+          <Row>
+            <Col xs={12}>
+              <h2 className="gc-profile-text-md gc-bold">Similar posts</h2>
+              <ListItem
+                title={POSTS[0].title}
+                image={POSTS[0].image}
+                src={POSTS[0].src}
+                date={POSTS[0].date}
+              />
+              <ListItem
+                title={POSTS[1].title}
+                image={POSTS[1].image}
+                src={POSTS[1].src}
+                date={POSTS[1].date}
+              />
             </Col>
           </Row>
         </Col>

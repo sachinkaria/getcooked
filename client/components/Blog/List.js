@@ -7,6 +7,7 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/catering-3.jpg';
 import { POSTS } from '../../utils/data';
+import ListItem from './ListItem';
 
 
 function List() {
@@ -30,23 +31,12 @@ function List() {
           { POSTS.map(post =>
             (
               <div>
-                <Row>
-                  <Col className="hidden-xs" xs={3}>
-                    <img
-                      style={{width: '100%', height: 'auto', marginBottom: '20px' }}
-                      alt={post.title}
-                      src={post.image}
-                    />
-                  </Col>
-                  <Col xs={12} sm={9}>
-                    <Link to={post.src}>
-                      <h2 className="gc-profile-text-md gc-bold gc-margin-none">
-                        {post.title}
-                      </h2>
-                    </Link>
-                    <p className="gc-text gc-bold">{post.date}</p>
-                  </Col>
-                </Row>
+                <ListItem
+                  title={post.title}
+                  image={post.image}
+                  src={post.src}
+                  date={post.date}
+                />
                 <hr />
               </div>
             )

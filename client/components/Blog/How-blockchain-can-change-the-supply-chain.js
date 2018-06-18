@@ -2,9 +2,12 @@
  * Created by sachinkaria on 03/06/2018.
  */
 import React from 'react';
+import { Link } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/blockchain.jpg';
+import { POSTS } from '../../utils/data';
+import ListItem from './ListItem';
 
 
 function Blockchain() {
@@ -118,6 +121,24 @@ function Blockchain() {
                   <a target="_blank" rel="noopener noreferrer" href="https://www.digitaltrends.com/cool-tech/can-blockchain-bring-transparency-to-global-supply-chains/">Can blockchain bring transparency to global supply chains</a>
                 </li>
               </ul>
+            </Col>
+          </Row>
+          <hr />
+          <Row>
+            <Col xs={12}>
+              <h2 className="gc-profile-text-md gc-bold">Similar posts</h2>
+              <ListItem
+                title={POSTS[1].title}
+                image={POSTS[1].image}
+                src={POSTS[1].src}
+                date={POSTS[1].date}
+              />
+              <ListItem
+                title={POSTS[2].title}
+                image={POSTS[2].image}
+                src={POSTS[2].src}
+                date={POSTS[2].date}
+              />
             </Col>
           </Row>
         </Col>

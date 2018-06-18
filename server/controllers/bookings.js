@@ -105,7 +105,7 @@ function create(req, res) {
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {
     if (error) return (error);
 
-    if (chef.subscription.status !== 'active' && chef.stripe.customerId && chef.stripe.sourceId) {
+    if (chef.subscription.status !== 'active' && chef.stripe.sourceId) {
       const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
       const SUBSCRIPTION_START_DATE = moment(TIME).unix();
 

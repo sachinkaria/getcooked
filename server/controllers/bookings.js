@@ -105,7 +105,7 @@ function create(req, res) {
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {
     if (error) return (error);
 
-    if (chef.subscription.status !== 'active' && chef.stripe.sourceId) {
+    if ((chef.subscription.status !== 'active') && chef.stripe && chef.stripe.sourceId) {
       const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
       const SUBSCRIPTION_START_DATE = moment(TIME).unix();
 
@@ -159,13 +159,13 @@ function create(req, res) {
         recipient: chef.companyEmail
       };
 
-      if (!chef.stripe.customerId) chef.status = 'unlisted';
+      if (!chef.stripe.sourceId) chef.status = 'unlisted';
 
       chef.save((err) => {
         const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, enquiryTemplate(chef, USER, booking, HOSTNAME));
         enquiryMailer.send();
 
-        if (!chef.stripe.customerId) {
+        if (!chef.stripe.sourceId) {
           const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, hostname));
           mailer.send();
         }

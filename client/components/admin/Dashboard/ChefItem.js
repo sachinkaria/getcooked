@@ -82,6 +82,14 @@ function ChefItem({...chef}) {
                   Send Booking
                 </Button>
               }
+              {
+                chef.minimumPerHeadBudget &&
+                <p>Per Head: £{chef.minimumPerHeadBudget}</p>
+              }
+              {
+                chef.minimumTotalBudget &&
+                <p>Total: £{chef.minimumTotalBudget}</p>
+              }
             </div>
           </Col>
         </Row>

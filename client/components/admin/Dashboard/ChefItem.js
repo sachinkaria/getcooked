@@ -6,7 +6,7 @@ import ProfilePicture from '../../chefs/profile/ProfilePicture';
 import Status from '../../Status';
 import ImageUpload from '../../ImageUpload';
 
-function ChefItem({...chef}) {
+function ChefItem({ ...chef }) {
   return (
     <Panel className="gc-panel">
       <Panel.Body>
@@ -16,7 +16,7 @@ function ChefItem({...chef}) {
           </Col>
           <Col xs={6} md={7}>
             <p className="gc-text gc-bold gc-margin-none">{chef.displayName}</p>
-            <Status status={chef.status}/>
+            <Status status={chef.status} />
             <p>Name: {chef.firstName ? chef.firstName.concat(' ').concat(chef.lastName) : 'NO NAME'} </p>
             <p>Email: {chef.email}</p>
             <p>Contact Number: {chef.contactNumber}</p>
@@ -84,11 +84,11 @@ function ChefItem({...chef}) {
               }
               {
                 chef.minimumPerHeadBudget &&
-                <p>Per Head: £{chef.minimumPerHeadBudget}</p>
+                <p className="text-left gc-margin-top">Per Head: £{chef.minimumPerHeadBudget}</p>
               }
               {
                 chef.minimumTotalBudget &&
-                <p>Total: £{chef.minimumTotalBudget}</p>
+                <p className="text-left">Total: £{chef.minimumTotalBudget}</p>
               }
             </div>
           </Col>

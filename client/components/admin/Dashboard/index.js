@@ -134,6 +134,8 @@ class AdminDashboard extends React.Component {
                         updateStatus={this.updateStatus}
                         createBooking={this.props.adminCreateBooking}
                         acceptedBookings={chef.acceptedBookings}
+                        minimumPerHeadBudget={chef.minimumPerHeadBudget}
+                        minimumTotalBudget={chef.minimumTotalBudget}
                       />
                     )
                   )}

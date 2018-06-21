@@ -41,8 +41,9 @@ export function createSource(source, route) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.post('/api/stripe/sources', source, AUTH_HEADERS).then(() => {
-      getCurrentUser();
       browserHistory.push(route);
+      window.location.reload();
+      getCurrentUser();
     }).catch(() => {
       errorHandler(dispatch, 'Sorry, there was a problem saving your cards details.');
     });

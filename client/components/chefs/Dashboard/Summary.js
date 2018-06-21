@@ -24,7 +24,7 @@ class Summary extends React.Component {
       const NAME = item.name;
       const PATH = item.path;
       const REQUIRED = item.required;
-      const USER_FIELD = user[FIELD] && user[FIELD].length > 0;
+      const USER_FIELD = user[FIELD] && (user[FIELD].length > 0 || !_.isEmpty(user[FIELD]));
       USER_FIELD ?
         (completed += 1)
         :

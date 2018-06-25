@@ -109,10 +109,10 @@ function BookingACaterer() {
                 date={POSTS[0].date}
               />
               <ListItem
-                title={POSTS[2].title}
-                image={POSTS[2].image}
-                src={POSTS[2].src}
-                date={POSTS[2].date}
+                title={POSTS[3].title}
+                image={POSTS[3].image}
+                src={POSTS[3].src}
+                date={POSTS[3].date}
               />
             </Col>
           </Row>

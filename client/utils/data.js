@@ -34,6 +34,12 @@ export const BOOKING_MODAL = {
 
 export const POSTS = [
   {
+    title: 'How is technology helping us reduce food waste?',
+    image: '/images/food-waste.jpg',
+    date: '25th June 2018',
+    src: '/blog/how-is-technology-helping-us-reduce-food-waste'
+  },
+  {
     title: 'How Blockchain Can Change the Food Supply Chain',
     image: '/images/blockchain.jpg',
     date: '11th June 2018',

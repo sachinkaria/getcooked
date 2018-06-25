@@ -117,7 +117,7 @@ const UserSchema = new Schema({
 UserSchema.methods.findAcceptedBookings = function (cb) {
   const DATE_START = moment().startOf('month');
   return Booking
-    .find({ $or: [{ user: this.id }, { chef: this.id }], updatedAt: { $gte: DATE_START } })
+    .find({ $or: [{ user: this.id }, { chef: this.id }], updatedAt: { $gte: DATE_START }, status: 'accepted' })
     .lean()
     .exec(cb);
 };

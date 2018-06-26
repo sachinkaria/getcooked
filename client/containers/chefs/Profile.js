@@ -45,9 +45,6 @@ class Profile extends React.Component {
           <meta property="og:image" alt="Book the best caterers around" content={CHEF.coverPhoto} />
           <link rel="canonical" href={CANONICAL_URL} />
         </Helmet>
-        <Row className="hidden-xs">
-          <CoverPicture photoUrl={CHEF.coverPhoto} />
-        </Row>
         <Row>
           <div className="gc-profile-body">
             <Col sm={9} md={7} mdOffset={1}>
@@ -159,13 +156,13 @@ class Profile extends React.Component {
               buttonText={BOOKING_MODAL.ACTION}
               onClick={heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName })}
             >
-            <BookingForm
-              onSubmit={this.props.createBooking}
-              action="Contact now"
-            />
+              <BookingForm
+                onSubmit={this.props.createBooking}
+                action="Contact now"
+              />
             </Modal>
             <Col sm={3} xsHidden>
-              <Sticky enter="254">
+              <Sticky enter="1">
                 <Panel className="gc-panel gc-panel--translucent">
                   <Panel.Body>
                     <div className="gc-center">

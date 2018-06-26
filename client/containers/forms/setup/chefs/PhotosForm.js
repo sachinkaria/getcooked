@@ -25,7 +25,6 @@ class Photos extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.isChecked = this.isChecked.bind(this);
     this.onProfileUpload = this.onProfileUpload.bind(this);
-    this.onCoverUpload = this.onCoverUpload.bind(this);
     this.onImagesUpload = this.onImagesUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onDelete = this.onDelete.bind(this);
@@ -54,26 +53,26 @@ class Photos extends Component {
 
     reader.readAsDataURL(file);
   };
-
-  onCoverUpload(e) {
-    (this.props.user.data && this.props.user.data.coverPhoto) && this.onDelete('cover');
-
-    const reader = new FileReader();
-    const file = e.target.files[0];
-
-    reader.onload = (upload) => {
-      this.setState({
-        data_uri: upload.target.result,
-        filename: file.name,
-        filetype: file.type,
-        processing: 'cover'
-      }, () => {
-        this.handleFormSubmit('cover');
-      });
-    };
-
-    reader.readAsDataURL(file);
-  };
+  //
+  // onCoverUpload(e) {
+  //   (this.props.user.data && this.props.user.data.coverPhoto) && this.onDelete('cover');
+  //
+  //   const reader = new FileReader();
+  //   const file = e.target.files[0];
+  //
+  //   reader.onload = (upload) => {
+  //     this.setState({
+  //       data_uri: upload.target.result,
+  //       filename: file.name,
+  //       filetype: file.type,
+  //       processing: 'cover'
+  //     }, () => {
+  //       this.handleFormSubmit('cover');
+  //     });
+  //   };
+  //
+  //   reader.readAsDataURL(file);
+  // };
 
   onImagesUpload(e) {
     let FILE_NUMBER = 1;
@@ -139,17 +138,17 @@ class Photos extends Component {
             onUpload={this.onProfileUpload}
           />
         </div>
-        <div className="gc-margin-bottom--lg">
-          <label className="gc-text gc-margin-bottom">Cover Photo</label>
-          <br />
-          <ImageUpload
-            inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}
-            type="cover"
-            image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}
-            onDelete={() => this.onDelete('cover')}
-            onUpload={this.onCoverUpload}
-          />
-        </div>
+        {/*<div className="gc-margin-bottom--lg">*/}
+          {/*<label className="gc-text gc-margin-bottom">Cover Photo</label>*/}
+          {/*<br />*/}
+          {/*<ImageUpload*/}
+            {/*inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}*/}
+            {/*type="cover"*/}
+            {/*image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}*/}
+            {/*onDelete={() => this.onDelete('cover')}*/}
+            {/*onUpload={this.onCoverUpload}*/}
+          {/*/>*/}
+        {/*</div>*/}
         <div className="gc-margin-bottom--lg">
           <label className="gc-text">Photos</label>
           <p className="gc-text gc-grey">Share photos of your team, food, drinks and more. Give your viewers a visual idea of the delicous treats they can experience when they work with you!</p>

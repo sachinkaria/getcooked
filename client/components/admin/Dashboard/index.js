@@ -26,7 +26,9 @@ class AdminDashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      chefs: [],
       selectedChef: '',
+      selectedStatus: '',
       data_uri: '',
       filename: '',
       filetype: '',
@@ -37,6 +39,7 @@ class AdminDashboard extends React.Component {
     this.onImagesUpload = this.onImagesUpload.bind(this);
     this.selectChef = this.selectChef.bind(this);
     this.handleChefSelect = this.handleChefSelect.bind(this);
+    this.handleStatusSelect = this.handleStatusSelect.bind(this);
   }
 
   componentWillMount() {
@@ -45,6 +48,10 @@ class AdminDashboard extends React.Component {
     this.props.adminListUsers();
     this.props.adminListEvents();
     this.props.adminListBookings();
+  }
+
+  componentWillReceiveProps(){
+    this.setState({ chefs: this.props.chefs });
   }
 
   onImagesUpload(e) {
@@ -95,9 +102,16 @@ class AdminDashboard extends React.Component {
     }
   }
 
+  handleStatusSelect(e){
+    this.setState({ selectedStatus: e.target.value }, () => {
+      const CHEFS = _.filter(this.props.chefs, o => o.status === this.state.selectedStatus);
+      return this.setState({ chefs: CHEFS });
+    });
+  }
+
   render() {
     const { user } = this.props;
-    const { chefs, users, events, bookings } = this.props;
+    const { users, events, bookings } = this.props;
 
     if (!user.data) {
       return <div>Loading...</div>;
@@ -111,12 +125,27 @@ class AdminDashboard extends React.Component {
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
             </Col>
+            <Col smOffset={0} sm={3}>
+              <div>
+                <select
+                  className="form-control gc-input"
+                  onChange={this.handleStatusSelect}
+                >
+                  <option value={0}>All</option>
+                  <option key="pending" value="pending">Pending</option>
+                  <option key="listed" value="listed">Listed</option>
+                  <option key="unlisted" value="unlisted">Unlisted</option>
+                  <option key="hidden" value="hidden">Hidden</option>
+
+                </select>
+                <Button onClick={this.props.updateMonthlyCoupons}>Add Coupons</Button>
+              </div>
+            </Col>
             <Col smOffset={0} sm={7}>
               {
-                this.props.location.pathname.includes('chefs') &&
+                (this.props.location.pathname.includes('chefs') && this.state.chefs.length > 0) &&
                 <div>
-                  <Button onClick={this.props.updateMonthlyCoupons}>Add Coupons</Button>
-                  {chefs.map(chef =>
+                  {this.state.chefs.map(chef =>
                     (
                       <ChefItem
                         id={chef._id}
@@ -180,7 +209,7 @@ class AdminDashboard extends React.Component {
                     onChange={this.handleChefSelect}
                   >
                     <option value={0}>All</option>
-                    {chefs.map(item =>
+                    {this.state.chefs.map(item =>
                       (
                         <option key={item._id} value={item._id}>{item.displayName}</option>
                       )

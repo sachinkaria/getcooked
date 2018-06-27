@@ -41,7 +41,7 @@ class Profile extends React.Component {
       <div>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>{_.startCase(_.toLower(CHEF.displayName))} | Get Cooked</title>
+          <title>Get Cooked | {_.startCase(_.toLower(CHEF.displayName))}</title>
           <meta property="og:image" alt="Book the best caterers around" content={CHEF.coverPhoto} />
           <link rel="canonical" href={CANONICAL_URL} />
         </Helmet>

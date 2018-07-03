@@ -151,7 +151,7 @@ class BasicInfo extends Component {
               maxLength="70"
             />
           </div>
-          <label className="gc-text">Description</label>
+          <label className="gc-text">Description (separate paragraphs with ***)</label>
           <div>
             <Field
               name="description"

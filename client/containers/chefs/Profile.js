@@ -35,6 +35,7 @@ class Profile extends React.Component {
     const NUMBER_OF_REVIEWS = this.props.chef.comments.length;
     const RATING = this.props.chef.rating;
     const CANONICAL_URL = 'https://www.getcooked.co/caterers/profile/'.concat(this.props.params.id);
+    const DESCRIPTION = CHEF.description.split("***");
     heap.track('View Caterer', { name: CHEF.displayName, id: this.props.params.id });
 
     return (
@@ -72,7 +73,7 @@ class Profile extends React.Component {
                   </div>
                   <hr />
                   <div>
-                    <Description description={CHEF.description} />
+                    <Description description={DESCRIPTION} />
                   </div>
                   <hr />
                   <div>

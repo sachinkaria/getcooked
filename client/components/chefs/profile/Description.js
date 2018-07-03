@@ -2,8 +2,10 @@ import React from 'react';
 
 const Description = (props) => {
   return (
-    <div className="gc-center">
-      <p className="gc-text gc-text--slim">{props.description}</p>
+    <div>
+      {
+        props.description.map(paragraph => <p key={paragraph} className="gc-text gc-text--slim gc-margin-bottom">{paragraph}</p>)
+      }
     </div>
   );
 };

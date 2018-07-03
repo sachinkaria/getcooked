@@ -87,6 +87,12 @@ const UserSchema = new Schema({
     additionalServices: [{
       type: String
     }],
+    foodSuppliers: [
+      {
+        name: String,
+        description: String
+      }
+    ],
     stripe: {
       customerId: String,
       sourceId: String,

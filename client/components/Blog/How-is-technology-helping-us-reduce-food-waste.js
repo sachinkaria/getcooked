@@ -18,16 +18,16 @@ function Blockchain() {
         <link rel="canonical" href="https://www.getcooked.co/blog/how-is-technology-helping-us-reduce-food-waste" />
         <meta
           name="description"
-          content="When it comes to blockchain technology most of us are still curious to see real
-                world implications and benefits that it can bring to certain industries."
+          content="Did you know that roughly one third of all food produced is either lost or wasted? This amounts
+          to around 1.3 billion tonnes of food every single year."
         />
         <meta
           property="og:description"
-          content="When it comes to blockchain technology most of us are still curious to see real
-                world implications and benefits that it can bring to certain industries."
+          content="Did you know that roughly one third of all food produced is either lost or wasted? This amounts
+          to around 1.3 billion tonnes of food every single year."
         />
-        <meta property="og:image" alt="how can blockchain change the food supply chain" content="https://scontent.flhr4-1.fna.fbcdn.net/v/t1.0-9/35241502_603932300005666_8121026344843739136_n.jpg?_nc_cat=0&oh=ad7db958216bedfd772f17f08d0b9656&oe=5BA34E12" />
-        <meta property="og:url" content="https://www.getcooked.co/blog/how-blockchain-can-change-the-food-supply-chain" />
+        <meta property="og:image" alt="how is technology helping us reduce food waste" content="https://www.getcooked.co/images/food-waste.jpg" />
+        <meta property="og:url" content="https://www.getcooked.co/blog/how-is-technology-helping-us-reduce-food-waste" />
       </Helmet>
       <Row>
         <Col xs={12} md={8} mdOffset={2}>

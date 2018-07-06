@@ -53,7 +53,7 @@ class Register extends Component {
       <Col sm={redirect ? 6 : 12} smOffset={redirect ? 3 : 0}>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Sign Up | Get Cooked</title>
+          <title>Get Cooked | Sign Up</title>
           <link rel="canonical" href="https://www.getcooked.co/register" />
         </Helmet>
         <div className="gc-panel-light gc-center">

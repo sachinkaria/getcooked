@@ -15,7 +15,7 @@ function List() {
     <section className="gc-section">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Blog | Get Cooked</title>
+        <title>Get Cooked | Blog</title>
         <link rel="canonical" href="https://www.getcooked.co/blog" />
       </Helmet>
       <Row className="gc-margin-bottom--lg">

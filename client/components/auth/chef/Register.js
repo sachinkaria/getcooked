@@ -52,7 +52,7 @@ class RegisterChef extends Component {
       <Row>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Sign Up | Get Cooked</title>
+          <title>Get Cooked | Sign Up</title>
           <link rel="canonical" href="https://www.getcooked.co/caterers/register" />
         </Helmet>
         <Col sm={8} smOffset={2} md={4} mdOffset={4}>

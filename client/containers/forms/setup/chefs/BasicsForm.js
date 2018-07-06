@@ -45,7 +45,6 @@ class BasicInfo extends Component {
   }
 
   handleFormSubmit(formProps) {
-    console.log(formProps);
     this.props.updateUser(formProps, null, true);
   }
 
@@ -162,8 +161,7 @@ class BasicInfo extends Component {
 }
 
 BasicInfo.propTypes = {
-  updateUser: React.PropTypes.func,
-  errorMessage: React.PropTypes.string
+  updateUser: React.PropTypes.func
 };
 
 function mapStateToProps(state) {

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Col, Panel, Row, Button } from 'react-bootstrap';
+import { Col, Row, Button } from 'react-bootstrap';
 import _ from 'lodash';
 import { updateUser, getCurrentUser } from '../../../../actions/users';
 import { FOOD_SERVICES, CUISINES } from '../../../../utils/data';
+import renderField from '../../../../components/forms/renderField';
 import renderCheckbox from '../../../../components/forms/renderCheckbox';
 
 const form = reduxForm({
@@ -16,7 +17,8 @@ class FoodServices extends Component {
     super(props);
     this.state = {
       services: props.user.data ? props.user.data.services : [],
-      cuisines: props.user.data ? props.user.data.cuisines : []
+      cuisines: props.user.data ? props.user.data.cuisines : [],
+      foodSuppliers: []
     };
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -28,8 +30,8 @@ class FoodServices extends Component {
     this.props.getCurrentUser();
   }
 
-  handleFormSubmit() {
-    this.props.updateUser(this.state, null, true);
+  handleFormSubmit(formProps) {
+    this.setState({ foodSuppliers: formProps.foodSuppliers || null }, () => this.props.updateUser(this.state, null, true));
   }
 
   handler(event, category) {
@@ -67,7 +69,7 @@ class FoodServices extends Component {
               ))
             }
           </Row>
-          <br />
+          <hr />
           <label className="gc-text">Cuisines</label>
           <Row>
             {
@@ -83,6 +85,59 @@ class FoodServices extends Component {
                 </Col>
               ))
             }
+          </Row>
+          <hr />
+          <label className="gc-text">Sources and Suppliers</label>
+          <p className="gc-profile-text-xs gc-grey">Give us a little bit of information the suppliers you commonly use and tell us a little bit about them.</p>
+          <Row>
+            <Col xs={12}>
+              <div>
+                <Field
+                  name="foodSuppliers[0].name"
+                  placeholder="e.g. Ocado."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <Field
+                  name="foodSuppliers[0].description"
+                  placeholder="e.g. Ocado supply seasonal ingredients that are sourced locally.."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <hr />
+                <Field
+                  name="foodSuppliers[1].name"
+                  placeholder="e.g. Ocado."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <Field
+                  name="foodSuppliers[1].description"
+                  placeholder="e.g. Ocado supply seasonal ingredients that are sourced locally.."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <hr />
+                <Field
+                  name="foodSuppliers[2].name"
+                  placeholder="e.g. Ocado."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <Field
+                  name="foodSuppliers[2].description"
+                  placeholder="e.g. Ocado supply seasonal ingredients that are sourced locally.."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+              </div>
+            </Col>
           </Row>
           <Col xs={10} xsOffset={1} sm={4} smOffset={4} >
             <Button block type="submit" className="gc-btn gc-btn--orange gc-margin-top">
@@ -102,9 +157,14 @@ FoodServices.propTypes = {
 };
 
 function mapStateToProps(state) {
+  // const USER = state.user;
+  // state.user.foodSuppliers[0] && (USER.source1 = state.user.foodSuppliers[0]);
+  // state.user.foodSuppliers[1] && (USER.source2 = state.user.foodSuppliers[1]);
+  // state.user.foodSuppliers[2] && (USER.source3 = state.user.foodSuppliers[2]);
   return {
     errorMessage: state.user.error,
-    user: state.user
+    user: state.user,
+    initialValues: state.user.data
   };
 }
 

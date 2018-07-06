@@ -6,6 +6,7 @@ import _ from 'lodash';
 import { updateUser } from '../../../actions/users';
 import { FOOD_SERVICES, CUISINES } from '../../../utils/data';
 import renderCheckbox from '../../forms/renderCheckbox';
+import renderField from '../../forms/renderField';
 import Wizard from '../../Wizard';
 import Steps from './steps.json';
 
@@ -26,8 +27,8 @@ class Services extends Component {
     this.isChecked = this.isChecked.bind(this);
   }
 
-  handleFormSubmit() {
-    this.props.updateUser(this.state, Steps.food.onNext);
+  handleFormSubmit(formProps) {
+    this.setState({ foodSuppliers: formProps.foodSuppliers || null }, () => this.props.updateUser(this.state, Steps.food.onNext));
   }
 
   handler(event, category) {
@@ -65,42 +66,94 @@ class Services extends Component {
         <div>
           <Panel className="gc-panel">
             <Panel.Body>
-            <label className="gc-text">Food Services</label>
-            <Row>
-              {
-                FOOD_SERVICES.map(item => (
-                  <Col sm={6} key={item}>
-                    <Field
-                      checked={this.isChecked(item, this.state.services)}
-                      name={item}
-                      type="checkbox"
-                      component={renderCheckbox}
-                      onChange={e => this.handler(e, 'services')}
-                    />
-                  </Col>
-                ))
-              }
-            </Row>
+              <label className="gc-text">Food Services</label>
+              <Row>
+                {
+                  FOOD_SERVICES.map(item => (
+                    <Col sm={6} key={item}>
+                      <Field
+                        checked={this.isChecked(item, this.state.services)}
+                        name={item}
+                        type="checkbox"
+                        component={renderCheckbox}
+                        onChange={e => this.handler(e, 'services')}
+                      />
+                    </Col>
+                  ))
+                }
+              </Row>
             </Panel.Body>
           </Panel>
           <Panel className="gc-panel">
             <Panel.Body>
-            <label className="gc-text">Cuisines</label>
-            <Row>
-              {
-                CUISINES.map(item => (
-                  <Col sm={6} key={item}>
-                    <Field
-                      checked={this.isChecked(item, this.state.cuisines)}
-                      name={item}
-                      type="checkbox"
-                      component={renderCheckbox}
-                      onChange={e => this.handler(e, 'cuisines')}
-                    />
-                  </Col>
-                ))
-              }
-            </Row>
+              <label className="gc-text">Cuisines</label>
+              <Row>
+                {
+                  CUISINES.map(item => (
+                    <Col sm={6} key={item}>
+                      <Field
+                        checked={this.isChecked(item, this.state.cuisines)}
+                        name={item}
+                        type="checkbox"
+                        component={renderCheckbox}
+                        onChange={e => this.handler(e, 'cuisines')}
+                      />
+                    </Col>
+                  ))
+                }
+              </Row>
+            </Panel.Body>
+          </Panel>
+          <Panel className="gc-panel">
+            <Panel.Body>
+              <label className="gc-text">Sources and Suppliers</label>
+              <p className="gc-profile-text-xs gc-grey">Give us a little bit of information the suppliers you commonly use and tell us a little bit about them.</p>
+              <div>
+                <Field
+                  name="foodSuppliers[0].name"
+                  placeholder="e.g. Ocado."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <Field
+                  name="foodSuppliers[0].description"
+                  placeholder="e.g. Ocado supply seasonal ingredients that are sourced locally.."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <hr />
+                <Field
+                  name="foodSuppliers[1].name"
+                  placeholder="e.g. Ocado."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <Field
+                  name="foodSuppliers[1].description"
+                  placeholder="e.g. Ocado supply seasonal ingredients that are sourced locally.."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <hr />
+                <Field
+                  name="foodSuppliers[2].name"
+                  placeholder="e.g. Ocado."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+                <Field
+                  name="foodSuppliers[2].description"
+                  placeholder="e.g. Ocado supply seasonal ingredients that are sourced locally.."
+                  className="form-control gc-input gc-margin-bottom"
+                  component={renderField}
+                  type="text"
+                />
+              </div>
             </Panel.Body>
           </Panel>
         </div>
@@ -118,7 +171,8 @@ Services.propTypes = {
 function mapStateToProps(state) {
   return {
     errorMessage: state.user.error,
-    user: state.user
+    user: state.user,
+    initialValues: state.user.data
   };
 }
 

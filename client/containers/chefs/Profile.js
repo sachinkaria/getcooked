@@ -10,11 +10,12 @@ import Heading from '../../components/chefs/profile/Heading';
 import Services from '../../components/chefs/profile/Services';
 import ServiceTypes from '../../components/chefs/profile/ServiceTypes';
 import ProfilePicture from '../../components/chefs/profile/ProfilePicture';
-import CoverPicture from '../../components/chefs/profile/CoverPicture';
 import Description from '../../components/chefs/profile/Description';
 import Images from '../../components/chefs/profile/Images';
 import Reviews from '../../components/chefs/reviews/List';
 import Ratings from '../../components/chefs/profile/Ratings';
+import FoodSuppliers from '../../components/chefs/profile/FoodSources';
+import CoverPicture from '../../components/chefs/profile/CoverPicture';
 import Sticky from '../../components/Sticky';
 import Modal from '../../containers/Modal';
 import { BOOKING_MODAL } from '../../utils/data';
@@ -35,7 +36,8 @@ class Profile extends React.Component {
     const NUMBER_OF_REVIEWS = this.props.chef.comments.length;
     const RATING = this.props.chef.rating;
     const CANONICAL_URL = 'https://www.getcooked.co/caterers/profile/'.concat(this.props.params.id);
-    const DESCRIPTION = CHEF.description.split("***");
+    const DESCRIPTION = CHEF.description.split('***');
+    const SUPPLIERS = CHEF.foodSuppliers.filter(supplier => supplier.name && supplier.description);
     heap.track('View Caterer', { name: CHEF.displayName, id: this.props.params.id });
 
     return (
@@ -111,6 +113,12 @@ class Profile extends React.Component {
                         (CHEF.additionalServices.length > 0) &&
                         <Col xs={10} xsOffset={1} sm={6} smOffset={0}>
                           <Services title="Additional Services" services={CHEF.additionalServices.sort()} />
+                        </Col>
+                      }
+                      {
+                        <Col xs={12}>
+                          <hr />
+                          <FoodSuppliers sources={SUPPLIERS} />
                         </Col>
                       }
                     </Row>

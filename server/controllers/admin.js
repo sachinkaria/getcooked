@@ -25,6 +25,7 @@ module.exports.unlist = unlist;
 module.exports.uploadPhotos = uploadPhotos;
 module.exports.addMonthlyCoupons = addMonthlyCoupons;
 module.exports.createBooking = createBooking;
+module.exports.updateEvent = updateEvent;
 
 function allChefs(req, res) {
   User.find({ role: 'chef' }).exec((err, chefs) => {
@@ -135,6 +136,16 @@ function unlist(req, res) {
 
 function createBooking(req, res) {
   return BookingController.create(req, res);
+}
+
+function updateEvent(req, res) {
+  const EVENT_ID = req.params.id;
+  const STATUS = req.body;
+  Event.findOne({ _id: EVENT_ID }).exec((err, event) => {
+    _.extend(event, STATUS);
+    event.save();
+    res.jsonp(event);
+  });
 }
 
 function uploadPhotos(req, res) {

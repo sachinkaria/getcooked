@@ -4,7 +4,7 @@ import classNames from 'classnames';
 const Status = (props) => {
   const classes = classNames('gc-text gc-text--xl gc-bold gc-inline-block--without-margin', {
     'gc-dark-yellow': props.status === 'pending',
-    'gc-light-green': props.status === 'listed',
+    'gc-light-green': props.status === 'listed' || props.status === 'confirmed',
     'gc-red': props.status === 'unlisted'
   });
   return (

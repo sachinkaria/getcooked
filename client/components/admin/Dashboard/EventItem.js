@@ -2,8 +2,9 @@ import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router';
 import {Row, Col, Panel, Button } from 'react-bootstrap';
+import Status from '../../Status';
 
-function EventItem({userItem, booking}) {
+function EventItem({userItem, booking, updateEvent}) {
   return (
     <Row>
       <Col xs={12}>
@@ -14,6 +15,9 @@ function EventItem({userItem, booking}) {
                 {userItem.firstName} {userItem.lastName}
               </p>
               <p className="gc-text text-right">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
+              <div className="text-right">
+                <Status status={booking.status} />
+              </div>
             </Panel.Title>
           </Panel.Heading>
           <Panel.Collapse>
@@ -96,8 +100,22 @@ function EventItem({userItem, booking}) {
                 </Col>
                 <Col xs={12} sm={4}>
                   <Link to={'/admin/dashboard/chefs'}>
-                    <Button onClick={() => sessionStorage.setItem('event', JSON.stringify(booking))}>Send to Caterers</Button>
+                    <Button className="gc-btn gc-btn--white gc-margin-bottom--sm" onClick={() => sessionStorage.setItem('event', JSON.stringify(booking))}>
+                      Send to Caterers
+                    </Button>
                   </Link>
+                  {
+                    booking.status === 'pending' &&
+                      <Button className="gc-btn gc-btn--orange" onClick={() => updateEvent(booking._id, { status: 'contacted' })}>
+                        Mark as Contacted
+                      </Button>
+                  }
+                  {
+                    booking.status === 'contacted' &&
+                    <Button className="gc-btn gc-btn--orange" onClick={() => updateEvent(booking._id, { status: 'confirmed' })}>
+                      Mark as Confirmed
+                    </Button>
+                  }
                 </Col>
               </Row>
               {

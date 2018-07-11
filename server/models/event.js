@@ -40,13 +40,9 @@ const EventSchema = new Schema({
     required: true
   },
   additionalInformation: String,
-  read: {
-    type: Boolean,
-    default: false
-  },
   status: {
     type: String,
-    enum: ['pending', 'accepted', 'declined'],
+    enum: ['pending', 'contacted', 'confirmed'],
     default: 'pending'
   },
   budget: Number,

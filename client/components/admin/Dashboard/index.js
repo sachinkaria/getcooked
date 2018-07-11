@@ -12,7 +12,8 @@ import {
   adminListEvents,
   adminCreateBooking,
   adminListBookings,
-  adminListBookingsByChef
+  adminListBookingsByChef,
+  updateEvent
 } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ChefItem from './ChefItem';
@@ -195,6 +196,7 @@ class AdminDashboard extends React.Component {
                         key={item._id}
                         userItem={item.contactDetails}
                         booking={item}
+                        updateEvent={this.props.updateEvent}
                       />
                     )
                   )}
@@ -265,5 +267,6 @@ export default connect(mapStateToProps, {
   adminListEvents,
   adminCreateBooking,
   adminListBookings,
-  adminListBookingsByChef
+  adminListBookingsByChef,
+  updateEvent
 })(AdminDashboard);

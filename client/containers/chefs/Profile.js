@@ -37,7 +37,7 @@ class Profile extends React.Component {
     const RATING = this.props.chef.rating;
     const CANONICAL_URL = 'https://www.getcooked.co/caterers/profile/'.concat(this.props.params.id);
     const DESCRIPTION = CHEF.description.split('***');
-    const SUPPLIERS = CHEF.foodSuppliers.filter(supplier => supplier.name && supplier.description);
+    const SUPPLIERS = CHEF.foodSuppliers && CHEF.foodSuppliers.filter(supplier => supplier.name && supplier.description);
     heap.track('View Caterer', { name: CHEF.displayName, id: this.props.params.id });
 
     return (
@@ -115,7 +115,7 @@ class Profile extends React.Component {
                           <Services title="Additional Services" services={CHEF.additionalServices.sort()} />
                         </Col>
                       }
-                      {
+                      {(SUPPLIERS.length > 0) &&
                         <Col xs={12}>
                           <hr />
                           <FoodSuppliers sources={SUPPLIERS} />

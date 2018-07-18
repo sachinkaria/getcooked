@@ -26,36 +26,51 @@ const ContactSchema = {
 };
 
 const EventSchema = new Schema({
-  chef: {
-    type: Schema.ObjectId,
-    ref: 'User'
+    chef: {
+      type: Schema.ObjectId,
+      ref: 'User'
+    },
+    contactDetails: ContactSchema,
+    address: AddressSchema,
+    date: Date,
+    startTime: Date,
+    endTime: Date,
+    numberOfPeople: Number,
+    eventType: [{
+      type: String,
+      required: true
+    }],
+    services: [{
+      type: String,
+      required: true
+    }],
+    foodStyle: [{
+      type: String,
+      required: true
+    }],
+    kitchenAvailable: Boolean,
+    staffRequired: [{
+      type: String,
+      required: true
+    }],
+    additionalEquipment: [{
+      type: String,
+      required: true
+    }],
+    additionalInformation: String,
+    status: {
+      type: String,
+      enum: ['pending', 'contacted', 'confirmed'],
+      default: 'pending'
+    },
+    budget: Number,
+    foodServices: [{
+      type: String
+    }],
   },
-  contactDetails: ContactSchema,
-  address: AddressSchema,
-  date: Date,
-  numberOfPeople: Number,
-  eventType: {
-    type: String,
-    enum: ['private dinner', 'private lunch', 'corporate event', 'wedding', 'party', 'festival', 'BBQ', 'other'],
-    required: true
-  },
-  additionalInformation: String,
-  status: {
-    type: String,
-    enum: ['pending', 'contacted', 'confirmed'],
-    default: 'pending'
-  },
-  budget: Number,
-  services: [{
-    type: String
-  }],
-  foodServices: [{
-    type: String
-  }],
-},
-{
-  timestamps: true
-}
+  {
+    timestamps: true
+  }
 );
 
 module.exports = mongoose.model('Event', EventSchema);

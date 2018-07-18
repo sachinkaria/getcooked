@@ -50,11 +50,33 @@ class DateAndPlaceForm extends Component {
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
             <label className="gc-text">Event Date</label>
-            <div>
+            <div className="gc-margin-bottom">
               <DatePicker
                 name="date"
                 date={this.state.date}
-                onChange={this.setDate} />
+                onChange={this.setDate}
+              />
+            </div>
+            <label className="gc-text">Event Time</label>
+            <div className="gc-margin-bottom">
+              <Row>
+                <Col xs={12} sm={6}>
+                  <Field
+                    name="start_time"
+                    placeholder="Start time"
+                    component={renderField}
+                    type="time"
+                  />
+                </Col>
+                <Col xs={12} sm={6}>
+                  <Field
+                    name="end_time"
+                    placeholder="End time"
+                    component={renderField}
+                    type="time"
+                  />
+                </Col>
+              </Row>
             </div>
             <label className="gc-text gc-dark-grey">Event Address</label>
             <div className="gc-margin-bottom">

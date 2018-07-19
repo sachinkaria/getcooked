@@ -22,7 +22,11 @@ function create(req, res) {
     budget: EVENT.budget,
     services: EVENT.services,
     foodServices: EVENT.foodServices,
-    contactDetails: EVENT.contactDetails
+    contactDetails: EVENT.contactDetails,
+    kitchenAvailable: EVENT.kitchenAvailable,
+    additionalEquipment: EVENT.additionalEquipment,
+    foodStyle: EVENT.foodStyle,
+    staffRequired: EVENT.staffRequired
   });
 
   event.save((bookingErr) => {

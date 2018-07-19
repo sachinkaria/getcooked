@@ -1,9 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Row } from 'react-bootstrap';
 import ContactDetailsForm from '../containers/forms/booking/ContactDetailsForm';
 import DateAndPlaceForm from '../containers/forms/booking/DateAndPlaceForm';
 import EventTypeGuestsAndBudgetForm from '../containers/forms/booking/EventTypeGuestsAndBudgetForm';
 import FoodServicesForm from '../containers/forms/booking/FoodServicesForm';
+import AdditionalServicesForm from '../containers/forms/booking/AdditionalServicesForm';
+import BudgetAdditionalInformationForm from '../containers/forms/booking/BudgetAdditionalInformationForm';
 import {createBooking} from '../actions/bookings';
 import ProgressBar from '../components/ProgressBar';
 
@@ -48,33 +51,47 @@ class BookingForm extends React.Component {
       <div>
         <div style={styles}>
           <ProgressBar
-            progress={this.state.slide / 5}
+            progress={this.state.slide / 6}
           />
         </div>
-        {this.state.slide === 1 &&
-        <DateAndPlaceForm
-          onSubmit={this.setSlide}
-        />
+        <Row>
+          {this.state.slide === 1 &&
+          <DateAndPlaceForm
+            onSubmit={this.setSlide}
+          />
+          }
+          {this.state.slide === 2 &&
+          <EventTypeGuestsAndBudgetForm
+            chef={this.props.chef}
+            onSubmit={this.setSlide}
+          />
+          }
+          {this.state.slide === 3 &&
+          <FoodServicesForm
+            withoutChef={this.props.withoutChef}
+            onSubmit={this.setSlide}
+          />
+          }
+          {this.state.slide === 4 &&
+          <AdditionalServicesForm
+            withoutChef={this.props.withoutChef}
+            onSubmit={this.setSlide}
+          />
+          }
+          {this.state.slide === 5 &&
+          <BudgetAdditionalInformationForm
+            withoutChef={this.props.withoutChef}
+            onSubmit={this.setSlide}
+          />
+          }
+          {this.state.slide === 6 &&
+          <ContactDetailsForm
+            withoutChef={this.props.withoutChef}
+            chef={this.props.chef}
+            onSubmit={this.submitEventDetails}
+          />
         }
-        {this.state.slide === 2 &&
-        <EventTypeGuestsAndBudgetForm
-          chef={this.props.chef}
-          onSubmit={this.setSlide}
-        />
-        }
-        {this.state.slide === 3 &&
-        <FoodServicesForm
-          withoutChef={this.props.withoutChef}
-          onSubmit={this.setSlide}
-        />
-        }
-        {this.state.slide === 4 &&
-        <ContactDetailsForm
-          withoutChef={this.props.withoutChef}
-          chef={this.props.chef}
-          onSubmit={this.submitEventDetails}
-        />
-        }
+        </Row>
       </div>
     );
   }

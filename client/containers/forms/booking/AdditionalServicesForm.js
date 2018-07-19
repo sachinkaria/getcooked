@@ -5,29 +5,32 @@ import { Row, Col, Button } from 'react-bootstrap';
 import { Field, reduxForm } from 'redux-form';
 import renderInputBox from '../../../components/forms/renderInputBox';
 import renderCheckBox from '../../../components/forms/renderCheckbox';
-import { FOOD_STYLE, CUISINES } from '../../../utils/data';
+import { STAFF, EQUIPMENT } from '../../../utils/data';
 
 const form = reduxForm({
-  form: 'food-services',
-  fields: ['foodServices', 'foodStyle', 'additionalInformation']
+  form: 'additional-staffRequired',
+  fields: ['kitchenAvailable', 'staffRequired', 'additionalEquipment']
 });
 
 class FoodServicesForm extends Component {
   constructor(props) {
     super(props);
-    const SERVICES = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).foodServices;
-    const FOOD_SERVICES = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).foodStyle;
-    this.state = { foodServices: SERVICES || [], foodStyle: FOOD_SERVICES || ['other'] };
+    const STAFF = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).staffRequired;
+    const EQUIPMENT = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).additionalEquipment;
+    const KITCHEN_AVAILABLE = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).kitchenAvailable;
+    this.state = { staffRequired: STAFF || [], additionalEquipment: EQUIPMENT || [], kitchenAvailable: KITCHEN_AVAILABLE || null };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   handleFormSubmit(formProps) {
-    formProps.foodServices = this.state.foodServices;
-    formProps.foodStyle = this.state.foodStyle;
+    formProps.staffRequired = this.state.staffRequired;
+    formProps.additionalEquipment = this.state.additionalEquipment;
+    formProps.kitchenAvailable = this.state.kitchenAvailable;
+    formProps.chef = (!this.props.withoutChef && this.props.chef) && this.props.chef._id;
     const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
     const FINAL_EVENT = _.extend(EVENT, formProps);
     sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
-    this.props.onSubmit(4);
+    this.props.onSubmit(5);
   }
 
   handler(event, category) {
@@ -40,6 +43,10 @@ class FoodServicesForm extends Component {
     }
   }
 
+  radioHandler(value) {
+    this.setState({ kitchenAvailable: value });
+  }
+
   isChecked(item, state) {
     return state && state.indexOf(item) > -1;
   }
@@ -50,45 +57,60 @@ class FoodServicesForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
-            <label className="gc-text">What type of food style would you like to have?</label>
+            <label className="gc-text">Would you like to have any staffRequired at your event?</label>
             <Row className="gc-margin-bottom">
               {
-                FOOD_STYLE.map(item => (
+                STAFF.map(item => (
                   <Col xs={6} key={item}>
                     <Field
-                      checked={this.isChecked(item, this.state.foodStyle)}
+                      checked={this.isChecked(item, this.state.staffRequired)}
                       name={item}
                       type="checkbox"
                       component={renderCheckBox}
-                      onChange={e => this.handler(e, 'foodStyle')}
+                      onChange={e => this.handler(e, 'staffRequired')}
                     />
                   </Col>
                 ))
               }
             </Row>
-            <label className="gc-text">Type of Food</label>
+            <label className="gc-text">Would you like your caterer to provide anything else?</label>
             <Row className="gc-margin-bottom">
               {
-                CUISINES.map(item => (
+                EQUIPMENT.map(item => (
                   <Col xs={6} key={item}>
                     <Field
-                      checked={this.isChecked(item, this.state.foodServices)}
+                      checked={this.isChecked(item, this.state.additionalEquipment)}
                       name={item}
                       type="checkbox"
                       component={renderCheckBox}
-                      onChange={e => this.handler(e, 'foodServices')}
+                      onChange={e => this.handler(e, 'additionalEquipment')}
                     />
                   </Col>
                 ))
               }
             </Row>
+            <label className="gc-text">Are there kitchen facilities available at the location?</label>
+            <Field
+              component={renderCheckBox}
+              name="Yes"
+              type="radio"
+              onChange={() => this.radioHandler(true)}
+              checked={this.state.kitchenAvailable === true}
+            />
+            <Field
+              component={renderCheckBox}
+              name="No"
+              type="radio"
+              checked={this.state.kitchenAvailable === false}
+              onChange={() => this.radioHandler(false)}
+            />
             <Row>
               <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
                 <Button
                   block
                   type="submit"
                   className="gc-btn gc-btn--orange gc-margin-top"
-                  onClick={() => this.props.withoutChef && heap.track('Get Quotes - Step 3')}
+                  onClick={() => this.props.withoutChef && heap.track('Get Quotes - Step 4')}
                 >
                   Next
                 </Button>

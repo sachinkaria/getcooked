@@ -8,18 +8,27 @@ import DatePicker from '../../DatePicker';
 
 const form = reduxForm({
   form: 'date-and-place',
-  fields: ['address_line_1', 'postcode'],
+  fields: ['address_line_1', 'postcode', 'startTime', 'endTime'],
   validate
 });
 
 function validate(formProps) {
   const errors = {};
+
   if (!formProps.address_line1) {
     errors.address_line1 = 'Please enter street address';
   }
 
   if (!formProps.postcode) {
     errors.postcode = 'Please enter a postcode';
+  }
+
+  if (!formProps.startTime) {
+    errors.startTime = 'Please enter your event start time';
+  }
+
+  if (!formProps.endTime) {
+    errors.endTime = 'Please enter your event end time';
   }
   return errors;
 }
@@ -62,7 +71,7 @@ class DateAndPlaceForm extends Component {
               <Row>
                 <Col xs={12} sm={6}>
                   <Field
-                    name="start_time"
+                    name="startTime"
                     placeholder="Start time"
                     component={renderField}
                     type="time"
@@ -70,7 +79,7 @@ class DateAndPlaceForm extends Component {
                 </Col>
                 <Col xs={12} sm={6}>
                   <Field
-                    name="end_time"
+                    name="endTime"
                     placeholder="End time"
                     component={renderField}
                     type="time"

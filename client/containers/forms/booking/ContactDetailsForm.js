@@ -57,7 +57,7 @@ class ContactDetailsForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-          <label className="gc-text">First name</label>
+          <label className="gc-text gc-text--lg gc-text--slim">First name</label>
           <div>
             <Field
               name="firstName"
@@ -67,7 +67,7 @@ class ContactDetailsForm extends Component {
               type="text"
             />
           </div>
-          <label className="gc-text">Last name</label>
+          <label className="gc-text gc-text--lg gc-text--slim">Last name</label>
           <div>
             <Field
               name="lastName"
@@ -77,7 +77,7 @@ class ContactDetailsForm extends Component {
               type="text"
             />
           </div>
-          <label className="gc-text">Email</label>
+          <label className="gc-text gc-text--lg gc-text--slim">Email</label>
           <div>
             <Field
               name="email"
@@ -87,7 +87,7 @@ class ContactDetailsForm extends Component {
               type="text"
             />
           </div>
-          <label className="gc-text">Mobile number</label>
+          <label className="gc-text gc-text--lg gc-text--slim">Mobile number</label>
           <div>
             <Field
               name="phoneCode"

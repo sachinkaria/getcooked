@@ -56,10 +56,10 @@ class ModalDynamic extends React.Component {
           onHide={this.handleClose}
         >
           <Modal.Header closeButton className="gc-center">
-            <Modal.Title className="gc-bold">{this.props.title}</Modal.Title>
+            <Modal.Title className="gc-bold gc-section-heading gc-margin-none">{this.props.title}</Modal.Title>
             <Row>
               <Col sm={8} smOffset={2}>
-                <p className="gc-text gc-text--lg gc-text--grey">
+                <p className="gc-text gc-text--lg gc-text--slim gc-text--grey">
                   {this.props.description}
                 </p>
               </Col>

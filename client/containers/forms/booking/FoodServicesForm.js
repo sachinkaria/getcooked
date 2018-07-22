@@ -50,7 +50,7 @@ class FoodServicesForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
-            <label className="gc-text">What type of food style would you like to have?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">What type of food style would you like to have?</label>
             <Row className="gc-margin-bottom">
               {
                 FOOD_STYLE.map(item => (
@@ -66,7 +66,7 @@ class FoodServicesForm extends Component {
                 ))
               }
             </Row>
-            <label className="gc-text">Type of Food</label>
+            <label className="gc-text gc-text--lg gc-text--slim">Do you have a certain cuisine in mind or are you open to suggestions?</label>
             <Row className="gc-margin-bottom">
               {
                 CUISINES.map(item => (

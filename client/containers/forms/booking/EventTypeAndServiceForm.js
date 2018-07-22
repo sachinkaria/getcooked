@@ -15,7 +15,7 @@ const form = reduxForm({
 function validate(formProps) {
   const errors = {};
 
-  if (formProps.eventType === 'select') {
+  if (formProps.eventType === []) {
     errors.eventType = 'Please select an event type';
   }
 
@@ -29,8 +29,8 @@ function validate(formProps) {
 class EventTypeGuestsAndBudgetForm extends Component {
   constructor(props) {
     super(props);
-    const EVENT_TYPE = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).eventType;
-    const SERVICES = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).services;
+    const EVENT_TYPE = sessionStorage.eventDetails && this.props.initialValues.eventType;
+    const SERVICES = sessionStorage.eventDetails && this.props.initialValues.services;
     this.state = { eventType: EVENT_TYPE || [], services: SERVICES || [] };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.isChecked = this.isChecked.bind(this);
@@ -38,13 +38,13 @@ class EventTypeGuestsAndBudgetForm extends Component {
   }
 
   handleFormSubmit(formProps) {
-      formProps.eventType = this.state.eventType;
-      formProps.foodServices = this.state.foodServices;
-      const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
-      const FINAL_EVENT = _.extend(EVENT, formProps);
-      sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
-      this.props.onSubmit(3);
-    }
+    formProps.eventType = this.state.eventType;
+    formProps.services = this.state.services;
+    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
+    const FINAL_EVENT = _.extend(EVENT, formProps);
+    sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
+    this.props.onSubmit(3);
+  }
 
   handler(event, category) {
     if (event.target.checked) {
@@ -66,7 +66,7 @@ class EventTypeGuestsAndBudgetForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
-            <label className="gc-text">What type of event are you hosting?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">What type of event are you hosting?</label>
             <Row className="gc-margin-bottom">
               {
                 EVENT_TYPE.map(item => (
@@ -82,7 +82,7 @@ class EventTypeGuestsAndBudgetForm extends Component {
                 ))
               }
             </Row>
-            <label className="gc-text">What services would you require?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">What services are you looking for?</label>
             <Row className="gc-margin-bottom">
               {
                 EVENT_SERVICES.map(item => (

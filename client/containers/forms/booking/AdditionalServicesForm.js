@@ -57,7 +57,7 @@ class FoodServicesForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
-            <label className="gc-text">Would you like to have any staffRequired at your event?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">Would you like to have any staffRequired at your event?</label>
             <Row className="gc-margin-bottom">
               {
                 STAFF.map(item => (
@@ -73,7 +73,7 @@ class FoodServicesForm extends Component {
                 ))
               }
             </Row>
-            <label className="gc-text">Would you like your caterer to provide anything else?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">Would you like your caterer to provide anything else?</label>
             <Row className="gc-margin-bottom">
               {
                 EQUIPMENT.map(item => (
@@ -89,7 +89,7 @@ class FoodServicesForm extends Component {
                 ))
               }
             </Row>
-            <label className="gc-text">Are there kitchen facilities available at the location?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">Are there kitchen facilities available at the location?</label>
             <Field
               component={renderCheckBox}
               name="Yes"
@@ -117,7 +117,7 @@ class FoodServicesForm extends Component {
                 <Button
                   block
                   className="gc-btn gc-btn-white gc-margin-top"
-                  onClick={() => this.props.onSubmit(2)}
+                  onClick={() => this.props.onSubmit(3)}
                 >
                   Back
                 </Button>

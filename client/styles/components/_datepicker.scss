@@ -305,7 +305,7 @@
   font-weight: 200;
   line-height: 14px;
   margin: 0;
-  padding: 6px;
+  padding: 9px;
   position: relative;
   display: inline-block;
   width: 150px;
@@ -380,7 +380,7 @@
   position: relative;
   display: inline-block;
   margin-left: 0;
-  height: 36px;
+  height: 42px;
   text-align: center;
 }
 
@@ -430,6 +430,7 @@
 
 .SingleDatePickerInput {
   background-color: #fff;
+  height: 42px;
   border: 1px solid $light-grey;
 }
 
@@ -444,7 +445,6 @@
   display: inline-block;
   vertical-align: middle;
   padding: 10px;
-  margin: 0 10px 0 5px;
   margin: 0 10px 0 5px;
 }
 

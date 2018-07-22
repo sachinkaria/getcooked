@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { Row } from 'react-bootstrap';
 import ContactDetailsForm from '../containers/forms/booking/ContactDetailsForm';
 import DateAndPlaceForm from '../containers/forms/booking/DateAndPlaceForm';
-import EventTypeGuestsAndBudgetForm from '../containers/forms/booking/EventTypeGuestsAndBudgetForm';
+import EventTypeGuestsAndBudgetForm from './forms/booking/EventTypeAndServiceForm';
 import FoodServicesForm from '../containers/forms/booking/FoodServicesForm';
 import AdditionalServicesForm from '../containers/forms/booking/AdditionalServicesForm';
 import BudgetAdditionalInformationForm from '../containers/forms/booking/BudgetAdditionalInformationForm';

@@ -61,6 +61,10 @@
   margin-bottom: 36px;
   margin-top: 0;
 
+  .gc-heading--sm {
+    font-size: 24px;
+  }
+
   @include breakpoint(tablet) {
     font-size: 48px;
   }

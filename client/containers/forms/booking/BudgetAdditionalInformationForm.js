@@ -96,6 +96,13 @@ class DateAndPlaceForm extends Component {
                 >
                   Next
                 </Button>
+                <Button
+                  block
+                  className="gc-btn gc-btn-white gc-margin-top"
+                  onClick={() => this.props.onSubmit(4)}
+                >
+                  Back
+                </Button>
               </Col>
             </Row>
           </div>

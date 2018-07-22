@@ -58,18 +58,19 @@ class DateAndPlaceForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
-            <label className="gc-text">Event Date</label>
-            <div className="gc-margin-bottom">
+            <label className="gc-text gc-text--lg gc-text--slim">What date is your event?</label>
+            <div className="gc-margin-bottom--lg">
               <DatePicker
                 name="date"
                 date={this.state.date}
                 onChange={this.setDate}
               />
             </div>
-            <label className="gc-text">Event Time</label>
+            <label className="gc-text gc-text--lg gc-text--slim">What is the expected start and end time?</label>
             <div className="gc-margin-bottom">
               <Row>
                 <Col xs={12} sm={6}>
+                  <label className="gc-grey gc-text gc-text--slim">Start time</label>
                   <Field
                     name="startTime"
                     placeholder="Start time"
@@ -78,6 +79,7 @@ class DateAndPlaceForm extends Component {
                   />
                 </Col>
                 <Col xs={12} sm={6}>
+                  <label className="gc-grey gc-text gc-text--slim">End time</label>
                   <Field
                     name="endTime"
                     placeholder="End time"
@@ -87,7 +89,7 @@ class DateAndPlaceForm extends Component {
                 </Col>
               </Row>
             </div>
-            <label className="gc-text gc-dark-grey">Event Address</label>
+            <label className="gc-text gc-text--lg gc-text--slim">What is the address of the venue?</label>
             <div className="gc-margin-bottom">
               <Field
                 name="address_line1"

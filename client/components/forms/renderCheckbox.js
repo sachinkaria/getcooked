@@ -4,7 +4,7 @@ import { Checkbox } from 'react-bootstrap';
 const renderCheckbox = field => (
   <div>
     <Checkbox
-      className="gc-capitalize gc-text gc-text--lg"
+      className="gc-capitalize gc-text gc-text--slim"
       checked={field.checked}
       value="true"
       name={field.input.name}

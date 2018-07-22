@@ -16,17 +16,17 @@ export const PROFILE_FIELDS = [
 export const TYPES = ['professional caterer', 'market stall', 'private chef', 'food truck', 'bakery', 'drinks company', 'cocktail bartender'];
 export const FOOD_SERVICES = ['canapes', 'desserts', 'buffets', 'vegetarian', 'vegan', 'halal', 'kosher', 'nut free', 'gluten free', 'alcoholic drinks', 'non-alcoholic drinks'];
 export const EVENTS = ['corporate events', 'weddings', 'private dinners', 'parties', 'festivals', 'other'];
-export const CUISINES = ['american', 'african', 'BBQ', 'british', 'chinese', 'caribbean', 'french', 'greek', 'indian', 'italian', 'japanese', 'mediterranean', 'mexican', 'middle eastern', 'south american', 'moroccan', 'spanish', 'thai', 'turkish', 'vietnamese', 'open to suggestions'];
+export const CUISINES = ['open to suggestions', 'american', 'african', 'BBQ', 'british', 'chinese', 'caribbean', 'french', 'greek', 'indian', 'italian', 'japanese', 'mediterranean', 'mexican', 'middle eastern', 'south american', 'moroccan', 'spanish', 'thai', 'turkish', 'vietnamese'];
 export const EVENT_TYPE = ['indoor', 'outdoor', 'private dinner', 'private lunch', 'corporate event', 'wedding', 'party', 'festival', 'BBQ', 'picnic', 'other'];
 export const EVENT_SERVICES = ['on-site catering', 'mobile catering', 'private chef', 'bar service', 'drop-off'];
 export const ADDITIONAL_SERVICES = ['bar service', 'waiting staff', 'tableware', 'glassware'];
-export const FOOD_STYLE = ['sit-down meal', 'canapes', 'hot buffet', 'cold buffet', 'BBQ', 'platters', 'open to suggestions'];
+export const FOOD_STYLE = ['open to suggestions', 'sit-down meal', 'canapes', 'hot buffet', 'cold buffet', 'BBQ', 'platters'];
 export const STAFF = ['setup staff', 'waiting staff', 'bar staff', 'clean-up staff', 'no staff required'];
-export const EQUIPMENT = ['tables and chairs', 'table linens', 'tableware', 'glassware', 'nothing required'];
+export const EQUIPMENT = ['tables/chairs', 'table linens', 'tableware', 'glassware', 'nothing required'];
 export const MODAL = {
   TITLE: 'Get Quotes',
   ACTION: 'Get Quotes',
-  DESCRIPTION: 'Please provide us with some information on your event and your contact details.'
+  DESCRIPTION: 'Leave us with some details on your event and receive quotes and menus from caterers and privates chefs.'
 };
 
 export const BOOKING_MODAL = {

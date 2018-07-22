@@ -99,7 +99,11 @@ function create(req, res) {
     budget: BOOKING.budget,
     services: BOOKING.services,
     foodServices: BOOKING.foodServices,
-    contactDetails: BOOKING.contactDetails
+    contactDetails: BOOKING.contactDetails,
+    kitchenAvailable: BOOKING.kitchenAvailable,
+    additionalEquipment: BOOKING.additionalEquipment,
+    foodStyle: BOOKING.foodStyle,
+    staffRequired: BOOKING.staffRequired
   });
 
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {

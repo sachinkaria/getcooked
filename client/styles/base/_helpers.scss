@@ -64,11 +64,15 @@
 }
 
 .gc-margin-top--lg {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .gc-padding-small {
   padding: 5px 5px;
+}
+
+.gc-padding-top {
+  padding-top: 10px;
 }
 
 .gc-padding-none{
@@ -129,6 +133,12 @@
 
 .center-m {
   @include breakpoint(mobileonly){
+    text-align: center;
+  }
+}
+
+.center-t {
+  @include breakpoint(tablet){
     text-align: center;
   }
 }

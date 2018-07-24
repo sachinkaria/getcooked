@@ -45,6 +45,12 @@ require('./images/icon-organic.png');
 require('./images/icon-hands.png');
 require('./images/icon-recycling.png');
 require('./images/icon-healthy.png');
+require('./images/location-grey.png');
+require('./images/people-grey.png');
+require('./images/money-grey.png');
+require('./images/letter-grey.png');
+require('./images/contact-grey.png');
+require('./images/phone-grey.png');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

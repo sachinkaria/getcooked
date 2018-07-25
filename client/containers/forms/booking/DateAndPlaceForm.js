@@ -47,6 +47,8 @@ class DateAndPlaceForm extends Component {
   }
 
   handleFormSubmit(formProps) {
+    formProps.startTime = moment(formProps.startTime, "HH:mm");
+    formProps.endTime = moment(formProps.endTime, "HH:mm");
     formProps.date = this.state.date;
     sessionStorage.setItem('eventDetails', JSON.stringify(formProps));
     this.props.onSubmit(2);
@@ -54,6 +56,8 @@ class DateAndPlaceForm extends Component {
 
   render() {
     const { handleSubmit, initialValues } = this.props;
+    initialValues.startTime = moment(initialValues.startTime).utc().format("HH:mm");
+    initialValues.endTime = moment(initialValues.endTime).utc().format("HH:mm");
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>

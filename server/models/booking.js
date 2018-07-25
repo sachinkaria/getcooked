@@ -33,6 +33,8 @@ const BookingSchema = new Schema({
     contactDetails: ContactSchema,
     address: AddressSchema,
     date: Date,
+    startTime: Date,
+    endTime: Date,
     numberOfPeople: Number,
     eventType: [{
       type: String,

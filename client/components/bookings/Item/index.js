@@ -51,6 +51,7 @@ class BookingItem extends React.Component {
   renderView() {
     const {booking} = this.props;
     const STATUS = this.getStatus();
+    console.log(booking);
 
     return (
       <Panel className="gc-panel">
@@ -88,7 +89,7 @@ class BookingItem extends React.Component {
                       <Button block className="gc-btn" onClick={this.declineBooking} bsStyle="danger">Decline</Button>
                     </Col>
                   </Row>
-                  <hr className="visible-xs"/>
+                  <hr className="visible-xs" />
                 </Col>
               }
               {
@@ -102,6 +103,8 @@ class BookingItem extends React.Component {
                   address={booking.address}
                   numberOfPeople={booking.numberOfPeople}
                   budget={booking.budget}
+                  startTime={booking.startTime}
+                  endTime={booking.endTime}
                 />
               </Col>
             </Row>

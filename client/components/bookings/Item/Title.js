@@ -14,7 +14,7 @@ const Title = props => (
 
 Title.propTypes = {
   name: PropTypes.string.isRequired,
-  date: PropTypes.date.isRequired
+  date: PropTypes.string.isRequired
 };
 
 export default Title;

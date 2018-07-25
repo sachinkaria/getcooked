@@ -26,7 +26,9 @@ function create(req, res) {
     kitchenAvailable: EVENT.kitchenAvailable,
     additionalEquipment: EVENT.additionalEquipment,
     foodStyle: EVENT.foodStyle,
-    staffRequired: EVENT.staffRequired
+    staffRequired: EVENT.staffRequired,
+    startTime: EVENT.startTime,
+    endTime: EVENT.endTime
   });
 
   event.save((bookingErr) => {

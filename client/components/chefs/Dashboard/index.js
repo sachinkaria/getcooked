@@ -15,7 +15,7 @@ import PasswordForm from '../../../containers/forms/setup/chefs/PasswordForm';
 import SubscriptionForm from '../../../containers/forms/setup/chefs/SubscriptionForm';
 import Notification from '../../Notification';
 import Bookings from '../../bookings/List';
-import BookingItem from '../../bookings/Item';
+import BookingItem from '../../bookings/Item/index';
 import Summary from './Summary';
 
 
@@ -73,7 +73,6 @@ class Dashboard extends React.Component {
     const USER_LISTED = (user.data.status === 'listed' && (user.data.subscription.status === 'pending' || 'active'));
     const USER_PENDING = user.data.status === 'pending';
     const USER_BLOCKED = user.data.status === 'unlisted' && !user.data.stripe && user.data.subscription.status !== 'active';
-    const USER_UNLISTED = user.data.status === 'unlisted';
     const IS_CHEF = user.data.role === 'chef';
 
     function userStatus() {

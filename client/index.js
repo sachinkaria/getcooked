@@ -51,6 +51,7 @@ require('./images/money-grey.png');
 require('./images/letter-grey.png');
 require('./images/contact-grey.png');
 require('./images/phone-grey.png');
+require('./images/clock-grey.png');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

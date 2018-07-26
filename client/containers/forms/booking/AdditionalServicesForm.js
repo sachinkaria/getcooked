@@ -57,7 +57,7 @@ class FoodServicesForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
-            <label className="gc-text gc-text--lg gc-text--slim">Would you like to have any staffRequired at your event?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">Would you like to have any additional staff at your event?</label>
             <Row className="gc-margin-bottom">
               {
                 STAFF.map(item => (

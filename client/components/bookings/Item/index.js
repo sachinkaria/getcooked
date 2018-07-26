@@ -73,7 +73,7 @@ class BookingItem extends React.Component {
                   <Row>
                     <Col xs={12}>
                       <p className="gc-text gc-margin-bottom--lg">
-                        Note: You are NOT obliged to cater the event if you have confirmed your availability.
+                        Note: You are NOT obliged to cater the event once you have confirmed your availability.
                       </p>
                     </Col>
                   </Row>
@@ -125,9 +125,12 @@ class BookingItem extends React.Component {
                     <TypeOfFood foodServices={booking.foodServices} />
                   </Col>
                 </Row>
-                <hr />
-                <Row>
-                  { !!booking.kitchenAvailable &&
+                  {
+                    (booking.kitchenAvailable && (booking.foodStyle.length > 0) && (booking.additionalEquipment.length > 0)) &&
+                    <hr />
+                  }
+                  <Row>
+                  {(booking.kitchenAvailable !== undefined) &&
                   <Col xs={6} sm={4}>
                     <p className="gc-text gc-grey">Kitchen Facilities</p>
                     <p className="gc-text gc-text--lg">{ booking.kitchenAvailable ? 'Available' : 'Unavailable' }</p>

@@ -4,7 +4,9 @@ import {connect} from 'react-redux';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Field, reduxForm } from 'redux-form';
 import renderField from '../../../components/forms/renderField';
+import renderSelectField from '../../../components/forms/renderSelectField';
 import DatePicker from '../../DatePicker';
+import { TIMES } from '../../../utils/data';
 
 const form = reduxForm({
   form: 'date-and-place',
@@ -23,13 +25,14 @@ function validate(formProps) {
     errors.postcode = 'Please enter a postcode';
   }
 
-  if (!formProps.startTime) {
-    errors.startTime = 'Please enter your event start time';
+  if (!formProps.startTime || (formProps.startTime === 'Select')) {
+    errors.startTime = 'Please select your event start time';
   }
 
-  if (!formProps.endTime) {
-    errors.endTime = 'Please enter your event end time';
+  if (!formProps.endTime || (formProps.endTime === 'Select')) {
+    errors.endTime = 'Please select your event end time';
   }
+  console.log(errors);
   return errors;
 }
 
@@ -47,8 +50,8 @@ class DateAndPlaceForm extends Component {
   }
 
   handleFormSubmit(formProps) {
-    formProps.startTime = moment(formProps.startTime, "HH:mm");
-    formProps.endTime = moment(formProps.endTime, "HH:mm");
+    formProps.startTime = moment(formProps.startTime, 'HH:mm');
+    formProps.endTime = moment(formProps.endTime, 'HH:mm');
     formProps.date = this.state.date;
     sessionStorage.setItem('eventDetails', JSON.stringify(formProps));
     this.props.onSubmit(2);
@@ -56,8 +59,8 @@ class DateAndPlaceForm extends Component {
 
   render() {
     const { handleSubmit, initialValues } = this.props;
-    initialValues.startTime = moment(initialValues.startTime).utc().format("HH:mm");
-    initialValues.endTime = moment(initialValues.endTime).utc().format("HH:mm");
+    if (initialValues && initialValues.startTime) (initialValues.startTime = moment(initialValues.startTime).utc().format('HH:mm'));
+    if (initialValues && initialValues.endTime) (initialValues.endTime = moment(initialValues.endTime).utc().format('HH:mm'));
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
@@ -71,25 +74,39 @@ class DateAndPlaceForm extends Component {
               />
             </div>
             <label className="gc-text gc-text--lg gc-text--slim">What is the expected start and end time?</label>
-            <div className="gc-margin-bottom">
+            <div>
               <Row>
                 <Col xs={12} sm={6}>
                   <label className="gc-grey gc-text gc-text--slim">Start time</label>
                   <Field
                     name="startTime"
-                    placeholder="Start time"
-                    component={renderField}
-                    type="time"
-                  />
+                    className="form-control gc-input text-capitalize"
+                    component={renderSelectField}
+                  >
+                    {TIMES.map(code =>
+                      (
+                        <option key={code} value={code}>
+                          {code}
+                        </option>
+                      )
+                    )}
+                  </Field>
                 </Col>
                 <Col xs={12} sm={6}>
                   <label className="gc-grey gc-text gc-text--slim">End time</label>
                   <Field
                     name="endTime"
-                    placeholder="End time"
-                    component={renderField}
-                    type="time"
-                  />
+                    className="form-control gc-input text-capitalize"
+                    component={renderSelectField}
+                  >
+                    {TIMES.map(code =>
+                      (
+                        <option key={code} value={code}>
+                          {code}
+                        </option>
+                      )
+                    )}
+                  </Field>
                 </Col>
               </Row>
             </div>

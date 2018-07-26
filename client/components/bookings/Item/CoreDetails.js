@@ -35,14 +35,17 @@ function CoreDetails({ ...props }) {
         />
         <p className="gc-text gc-text--lg gc-inline-block">£{props.budget || 1500}</p>
       </Col>
-      <Col xs={12} className="gc-margin-bottom--xs">
-        <img
-          className="gc-icon"
-          alt="budget"
-          src="/images/clock-grey.png"
-        />
-        <p className="gc-text gc-text--lg gc-inline-block">{moment(props.startTime).format('HH:mm')} to {moment(props.endTime).format('HH:mm')}</p>
-      </Col>
+      {
+        (props.startTime && props.endTime) &&
+        <Col xs={12} className="gc-margin-bottom--xs">
+          <img
+            className="gc-icon"
+            alt="budget"
+            src="/images/clock-grey.png"
+          />
+          <p className="gc-text gc-text--lg gc-inline-block">{moment(props.startTime).format('HH:mm')} to {moment(props.endTime).format('HH:mm')}</p>
+        </Col>
+      }
     </Row>
   );
 }

@@ -21,12 +21,13 @@ export const EVENT_TYPE = ['indoor', 'outdoor', 'private dinner', 'private lunch
 export const EVENT_SERVICES = ['on-site catering', 'mobile catering', 'private chef', 'bar service', 'drop-off'];
 export const ADDITIONAL_SERVICES = ['bar service', 'waiting staff', 'tableware', 'glassware'];
 export const FOOD_STYLE = ['open to suggestions', 'sit-down meal', 'canapes', 'hot buffet', 'cold buffet', 'BBQ', 'platters'];
-export const STAFF = ['setup staff', 'waiting staff', 'bar staff', 'clean-up staff', 'no staff required'];
-export const EQUIPMENT = ['tables/chairs', 'table linens', 'tableware', 'glassware', 'nothing required'];
+export const STAFF = ['no staff required', 'setup staff', 'waiting staff', 'bar staff', 'clean-up staff'];
+export const EQUIPMENT = ['nothing required', 'tables/chairs', 'table linens', 'tableware', 'glassware'];
+export const TIMES = ['Select', '06:00', '07:00', '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00', '00:00', '01:00', '02:00', '03:00', '04:00'];
 export const MODAL = {
   TITLE: 'Get Quotes',
   ACTION: 'Get Quotes',
-  DESCRIPTION: 'Leave us with some details on your event and receive quotes and menus from caterers and privates chefs.'
+  DESCRIPTION: 'Fill in your details into the form below and our event experts at Get Cooked will pick out the perfect caterers for your event.'
 };
 
 export const BOOKING_MODAL = {

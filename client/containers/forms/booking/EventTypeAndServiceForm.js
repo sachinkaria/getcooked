@@ -7,43 +7,32 @@ import renderCheckBox from '../../../components/forms/renderCheckbox';
 import { EVENT_TYPE, EVENT_SERVICES } from '../../../utils/data';
 
 const form = reduxForm({
-  form: 'eventType-and-guests',
-  fields: ['eventType', 'services'],
-  validate
+  form: 'eventType-and-services',
+  fields: ['eventType', 'services']
 });
-
-function validate(formProps) {
-  const errors = {};
-
-  if (formProps.eventType === []) {
-    errors.eventType = 'Please select an event type';
-  }
-
-  if (formProps.services === 'select') {
-    errors.services = 'Please select a type of service';
-  }
-
-  return errors;
-}
 
 class EventTypeGuestsAndBudgetForm extends Component {
   constructor(props) {
     super(props);
     const EVENT_TYPE = sessionStorage.eventDetails && this.props.initialValues.eventType;
     const SERVICES = sessionStorage.eventDetails && this.props.initialValues.services;
-    this.state = { eventType: EVENT_TYPE || [], services: SERVICES || [] };
+    this.state = { eventType: EVENT_TYPE || [], services: SERVICES || [], error: false };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.isChecked = this.isChecked.bind(this);
     this.handler = this.handler.bind(this);
   }
 
   handleFormSubmit(formProps) {
-    formProps.eventType = this.state.eventType;
-    formProps.services = this.state.services;
-    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
-    const FINAL_EVENT = _.extend(EVENT, formProps);
-    sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
-    this.props.onSubmit(3);
+    if (this.state.eventType.length < 1 || this.state.services.length < 1) {
+      this.setState({ error: true })
+    } else {
+      formProps.eventType = this.state.eventType;
+      formProps.services = this.state.services;
+      const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
+      const FINAL_EVENT = _.extend(EVENT, formProps);
+      sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
+      this.props.onSubmit(3);
+    }
   }
 
   handler(event, category) {
@@ -67,6 +56,7 @@ class EventTypeGuestsAndBudgetForm extends Component {
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
             <label className="gc-text gc-text--lg gc-text--slim">What type of event are you hosting?</label>
+            {(this.state.eventType.length < 1 && this.state.error) && <div className="gc-red">Please select a type of event.</div>}
             <Row className="gc-margin-bottom">
               {
                 EVENT_TYPE.map(item => (
@@ -83,6 +73,7 @@ class EventTypeGuestsAndBudgetForm extends Component {
               }
             </Row>
             <label className="gc-text gc-text--lg gc-text--slim">What services are you looking for?</label>
+            {(this.state.services.length < 1 && this.state.error) && <div className="gc-red">Please select a service.</div>}
             <Row className="gc-margin-bottom">
               {
                 EVENT_SERVICES.map(item => (
@@ -90,6 +81,7 @@ class EventTypeGuestsAndBudgetForm extends Component {
                     <Field
                       checked={this.isChecked(item, this.state.services)}
                       name={item}
+                      selectedItems={this.state.services}
                       type="checkbox"
                       component={renderCheckBox}
                       onChange={e => this.handler(e, 'services')}

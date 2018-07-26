@@ -7,7 +7,7 @@ import renderField from '../../../components/forms/renderField';
 import renderInputBox from '../../../components/forms/renderInputBox';
 
 const form = reduxForm({
-  form: 'budget_additional_information',
+  form: 'budget-additional-information',
   fields: ['numberOfPeople', 'budget', 'additionalInformation'],
   validate
 });

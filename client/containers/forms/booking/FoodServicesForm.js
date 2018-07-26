@@ -9,7 +9,7 @@ import { FOOD_STYLE, CUISINES } from '../../../utils/data';
 
 const form = reduxForm({
   form: 'food-services',
-  fields: ['foodServices', 'foodStyle', 'additionalInformation']
+  fields: ['foodServices', 'foodStyle']
 });
 
 class FoodServicesForm extends Component {
@@ -17,19 +17,22 @@ class FoodServicesForm extends Component {
     super(props);
     const SERVICES = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).foodServices;
     const FOOD_SERVICES = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).foodStyle;
-    this.state = { foodServices: SERVICES || [], foodStyle: FOOD_SERVICES || ['other'] };
+    this.state = { foodServices: SERVICES || [], foodStyle: FOOD_SERVICES || [], error: false };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   handleFormSubmit(formProps) {
-    formProps.foodServices = this.state.foodServices;
-    formProps.foodStyle = this.state.foodStyle;
-    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
-    const FINAL_EVENT = _.extend(EVENT, formProps);
-    sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
-    this.props.onSubmit(4);
+    if (this.state.foodStyle.length < 1 || this.state.foodServices.length < 1) {
+      this.setState({ error: true });
+    } else {
+      formProps.foodServices = this.state.foodServices;
+      formProps.foodStyle = this.state.foodStyle;
+      const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
+      const FINAL_EVENT = _.extend(EVENT, formProps);
+      sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
+      this.props.onSubmit(4);
+    }
   }
-
   handler(event, category) {
     if (event.target.checked) {
       this.state[category] = this.state[category].concat(event.target.name);
@@ -50,7 +53,8 @@ class FoodServicesForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
-            <label className="gc-text gc-text--lg gc-text--slim">What type of food style would you like to have?</label>
+            <label className="gc-text gc-text--lg gc-text--slim">What type of style of food would you like to have?</label>
+            {(this.state.foodStyle.length < 1 && this.state.error) && <div className="gc-red">Please select a style of food.</div>}
             <Row className="gc-margin-bottom">
               {
                 FOOD_STYLE.map(item => (
@@ -67,6 +71,7 @@ class FoodServicesForm extends Component {
               }
             </Row>
             <label className="gc-text gc-text--lg gc-text--slim">Do you have a certain cuisine in mind or are you open to suggestions?</label>
+            {(this.state.foodServices.length < 1 && this.state.error) && <div className="gc-red">Please select a style of cuisine.</div>}
             <Row className="gc-margin-bottom">
               {
                 CUISINES.map(item => (

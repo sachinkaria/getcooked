@@ -32,7 +32,6 @@ function validate(formProps) {
   if (!formProps.endTime || (formProps.endTime === 'Select')) {
     errors.endTime = 'Please select your event end time';
   }
-  console.log(errors);
   return errors;
 }
 

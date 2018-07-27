@@ -14,6 +14,7 @@ function BookingItem({ chefItem, booking }) {
           </Col>
           <Col xs={2}>
             <p className="gc-text gc-grey">Status</p>
+            <p className="gc-text">{booking.read ? 'read' : 'unread'}</p>
             <p className="gc-text">{booking.status}</p>
           </Col>
           <Col xs={2}>
@@ -28,6 +29,7 @@ function BookingItem({ chefItem, booking }) {
             <p className="gc-text gc-grey">Client Name</p>
             <p className="gc-text">{booking.contactDetails.firstName} {booking.contactDetails.lastName}</p>
           </Col>
+
         </Row>
       </Panel.Body>
     </Panel>

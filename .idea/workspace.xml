@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="added payments details to dashboard summary">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/services/emailTemplates/completeProfileTemplate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/admin/index.js" afterPath="$PROJECT_DIR$/client/actions/admin/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/admin/Dashboard/ChefItem.js" afterPath="$PROJECT_DIR$/client/components/admin/Dashboard/ChefItem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/admin/Dashboard/index.js" afterPath="$PROJECT_DIR$/client/components/admin/Dashboard/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/controllers/admin.js" afterPath="$PROJECT_DIR$/server/controllers/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/admin.js" afterPath="$PROJECT_DIR$/server/routes/admin.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/emailTemplates/updatePaymentTemplate.js" afterPath="$PROJECT_DIR$/server/services/emailTemplates/updatePaymentTemplate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/actions/auth/index.js" afterPath="$PROJECT_DIR$/client/actions/auth/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/auth/RequireAuth.js" afterPath="$PROJECT_DIR$/client/components/auth/RequireAuth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" afterPath="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/config/routes.js" afterPath="$PROJECT_DIR$/client/config/routes.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,18 +25,6 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/actions/admin/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2745">
-              <caret line="183" column="1" lean-forward="false" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ChefItem.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/admin/Dashboard/ChefItem.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -126,7 +111,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="updatePaymentTemplate.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="updatePaymentTemplate.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/updatePaymentTemplate.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -163,6 +148,54 @@
                 <marker date="1532689633000" expanded="true" signature="3231:3275" ph="..." />
                 <marker date="1532689633000" expanded="false" signature="3334:3427" ph="..." />
                 <marker date="1532689633000" expanded="true" signature="3428:3678" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/actions/auth/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="97" column="1" lean-forward="false" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RequireAuth.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/auth/RequireAuth.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+              <folding>
+                <element signature="e#1#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/components/chefs/Dashboard/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="194" column="96" lean-forward="false" selection-start-line="194" selection-start-column="96" selection-end-line="194" selection-end-column="96" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/config/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -249,9 +282,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/components/chefs/profile/FoodSources.js" />
-        <option value="$PROJECT_DIR$/client/components/Caterer/index.js" />
-        <option value="$PROJECT_DIR$/client/components/Blog/List.js" />
         <option value="$PROJECT_DIR$/client/components/auth/Login.js" />
         <option value="$PROJECT_DIR$/client/components/auth/Register.js" />
         <option value="$PROJECT_DIR$/client/components/auth/chef/Register.js" />
@@ -279,7 +309,6 @@
         <option value="$PROJECT_DIR$/server/controllers/events.js" />
         <option value="$PROJECT_DIR$/client/index.js" />
         <option value="$PROJECT_DIR$/client/components/bookings/Item/Title.js" />
-        <option value="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" />
         <option value="$PROJECT_DIR$/server/controllers/bookings.js" />
         <option value="$PROJECT_DIR$/server/models/event.js" />
         <option value="$PROJECT_DIR$/server/models/booking.js" />
@@ -300,6 +329,10 @@
         <option value="$PROJECT_DIR$/server/routes/admin.js" />
         <option value="$PROJECT_DIR$/server/services/emailTemplates/completeProfileTemplate.js" />
         <option value="$PROJECT_DIR$/server/services/emailTemplates/updatePaymentTemplate.js" />
+        <option value="$PROJECT_DIR$/client/actions/auth/index.js" />
+        <option value="$PROJECT_DIR$/client/components/auth/RequireAuth.js" />
+        <option value="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" />
+        <option value="$PROJECT_DIR$/client/config/routes.js" />
       </list>
     </option>
   </component>
@@ -587,6 +620,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="getcooked" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="components" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -609,7 +660,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="forms" />
+              <option name="myItemId" value="chefs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -631,77 +682,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="bookings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="getcooked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Item" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="getcooked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
+              <option name="myItemId" value="chefs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Dashboard" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="getcooked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="actions" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -979,7 +964,7 @@
       <workItem from="1532092910139" duration="17950000" />
       <workItem from="1532429560972" duration="8060000" />
       <workItem from="1532600963830" duration="3740000" />
-      <workItem from="1532687604244" duration="785000" />
+      <workItem from="1532687604244" duration="1030000" />
     </task>
     <task id="LOCAL-00001" summary="added payments details to dashboard summary">
       <created>1529593448503</created>
@@ -1006,7 +991,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1337325000" />
+    <option name="totallyTimeSpent" value="1337570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1085,27 +1070,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/styles/components/_forms.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/components/_datepicker.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="307" column="12" lean-forward="false" selection-start-line="307" selection-start-column="12" selection-end-line="307" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/containers/Modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="58" column="50" lean-forward="false" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/utils/helpers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1251,13 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="103" column="53" lean-forward="true" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/Dashboard/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1503,6 +1460,46 @@
             <marker date="1532689633000" expanded="true" signature="3231:3275" ph="..." />
             <marker date="1532689633000" expanded="false" signature="3334:3427" ph="..." />
             <marker date="1532689633000" expanded="true" signature="3428:3678" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/actions/auth/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="97" column="1" lean-forward="false" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/auth/RequireAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="e#1#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/Dashboard/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="194" column="96" lean-forward="false" selection-start-line="194" selection-start-column="96" selection-end-line="194" selection-end-column="96" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/config/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

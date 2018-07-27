@@ -15,7 +15,7 @@ import PasswordForm from '../../../containers/forms/setup/chefs/PasswordForm';
 import SubscriptionForm from '../../../containers/forms/setup/chefs/SubscriptionForm';
 import Notification from '../../Notification';
 import Bookings from '../../bookings/List';
-import BookingItem from '../../bookings/Item/index';
+import BookingItem from '../../bookings/Item';
 import Summary from './Summary';
 
 
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount() {
-    this.props.getCurrentUser();
+    this.props.authenticated && this.props.getCurrentUser();
   }
 
   updateUserStatus(status) {
@@ -73,6 +73,7 @@ class Dashboard extends React.Component {
     const USER_LISTED = (user.data.status === 'listed' && (user.data.subscription.status === 'pending' || 'active'));
     const USER_PENDING = user.data.status === 'pending';
     const USER_BLOCKED = user.data.status === 'unlisted' && !user.data.stripe && user.data.subscription.status !== 'active';
+    const USER_UNLISTED = user.data.status === 'unlisted';
     const IS_CHEF = user.data.role === 'chef';
 
     function userStatus() {
@@ -92,57 +93,57 @@ class Dashboard extends React.Component {
         <div className="gc-dashboard-container">
           {
             (IS_CHEF && !this.props.route.hideProfileStatus) &&
+            <div>
+              {USER_PENDING &&
+              <Row className="gc-center">
+                <Col xs={10} xsOffset={1} sm={7} smOffset={4} mdOffset={3}>
+                  <Notification text={PROFILE_UNDER_REVIEW} />
+                </Col>
+              </Row>
+              }
+              {(!USER_PENDING && !this.props.location.pathname.includes('account')) &&
               <div>
-                {USER_PENDING &&
                 <Row className="gc-center">
                   <Col xs={10} xsOffset={1} sm={7} smOffset={4} mdOffset={3}>
-                    <Notification text={PROFILE_UNDER_REVIEW} />
+                    <Notification text={userStatus()}>
+                      <Row>
+                        <Col xs={8} xsOffset={2} sm={6} smOffset={3} md={4} mdOffset={4}>
+                          {USER_LISTED ?
+                            <Link className="btn btn-block gc-btn gc-btn--white gc-margin-top" to={`/caterers/profile/${this.props.user.data._id}`}>
+                              View my profile
+                            </Link> :
+                            <Button
+                              disabled={USER_BLOCKED}
+                              block
+                              className="gc-btn gc-btn--white gc-margin-top"
+                              onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
+                            >
+                              Publish my profile
+                            </Button>
+                          }
+                        </Col>
+                      </Row>
+                    </Notification>
                   </Col>
                 </Row>
-                }
-                {(!USER_PENDING && !this.props.location.pathname.includes('account')) &&
-                  <div>
-                    <Row className="gc-center">
-                      <Col xs={10} xsOffset={1} sm={7} smOffset={4} mdOffset={3}>
-                        <Notification text={userStatus()}>
-                          <Row>
-                            <Col xs={8} xsOffset={2} sm={6} smOffset={3} md={4} mdOffset={4}>
-                              {USER_LISTED ?
-                                <Link className="btn btn-block gc-btn gc-btn--white gc-margin-top" to={`/caterers/profile/${this.props.user.data._id}`}>
-                                  View my profile
-                                </Link> :
-                                <Button
-                                  disabled={USER_BLOCKED}
-                                  block
-                                  className="gc-btn gc-btn--white gc-margin-top"
-                                  onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
-                                >
-                                  Publish my profile
-                                </Button>
-                              }
-                            </Col>
-                          </Row>
-                        </Notification>
-                      </Col>
-                    </Row>
-                  </div>
-                }
               </div>
+              }
+            </div>
           }
           <Row>
             <Col sm={3} smOffset={1} mdOffset={1} md={2}>
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
               {
                 (IS_CHEF && !USER_PENDING && USER_LISTED && !this.props.route.hideProfileStatus) &&
-                  <div>
-                    <Button
-                      block
-                      className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom hidden-xs"
-                      onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
-                    >
-                      {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
-                    </Button>
-                  </div>
+                <div>
+                  <Button
+                    block
+                    className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom hidden-xs"
+                    onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
+                  >
+                    {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
+                  </Button>
+                </div>
               }
               <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to="/logout">
                 Logout
@@ -186,6 +187,7 @@ Dashboard.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    authenticated: state.authenticated,
     user: state.user
   };
 }

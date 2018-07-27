@@ -15,7 +15,10 @@ export function loginUser({ email, password }) {
         getCurrentUser();
 
         heap.identify(response.data.user.email);
-        browserHistory.push('/');
+        if (sessionStorage.getItem('initialRoute')){
+          browserHistory.push(sessionStorage.getItem('initialRoute'));
+        } else
+          browserHistory.push('/');
       })
       .catch(() => {
         const ERROR = 'Sorry the email or password was incorrect. Please try again.';
@@ -62,8 +65,8 @@ export function forgotPassword({ email }) {
   return (dispatch) => {
     axios.post('/api/forgot', { email })
       .then((response) => {
-      successHandler(dispatch, 'An email has been sent to your address. Please follow the link from there.');
-      browserHistory.push('/');
+        successHandler(dispatch, 'An email has been sent to your address. Please follow the link from there.');
+        browserHistory.push('/');
       })
       .catch((error) => {
         errorHandler(dispatch, 'This email does not exist. Please enter a valid email address.');

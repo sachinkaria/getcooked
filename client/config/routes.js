@@ -70,7 +70,7 @@ const routes = (
     <Route path="dashboard">
       <Route path="profile" >
         <Route path="basics" component={RequireRole(Dashboard, 'chef')} view="basics" />
-        <Route path="summary" component={RequireRole(Dashboard, 'chef')} view="summary" />
+        <Route path="summary" component={RequireAuth(Dashboard)} view="summary" />
         <Route path="service-type" component={RequireRole(Dashboard, 'chef')} view="service-type" />
         <Route path="food-services" component={RequireRole(Dashboard, 'chef')} view="food-services" />
         <Route path="photos" component={RequireRole(Dashboard, 'chef')} view="photos" />

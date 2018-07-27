@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="added payments details to dashboard summary">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/admin/Dashboard/BookingItem.js" afterPath="$PROJECT_DIR$/client/components/admin/Dashboard/BookingItem.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/bookings/Item/Title.js" afterPath="$PROJECT_DIR$/client/components/bookings/Item/Title.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/containers/forms/booking/BudgetAdditionalInformationForm.js" afterPath="$PROJECT_DIR$/client/containers/forms/booking/BudgetAdditionalInformationForm.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,177 +22,53 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/admin/Dashboard/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="279" column="19" lean-forward="false" selection-start-line="279" selection-start-column="19" selection-end-line="279" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/controllers/admin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="219" column="1" lean-forward="false" selection-start-line="219" selection-start-column="1" selection-end-line="219" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="143" lean-forward="false" selection-start-line="21" selection-start-column="143" selection-end-line="21" selection-end-column="143" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="completeProfileTemplate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/completeProfileTemplate.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="73" column="2" lean-forward="false" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
-              <folding>
-                <marker date="1532689611000" expanded="true" signature="59:3659" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="84:112" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="113:657" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="186:382" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="457:632" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="675:851" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="852:1266" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="867:1255" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="887:939" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="1008:1060" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="1189:1226" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="1283:1358" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="1359:3647" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="1371:1442" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="1473:1564" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="1565:3275" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="1578:1613" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="1614:2119" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="1675:2105" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="1705:2065" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="2140:2175" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="2176:2683" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="2238:2669" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="2268:2629" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="2704:2739" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="2740:3265" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="2800:3251" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="2830:3189" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="3190:3234" ph="..." />
-                <marker date="1532689611000" expanded="false" signature="3293:3386" ph="..." />
-                <marker date="1532689611000" expanded="true" signature="3387:3637" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="updatePaymentTemplate.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/updatePaymentTemplate.js">
+      <file leaf-file-name="AdditionalServicesForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/AdditionalServicesForm.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="10" column="76" lean-forward="false" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="76" />
-              <folding>
-                <marker date="1532689633000" expanded="true" signature="59:3700" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="84:112" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="113:657" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="186:382" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="457:632" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="676:852" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="853:1306" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="868:1295" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="888:940" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="1071:1123" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="1229:1266" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="1324:1399" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="1400:3688" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="1412:1483" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="1514:1605" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="1606:3316" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="1619:1654" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="1655:2160" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="1716:2146" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="1746:2106" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="2181:2216" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="2217:2724" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="2279:2710" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="2309:2670" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="2745:2780" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="2781:3306" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="2841:3292" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="2871:3230" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="3231:3275" ph="..." />
-                <marker date="1532689633000" expanded="false" signature="3334:3427" ph="..." />
-                <marker date="1532689633000" expanded="true" signature="3428:3678" ph="..." />
-              </folding>
+              <caret line="63" column="63" lean-forward="false" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="63" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/actions/auth/index.js">
+      <file leaf-file-name="BudgetAdditionalInformationForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/BudgetAdditionalInformationForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="97" column="1" lean-forward="false" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-15">
+              <caret line="78" column="63" lean-forward="false" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequireAuth.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/auth/RequireAuth.js">
+      <file leaf-file-name="ContactDetailsForm.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/ContactDetailsForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-              <folding>
-                <element signature="e#1#42#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-355">
+              <caret line="89" column="61" lean-forward="false" selection-start-line="89" selection-start-column="61" selection-end-line="89" selection-end-column="61" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/components/chefs/Dashboard/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="194" column="96" lean-forward="false" selection-start-line="194" selection-start-column="96" selection-end-line="194" selection-end-column="96" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/config/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BookingItem.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BookingItem.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/admin/Dashboard/BookingItem.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
               <caret line="45" column="27" lean-forward="false" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Title.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/components/bookings/Item/Title.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#49#75#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -303,7 +180,6 @@
         <option value="$PROJECT_DIR$/client/components/bookings/Item/AdditionalEquipment.js" />
         <option value="$PROJECT_DIR$/server/controllers/events.js" />
         <option value="$PROJECT_DIR$/client/index.js" />
-        <option value="$PROJECT_DIR$/client/components/bookings/Item/Title.js" />
         <option value="$PROJECT_DIR$/server/controllers/bookings.js" />
         <option value="$PROJECT_DIR$/server/models/event.js" />
         <option value="$PROJECT_DIR$/server/models/booking.js" />
@@ -315,8 +191,6 @@
         <option value="$PROJECT_DIR$/client/components/forms/renderCheckbox.js" />
         <option value="$PROJECT_DIR$/client/containers/forms/booking/EventTypeAndServiceForm.js" />
         <option value="$PROJECT_DIR$/client/containers/forms/booking/FoodServicesForm.js" />
-        <option value="$PROJECT_DIR$/client/containers/forms/booking/AdditionalServicesForm.js" />
-        <option value="$PROJECT_DIR$/client/containers/forms/booking/BudgetAdditionalInformationForm.js" />
         <option value="$PROJECT_DIR$/client/actions/admin/index.js" />
         <option value="$PROJECT_DIR$/client/components/admin/Dashboard/ChefItem.js" />
         <option value="$PROJECT_DIR$/client/components/admin/Dashboard/index.js" />
@@ -329,6 +203,9 @@
         <option value="$PROJECT_DIR$/client/components/chefs/Dashboard/index.js" />
         <option value="$PROJECT_DIR$/client/config/routes.js" />
         <option value="$PROJECT_DIR$/client/components/admin/Dashboard/BookingItem.js" />
+        <option value="$PROJECT_DIR$/client/containers/forms/booking/AdditionalServicesForm.js" />
+        <option value="$PROJECT_DIR$/client/containers/forms/booking/BudgetAdditionalInformationForm.js" />
+        <option value="$PROJECT_DIR$/client/components/bookings/Item/Title.js" />
       </list>
     </option>
   </component>
@@ -704,6 +581,54 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="bookings" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="getcooked" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bookings" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Item" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="getcooked" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -726,7 +651,7 @@
     <property name="js-jscs-nodeInterpreter" value="$USER_HOME$/.nvm/versions/node/v4.1.2/bin/node" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
-    <property name="SearchEverywhereHistoryKey" value="Core&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/bookings/Item/CoreDetails.js&#10;Main&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;Booki&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/utils/data.js&#10;gc-section&#9;null&#9;null&#10;messa&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_message.scss&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_panel.scss&#10;typ&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_typography.scss&#10;date&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_datepicker.scss&#10;forms&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_forms.scss&#10;bo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;admin&#9;null&#9;null&#10;index&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/index.js&#10;suppl&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Blog/How-blockchain-can-change-the-supply-chain.js&#10;Profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;terms&#9;null&#9;null&#10;login&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/auth/Login.js&#10;Blog&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Blog.js&#10;Caterer&#9;null&#9;null&#10;reduc&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Blog/How-is-technology-helping-us-reduce-food-waste.js&#10;food&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/food.js&#10;foods&#9;null&#9;null&#10;basics&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/basics.js&#10;basic&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/BasicsForm.js&#10;Profile&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;Nav&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;photo&#9;null&#9;null&#10;dash&#9;null&#9;null&#10;Footer&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Footer.js&#10;ChefI&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;pay&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/payment.js&#10;dashboard&#9;null&#9;null&#10;ChefItem&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;Navi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;Home&#9;null&#9;null&#10;Event&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/EventItem.js&#10;help&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_helpers.scss&#10;gc-list&#9;null&#9;null&#10;dashb&#9;null&#9;null&#10;Na&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;gc-info&#9;null&#9;null&#10;lIST&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;Who&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/WhoWeAre.js&#10;profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;chefi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;list&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;home&#9;null&#9;null&#10;chef&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;routes&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/config/routes.js" />
+    <property name="SearchEverywhereHistoryKey" value="tITL&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/bookings/Item/Title.js&#10;Book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/BookingItem.js&#10;Core&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/bookings/Item/CoreDetails.js&#10;Main&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Main.js&#10;Booki&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;data&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/utils/data.js&#10;gc-section&#9;null&#9;null&#10;messa&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_message.scss&#10;panel&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_panel.scss&#10;typ&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_typography.scss&#10;date&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_datepicker.scss&#10;forms&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/components/_forms.scss&#10;bo&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;admin&#9;null&#9;null&#10;index&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/index.js&#10;suppl&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Blog/How-blockchain-can-change-the-supply-chain.js&#10;Profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;terms&#9;null&#9;null&#10;login&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/auth/Login.js&#10;Blog&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/Blog.js&#10;Caterer&#9;null&#9;null&#10;reduc&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Blog/How-is-technology-helping-us-reduce-food-waste.js&#10;food&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/food.js&#10;foods&#9;null&#9;null&#10;basics&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/basics.js&#10;basic&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/forms/setup/chefs/BasicsForm.js&#10;Profile&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;Nav&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;photo&#9;null&#9;null&#10;dash&#9;null&#9;null&#10;Footer&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Footer.js&#10;ChefI&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;pay&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/setup/payment.js&#10;dashboard&#9;null&#9;null&#10;ChefItem&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;book&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/BookingForm.js&#10;Navi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;Home&#9;null&#9;null&#10;Event&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/EventItem.js&#10;help&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/styles/base/_helpers.scss&#10;gc-list&#9;null&#9;null&#10;dashb&#9;null&#9;null&#10;Na&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/NavigationBar.js&#10;gc-info&#9;null&#9;null&#10;lIST&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;Who&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/Home/WhoWeAre.js&#10;profi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/containers/chefs/Profile.js&#10;chefi&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/admin/Dashboard/ChefItem.js&#10;list&#9;FILE&#9;file:///Users/sachinkaria/Desktop/getcooked/getcooked/client/components/chefs/ListItem.js&#10;home&#9;null&#9;null" />
     <property name="js.last.introduce.type" value="LET" />
   </component>
   <component name="RecentsManager">
@@ -986,7 +911,7 @@
       <workItem from="1532092910139" duration="17950000" />
       <workItem from="1532429560972" duration="8060000" />
       <workItem from="1532600963830" duration="3740000" />
-      <workItem from="1532687604244" duration="1086000" />
+      <workItem from="1532687604244" duration="1771000" />
     </task>
     <task id="LOCAL-00001" summary="added payments details to dashboard summary">
       <created>1529593448503</created>
@@ -1013,7 +938,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1337626000" />
+    <option name="totallyTimeSpent" value="1338311000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1024,22 +949,22 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3271028" sideWeight="0.51310563" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24766356" sideWeight="0.48689437" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.4954792" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866043" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Salesforce" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1240,13 +1165,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/bookings/Item/Title.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="74" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/components/Home/Main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1318,31 +1236,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/AdditionalServicesForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="10" column="28" lean-forward="false" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/FoodServicesForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/ContactDetailsForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="89" column="61" lean-forward="false" selection-start-line="89" selection-start-column="61" selection-end-line="89" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/BudgetAdditionalInformationForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="9" column="27" lean-forward="false" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1358,7 +1256,7 @@
         <state relative-caret-position="2745">
           <caret line="183" column="1" lean-forward="false" selection-start-line="183" selection-start-column="1" selection-end-line="183" selection-end-column="1" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1368,73 +1266,47 @@
         <state relative-caret-position="260">
           <caret line="107" column="4" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="118" selection-end-column="24" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/admin/Dashboard/index.js">
+    <entry file="file://$PROJECT_DIR$/client/actions/auth/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="279" column="19" lean-forward="false" selection-start-line="279" selection-start-column="19" selection-end-line="279" selection-end-column="19" />
+          <caret line="97" column="1" lean-forward="false" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/admin.js">
+    <entry file="file://$PROJECT_DIR$/client/config/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="219" column="1" lean-forward="false" selection-start-line="219" selection-start-column="1" selection-end-line="219" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="143" lean-forward="false" selection-start-line="21" selection-start-column="143" selection-end-line="21" selection-end-column="143" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/completeProfileTemplate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="73" column="2" lean-forward="false" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
+          <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
           <folding>
-            <marker date="1532689611000" expanded="true" signature="59:3659" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="84:112" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="113:657" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="186:382" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="457:632" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="675:851" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="852:1266" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="867:1255" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="887:939" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="1008:1060" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="1189:1226" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="1283:1358" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="1359:3647" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="1371:1442" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="1473:1564" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="1565:3275" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="1578:1613" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="1614:2119" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="1675:2105" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="1705:2065" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="2140:2175" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="2176:2683" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="2238:2669" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="2268:2629" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="2704:2739" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="2740:3265" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="2800:3251" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="2830:3189" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="3190:3234" ph="..." />
-            <marker date="1532689611000" expanded="false" signature="3293:3386" ph="..." />
-            <marker date="1532689611000" expanded="true" signature="3387:3637" ph="..." />
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/chefs/Dashboard/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="194" column="96" lean-forward="false" selection-start-line="194" selection-start-column="96" selection-end-line="194" selection-end-column="96" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/auth/RequireAuth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="e#1#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1479,43 +1351,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/actions/auth/index.js">
+    <entry file="file://$PROJECT_DIR$/server/services/emailTemplates/completeProfileTemplate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="97" column="1" lean-forward="false" selection-start-line="97" selection-start-column="1" selection-end-line="97" selection-end-column="1" />
+        <state relative-caret-position="780">
+          <caret line="73" column="2" lean-forward="false" selection-start-line="73" selection-start-column="2" selection-end-line="73" selection-end-column="2" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1532690172000" expanded="true" signature="59:3659" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="84:112" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="113:657" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="186:382" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="457:632" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="675:851" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="852:1266" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="867:1255" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="887:939" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="1008:1060" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="1189:1226" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="1283:1358" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="1359:3647" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="1371:1442" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="1473:1564" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="1565:3275" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="1578:1613" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="1614:2119" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="1675:2105" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="1705:2065" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="2140:2175" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="2176:2683" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="2238:2669" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="2268:2629" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="2704:2739" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="2740:3265" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="2800:3251" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="2830:3189" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="3190:3234" ph="..." />
+            <marker date="1532690172000" expanded="false" signature="3293:3386" ph="..." />
+            <marker date="1532690172000" expanded="true" signature="3387:3637" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/auth/RequireAuth.js">
+    <entry file="file://$PROJECT_DIR$/server/routes/admin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="143" lean-forward="false" selection-start-line="21" selection-start-column="143" selection-end-line="21" selection-end-column="143" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <caret line="219" column="1" lean-forward="false" selection-start-line="219" selection-start-column="1" selection-end-line="219" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/admin/Dashboard/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="279" column="19" lean-forward="false" selection-start-line="279" selection-start-column="19" selection-end-line="279" selection-end-column="19" />
           <folding>
-            <element signature="e#1#42#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/chefs/Dashboard/index.js">
+    <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/AdditionalServicesForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="194" column="96" lean-forward="false" selection-start-line="194" selection-start-column="96" selection-end-line="194" selection-end-column="96" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="150">
+          <caret line="63" column="63" lean-forward="false" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/config/routes.js">
+    <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/BudgetAdditionalInformationForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="98" column="22" lean-forward="false" selection-start-line="98" selection-start-column="22" selection-end-line="98" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-15">
+          <caret line="78" column="63" lean-forward="false" selection-start-line="78" selection-start-column="63" selection-end-line="78" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/containers/forms/booking/ContactDetailsForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-355">
+          <caret line="89" column="61" lean-forward="false" selection-start-line="89" selection-start-column="61" selection-end-line="89" selection-end-column="61" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1523,8 +1445,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="45" column="27" lean-forward="false" selection-start-line="45" selection-start-column="27" selection-end-line="45" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/bookings/Item/Title.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#49#75#0" expanded="true" />
           </folding>
         </state>
       </provider>

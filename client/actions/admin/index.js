@@ -157,13 +157,25 @@ export function adminCreateBooking(booking) {
 }
 
 export function updateEvent(id, status) {
-  console.log(status);
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.post(`/api/admin/events/${id}`, status, AUTH_HEADERS)
       .then(() => {
         successHandler(dispatch, 'Event updated.');
         adminListEvents();
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
+      });
+  };
+}
+
+export function sendIncompleteProfileEmail(name, email) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post('/api/admin/emails/incomplete', { name, email }, AUTH_HEADERS)
+      .then(() => {
+        successHandler(dispatch, 'Email successfully sent.');
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');

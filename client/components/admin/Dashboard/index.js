@@ -13,7 +13,8 @@ import {
   adminCreateBooking,
   adminListBookings,
   adminListBookingsByChef,
-  updateEvent
+  updateEvent,
+  sendIncompleteProfileEmail
 } from '../../../actions/admin';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import ChefItem from './ChefItem';
@@ -41,6 +42,7 @@ class AdminDashboard extends React.Component {
     this.selectChef = this.selectChef.bind(this);
     this.handleChefSelect = this.handleChefSelect.bind(this);
     this.handleStatusSelect = this.handleStatusSelect.bind(this);
+    this.sendIncompleteProfileEmail = this.sendIncompleteProfileEmail.bind(this);
   }
 
   componentWillMount() {
@@ -84,6 +86,10 @@ class AdminDashboard extends React.Component {
 
   updateStatus(status, id) {
     this.props.updateStatus(status, id);
+  }
+
+  sendIncompleteProfileEmail(name, email) {
+    this.props.sendIncompleteProfileEmail(name, email);
   }
 
   selectChef(selectedChef) {
@@ -162,6 +168,7 @@ class AdminDashboard extends React.Component {
                         onImagesUpload={this.onImagesUpload}
                         selectChef={this.selectChef}
                         updateStatus={this.updateStatus}
+                        sendIncompleteProfileEmail={this.sendIncompleteProfileEmail}
                         createBooking={this.props.adminCreateBooking}
                         acceptedBookings={chef.acceptedBookings}
                         minimumPerHeadBudget={chef.minimumPerHeadBudget}
@@ -268,5 +275,6 @@ export default connect(mapStateToProps, {
   adminCreateBooking,
   adminListBookings,
   adminListBookingsByChef,
-  updateEvent
+  updateEvent,
+  sendIncompleteProfileEmail
 })(AdminDashboard);

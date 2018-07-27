@@ -12,6 +12,7 @@ const twilio = require('./twilio');
 const utils = require('./utils');
 const Mailer = require('../services/mailer');
 const approvalTemplate = require('../services/emailTemplates/approvalTemplate');
+const completeProfileTemplate = require('../services/emailTemplates/completeProfileTemplate');
 
 module.exports.listChefs = allChefs;
 module.exports.listUsers = allUsers;
@@ -26,6 +27,7 @@ module.exports.uploadPhotos = uploadPhotos;
 module.exports.addMonthlyCoupons = addMonthlyCoupons;
 module.exports.createBooking = createBooking;
 module.exports.updateEvent = updateEvent;
+module.exports.sendIncompleteProfileEmail = sendIncompleteProfileEmail;
 
 function allChefs(req, res) {
   User.find({ role: 'chef' }).exec((err, chefs) => {
@@ -57,8 +59,8 @@ function allBookings(req, res) {
   Booking.find({})
     .populate('chef', 'profilePhoto displayName')
     .exec((err, bookings) => {
-    res.jsonp(bookings);
-  });
+      res.jsonp(bookings);
+    });
 }
 
 function allBookingsByChef(req, res) {
@@ -199,4 +201,20 @@ function addMonthlyCoupons(req, res) {
       }
     });
   });
+}
+
+function sendIncompleteProfileEmail(req, res) {
+  const NAME = req.body.name;
+  const EMAIL = req.body.email;
+
+  const emailData = {
+    subject: 'Your profile is almost complete!',
+    recipient: EMAIL
+  };
+
+  // send email to complete profile
+  const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/profile/summary');
+  const mailer = new Mailer(emailData, completeProfileTemplate(NAME, HOSTNAME));
+  mailer.send();
+  res.sendStatus(200);
 }

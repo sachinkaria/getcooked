@@ -83,6 +83,16 @@ function ChefItem({ ...chef }) {
                 </Button>
               }
               {
+                chef.status === 'pending' &&
+                <Button
+                  block
+                  className="btn gc-btn gc-btn--sm btn-danger"
+                  onClick={() => chef.sendIncompleteProfileEmail(chef.firstName, chef.email)}
+                >
+                  Email Reminder
+                </Button>
+              }
+              {
                 chef.minimumPerHeadBudget &&
                 <p className="text-left gc-margin-top">Per Head: £{chef.minimumPerHeadBudget}</p>
               }

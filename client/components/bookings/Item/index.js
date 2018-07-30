@@ -51,7 +51,6 @@ class BookingItem extends React.Component {
   renderView() {
     const {booking} = this.props;
     const STATUS = this.getStatus();
-    console.log(booking);
 
     return (
       <Panel className="gc-panel">

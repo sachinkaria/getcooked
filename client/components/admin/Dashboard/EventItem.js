@@ -17,7 +17,7 @@ function EventItem({userItem, booking, updateEvent}) {
               </p>
               <p className="gc-text text-right">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
               <div className="text-right">
-                <Status status={booking.status}/>
+                <Status status={booking.status} />
               </div>
             </Panel.Title>
           </Panel.Heading>
@@ -30,10 +30,20 @@ function EventItem({userItem, booking, updateEvent}) {
                       <img
                         className="gc-icon"
                         alt="location"
+                        src="/images/calendar-grey.png"
+                      />
+                      <p className="gc-text gc-text--lg text-capitalize gc-inline-block">
+                        {moment(booking.date).format('MMMM Do YYYY')}
+                      </p>
+                    </Col>
+                    <Col xs={12} className="gc-margin-bottom--xs">
+                      <img
+                        className="gc-icon"
+                        alt="location"
                         src="/images/location-grey.png"
                       />
                       <p className="gc-text gc-text--lg text-capitalize gc-inline-block">
-                        {booking.address.line1}, {booking.address.postcode}
+                        {booking.address.line1}, <span className="text-capitalize">{booking.address.postcode}</span>
                       </p>
                     </Col>
                     <Col xs={12} className="gc-margin-bottom--xs">

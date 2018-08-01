@@ -134,7 +134,7 @@ function create(req, res) {
           if (saveErr) return saveErr;
 
           const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-          const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+          const MESSAGE = `You have a new enquiry from ${USER.firstName} for ${booking.numberOfPeople} people with a budget of £${booking.budget}. Your bookings: ${HOSTNAME}`;
           const ENQUIRY_EMAIL_DATA = {
             subject: 'New Booking Request',
             recipient: chef.companyEmail
@@ -155,7 +155,7 @@ function create(req, res) {
     } else {
       const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
       const hostname = 'http://'.concat(req.headers.host).concat('/setup/payment');
-      const MESSAGE = `Hi ${chef.firstName}! You have a new enquiry from ${USER.firstName}. Event date: ${moment(booking.date).format('Do MMM YY')}, Guests: ${booking.numberOfPeople}, Budget: £${booking.budget}. Your bookings: ${HOSTNAME}`;
+      const MESSAGE = `You have a new enquiry from ${USER.firstName} for ${booking.numberOfPeople} people with a budget of £${booking.budget}. Your bookings: ${HOSTNAME}`;
       const EMAIL_DATA = {
         subject: 'Update Your Payment Details',
         recipient: chef.companyEmail

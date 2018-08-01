@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d9e91ffe-1b3d-4e61-bc17-0fb029e5f926" name="Default" comment="added payments details to dashboard summary">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/admin/Dashboard/EventItem.js" afterPath="$PROJECT_DIR$/client/components/admin/Dashboard/EventItem.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/bookings/Item/index.js" afterPath="$PROJECT_DIR$/client/components/bookings/Item/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/controllers/bookings.js" afterPath="$PROJECT_DIR$/server/controllers/bookings.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/controllers/events.js" afterPath="$PROJECT_DIR$/server/controllers/events.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,11 +45,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/bookings/Item/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="230">
               <caret line="140" column="25" lean-forward="true" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bookings.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="190" column="45" lean-forward="false" selection-start-line="190" selection-start-column="45" selection-end-line="190" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="events.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/controllers/events.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -168,9 +188,7 @@
         <option value="$PROJECT_DIR$/client/components/bookings/Item/ServicesRequired.js" />
         <option value="$PROJECT_DIR$/client/components/bookings/Item/FoodStyle.js" />
         <option value="$PROJECT_DIR$/client/components/bookings/Item/AdditionalEquipment.js" />
-        <option value="$PROJECT_DIR$/server/controllers/events.js" />
         <option value="$PROJECT_DIR$/client/index.js" />
-        <option value="$PROJECT_DIR$/server/controllers/bookings.js" />
         <option value="$PROJECT_DIR$/server/models/event.js" />
         <option value="$PROJECT_DIR$/server/models/booking.js" />
         <option value="$PROJECT_DIR$/client/components/bookings/Item/CoreDetails.js" />
@@ -197,6 +215,8 @@
         <option value="$PROJECT_DIR$/client/components/bookings/Item/Title.js" />
         <option value="$PROJECT_DIR$/client/components/bookings/Item/index.js" />
         <option value="$PROJECT_DIR$/client/components/admin/Dashboard/EventItem.js" />
+        <option value="$PROJECT_DIR$/server/controllers/bookings.js" />
+        <option value="$PROJECT_DIR$/server/controllers/events.js" />
       </list>
     </option>
   </component>
@@ -851,7 +871,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1339635000" />
+    <option name="totallyTimeSpent" value="1339934000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="0" />
@@ -1033,27 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="36" column="18" lean-forward="false" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/models/event.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="103" column="53" lean-forward="true" selection-start-line="103" selection-start-column="53" selection-end-line="103" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1373,6 +1372,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
           <caret line="140" column="25" lean-forward="true" selection-start-line="140" selection-start-column="25" selection-end-line="140" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/bookings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="190" column="45" lean-forward="false" selection-start-line="190" selection-start-column="45" selection-end-line="190" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/event.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
           <folding />
         </state>
       </provider>

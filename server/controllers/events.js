@@ -36,17 +36,17 @@ function create(req, res) {
       console.log(bookingErr);
       return (bookingErr);
     }
-    sendNewBookingSlackNotification(USER);
+    sendNewBookingSlackNotification(USER, EVENT);
     return res.jsonp(event);
   });
 }
 
-function sendNewBookingSlackNotification(user) {
+function sendNewBookingSlackNotification(user, event) {
   if (process.env.NODE_ENV === 'production') {
     request
       .post(config.slackEventsWebHookUrl)
       .send({
-        text: `${user.firstName} (${user.email}) just created a new event.`
+        text: `${user.firstName} (${user.email}/${user.mobileNumber}) just created a new event with a budget of £${event.budget} for ${event.numberOfPeople} people.`
       })
       .end();
   }

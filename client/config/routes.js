@@ -57,7 +57,7 @@ const routes = (
       <Route exact path="what-is-sustainable-catering" component={SustainableCatering} />
       <Route exact path="how-blockchain-can-change-the-food-supply-chain" component={Blockchain} />
       <Route exact path="how-is-technology-helping-us-reduce-food-waste" component={FoodWaste} />
-      <Route exact path="5-things-to-consider-when-estimating-your-catering-budget" component={CateringBudget} />
+      <Route exact path="5-things-to-consider-when-planning-your-catering-budget" component={CateringBudget} />
     </Route>
     <Route path="/login" component={Login} />
     <Route exact path="/logout" component={Logout} />

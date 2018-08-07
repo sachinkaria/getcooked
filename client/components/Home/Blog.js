@@ -15,9 +15,9 @@ function Blog() {
           <Row>
             <Col xs={12} sm={6}>
               <BlogThumbnail
-                backgroundImage="url(/images/catering-3.jpg)"
-                heading="7 Things to Consider When Booking a Caterer"
-                path={'/blog/7-things-to-consider-when-booking-a-caterer'}
+                backgroundImage="url(/images/tableware.jpg)"
+                heading="5 Things To Consider When Planning Your Catering Budget"
+                path={'/blog/5-things-to-consider-when-planning-your-catering-budget'}
               />
             </Col>
             <Col xs={12} sm={6}>

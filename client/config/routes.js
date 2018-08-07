@@ -43,7 +43,6 @@ const routes = (
     <Route path="/get-quotes" component={GetQuote} />
     <Route exact path="/inbox" component={RequireAuth(Inbox)} />
     <Route exact path="/bookings" component={RequireAuth(Bookings)} />
-    <Route exact path="register" component={Register} redirect />
     <Route exact path="forgot" component={ForgotPassword} />
     <Route exact path="reset/:token" component={ResetPassword} />
     <Route path="/caterers" component={ProfileList} />

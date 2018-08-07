@@ -1,4 +1,6 @@
 const Booking = require('../models/booking');
+const mongoose = require('mongoose');
+const Event = mongoose.model('Event');
 const User = require('../models/user');
 const twilio = require('./twilio');
 const moment = require('moment');
@@ -80,11 +82,10 @@ function read(req, res) {
 }
 
 function create(req, res) {
-  const BOOKING = req.body;
+  const BOOKING = req.body || req;
   const USER = BOOKING.contactDetails;
 
   const booking = new Booking({
-    user: USER._id,
     chef: BOOKING.chef,
     eventType: BOOKING.eventType,
     date: BOOKING.date,
@@ -145,10 +146,28 @@ function create(req, res) {
 
           if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
           booking.save((bookingErr) => {
+            const ID = BOOKING._id && BOOKING._id;
             if (bookingErr) return (bookingErr);
 
-            sendNewBookingSlackNotification(USER);
-            return res.jsonp(booking);
+            if (ID) {
+              Event.findOne({ _id: ObjectId(ID) }).exec((eventErr, event) => {
+                if (eventErr) return eventErr;
+
+                if (event.bookings) {
+                  event.bookings.push(booking._id);
+                  event.save();
+                } else {
+                  event.bookings = [booking._id];
+                  event.save();
+                }
+
+                sendNewBookingSlackNotification(USER);
+                return res.jsonp(booking);
+              });
+            } else {
+              sendNewBookingSlackNotification(USER);
+              return res.jsonp(booking);
+            }
           });
         });
       });
@@ -179,9 +198,28 @@ function create(req, res) {
         if (err) return err;
         if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
         booking.save((saveErr) => {
+          const ID = BOOKING._id && BOOKING._id;
           if (saveErr) return (saveErr);
-          sendNewBookingSlackNotification(USER);
-          return res.jsonp(booking);
+
+          if (ID) {
+            Event.findOne({ _id: ObjectId(ID) }).exec((eventErr, event) => {
+              if (eventErr) return eventErr;
+
+              if (event.bookings) {
+                event.bookings.push(booking._id);
+                event.save();
+              } else {
+                event.bookings = [booking._id];
+                event.save();
+              }
+
+              sendNewBookingSlackNotification(USER);
+              return res.jsonp(booking);
+            });
+          } else {
+            sendNewBookingSlackNotification(USER);
+            return res.jsonp(booking);
+          }
         });
       });
     }

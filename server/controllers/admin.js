@@ -50,7 +50,16 @@ function allUsers(req, res) {
 }
 
 function allEvents(req, res) {
-  Event.find({}).exec((err, events) => {
+  Event.find({})
+    .populate({
+      path: 'bookings',
+      select: { status: 1, read: 1 },
+      populate: {
+        path: 'chef',
+        select: { displayName: 1 },
+      }
+    })
+    .exec((err, events) => {
     res.jsonp(events);
   });
 }

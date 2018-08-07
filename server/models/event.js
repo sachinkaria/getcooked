@@ -67,6 +67,10 @@ const EventSchema = new Schema({
     foodServices: [{
       type: String
     }],
+    bookings: [{
+      type: Schema.ObjectId,
+      ref: 'Booking'
+    }],
   },
   {
     timestamps: true

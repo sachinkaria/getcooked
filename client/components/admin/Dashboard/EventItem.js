@@ -222,6 +222,33 @@ function EventItem({userItem, booking, updateEvent}) {
                   }
                 </Col>
               </Row>
+              <hr/>
+              <Row>
+                {
+                  (booking.bookings.length > 0) &&
+                  <Col xs={12}>
+                    <p className="gc-text gc-grey">Bookings Sent</p>
+                    <table>
+                      <tr>
+                        <th style={{width: '200px'}}>Name</th>
+                        <th style={{width: '100px'}}>Read</th>
+                        <th style={{width: '100px'}}>Status</th>
+                      </tr>
+                      {
+                        booking.bookings.map((item) => {
+                          return (
+                            <tr key={item._id}>
+                              <td>{item.chef.displayName}</td>
+                              <td>{item.read ? 'read' : 'unread'}</td>
+                              <td>{item.status}</td>
+                            </tr>
+                          );
+                        })
+                      }
+                    </table>
+                  </Col>
+                }
+              </Row>
             </Panel.Body>
           </Panel.Collapse>
         </Panel>

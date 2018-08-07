@@ -34,6 +34,7 @@ require('./images/review.png');
 require('./images/phone.png');
 require('./images/powered_by_stripe.svg');
 require('./images/dinner.jpg');
+require('./images/tableware.jpg');
 require('./images/grow-your-business.jpg');
 require('./images/dining.jpg');
 require('./images/checklist.png');

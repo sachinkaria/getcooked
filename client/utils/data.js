@@ -38,6 +38,12 @@ export const BOOKING_MODAL = {
 
 export const POSTS = [
   {
+    title: '5 Things to Consider When Planning Your Catering Budget',
+    image: '/images/tableware.jpg',
+    date: '5th August 2018',
+    src: '/blog/5-things-to-consider-when-planning-your-catering-budget'
+  },
+  {
     title: 'How is technology helping us reduce food waste?',
     image: '/images/food-waste.jpg',
     date: '25th June 2018',

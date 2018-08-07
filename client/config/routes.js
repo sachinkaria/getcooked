@@ -31,6 +31,7 @@ import BookingACaterer from '../components/Blog/7-things-to-know-about-catering'
 import SustainableCatering from '../components/Blog/What-is-sustainable-catering';
 import Blockchain from '../components/Blog/How-blockchain-can-change-the-supply-chain';
 import FoodWaste from '../components/Blog/How-is-technology-helping-us-reduce-food-waste';
+import CateringBudget from '../components/Blog/5-things-to-consider-when-planning-your-event-catering-budget';
 import Blog from '../components/Blog/List';
 
 const routes = (
@@ -56,6 +57,7 @@ const routes = (
       <Route exact path="what-is-sustainable-catering" component={SustainableCatering} />
       <Route exact path="how-blockchain-can-change-the-food-supply-chain" component={Blockchain} />
       <Route exact path="how-is-technology-helping-us-reduce-food-waste" component={FoodWaste} />
+      <Route exact path="5-things-to-consider-when-estimating-your-catering-budget" component={CateringBudget} />
     </Route>
     <Route path="/login" component={Login} />
     <Route exact path="/logout" component={Logout} />

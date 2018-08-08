@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import moment from 'moment';
 import {Link} from 'react-router';
 import {Row, Col, Panel, Button} from 'react-bootstrap';
@@ -43,7 +44,7 @@ function EventItem({userItem, booking, updateEvent}) {
                         src="/images/location-grey.png"
                       />
                       <p className="gc-text gc-text--lg text-capitalize gc-inline-block">
-                        {booking.address.line1}, <span className="text-capitalize">{booking.address.postcode}</span>
+                        {booking.address.line1}, <span>{_.toUpper(booking.address.postcode)}</span>
                       </p>
                     </Col>
                     <Col xs={12} className="gc-margin-bottom--xs">

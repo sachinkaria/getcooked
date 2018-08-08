@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import moment from 'moment';
+import _ from 'lodash';
 import {Row, Col} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
@@ -16,7 +17,7 @@ function CoreDetails({ ...props }) {
           src="/images/location-grey.png"
         />
         <p className="gc-text gc-text--lg text-capitalize gc-inline-block">
-          {props.address.line1}, {props.address.postcode}
+          {props.address.line1}, <span>{_.toUpper(props.address.postcode)}</span>
         </p>
       </Col>
       <Col xs={12} className="gc-margin-bottom--xs">

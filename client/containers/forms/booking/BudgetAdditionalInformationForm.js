@@ -80,7 +80,7 @@ class DateAndPlaceForm extends Component {
             <div className="gc-margin-bottom">
               <Field
                 name="additionalInformation"
-                placeholder="Please give any extra details about your event and any special requirements you might have."
+                placeholder="Let us know if there's anything else! Are there any special requirements? What's the best way to contact you? "
                 className="form-control gc-input gc-margin-bottom"
                 component={renderInputBox}
                 type="text"

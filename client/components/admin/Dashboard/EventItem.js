@@ -7,19 +7,29 @@ import Status from '../../Status';
 import Item from '../../bookings/Item';
 
 function EventItem({userItem, booking, updateEvent}) {
+  const ACCEPTED_BOOKINGS = _.filter(booking.bookings, item => item.status === 'accepted').length;
   return (
     <Row>
       <Col xs={12}>
         <Panel id="collapsible-panel-example-2">
           <Panel.Heading>
             <Panel.Title toggle>
-              <p className="gc-text pull-left">
-                {userItem.firstName} {userItem.lastName}
-              </p>
-              <p className="gc-text text-right">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
-              <div className="text-right">
-                <Status status={booking.status} />
-              </div>
+              <Row>
+                <Col xs={6}>
+                  <p className="gc-text text-left">
+                    {userItem.firstName} {userItem.lastName}
+                  </p>
+                  <p className="gc-text text-left">
+                    {(booking.bookings.length > 0) && 'Accepted: ' + ACCEPTED_BOOKINGS}
+                  </p>
+                </Col>
+                <Col xs={6}>
+                  <p className="gc-text text-right">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
+                  <div className="text-right">
+                    <Status status={booking.status} />
+                  </div>
+                </Col>
+              </Row>
             </Panel.Title>
           </Panel.Heading>
           <Panel.Collapse>

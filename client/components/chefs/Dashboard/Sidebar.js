@@ -72,7 +72,7 @@ class Sidebar extends React.Component {
         <Panel.Body>
         <ul className="gc-list gc-padding-none">
           <li>
-            <Link to="/dashboard/profile/summary" className="gc-link-default">
+            <Link to="/dashboard/profile/summary" className="gc-link-default" onClick={window.location.reload}>
               <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('summary') })}>Summary</p>
             </Link>
           </li>

@@ -57,7 +57,7 @@ class RegisterChef extends Component {
         </Helmet>
         <Col sm={8} smOffset={2} md={4} mdOffset={4}>
           <div>
-            <h1 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up</h1>
+            <h1 className="gc-profile-heading-md gc-center gc-margin-bottom--lg">Sign up as a Caterer</h1>
             <form className="gc-center" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
               {this.renderAlert()}
               <Row>

@@ -19,7 +19,7 @@ function BookingItem({ chefItem, booking }) {
           </Col>
           <Col xs={2}>
             <p className="gc-text gc-grey">Budget</p>
-            <p className="gc-text">£{booking.budget || 1500}</p>
+            <p className="gc-text">£{booking.budget}</p>
           </Col>
           <Col xs={3}>
             <p className="gc-text gc-grey">Updated At</p>

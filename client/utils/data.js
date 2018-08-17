@@ -16,7 +16,7 @@ export const PROFILE_FIELDS = [
 
 export const TYPES = ['professional caterer', 'market stall', 'private chef', 'food truck', 'bakery', 'drinks company', 'cocktail bartender'];
 export const FOOD_SERVICES = ['canapes', 'desserts', 'buffets', 'vegetarian', 'vegan', 'halal', 'kosher', 'nut free', 'gluten free', 'alcoholic drinks', 'non-alcoholic drinks'];
-export const EVENTS = ['corporate events', 'weddings', 'private dinners', 'parties', 'festivals', 'other'];
+export const EVENTS = ['corporate events', 'weddings', 'private dinners', 'parties', 'festivals', 'cooking classes', 'workshops', 'other'];
 export const CUISINES = ['open to suggestions', 'american', 'african', 'BBQ', 'british', 'chinese', 'caribbean', 'french', 'greek', 'indian', 'italian', 'japanese', 'mediterranean', 'mexican', 'middle eastern', 'south american', 'moroccan', 'spanish', 'thai', 'turkish', 'vietnamese'];
 export const EVENT_TYPE = ['indoor', 'outdoor', 'private dinner', 'private lunch', 'corporate event', 'wedding', 'party', 'festival', 'BBQ', 'picnic', 'other'];
 export const EVENT_SERVICES = ['on-site catering', 'mobile catering', 'private chef', 'bar service', 'drop-off'];

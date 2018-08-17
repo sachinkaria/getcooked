@@ -10,6 +10,7 @@ import WhoWeAre from './WhoWeAre';
 import AreYouACaterer from './AreYouACaterer';
 import FeaturedCaterers from './FeaturedCaterers';
 import WhoWeWorkWith from './WhoWeWorkWith';
+import Events from './Events';
 import Blog from './Blog';
 
 class Home extends React.Component {
@@ -37,6 +38,8 @@ class Home extends React.Component {
         <WhoWeWorkWith />
         <br />
         <AreYouACaterer />
+        <br />
+        <Events />
         <Blog />
       </div>
     );

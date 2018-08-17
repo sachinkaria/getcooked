@@ -33,7 +33,8 @@ function validate(formProps, props) {
     errors.budget = 'Please enter your budget';
   }
 
-  if (!formProps.budget < 200) {
+  if (formProps.budget < 200) {
+    console.log(formProps.budget);
     errors.budget = 'Sorry, the minimum budgets our caterers cover begin at £200';
   }
   return errors;

@@ -3,7 +3,6 @@ export const PROFILE_FIELDS = [
   { name: 'tagline', field: 'tagLine', path: '/dashboard/profile/basics', required: true },
   { name: 'service type', field: 'serviceType', path: '/dashboard/profile/service-type', required: true },
   { name: 'profile photo', field: 'profilePhoto', path: '/dashboard/profile/photos', required: true },
-  { name: 'cover photo', field: 'coverPhoto', path: '/dashboard/profile/photos', required: true },
   { name: 'photos', field: 'photos', path: '/dashboard/profile/photos' },
   { name: 'cuisines', field: 'cuisines', path: '/dashboard/profile/food-services', required: true },
   { name: 'events', field: 'events', path: '/dashboard/profile/service-type', required: true },

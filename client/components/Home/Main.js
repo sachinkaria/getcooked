@@ -16,7 +16,7 @@ function Main({ eventSubmit, chefs }) {
         <Row style={{ paddingTop: '85px' }}>
           <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
             <h1 className="gc-title">Get Cooked</h1>
-            <h2 className="gc-heading gc-white">Cater your events with the coolest chefs around.</h2>
+            <h2 className="gc-heading gc-white">Compare and book the best caterers and private chefs in London.</h2>
             <div className="gc-margin-bottom gc-padding-none">
               <div className="gc-center">
                 <Row style={{ paddingBottom: '60px', paddingTop: '25px' }}>

@@ -4,11 +4,14 @@ import { Col } from 'react-bootstrap';
 const CoverPicture = (props) => {
   const style = {
     backgroundImage: `url(${props.photoUrl})`,
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    marginTop: '-50px',
+    marginLeft: '-50px',
+    marginRight: '-50px',
   };
 
   return (
-    <Col md={10} mdOffset={1}>
+    <Col md={12}>
       <div style={style} className="gc-profile-cover" />
     </Col>
   );

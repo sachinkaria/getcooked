@@ -25,11 +25,11 @@ function WhoWeAre() {
                 the advantages and disadvantages of urban farming.
               </p>
               <div>
-                <a rel="nooopener noreferer" target="_blank" href="https://www.thirdspacecanteen.com/tickets-26th-sept">
+                <Link to="/events/supper-club-the-urban-farming-debate">
                   <Button style={{ width: '150px' }} bsStyle="success" className="gc-btn gc-btn--white">
-                    Buy tickets
+                    More Details
                   </Button>
-                </a>
+                </Link>
                 {/*<Link to={'/caterers'} className="gc-inline-block gc-link-default">*/}
                   {/*<p className="gc-text gc-text--lg">*/}
                     {/*More info*/}

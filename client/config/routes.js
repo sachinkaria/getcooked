@@ -33,6 +33,7 @@ import Blockchain from '../components/Blog/How-blockchain-can-change-the-supply-
 import FoodWaste from '../components/Blog/How-is-technology-helping-us-reduce-food-waste';
 import CateringBudget from '../components/Blog/5-things-to-consider-when-planning-your-event-catering-budget';
 import Blog from '../components/Blog/List';
+import SupperClubEvent from '../components/Events/The-urban-farming-debate';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -49,6 +50,9 @@ const routes = (
     <Route path="caterers">
       <Route path="about" component={Caterer} />
       <Route path="register" component={RegisterChef} />
+    </Route>
+    <Route path="events">
+      <Route path="supper-club-the-urban-farming-debate" component={SupperClubEvent} />
     </Route>
     <Route path="/blog" component={Blog} />
     <Route path="blog">

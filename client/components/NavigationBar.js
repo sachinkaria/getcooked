@@ -71,6 +71,9 @@ class NavigationBar extends React.Component {
             {
               (!isAuthenticated() && showNav) && (
                 <Nav pullRight>
+                  <NavItem href="/events/supper-club-the-urban-farming-debate">
+                    <p className="gc-text gc-text--dark-grey">Upcoming Supper Club</p>
+                  </NavItem>
                   <NavItem>
                     <div className="hidden-xs">
                       <Modal
@@ -98,7 +101,7 @@ class NavigationBar extends React.Component {
                     </div>
                   </NavItem>
                   <NavItem href="/caterers/about">
-                    <p className="gc-text gc-text--dark-grey">Register as a caterer</p>
+                    <p className="gc-text gc-text--dark-grey">Register as a Caterer</p>
                   </NavItem>
                   <NavItem href="/login">
                     <p className="gc-text gc-text--dark-grey">Login</p>

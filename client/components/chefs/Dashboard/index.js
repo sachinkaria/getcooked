@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
     const PROFILE_UNDER_REVIEW = 'Your profile is under review. You will be notified as soon as it has been approved and listed.';
     const PROFILE_LISTED = 'Congrats! Your profile is currently published and is publicly shareable.';
     const PROFILE_UNLISTED = 'Note: Your profile is currently not published and will not be publicly visible.';
-    const PROFILE_BLOCKED = 'Note: Your profile is currently not published and will not be publicly visible. Please update your payments details before listing your profile.';
+    const PROFILE_BLOCKED = 'Note: Your profile is currently not published and will not be publicly visible. Please update your payment details (Account > Subscription) before listing your profile.';
     const { user } = this.props;
 
     if (!user.data) {
@@ -72,7 +72,7 @@ class Dashboard extends React.Component {
 
     const USER_LISTED = (user.data.status === 'listed' && (user.data.subscription.status === 'pending' || 'active'));
     const USER_PENDING = user.data.status === 'pending';
-    const USER_BLOCKED = user.data.status === 'unlisted' && !user.data.stripe && user.data.subscription.status !== 'active';
+    const USER_BLOCKED = user.data.status === 'unlisted' && (!user.data.stripe || !user.data.stripe.sourceId) && user.data.subscription.status !== 'active';
     const USER_UNLISTED = user.data.status === 'unlisted';
     const IS_CHEF = user.data.role === 'chef';
 

@@ -57,7 +57,7 @@ class Chefs extends React.Component {
           <div className="text-center gc-margin-top">
             {
               (totalChefs > 0) &&
-              <Pagination totalRecords={totalChefs} pageLimit={12} pageNeighbours={1} onPageChanged={this.onPageChanged} />
+              <Pagination totalRecords={totalChefs} pageLimit={8} pageNeighbours={1} onPageChanged={this.onPageChanged} />
             }
             { currentPage && (
               <span className="gc-text">

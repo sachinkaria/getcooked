@@ -33,8 +33,11 @@ function validate(formProps, props) {
     errors.budget = 'Please enter your budget';
   }
 
+  if (PER_HEAD_BUDGET < 10) {
+    errors.budget = 'The minimum budgets our caterers and chefs cover begin at £10 per person. Please update your budget.';
+  }
+
   if (formProps.budget < 200) {
-    console.log(formProps.budget);
     errors.budget = 'The minimum budgets our caterers and chefs cover begin at £200';
   }
   return errors;

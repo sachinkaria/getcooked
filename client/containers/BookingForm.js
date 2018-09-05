@@ -34,7 +34,7 @@ class BookingForm extends React.Component {
     if (!this.props.withoutChef) {
       heap.track('Click Book Now', {chef_id: this.props.chef.id, chef_name: this.props.chef.displayName});
     } else {
-      heap.track('Click Get Quotes');
+      heap.track('Click Get Quotes', event);
     }
     window.gtag_report_conversion();
     this.props.onSubmit(event, this.props.endRoute);

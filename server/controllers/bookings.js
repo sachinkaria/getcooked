@@ -106,7 +106,9 @@ function create(req, res) {
     foodStyle: BOOKING.foodStyle,
     staffRequired: BOOKING.staffRequired,
     startTime: BOOKING.startTime,
-    endTime: BOOKING.endTime
+    endTime: BOOKING.endTime,
+    openToVegan: BOOKING.openToVegan,
+    openToVegetarian: BOOKING.openToVegetarian
   });
 
   User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {

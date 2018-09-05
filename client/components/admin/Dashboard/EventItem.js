@@ -26,7 +26,7 @@ function EventItem({userItem, booking, updateEvent}) {
                 <Col xs={6}>
                   <p className="gc-text text-right">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
                   <div className="text-right">
-                    <Status status={booking.status} />
+                    <Status status={booking.status}/>
                   </div>
                 </Col>
               </Row>
@@ -81,7 +81,8 @@ function EventItem({userItem, booking, updateEvent}) {
                           alt="budget"
                           src="/images/clock-grey.png"
                         />
-                        <p className="gc-text gc-text--lg gc-inline-block">{moment(booking.startTime).format('HH:mm')} to {moment(booking.endTime).format('HH:mm')}</p>
+                        <p className="gc-text gc-text--lg gc-inline-block">{moment(booking.startTime).format('HH:mm')}
+                          to {moment(booking.endTime).format('HH:mm')}</p>
                       </Col>
                     }
                   </Row>
@@ -178,16 +179,32 @@ function EventItem({userItem, booking, updateEvent}) {
                 </Col>
                 <Col xs={12} sm={4}>
                   <p className="gc-text gc-grey">Type of Food</p>
-                  <div className="gc-margin-bottom">
-                    {
-                      booking.foodServices.map((service) => {
-                        return (
-                          <p key={service} className="text-capitalize gc-margin-none gc-text gc-text--lg">
-                            {service}
-                          </p>
-                        );
-                      })
+                  <div>
+                    {((booking.openToVegan !== undefined) && booking.openToVegan) &&
+                      <div>
+                        <p className="gc-text gc-text--lg gc-margin-none gc-inline-block">
+                          Open to Vegan
+                        </p>
+                      </div>
                     }
+                    {((booking.openToVegetarian !== undefined) && booking.openToVegetarian) &&
+                      <div>
+                        <p className="gc-text gc-text--lg gc-margin-none gc-inline-block">
+                          Open to Vegetarian
+                        </p>
+                      </div>
+                    }
+                    <div className="gc-margin-bottom">
+                      {
+                        booking.foodServices.map((service) => {
+                          return (
+                            <p key={service} className="text-capitalize gc-margin-none gc-text gc-text--lg">
+                              {service}
+                            </p>
+                          );
+                        })
+                      }
+                    </div>
                   </div>
                 </Col>
                 <Col xs={12} sm={4}>
@@ -203,12 +220,12 @@ function EventItem({userItem, booking, updateEvent}) {
               <Row>
                 {
                   booking.additionalInformation &&
-                    <Col xs={12} sm={8}>
-                      <p className="gc-text gc-grey">Additional Information</p>
-                      <p className="gc-text gc-text--lg gc-dark-grey">
-                        {booking.additionalInformation}
-                      </p>
-                    </Col>
+                  <Col xs={12} sm={8}>
+                    <p className="gc-text gc-grey">Additional Information</p>
+                    <p className="gc-text gc-text--lg gc-dark-grey">
+                      {booking.additionalInformation}
+                    </p>
+                  </Col>
                 }
                 <Col xs={12} sm={4}>
                   <Link to={'/admin/dashboard/chefs'}>

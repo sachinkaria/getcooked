@@ -55,6 +55,8 @@ require('./images/phone-grey.png');
 require('./images/clock-grey.png');
 require('./images/calendar-grey.png');
 require('./images/event-poster.jpg');
+require('./images/icon-vegan.png');
+require('./images/icon-vegetarian.png');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

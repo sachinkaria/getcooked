@@ -67,6 +67,8 @@ const EventSchema = new Schema({
     foodServices: [{
       type: String
     }],
+  openToVegan: Boolean,
+  openToVegetarian: Boolean,
     bookings: [{
       type: Schema.ObjectId,
       ref: 'Booking'

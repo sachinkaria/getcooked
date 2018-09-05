@@ -119,7 +119,6 @@ class AdminDashboard extends React.Component {
   render() {
     const { user } = this.props;
     const { users, events, bookings } = this.props;
-    console.log(events);
 
     if (!user.data) {
       return <div>Loading...</div>;

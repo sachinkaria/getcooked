@@ -121,7 +121,11 @@ class BookingItem extends React.Component {
                   </Col>
                   <Col xs={6} sm={4}>
                     <p className="gc-text gc-grey">Type of Food</p>
-                    <TypeOfFood foodServices={booking.foodServices} />
+                    <TypeOfFood
+                      openToVegan={booking.openToVegan}
+                      openToVegetarian={booking.openToVegetarian}
+                      foodServices={booking.foodServices}
+                    />
                   </Col>
                 </Row>
                   {

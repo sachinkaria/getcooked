@@ -28,7 +28,9 @@ function create(req, res) {
     foodStyle: EVENT.foodStyle,
     staffRequired: EVENT.staffRequired,
     startTime: EVENT.startTime,
-    endTime: EVENT.endTime
+    endTime: EVENT.endTime,
+    openToVegan: EVENT.openToVegan,
+    openToVegetarian: EVENT.openToVegetarian
   });
 
   event.save((bookingErr) => {

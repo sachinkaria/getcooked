@@ -70,6 +70,8 @@ const BookingSchema = new Schema({
     foodServices: [{
       type: String
     }],
+    openToVegan: Boolean,
+    openToVegetarian: Boolean,
   },
   {
     timestamps: true

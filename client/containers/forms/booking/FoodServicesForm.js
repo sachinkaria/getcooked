@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Field, reduxForm } from 'redux-form';
@@ -17,7 +18,9 @@ class FoodServicesForm extends Component {
     super(props);
     const SERVICES = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).foodServices;
     const FOOD_SERVICES = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).foodStyle;
-    this.state = { foodServices: SERVICES || [], foodStyle: FOOD_SERVICES || [], error: false };
+    const OPEN_TO_VEGAN = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).openToVegan;
+    const OPEN_TO_VEGETARIAN = sessionStorage.eventDetails && JSON.parse(sessionStorage.getItem('eventDetails')).openToVegetarian;
+    this.state = { foodServices: SERVICES || [], foodStyle: FOOD_SERVICES || [], openToVegan: OPEN_TO_VEGAN !== undefined ? OPEN_TO_VEGAN : true, openToVegetarian: OPEN_TO_VEGETARIAN !== undefined ? OPEN_TO_VEGETARIAN : true, error: false };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
@@ -27,6 +30,8 @@ class FoodServicesForm extends Component {
     } else {
       formProps.foodServices = this.state.foodServices;
       formProps.foodStyle = this.state.foodStyle;
+      formProps.openToVegan = this.state.openToVegan;
+      formProps.openToVegetarian = this.state.openToVegetarian;
       const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
       const FINAL_EVENT = _.extend(EVENT, formProps);
       sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
@@ -86,6 +91,34 @@ class FoodServicesForm extends Component {
                   </Col>
                 ))
               }
+            </Row>
+            <label className="gc-text gc-text--lg gc-text--slim">
+              Vegan & Vegetarian menus can dramatically reduce your carbon footprint. Are you open to vegan and vegetarian options?
+            </label>
+            <Link to="/blog/what-is-sustainable-catering" target="_blank">
+            <Button className="gc-btn gc-btn-white gc-margin-top gc-margin-bottom">Find out more</Button>
+            </Link>
+            <Row className="gc-margin-bottom">
+              <Col xs={6}>
+                <Field
+                  checked={this.state.openToVegan}
+                  name="Open to Vegan"
+                  type="checkbox"
+                  nonCapitalize
+                  component={renderCheckBox}
+                  onChange={() => this.setState({openToVegan: !this.state.openToVegan })}
+                />
+              </Col>
+              <Col xs={6}>
+                <Field
+                  checked={this.state.openToVegetarian}
+                  name="Open to Vegetarian"
+                  type="checkbox"
+                  nonCapitalize
+                  component={renderCheckBox}
+                  onChange={() => this.setState({openToVegetarian: !this.state.openToVegetarian })}
+                />
+              </Col>
             </Row>
             <Row>
               <Col xs={10} xsOffset={1} sm={6} smOffset={3}>

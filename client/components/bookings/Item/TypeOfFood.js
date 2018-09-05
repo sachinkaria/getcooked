@@ -7,6 +7,16 @@ import PropTypes from 'prop-types';
 function TypeOfFood(props) {
   return (
     <div className="gc-margin-bottom">
+      {((props.openToVegetarian !== undefined) && booking.openToVegetarian) &&
+      <p className="gc-text gc-text--lg gc-margin-none">
+        Open to Vegetarian
+      </p>
+      }
+      {((props.openToVegan !== undefined) && booking.openToVegan) &&
+      <p className="gc-text gc-text--lg gc-margin-none">
+          Open to Vegan
+      </p>
+      }
       {
         props.foodServices.map((service) => {
           return (

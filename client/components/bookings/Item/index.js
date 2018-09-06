@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router';
 import {Col, Panel, Row, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {getBooking, accept, decline} from '../../../actions/bookings';
@@ -43,13 +44,14 @@ class BookingItem extends React.Component {
   }
 
   acceptBooking() {
-    const {booking} = this.props;
-    heap.track('Accepted Booking', {caterer: booking.chef.displayName});
+    const { booking } = this.props;
+    heap.track('Accepted Booking', { caterer: booking.chef.displayName });
     this.props.accept(this.props.id);
   }
 
   renderView() {
-    const {booking} = this.props;
+    const { booking } = this.props;
+    console.log(booking.chef);
     const STATUS = this.getStatus();
 
     return (
@@ -71,22 +73,35 @@ class BookingItem extends React.Component {
                 <Col xs={12} sm={6} smPush={6}>
                   <Row>
                     <Col xs={12}>
+                      {
+                        (!booking.chef.stripe || !booking.chef.stripe.sourceId) &&
+                        <p className="gc-text gc-margin-bottom--lg">
+                          To accept this booking please update your payment details <Link to="/dashboard/account/subscription" className="gc-text gc-grey">here</Link>.
+                          You will not be charged until the end of the month.
+                        </p>
+                      }
                       <p className="gc-text gc-margin-bottom--lg">
                         Note: You are NOT obliged to cater the event once you have confirmed your availability.
                       </p>
                     </Col>
                   </Row>
                   <Row>
-                    <Col xs={6}>
-                      <Button
-                        block
-                        className="gc-btn gc-margin-bottom--xs"
-                        onClick={this.acceptBooking}
-                        bsStyle="success">Accept</Button>
-                    </Col>
-                    <Col xs={6}>
-                      <Button block className="gc-btn" onClick={this.declineBooking} bsStyle="danger">Decline</Button>
-                    </Col>
+                    {(booking.chef.stripe && booking.chef.stripe.sourceId) &&
+                    <div>
+                      <Col xs={6}>
+                        <Button
+                          block
+                          className="gc-btn gc-margin-bottom--xs"
+                          onClick={this.acceptBooking}
+                          bsStyle="success">
+                          Accept
+                        </Button>
+                      </Col>
+                      <Col xs={6}>
+                        <Button block className="gc-btn" onClick={this.declineBooking} bsStyle="danger">Decline</Button>
+                      </Col>
+                    </div>
+                    }
                   </Row>
                   <hr className="visible-xs" />
                 </Col>

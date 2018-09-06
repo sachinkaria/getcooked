@@ -7,12 +7,12 @@ import PropTypes from 'prop-types';
 function TypeOfFood(props) {
   return (
     <div className="gc-margin-bottom">
-      {((props.openToVegetarian !== undefined) && booking.openToVegetarian) &&
+      {((props.openToVegetarian !== undefined) && props.openToVegetarian) &&
       <p className="gc-text gc-text--lg gc-margin-none">
         Open to Vegetarian
       </p>
       }
-      {((props.openToVegan !== undefined) && booking.openToVegan) &&
+      {((props.openToVegan !== undefined) && props.openToVegan) &&
       <p className="gc-text gc-text--lg gc-margin-none">
           Open to Vegan
       </p>

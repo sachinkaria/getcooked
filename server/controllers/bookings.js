@@ -37,21 +37,47 @@ function accept(req, res) {
   const BOOKING_ID = req.params.id;
   Booking.findOne({ _id: BOOKING_ID })
     .populate('user', 'firstName email mobileNumber')
-    .populate('chef', 'id displayName profilePhoto')
+    .populate('chef', 'id displayName profilePhoto companyEmail phoneCode contactNumber stripe subscription')
     .exec((err, booking) => {
-      _.extend(booking, { status: 'accepted' });
-      booking.save();
+      if (err) return err;
       const CHEF = booking.chef;
-      const USER = booking.contactDetails;
+      if ((CHEF.subscription.status !== 'active') && CHEF.stripe && CHEF.stripe.sourceId) {
+        const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
+        const SUBSCRIPTION_START_DATE = moment(TIME).unix();
 
-      const ENQUIRY_EMAIL_DATA = {
-        subject: `Event Catering - ${_.startCase(_.toLower(CHEF.displayName))}`,
-        recipient: USER.email
-      };
-      const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/caterers/profile/${CHEF.id}`);
-      const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(booking.chef, USER, booking, HOSTNAME));
-      enquiryMailer.send();
-      res.jsonp(booking);
+        console.log('Adding subscription to user', CHEF.stripe.customerId);
+        stripe.subscriptions.create({
+          customer: CHEF.stripe.customerId,
+          billing_cycle_anchor: SUBSCRIPTION_START_DATE,
+          coupon: 'free_month',
+          items: [{
+            plan: 'basic_monthly'
+          }]
+        }, (error, subscription) => {
+          if (error) return error;
+
+          CHEF.subscription.id = subscription.id;
+          CHEF.subscription.plan = subscription.plan.id;
+          CHEF.subscription.currency = subscription.plan.currency;
+          CHEF.subscription.status = 'active';
+
+          return CHEF.save();
+        });
+      }
+
+      _.extend(booking, { status: 'accepted' });
+      booking.save((error, savedBooking) => {
+        if (error) return error;
+        const USER = savedBooking.contactDetails;
+        const ENQUIRY_EMAIL_DATA = {
+          subject: `Event Catering - ${_.startCase(_.toLower(CHEF.displayName))}`,
+          recipient: USER.email
+        };
+        const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/caterers/profile/${CHEF.id}`);
+        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(savedBooking.chef, USER, savedBooking, HOSTNAME));
+        enquiryMailer.send();
+        return res.jsonp(savedBooking);
+      });
     });
 }
 
@@ -70,7 +96,7 @@ function read(req, res) {
   Booking
     .findOne({ _id: BOOKING_ID })
     .populate('user', 'email mobileNumber firstName lastName')
-    .populate('chef', 'profilePhoto displayName')
+    .populate('chef', 'profilePhoto displayName stripe subscription')
     .exec((err, booking) => {
       if (!booking.read && USER.role === 'chef') {
         booking.read = true;
@@ -111,120 +137,43 @@ function create(req, res) {
     openToVegetarian: BOOKING.openToVegetarian
   });
 
-  User.findOne({ _id: BOOKING.chef }, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {
+  User.findOne({_id: BOOKING.chef}, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {
     if (error) return (error);
+    const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
+    const MESSAGE = `You have a new enquiry from ${USER.firstName} for ${booking.numberOfPeople} people with a budget of £${booking.budget}. Your bookings: ${HOSTNAME}`;
+    const ENQUIRY_EMAIL_DATA = {
+      subject: 'New Booking Request',
+      recipient: chef.companyEmail
+    };
 
-    if ((chef.subscription.status !== 'active') && chef.stripe && chef.stripe.sourceId) {
-      const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
-      const SUBSCRIPTION_START_DATE = moment(TIME).unix();
+    const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, enquiryTemplate(chef, USER, booking, HOSTNAME));
+    enquiryMailer.send();
 
-      console.log('Adding subscription to user', chef.stripe.customerId);
-      stripe.subscriptions.create({
-        customer: chef.stripe.customerId,
-        billing_cycle_anchor: SUBSCRIPTION_START_DATE,
-        coupon: 'free_month',
-        items: [{
-          plan: 'basic_monthly'
-        }]
-      }, (err, subscription) => {
-        if (err) return err;
+    if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
+    booking.save((bookingErr) => {
+      const ID = BOOKING._id && BOOKING._id;
+      if (bookingErr) return (bookingErr);
 
-        chef.subscription.id = subscription.id;
-        chef.subscription.plan = subscription.plan.id;
-        chef.subscription.currency = subscription.plan.currency;
-        chef.subscription.status = 'active';
-        chef.save((saveErr) => {
-          if (saveErr) return saveErr;
+      if (ID) {
+        Event.findOne({ _id: ObjectId(ID) }).exec((eventErr, event) => {
+          if (eventErr) return eventErr;
 
-          const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-          const MESSAGE = `You have a new enquiry from ${USER.firstName} for ${booking.numberOfPeople} people with a budget of £${booking.budget}. Your bookings: ${HOSTNAME}`;
-          const ENQUIRY_EMAIL_DATA = {
-            subject: 'New Booking Request',
-            recipient: chef.companyEmail
-          };
-
-          const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, enquiryTemplate(chef, USER, booking, HOSTNAME));
-          enquiryMailer.send();
-
-          if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
-          booking.save((bookingErr) => {
-            const ID = BOOKING._id && BOOKING._id;
-            if (bookingErr) return (bookingErr);
-
-            if (ID) {
-              Event.findOne({ _id: ObjectId(ID) }).exec((eventErr, event) => {
-                if (eventErr) return eventErr;
-
-                if (event.bookings) {
-                  event.bookings.push(booking._id);
-                  event.save();
-                } else {
-                  event.bookings = [booking._id];
-                  event.save();
-                }
-
-                sendNewBookingSlackNotification(USER);
-                return res.jsonp(booking);
-              });
-            } else {
-              sendNewBookingSlackNotification(USER);
-              return res.jsonp(booking);
-            }
-          });
-        });
-      });
-    } else {
-      const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-      const hostname = 'http://'.concat(req.headers.host).concat('/setup/payment');
-      const MESSAGE = `You have a new enquiry from ${USER.firstName} for ${booking.numberOfPeople} people with a budget of £${booking.budget}. Your bookings: ${HOSTNAME}`;
-      const EMAIL_DATA = {
-        subject: 'Update Your Payment Details',
-        recipient: chef.companyEmail
-      };
-      const ENQUIRY_EMAIL_DATA = {
-        subject: 'New Booking Request',
-        recipient: chef.companyEmail
-      };
-
-      if (!chef.stripe.sourceId) chef.status = 'unlisted';
-
-      chef.save((err) => {
-        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, enquiryTemplate(chef, USER, booking, HOSTNAME));
-        enquiryMailer.send();
-
-        if (!chef.stripe.sourceId) {
-          const mailer = new Mailer(EMAIL_DATA, paymentDetailsTemplate(chef, hostname));
-          mailer.send();
-        }
-
-        if (err) return err;
-        if (chef.contactNumber) twilio.sendSMS(chef.contactNumber, MESSAGE);
-        booking.save((saveErr) => {
-          const ID = BOOKING._id && BOOKING._id;
-          if (saveErr) return (saveErr);
-
-          if (ID) {
-            Event.findOne({ _id: ObjectId(ID) }).exec((eventErr, event) => {
-              if (eventErr) return eventErr;
-
-              if (event.bookings) {
-                event.bookings.push(booking._id);
-                event.save();
-              } else {
-                event.bookings = [booking._id];
-                event.save();
-              }
-
-              sendNewBookingSlackNotification(USER);
-              return res.jsonp(booking);
-            });
+          if (event.bookings) {
+            event.bookings.push(booking._id);
+            event.save();
           } else {
-            sendNewBookingSlackNotification(USER);
-            return res.jsonp(booking);
+            event.bookings = [booking._id];
+            event.save();
           }
+
+          sendNewBookingSlackNotification(USER);
+          return res.jsonp(booking);
         });
-      });
-    }
+      } else {
+        sendNewBookingSlackNotification(USER);
+        return res.jsonp(booking);
+      }
+    });
   });
 }
 

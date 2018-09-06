@@ -81,8 +81,9 @@ function EventItem({userItem, booking, updateEvent}) {
                           alt="budget"
                           src="/images/clock-grey.png"
                         />
-                        <p className="gc-text gc-text--lg gc-inline-block">{moment(booking.startTime).format('HH:mm')}
-                          to {moment(booking.endTime).format('HH:mm')}</p>
+                        <p className="gc-text gc-text--lg gc-inline-block">
+                          {moment(booking.startTime).format('HH:mm')} to {moment(booking.endTime).format('HH:mm')}
+                          </p>
                       </Col>
                     }
                   </Row>

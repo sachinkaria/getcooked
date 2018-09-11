@@ -52,6 +52,13 @@ of the rise of Urban Farming."
                   <br/>
                   <img
                     className="gc-icon"
+                    alt="time"
+                    src="/images/clock-grey.png"
+                  />
+                  <p className="gc-text gc-text--lg gc-inline-block">7pm - 10:30pm</p>
+                  <br/>
+                  <img
+                    className="gc-icon"
                     alt="budget"
                     src="/images/location-grey.png"
                   />

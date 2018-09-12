@@ -8,6 +8,7 @@ import FoodServicesForm from '../containers/forms/booking/FoodServicesForm';
 import AdditionalServicesForm from '../containers/forms/booking/AdditionalServicesForm';
 import BudgetAdditionalInformationForm from '../containers/forms/booking/BudgetAdditionalInformationForm';
 import {createBooking} from '../actions/bookings';
+import {registerUser} from '../actions/auth';
 import ProgressBar from '../components/ProgressBar';
 
 class BookingForm extends React.Component {
@@ -16,7 +17,7 @@ class BookingForm extends React.Component {
     this.state = { slide: 1 };
     this.baseState = this.state;
 
-    this.submitEventDetails = this.submitEventDetails.bind(this);
+    this.signUpAndSubmitEvent = this.signUpAndSubmitEvent.bind(this);
     this.setSlide = this.setSlide.bind(this);
   }
 
@@ -30,14 +31,15 @@ class BookingForm extends React.Component {
     this.setState({ slide: value }, () => window.scrollTo(0, 0));
   }
 
-  submitEventDetails(event) {
+  signUpAndSubmitEvent(event) {
     if (!this.props.withoutChef) {
-      heap.track('Click Book Now', {chef_id: this.props.chef.id, chef_name: this.props.chef.displayName});
+      heap.track('Click Book Now', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
     } else {
       heap.track('Click Get Quotes', event);
     }
     window.gtag_report_conversion();
-    this.props.onSubmit(event, this.props.endRoute);
+    // this.props.onSubmit(event, this.props.endRoute);
+    localStorage.token ? this.props.onSubmit(event) : this.props.registerUser(event);
     this.props.closeModal();
   }
 
@@ -51,7 +53,7 @@ class BookingForm extends React.Component {
       <div>
         <div style={styles}>
           <ProgressBar
-            progress={this.state.slide / 6}
+            progress={this.state.slide / (localStorage.token ? 5 : 6)}
           />
         </div>
         <Row>
@@ -81,14 +83,14 @@ class BookingForm extends React.Component {
           {this.state.slide === 5 &&
           <BudgetAdditionalInformationForm
             withoutChef={this.props.withoutChef}
-            onSubmit={this.setSlide}
+            onSubmit={localStorage.token ? this.signUpAndSubmitEvent : this.setSlide}
           />
           }
           {this.state.slide === 6 &&
           <ContactDetailsForm
             withoutChef={this.props.withoutChef}
             chef={this.props.chef}
-            onSubmit={this.submitEventDetails}
+            onSubmit={this.signUpAndSubmitEvent}
           />
         }
         </Row>
@@ -111,4 +113,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { createBooking })(BookingForm);
+export default connect(mapStateToProps, { registerUser })(BookingForm);

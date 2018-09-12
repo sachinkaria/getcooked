@@ -1,4 +1,6 @@
 const Event = require('../models/event');
+const User = require('../models/user');
+const ObjectId = require('mongodb').ObjectId;
 const request = require('superagent');
 const config = require('../config/main');
 
@@ -6,9 +8,9 @@ module.exports.create = create;
 
 function create(req, res) {
   const EVENT = req.body;
-  const USER = EVENT.contactDetails;
 
   const event = new Event({
+    user: EVENT.user,
     eventType: EVENT.eventType,
     date: EVENT.date,
     numberOfPeople: EVENT.numberOfPeople,
@@ -22,7 +24,6 @@ function create(req, res) {
     budget: EVENT.budget,
     services: EVENT.services,
     foodServices: EVENT.foodServices,
-    contactDetails: EVENT.contactDetails,
     kitchenAvailable: EVENT.kitchenAvailable,
     additionalEquipment: EVENT.additionalEquipment,
     foodStyle: EVENT.foodStyle,
@@ -38,8 +39,14 @@ function create(req, res) {
       console.log(bookingErr);
       return (bookingErr);
     }
-    sendNewBookingSlackNotification(USER, EVENT);
-    return res.jsonp(event);
+    User.findOne({ _id: ObjectId(EVENT.user) }, (err, user) => {
+      if (err) {
+        return (err);
+      }
+
+      sendNewBookingSlackNotification(user, EVENT);
+      return res.jsonp(event);
+    });
   });
 }
 

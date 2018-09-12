@@ -10,7 +10,6 @@ const request = require('superagent');
 const config = require('../config/main');
 const stripe = require('stripe')(config.stripe_secret_key);
 const Mailer = require('../services/mailer');
-const paymentDetailsTemplate = require('../services/emailTemplates/updatePaymentTemplate');
 const enquiryTemplate = require('../services/emailTemplates/bookingEnquiryTemplate');
 const acceptedBookingTemplate = require('../services/emailTemplates/acceptedBookingTemplate');
 
@@ -109,9 +108,10 @@ function read(req, res) {
 
 function create(req, res) {
   const BOOKING = req.body || req;
-  const USER = BOOKING.contactDetails;
+  const USER = BOOKING.user;
 
   const booking = new Booking({
+    user: BOOKING.user,
     chef: BOOKING.chef,
     eventType: BOOKING.eventType,
     date: BOOKING.date,

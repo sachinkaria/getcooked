@@ -7,12 +7,13 @@ import CODES from '../../../utils/country-codes.json';
 
 const form = reduxForm({
   form: 'contact-details',
-  fields: ['firstName', 'lastName', 'email', 'mobileNumber', 'phoneCode'],
+  fields: ['firstName', 'lastName', 'email', 'password', 'confirmPassword'],
   validate
 });
 
 function validate(formProps) {
   const errors = {};
+
   if (!formProps.firstName) {
     errors.firstName = 'Please enter your first name';
   }
@@ -20,14 +21,18 @@ function validate(formProps) {
   if (!formProps.lastName) {
     errors.lastName = 'Please enter your last name';
   }
-
   if (!formProps.email) {
     errors.email = 'Please enter your email address';
   }
 
-  if (!formProps.mobileNumber) {
-    errors.mobileNumber = 'Please enter your mobile number';
+  if (!formProps.password) {
+    errors.password = 'Please enter a password';
   }
+
+  if (!formProps.confirmPassword || (formProps.confirmPassword !== formProps.password)) {
+    errors.confirmPassword = 'Your passwords do not match';
+  }
+
   return errors;
 }
 
@@ -38,18 +43,12 @@ class ContactDetailsForm extends Component {
   }
 
   handleFormSubmit(formProps) {
-    const PHONE_CODE = formProps.phoneCode;
-    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
-
-    formProps.phoneCode = CODES.filter((item) => {
-      return item.name === PHONE_CODE;
-    })[0];
-
-    EVENT.contactDetails = formProps;
-    EVENT.chef = (!this.props.withoutChef && this.props.chef) && this.props.chef._id;
-    sessionStorage.setItem('contactDetails', JSON.stringify(formProps));
-
-    this.props.onSubmit(EVENT);
+    this.props.onSubmit({
+      firstName: formProps.firstName,
+      lastName: formProps.lastName,
+      email: formProps.email,
+      password: formProps.password
+    });
   }
 
   render() {
@@ -87,34 +86,29 @@ class ContactDetailsForm extends Component {
               type="text"
             />
           </div>
-          <label className="gc-text gc-text--lg gc-text--slim">Mobile number</label>
+          <label className="gc-text gc-text--lg gc-text--slim">Password</label>
           <div>
             <Field
-              name="phoneCode"
-              className="form-control gc-input"
-              component="select"
-            >
-              {CODES.map(code =>
-                (
-                  <option key={code.name} value={code.name}>
-                    {code.name}
-                  </option>
-                )
-              )}
-            </Field>
-          </div>
-          <div>
-            <Field
-              name="mobileNumber"
-              placeholder="e.g. 07912345678"
+              name="password"
+              placeholder="Password"
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
-              type="number"
+              type="password"
+            />
+          </div>
+          <label className="gc-text gc-text--lg gc-text--slim">Confirm Password</label>
+          <div>
+            <Field
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="password"
             />
           </div>
           <Col xs={10} xsOffset={1} sm={6} smOffset={3}>
             <Button
-              onClick={() => this.props.withoutChef ? heap.track('Submit Event') : heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) }
+              onClick={ () => this.props.withoutChef ? heap.track('Submit Event') : heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName }) }
               block
               type="submit"
               className="gc-btn gc-btn--orange gc-margin-top">

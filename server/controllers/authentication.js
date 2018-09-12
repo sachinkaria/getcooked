@@ -18,6 +18,8 @@ function generateToken(user) {
 function setUserInfo(request) {
   return {
     _id: request._id,
+    firstName: request.firstName,
+    lastName: request.lastName,
     email: request.email,
     role: request.role
   };
@@ -36,6 +38,8 @@ exports.login = (req, res, next) => {
 
 exports.register = (req, res, next) => {
   // Check for registration errors
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
   const email = req.body.email;
   const password = req.body.password;
 
@@ -59,6 +63,8 @@ exports.register = (req, res, next) => {
 
     // If email is unique and password was provided, create account
     const user = new User({
+      firstName,
+      lastName,
       email,
       password
     });

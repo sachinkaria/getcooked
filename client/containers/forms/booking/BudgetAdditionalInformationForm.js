@@ -52,8 +52,15 @@ class DateAndPlaceForm extends Component {
   handleFormSubmit(formProps) {
     const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
     const FINAL_EVENT = _.extend(EVENT, formProps);
-    sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
-    this.props.onSubmit(6);
+
+    if (localStorage.token) {
+      this.props.onSubmit(FINAL_EVENT);
+    }
+    else
+    {
+      sessionStorage.setItem('eventDetails', JSON.stringify(FINAL_EVENT));
+      this.props.onSubmit(6);
+    }
   }
 
   render() {
@@ -88,7 +95,7 @@ class DateAndPlaceForm extends Component {
             <div className="gc-margin-bottom">
               <Field
                 name="additionalInformation"
-                placeholder="Let us know if there's anything else! Are there any special requirements? What's the best way to contact you? "
+                placeholder="Let us know if there's anything else! Are there any special requirements? Is your event themed? "
                 className="form-control gc-input gc-margin-bottom"
                 component={renderInputBox}
                 type="text"
@@ -102,7 +109,7 @@ class DateAndPlaceForm extends Component {
                   className="gc-btn gc-btn--orange gc-margin-top"
                   onClick={() => this.props.withoutChef && heap.track('Get Quotes - Step 5')}
                 >
-                  Next
+                  { localStorage.token ? 'Submit' : 'Next' }
                 </Button>
                 <Button
                   block

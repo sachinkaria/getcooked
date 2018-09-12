@@ -1,8 +1,10 @@
 import axios from 'axios';
+import _ from 'lodash';
 import { browserHistory } from 'react-router';
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, UPDATE_USER } from '../types';
 import { errorHandler, successHandler } from '../public';
 import { getCurrentUser } from '../users';
+import { createEvent } from '../events';
 
 export function loginUser({ email, password }) {
   return (dispatch) => {
@@ -27,17 +29,16 @@ export function loginUser({ email, password }) {
   };
 }
 
-export function registerUser({ email, password }, redirect) {
+export function registerUser({ firstName, lastName, email, password }) {
   return (dispatch) => {
-    axios.post('/api/users/create', { email, password })
+    axios.post('/api/users/create', { firstName, lastName, email, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
-        if (redirect) {
-          browserHistory.push('/setup/personal');
-        }
+        const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
+        dispatch(createEvent(EVENT, '/dashboard/bookings'));
       })
       .catch((error) => {
         errorHandler(dispatch, 'There was a problem signing up. Please try again.');

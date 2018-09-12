@@ -26,6 +26,10 @@ const ContactSchema = {
 };
 
 const BookingSchema = new Schema({
+    user: {
+      type: Schema.ObjectId,
+      ref: 'User'
+    },
     chef: {
       type: Schema.ObjectId,
       ref: 'User'
@@ -47,7 +51,7 @@ const BookingSchema = new Schema({
     },
     status: {
       type: String,
-      enum: ['pending', 'accepted', 'declined'],
+      enum: ['pending', 'accepted', 'declined', 'expired'],
       default: 'pending'
     },
     budget: Number,
@@ -72,6 +76,7 @@ const BookingSchema = new Schema({
     }],
     openToVegan: Boolean,
     openToVegetarian: Boolean,
+    messages: [{ type: Schema.ObjectId, ref: 'Message' }],
   },
   {
     timestamps: true

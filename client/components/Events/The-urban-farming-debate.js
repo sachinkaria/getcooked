@@ -56,7 +56,7 @@ of the rise of Urban Farming."
                     src="/images/clock-grey.png"
                   />
                   <p className="gc-text gc-text--lg gc-inline-block">7pm - 10:30pm</p>
-                  <br/>
+                  <br />
                   <img
                     className="gc-icon"
                     alt="budget"
@@ -66,7 +66,7 @@ of the rise of Urban Farming."
                 </Col>
                 <Col xs={6} xsOffset={3} sm={4} smOffset={0}>
                   <a
-                    rel="nooopener noreferer"
+                    rel="nooopener noreferrer"
                     target="_blank"
                     href="https://www.thirdspacecanteen.com/tickets-26th-sept"
                   >

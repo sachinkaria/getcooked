@@ -51,7 +51,6 @@ class BookingItem extends React.Component {
 
   renderView() {
     const { booking } = this.props;
-    console.log(booking.chef);
     const STATUS = this.getStatus();
 
     return (

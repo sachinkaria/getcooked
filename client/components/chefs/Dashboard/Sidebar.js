@@ -110,7 +110,22 @@ class Sidebar extends React.Component {
           <ul className="gc-list gc-padding-none">
             <li>
               <Link to="/dashboard/bookings" className="gc-link-default">
-                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('settings') })}>
+                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('bookings') })}>
+                  All</p>
+              </Link>
+            </li>
+          </ul>
+        </Panel.Body>
+      </Panel>
+    );
+
+    const EVENTS_SIDEBAR = (
+      <Panel className="gc-panel">
+        <Panel.Body>
+          <ul className="gc-list gc-padding-none">
+            <li>
+              <Link to="/dashboard/events" className="gc-link-default">
+                <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('events') })}>
                   All</p>
               </Link>
             </li>
@@ -126,6 +141,8 @@ class Sidebar extends React.Component {
       return CHEF_SIDEBAR;
     } else if (this.props.location.includes('bookings')) {
       return BOOKINGS_SIDEBAR;
+    } else if (this.props.location.includes('events')) {
+      return EVENTS_SIDEBAR;
     }
     return USER_SIDEBAR;
   }

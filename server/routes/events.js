@@ -7,6 +7,8 @@ const passport = require('passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
 
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.post('/api/events/create', EventsController.create);
+  app.get('/api/events/:id',requireAuth, EventsController.read);
+  app.get('/api/events',requireAuth, EventsController.list);
 };

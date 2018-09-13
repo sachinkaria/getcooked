@@ -15,6 +15,8 @@ import PasswordForm from '../../../containers/forms/setup/chefs/PasswordForm';
 import SubscriptionForm from '../../../containers/forms/setup/chefs/SubscriptionForm';
 import Notification from '../../Notification';
 import Bookings from '../../bookings/List';
+import Events from '../../users/dashboard/events/List';
+import EventItem from '../../users/dashboard/events/Item';
 import BookingItem from '../../bookings/Item';
 import Summary from './Summary';
 
@@ -22,6 +24,7 @@ import Summary from './Summary';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.renderView = this.renderView.bind(this);
     this.updateUserStatus = this.updateUserStatus.bind(this);
   }
@@ -50,6 +53,10 @@ class Dashboard extends React.Component {
         return <Panel className="gc-panel"><Panel.Body><PasswordForm /></Panel.Body></Panel>;
       case 'subscription':
         return <Panel className="gc-panel"><Panel.Body><SubscriptionForm /></Panel.Body></Panel>;
+      case 'events':
+        return <Events />;
+      case 'view-event':
+        return <EventItem id={this.props.params.id} />;
       case 'bookings':
         return <Bookings itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
       case 'view-booking':
@@ -73,7 +80,6 @@ class Dashboard extends React.Component {
     const USER_LISTED = (user.data.status === 'listed' && (user.data.subscription.status === 'pending' || 'active'));
     const USER_PENDING = user.data.status === 'pending';
     const USER_BLOCKED = user.data.status === 'unlisted' && (!user.data.stripe || !user.data.stripe.sourceId) && user.data.subscription.status !== 'active';
-    const USER_UNLISTED = user.data.status === 'unlisted';
     const IS_CHEF = user.data.role === 'chef';
 
     function userStatus() {
@@ -131,25 +137,28 @@ class Dashboard extends React.Component {
             </div>
           }
           <Row>
-            <Col sm={3} smOffset={1} mdOffset={1} md={2}>
-              <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
-              {
-                (IS_CHEF && !USER_PENDING && USER_LISTED && !this.props.route.hideProfileStatus) &&
-                <div>
-                  <Button
-                    block
-                    className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom hidden-xs"
-                    onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
-                  >
-                    {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
-                  </Button>
-                </div>
-              }
-              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to="/logout">
-                Logout
-              </Link>
-            </Col>
-            <Col smOffset={0} sm={7}>
+            {
+              !this.props.route.hideSidebar &&
+              <Col sm={3} smOffset={1} mdOffset={1} md={2}>
+                <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
+                {
+                  (IS_CHEF && !USER_PENDING && USER_LISTED && !this.props.route.hideProfileStatus) &&
+                  <div>
+                    <Button
+                      block
+                      className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom hidden-xs"
+                      onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}
+                    >
+                      {USER_LISTED ? 'Hide my profile' : 'Publish my profile'}
+                    </Button>
+                  </div>
+                }
+                <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom hidden-xs" to="/logout">
+                  Logout
+                </Link>
+              </Col>
+            }
+            <Col smOffset={this.props.route.hideSidebar ? 2 : 0} sm={this.props.route.hideSidebar ? 8 : 7}>
               {this.renderView()}
             </Col>
           </Row>

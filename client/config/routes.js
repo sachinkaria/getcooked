@@ -85,8 +85,10 @@ const routes = (
         <Route exact path="password" component={RequireAuth(Dashboard)} view="password" />
         <Route exact path="subscription" component={RequireRole(Dashboard, 'chef')} view="subscription" />
       </Route>
-      <Route exact path="bookings" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="bookings"/>
-      <Route path="bookings/:id" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="view-booking"/>
+      <Route exact path="events" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="events" />
+      <Route path="events/:id" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="view-event" />
+      <Route exact path="bookings" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="bookings" />
+      <Route path="bookings/:id" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="view-booking" />
     </Route>
     <Route path="admin">
       <Route path="dashboard">

@@ -5,6 +5,29 @@ const request = require('superagent');
 const config = require('../config/main');
 
 module.exports.create = create;
+module.exports.read = read;
+module.exports.list = list;
+
+function list(req, res) {
+  const user = req.user;
+  Event
+    .find({ user: user._id })
+    .sort('-createdAt')
+    .exec((err, events) => {
+    if (err) return err;
+      res.jsonp(events);
+    });
+}
+
+function read(req, res) {
+  const EVENT_ID = req.params.id;
+  Event
+    .findOne({ _id: EVENT_ID })
+    .exec((err, event) => {
+    console.log(event);
+      res.jsonp(event);
+    });
+}
 
 function create(req, res) {
   const EVENT = req.body;

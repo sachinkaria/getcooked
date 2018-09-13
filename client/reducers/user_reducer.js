@@ -2,6 +2,8 @@ import {
   UPLOAD_PHOTO,
   UPDATE_USER,
   BOOKING_LIST,
+  LIST_EVENTS,
+  READ_EVENT,
   GET_BOOKING,
   GET_INBOX,
   GET_CONVERSATION,
@@ -11,7 +13,7 @@ import {
   RESET_BOOKING_REQUEST
 } from '../actions/types';
 
-const INITIAL_STATE = { bookings: [], booking: null, inbox: [], conversation: [], data: null, processing_file_upload: false, sent_booking_request: false };
+const INITIAL_STATE = { bookings: [], booking: null, events: [], event: null, inbox: [], conversation: [], data: null, processing_file_upload: false, sent_booking_request: false };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -19,6 +21,10 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, data: action.payload };
     case UPDATE_USER:
       return { ...state, data: action.payload };
+    case LIST_EVENTS:
+      return { ...state, events: action.payload };
+    case READ_EVENT:
+      return { ...state, event: action.payload };
     case BOOKING_LIST:
       return { ...state, bookings: action.payload };
     case GET_BOOKING:

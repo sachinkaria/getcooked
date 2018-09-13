@@ -4,9 +4,8 @@ import moment from 'moment';
 import {Link} from 'react-router';
 import {Row, Col, Panel, Button} from 'react-bootstrap';
 import Status from '../../Status';
-import Item from '../../bookings/Item';
 
-function EventItem({userItem, booking, updateEvent}) {
+function EventItem({ userItem, booking, updateEvent }) {
   const ACCEPTED_BOOKINGS = _.filter(booking.bookings, item => item.status === 'accepted').length;
   return (
     <Row>

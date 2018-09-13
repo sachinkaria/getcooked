@@ -35,8 +35,8 @@ const DashboardNavBar = (props) => {
                   </Link>
                 </li>
                 <li className="gc-dashboard-navbar-item">
-                  <Link to={'/dashboard/bookings'}>
-                    <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('bookings') })}>Bookings</p>
+                  <Link to={'/dashboard/events'}>
+                    <p className={classNames('gc-text gc-light-grey', { 'gc-white': props.location.includes('events') })}>Events</p>
                   </Link>
                 </li>
               </div>

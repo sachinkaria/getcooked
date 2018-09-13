@@ -38,7 +38,7 @@ export function registerUser({ firstName, lastName, email, password }) {
         dispatch({ type: AUTH_USER });
         dispatch({ type: UPDATE_USER, payload: response.data.user });
         const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
-        dispatch(createEvent(EVENT, '/dashboard/bookings'));
+        dispatch(createEvent(EVENT, '/dashboard/events'));
       })
       .catch((error) => {
         errorHandler(dispatch, 'There was a problem signing up. Please try again.');

@@ -54,7 +54,7 @@ class DateAndPlaceForm extends Component {
     const FINAL_EVENT = _.extend(EVENT, formProps);
 
     if (localStorage.token) {
-      this.props.onSubmit(FINAL_EVENT);
+      this.props.onSubmit(FINAL_EVENT, '/dashboard/events');
     }
     else
     {

@@ -24,13 +24,22 @@ import Summary from './Summary';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.renderView = this.renderView.bind(this);
     this.updateUserStatus = this.updateUserStatus.bind(this);
+    this.getViewLayout = this.getViewLayout.bind(this);
   }
 
   componentWillMount() {
     this.props.authenticated && this.props.getCurrentUser();
+  }
+
+  getViewLayout() {
+    if (this.props.route.expandView) {
+      return { width: 10, offset: 1 };
+    } else if (this.props.route.hideSidebar) {
+      return { width: 8, offset: 2 };
+    }
+    return { width: 7, offset: 0 };
   }
 
   updateUserStatus(status) {
@@ -158,11 +167,11 @@ class Dashboard extends React.Component {
                 </Link>
               </Col>
             }
-            <Col smOffset={this.props.route.hideSidebar ? 2 : 0} sm={this.props.route.hideSidebar ? 8 : 7}>
+            <Col smOffset={this.getViewLayout().offset} sm={this.getViewLayout().width}>
               {this.renderView()}
             </Col>
           </Row>
-          {(!USER_PENDING && USER_LISTED) &&
+          {(!USER_PENDING && USER_LISTED && !this.props.route.hideLogout) &&
           <div className="visible-xs">
             <Row>
               <Col xs={6} xsOffset={3} sm={6} smOffset={3}>
@@ -175,15 +184,15 @@ class Dashboard extends React.Component {
                 </Button>
               </Col>
             </Row>
+            <Row>
+              <Col xs={6} xsOffset={3} sm={6} smOffset={3}>
+                <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom" to={'/logout'}>
+                  Logout
+                </Link>
+              </Col>
+            </Row>
           </div>
           }
-          <Row className="visible-xs">
-            <Col xs={6} xsOffset={3} sm={6} smOffset={3}>
-              <Link className="gc-btn btn btn-danger btn-block gc-margin-bottom" to={'/logout'}>
-                Logout
-              </Link>
-            </Col>
-          </Row>
         </div>
       </div>
     );

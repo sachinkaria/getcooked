@@ -8,7 +8,7 @@ const renderInputBox = (field) => {
 
   return (
     <div className="gc-margin-bottom">
-      <textarea className={classes} rows={6} placeholder={field.placeholder} {...field.input} />
+      <textarea className={classes} rows={field.rows || 6} placeholder={field.placeholder} {...field.input} />
       {field.meta.touched && field.meta.error && <div className="gc-red">{field.meta.error}</div>}
     </div>
   )

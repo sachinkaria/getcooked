@@ -75,11 +75,8 @@ class ListItem extends React.Component {
                 />
               </Col>
               <Col className="center-m left-t" sm={5}>
-                <p className="gc-text text-capitalize gc-margin-none">
-                  {booking.contactDetails.firstName}
-                </p>
-                <p className="gc-text hidden-xs gc-margin-none">
-                  {moment(booking.createdAt).format('MMMM Do YYYY')}
+                <p className="gc-text gc-margin-none">
+                  <span className="text-capitalize">{booking.contactDetails.firstName || booking.user.firstName }</span>'s event on {moment(booking.date).format('MMMM Do YYYY')}
                 </p>
               </Col>
               <Col sm={5} className="center-m right-t">

@@ -3,13 +3,12 @@ const mongoose = require('mongoose');
 const Event = mongoose.model('Event');
 const User = require('../models/user');
 const twilio = require('./twilio');
-const moment = require('moment');
 const ObjectId = require('mongodb').ObjectId;
 const _ = require('lodash');
 const request = require('superagent');
 const config = require('../config/main');
-const stripe = require('stripe')(config.stripe_secret_key);
 const Mailer = require('../services/mailer');
+const Message = require('../models/message');
 const enquiryTemplate = require('../services/emailTemplates/bookingEnquiryTemplate');
 const acceptedBookingTemplate = require('../services/emailTemplates/acceptedBookingTemplate');
 
@@ -23,7 +22,7 @@ module.exports.decline = decline;
 function list(req, res) {
   const user = req.user;
   Booking
-    .find({ $or: [{ user: user._id }, { chef: user._id }] })
+    .find({$or: [{user: user._id}, {chef: user._id}]})
     .populate('user', 'firstName')
     .populate('chef', 'profilePhoto displayName')
     .sort('-createdAt')
@@ -34,56 +33,44 @@ function list(req, res) {
 
 function accept(req, res) {
   const BOOKING_ID = req.params.id;
-  Booking.findOne({ _id: BOOKING_ID })
+  const MESSAGE = req.body.message;
+  const USER_ID = req.user._id;
+
+  Booking.findOne({_id: BOOKING_ID})
     .populate('user', 'firstName email mobileNumber')
     .populate('chef', 'id displayName profilePhoto companyEmail phoneCode contactNumber stripe subscription')
     .exec((err, booking) => {
       if (err) return err;
       const CHEF = booking.chef;
-      if ((CHEF.subscription.status !== 'active') && CHEF.stripe && CHEF.stripe.sourceId) {
-        const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
-        const SUBSCRIPTION_START_DATE = moment(TIME).unix();
 
-        console.log('Adding subscription to user', CHEF.stripe.customerId);
-        stripe.subscriptions.create({
-          customer: CHEF.stripe.customerId,
-          billing_cycle_anchor: SUBSCRIPTION_START_DATE,
-          coupon: 'free_month',
-          items: [{
-            plan: 'basic_monthly'
-          }]
-        }, (error, subscription) => {
-          if (error) return error;
+      const NEW_MESSAGE = new Message({_booking: BOOKING_ID, _sender: USER_ID, body: MESSAGE});
 
-          CHEF.subscription.id = subscription.id;
-          CHEF.subscription.plan = subscription.plan.id;
-          CHEF.subscription.currency = subscription.plan.currency;
-          CHEF.subscription.status = 'active';
-
-          return CHEF.save();
-        });
-      }
-
-      _.extend(booking, { status: 'accepted' });
-      booking.save((error, savedBooking) => {
+      NEW_MESSAGE.save((error, msg) => {
         if (error) return error;
-        const USER = savedBooking.contactDetails;
-        const ENQUIRY_EMAIL_DATA = {
-          subject: `Event Catering - ${_.startCase(_.toLower(CHEF.displayName))}`,
-          recipient: USER.email
-        };
-        const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/caterers/profile/${CHEF.id}`);
-        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(savedBooking.chef, USER, savedBooking, HOSTNAME));
-        enquiryMailer.send();
-        return res.jsonp(savedBooking);
-      });
+
+        _.extend(booking, { messages: [msg.id] });
+        _.extend(booking, { status: 'accepted' });
+        booking.save((bookingErr, savedBooking) => {
+          if (bookingErr) return bookingErr;
+
+          const USER = savedBooking.contactDetails;
+          const ENQUIRY_EMAIL_DATA = {
+            subject: `Event Catering - ${_.startCase(_.toLower(CHEF.displayName))}`,
+            recipient: USER.email
+          };
+          const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/caterers/profile/${CHEF.id}`);
+          const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(savedBooking.chef, USER, savedBooking, HOSTNAME));
+          enquiryMailer.send();
+          return res.jsonp(savedBooking);
+        });
+      })
     });
 }
 
 function decline(req, res) {
   const BOOKING_ID = req.params.id;
-  Booking.findOne({ _id: BOOKING_ID }).exec((err, booking) => {
-    _.extend(booking, { status: 'declined' });
+  Booking.findOne({_id: BOOKING_ID}).exec((err, booking) => {
+    _.extend(booking, {status: 'declined'});
     booking.save();
     res.jsonp(booking);
   });
@@ -93,9 +80,10 @@ function read(req, res) {
   const BOOKING_ID = req.params.id;
   const USER = req.user;
   Booking
-    .findOne({ _id: BOOKING_ID })
+    .findOne({_id: BOOKING_ID})
     .populate('user', 'email mobileNumber firstName lastName')
     .populate('chef', 'profilePhoto displayName stripe subscription')
+    .populate('messages', '_sender _recipient status date body')
     .exec((err, booking) => {
       if (!booking.read && USER.role === 'chef') {
         booking.read = true;
@@ -155,7 +143,7 @@ function create(req, res) {
       if (bookingErr) return (bookingErr);
 
       if (ID) {
-        Event.findOne({ _id: ObjectId(ID) }).exec((eventErr, event) => {
+        Event.findOne({_id: ObjectId(ID)}).exec((eventErr, event) => {
           if (eventErr) return eventErr;
 
           if (event.bookings) {

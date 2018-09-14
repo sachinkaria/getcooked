@@ -1,4 +1,4 @@
-.message {
+.gc-message {
   color: rgba(0, 0, 0, 1);
   float: left;
   text-align: left;
@@ -11,7 +11,7 @@
   }
 }
 
-.message-box {
+.gc-message-box {
   overflow: scroll;
   @include breakpoint(mobileonly){
     height: 300px;
@@ -31,4 +31,161 @@
   @include breakpoint(tablet) {
     height: 130px;
   }
+}
+
+.chat-history {
+  padding: 10px 10px 8px;
+  border-bottom: 2px solid white;
+  position: relative;
+
+  .message-data {
+    margin-bottom: 30px;
+  }
+
+  .message-data-time {
+    color: rgb(155, 155, 155);
+    padding-left: 6px;
+  }
+
+  .message {
+    color: white;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 14px;
+    border-radius: 7px;
+    width: 90%;
+    margin-left: 60px;
+    position: relative;
+    display: inline-block;
+
+    &:before {
+      bottom: 7%;
+      right: 97%;
+
+      @include breakpoint(laptop) {
+        right: 98%;
+      }
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: $lightest-grey;
+      border-width: 10px;
+    }
+  }
+
+  .my-message {
+    color: white;
+    padding: 18px 20px;
+    line-height: 26px;
+    border-radius: 7px;
+    width: 90%;
+    position: relative;
+    background: $primary-colour;
+    display: inline-block;
+    margin-right: 60px;
+    font-size: 14px;
+    font-family: $primary-font;
+
+
+    &:after {
+      bottom: 7%;
+      left: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: $primary-colour;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+  }
+
+  .other-message {
+    color: black;
+    background: $lightest-grey;
+
+    &:after {
+      border-bottom-color: $lightest-grey;
+      left: 93%;
+    }
+  }
+
+}
+
+.chat-message {
+  padding: 30px;
+
+  textarea {
+    width: 100%;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    resize: none;
+
+  }
+
+  .fa-file-o, .fa-file-image-o {
+    font-size: 16px;
+    color: gray;
+    cursor: pointer;
+
+  }
+
+  button {
+    float: right;
+    color: rgb(30, 110, 180);
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    background: #F2F5F8;
+
+    &:hover {
+      color: rgb(30, 110, 180);
+    }
+  }
+}
+
+.gc-message-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 25px;
+}
+
+.gc-message-thumbnail--me {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: inline-block;
+  position: absolute;
+  right: -25px;
+  bottom: 0;
+
+  @include breakpoint(tablet) {
+    right: -15px;
+  }
+
+  @include breakpoint(laptop) {
+    right: 0;
+  }
+}
+
+.thread-item {
+  position: relative;
+  width: 90%;
+}
+
+.gc-message-input {
+  height: 80px !important;
 }

@@ -51,10 +51,10 @@ export function getBooking(id) {
   };
 }
 
-export function accept(id) {
+export function accept(id, message) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
-    axios.get(`/api/bookings/${id}/accept`, AUTH_HEADERS)
+    axios.post(`/api/bookings/${id}/accept`, { message }, AUTH_HEADERS)
       .then((response) => {
         dispatch({
           type: GET_BOOKING,

@@ -12,6 +12,7 @@ function list(req, res) {
   const user = req.user;
   Event
     .find({ user: user._id })
+    .populate('bookings', 'id status updatedAt')
     .sort('-createdAt')
     .exec((err, events) => {
     if (err) return err;
@@ -23,8 +24,8 @@ function read(req, res) {
   const EVENT_ID = req.params.id;
   Event
     .findOne({ _id: EVENT_ID })
+    .populate('bookings', 'id status updatedAt')
     .exec((err, event) => {
-    console.log(event);
       res.jsonp(event);
     });
 }

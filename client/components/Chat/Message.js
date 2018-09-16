@@ -21,7 +21,7 @@ function Message(props) {
   } else {
     return (
       <li className="thread-item clearfix">
-        <span className="gc-message-thumbnail" style={{ backgroundImage: `url(${otherUser.profilePhoto})`, backgroundSize: 'cover' }} />
+        <span className="gc-message-thumbnail" style={{ backgroundImage: `url(${otherUser.profilePhoto || '/images/default_profile.png'})`, backgroundSize: 'cover' }} />
         <div className="message other-message pull-left">
           {message.body}
         </div>

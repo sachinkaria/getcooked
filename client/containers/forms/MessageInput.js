@@ -47,7 +47,7 @@ class MessageInput extends Component {
             <Button
               block
               type="submit"
-              className="gc-btn gc-btn--orange gc-inline-block gc-center pull-right"
+              className="gc-btn gc-btn--orange gc-inline-block gc-center pull-right gc-margin-bottom"
               style={{ maxWidth: '150px' }}
             >
               Send

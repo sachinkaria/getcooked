@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Button, Col, Panel, Row } from 'react-bootstrap';
+import { Button, Col, Panel, Row, Table } from 'react-bootstrap';
 import moment from 'moment';
 
 function ListItem(props) {

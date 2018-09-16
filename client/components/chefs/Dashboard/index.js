@@ -1,9 +1,9 @@
 import React from 'react';
-import { Col, Panel, Row, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
-import { getCurrentUser, updateUser } from '../../../actions/users';
-import { getBookings } from '../../../actions/bookings';
+import {Col, Panel, Row, Button} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {Link} from 'react-router';
+import {getCurrentUser, updateUser} from '../../../actions/users';
+import {getBookings} from '../../../actions/bookings';
 import DashboardNavBar from '../../users/dashboard/Navbar';
 import Sidebar from './Sidebar';
 import BasicsForm from '../../../containers/forms/setup/chefs/BasicsForm';
@@ -17,7 +17,8 @@ import Notification from '../../Notification';
 import Bookings from '../../bookings/List';
 import Events from '../../users/dashboard/events/List';
 import EventItem from '../../users/dashboard/events/Item';
-import BookingItem from '../../bookings/Item';
+import ChefBooking from '../../bookings/Item/ChefBooking';
+import UserBooking from '../../bookings/Item/UserBooking';
 import Summary from './Summary';
 
 
@@ -35,15 +36,33 @@ class Dashboard extends React.Component {
 
   getViewLayout() {
     if (this.props.route.expandView) {
-      return { width: 10, offset: 1 };
+      return {width: 10, offset: 1};
     } else if (this.props.route.hideSidebar) {
-      return { width: 8, offset: 2 };
+      return {width: 8, offset: 2};
     }
-    return { width: 7, offset: 0 };
+    return {width: 7, offset: 0};
+  }
+
+  getBookingLayout() {
+    if (this.props.user.data.role === 'chef') {
+      return (
+        <ChefBooking
+          id={this.props.params.id}
+          itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'}
+        />
+      );
+    }
+    return (
+      <UserBooking
+        id={this.props.params.id}
+        itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'}
+      />
+    );
+
   }
 
   updateUserStatus(status) {
-    this.props.updateUser({ status });
+    this.props.updateUser({status});
   }
 
   renderView() {
@@ -65,13 +84,14 @@ class Dashboard extends React.Component {
       case 'events':
         return <Events />;
       case 'view-event':
-        return <EventItem id={this.props.params.id} />;
+        return <EventItem params={this.props.params} id={this.props.params.id}/>;
       case 'bookings':
-        return <Bookings itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
+        return <Bookings
+          itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'}/>;
       case 'view-booking':
-        return <BookingItem id={this.props.params.id} itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'} />;
+        return this.getBookingLayout();
       default:
-        return <Summary user={this.props.user.data} />;
+        return <Summary user={this.props.user.data}/>;
     }
   }
 
@@ -80,7 +100,7 @@ class Dashboard extends React.Component {
     const PROFILE_LISTED = 'Congrats! Your profile is currently published and is publicly shareable.';
     const PROFILE_UNLISTED = 'Note: Your profile is currently not published and will not be publicly visible.';
     const PROFILE_BLOCKED = 'Note: Your profile is currently not published and will not be publicly visible. Please update your payment details (Account > Subscription) before listing your profile.';
-    const { user } = this.props;
+    const {user} = this.props;
 
     if (!user.data) {
       return <div>Loading...</div>;
@@ -104,7 +124,7 @@ class Dashboard extends React.Component {
 
     return (
       <div>
-        <DashboardNavBar location={this.props.location.pathname} userRole={user.data.role} />
+        <DashboardNavBar location={this.props.location.pathname} userRole={user.data.role}/>
         <div className="gc-dashboard-container">
           {
             (IS_CHEF && !this.props.route.hideProfileStatus) &&
@@ -112,7 +132,7 @@ class Dashboard extends React.Component {
               {USER_PENDING &&
               <Row className="gc-center">
                 <Col xs={10} xsOffset={1} sm={7} smOffset={4} mdOffset={3}>
-                  <Notification text={PROFILE_UNDER_REVIEW} />
+                  <Notification text={PROFILE_UNDER_REVIEW}/>
                 </Col>
               </Row>
               }
@@ -124,7 +144,8 @@ class Dashboard extends React.Component {
                       <Row>
                         <Col xs={8} xsOffset={2} sm={6} smOffset={3} md={4} mdOffset={4}>
                           {USER_LISTED ?
-                            <Link className="btn btn-block gc-btn gc-btn--white gc-margin-top" to={`/caterers/profile/${this.props.user.data._id}`}>
+                            <Link className="btn btn-block gc-btn gc-btn--white gc-margin-top"
+                                  to={`/caterers/profile/${this.props.user.data._id}`}>
                               View my profile
                             </Link> :
                             <Button
@@ -149,7 +170,7 @@ class Dashboard extends React.Component {
             {
               !this.props.route.hideSidebar &&
               <Col sm={3} smOffset={1} mdOffset={1} md={2}>
-                <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
+                <Sidebar location={this.props.location.pathname} userRole={user.data.role}/>
                 {
                   (IS_CHEF && !USER_PENDING && USER_LISTED && !this.props.route.hideProfileStatus) &&
                   <div>
@@ -210,4 +231,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentUser, updateUser, getBookings })(Dashboard);
+export default connect(mapStateToProps, {getCurrentUser, updateUser, getBookings})(Dashboard);

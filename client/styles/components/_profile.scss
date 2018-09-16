@@ -109,21 +109,26 @@
 .gc-thumbnail {
   height: 100px;
   width: 100px;
-  object-fit: cover;
   border-radius: 50px;
+  position: inherit;
+  top: 0;
 
   &.gc-thumbnail--sm {
     height: 80px;
     width: 80px;
-    object-fit: cover;
     border-radius: 40px;
   }
 
   &.gc-thumbnail--xs {
     height: 60px;
     width: 60px;
-    object-fit: cover;
     border-radius: 30px;
+  }
+
+  &.gc-thumbnail--xxs {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
   }
 }
 

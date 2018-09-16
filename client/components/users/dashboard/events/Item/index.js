@@ -1,10 +1,14 @@
+/**
+ * Created by sachinkaria on 15/09/2018.
+ */
 import React from 'react';
 import _ from 'lodash';
 import moment from 'moment';
-import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { Row, Col, Panel, Button } from 'react-bootstrap';
-import { readEvent } from '../../../../actions/events';
+import { connect } from 'react-redux';
+import { Row, Col, Panel } from 'react-bootstrap';
+import { readEvent } from '../../../../../actions/events';
+import CatererItem from './CatererItem';
 
 class EventItem extends React.Component {
   constructor(props) {
@@ -30,9 +34,11 @@ class EventItem extends React.Component {
 
   renderContent() {
     const { event } = this.props;
-    console.log(event);
     return (
       <Row>
+        <Col xs={12}>
+          <h2 className="gc-profile-heading-sm">Event Details</h2>
+        </Col>
         <Col xs={12}>
           <Panel id="collapsible-panel-example-2">
             <Panel.Body>
@@ -202,6 +208,20 @@ class EventItem extends React.Component {
                 </p>
               </Col>
             }
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <h2 className="gc-profile-heading-sm">Interested Caterers and Chefs</h2>
+            </Col>
+            <Col xs={12}>
+              {
+                event.bookings.map((booking) => {
+                  return (
+                      <CatererItem eventId={this.props.params.id} key={booking._id} id={booking._id} caterer={ booking.chef } />
+                  );
+                })
+              }
+            </Col>
           </Row>
         </Col>
       </Row>

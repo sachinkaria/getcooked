@@ -1,23 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router';
+import { browserHistory } from 'react-router';
 import {Col, Panel, Row, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import Modal from '../../../containers/Modal';
-import AcceptBookingForm from '../../../containers/forms/AcceptBooking';
-import {getBooking, accept, decline} from '../../../actions/bookings';
-import Title from './Title';
-import ContactDetails from './ContactDetails';
-import CoreDetails from './CoreDetails';
-import EventType from './EventType';
-import ServicesRequired from './ServicesRequired';
-import TypeOfFood from './TypeOfFood';
-import FoodStyle from './FoodStyle';
-import AdditionalEquipment from './AdditionalEquipment';
-import Chat from '../../../components/Chat';
+import Modal from '../../../../containers/Modal';
+import AcceptBookingForm from '../../../../containers/forms/AcceptBooking';
+import {getBooking, accept, decline} from '../../../../actions/bookings';
+import Title from '../Title';
+import ContactDetails from '../ContactDetails';
+import CoreDetails from '../CoreDetails';
+import EventType from '../EventType';
+import ServicesRequired from '../ServicesRequired';
+import TypeOfFood from '../TypeOfFood';
+import FoodStyle from '../FoodStyle';
+import AdditionalEquipment from '../AdditionalEquipment';
+import Chat from '../../../../components/Chat';
 
 
-class BookingItem extends React.Component {
+class UserBooking extends React.Component {
   constructor(props) {
     super(props);
     this.acceptBooking = this.acceptBooking.bind(this);
@@ -66,64 +66,27 @@ class BookingItem extends React.Component {
     return (
       <div>
         <Row>
+          <Col xs={6} sm={3}>
+            <Button className="gc-btn gc-btn-white gc-margin-bottom" onClick={browserHistory.goBack}>Back to Event</Button>
+          </Col>
+        </Row>
+        <Row>
           <Col xs={12} sm={8}>
-            <Chat messages={messages} user={user} onSubmit={this.sendMessage} />
+            <Chat messages={messages} user={user} chef={booking.chef} onSubmit={this.sendMessage} />
           </Col>
           <Col xs={12} sm={4}>
             <Panel className="gc-panel">
               <Panel.Body>
                 <div>
                   <Row>
-                    <Col xs={12}>
-                      <Title name={booking.contactDetails.firstName || booking.user.firstName} date={booking.date}/>
-                    </Col>
+                    { STATUS === 'confirmed' &&
                     <Col xs={12}>
                       <span className="gc-text gc-text--lg gc-bold">{STATUS}</span>
                     </Col>
-                  </Row>
-                  <hr />
-                  <Row>
-                    {
-                      (booking.status === 'pending') &&
-                      <Col xs={12} sm={12}>
-                        <Row>
-                          <Col xs={12}>
-                            {
-                              (!booking.chef.stripe || !booking.chef.stripe.sourceId) &&
-                              <p className="gc-text gc-margin-bottom--lg">
-                                To accept this booking please update your payment details <Link
-                                to="/dashboard/account/subscription" className="gc-text gc-grey">here</Link>.
-                                You will not be charged until the end of the month.
-                              </p>
-                            }
-                            <p className="gc-text gc-margin-bottom--lg">
-                              Note: You are NOT obliged to cater the event once you have confirmed your availability.
-                            </p>
-                          </Col>
-                        </Row>
-                        <Row>
-                          {(booking.chef.stripe && booking.chef.stripe.sourceId) &&
-                          <div>
-                            <Col xs={6}>
-                              <Modal
-                                large
-                                title="Accept Enquiry"
-                                buttonText="Accept"
-                              >
-                                <AcceptBookingForm onSubmit={this.acceptBooking}/>
-                              </Modal>
-                            </Col>
-                            <Col xs={6}>
-                              <Button block className="gc-btn" onClick={this.declineBooking}
-                                      bsStyle="danger">Decline</Button>
-                            </Col>
-                          </div>
-                          }
-                        </Row>
-                        <hr className="visible-xs"/>
-                      </Col>
                     }
-                    <Col xs={ BOOKING_ACCEPTED ? 12 : 6}>
+                  </Row>
+                  <Row>
+                    <Col xs={12}>
                       <CoreDetails
                         address={booking.address}
                         numberOfPeople={booking.numberOfPeople}
@@ -137,15 +100,15 @@ class BookingItem extends React.Component {
                   <Row className="gc-padding-small">
                     <Col xs={12}>
                       <Row>
-                        <Col xs={6} sm={BOOKING_ACCEPTED ? 6 : 4}>
+                        <Col xs={6} sm={6}>
                           <p className="gc-text gc-grey">Event Type</p>
-                          <EventType eventType={booking.eventType}/>
+                          <EventType eventType={booking.eventType} />
                         </Col>
-                        <Col xs={6} sm={BOOKING_ACCEPTED ? 6 : 4}>
+                        <Col xs={6} sm={6}>
                           <p className="gc-text gc-grey">Services Required</p>
-                          <ServicesRequired services={booking.services}/>
+                          <ServicesRequired services={booking.services} />
                         </Col>
-                        <Col xs={6} sm={BOOKING_ACCEPTED ? 6 : 4}>
+                        <Col xs={6} sm={6}>
                           <p className="gc-text gc-grey">Type of Food</p>
                           <TypeOfFood
                             openToVegan={booking.openToVegan}
@@ -213,7 +176,7 @@ class BookingItem extends React.Component {
 }
 
 
-BookingItem.propTypes = {
+UserBooking.propTypes = {
   booking: PropTypes.object
 };
 
@@ -224,4 +187,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getBooking, accept, decline})(BookingItem);
+export default connect(mapStateToProps, {getBooking, accept, decline})(UserBooking);

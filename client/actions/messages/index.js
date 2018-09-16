@@ -6,9 +6,9 @@ const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
 const errorHandler = require('../public').errorHandler;
 
 
-function create(id, message) {
+function create(id, message, eventId) {
   return (dispatch) => {
-    axios.post(`/api/bookings/${id}/messages`, { message }, AUTH_HEADERS)
+    axios.post(`/api/bookings/${id}/messages`, { message, eventId }, AUTH_HEADERS)
       .then(() => {
         dispatch(getBooking(id));
       })

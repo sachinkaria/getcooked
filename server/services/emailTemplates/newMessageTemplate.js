@@ -1,7 +1,10 @@
+/**
+ * Created by sachinkaria on 16/09/2018.
+ */
 const moment = require('moment');
 const _ = require('lodash');
 
-module.exports = (chef, user, booking, hostname) => {
+module.exports = (user, hostname) => {
   return `
     <html>
 <header style="max-width:600px;margin:auto;">
@@ -9,17 +12,9 @@ module.exports = (chef, user, booking, hostname) => {
 <a href="https://www.getcooked.co" title="Get Cooked" style="text-decoration:none;display:block;margin:auto; text-align: center; margin-bottom:25px;font-family:Verdana, Geneva, sans-serif;font-size: 24px; font-weight: 00; color:#f05125;">Get Cooked</a>
 </header>
 
-<section style="max-width:600px;margin:auto;padding:20px;border-bottom: 1px solid #ffc9ba;border-top: 1px solid #ffc9ba; font-family:Verdana, Geneva, sans-serif; font-size:14px;color: #5e5e5e;" >
+<section style="max-width:600px;margin:auto;padding:20px;border-bottom: 1px solid #ffc9ba;border-top: 1px solid #ffc9ba; font-family:Verdana, Geneva, sans-serif; font-size:14px;color: #5e5e5e; text-align: center;" >
     <article>
-        <p style="font-size: 20px; color: #5e5e5e;"><a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none; color:#f05125">${_.startCase(_.toLower(chef.displayName))}</a> is interested in catering your ${booking.eventType} on ${moment(booking.date).format('Do MMM YYYY')} and has sent you a message.</p>
-        <p>
-<div  style="margin: 50px;">
-<a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}"><span style="background-image: url('${chef.profilePhoto}');background-repeat:no-repeat;background-size:120px;background-position:center;display:block;height: 120px;width:120px;margin:auto;border-radius: 60px;">
-</a>
-<a href="${hostname}" title="${_.startCase(_.toLower(chef.displayName))}" style="text-decoration:none;display:block;margin:auto; text-align: center; margin-bottom:5px;font-family:Verdana, Geneva, sans-serif;font-size: 16px; color: #5e5e5e;">
-<span style="margin:auto; text-align: center;display: inline-block;vertical-align: top;">
-<p style="text-decoration: none; font-family:Verdana, Geneva, sans-serif;">${_.startCase(_.toLower(chef.displayName))}</p>
-<a/>
+        <p style="font-size: 20px; color: #5e5e5e;">${_.startCase(_.toLower(user.displayName || user.firstName))} has sent you a new message.</p>
 <a style="text-decoration: none;" href="${hostname}">
 <button style="display:block;margin:auto; text-align: center; padding:20px ;width:200px; border-radius: 4px; height: 36px;font-size: 16px; padding: 0; background-color: #f05125; color:white; margin: auto; ">View and Reply</button>
 <a/>

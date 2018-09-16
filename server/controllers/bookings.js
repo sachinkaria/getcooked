@@ -53,17 +53,17 @@ function accept(req, res) {
         booking.save((bookingErr, savedBooking) => {
           if (bookingErr) return bookingErr;
 
-          const USER = savedBooking.contactDetails;
+          const USER = savedBooking.user;
           const ENQUIRY_EMAIL_DATA = {
-            subject: `Event Catering - ${_.startCase(_.toLower(CHEF.displayName))}`,
+            subject: `Catering Interest - ${_.startCase(_.toLower(CHEF.displayName))}`,
             recipient: USER.email
           };
-          const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/caterers/profile/${CHEF.id}`);
+          const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/events');
           const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, acceptedBookingTemplate(savedBooking.chef, USER, savedBooking, HOSTNAME));
           enquiryMailer.send();
           return res.jsonp(savedBooking);
         });
-      })
+      });
     });
 }
 

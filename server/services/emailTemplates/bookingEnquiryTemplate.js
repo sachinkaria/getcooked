@@ -16,10 +16,6 @@ module.exports = (chef, user, booking, hostname) => {
 <div style="border-radius: 6px; background-color: #efefef; padding: 10px; width: 350px;">
         <ul style="list-style-type: none;margin-left: 0; padding: 0;">
           <li>
-            <p style="margin: 0; padding: 0;">Name</p>
-            <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">${user.firstName} ${user.lastName}</p>
-          </li>
-          <li>
             <p style="margin: 0; padding: 0;">Date</p>
             <p style="font-style: italic; margin: 0; padding: 0; margin-bottom: 10px;">${moment(booking.date).format('Do MMM YY')}</p>
           </li>

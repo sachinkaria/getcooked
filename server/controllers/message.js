@@ -6,22 +6,23 @@ const ObjectId = require('mongodb').ObjectId;
 
 module.exports.create = create;
 
-function create(userId, id, message) {
-  console.log('creating message', message);
-  const _booking = id;
-  const _sender = userId;
-  const body = message;
+function create(req, res) {
+  let BOOKING;
+  const _booking = req.params.id;
+  const _sender = req.user._id;
+  const body = req.body.message;
 
-
-
+  const MESSAGE = new Message({ _sender, _booking, body });
+  console.log('creating message', MESSAGE);
 
   Booking.findOne({_id: ObjectId(_booking)}, function(err, booking){
-    booking.messages.push(message._id);
+    booking.messages.push(MESSAGE._id);
     booking.save((err) => {
       if (err) {
         console.log(err);
         return err;
       }
+      BOOKING = booking;
     });
   });
 
@@ -30,6 +31,6 @@ function create(userId, id, message) {
       console.log(err);
       return err;
     }
-    return msg;
+    return res.send(BOOKING);
   });
 }

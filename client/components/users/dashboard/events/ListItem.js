@@ -7,7 +7,7 @@ function ListItem(props) {
   const { event } = props;
   return (
     <Col sm={12}>
-      <Panel className={{ 'gc-panel': true, 'gc-panel--alert': event.bookings.length === 0 } }>
+      <Panel className="gc-panel">
         <Panel.Body>
           <Row>
             <Col sm={3} className="center-m left-t">

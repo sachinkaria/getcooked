@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Modal from '../../../../containers/Modal';
 import AcceptBookingForm from '../../../../containers/forms/AcceptBooking';
 import {getBooking, accept, decline} from '../../../../actions/bookings';
+import {create} from '../../../../actions/messages';
 import Title from '../Title';
 import ContactDetails from '../ContactDetails';
 import CoreDetails from '../CoreDetails';
@@ -17,7 +18,7 @@ import AdditionalEquipment from '../AdditionalEquipment';
 import Chat from '../../../../components/Chat';
 
 
-class BookingItem extends React.Component {
+class ChefBooking extends React.Component {
   constructor(props) {
     super(props);
     this.acceptBooking = this.acceptBooking.bind(this);
@@ -54,22 +55,28 @@ class BookingItem extends React.Component {
   }
 
   sendMessage(message) {
-    console.log(message);
+    this.props.create(this.props.booking._id, message);
   }
 
   renderView() {
     const { booking, user } = this.props;
     const { messages } = booking;
     const BOOKING_ACCEPTED = booking.status === 'accepted';
+    const BOOKING_PENDING = (booking.status === 'pending' || booking.status === 'declined');
     const STATUS = this.getStatus();
 
     return (
       <div>
         <Row>
-          <Col xs={12} sm={8}>
-            <Chat messages={messages} user={user} onSubmit={this.sendMessage} />
-          </Col>
-          <Col xs={12} sm={4}>
+          {
+            BOOKING_PENDING === false &&
+              <Col xs={12} sm={8}>
+                <h2 className="gc-profile-heading-sm">Chat</h2>
+                <Chat messages={messages} user={user} otherUser={booking.user} onSubmit={this.sendMessage} />
+              </Col>
+          }
+          <Col xs={12} sm={BOOKING_PENDING ? 12 : 4}>
+            <h2 className="gc-profile-heading-sm">Booking Details</h2>
             <Panel className="gc-panel">
               <Panel.Body>
                 <div>
@@ -82,58 +89,51 @@ class BookingItem extends React.Component {
                     </Col>
                   </Row>
                   <hr />
-                  <Row>
-                    {
-                      (booking.status === 'pending') &&
-                      <Col xs={12} sm={12}>
+                  {
+                    booking.status !== 'declined' &&
+                      <div>
                         <Row>
-                          <Col xs={12}>
-                            {
-                              (!booking.chef.stripe || !booking.chef.stripe.sourceId) &&
-                              <p className="gc-text gc-margin-bottom--lg">
-                                To accept this booking please update your payment details <Link
-                                to="/dashboard/account/subscription" className="gc-text gc-grey">here</Link>.
-                                You will not be charged until the end of the month.
-                              </p>
-                            }
-                            <p className="gc-text gc-margin-bottom--lg">
-                              Note: You are NOT obliged to cater the event once you have confirmed your availability.
-                            </p>
+                          <Col xs={12} sm={!BOOKING_PENDING ? 12 : 6}>
+                            <CoreDetails
+                              address={booking.address}
+                              numberOfPeople={booking.numberOfPeople}
+                              budget={booking.budget}
+                              startTime={booking.startTime}
+                              endTime={booking.endTime}
+                            />
                           </Col>
-                        </Row>
-                        <Row>
-                          {(booking.chef.stripe && booking.chef.stripe.sourceId) &&
-                          <div>
-                            <Col xs={6}>
-                              <Modal
-                                large
-                                title="Accept Enquiry"
-                                buttonText="Accept"
-                              >
-                                <AcceptBookingForm onSubmit={this.acceptBooking}/>
-                              </Modal>
+                          {
+                            (booking.status === 'pending') &&
+                            <Col xs={12} sm={6}>
+                              <Row>
+                                <Col xs={12}>
+                                  <p className="gc-text gc-margin-bottom--lg">
+                                    Note: You are NOT obliged to cater the event once you have confirmed your availability.
+                                  </p>
+                                </Col>
+                              </Row>
+                              <Row>
+                                <div>
+                                  <Col xs={6}>
+                                    <Modal
+                                      title="Accept Enquiry"
+                                      buttonText="Accept"
+                                    >
+                                      <AcceptBookingForm onSubmit={this.acceptBooking}/>
+                                    </Modal>
+                                  </Col>
+                                  <Col xs={6}>
+                                    <Button block className="gc-btn gc-btn-white gc-btn-white--error" onClick={this.declineBooking}>Decline</Button>
+                                  </Col>
+                                </div>
+                              </Row>
+                              <hr className="visible-xs"/>
                             </Col>
-                            <Col xs={6}>
-                              <Button block className="gc-btn" onClick={this.declineBooking}
-                                      bsStyle="danger">Decline</Button>
-                            </Col>
-                          </div>
                           }
                         </Row>
-                        <hr className="visible-xs"/>
-                      </Col>
-                    }
-                    <Col xs={ BOOKING_ACCEPTED ? 12 : 6}>
-                      <CoreDetails
-                        address={booking.address}
-                        numberOfPeople={booking.numberOfPeople}
-                        budget={booking.budget}
-                        startTime={booking.startTime}
-                        endTime={booking.endTime}
-                      />
-                    </Col>
-                  </Row>
-                  <hr />
+                        <hr className="hidden-xs"/>
+                      </div>
+                  }
                   <Row className="gc-padding-small">
                     <Col xs={12}>
                       <Row>
@@ -213,7 +213,7 @@ class BookingItem extends React.Component {
 }
 
 
-BookingItem.propTypes = {
+ChefBooking.propTypes = {
   booking: PropTypes.object
 };
 
@@ -224,4 +224,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getBooking, accept, decline})(BookingItem);
+export default connect(mapStateToProps, {getBooking, accept, decline, create})(ChefBooking);

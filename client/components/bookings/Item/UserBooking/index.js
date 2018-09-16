@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import Modal from '../../../../containers/Modal';
 import AcceptBookingForm from '../../../../containers/forms/AcceptBooking';
 import {getBooking, accept, decline} from '../../../../actions/bookings';
+import {create} from '../../../../actions/messages';
 import Title from '../Title';
 import ContactDetails from '../ContactDetails';
 import CoreDetails from '../CoreDetails';
@@ -54,12 +55,24 @@ class UserBooking extends React.Component {
   }
 
   sendMessage(message) {
-    console.log(message);
+    this.props.create(this.props.booking._id, message);
   }
 
   renderView() {
     const { booking, user } = this.props;
+    let ADDITIONAL_INFORMATION = null;
     const { messages } = booking;
+
+    if (booking.additionalInformation) {
+      ADDITIONAL_INFORMATION = {
+        _id: '1234567890',
+        _sender: booking.user._id,
+        date: booking.createdAt,
+        body: booking.additionalInformation
+      };
+      messages.unshift(ADDITIONAL_INFORMATION);
+    }
+
     const BOOKING_ACCEPTED = booking.status === 'accepted';
     const STATUS = this.getStatus();
 
@@ -72,9 +85,11 @@ class UserBooking extends React.Component {
         </Row>
         <Row>
           <Col xs={12} sm={8}>
-            <Chat messages={messages} user={user} chef={booking.chef} onSubmit={this.sendMessage} />
+            <h2 className="gc-profile-heading-sm">Chat</h2>
+            <Chat messages={messages} user={user} otherUser={booking.chef} onSubmit={this.sendMessage} />
           </Col>
           <Col xs={12} sm={4}>
+            <h2 className="gc-profile-heading-sm">Event Details</h2>
             <Panel className="gc-panel">
               <Panel.Body>
                 <div>
@@ -187,4 +202,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getBooking, accept, decline})(UserBooking);
+export default connect(mapStateToProps, { getBooking, accept, decline, create })(UserBooking);

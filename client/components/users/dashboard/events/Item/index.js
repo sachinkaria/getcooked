@@ -8,6 +8,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { Row, Col, Panel } from 'react-bootstrap';
 import { readEvent } from '../../../../../actions/events';
+import Notification from '../../../../../components/Notification';
 import CatererItem from './CatererItem';
 
 class EventItem extends React.Component {
@@ -34,13 +35,32 @@ class EventItem extends React.Component {
 
   renderContent() {
     const { event } = this.props;
+    const { bookings } = event;
+    const NOT_PENDING_BOOKINGS = _.filter(bookings, function(booking) {
+      const NOT_PENDING = booking.status !== 'pending';
+      return NOT_PENDING;
+    });
+
+    const ACCEPTED_BOOKINGS = _.filter(NOT_PENDING_BOOKINGS, function(booking) {
+      const NOT_DECLINED = booking.status !== 'declined';
+      return NOT_DECLINED;
+    });
+
     return (
       <Row>
+        {
+          (ACCEPTED_BOOKINGS.length < 1) &&
+          <Col className="text-center" xs={12} sm={6} smOffset={3}>
+            <Notification
+              text="You will be notified when a caterer or chef is available for and interested in your event."
+            />
+          </Col>
+        }
         <Col xs={12}>
           <h2 className="gc-profile-heading-sm">Event Details</h2>
         </Col>
         <Col xs={12}>
-          <Panel id="collapsible-panel-example-2">
+          <Panel className="gc-panel" id="collapsible-panel-example-2">
             <Panel.Body>
               <Row>
                 <Col xs={12}>
@@ -210,12 +230,17 @@ class EventItem extends React.Component {
             }
           </Row>
           <Row>
-            <Col xs={12}>
-              <h2 className="gc-profile-heading-sm">Interested Caterers and Chefs</h2>
-            </Col>
+            {
+              ACCEPTED_BOOKINGS.length > 0 &&
+              (
+                <Col xs={12}>
+                  <h2 className="gc-profile-heading-sm">Interested Caterers and Chefs</h2>
+                </Col>
+              )
+            }
             <Col xs={12}>
               {
-                event.bookings.map((booking) => {
+                ACCEPTED_BOOKINGS.length > 0 && ACCEPTED_BOOKINGS.map((booking) => {
                   return (
                       <CatererItem eventId={this.props.params.id} key={booking._id} id={booking._id} caterer={ booking.chef } />
                   );

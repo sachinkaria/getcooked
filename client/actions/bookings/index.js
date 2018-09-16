@@ -55,11 +55,8 @@ export function accept(id, message) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.post(`/api/bookings/${id}/accept`, { message }, AUTH_HEADERS)
-      .then((response) => {
-        dispatch({
-          type: GET_BOOKING,
-          payload: response.data
-        });
+      .then(() => {
+        dispatch(getBooking(id));
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
@@ -71,11 +68,8 @@ export function decline(id) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.get(`/api/bookings/${id}/decline`, AUTH_HEADERS)
-      .then((response) => {
-        dispatch({
-          type: GET_BOOKING,
-          payload: response.data
-        });
+      .then(() => {
+        dispatch(getBooking(id));
       })
       .catch(() => {
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');

@@ -11,7 +11,7 @@ function Chat(props) {
           {
             props.messages.map((message, i) => {
               return (
-                <Message key={i} message={message} user={props.user} chef={props.chef} />
+                <Message key={i} message={message} user={props.user} otherUser={props.otherUser} />
               );
             })
           }

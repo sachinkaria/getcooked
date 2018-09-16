@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Row, Col, Button } from 'react-bootstrap';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import renderInputBox from '../../components/forms/renderInputBox';
 
 const form = reduxForm({
@@ -27,6 +27,7 @@ class MessageInput extends Component {
 
   handleFormSubmit(formProps) {
     this.props.onSubmit(formProps.message);
+    this.props.reset();
   }
 
   render() {
@@ -63,4 +64,4 @@ function mapStateToProps() {
   return {};
 }
 
-export default (connect(mapStateToProps))(form(MessageInput));
+export default (connect(mapStateToProps, { reset }))(form(MessageInput));

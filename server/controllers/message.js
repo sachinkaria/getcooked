@@ -19,7 +19,7 @@ function create(req, res) {
     .populate('user', '_id firstName email')
     .populate('chef', '_id displayName companyEmail')
     .exec(function (err, foundBooking) {
-      foundBooking.messages.push(MESSAGE._id);
+      foundBooking.messages.concat([MESSAGE._id]);
       foundBooking.save((err, booking) => {
         if (err) {
           console.log(err);

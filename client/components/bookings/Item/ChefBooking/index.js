@@ -64,6 +64,17 @@ class ChefBooking extends React.Component {
     const BOOKING_ACCEPTED = booking.status === 'accepted';
     const BOOKING_PENDING = (booking.status === 'pending' || booking.status === 'declined');
     const STATUS = this.getStatus();
+    let ADDITIONAL_INFORMATION = null;
+
+    if (booking.additionalInformation) {
+      ADDITIONAL_INFORMATION = {
+        _id: '1234567890',
+        _sender: booking.user._id,
+        date: booking.createdAt,
+        body: booking.additionalInformation
+      };
+      messages.unshift(ADDITIONAL_INFORMATION);
+    }
 
     return (
       <div>

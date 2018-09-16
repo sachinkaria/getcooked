@@ -147,7 +147,8 @@ function create(req, res) {
           if (eventErr) return eventErr;
 
           if (event.bookings) {
-            event.bookings.concat([booking._id]);
+            const NEW_BOOKINGS = event.bookings.concat([booking._id]);
+            _.extend(event, { bookings: NEW_BOOKINGS });
             event.save();
           } else {
             event.bookings = [booking._id];

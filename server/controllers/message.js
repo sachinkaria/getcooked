@@ -1,5 +1,4 @@
-'use strict';
-
+const _ = require('lodash');
 const Message = require('../models/message');
 const Booking = require('../models/booking');
 const ObjectId = require('mongodb').ObjectId;
@@ -19,7 +18,8 @@ function create(req, res) {
     .populate('user', '_id firstName email')
     .populate('chef', '_id displayName companyEmail')
     .exec(function (err, foundBooking) {
-      foundBooking.messages.concat([MESSAGE._id]);
+      const NEW_MESSAGES = foundBooking.messages.concat([MESSAGE._id]);
+      _.extend(foundBooking, { messages: NEW_MESSAGES });
       foundBooking.save((err, booking) => {
         if (err) {
           console.log(err);

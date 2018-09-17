@@ -22,11 +22,12 @@ module.exports.decline = decline;
 function list(req, res) {
   const user = req.user;
   Booking
-    .find({$or: [{user: user._id}, {chef: user._id}]})
+    .find({ $or: [{ user: user._id }, { chef: user._id }]})
     .populate('user', 'firstName')
     .populate('chef', 'profilePhoto displayName')
     .sort('-createdAt')
     .exec((err, bookings) => {
+    console.log(bookings);
       res.jsonp(bookings);
     });
 }
@@ -128,7 +129,7 @@ function create(req, res) {
   User.findOne({_id: BOOKING.chef}, 'firstName mobileNumber companyEmail phoneCode contactNumber stripe subscription', (error, chef) => {
     if (error) return (error);
     const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/bookings');
-    const MESSAGE = `You have a new enquiry from ${USER.firstName} for ${booking.numberOfPeople} people with a budget of £${booking.budget}. Your bookings: ${HOSTNAME}`;
+    const MESSAGE = `You have a new enquiry for ${booking.numberOfPeople} people with a budget of £${booking.budget}. Your bookings: ${HOSTNAME}`;
     const ENQUIRY_EMAIL_DATA = {
       subject: 'New Booking Request',
       recipient: chef.companyEmail
@@ -155,24 +156,24 @@ function create(req, res) {
             event.save();
           }
 
-          sendNewBookingSlackNotification(USER);
+          // sendNewBookingSlackNotification(USER);
           return res.jsonp(booking);
         });
       } else {
-        sendNewBookingSlackNotification(USER);
+        // sendNewBookingSlackNotification(USER);
         return res.jsonp(booking);
       }
     });
   });
 }
 
-function sendNewBookingSlackNotification(user) {
-  if (process.env.NODE_ENV === 'production') {
-    request
-      .post(config.slackBookingsWebHookUrl)
-      .send({
-        text: `${user.email} just sent a new booking request.`
-      })
-      .end();
-  }
-}
+// function sendNewBookingSlackNotification(user) {
+//   if (process.env.NODE_ENV === 'production') {
+//     request
+//       .post(config.slackBookingsWebHookUrl)
+//       .send({
+//         text: `${user.email} just sent a new booking request.`
+//       })
+//       .end();
+//   }
+// }

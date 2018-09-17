@@ -23,6 +23,7 @@ export function getBookings() {
   return function (dispatch) {
     axios.get('/api/bookings', AUTH_HEADERS)
       .then((response) => {
+      console.log(response.data);
         dispatch({
           type: BOOKING_LIST,
           payload: response.data

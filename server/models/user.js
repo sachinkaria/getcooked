@@ -109,6 +109,7 @@ const UserSchema = new Schema({
       discount: String,
       currency: String
     },
+    termsAccepted: Boolean,
     minimumTotalBudget: Number,
     minimumPerHeadBudget: Number,
     resetPasswordToken: {type: String},

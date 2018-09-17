@@ -8,7 +8,7 @@ function ListItem(props) {
   return (
     <Col sm={12}>
       <Panel className="gc-panel">
-        <Panel.Body>
+        <Panel.Body className="gc-margin-bottom">
           <Row>
             <Col sm={3} className="center-m left-t">
               <p className="gc-text gc-bold gc-margin-top">Event date</p>

@@ -59,6 +59,8 @@ function Terms() {
 
               <p>We reserve the right to refuse or cancel your order if fraud or an unauthorised or illegal transaction is suspected.</p>
 
+              <p>We reserve the right to charge a 5% commission on all bookings processed through our platform.</p>
+
               <br />
               <h2 className="gc-profile-heading-sm">Content</h2>
 
@@ -123,6 +125,8 @@ function Terms() {
               <p>(a) whilst we may perform limited checks on Caterers who wish to register with us, we are not in a position to required confirm the identity of Caterers or to verify the status of the facilities and catering services they offer</p>
 
               <p>(b) we do not have control over the quality of the facilities and catering services provided by Caterers, nor of the integrity, responsibility or actions of Caterers.</p>
+
+              <p>(c) all enquiries and bookings is business retained by the platform and any effort to carry business outside the platform is a breach of our terms.</p>
 
               <br />
               <h2 className="gc-profile-heading-sm">Privacy Policy and Cookie Policy</h2>

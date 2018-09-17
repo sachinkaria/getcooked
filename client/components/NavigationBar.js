@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import {Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+import {Row, Col, Navbar, Nav, NavItem, Button, Panel } from 'react-bootstrap';
 import {connect} from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Modal from '../containers/Modal';
@@ -9,6 +9,7 @@ import SuccessHandler from '../containers/SuccessHandler';
 import BookingForm from '../containers/BookingForm';
 import isAuthenticated from '../utils/isAuthenticated';
 import {getBookings} from '../actions/bookings';
+import {updateUser, getCurrentUser } from '../actions/users';
 import {createEvent} from '../actions/events';
 import Footer from './Footer';
 import { MODAL } from '../utils/data';
@@ -18,6 +19,11 @@ class NavigationBar extends React.Component {
   constructor(props) {
     super(props);
     this.dashboardRoute = this.dashboardRoute.bind(this);
+    this.acceptTerms = this.acceptTerms.bind(this);
+  }
+
+  acceptTerms() {
+    this.props.updateUser({ termsAccepted: true });
   }
 
   dashboardRoute(role) {
@@ -111,6 +117,18 @@ class NavigationBar extends React.Component {
             }
           </Navbar.Collapse>
         </Navbar>
+        {
+          (isAuthenticated() && user.data && showNav && !user.data.termsAccepted && user.data.role === 'chef') && (
+          <div className="gc-popup">
+            <Row className="gc-margin-bottom--lg gc-center">
+              <Col xs={12} sm={6} smOffset={3}>
+                <p className="gc-text gc-text--lg gc-white gc-center">Our pricing model has been updated! We listened to your feedback and bookings are now on a commission basis. Do you understand and accept our <Link className="gc-light-grey" target="_blank" to="/terms">terms and conditions</Link> and <Link className="gc-light-grey" target="_blank" to="/privacy">privacy policy?</Link></p>
+                <Button bsClass="success" className="btn btn-success" onClick={() => this.acceptTerms()}>Accept</Button>
+              </Col>
+            </Row>
+          </div>
+          )
+        }
         <div className="gc-container">
           {this.props.children}
         </div>
@@ -128,4 +146,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getBookings, createEvent })(NavigationBar);
+export default connect(mapStateToProps, { getBookings, createEvent, updateUser, getCurrentUser })(NavigationBar);

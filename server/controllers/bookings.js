@@ -27,7 +27,6 @@ function list(req, res) {
     .populate('chef', 'profilePhoto displayName')
     .sort('-createdAt')
     .exec((err, bookings) => {
-      console.log(bookings);
       res.jsonp(bookings);
     });
 }

@@ -23,7 +23,6 @@ class ListItem extends React.Component {
 
   render() {
     const { booking } = this.props;
-    console.log(booking);
     const STATUS = this.getStatus();
     if (this.props.itemType === 'chefItem') {
       return (

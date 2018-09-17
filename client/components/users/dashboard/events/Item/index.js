@@ -220,17 +220,6 @@ class EventItem extends React.Component {
           </Panel>
           <Row>
             {
-              event.additionalInformation &&
-              <Col xs={12} sm={8}>
-                <p className="gc-text gc-grey">Additional Information</p>
-                <p className="gc-text gc-text--lg gc-dark-grey">
-                  {event.additionalInformation}
-                </p>
-              </Col>
-            }
-          </Row>
-          <Row>
-            {
               ACCEPTED_BOOKINGS.length > 0 &&
               (
                 <Col xs={12}>
@@ -242,7 +231,7 @@ class EventItem extends React.Component {
               {
                 ACCEPTED_BOOKINGS.length > 0 && ACCEPTED_BOOKINGS.map((booking) => {
                   return (
-                      <CatererItem eventId={this.props.params.id} key={booking._id} id={booking._id} caterer={ booking.chef } />
+                    <CatererItem eventId={this.props.params.id} key={booking._id} id={booking._id} caterer={ booking.chef } />
                   );
                 })
               }

@@ -25,6 +25,14 @@ const ContactSchema = {
   }
 };
 
+const QuoteSchema = {
+  amount: String,
+  depositAmount: String,
+  status: String,
+  balanceDue: String,
+  datePaid: Date
+};
+
 const BookingSchema = new Schema({
     user: {
       type: Schema.ObjectId,
@@ -51,7 +59,7 @@ const BookingSchema = new Schema({
     },
     status: {
       type: String,
-      enum: ['pending', 'accepted', 'declined', 'expired'],
+      enum: ['pending', 'accepted', 'declined', 'expired', 'deposit requested', 'confirmed'],
       default: 'pending'
     },
     budget: Number,
@@ -77,6 +85,7 @@ const BookingSchema = new Schema({
     openToVegan: Boolean,
     openToVegetarian: Boolean,
     messages: [{ type: Schema.ObjectId, ref: 'Message' }],
+    quote: QuoteSchema,
   },
   {
     timestamps: true

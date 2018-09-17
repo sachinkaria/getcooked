@@ -83,7 +83,7 @@
     border-radius: 7px;
     width: 90%;
     position: relative;
-    background: $primary-colour;
+    background: $green;
     display: inline-block;
     margin-right: 60px;
     font-size: 14px;
@@ -99,7 +99,7 @@
       width: 0;
       position: absolute;
       pointer-events: none;
-      border-bottom-color: $primary-colour;
+      border-bottom-color: $green;
       border-width: 10px;
       margin-left: -10px;
     }

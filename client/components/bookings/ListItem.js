@@ -16,6 +16,8 @@ class ListItem extends React.Component {
         return (<p className="gc-text text-capitalize gc-light-green">Accepted</p>);
       case 'declined':
         return (<p className="gc-text text-capitalize gc-red">Declined</p>);
+       case 'deposit requested':
+         return (<p className="gc-text text-capitalize gc-bold">Deposit Requested</p>);
       default:
         return (<p className="gc-text text-capitalize gc-yellow">Pending</p>);
     }

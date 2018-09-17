@@ -18,6 +18,7 @@ module.exports.list = list;
 module.exports.read = read;
 module.exports.accept = accept;
 module.exports.decline = decline;
+module.exports.update = update;
 
 function list(req, res) {
   const user = req.user;
@@ -89,6 +90,23 @@ function read(req, res) {
         booking.read = true;
         booking.save();
       }
+
+      res.jsonp(booking);
+    });
+}
+
+function update(req, res) {
+  const BOOKING_ID = req.params.id;
+  const BOOKING = req.body;
+  Booking
+    .findOne({_id: BOOKING_ID})
+    .populate('user', 'email mobileNumber firstName lastName')
+    .populate('chef', 'profilePhoto displayName stripe subscription')
+    .populate('messages', '_sender _recipient status date body')
+    .exec((err, booking) => {
+
+    _.extend(booking, BOOKING);
+    booking.save();
 
       res.jsonp(booking);
     });

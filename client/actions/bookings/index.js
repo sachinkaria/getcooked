@@ -51,6 +51,19 @@ export function getBooking(id) {
   };
 }
 
+export function update(id, booking) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post(`/api/bookings/${id}`, booking, AUTH_HEADERS)
+      .then(() => {
+        dispatch(getBooking(id));
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
+      });
+  };
+}
+
 export function accept(id, message) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {

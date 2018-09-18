@@ -54,7 +54,6 @@ export function makePayment(amount, id) {
     axios.post('/api/stripe/payments', { amount }, AUTH_HEADERS)
       .then(() => {
       dispatch(confirm(id, { status: 'confirmed' }));
-        successHandler(dispatch, 'Awesome! Your payment was successful and your booking is confirmed.');
       }).catch(() => {
       errorHandler(dispatch, 'Sorry, there was a problem saving your cards details.');
     });

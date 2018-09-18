@@ -73,13 +73,11 @@ module.exports = (chef, hostname) => {
     <div style="margin-top: 20px; text-align: center;font-family:Verdana, Geneva, sans-serif; color: #5e5e5e;">
         Get Cooked Ltd
         <br>
-        18 Kamen House, 
-        <br>
-        17-21 Magdalen Street, 
+        5, 61 Tanner Street, 
         <br>
         London, United Kingdom,
         <br>
-        SE12RH
+        SE13PP
         <br>
         © Get Cooked 2018. All rights reserved
     </div>

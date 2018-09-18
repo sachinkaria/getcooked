@@ -11,6 +11,8 @@ const Mailer = require('../services/mailer');
 const Message = require('../models/message');
 const enquiryTemplate = require('../services/emailTemplates/bookingEnquiryTemplate');
 const acceptedBookingTemplate = require('../services/emailTemplates/acceptedBookingTemplate');
+const depositRequestedTemplate = require('../services/emailTemplates/depositRequestedTemplate');
+const confirmedBookingTemplate = require('../services/emailTemplates/confirmedBookingTemplate');
 
 
 module.exports.create = create;
@@ -127,6 +129,16 @@ function requestDeposit(req, res) {
       _.extend(booking, BOOKING);
       booking.save((error, newBooking) => {
         if (error) return error;
+        const USER = booking.user;
+        const CHEF = booking.displayName;
+
+        const ENQUIRY_EMAIL_DATA = {
+          subject: `Deposit Requested - ${_.startCase(_.toLower(CHEF.displayName))}`,
+          recipient: USER.email
+        };
+        const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/events');
+        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, depositRequestedTemplate(CHEF, HOSTNAME));
+        enquiryMailer.send();
         sendBookingDepositSlackNotification(req.user, req.body.depositAmount);
         res.jsonp(newBooking);
       });
@@ -146,6 +158,16 @@ function confirm(req, res) {
       _.extend(booking, BOOKING);
       booking.save((error, newBooking) => {
         if (error) return error;
+        const USER = booking.user;
+        const CHEF = booking.displayName;
+
+        const ENQUIRY_EMAIL_DATA = {
+          subject: `Deposit Requested - ${_.startCase(_.toLower(CHEF.displayName))}`,
+          recipient: USER.email
+        };
+        const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/dashboard/bookings/${booking._id}`);
+        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, confirmedBookingTemplate(USER, HOSTNAME));
+        enquiryMailer.send();
         res.jsonp(newBooking);
       });
     });

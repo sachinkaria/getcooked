@@ -1,20 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 import {Col, Panel, Row, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import Modal from '../../../../containers/Modal';
-import AcceptBookingForm from '../../../../containers/forms/AcceptBooking';
+import BookingPaymentForm from '../../../../containers/forms/BookingPayment';
 import {getBooking, accept, decline} from '../../../../actions/bookings';
 import {create} from '../../../../actions/messages';
-import Title from '../Title';
-import ContactDetails from '../ContactDetails';
-import CoreDetails from '../CoreDetails';
-import EventType from '../EventType';
-import ServicesRequired from '../ServicesRequired';
-import TypeOfFood from '../TypeOfFood';
-import FoodStyle from '../FoodStyle';
-import AdditionalEquipment from '../AdditionalEquipment';
 import Chat from '../../../../components/Chat';
 
 
@@ -25,6 +16,9 @@ class UserBooking extends React.Component {
     this.declineBooking = this.declineBooking.bind(this);
     this.getStatus = this.getStatus.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
+    this.makePayment = this.makePayment.bind(this);
+
+    this.state = { showPaymentForm: false }
   }
 
   componentWillMount() {
@@ -40,6 +34,12 @@ class UserBooking extends React.Component {
       default:
         return (<span className="gc-text gc-text--xl text-capitalize gc-yellow">Pending</span>);
     }
+  }
+
+  makePayment() {
+    this.setState({
+      showPaymentForm: true
+    })
   }
 
   declineBooking() {
@@ -73,107 +73,92 @@ class UserBooking extends React.Component {
       messages.unshift(ADDITIONAL_INFORMATION);
     }
 
-    const BOOKING_ACCEPTED = booking.status === 'accepted';
-    const STATUS = this.getStatus();
+    const BOOKING_PENDING = (booking.status === 'pending' || booking.status === 'declined');
 
     return (
       <div>
         <Row>
           <Col xs={6} sm={3}>
-            <Button className="gc-btn gc-btn-white gc-margin-bottom" onClick={browserHistory.goBack}>Back to Event</Button>
+            <Button className="gc-btn gc-btn-white gc-margin-bottom" onClick={browserHistory.goBack}>Back to
+              Event</Button>
           </Col>
         </Row>
         <Row>
-          <Col xs={12} sm={8}>
+          {
+            (!BOOKING_PENDING && !this.state.showPaymentForm) &&
+            <Col xs={12} sm={4} smPush={8}>
+              <Panel className="gc-panel gc-panel--alert">
+                <Panel.Body>
+                  <p className="gc-margin-bottom gc-profile-heading-sm gc-margin-bottom--lg">
+                    {booking.status === 'deposit requested' && 'Deposit has been requested to confirm your booking.'}
+                    {booking.status === 'accepted' && 'Awaiting final quote to confirm booking.'}
+                    {booking.status === 'confirmed' && 'Congrats! Your booking is confirmed.'}
+                  </p>
+                  {booking.status === 'deposit requested' &&
+                  <div>
+                       <span className="gc-text gc-text--lg gc-text--slim">
+                  Final Quote
+                </span>
+                    <span className="gc-text gc-text--lg gc-grey pull-right">
+                  £{booking.quote.amount}
+                </span>
+                    <hr className="gc-hr-sm"/>
+                    <span className="gc-text gc-text--lg gc-text--slim">
+                  Deposit Due (5%)
+                </span>
+                    <span className="gc-text gc-text--lg gc-grey pull-right">
+                  £{booking.quote.depositAmount}
+                </span>
+                  </div>
+                  }
+                  {booking.status === 'confirmed' &&
+                  <div>
+                       <span className="gc-text gc-text--lg gc-text--slim">
+                  Final Quote
+                </span>
+                    <span className="gc-text gc-text--lg gc-grey pull-right">
+                  £{booking.quote.amount}
+                </span>
+                    <hr className="gc-hr-sm"/>
+                    <span className="gc-text gc-text--lg gc-text--slim">
+                  Deposit Paid (5%)
+                </span>
+                    <span className="gc-text gc-text--lg gc-grey pull-right">
+                  £{booking.quote.depositAmount}
+                </span>
+                    <hr className="gc-hr-sm"/>
+                    <span className="gc-text gc-text--lg gc-text--slim">
+                      Outstanding Balance
+                  </span>
+                    <span className="gc-text gc-text--lg gc-grey pull-right">
+                  £{booking.quote.balanceDue}
+                  </span>
+                  </div>
+                  }
+                  {
+                    booking.status === 'accepted' &&
+                    <span className="gc-text">This booking is unconfirmed. To confirm your booking you will be requested to pay a 5% deposit.</span>
+                  }
+                  {booking.status === 'deposit requested' &&
+                  <Button block className="gc-btn gc-btn--orange gc-margin-top" onClick={() => this.makePayment()}>Confirm Now</Button>
+                  }
+                </Panel.Body>
+              </Panel>
+            </Col>
+          }
+          {
+            this.state.showPaymentForm &&
+            <Col xs={12} sm={4} smPush={8}>
+              <BookingPaymentForm
+                stripe={this.props.stripe}
+                amount={parseInt(booking.quote.depositAmount)}
+                id={booking._id}
+              />
+            </Col>
+          }
+          <Col xs={12} sm={8} smPull={4}>
             <h2 className="gc-profile-heading-sm">Chat</h2>
-            <Chat messages={messages} user={user} otherUser={booking.chef} onSubmit={this.sendMessage} />
-          </Col>
-          <Col xs={12} sm={4}>
-            <h2 className="gc-profile-heading-sm">Event Details</h2>
-            <Panel className="gc-panel">
-              <Panel.Body>
-                <div>
-                  <Row>
-                    { STATUS === 'confirmed' &&
-                    <Col xs={12}>
-                      <span className="gc-text gc-text--lg gc-bold">{STATUS}</span>
-                    </Col>
-                    }
-                  </Row>
-                  <Row>
-                    <Col xs={12}>
-                      <CoreDetails
-                        address={booking.address}
-                        numberOfPeople={booking.numberOfPeople}
-                        budget={booking.budget}
-                        startTime={booking.startTime}
-                        endTime={booking.endTime}
-                      />
-                    </Col>
-                  </Row>
-                  <hr />
-                  <Row className="gc-padding-small">
-                    <Col xs={12}>
-                      <Row>
-                        <Col xs={6} sm={6}>
-                          <p className="gc-text gc-grey">Event Type</p>
-                          <EventType eventType={booking.eventType} />
-                        </Col>
-                        <Col xs={6} sm={6}>
-                          <p className="gc-text gc-grey">Services Required</p>
-                          <ServicesRequired services={booking.services} />
-                        </Col>
-                        <Col xs={6} sm={6}>
-                          <p className="gc-text gc-grey">Type of Food</p>
-                          <TypeOfFood
-                            openToVegan={booking.openToVegan}
-                            openToVegetarian={booking.openToVegetarian}
-                            foodServices={booking.foodServices}
-                          />
-                        </Col>
-                      </Row>
-                      {
-                        (booking.kitchenAvailable && (booking.foodStyle.length > 0) && (booking.additionalEquipment.length > 0)) &&
-                        <hr />
-                      }
-                      <Row>
-                        {(booking.kitchenAvailable !== undefined) &&
-                        <Col xs={6} sm={BOOKING_ACCEPTED ? 6 : 4}>
-                          <p className="gc-text gc-grey">Kitchen Facilities</p>
-                          <p className="gc-text gc-text--lg">{ booking.kitchenAvailable ? 'Available' : 'Unavailable' }</p>
-                        </Col>
-                        }
-                        {(booking.foodStyle.length > 0) &&
-                        <Col xs={6} sm={BOOKING_ACCEPTED ? 6 : 4}>
-                          <p className="gc-text gc-grey">Food Style</p>
-                          <FoodStyle foodStyle={booking.foodStyle}/>
-                        </Col>
-                        }
-                        {
-                          (booking.additionalEquipment.length > 0) &&
-                          <Col xs={6} sm={BOOKING_ACCEPTED ? 6 : 4}>
-                            <p className="gc-text gc-grey">Additional Equipment</p>
-                            <AdditionalEquipment additionalEquipment={booking.additionalEquipment}/>
-                          </Col>
-                        }
-                      </Row>
-                      {
-                        booking.additionalInformation &&
-                        <Row>
-                          <Col xs={12}>
-                            <hr />
-                            <p className="gc-text gc-grey">Additional Information</p>
-                            <p className="gc-text gc-text--lg gc-dark-grey">
-                              {booking.additionalInformation}
-                            </p>
-                          </Col>
-                        </Row>
-                      }
-                    </Col>
-                  </Row>
-                </div>
-              </Panel.Body>
-            </Panel>
+            <Chat messages={messages} user={user} otherUser={booking.chef} onSubmit={this.sendMessage}/>
           </Col>
         </Row>
       </div>
@@ -202,4 +187,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getBooking, accept, decline, create })(UserBooking);
+export default connect(mapStateToProps, {getBooking, accept, decline, create})(UserBooking);

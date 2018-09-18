@@ -11,15 +11,17 @@ class ListItem extends React.Component {
   }
 
   getStatus() {
-     switch (this.props.booking.status) {
+    switch (this.props.booking.status) {
       case 'accepted':
-        return (<p className="gc-text text-capitalize gc-light-green">Accepted</p>);
+        return (<p className="gc-text gc-text--xl text-capitalize gc-yellow">Accepted</p>);
       case 'declined':
-        return (<p className="gc-text text-capitalize gc-red">Declined</p>);
-       case 'deposit requested':
-         return (<p className="gc-text text-capitalize gc-bold">Deposit Requested</p>);
+        return (<p className="gc-text gc-text--xl text-capitalize gc-red">Declined</p>);
+      case 'deposit requested':
+        return (<p className="gc-text gc-text--xl text-capitalize gc-grey">Deposit Requested</p>);
+      case 'confirmed':
+        return (<p className="gc-text gc-text--xl text-capitalize gc-light-green">Confirmed</p>);
       default:
-        return (<p className="gc-text text-capitalize gc-yellow">Pending</p>);
+        return (<p className="gc-text gc-text--xl text-capitalize gc-light-grey">Pending</p>);
     }
   }
 
@@ -76,12 +78,12 @@ class ListItem extends React.Component {
                   className="gc-thumbnail gc-thumbnail--xs"
                 />
               </Col>
-              <Col className="center-m left-t" sm={5}>
-                <p className="gc-text gc-margin-top">
+              <Col className="center-m left-t" sm={6}>
+                <p className="gc-text gc-text--lg gc-margin-top">
                   <span className="text-capitalize">{booking.contactDetails.firstName || booking.user.firstName }</span>'s event on {moment(booking.date).format('MMMM Do YYYY')}
                 </p>
               </Col>
-              <Col sm={5} className="center-m right-t">
+              <Col sm={4} className="center-m right-t">
                 {STATUS}
                 <Link to={`/dashboard/bookings/${booking._id}`} className="btn gc-btn gc-btn-white">
                   View Details

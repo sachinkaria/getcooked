@@ -231,7 +231,7 @@ class EventItem extends React.Component {
               {
                 ACCEPTED_BOOKINGS.length > 0 && ACCEPTED_BOOKINGS.map((booking) => {
                   return (
-                    <CatererItem eventId={this.props.params.id} key={booking._id} id={booking._id} caterer={ booking.chef } />
+                    <CatererItem eventId={this.props.params.id} key={booking._id} status={booking.status} id={booking._id} caterer={ booking.chef } />
                   );
                 })
               }

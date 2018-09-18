@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Modal from '../../../../containers/Modal';
 import AcceptBookingForm from '../../../../containers/forms/AcceptBooking';
 import RequestDepositForm from '../../../../containers/forms/RequestDepositForm';
-import {getBooking, accept, decline, update} from '../../../../actions/bookings';
+import {getBooking, accept, decline, update, requestDeposit} from '../../../../actions/bookings';
 import {create} from '../../../../actions/messages';
 import Title from '../Title';
 import CoreDetails from '../CoreDetails';
@@ -39,27 +39,31 @@ class ChefBooking extends React.Component {
         return (<span className="gc-text gc-text--xl text-capitalize gc-red">Declined</span>);
       case 'deposit requested':
         return (<span className="gc-text gc-text--xl text-capitalize gc-grey">Deposit Requested</span>);
+      case 'confirmed':
+        return (<span className="gc-text gc-text--xl text-capitalize gc-light-green">Confirmed</span>);
       default:
         return (<span className="gc-text gc-text--xl text-capitalize gc-yellow">Pending</span>);
     }
   }
 
   declineBooking() {
-    const {booking} = this.props;
-    heap.track('Declined Booking', {caterer: booking.chef.displayName});
+    const { booking } = this.props;
+    heap.track('Declined Booking', { caterer: booking.chef.displayName });
     this.props.decline(this.props.id);
   }
 
   acceptBooking(message) {
     const {booking} = this.props;
-    heap.track('Accepted Booking', {caterer: booking.chef.displayName});
+    heap.track('Accepted Booking', { caterer: booking.chef.displayName });
     this.props.accept(this.props.id, message);
   }
 
   requestDeposit(quote) {
     const status = 'deposit requested';
-    const BOOKING = {quote, status};
-    this.props.update(this.props.id, BOOKING);
+    const BOOKING = { quote, status };
+    const {booking} = this.props;
+    heap.track('Deposit Requested', { caterer: booking.chef.displayName, depositAmount: quote.depositAmount, quoteAmount: quote.amount });
+    this.props.requestDeposit(this.props.id, BOOKING);
   }
 
   sendMessage(message) {
@@ -67,8 +71,8 @@ class ChefBooking extends React.Component {
   }
 
   renderView() {
-    const {booking, user} = this.props;
-    const {messages} = booking;
+    const { booking, user } = this.props;
+    const { messages } = booking;
     const BOOKING_PENDING = (booking.status === 'pending' || booking.status === 'declined');
     const STATUS = this.getStatus();
     let ADDITIONAL_INFORMATION = null;
@@ -102,7 +106,7 @@ class ChefBooking extends React.Component {
                   <p className="gc-margin-bottom gc-profile-heading-sm gc-margin-bottom--lg">
                     {booking.status === 'deposit requested' && 'Awaiting confirmation and deposit payment.'}
                     {booking.status === 'accepted' && 'To confirm this booking please request deposit.'}
-                    {booking.status === 'confirmed' && 'Deposit received and booking confirmed.'}
+                    {booking.status === 'confirmed' && 'Booking confirmed.'}
                   </p>
                   {booking.status === 'deposit requested' &&
                   <div>
@@ -232,7 +236,6 @@ class ChefBooking extends React.Component {
                                         onClick={this.declineBooking}>Decline</Button>
                               </Col>
                             </Row>
-                            <hr className="visible-xs"/>
                           </Col>
                         }
                       </Row>
@@ -330,4 +333,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getBooking, accept, decline, create, update})(ChefBooking);
+export default connect(mapStateToProps, {getBooking, accept, decline, create, update, requestDeposit})(ChefBooking);

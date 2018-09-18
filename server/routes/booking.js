@@ -12,6 +12,8 @@ module.exports = function(app) {
   app.post('/api/bookings/create', BookingsController.create);
   app.get('/api/bookings/:id', requireAuth, BookingsController.read);
   app.post('/api/bookings/:id', requireAuth, BookingsController.update);
+  app.post('/api/bookings/:id/deposit', requireAuth, BookingsController.requestDeposit);
+  app.post('/api/bookings/:id/confirm', requireAuth, BookingsController.confirm);
   app.post('/api/bookings/:id/accept', requireAuth, BookingsController.accept);
   app.get('/api/bookings/:id/decline', requireAuth, BookingsController.decline);
 };

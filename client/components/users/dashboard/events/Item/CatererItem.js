@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { Button, Panel, Row, Col } from 'react-bootstrap';
 
 const CatererItem = (props) => {
-  const { caterer } = props;
+  const { caterer, status } = props;
   return (
     <div>
       <Panel className="center-m">
@@ -17,6 +17,18 @@ const CatererItem = (props) => {
               <span className="gc-text gc-dark-grey gc-bold gc-inline-block gc-capitalize pull-left gc-margin-top--lg">
                 {caterer.displayName}
               </span>
+              {
+                status === 'confirmed' &&
+                <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize pull-right gc-margin-top--lg">
+                      Booking Confirmed
+                  </span>
+              }
+              {
+                status === 'deposit requested' &&
+                <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize pull-right gc-margin-top--lg">
+                      Deposit Requested
+                  </span>
+              }
             </Col>
             <Col xs={6} sm={3} xsOffset={3} smOffset={0} className="text-right">
               <Link to={`/dashboard/events/${props.eventId}/bookings/${props.id}`}>

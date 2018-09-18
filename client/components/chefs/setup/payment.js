@@ -41,29 +41,30 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(ev) {
     ev.preventDefault();
-    heap.track('Submit Payment Details');
-    const AUTH_HEADERS = {headers: {Authorization: localStorage.token}};
-    axios.post('/api/stripe/customers', {
-      email: localStorage.user.email,
-    }, AUTH_HEADERS).then(() => {
-      this.setState({loading: true});
-      this.props.stripe.createSource(this.state.card, {
-        owner: {
-          address: {
-            line1: this.state.addressLine1,
-            line2: this.state.addressLine2,
-            city: this.state.city,
-            country: this.state.country,
-            postal_code: this.state.postcode
-          },
-        },
-      }).then((source) => {
-        this.props.createSource(source, '/dashboard/profile/summary');
-      });
-    }).catch(() => {
-      this.setState({ loading: false });
-      this.props.errorHandler(this.props.dispatch, 'Sorry, there was a problem saving your cards details.');
-    });
+    console.log('payment form');
+    // heap.track('Submit Payment Details');
+    // const AUTH_HEADERS = {headers: {Authorization: localStorage.token}};
+    // axios.post('/api/stripe/customers', {
+    //   email: localStorage.user.email,
+    // }, AUTH_HEADERS).then(() => {
+    //   this.setState({loading: true});
+    //   this.props.stripe.createSource(this.state.card, {
+    //     owner: {
+    //       address: {
+    //         line1: this.state.addressLine1,
+    //         line2: this.state.addressLine2,
+    //         city: this.state.city,
+    //         country: this.state.country,
+    //         postal_code: this.state.postcode
+    //       },
+    //     },
+    //   }).then((source) => {
+    //     this.props.createSource(source, '/dashboard/profile/summary');
+    //   });
+    // }).catch(() => {
+    //   this.setState({ loading: false });
+    //   this.props.errorHandler(this.props.dispatch, 'Sorry, there was a problem saving your cards details.');
+    // });
   }
 
   render() {

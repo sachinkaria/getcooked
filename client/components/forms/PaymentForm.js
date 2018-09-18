@@ -3,9 +3,7 @@ import { Panel } from 'react-bootstrap';
 
 function PaymentForm({ ...props }) {
   return (
-    <Panel className="gc-panel">
-      <Panel.Body>
-      <h3 className="gc-text">Please note your subscription will not start until you have received your first enquiry. You will not be charged until you start receiving bookings!</h3>
+    <div>
       <div className="gc-center">
         <img className="gc-margin-top--lg gc-margin-bottom--lg gc-icon gc-icon--stripe" alt="Powered by stripe" src="/images/powered_by_stripe.svg"/>
       </div>
@@ -36,8 +34,7 @@ function PaymentForm({ ...props }) {
         </label>
         <input type="text" className="gc-input" name="postcode" value={props.postcode} onChange={props.onChange} />
       </div>
-      </Panel.Body>
-    </Panel>
+    </div>
   );
 }
 

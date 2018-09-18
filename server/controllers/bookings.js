@@ -19,6 +19,8 @@ module.exports.read = read;
 module.exports.accept = accept;
 module.exports.decline = decline;
 module.exports.update = update;
+module.exports.requestDeposit = requestDeposit;
+module.exports.confirm = confirm;
 
 function list(req, res) {
   const user = req.user;
@@ -112,6 +114,43 @@ function update(req, res) {
     });
 }
 
+function requestDeposit(req, res) {
+  const BOOKING_ID = req.params.id;
+  const BOOKING = req.body;
+  Booking
+    .findOne({_id: BOOKING_ID})
+    .populate('user', 'email mobileNumber firstName lastName')
+    .populate('chef', 'profilePhoto displayName stripe subscription')
+    .populate('messages', '_sender _recipient status date body')
+    .exec((err, booking) => {
+
+      _.extend(booking, BOOKING);
+      booking.save((error, newBooking) => {
+        if (error) return error;
+        sendBookingDepositSlackNotification(req.user, req.body.depositAmount);
+        res.jsonp(newBooking);
+      });
+    });
+}
+
+function confirm(req, res) {
+  const BOOKING_ID = req.params.id;
+  const BOOKING = req.body;
+  Booking
+    .findOne({_id: BOOKING_ID})
+    .populate('user', 'email mobileNumber firstName lastName')
+    .populate('chef', 'profilePhoto displayName stripe subscription')
+    .populate('messages', '_sender _recipient status date body')
+    .exec((err, booking) => {
+
+      _.extend(booking, BOOKING);
+      booking.save((error, newBooking) => {
+        if (error) return error;
+        res.jsonp(newBooking);
+      });
+    });
+}
+
 function create(req, res) {
   const BOOKING = req.body || req;
   const USER = BOOKING.user;
@@ -173,24 +212,22 @@ function create(req, res) {
             event.save();
           }
 
-          // sendNewBookingSlackNotification(USER);
           return res.jsonp(booking);
         });
       } else {
-        // sendNewBookingSlackNotification(USER);
         return res.jsonp(booking);
       }
     });
   });
 }
 
-// function sendNewBookingSlackNotification(user) {
-//   if (process.env.NODE_ENV === 'production') {
-//     request
-//       .post(config.slackBookingsWebHookUrl)
-//       .send({
-//         text: `${user.email} just sent a new booking request.`
-//       })
-//       .end();
-//   }
-// }
+function sendBookingDepositSlackNotification(user, amount) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(config.slackBookingsWebHookUrl)
+      .send({
+        text: `${user.email} just requested a deposit of ${amount}.`
+      })
+      .end();
+  }
+}

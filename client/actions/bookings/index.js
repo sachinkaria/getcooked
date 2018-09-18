@@ -59,6 +59,33 @@ export function update(id, booking) {
         dispatch(getBooking(id));
       })
       .catch(() => {
+        errorHandler(dispatch, 'There was a problem updating your booking. Please refresh and try again.');
+      });
+  };
+}
+
+export function requestDeposit(id, booking) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post(`/api/bookings/${id}/deposit`, booking, AUTH_HEADERS)
+      .then(() => {
+        dispatch(getBooking(id));
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
+      });
+  };
+}
+
+export function confirm(id, booking) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post(`/api/bookings/${id}/confirm`, booking, AUTH_HEADERS)
+      .then(() => {
+        dispatch(getBooking(id));
+        window.location.reload();
+      })
+      .catch(() => {
         errorHandler(dispatch, 'There was a problem. Please refresh and try again.');
       });
   };

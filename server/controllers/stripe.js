@@ -5,6 +5,7 @@ const stripe = require('stripe')(keys.stripe_secret_key);
 
 module.exports.createCustomer = createCustomer;
 module.exports.createSource = createSource;
+module.exports.createPayment = createPayment;
 module.exports.getSource = getSource;
 module.exports.getSubscription = getSubscription;
 module.exports.cancelSubscription = cancelSubscription;
@@ -87,6 +88,25 @@ function createSource(req, res) {
   }
 }
 
+function createPayment(req, res) {
+  console.log('Charging customer for deposit');
+  const AMOUNT = req.body.amount * 100;
+  const USER = req.user;
+  const CUSTOMER_ID = USER.stripe.customerId;
+
+  stripe.charges.create({
+    amount: AMOUNT,
+    currency: 'gbp',
+    description: 'Booking Deposit',
+    customer: CUSTOMER_ID,
+    receipt_email: USER.email
+  }, function(err, charge) {
+    if (err) return err;
+    sendNewStripePaymentSlackWebhook(USER, req.body.amount);
+    return res.send(charge);
+  });
+}
+
 function resumeSubscription(req, res) {
   const USER = req.user;
   const TIME = moment().endOf('month').add(1, 'days').subtract(12, 'hours');
@@ -146,6 +166,17 @@ function sendNewStripeCustomerSlackWebhook(user) {
       .post(keys.slackStripeWebHookUrl)
       .send({
         text: `${user.email} just signed up as a stripe customer.`
+      })
+      .end();
+  }
+}
+
+function sendNewStripePaymentSlackWebhook(user, amount) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(keys.slackStripeWebHookUrl)
+      .send({
+        text: `${user.email} just made a deposit payment of £${amount} to confirm their booking.`
       })
       .end();
   }

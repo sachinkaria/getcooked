@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 import { getCurrentUser } from '../users';
+import { update, confirm } from '../bookings';
 import { UPDATE_SOURCE, UPDATE_SUBSCRIPTION, UPDATE_END_DATE } from '../types';
 
 const { errorHandler, successHandler } = require('../public');
@@ -37,18 +37,30 @@ export function getSubscription(id) {
   };
 }
 
-export function createSource(source, route) {
+export function createSource(source, amount, id) {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
   return function (dispatch) {
     axios.post('/api/stripe/sources', source, AUTH_HEADERS).then(() => {
-      browserHistory.push(route);
-      window.location.reload();
-      getCurrentUser();
+      dispatch(makePayment(amount, id));
     }).catch(() => {
       errorHandler(dispatch, 'Sorry, there was a problem saving your cards details.');
     });
   };
 }
+
+export function makePayment(amount, id) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };
+  return function (dispatch) {
+    axios.post('/api/stripe/payments', { amount }, AUTH_HEADERS)
+      .then(() => {
+      dispatch(confirm(id, { status: 'confirmed' }));
+        successHandler(dispatch, 'Awesome! Your payment was successful and your booking is confirmed.');
+      }).catch(() => {
+      errorHandler(dispatch, 'Sorry, there was a problem saving your cards details.');
+    });
+  };
+}
+
 
 export function cancelSubscription() {
   const AUTH_HEADERS = { headers: { Authorization: localStorage.token } };

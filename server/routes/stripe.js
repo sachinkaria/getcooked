@@ -13,5 +13,6 @@ module.exports = function (app) {
   app.post('/api/stripe/subscriptions/cancel', requireAuth, StripeController.cancelSubscription);
   app.post('/api/stripe/subscriptions/resume', requireAuth, StripeController.resumeSubscription);
   app.post('/api/stripe/sources', requireAuth, StripeController.createSource);
+  app.post('/api/stripe/payments', requireAuth, StripeController.createPayment);
   app.get('/api/stripe/sources/:id', requireAuth, StripeController.getSource);
 };

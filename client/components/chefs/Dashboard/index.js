@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Panel, Row, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
+import {Link, Route} from 'react-router';
 import {getCurrentUser, updateUser} from '../../../actions/users';
 import {getBookings} from '../../../actions/bookings';
 import DashboardNavBar from '../../users/dashboard/Navbar';
@@ -54,6 +54,7 @@ class Dashboard extends React.Component {
     }
     return (
       <UserBooking
+        stripe={this.props.stripe}
         id={this.props.params.id}
         itemType={(this.props.user.data && this.props.user.data.role === 'member') ? 'chefItem' : 'memberItem'}
       />

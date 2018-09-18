@@ -151,7 +151,7 @@ function confirm(req, res) {
   Booking
     .findOne({_id: BOOKING_ID})
     .populate('user', 'email mobileNumber firstName lastName')
-    .populate('chef', 'profilePhoto displayName stripe subscription')
+    .populate('chef', 'profilePhoto displayName stripe subscription companyEmail')
     .populate('messages', '_sender _recipient status date body')
     .exec((err, booking) => {
       _.extend(booking, BOOKING);

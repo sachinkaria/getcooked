@@ -159,7 +159,7 @@ function confirm(req, res) {
       booking.save((error, newBooking) => {
         if (error) return error;
         const USER = booking.user;
-        const CHEF = booking.displayName;
+        const CHEF = booking.chef;
 
         const ENQUIRY_EMAIL_DATA = {
           subject: `Deposit Requested - ${_.startCase(_.toLower(CHEF.displayName))}`,

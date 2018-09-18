@@ -139,7 +139,7 @@ function requestDeposit(req, res) {
         const HOSTNAME = 'http://'.concat(req.headers.host).concat('/dashboard/events');
         const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, depositRequestedTemplate(CHEF, HOSTNAME));
         enquiryMailer.send();
-        sendBookingDepositSlackNotification(req.user, req.body.depositAmount);
+        sendBookingDepositSlackNotification(req.user, newBooking.quote.depositAmount);
         res.jsonp(newBooking);
       });
     });
@@ -154,8 +154,8 @@ function confirm(req, res) {
     .populate('chef', 'profilePhoto displayName stripe subscription')
     .populate('messages', '_sender _recipient status date body')
     .exec((err, booking) => {
-
       _.extend(booking, BOOKING);
+      booking.quote.datePaid = Date.now();
       booking.save((error, newBooking) => {
         if (error) return error;
         const USER = booking.user;

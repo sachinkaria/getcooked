@@ -9,7 +9,7 @@ const CatererItem = (props) => {
       <Panel className="center-m">
         <Panel.Body>
           <Row>
-            <Col xs={12} sm={9}>
+            <Col xs={12} sm={5}>
               <span
                 className="gc-thumbnail gc-thumbnail--xs gc-inline-block pull-left"
                 style={{backgroundImage: `url(${caterer.profilePhoto})`, backgroundSize: 'cover'}}
@@ -17,6 +17,8 @@ const CatererItem = (props) => {
               <span className="gc-text gc-dark-grey gc-bold gc-inline-block gc-capitalize pull-left gc-margin-top--lg">
                 {caterer.displayName}
               </span>
+            </Col>
+            <Col xs={12} sm={4}>
               {
                 status === 'confirmed' &&
                 <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize pull-right gc-margin-top--lg">

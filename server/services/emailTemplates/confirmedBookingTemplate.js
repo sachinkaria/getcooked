@@ -14,7 +14,7 @@ module.exports = (user, hostname) => {
 
 <section style="max-width:600px;margin:auto;padding:20px;border-bottom: 1px solid #ffc9ba;border-top: 1px solid #ffc9ba; font-family:Verdana, Geneva, sans-serif; font-size:14px;color: #5e5e5e; text-align: center;" >
     <article>
-       <p style="font-size: 20px; color: #5e5e5e;">${_.startCase(_.toLower(user.firstName))} has paid a deposit and has confirmed your services for the event!</p>
+       <p style="font-size: 20px; color: #5e5e5e;">${_.startCase(_.toLower(user.firstName))} has paid a deposit and has confirmed your services for their event!</p>
 <a style="text-decoration: none;" href="${hostname}">
 <button style="display:block;margin:auto; text-align: center; padding:20px ;width:200px; border-radius: 4px; height: 36px;font-size: 16px; padding: 0; background-color: #f05125; color:white; margin: auto; ">View Booking</button>
 <a/>
@@ -70,13 +70,11 @@ module.exports = (user, hostname) => {
     <div style="margin-top: 20px; text-align: center;font-family:Verdana, Geneva, sans-serif; color: #5e5e5e;">
         Get Cooked Ltd
         <br>
-        18 Kamen House, 
-        <br>
-        17-21 Magdalen Street, 
+        5, 61 Tanner Street, 
         <br>
         London, United Kingdom,
         <br>
-        SE12RH
+        SE13PP
         <br>
         © Get Cooked 2018. All rights reserved
     </div>

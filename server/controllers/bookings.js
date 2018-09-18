@@ -164,11 +164,11 @@ function confirm(req, res) {
         const CHEF = booking.chef;
 
         const ENQUIRY_EMAIL_DATA = {
-          subject: `Deposit Requested - ${_.startCase(_.toLower(CHEF.displayName))}`,
-          recipient: USER.email
+          subject: 'Event Confirmed',
+          recipient: CHEF.companyEmail
         };
         const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/dashboard/bookings/${booking._id}`);
-        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, confirmedBookingTemplate(USER, HOSTNAME));
+        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, confirmedBookingTemplate(CHEF, HOSTNAME));
         enquiryMailer.send();
         res.jsonp(newBooking);
       });

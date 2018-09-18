@@ -81,7 +81,11 @@ class BookingPaymentForm extends React.Component {
                     postcode={this.state.postcode}
                     onChange={this.handleChange}
                   />
-                  <Button className="gc-btn gc-btn--orange gc-margin-top center-block" onClick={(e) => this.handleSubmit(e)}>Pay Deposit</Button>
+                  {!this.state.loading ?
+                    <Button className="gc-btn gc-btn--orange gc-margin-top center-block" onClick={(e) => this.handleSubmit(e)}>Pay Deposit</Button>
+                    :
+                    <span className="gc-icon gc-icon--xl gc-icon--loading center-block" />
+                  }
                 </form>
               </Col>
             </Row>

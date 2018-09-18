@@ -14,7 +14,7 @@ module.exports = (user, hostname) => {
 
 <section style="max-width:600px;margin:auto;padding:20px;border-bottom: 1px solid #ffc9ba;border-top: 1px solid #ffc9ba; font-family:Verdana, Geneva, sans-serif; font-size:14px;color: #5e5e5e; text-align: center;" >
     <article>
-       <p style="font-size: 20px; color: #5e5e5e;">${_.startCase(_.toLower(user.firstName))} has paid a deposit and has confirmed your services for their event!</p>
+       <p style="font-size: 20px; color: #5e5e5e;">${_.startCase(_.toLower(user.firstName))} has confirmed your services for their event and has successfully paid a deposit.</p>
 <a style="text-decoration: none;" href="${hostname}">
 <button style="display:block;margin:auto; text-align: center; padding:20px ;width:200px; border-radius: 4px; height: 36px;font-size: 16px; padding: 0; background-color: #f05125; color:white; margin: auto; ">View Booking</button>
 <a/>

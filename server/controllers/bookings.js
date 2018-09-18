@@ -168,7 +168,7 @@ function confirm(req, res) {
           recipient: CHEF.companyEmail
         };
         const HOSTNAME = 'http://'.concat(req.headers.host).concat(`/dashboard/bookings/${booking._id}`);
-        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, confirmedBookingTemplate(CHEF, HOSTNAME));
+        const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, confirmedBookingTemplate(USER, HOSTNAME));
         enquiryMailer.send();
         res.jsonp(newBooking);
       });

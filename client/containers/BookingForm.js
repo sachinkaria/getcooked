@@ -39,7 +39,7 @@ class BookingForm extends React.Component {
     }
     window.gtag_report_conversion();
     // this.props.onSubmit(event, this.props.endRoute);
-    localStorage.token ? this.props.onSubmit(event) : this.props.registerUser(event);
+    localStorage.token ? this.props.onSubmit(event, '/dashboard/events') : this.props.registerUser(event);
     this.props.closeModal();
   }
 

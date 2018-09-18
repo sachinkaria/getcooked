@@ -156,6 +156,8 @@ function confirm(req, res) {
     .exec((err, booking) => {
       _.extend(booking, BOOKING);
       booking.quote.datePaid = Date.now();
+      booking.quote.status = 'paid';
+
       booking.save((error, newBooking) => {
         if (error) return error;
         const USER = booking.user;
@@ -248,7 +250,7 @@ function sendBookingDepositSlackNotification(user, amount) {
     request
       .post(config.slackBookingsWebHookUrl)
       .send({
-        text: `${user.email} just requested a deposit of ${amount}.`
+        text: `${user.email} just requested a deposit of £${amount}.`
       })
       .end();
   }

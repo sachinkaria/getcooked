@@ -21,13 +21,13 @@ const CatererItem = (props) => {
             <Col xs={12} sm={4}>
               {
                 status === 'confirmed' &&
-                <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize pull-right gc-margin-top--lg">
+                <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize center-m right-t gc-margin-top--lg">
                       Booking Confirmed
                   </span>
               }
               {
                 status === 'deposit requested' &&
-                <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize pull-right gc-margin-top--lg">
+                <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize center-m right-t gc-margin-top--lg">
                       Deposit Requested
                   </span>
               }

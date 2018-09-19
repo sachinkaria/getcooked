@@ -53,7 +53,10 @@ export function makePayment(amount, id) {
   return function (dispatch) {
     axios.post('/api/stripe/payments', { amount }, AUTH_HEADERS)
       .then(() => {
-      dispatch(confirm(id, { status: 'confirmed' }));
+        const depositAmount = parseInt(amount);
+        const quoteAmount = parseInt(amount) * 20;
+        heap.track('Confirmed Event', { depositAmount, quoteAmount});
+        dispatch(confirm(id, { status: 'confirmed' }));
       }).catch(() => {
       errorHandler(dispatch, 'Sorry, there was a problem saving your cards details.');
     });

@@ -30,10 +30,10 @@ module.exports.updateEvent = updateEvent;
 module.exports.sendIncompleteProfileEmail = sendIncompleteProfileEmail;
 
 function allChefs(req, res) {
-  User.find({ role: 'chef' }).exec((err, chefs) => {
+  User.find({role: 'chef'}).exec((err, chefs) => {
     const CHEFS = [];
     chefs.forEach((chef) => {
-      chef.findAcceptedBookings(function(err, bookings) {
+      chef.findAcceptedBookings(function (err, bookings) {
         const CHEF_OBJECT = chef.toObject();
         CHEF_OBJECT.acceptedBookings = bookings;
         CHEFS.push(CHEF_OBJECT);
@@ -44,24 +44,36 @@ function allChefs(req, res) {
 }
 
 function allUsers(req, res) {
-  User.find({ role: 'member' }).exec((err, members) => {
+  User.find({role: 'member'}).exec((err, members) => {
     res.jsonp(members);
   });
 }
 
 function allEvents(req, res) {
   Event.find({})
+    .populate('user', 'firstName lastName email')
     .populate({
       path: 'bookings',
-      select: { status: 1, read: 1 },
+      select: {status: 1, read: 1},
       populate: {
         path: 'chef',
-        select: { displayName: 1 },
+        select: {displayName: 1}
+      }
+    })
+    .populate({
+      path: 'bookings',
+      populate: {
+        path: 'messages',
+        select: { body: 1, date: 1},
+        populate: {
+          path: '_sender',
+          select: { displayName: 1, firstName: 1 }
+        }
       }
     })
     .exec((err, events) => {
-    res.jsonp(events);
-  });
+      res.jsonp(events);
+    });
 }
 
 function allBookings(req, res) {
@@ -133,7 +145,7 @@ function list(req, res) {
 
 function unlist(req, res) {
   const id = req.params.id;
-  User.find({ _id: ObjectId(id) }).exec((err, chefs) => {
+  User.find({_id: ObjectId(id)}).exec((err, chefs) => {
     let chef = chefs[0];
 
     if (chef.status === 'listed') {
@@ -152,7 +164,7 @@ function createBooking(req, res) {
 function updateEvent(req, res) {
   const EVENT_ID = req.params.id;
   const STATUS = req.body;
-  Event.findOne({ _id: EVENT_ID }).exec((err, event) => {
+  Event.findOne({_id: EVENT_ID}).exec((err, event) => {
     _.extend(event, STATUS);
     event.save();
     res.jsonp(event);
@@ -183,7 +195,7 @@ function uploadPhotos(req, res) {
 
 function addMonthlyCoupons(req, res) {
   let CHEFS = [];
-  User.find({ role: 'chef', 'subscription.status': 'active' }, 'id displayName subscription stripe', (err, chefs) => {
+  User.find({role: 'chef', 'subscription.status': 'active'}, 'id displayName subscription stripe', (err, chefs) => {
     if (err) return err;
 
     utils.getChefsWithoutMonthlyBookings(chefs, (chefsWithoutBookings) => {

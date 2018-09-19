@@ -198,10 +198,10 @@ class AdminDashboard extends React.Component {
                 this.props.location.pathname.includes('events') &&
                 <div>
                   {events.map(item =>
-                    (
+                  (
                       <EventItem
                         key={item._id}
-                        userItem={item.contactDetails}
+                        userItem={item.user || item.contactDetails}
                         booking={item}
                         updateEvent={this.props.updateEvent}
                       />

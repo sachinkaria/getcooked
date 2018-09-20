@@ -92,7 +92,7 @@ class UserBooking extends React.Component {
                   <p className="gc-margin-bottom gc-profile-heading-sm gc-margin-bottom--lg">
                     {booking.status === 'deposit requested' && 'Deposit has been requested to confirm your booking.'}
                     {booking.status === 'accepted' && 'Awaiting final quote to confirm booking.'}
-                    {booking.status === 'confirmed' && 'Congrats! Your booking is confirmed.'}
+                    {booking.status === 'confirmed' && 'Congrats! Your booking is confirmed. You can settle the outstanding balance directly with your caterer.'}
                   </p>
                   {booking.status === 'deposit requested' &&
                   <div>

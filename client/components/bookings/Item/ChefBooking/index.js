@@ -106,7 +106,7 @@ class ChefBooking extends React.Component {
                   <p className="gc-margin-bottom gc-profile-heading-sm gc-margin-bottom--lg">
                     {booking.status === 'deposit requested' && 'Awaiting confirmation and deposit payment.'}
                     {booking.status === 'accepted' && 'To confirm this booking please request deposit.'}
-                    {booking.status === 'confirmed' && 'Booking confirmed.'}
+                    {booking.status === 'confirmed' && 'Booking confirmed. You can settle the outstanding balance directly with your client.'}
                   </p>
                   {booking.status === 'deposit requested' &&
                   <div>
@@ -118,14 +118,7 @@ class ChefBooking extends React.Component {
                 </span>
                     <hr className="gc-hr-sm"/>
                     <span className="gc-text gc-text--lg gc-text--slim">
-                  Fee (5%)
-                </span>
-                    <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{booking.quote.depositAmount}
-                </span>
-                    <hr className="gc-hr-sm"/>
-                    <span className="gc-text gc-text--lg gc-text--slim">
-                  Deposit Amount
+                  Deposit / Fee (5%)
                 </span>
                     <span className="gc-text gc-text--lg gc-grey pull-right">
                   £{booking.quote.depositAmount}
@@ -149,14 +142,7 @@ class ChefBooking extends React.Component {
                 </span>
                     <hr className="gc-hr-sm"/>
                     <span className="gc-text gc-text--lg gc-text--slim">
-                  Fee (5%)
-                </span>
-                    <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{booking.quote.depositAmount}
-                </span>
-                    <hr className="gc-hr-sm"/>
-                    <span className="gc-text gc-text--lg gc-text--slim">
-                  Deposit Received
+                  Fee / Deposit Received (5%)
                 </span>
                     <span className="gc-text gc-text--lg gc-grey pull-right">
                   £{booking.quote.depositAmount}

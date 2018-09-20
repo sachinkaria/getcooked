@@ -9,20 +9,22 @@ const CatererItem = (props) => {
       <Panel className="center-m">
         <Panel.Body>
           <Row>
-            <Col xs={12} sm={5}>
-              <span
-                className="gc-thumbnail gc-thumbnail--xs gc-inline-block pull-left"
-                style={{backgroundImage: `url(${caterer.profilePhoto})`, backgroundSize: 'cover'}}
-              />
-              <span className="gc-text gc-dark-grey gc-bold gc-inline-block gc-capitalize pull-left gc-margin-top--lg">
+            <Col xs={8} sm={5}>
+              <Link to={`/caterers/profile/${caterer._id}`}>
+                <span
+                  className="gc-thumbnail gc-thumbnail--xs gc-inline-block pull-left"
+                  style={{backgroundImage: `url(${caterer.profilePhoto})`, backgroundSize: 'cover'}}
+                />
+                <span className="gc-text gc-dark-grey gc-bold gc-inline-block gc-capitalize pull-left gc-margin-top--lg">
                 {caterer.displayName}
-              </span>
+                </span>
+              </Link>
             </Col>
-            <Col xs={12} sm={4}>
+            <Col xs={4} sm={4}>
               {
                 status === 'confirmed' &&
                 <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize center-m right-t gc-margin-top--lg">
-                      Booking Confirmed
+                      Confirmed
                   </span>
               }
               {

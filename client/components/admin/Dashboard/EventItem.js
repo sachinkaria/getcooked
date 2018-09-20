@@ -278,10 +278,7 @@ function EventItem({userItem, booking, updateEvent}) {
                                       <span className="gc-text gc-text--lg gc-text--slim">Final Quote</span>
                                       <span className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.amount}</span>
                                       <hr className="gc-hr-sm"/>
-                                      <span className="gc-text gc-text--lg gc-text--slim">Fee (5%)</span>
-                                      <span className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.depositAmount}</span>
-                                      <hr className="gc-hr-sm"/>
-                                      <span className="gc-text gc-text--lg gc-text--slim">Deposit Amount</span>
+                                      <span className="gc-text gc-text--lg gc-text--slim">Deposit / Fee (5%)</span>
                                       <span className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.depositAmount}</span>
                                       <hr className="gc-hr-sm"/>
                                       <span className="gc-text gc-text--lg gc-text--slim">Outstanding Balance</span>

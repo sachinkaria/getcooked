@@ -16,12 +16,20 @@ function generateToken(user) {
 
 // Set user info from request
 function setUserInfo(request) {
+  const phoneCode = {
+    name : 'United Kingdom',
+    dialCode: 44,
+    code: 'GB'
+  };
+
   return {
     _id: request._id,
     firstName: request.firstName,
     lastName: request.lastName,
     email: request.email,
-    role: request.role
+    role: request.role,
+    mobileNumber: request.mobileNumber,
+    phoneCode
   };
 }
 
@@ -37,10 +45,17 @@ exports.login = (req, res, next) => {
 // Registration Route
 
 exports.register = (req, res, next) => {
+  const phoneCode = {
+    name : 'United Kingdom',
+    dialCode: 44,
+    code: 'GB'
+  };
+
   // Check for registration errors
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
+  const mobileNumber = req.body.mobileNumber;
   const password = req.body.password;
 
   // Return error if no email provided
@@ -66,7 +81,9 @@ exports.register = (req, res, next) => {
       firstName,
       lastName,
       email,
-      password
+      password,
+      mobileNumber,
+      phoneCode
     });
 
     user.save((err, user) => {

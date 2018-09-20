@@ -7,7 +7,7 @@ import CODES from '../../../utils/country-codes.json';
 
 const form = reduxForm({
   form: 'contact-details',
-  fields: ['firstName', 'lastName', 'email', 'password', 'confirmPassword'],
+  fields: ['firstName', 'lastName', 'email', 'mobileNumber', 'password', 'confirmPassword'],
   validate
 });
 
@@ -21,7 +21,12 @@ function validate(formProps) {
   if (!formProps.lastName) {
     errors.lastName = 'Please enter your last name';
   }
+
   if (!formProps.email) {
+    errors.email = 'Please enter your email address';
+  }
+
+  if (!formProps.mobileNumber) {
     errors.email = 'Please enter your email address';
   }
 
@@ -43,11 +48,19 @@ class ContactDetailsForm extends Component {
   }
 
   handleFormSubmit(formProps) {
+    const phoneCode = {
+        name : 'United Kingdom',
+        dialCode: 44,
+        code: 'GB'
+    };
+
     this.props.onSubmit({
       firstName: formProps.firstName,
       lastName: formProps.lastName,
       email: formProps.email,
-      password: formProps.password
+      password: formProps.password,
+      mobileNumber: formProps.mobileNumber,
+      phoneCode
     });
   }
 
@@ -84,6 +97,16 @@ class ContactDetailsForm extends Component {
               className="form-control gc-input gc-margin-bottom"
               component={renderField}
               type="text"
+            />
+          </div>
+          <label className="gc-text gc-text--lg gc-text--slim">Mobile Number</label>
+          <div>
+            <Field
+              name="mobileNumber"
+              placeholder="e.g. 07123456789"
+              className="form-control gc-input gc-margin-bottom"
+              component={renderField}
+              type="number"
             />
           </div>
           <label className="gc-text gc-text--lg gc-text--slim">Password</label>

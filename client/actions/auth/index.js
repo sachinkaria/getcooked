@@ -29,9 +29,9 @@ export function loginUser({ email, password }) {
   };
 }
 
-export function registerUser({ firstName, lastName, email, password }) {
+export function registerUser({ firstName, lastName, email, mobileNumber, password }) {
   return (dispatch) => {
-    axios.post('/api/users/create', { firstName, lastName, email, password })
+    axios.post('/api/users/create', { firstName, lastName, email, mobileNumber, password })
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         localStorage.setItem('user', JSON.stringify(response.data.user));

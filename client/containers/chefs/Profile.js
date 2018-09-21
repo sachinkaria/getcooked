@@ -192,7 +192,6 @@ class Profile extends React.Component {
                     </div>
                   </Panel.Body>
                 </Panel>
-                <ReviewForm block id={CHEF._id} />
               </Sticky>
             </Col>
           </div>

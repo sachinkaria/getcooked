@@ -20,16 +20,17 @@
 
     <!-- Google analytics verification -->
     <meta name="google-site-verification" content="_gOP_UPqcC-DD2c54EVNL-08b1b1aFFJY5bc1wydhEk"/>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108194117-1"></script>
+    <!-- Global site tag (gtag.js) - Google Ads: 1007901507 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1007901507"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'UA-108194117-1');
+      gtag('config', 'AW-1007901507');
     </script>
+
+
 
     <!-- Event snippet for Submit Event Quote conversion page
     In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
@@ -38,7 +39,8 @@
         gtag('event', 'conversion', {
           'send_to': 'AW-1007901507/ibKOCIn-uIMBEMO2zeAD',
           'transaction_id': 'submit_quote',
-          'value': value
+          'value': value,
+          'currency': 'GBP'
         });
         return false;
       }

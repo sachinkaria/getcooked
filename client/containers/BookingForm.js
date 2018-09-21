@@ -37,7 +37,7 @@ class BookingForm extends React.Component {
     } else {
       heap.track('Click Get Quotes', event);
     }
-    window.gtag_report_conversion();
+    window.gtag_report_conversion(event.budget);
     // this.props.onSubmit(event, this.props.endRoute);
     localStorage.token ? this.props.onSubmit(event, '/dashboard/events') : this.props.registerUser(event);
     this.props.closeModal();

@@ -27,7 +27,7 @@ function validate(formProps) {
   }
 
   if (!formProps.mobileNumber) {
-    errors.email = 'Please enter your email address';
+    errors.mobileNumber = 'Please enter your mobile number';
   }
 
   if (!formProps.password) {

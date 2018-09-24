@@ -38,8 +38,6 @@ class Home extends React.Component {
         <WhoWeWorkWith />
         <br />
         <AreYouACaterer />
-        <br />
-        <Events />
         <Blog />
       </div>
     );

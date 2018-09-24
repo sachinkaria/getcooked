@@ -7,7 +7,7 @@ import '../../images/catering-3.jpg';
 
 function Blog() {
   return (
-    <section className="gc-section center-m">
+    <section className="gc-section gc-section--grey center-m">
       <Row>
         <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
           <h3 className="gc-section-heading gc-center">Recent Blog Posts</h3>

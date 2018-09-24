@@ -154,6 +154,15 @@ $image-height: 200px;
     content: 'Add Photos';
 }
 
+#pdf.custom-file-input {
+  max-width: 100px;
+}
+
+#pdf.custom-file-input::before {
+  max-width: 200px;
+  content: 'Attach PDF';
+}
+
 .custom-file-input:hover::before {
   border-color: black;
 }

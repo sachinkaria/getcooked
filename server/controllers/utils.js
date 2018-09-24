@@ -18,6 +18,40 @@ const s3Client = knox.createClient({
   region: config.aws_region
 });
 
+function pdfUploader(options, callback) {
+  const buffer = new Buffer(options.data_uri.replace(/^data:application\/\w+;base64,/, ''), 'base64');
+
+  uploadPDF(buffer);
+
+  function uploadPDF(doc) {
+
+    const FILE_LENGTH = doc.length;
+    const FILE_NAME = options.filename.split(' ').join('-');
+    const FILE_TYPE = options.filetype;
+
+    const header = {
+      'Content-Length': FILE_LENGTH,
+      'Content-Type': FILE_TYPE,
+      'x-amz-acl': 'public-read'
+    };
+
+    const req = s3Client.put(`/bookings/${options.bookingId}/`.concat(FILE_NAME), header);
+
+    req.on('response', (res) => {
+      if (res.statusCode === 200) {
+        console.log('PDF saved on S3 to %s', req.url);
+        callback(null, req.url);
+      }
+    });
+
+    req.on('error', (error) => {
+      console.log('Problem saving pdf to S3:', error.message);
+      callback(error);
+    });
+    req.end(doc);
+  }
+}
+
 function imageUploader(options, type, callback) {
   const buffer = new Buffer(options.data_uri.replace(/^data:image\/\w+;base64,/, ''), 'base64');
 
@@ -158,3 +192,4 @@ module.exports.getChefRating = getChefRating;
 module.exports.getChefReviews = getChefReviews;
 module.exports.getOverallRating = getOverallRating;
 module.exports.getChefsWithoutMonthlyBookings = getChefsWithoutMonthlyBookings;
+module.exports.pdfUploader = pdfUploader;

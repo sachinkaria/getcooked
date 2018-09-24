@@ -22,7 +22,31 @@ function validate(formProps) {
 class MessageInput extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      attachment: true,
+      data_uri: '',
+      filename: '',
+      filetype: ''
+    };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.onPDFUpload = this.onPDFUpload.bind(this);
+  }
+
+  onPDFUpload(e) {
+    const reader = new FileReader();
+    const file = e.target.files[0];
+
+    reader.onload = (upload) => {
+      this.setState({
+        data_uri: upload.target.result,
+        filename: file.name,
+        filetype: file.type
+      }, () => {
+        this.props.onSubmit(this.state);
+      });
+    };
+
+    reader.readAsDataURL(file);
   }
 
   handleFormSubmit(formProps) {
@@ -53,6 +77,7 @@ class MessageInput extends Component {
             >
               Send
             </Button>
+            <input id="pdf" type="file" className="custom-file-input pdf-input" accept="application/pdf" onChange={(e) => this.onPDFUpload(e)} />
           </div>
         </form>
       </div>

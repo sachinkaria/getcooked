@@ -26,7 +26,8 @@ const MessageSchema = new Schema({
   body: {
     type: String,
     required: true
-  }
+  },
+  attachment: Boolean
 });
 
 module.exports = mongoose.model('Message', MessageSchema);

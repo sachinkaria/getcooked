@@ -79,7 +79,7 @@ class DateAndPlaceForm extends Component {
                 type="number"
               />
             </div>
-            <label className="gc-text gc-text--lg gc-text--slim">What is estimated budget for the entire event? (incl. staff, equipment & food)</label>
+            <label className="gc-text gc-text--lg gc-text--slim">What is estimated budget for the entire event? (incl. VAT, staff, equipment & food)</label>
             <div className="gc-margin-bottom">
               <Field
                 addonText="£"

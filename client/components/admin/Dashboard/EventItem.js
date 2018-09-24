@@ -7,7 +7,6 @@ import Status from '../../Status';
 
 function EventItem({userItem, booking, updateEvent}) {
   const ACCEPTED_BOOKINGS = _.filter(booking.bookings, item => (item.status === 'accepted' || item.status === 'deposit requested')).length;
-  console.log(booking.bookings);
   return (
     <Row>
       <Col xs={12}>
@@ -276,27 +275,30 @@ function EventItem({userItem, booking, updateEvent}) {
                                   <Panel.Body>
                                     <div>
                                       <span className="gc-text gc-text--lg gc-text--slim">Final Quote</span>
-                                      <span className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.amount}</span>
+                                      <span
+                                        className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.amount}</span>
                                       <hr className="gc-hr-sm"/>
                                       <span className="gc-text gc-text--lg gc-text--slim">Deposit / Fee (5%)</span>
-                                      <span className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.depositAmount}</span>
+                                      <span
+                                        className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.depositAmount}</span>
                                       <hr className="gc-hr-sm"/>
                                       <span className="gc-text gc-text--lg gc-text--slim">Outstanding Balance</span>
-                                      <span className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.balanceDue}</span>
+                                      <span
+                                        className="gc-text gc-text--lg gc-grey pull-right">£{item.quote.balanceDue}</span>
                                     </div>
                                   </Panel.Body>
                                 </Panel>
                                 }
                                 {
                                   (item.messages && item.messages.length > 0) ? item.messages.map((message) => {
-                                      return (
-                                        <Panel className="gc-panel">
+                                    return (
+                                        <Panel key={message.date} className="gc-panel">
                                           <Panel.Body>
                                             <Row>
                                               <Col xs={12} sm={4}>
                                               <span
                                                 className="gc-text gc-bold pull-left text-capitalize">{message._sender.displayName || message._sender.firstName}</span>
-                                                <br/>
+                                                <br />
                                                 <span
                                                   className="gc-text gc-bold pull-left">{moment(message.date).format('Do MMM YYYY')}</span>
                                               </Col>

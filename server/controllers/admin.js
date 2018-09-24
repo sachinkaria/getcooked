@@ -51,7 +51,7 @@ function allUsers(req, res) {
 
 function allEvents(req, res) {
   Event.find({})
-    .populate('user', 'firstName lastName email')
+    .populate('user', 'firstName lastName email mobileNumber')
     .populate({
       path: 'bookings',
       select: {status: 1, read: 1},

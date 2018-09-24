@@ -2,6 +2,7 @@
  * Created by sachinkaria on 14/09/2018.
  */
 import React from 'react';
+import { Link } from 'react-router';
 import moment from 'moment';
 
 function Message(props) {
@@ -9,9 +10,24 @@ function Message(props) {
   if(message._sender === user._id) {
     return (
     <li className="thread-item">
-      <div className="my-message gc-text gc-text--sm">
-        {message.body}
-      </div>
+      {
+        message.attachment ?
+          <div className="my-message text-center">
+            <Link href={message.body} target="_blank" >
+              <img
+                className="gc-icon gc-icon--md"
+                alt="location"
+                src="/images/icon-attachment.png"
+              />
+              <br />
+              <span className="gc-text gc-text--lg gc-white inline-block">View File</span>
+            </Link>
+          </div>
+          :
+          <div className="my-message">
+            {message.body}
+          </div>
+      }
       <div className="message-data">
         <span className="message-data-time pull-left">{moment(message.date).format('hh:mm, Do MMMM')}</span>
       </div>
@@ -22,9 +38,24 @@ function Message(props) {
     return (
       <li className="thread-item clearfix">
         <span className="gc-message-thumbnail" style={{ backgroundImage: `url(${otherUser.profilePhoto || '/images/default_profile.png'})`, backgroundSize: 'cover' }} />
-        <div className="message other-message pull-left">
-          {message.body}
-        </div>
+        {
+          message.attachment ?
+            <div className="message other-message text-center" >
+              <Link href={message.body} target="_blank" >
+                <img
+                  className="gc-icon gc-icon--md"
+                  alt="location"
+                  src="/images/icon-attachment.png"
+                />
+                <br />
+                <span className="gc-text gc-text--lg gc-orange inline-block">View File</span>
+              </Link>
+            </div>
+            :
+            <div className="message other-message pull-left">
+              {message.body}
+            </div>
+        }
         <div className="message-data">
           <span className="message-data-time pull-right">{moment(message.date).format('hh:mm, Do MMMM')}</span> &nbsp; &nbsp;
         </div>

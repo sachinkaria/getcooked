@@ -8,6 +8,7 @@ const newMessageTemplate = require('../services/emailTemplates/newMessageTemplat
 
 
 module.exports.create = create;
+module.exports.attachment = create;
 
 function create(req, res) {
   let MESSAGE;
@@ -30,7 +31,6 @@ function create(req, res) {
         });
       }
       MESSAGE = new Message({_sender, _booking, body: response, attachment: true});
-      console.log(MESSAGE);
       updateBooking();
     });
   } else {
@@ -79,4 +79,26 @@ function create(req, res) {
         });
       });
   }
+}
+
+function attachment(req, res) {
+  utils.pdfUploader({
+    data_uri: req.body.data_uri,
+    filename: req.body.filename,
+    filetype: req.body.filetype,
+    bookingId: req.params.id,
+    userId: req.user._id
+  }, 'photos', (error, response) => {
+    if (error) {
+      return res.status(400).send({
+        message: error.message
+      });
+    }
+
+    const user = req.user;
+    user.photos.push({src: response});
+
+    user.save();
+    res.jsonp(user);
+  });
 }

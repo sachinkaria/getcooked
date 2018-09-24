@@ -155,12 +155,19 @@ $image-height: 200px;
 }
 
 #pdf.custom-file-input {
+  font-size: 20px;
   max-width: 100px;
 }
 
 #pdf.custom-file-input::before {
   max-width: 200px;
-  content: 'Attach PDF';
+  content: 'Upload PDF';
+}
+
+#pdf.custom-file-input:active::before {
+  border: 1px solid white;
+  height: 36px;
+  //background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
 .custom-file-input:hover::before {
@@ -169,8 +176,8 @@ $image-height: 200px;
 .custom-file-input:active {
   outline: 0;
   background: transparent;
-
 }
+
 .custom-file-input:active::before {
   border: 1px solid $green;
   height: 36px;

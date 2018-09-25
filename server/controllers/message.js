@@ -56,15 +56,16 @@ function create(req, res) {
               return msgErr;
             }
 
+            if (booking.user) {
+              const ENQUIRY_EMAIL_DATA = {
+                subject: 'New Message',
+                recipient: _sender.toString() === booking.user._id.toString() ? booking.chef.companyEmail : booking.user.email
+              };
 
-            const ENQUIRY_EMAIL_DATA = {
-              subject: 'New Message',
-              recipient: req.user._id.toString() === booking.user._id.toString() ? booking.chef.companyEmail : booking.user.email
-            };
-
-            const HOSTNAME = getHostName();
-            const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, newMessageTemplate(req.user, HOSTNAME));
-            enquiryMailer.send();
+              const HOSTNAME = getHostName();
+              const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, newMessageTemplate(req.user, HOSTNAME));
+              enquiryMailer.send();
+            }
 
             return res.send(booking);
 

@@ -30,15 +30,8 @@
     "number": 5,
     "name": "photos",
     "description": "Add your profile picture and your cover photo to your account. The recommended dimensions for your profile picture are 800 x 800px and for your cover photo 2000 x 500px.",
-    "onNext": "/setup/payment",
+    "onNext": "/dashboard/profile/summary",
     "onBack": "/setup/food"
   },
-  "payment": {
-    "number": 6,
-    "name": "payment details",
-    "description": "Add your payments details. Please note you will NOT be charged until you have received your first enquiry.",
-    "onNext": "/dashboard/profile/summary",
-    "onBack": "/setup/photos"
-  },
-  "totalSteps": 6
+  "totalSteps": 5
 }

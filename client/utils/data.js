@@ -9,8 +9,7 @@ export const PROFILE_FIELDS = [
   { name: 'services', field: 'services', path: '/dashboard/profile/food-services', required: true },
   { name: 'description', field: 'description', path: '/dashboard/profile/basics', required: true },
   { name: 'additional services', field: 'additionalServices', path: '/dashboard/profile/service-type' },
-  { name: 'food suppliers', field: 'foodSuppliers', path: '/dashboard/profile/food-services' },
-  { name: 'payment details', field: 'stripe', path: '/dashboard/account/subscription' }
+  { name: 'food suppliers', field: 'foodSuppliers', path: '/dashboard/profile/food-services' }
 ];
 
 export const TYPES = ['professional caterer', 'market stall', 'private chef', 'food truck', 'bakery', 'drinks company', 'cocktail bartender'];

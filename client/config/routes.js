@@ -83,7 +83,7 @@ const routes = (
       <Route path="account">
         <Route exact path="settings" component={RequireAuth(Dashboard)} view="settings" />
         <Route exact path="password" component={RequireAuth(Dashboard)} view="password" />
-        <Route exact path="subscription" component={RequireRole(Dashboard, 'chef')} view="subscription" />
+        {/*<Route exact path="subscription" component={RequireRole(Dashboard, 'chef')} view="subscription" />*/}
       </Route>
       <Route exact path="events" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="events" />
       <Route path="events/:id" component={RequireAuth(Dashboard)} hideProfileStatus hideSidebar view="view-event" />

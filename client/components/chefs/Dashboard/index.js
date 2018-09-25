@@ -100,16 +100,16 @@ class Dashboard extends React.Component {
     const PROFILE_UNDER_REVIEW = 'Your profile is under review. You will be notified as soon as it has been approved and listed.';
     const PROFILE_LISTED = 'Congrats! Your profile is currently published and is publicly shareable.';
     const PROFILE_UNLISTED = 'Note: Your profile is currently not published and will not be publicly visible.';
-    const PROFILE_BLOCKED = 'Note: Your profile is currently not published and will not be publicly visible. Please update your payment details (Account > Subscription) before listing your profile.';
+    const PROFILE_BLOCKED = 'Note: Your profile is currently not published and will not be publicly visible.';
     const {user} = this.props;
 
     if (!user.data) {
       return <div>Loading...</div>;
     }
 
-    const USER_LISTED = (user.data.status === 'listed' && (user.data.subscription.status === 'pending' || 'active'));
+    const USER_LISTED = (user.data.status === 'listed' && (user.data.subscription.status === 'pending'));
     const USER_PENDING = user.data.status === 'pending';
-    const USER_BLOCKED = user.data.status === 'unlisted' && (!user.data.stripe || !user.data.stripe.sourceId) && user.data.subscription.status !== 'active';
+    const USER_UNLISTED = user.data.status === 'unlisted';
     const IS_CHEF = user.data.role === 'chef';
 
     function userStatus() {
@@ -117,7 +117,7 @@ class Dashboard extends React.Component {
         return PROFILE_LISTED;
       } else if (USER_PENDING) {
         return PROFILE_UNDER_REVIEW;
-      } else if (USER_BLOCKED) {
+      } else if (USER_UNLISTED) {
         return PROFILE_BLOCKED;
       }
       return PROFILE_UNLISTED;
@@ -150,7 +150,6 @@ class Dashboard extends React.Component {
                               View my profile
                             </Link> :
                             <Button
-                              disabled={USER_BLOCKED}
                               block
                               className="gc-btn gc-btn--white gc-margin-top"
                               onClick={() => this.updateUserStatus(USER_LISTED ? 'unlisted' : 'listed')}

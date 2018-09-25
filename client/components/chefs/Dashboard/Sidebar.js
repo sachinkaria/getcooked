@@ -55,13 +55,6 @@ class Sidebar extends React.Component {
                 Password</p>
             </Link>
           </li>
-          {
-            isChef() &&
-            <Link to="/dashboard/account/subscription" className="gc-link-default">
-              <p className={classNames('gc-text', { 'gc-green gc-bold': this.props.location.includes('subscription') })}>
-                Subscription</p>
-            </Link>
-          }
         </ul>
         </Panel.Body>
       </Panel>

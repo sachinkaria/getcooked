@@ -22,6 +22,7 @@ module.exports = {
   sendGridKey: process.env.SENDGRID_KEY,
   slackUsersWebHookUrl: process.env.SLACK_USERS_WEBHOOK,
   slackBookingsWebHookUrl: process.env.SLACK_BOOKINGS_WEBHOOK,
+  slackMessagesWebHookUrl: process.env.SLACK_MESSAGES_WEBHOOK,
   slackEventsWebHookUrl: process.env.SLACK_EVENTS_WEBHOOK,
   slackStripeWebHookUrl: process.env.SLACK_STRIPE_WEBHOOK,
   stripe_secret_key: process.env.STRIPE_SECRET_KEY

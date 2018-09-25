@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const config = require('../config');
 const Message = require('../models/message');
 const Booking = require('../models/booking');
 const ObjectId = require('mongodb').ObjectId;
@@ -56,11 +57,16 @@ function create(req, res) {
               return msgErr;
             }
 
+            const SENDER_NAME = _.startCase(_.toLower(_sender.displayName || _.capitalize(_sender.firstName)));
+            const RECIPIENT_NAME = _sender.toString() === booking.user._id.toString() ? _.startCase(_.toLower(booking.chef.displayName)) : _.capitalize(booking.user.firstName);
+
             if (booking.user) {
               const ENQUIRY_EMAIL_DATA = {
                 subject: 'New Message',
                 recipient: _sender.toString() === booking.user._id.toString() ? booking.chef.companyEmail : booking.user.email
               };
+
+              sendMessageSlackNotification(SENDER_NAME, RECIPIENT_NAME);
 
               const HOSTNAME = getHostName();
               const enquiryMailer = new Mailer(ENQUIRY_EMAIL_DATA, newMessageTemplate(req.user, HOSTNAME));
@@ -82,24 +88,13 @@ function create(req, res) {
   }
 }
 
-function attachment(req, res) {
-  utils.pdfUploader({
-    data_uri: req.body.data_uri,
-    filename: req.body.filename,
-    filetype: req.body.filetype,
-    bookingId: req.params.id,
-    userId: req.user._id
-  }, 'photos', (error, response) => {
-    if (error) {
-      return res.status(400).send({
-        message: error.message
-      });
-    }
-
-    const user = req.user;
-    user.photos.push({src: response});
-
-    user.save();
-    res.jsonp(user);
-  });
+function sendMessageSlackNotification(user, otherUser) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(config.slackBookingsWebHookUrl)
+      .send({
+        text: `${user} just sent a message to £${otherUser}.`
+      })
+      .end();
+  }
 }

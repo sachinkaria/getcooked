@@ -50,7 +50,8 @@ function allUsers(req, res) {
 }
 
 function allEvents(req, res) {
-  Event.find({})
+  Event
+    .find({})
     .populate('user', 'firstName lastName email mobileNumber')
     .populate({
       path: 'bookings',
@@ -71,6 +72,7 @@ function allEvents(req, res) {
         }
       }
     })
+    .sort('-createdAt')
     .exec((err, events) => {
       res.jsonp(events);
     });

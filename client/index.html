@@ -45,7 +45,7 @@
         gtag('event', 'conversion', {
           'send_to': 'AW-1007901507/ibKOCIn-uIMBEMO2zeAD',
           'transaction_id': Date.now().toString(),
-          'value': value,
+          'value': parseInt(value).toFixed(2),
           'currency': 'GBP',
           'event_callback': callback
         });

@@ -1,5 +1,6 @@
 const _ = require('lodash');
-const config = require('../config');
+const request = require('superagent');
+const config = require('../config/main');
 const Message = require('../models/message');
 const Booking = require('../models/booking');
 const ObjectId = require('mongodb').ObjectId;
@@ -57,8 +58,8 @@ function create(req, res) {
               return msgErr;
             }
 
-            const SENDER_NAME = _.startCase(_.toLower(_sender.displayName || _.capitalize(_sender.firstName)));
-            const RECIPIENT_NAME = _sender.toString() === booking.user._id.toString() ? _.startCase(_.toLower(booking.chef.displayName)) : _.capitalize(booking.user.firstName);
+            const SENDER_NAME = (_sender.toString()) === (booking.user._id.toString()) ? _.capitalize(booking.user.firstName) : (_.startCase(_.toLower(booking.chef.displayName)));
+            const RECIPIENT_NAME = (_sender.toString()) === (booking.user._id.toString()) ? (_.startCase(_.toLower(booking.chef.displayName))) : _.capitalize(booking.user.firstName);
 
             if (booking.user) {
               const ENQUIRY_EMAIL_DATA = {
@@ -91,9 +92,9 @@ function create(req, res) {
 function sendMessageSlackNotification(user, otherUser) {
   if (process.env.NODE_ENV === 'production') {
     request
-      .post(config.slackBookingsWebHookUrl)
+      .post(config.slackMessagesWebHookUrl)
       .send({
-        text: `${user} just sent a message to £${otherUser}.`
+        text: `${user} just sent a message to ${otherUser}.`
       })
       .end();
   }

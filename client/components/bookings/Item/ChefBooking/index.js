@@ -105,7 +105,7 @@ class ChefBooking extends React.Component {
                 <Panel.Body>
                   <p className="gc-margin-bottom gc-profile-heading-sm gc-margin-bottom--lg">
                     {booking.status === 'deposit requested' && 'Awaiting confirmation and deposit payment.'}
-                    {booking.status === 'accepted' && 'To confirm this booking please request deposit.'}
+                    {booking.status === 'accepted' && 'To confirm this booking please request a deposit.'}
                     {booking.status === 'confirmed' && 'Booking confirmed. You can settle the outstanding balance directly with your client.'}
                   </p>
                   {booking.status === 'deposit requested' &&
@@ -202,10 +202,12 @@ class ChefBooking extends React.Component {
                           <Col xs={12} sm={6}>
                             <Row>
                               <Col xs={12}>
-                                <p className="gc-text gc-margin-bottom--lg">
-                                  Note: You are NOT obliged to cater the event once you have confirmed your
-                                  availability.
-                                </p>
+                                <Panel className="gc-text gc-text--lg gc-bold gc-margin-bottom--lg gc-panel gc-panel--alert">
+                                  <Panel.Body>
+                                    To ensure we continue to improve your experience with us please
+                                    try keep all written correspondences on platform.
+                                  </Panel.Body>
+                                </Panel>
                               </Col>
                             </Row>
                             <Row>

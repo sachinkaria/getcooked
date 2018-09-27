@@ -29,7 +29,7 @@ class RequestDepositForm extends Component {
 
   setQuote(e) {
     const amount = parseInt(e.target.value).toFixed(2);
-    const depositAmount = e.target.value * 0.05;
+    const depositAmount =  ((e.target.value * 0.05) < 100) ? parseInt(e.target.value * 0.05).toFixed(2) : 100;
     const balanceDue = (amount - depositAmount).toFixed(2);
     this.setState({amount, depositAmount, balanceDue});
   }
@@ -72,16 +72,7 @@ class RequestDepositForm extends Component {
                 </Col>
                 <Col xs={12}>
                 <span className="gc-text gc-text--lg gc-text--slim">
-                  Fee (5%)
-                </span>
-                  <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{this.state.depositAmount}
-                </span>
-                  <hr className="gc-hr-sm"/>
-                </Col>
-                <Col xs={12}>
-                <span className="gc-text gc-text--lg gc-text--slim">
-                  Deposit Amount
+                  Fee/Deposit (5%)
                 </span>
                   <span className="gc-text gc-text--lg gc-grey pull-right">
                   £{this.state.depositAmount}

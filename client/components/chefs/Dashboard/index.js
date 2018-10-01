@@ -107,7 +107,7 @@ class Dashboard extends React.Component {
       return <div>Loading...</div>;
     }
 
-    const USER_LISTED = (user.data.status === 'listed' && (user.data.subscription.status === 'pending'));
+    const USER_LISTED = user.data.status === 'listed';
     const USER_PENDING = user.data.status === 'pending';
     const USER_UNLISTED = user.data.status === 'unlisted';
     const IS_CHEF = user.data.role === 'chef';

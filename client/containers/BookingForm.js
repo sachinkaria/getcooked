@@ -38,7 +38,9 @@ class BookingForm extends React.Component {
       heap.track('Submit Event', event);
     }
 
-    const BOOKING_VALUE = parseInt(event.budget) * 0.05;
+    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
+
+    const BOOKING_VALUE = (parseInt(EVENT.budget) * 0.05).toFixed(2);
 
     window.gtag_report_conversion(undefined, BOOKING_VALUE);
     // this.props.onSubmit(event, this.props.endRoute);

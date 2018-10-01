@@ -15,12 +15,25 @@ function EventItem({userItem, booking, updateEvent}) {
             <Panel.Title toggle>
               <Row>
                 <Col xs={6}>
-                  <p className="gc-text text-left text-capitalize">
+                  <ul className="list-unstyled">
+                    <li>
+                      <span className="gc-text text-capitalize pull-left">
                     {userItem.firstName} {userItem.lastName}
-                  </p>
-                  <p className="gc-text text-left">
-                    {(booking.bookings.length > 0) && 'Accepted: ' + ACCEPTED_BOOKINGS}
-                  </p>
+                      </span>
+                    </li>
+                    <br/>
+                    <li>
+                      <span className="gc-text pull-left">Event
+                        Date: {moment(booking.date).format('MMMM Do YYYY')}
+                        </span>
+                    </li>
+                    <br/>
+                    <li>
+                      <span className="gc-text pull-left">
+                        {(booking.bookings.length > 0) && 'Accepted: ' + ACCEPTED_BOOKINGS}
+                      </span>
+                    </li>
+                  </ul>
                 </Col>
                 <Col xs={6}>
                   <p className="gc-text text-right">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>

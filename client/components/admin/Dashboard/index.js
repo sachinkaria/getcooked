@@ -1,5 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
+import moment from 'moment';
 import { Col, Panel, Row, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../../../actions/users';
@@ -35,7 +36,8 @@ class AdminDashboard extends React.Component {
       filename: '',
       filetype: '',
       processing: '',
-      images: []
+      images: [],
+      events: []
     };
     this.updateStatus = this.updateStatus.bind(this);
     this.onImagesUpload = this.onImagesUpload.bind(this);
@@ -43,6 +45,8 @@ class AdminDashboard extends React.Component {
     this.handleChefSelect = this.handleChefSelect.bind(this);
     this.handleStatusSelect = this.handleStatusSelect.bind(this);
     this.sendIncompleteProfileEmail = this.sendIncompleteProfileEmail.bind(this);
+    this.sortEvents = this.sortEvents.bind(this);
+    this.filterEvents = this.filterEvents.bind(this);
   }
 
   componentWillMount() {
@@ -54,7 +58,7 @@ class AdminDashboard extends React.Component {
   }
 
   componentWillReceiveProps(){
-    this.setState({ chefs: this.props.chefs });
+    this.setState({ chefs: this.props.chefs, events: this.props.events });
   }
 
   onImagesUpload(e) {
@@ -116,9 +120,25 @@ class AdminDashboard extends React.Component {
     });
   }
 
+  sortEvents(e){
+    const EVENTS = _.sortBy(this.state.events, '-' + e.target.value);
+    this.setState({ events: EVENTS });
+  }
+
+  filterEvents(e){
+    if (e.target.value === 'upcoming'){
+      const EVENTS = _.filter(this.props.events, (event) => moment(event.date).isAfter(Date.now()));
+      return this.setState( { events: EVENTS })
+    } else if (e.target.value === 'past') {
+      const EVENTS = _.filter(this.props.events, (event) => moment(event.date).isBefore(Date.now()));
+      return this.setState( { events: EVENTS });
+    }
+    return this.setState( { events: this.props.events });
+  }
   render() {
     const { user } = this.props;
-    const { users, events, bookings } = this.props;
+    const { users, bookings } = this.props;
+    const { events } = this.state;
 
     if (!user.data) {
       return <div>Loading...</div>;
@@ -133,20 +153,46 @@ class AdminDashboard extends React.Component {
               <Sidebar location={this.props.location.pathname} userRole={user.data.role} />
             </Col>
             <Col smOffset={0} sm={3}>
-              <div>
-                <select
-                  className="form-control gc-input"
-                  onChange={this.handleStatusSelect}
-                >
-                  <option value={0}>All</option>
-                  <option key="pending" value="pending">Pending</option>
-                  <option key="listed" value="listed">Listed</option>
-                  <option key="unlisted" value="unlisted">Unlisted</option>
-                  <option key="hidden" value="hidden">Hidden</option>
+              {
+                this.props.location.pathname.includes('chefs') &&
+                <div>
+                  <select
+                    className="form-control gc-input"
+                    onChange={this.handleStatusSelect}
+                  >
+                    <option value={0}>All</option>
+                    <option key="pending" value="pending">Pending</option>
+                    <option key="listed" value="listed">Listed</option>
+                    <option key="unlisted" value="unlisted">Unlisted</option>
+                    <option key="hidden" value="hidden">Hidden</option>
 
-                </select>
-                <Button onClick={this.props.updateMonthlyCoupons}>Add Coupons</Button>
-              </div>
+                  </select>
+                </div>
+              }
+              {
+                this.props.location.pathname.includes('events') &&
+                <div>
+                  <label>Sort By</label>
+                  <select
+                    className="form-control gc-input"
+                    onChange={this.sortEvents}
+                  >
+                    <option key="none" value="updatedAt">None</option>
+                    <option key="date" value="date">Event Date</option>
+                    <option key="updated" value="updatedAt">Last Updated</option>
+                  </select>
+                  <label>Filter By</label>
+                  <select
+                    className="form-control gc-input"
+                    onChange={this.filterEvents}
+                  >
+                    <option key="all" value="all">All</option>
+                    <option key="upcoming" value="upcoming">Upcoming</option>
+                    <option key="past" value="past">Past</option>
+                  </select>
+
+                </div>
+              }
             </Col>
             <Col smOffset={0} sm={7}>
               {

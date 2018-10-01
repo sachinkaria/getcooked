@@ -121,7 +121,8 @@ class AdminDashboard extends React.Component {
   }
 
   sortEvents(e){
-    const EVENTS = _.sortBy(this.state.events, '-' + e.target.value);
+    const value = e.target.value;
+    const EVENTS = _.orderBy(this.state.events, value, 'desc');
     this.setState({ events: EVENTS });
   }
 

@@ -94,7 +94,7 @@ class ChefBooking extends React.Component {
             <Title name={booking.contactDetails.firstName || booking.user.firstName} date={booking.date}/>
             <br />
             {
-              (booking.status !== 'declined' || booking.status !== 'pending') &&
+              (booking.status === 'accepted' || booking.status === 'deposit requested' || booking.status === 'confirmed' ) &&
                 <div>
                   <img
                     className="gc-icon pull-left"

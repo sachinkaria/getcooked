@@ -92,6 +92,18 @@ class ChefBooking extends React.Component {
         <Row className="gc-margin-bottom--lg">
           <Col xs={12} sm={9}>
             <Title name={booking.contactDetails.firstName || booking.user.firstName} date={booking.date}/>
+            <br />
+            {
+              (booking.status !== 'declined' || booking.status !== 'pending') &&
+                <div>
+                  <img
+                    className="gc-icon pull-left"
+                    alt="location"
+                    src="/images/phone-grey.png"
+                  />
+                  <span className="gc-text gc-text--lg gc-grey pull-left">{booking.contactDetails.mobileNumber || booking.user.mobileNumber || 'Not provided'}</span>
+                </div>
+            }
           </Col>
           <Col xs={12} sm={3}>
             <span className="gc-text gc-text--lg gc-bold pull-right">{STATUS}</span>

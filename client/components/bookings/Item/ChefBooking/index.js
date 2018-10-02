@@ -77,7 +77,7 @@ class ChefBooking extends React.Component {
     const STATUS = this.getStatus();
     let ADDITIONAL_INFORMATION = null;
 
-    if (booking.additionalInformation) {
+    if (booking.additionalInformation && booking.user) {
       ADDITIONAL_INFORMATION = {
         _id: '1234567890',
         _sender: booking.user._id,

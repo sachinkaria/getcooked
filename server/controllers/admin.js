@@ -72,7 +72,7 @@ function allEvents(req, res) {
         }
       }
     })
-    .sort('-createdAt')
+    .sort('-updatedAt')
     .exec((err, events) => {
       res.jsonp(events);
     });

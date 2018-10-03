@@ -36,7 +36,7 @@ function EventItem({userItem, booking, updateEvent}) {
                   </ul>
                 </Col>
                 <Col xs={6}>
-                  <p className="gc-text text-right">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
+                  <p className="gc-text text-right">Last updated: {moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
                   <div className="text-right">
                     <Status status={booking.status}/>
                   </div>

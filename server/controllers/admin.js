@@ -81,6 +81,7 @@ function allEvents(req, res) {
 function allBookings(req, res) {
   Booking.find({})
     .populate('chef', 'profilePhoto displayName')
+    .sort('-updatedAt')
     .exec((err, bookings) => {
       res.jsonp(bookings);
     });

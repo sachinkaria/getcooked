@@ -30,7 +30,7 @@ function list(req, res) {
     .find({ $or: [{ user: user._id }, { chef: user._id }]})
     .populate('user', 'firstName')
     .populate('chef', 'profilePhoto displayName')
-    .sort('-createdAt')
+    .sort('-updatedAt')
     .exec((err, bookings) => {
       res.jsonp(bookings);
     });

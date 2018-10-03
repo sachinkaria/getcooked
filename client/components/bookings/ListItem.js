@@ -13,15 +13,15 @@ class ListItem extends React.Component {
   getStatus() {
     switch (this.props.booking.status) {
       case 'accepted':
-        return (<p className="gc-text gc-text--xl text-capitalize gc-yellow">Accepted</p>);
+        return (<p className="gc-text gc-bold text-capitalize gc-yellow">Accepted</p>);
       case 'declined':
-        return (<p className="gc-text gc-text--xl text-capitalize gc-red">Declined</p>);
+        return (<p className="gc-text gc-bold text-capitalize gc-red">Declined</p>);
       case 'deposit requested':
-        return (<p className="gc-text gc-text--xl text-capitalize gc-grey">Deposit Requested</p>);
+        return (<p className="gc-text gc-bold text-capitalize gc-grey">Deposit Requested</p>);
       case 'confirmed':
-        return (<p className="gc-text gc-text--xl text-capitalize gc-light-green">Confirmed</p>);
+        return (<p className="gc-text gc-bold text-capitalize gc-light-green">Confirmed</p>);
       default:
-        return (<p className="gc-text gc-text--xl text-capitalize gc-light-grey">Pending</p>);
+        return (<p className="gc-text gc-bold text-capitalize gc-light-grey">Pending</p>);
     }
   }
 
@@ -55,7 +55,7 @@ class ListItem extends React.Component {
                   </p>
                 </Col>
                 <Col sm={4} className="center-m right-t">
-                  <p className="gc-text hidden-xs">{moment(booking.createdAt).format('MMMM Do YYYY')}</p>
+                  <p className="gc-text hidden-xs">{moment(booking.updatedAt).format('MMMM Do YYYY')}</p>
                   <Link to={`/dashboard/bookings/${booking._id}`} className="btn gc-btn gc-btn-white gc-margin-top">
                     View Details
                   </Link>
@@ -79,12 +79,13 @@ class ListItem extends React.Component {
                 />
               </Col>
               <Col className="center-m left-t" sm={6}>
-                <p className="gc-text gc-text--lg gc-margin-top">
+                <p className="gc-text gc-text--lg gc-bold gc-margin-top">
                   <span className="text-capitalize">{booking.contactDetails.firstName || booking.user.firstName }</span>'s event on {moment(booking.date).format('MMMM Do YYYY')}
                 </p>
+                <span className="gc-text gc-light-grey gc-margin-bottom">Last updated: {moment(booking.updatedAt).format('MMMM Do YYYY')}</span>
               </Col>
               <Col sm={4} className="center-m right-t">
-                {STATUS}
+                  {STATUS}
                 <Link to={`/dashboard/bookings/${booking._id}`} className="btn gc-btn gc-btn-white">
                   View Details
                 </Link>

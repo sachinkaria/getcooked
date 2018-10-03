@@ -58,7 +58,7 @@ function accept(req, res) {
         booking.save((bookingErr, savedBooking) => {
           if (bookingErr) return bookingErr;
 
-          const USER = savedBooking.user;
+          const USER = booking.user || booking.contactDetails;
           const ENQUIRY_EMAIL_DATA = {
             subject: `Catering Interest - ${_.startCase(_.toLower(CHEF.displayName))}`,
             recipient: USER.email

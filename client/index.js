@@ -56,6 +56,7 @@ require('./images/clock-grey.png');
 require('./images/calendar-grey.png');
 require('./images/event-poster.jpg');
 require('./images/icon-attachment.png');
+require('./images/wedding.jpg');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

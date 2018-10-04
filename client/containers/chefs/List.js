@@ -43,13 +43,7 @@ class Chefs extends React.Component {
                 <ListItem
                   id={chef._id}
                   key={chef._id}
-                  profilePhoto={chef.profilePhoto}
-                  name={chef.displayName}
-                  tagLine={chef.tagLine}
-                  rating={chef.rating}
-                  endorsements={chef.endorsements}
-                  numberOfReviews={chef.numberOfReviews}
-                  serviceType={chef.serviceType}
+                  {...chef}
                 />
               ))
             }

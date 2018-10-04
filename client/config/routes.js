@@ -8,7 +8,6 @@ import GetQuote from '../components/GetQuote';
 import Bookings from '../components/bookings/List';
 import Profile from '../containers/chefs/Profile';
 import Inbox from '../components/messages/Inbox';
-import Register from '../components/auth/Register';
 import ForgotPassword from '../components/auth/ForgotPassword';
 import ResetPassword from '../components/auth/ResetPassword';
 import RegisterChef from '../components/auth/chef/Register';
@@ -34,6 +33,7 @@ import FoodWaste from '../components/Blog/How-is-technology-helping-us-reduce-fo
 import CateringBudget from '../components/Blog/5-things-to-consider-when-planning-your-event-catering-budget';
 import Blog from '../components/Blog/List';
 import SupperClubEvent from '../components/Events/The-urban-farming-debate';
+import { Wedding } from '../components/Services';
 
 const routes = (
   <Route path="/" component={NavigationBar}>
@@ -42,6 +42,9 @@ const routes = (
     <Route path="/terms" component={Terms} />
     <Route path="/privacy" component={Privacy} />
     <Route path="/get-quotes" component={GetQuote} />
+    <Route path="services">
+      <Route path="wedding" component={Wedding} />
+    </Route>
     <Route exact path="/inbox" component={RequireAuth(Inbox)} />
     <Route exact path="/bookings" component={RequireAuth(Bookings)} />
     <Route exact path="forgot" component={ForgotPassword} />

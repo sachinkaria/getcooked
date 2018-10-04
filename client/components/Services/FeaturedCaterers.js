@@ -1,17 +1,21 @@
 import React from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
+import { Row, Col, Button } from 'react-bootstrap';
 import ListItem from '../chefs/ListItem';
 
-function FeaturedChefs({ chefs }) {
+function FeaturedCaterer(props) {
+  const style = {
+    backgroundImage: `url(${props.image})`,
+    backgroundSize: 'cover'
+  };
   return (
     <section className="gc-section">
       <Row className="gc-margin-bottom--sm">
         <Col xs={12} sm={8} smOffset={2}>
-          <h3 className="gc-section-heading gc-center">Featured Caterers</h3>
+          <h3 className="gc-section-heading gc-center">{props.title}</h3>
           {
-            (chefs.length > 0) &&
-            chefs.map(chef => (
+            (props.chefs.length > 0) &&
+            props.chefs.map(chef => (
               <ListItem
                 isHome
                 id={chef._id}
@@ -35,5 +39,4 @@ function FeaturedChefs({ chefs }) {
   );
 }
 
-export default FeaturedChefs;
-
+export default FeaturedCaterer;

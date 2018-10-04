@@ -18,7 +18,7 @@ const ListItem = (props) => {
       <Link href={`/caterers/profile/${props.id}`}>
         <Thumbnail className="gc-profile-thumbnail img-responsive" style={styles} />
         <div className="gc-profile-infobox">
-          <h3 className="gc-profile-heading-sm gc-pull-left gc-margin-bottom--xs text-capitalize">{props.name}</h3>
+          <h3 className="gc-profile-heading-sm gc-pull-left gc-margin-bottom--xs text-capitalize">{props.displayName}</h3>
           <p className="gc-profile-text-xs gc-clear-left">{props.tagLine}</p>
           <div className="gc-position-bottom">
             <StarRatingComponent

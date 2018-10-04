@@ -1,25 +1,25 @@
 import React from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router';
-import BookingForm from '../../containers/BookingForm';
+import { Row, Col, Button } from 'react-bootstrap';
 import Modal from '../../containers/Modal';
-import { MODAL } from '../../utils/data';
+import { MODAL } from '../../utils/data'
+import BookingForm from '../../containers/BookingForm';
 
-function Main({ eventSubmit }) {
+function MainSection(props) {
   const style = {
-    backgroundImage: 'url(/images/dining.jpg)',
+    backgroundImage: `url(${props.image})`,
     backgroundSize: 'cover'
   };
   return (
     <div>
       <section style={style} className="gc-section gc-section--main text-left">
-        <Row style={{ paddingTop: '85px' }}>
+        <Row style={{paddingTop: '85px'}}>
           <Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-            <h1 className="gc-title">Get Cooked</h1>
-            <h2 className="gc-heading gc-white">Book the Best Caterers and Private Chefs in London.</h2>
+            <h1 className="gc-title">{props.title}</h1>
+            <h2 className="gc-heading gc-white">{props.subtitle}</h2>
             <div className="gc-margin-bottom gc-padding-none">
               <div className="gc-center">
-                <Row style={{ paddingBottom: '60px', paddingTop: '25px' }}>
+                <Row style={{paddingBottom: '60px', paddingTop: '25px'}}>
                   <Col xs={8} xsOffset={2} sm={4} smOffset={4}>
                     <div className="hidden-xs">
                       <Modal
@@ -31,7 +31,7 @@ function Main({ eventSubmit }) {
                       >
                         <BookingForm
                           withoutChef
-                          onSubmit={eventSubmit}
+                          onSubmit={props.eventSubmit}
                           large
                           action="Get Quotes"
                         />
@@ -55,5 +55,4 @@ function Main({ eventSubmit }) {
   );
 }
 
-export default Main;
-
+export default MainSection;

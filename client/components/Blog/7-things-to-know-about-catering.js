@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/catering-3.jpg';
 import { POSTS } from '../../utils/data';
@@ -65,6 +65,19 @@ function BookingACaterer() {
                 drink and service you expect for each person at your event. There can be a major difference
                 between a £30 and £80 per head budget. Also make sure you remember to include VAT when estimating budgets.
               </p>
+              <br/>
+              <Row className="gc-margin-top--lg gc-margin-bottom--lg">
+                <Col xs={10} xsOffset={1} sm={4} smOffset={4}>
+                  <div className="gc-center">
+                    <Link to={'/'}>
+                      <Button block className="gc-btn gc-btn--orange gc-btn--lg">
+                        Get Quotes
+                      </Button>
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+              <br/>
               <h2 className="gc-profile-text-md gc-bold">4. Know what additional services you require</h2>
               <p className="gc-text gc-text--lg">
                 Do you need waiting staff? Are you planning on having alcohol and a bar? Depending on
@@ -93,9 +106,17 @@ function BookingACaterer() {
                 you&#39;re aware of where it&#39;s all coming from.
               </p>
               <br />
-              <p className="gc-text gc-text--lg gc-bold">
-                To get catering quotes from sustainable and bespoke caterers for your next event click <Link to={'/'} activeClassName="gc-orange" className="gc-text gc-text--lg">here</Link>.
-              </p>
+              <Row className="gc-margin-top--lg gc-margin-bottom--lg">
+                <Col xs={10} xsOffset={1} sm={4} smOffset={4}>
+                  <div className="gc-center">
+                    <Link to={'/'}>
+                      <Button block className="gc-btn gc-btn--orange gc-btn--lg">
+                        Get Quotes
+                      </Button>
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
             </Col>
           </Row>
           <hr />

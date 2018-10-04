@@ -48,7 +48,7 @@ class Chefs extends React.Component {
               ))
             }
           </Row>
-          <div className="text-center gc-margin-top">
+          <div className="text-center gc-margin-top gc-margin-bottom">
             {
               (totalChefs > 0) &&
               <Pagination totalRecords={totalChefs} pageLimit={8} pageNeighbours={1} onPageChanged={this.onPageChanged} />

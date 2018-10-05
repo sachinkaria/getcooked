@@ -43,7 +43,7 @@ const routes = (
     <Route path="/privacy" component={Privacy} />
     <Route path="/get-quotes" component={GetQuote} />
     <Route path="services">
-      <Route path="wedding" component={Wedding} />
+      <Route path="weddings" component={Wedding} />
     </Route>
     <Route exact path="/inbox" component={RequireAuth(Inbox)} />
     <Route exact path="/bookings" component={RequireAuth(Bookings)} />

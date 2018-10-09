@@ -33,7 +33,7 @@ import FoodWaste from '../components/Blog/How-is-technology-helping-us-reduce-fo
 import CateringBudget from '../components/Blog/5-things-to-consider-when-planning-your-event-catering-budget';
 import Blog from '../components/Blog/List';
 import SupperClubEvent from '../components/Events/The-urban-farming-debate';
-import { Wedding } from '../components/Services';
+import { Wedding } from '../components/LandingPages';
 
 const routes = (
   <Route path="/" component={NavigationBar}>

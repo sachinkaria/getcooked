@@ -20,6 +20,7 @@ function GetQuote(props) {
             action="Get Quotes"
             endRoute="/"
           />
+          <br />
         </Col>
       </Row>
     </section>

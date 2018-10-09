@@ -32,13 +32,12 @@ class BookingForm extends React.Component {
   }
 
   signUpAndSubmitEvent(event) {
+    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
     if (!this.props.withoutChef) {
       heap.track('Submit Booking', { chef_id: this.props.chef.id, chef_name: this.props.chef.displayName });
     } else {
-      heap.track('Submit Event', event);
+      heap.track('Submit Event', EVENT);
     }
-
-    const EVENT = JSON.parse(sessionStorage.getItem('eventDetails'));
 
     const BOOKING_VALUE = (parseInt(EVENT.budget) * 0.05).toFixed(2);
 

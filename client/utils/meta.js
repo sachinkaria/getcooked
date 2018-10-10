@@ -2,7 +2,7 @@
   weddings: {
       title: "Get Cooked | Book London's Best Wedding Caterers",
       description: "Compare and book professional, sustainable and bespoke caterers for your special day. Design your menus with the best caterers in London.",
-      imageUrl: "/images/wedding.jpg",
+      imageUrl: "https://www.getcooked.co/images/wedding.jpg",
       imageAlt: "Wedding Catering",
       url: "https://www.getcooked.co/services/weddings",
     },

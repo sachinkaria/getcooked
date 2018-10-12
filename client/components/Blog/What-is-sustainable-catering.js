@@ -38,7 +38,7 @@ function SustainableCatering() {
             </Col>
             <Col xs={12}>
               <p className="gc-text gc-text--lg">
-                What determines a sustainable caterer? Food and dinnerware contributes as an significant source of
+                What determines a sustainable caterer? Food and dinnerware contributes as a significant source of
                 waste and there are a few simple practices that can be undertaken by any catering service to ensure
                 they are sourcing, preparing, serving and disposing of food and materials in a more sustainable way.
               </p>

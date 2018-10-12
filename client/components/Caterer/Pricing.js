@@ -22,9 +22,6 @@ function Pricing() {
                     5%
                     <span className="gc-profile-text-lg gc-margin-none"> per booking</span>
                   </h3>
-                  <h4 className="gc-profile-text-md gc-profile-text-md gc-bold">
-                    Maximum fee of £100 on any booking.
-                  </h4>
                   <br />
                   <Row>
                     <Col sm={4}>

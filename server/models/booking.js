@@ -33,6 +33,13 @@ const QuoteSchema = {
   datePaid: Date
 };
 
+const ProductSchema = {
+  photographer: {
+    type: Boolean,
+    default: false
+  }
+};
+
 const BookingSchema = new Schema({
     user: {
       type: Schema.ObjectId,
@@ -86,6 +93,7 @@ const BookingSchema = new Schema({
     openToVegetarian: Boolean,
     messages: [{ type: Schema.ObjectId, ref: 'Message' }],
     quote: QuoteSchema,
+    products: ProductSchema,
   },
   {
     timestamps: true

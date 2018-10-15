@@ -4,7 +4,7 @@ import {browserHistory} from 'react-router';
 import {Col, Panel, Row, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import BookingPaymentForm from '../../../../containers/forms/BookingPayment';
-import {getBooking, accept, decline} from '../../../../actions/bookings';
+import { getBooking, accept, decline, update } from '../../../../actions/bookings';
 import {create} from '../../../../actions/messages';
 import Chat from '../../../../components/Chat';
 
@@ -17,8 +17,9 @@ class UserBooking extends React.Component {
     this.getStatus = this.getStatus.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
     this.makePayment = this.makePayment.bind(this);
+    this.bookPhotographer = this.bookPhotographer.bind(this);
 
-    this.state = { showPaymentForm: false }
+    this.state = { showPaymentForm: false };
   }
 
   componentWillMount() {
@@ -52,6 +53,11 @@ class UserBooking extends React.Component {
     const {booking} = this.props;
     heap.track('Accepted Booking', {caterer: booking.chef.displayName});
     this.props.accept(this.props.id, message);
+  }
+
+  bookPhotographer() {
+    this.props.update(this.props.id, { products: { photographer: true } });
+    window.location.reload();
   }
 
   sendMessage(message) {
@@ -144,6 +150,20 @@ class UserBooking extends React.Component {
                   }
                 </Panel.Body>
               </Panel>
+              <Panel className="gc-panel text-center">
+              <Panel.Body>
+              <img className="gc-icon gc-icon--xl" src="/images/icon-camera.png" alt="Book a photographer" />
+                {
+                  booking.products.photographer ?
+                    <h4 className="gc-text gc-text--xl">Your photographer has been booked and will contact you to confirm the event.</h4>
+                    :
+                    <div>
+                      <h4 className="gc-text gc-text--xl">Book a FREE photographer for your event</h4>
+                      <Button onClick={() => this.bookPhotographer()} disabled={booking.status !== 'confirmed'} className="gc-btn gc-btn--lg gc-btn--orange">Book now</Button>
+                    </div>
+                }
+              </Panel.Body>
+              </Panel>
             </Col>
           }
           {
@@ -187,4 +207,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {getBooking, accept, decline, create})(UserBooking);
+export default connect(mapStateToProps, {getBooking, accept, decline, create, update})(UserBooking);

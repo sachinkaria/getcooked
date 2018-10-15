@@ -58,6 +58,7 @@ require('./images/event-poster.jpg');
 require('./images/icon-attachment.png');
 require('./images/wedding.jpg');
 require('./images/wedding-2.jpg');
+require('./images/icon-camera.png');
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);

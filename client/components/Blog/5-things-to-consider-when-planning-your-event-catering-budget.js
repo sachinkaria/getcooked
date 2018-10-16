@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
-import { Row, Col } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
 import '../../images/catering-3.jpg';
 import { POSTS } from '../../utils/data';
@@ -89,6 +89,19 @@ function BookingACaterer() {
                 your budget. Simpler drinks will require less preparation and staff to execute.
                 This brings us onto our next point...
               </p>
+              <br/>
+              <Row className="gc-margin-top--lg gc-margin-bottom--lg">
+                <Col xs={10} xsOffset={1} sm={4} smOffset={4}>
+                  <div className="gc-center">
+                    <Link to={'/'}>
+                      <Button block className="gc-btn gc-btn--orange gc-btn--lg">
+                        Get Quotes
+                      </Button>
+                    </Link>
+                  </div>
+                </Col>
+              </Row>
+              <br/>
               <h2 className="gc-profile-text-md gc-bold">Do you need waiting and bar staff to help produce your event?</h2>
               <p className="gc-text gc-text--lg">
                 Events often have unique styles and levels of service. More glamorous events will usually require
@@ -130,6 +143,18 @@ function BookingACaterer() {
                 to you. Keeping these factors in mind will give you a good benchmark to estimating
                 your budget and planning to menu and service for you next event!
               </p>
+            </Col>
+          </Row>
+          <br/>
+          <Row>
+            <Col xs={10} xsOffset={1} sm={4} smOffset={4}>
+              <div className="gc-center">
+                <Link to={'/'}>
+                  <Button block className="gc-btn gc-btn--orange gc-btn--lg">
+                    Get Quotes
+                  </Button>
+                </Link>
+              </div>
             </Col>
           </Row>
           <hr />

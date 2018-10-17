@@ -88,12 +88,21 @@ function read(req, res) {
     .findOne({_id: BOOKING_ID})
     .populate('user', 'email mobileNumber firstName lastName')
     .populate('chef', 'profilePhoto displayName stripe subscription')
-    .populate('messages', '_sender _recipient status date body attachment')
+    .populate('messages', '_sender status date body attachment')
     .exec((err, booking) => {
       if (!booking.read && USER.role === 'chef') {
         booking.read = true;
         booking.save();
       }
+
+      booking.messages.forEach((message) => {
+        const SENDER_ID = message._sender.toString();
+        const USER_ID = req.user._id.toString();
+        if ((SENDER_ID !== USER_ID) && message.status === 'sent') {
+          message.status = 'read';
+          message.save();
+        }
+      });
 
       res.jsonp(booking);
     });

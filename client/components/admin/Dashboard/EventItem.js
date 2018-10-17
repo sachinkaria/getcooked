@@ -304,7 +304,7 @@ function EventItem({userItem, booking, updateEvent}) {
                                 }
                                 {
                                   (item.messages && item.messages.length > 0) ? item.messages.map((message) => {
-                                    return (
+                                      return (
                                         <Panel key={message.date} className="gc-panel">
                                           <Panel.Body>
                                             <Row>
@@ -313,7 +313,8 @@ function EventItem({userItem, booking, updateEvent}) {
                                                 className="gc-text gc-bold pull-left text-capitalize">{message._sender.displayName || message._sender.firstName}</span>
                                                 <br />
                                                 <span
-                                                  className="gc-text gc-bold pull-left">{moment(message.date).format('Do MMM YYYY')}</span>
+                                                  className="gc-text gc-bold pull-left">{moment(message.date).format('Do MMM YYYY')}, <span
+                                                  className="text-capitalize">{message.status}</span></span>
                                               </Col>
                                               <Col xs={12} sm={8}>
                                                 <p>{message.body}</p>

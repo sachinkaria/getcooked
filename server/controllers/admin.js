@@ -65,7 +65,7 @@ function allEvents(req, res) {
       path: 'bookings',
       populate: {
         path: 'messages',
-        select: { body: 1, date: 1},
+        select: { body: 1, date: 1, status: 1 },
         populate: {
           path: '_sender',
           select: { displayName: 1, firstName: 1 }

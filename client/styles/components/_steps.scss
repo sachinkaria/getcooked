@@ -1,0 +1,90 @@
+$steps-padding: 70px;
+$steps-border: 4px;
+$circle: $steps-padding * 0.75;
+$circle-border: 8px;
+$mobile-ratio: 3/4;
+
+.gc-steps {
+  list-style-type: none;
+  padding: 0;
+  margin-left: $mobile-ratio * $steps-padding/2;
+
+  &:not(.gc-steps--margins) {
+    @include breakpoint(tablet) {
+      $steps-padding: 80px;
+      margin-left: 0;
+    }
+  }
+}
+
+.gc-steps--item {
+  position: relative;
+  counter-increment: step-counter;
+  text-align: left;
+  padding-left: $mobile-ratio * $steps-padding/2 + 10px;
+  padding-bottom: $mobile-ratio * $steps-padding/2;
+  border-left: $steps-border solid $light-grey;
+
+  &:before {
+    content: counter(step-counter);
+    position: absolute;
+    left: $mobile-ratio * -1/2 * ($steps-border + $circle);
+    height: $mobile-ratio * $circle;
+    width: $mobile-ratio * $circle;
+    padding: ($mobile-ratio * $circle - 32px)*0.5;
+    top: -8px;
+    background-color: $light-grey;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    border: $circle-border solid $lightest-grey;
+    font-size: 1.6rem;
+    line-height: 1;
+  }
+
+  &:last-child {
+    border-color: transparent;
+    padding-bottom: 0;
+
+    &.gc-steps__item--separator:after {
+      display: none;
+    }
+  }
+
+  @include breakpoint(tablet) {
+    padding-left: $steps-padding/2 + 10px;
+
+    &:before {
+      left: -1/2 * ($steps-border + $circle);
+      height: $circle;
+      width: $circle;
+      padding: ($circle - 32px)*0.5;
+    }
+  }
+}
+
+.gc-steps--checked {
+  border-left: $steps-border solid lighten($primary-colour, 20%);
+
+  &:before {
+    background-color: $primary-colour;
+    border: $circle-border solid lighten($primary-colour, 20%);
+    content: "\2713";
+  }
+}
+
+.gc-steps--item--separator {
+  &:after {
+    position: absolute;
+    bottom: $mobile-ratio * $steps-padding/2;
+    left: ($mobile-ratio * $circle - 32px)*0.5;
+    right: 0;
+    height: 1px;
+    background-color: $lightest-grey;
+    content: "";
+
+    @include breakpoint(tablet) {
+      left: $steps-padding/2 + 10px;
+    }
+  }
+}

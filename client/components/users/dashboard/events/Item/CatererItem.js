@@ -9,7 +9,7 @@ const CatererItem = (props) => {
       <Panel className="center-m">
         <Panel.Body>
           <Row>
-            <Col xs={8} sm={5}>
+            <Col xs={12} sm={5}>
               <Link to={`/caterers/profile/${caterer._id}`}>
                 <span
                   className="gc-thumbnail gc-thumbnail--xs gc-inline-block pull-left"
@@ -20,7 +20,7 @@ const CatererItem = (props) => {
                 </span>
               </Link>
             </Col>
-            <Col xs={4} sm={4}>
+            <Col xs={12} sm={4}>
               {
                 status === 'confirmed' &&
                 <span className="gc-text gc-green gc-bold gc-inline-block gc-capitalize center-m right-t gc-margin-top--lg">

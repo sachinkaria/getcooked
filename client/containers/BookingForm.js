@@ -39,8 +39,9 @@ class BookingForm extends React.Component {
       heap.track('Submit Event', EVENT);
     }
 
-    const BOOKING_VALUE = (parseInt(EVENT.budget) * 0.05).toFixed(2);
-
+    let BOOKING_VALUE = (parseInt(EVENT.budget) * 0.05).toFixed(2);
+    if (BOOKING_VALUE > 200) BOOKING_VALUE = 200;
+    
     window.gtag_report_conversion(undefined, BOOKING_VALUE);
     // this.props.onSubmit(event, this.props.endRoute);
     localStorage.token ? this.props.onSubmit(event, '/dashboard/events') : this.props.registerUser(event);

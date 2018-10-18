@@ -29,7 +29,7 @@ class RequestDepositForm extends Component {
 
   setQuote(e) {
     const amount = parseInt(e.target.value).toFixed(2);
-    const depositAmount =  ((e.target.value * 0.05) < 100) ? parseInt(e.target.value * 0.05).toFixed(2) : 100;
+    const depositAmount =  ((e.target.value * 0.05) < 200) ? parseInt(e.target.value * 0.05).toFixed(2) : 200;
     const balanceDue = (amount - depositAmount).toFixed(2);
     this.setState({amount, depositAmount, balanceDue});
   }

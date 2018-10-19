@@ -202,6 +202,7 @@ class ChefBooking extends React.Component {
                       <Row>
                         <Col xs={12} sm={!BOOKING_PENDING ? 12 : 6}>
                           <CoreDetails
+                            mobileNumber={booking.contactDetails.mobileNumber || booking.user.mobileNumber}
                             address={booking.address}
                             numberOfPeople={booking.numberOfPeople}
                             budget={booking.budget}

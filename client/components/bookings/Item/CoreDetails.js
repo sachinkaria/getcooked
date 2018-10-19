@@ -14,6 +14,16 @@ function CoreDetails({ ...props }) {
         <img
           className="gc-icon"
           alt="location"
+          src="/images/phone-grey.png"
+        />
+        <p className="gc-text gc-text--lg text-capitalize gc-inline-block">
+          <span>{props.mobileNumber || 'Not provided'}</span>
+        </p>
+      </Col>
+      <Col xs={12} className="gc-margin-bottom--xs">
+        <img
+          className="gc-icon"
+          alt="location"
           src="/images/location-grey.png"
         />
         <p className="gc-text gc-text--lg text-capitalize gc-inline-block">

@@ -8,17 +8,23 @@ import {Row, Col} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 function CoreDetails({ ...props }) {
+  const PENDING = props.status !== ('pending' || 'declined');
   return (
     <Row>
       <Col xs={12} className="gc-margin-bottom--xs">
-        <img
-          className="gc-icon"
-          alt="location"
-          src="/images/phone-grey.png"
-        />
-        <p className="gc-text gc-text--lg text-capitalize gc-inline-block">
-          <span>{props.mobileNumber || 'Not provided'}</span>
-        </p>
+        {
+          PENDING &&
+            <div>
+              <img
+                className="gc-icon"
+                alt="location"
+                src="/images/phone-grey.png"
+              />
+              <p className="gc-text gc-text--lg text-capitalize gc-inline-block">
+                <span>{props.mobileNumber || 'Not provided'}</span>
+              </p>
+            </div>
+        }
       </Col>
       <Col xs={12} className="gc-margin-bottom--xs">
         <img

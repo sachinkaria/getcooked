@@ -36,4 +36,7 @@ module.exports = function (app) {
 
   // Get profile route
   app.get('/api/users/me', requireAuth, User.getCurrentUser);
+
+  // Connect instagram
+  app.get('/api/users/me/instagram', requireAuth, User.instagramAuth);
 };

@@ -8,6 +8,7 @@ import GetQuote from '../components/GetQuote';
 import Bookings from '../components/bookings/List';
 import Profile from '../containers/chefs/Profile';
 import Inbox from '../components/messages/Inbox';
+import InstagramAuth from '../components/auth/InstagramAuth';
 import ForgotPassword from '../components/auth/ForgotPassword';
 import ResetPassword from '../components/auth/ResetPassword';
 import RegisterChef from '../components/auth/chef/Register';
@@ -48,6 +49,7 @@ const routes = (
     <Route exact path="/inbox" component={RequireAuth(Inbox)} />
     <Route exact path="/bookings" component={RequireAuth(Bookings)} />
     <Route exact path="forgot" component={ForgotPassword} />
+    <Route exact path="instagram" component={InstagramAuth} />
     <Route exact path="reset/:token" component={ResetPassword} />
     <Route path="/caterers" component={ProfileList} />
     <Route path="caterers">

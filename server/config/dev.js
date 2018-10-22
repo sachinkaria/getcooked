@@ -16,6 +16,9 @@ module.exports = {
   aws_bucket: process.env.AWS_BUCKET || 'getcooked',
   aws_endpoint: process.env.AWS_ENDPOINT || 'localhost',
   aws_port: process.env.AWS_PORT || '10001',
+  INSTAGRAM_CLIENT_ID: process.env.INSTAGRAM_CLIENT_ID || '5488025102f64456a5d18cc2ac36acf1',
+  INSTAGRAM_REDIRECT_URI: process.env.INSTAGRAM_REDIRECT_URI || 'http://localhost:8080/instagram',
+  INSTAGRAM_CLIENT_SECRET: process.env.INSTAGRAM_CLIENT_SECRET || '40859dba9a6844188a3c925049b33f34',
   sendGridKey: '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',
   stripe_secret_key: 'sk_test_DURHL3BvKBlILOjwzXbgwAE4'
 };

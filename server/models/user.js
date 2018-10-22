@@ -109,6 +109,12 @@ const UserSchema = new Schema({
       discount: String,
       currency: String
     },
+  social: {
+      instagram: {
+        accessToken: String,
+        userName: String
+      }
+  },
     termsAccepted: Boolean,
     minimumTotalBudget: Number,
     minimumPerHeadBudget: Number,

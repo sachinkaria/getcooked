@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { reduxForm} from 'redux-form';
@@ -28,6 +29,7 @@ class Photos extends Component {
     this.onImagesUpload = this.onImagesUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onDelete = this.onDelete.bind(this);
+    this.authenticateInstagram = this.authenticateInstagram.bind(this);
   }
 
   componentWillMount() {
@@ -113,6 +115,11 @@ class Photos extends Component {
     return state && state.indexOf(item) > -1;
   }
 
+  authenticateInstagram() {
+    const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
+    return axios.get('/api/users/me/instagram', AUTH_HEADERS);
+  }
+
   handleSubmit() {
     browserHistory.push(Steps.photos.onNext);
   }
@@ -157,6 +164,14 @@ class Photos extends Component {
             multiple
             onUpload={this.onImagesUpload}
           />
+          <p>
+            Connect your Instagram Account
+          </p>
+          <Button
+              onClick={() => this.authenticateInstagram()}
+            >
+              Connect Instagram
+            </Button>
         </div>
         <Row>
           { this.props.user.data.photos.map(item =>

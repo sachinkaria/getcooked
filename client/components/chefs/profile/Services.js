@@ -2,19 +2,18 @@ import React from 'react';
 
 const Services = (props) => {
   return (
-    <div className="gc-center">
-      <label className="gc-text gc-margin-bottom gc-form-heading gc-bold">{props.title}</label>
-      <div className="gc-tags">
+    <div className="text-left center-m">
+      <label className="gc-text gc-profile-heading-md gc-margin-bottom">{props.title}</label>
+        <ul className="list-unstyled">
         { props.services.map(item =>
           (
-            <div key={item} className="gc-inline-block">
-              <p className="text-capitalize gc-text gc-text--slim">
-                {item}
-              </p>
-            </div>
+
+                <li key={item} className="text-capitalize gc-text gc-text--lg">
+                  {item}
+                </li>
           )
         )}
-      </div>
+        </ul>
     </div>
   );
 };

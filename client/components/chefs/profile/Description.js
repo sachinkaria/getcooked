@@ -3,8 +3,9 @@ import React from 'react';
 const Description = (props) => {
   return (
     <div>
+      <h4 className="gc-text gc-profile-heading-md">What we're about...</h4>
       {
-        props.description.map(paragraph => <p key={paragraph} className="gc-text gc-text--slim gc-margin-bottom">{paragraph}</p>)
+        props.description.map(paragraph => <p key={paragraph} className="gc-text gc-text--lg gc-margin-bottom">{paragraph}</p>)
       }
     </div>
   );

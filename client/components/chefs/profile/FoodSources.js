@@ -2,14 +2,14 @@ import React from 'react';
 
 const Description = (props) => {
   return (
-    <div>
-      <label className="gc-text gc-margin-bottom gc-form-heading gc-bold">Suppliers & Sources</label>
+    <div className="text-left">
+      <label className="gc-text gc-profile-heading-md gc-margin-bottom">Suppliers & Sources</label>
       {
         props.sources.map(source =>
           (
             <div key={source.name}>
-              <h4 className="gc-text gc-bold">{source.name}</h4>
-              <p className="gc-text gc-text--slim gc-margin-bottom">{source.description}</p>
+              <h4 className="gc-text gc-text--lg gc-bold">{source.name}</h4>
+              <p className="gc-text gc-text--lg gc-margin-bottom">{source.description}</p>
             </div>
           )
         )

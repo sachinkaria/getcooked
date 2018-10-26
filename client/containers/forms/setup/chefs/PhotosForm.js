@@ -59,26 +59,26 @@ class Photos extends Component {
 
     reader.readAsDataURL(file);
   };
-  //
-  // onCoverUpload(e) {
-  //   (this.props.user.data && this.props.user.data.coverPhoto) && this.onDelete('cover');
-  //
-  //   const reader = new FileReader();
-  //   const file = e.target.files[0];
-  //
-  //   reader.onload = (upload) => {
-  //     this.setState({
-  //       data_uri: upload.target.result,
-  //       filename: file.name,
-  //       filetype: file.type,
-  //       processing: 'cover'
-  //     }, () => {
-  //       this.handleFormSubmit('cover');
-  //     });
-  //   };
-  //
-  //   reader.readAsDataURL(file);
-  // };
+
+  onCoverUpload(e) {
+    (this.props.user.data && this.props.user.data.coverPhoto) && this.onDelete('cover');
+
+    const reader = new FileReader();
+    const file = e.target.files[0];
+
+    reader.onload = (upload) => {
+      this.setState({
+        data_uri: upload.target.result,
+        filename: file.name,
+        filetype: file.type,
+        processing: 'cover'
+      }, () => {
+        this.handleFormSubmit('cover');
+      });
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   onImagesUpload(e) {
     let FILE_NUMBER = 1;
@@ -151,17 +151,17 @@ class Photos extends Component {
               onUpload={this.onProfileUpload}
             />
           </div>
-          {/*<div className="gc-margin-bottom--lg">*/}
-          {/*<label className="gc-text gc-margin-bottom">Cover Photo</label>*/}
-          {/*<br />*/}
-          {/*<ImageUpload*/}
-          {/*inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}*/}
-          {/*type="cover"*/}
-          {/*image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}*/}
-          {/*onDelete={() => this.onDelete('cover')}*/}
-          {/*onUpload={this.onCoverUpload}*/}
-          {/*/>*/}
-          {/*</div>*/}
+          <div className="gc-margin-bottom--lg">
+          <label className="gc-text gc-margin-bottom">Cover Photo</label>
+          <br />
+          <ImageUpload
+          inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}
+          type="cover"
+          image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}
+          onDelete={() => this.onDelete('cover')}
+          onUpload={this.onCoverUpload}
+          />
+          </div>
           <div className="gc-margin-bottom--lg">
             <h4 className="gc-text gc-bold">Connect Instagram Account</h4>
             {

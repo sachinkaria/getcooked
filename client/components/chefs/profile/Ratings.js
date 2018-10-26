@@ -8,7 +8,7 @@ const Ratings = (props) => {
   return (
     <Row className="gc-center">
       <Col sm={6}>
-        <p className="gc-text gc-bold gc-margin-none">Food <span className="gc-profile-text-xs">({parseFloat(props.ratings.food)})</span></p>
+        <p className="gc-text gc-text--lg gc-bold gc-margin-none">Food <span className="gc-profile-text-xs">({parseFloat(props.ratings.food)})</span></p>
         <StarRatingComponent
           editing={false}
           className="gc-star-rating"
@@ -21,7 +21,7 @@ const Ratings = (props) => {
         />
       </Col>
       <Col sm={6}>
-        <p className="gc-text gc-bold gc-margin-none">Value <span className="gc-profile-text-xs">({parseFloat(props.ratings.value)})</span></p>
+        <p className="gc-text gc-text--lg gc-bold gc-margin-none">Value <span className="gc-profile-text-xs">({parseFloat(props.ratings.value)})</span></p>
         <StarRatingComponent
           editing={false}
           className="gc-star-rating"
@@ -33,7 +33,7 @@ const Ratings = (props) => {
         />
       </Col>
       <Col sm={6}>
-        <p className="gc-text gc-bold gc-margin-none">Service <span className="gc-profile-text-xs">({parseFloat(props.ratings.service)})</span></p>
+        <p className="gc-text gc-text--lg gc-bold gc-margin-none">Service <span className="gc-profile-text-xs">({parseFloat(props.ratings.service)})</span></p>
         <StarRatingComponent
           editing={false}
           className="gc-star-rating"
@@ -45,7 +45,7 @@ const Ratings = (props) => {
         />
       </Col>
       <Col sm={6}>
-        <p className="gc-text gc-bold gc-margin-none">Hygiene <span className="gc-profile-text-xs">({parseFloat(props.ratings.hygiene)})</span></p>
+        <p className="gc-text gc-text--lg gc-bold gc-margin-none">Hygiene <span className="gc-profile-text-xs">({parseFloat(props.ratings.hygiene)})</span></p>
         <StarRatingComponent
           editing={false}
           className="gc-star-rating"

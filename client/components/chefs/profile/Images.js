@@ -8,14 +8,12 @@ const Images = (props) => {
   return (
     <div>
       {NUMBER_OF_IMAGES > 0 && (
-        <Row>
-          <Col>
-            <h3 className="gc-center gc-form-heading gc-margin-bottom">Photos</h3>
-            <div style={{ paddingLeft: '10px', paddingRight: '10px' }}>
-              <LightBox images={props.images} />
-            </div>
-          </Col>
-        </Row>
+        <div className="text-left">
+          <h3 className="gc-text gc-profile-heading-md">Photos</h3>
+          <div>
+            <LightBox images={props.images} />
+          </div>
+        </div>
       )
       }
     </div>

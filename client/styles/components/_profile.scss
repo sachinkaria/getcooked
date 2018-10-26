@@ -238,9 +238,6 @@
   border-radius: 0;
 
   @include aspect-ratio(1, 1);
-  @include breakpoint(mobileonly) {
-    margin-top: -80px;
-  }
 
   &.gc-profile-photo--without-margins {
     margin-bottom: 0;

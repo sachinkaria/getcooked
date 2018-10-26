@@ -52,7 +52,6 @@ export function getChef(id) {
   return function (dispatch) {
     axios.get(`/api/chefs/${id}`)
       .then((response) => {
-      console.log(response.data);
         dispatch({
           type: GET_CHEF,
           payload: response.data

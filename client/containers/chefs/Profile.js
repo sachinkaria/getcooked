@@ -70,7 +70,7 @@ class Profile extends React.Component {
                     </Col>
                     <Col xs={12} sm={6} lg={7}>
                       <Heading text={CHEF.displayName} />
-                      <h4 className="gc-profile-text">London, United Kingdom</h4>
+                      <h4 className="gc-profile-text gc-grey">London, United Kingdom</h4>
                       <StarRatingComponent
                         editing={false}
                         className="gc-star-rating"

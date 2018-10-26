@@ -38,5 +38,5 @@ module.exports = function (app) {
   app.get('/api/users/me', requireAuth, User.getCurrentUser);
 
   // Connect instagram
-  app.get('/api/users/me/instagram', requireAuth, User.instagramAuth);
+  app.get('/api/users/me/instagram/handleAuth', requireAuth, User.instagramAuth);
 };

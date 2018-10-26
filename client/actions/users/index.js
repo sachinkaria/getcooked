@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { UPDATE_USER } from '../types';
+import { UPDATE_USER, GET_INSTAGRAM_FEED } from '../types';
 import { errorHandler, successHandler, processingFileUpload, completedFileUpload } from '../public';
 
 export function updateUser(user, url, showSuccess) {
@@ -105,4 +105,30 @@ export function updatePassword(password, showSuccess) {
         errorHandler(dispatch, 'There was a problem changing your password. Please try again.');
       });
   };
+}
+
+export function authenticateInstagram(code) {
+  const AUTH_HEADERS = { headers: { Authorization: localStorage.getItem('token') } };
+  return function (dispatch) {
+    axios.get(`/api/users/me/instagram/handleAuth?code=${code}`, AUTH_HEADERS)
+      .then((response) => {
+        dispatch({ type: UPDATE_USER, payload: response.data });
+        browserHistory.push('/dashboard/profile/photos');
+      })
+      .catch(() => {
+        errorHandler(dispatch, 'There was a problem authenticating your instagram account.');
+      });
+  };
+}
+
+export function getInstagramFeed(code) {
+ return function (dispatch) {
+  axios.get(`https://api.instagram.com/v1/users/self/media/recent/?access_token=${code}`)
+    .then((response) => {
+      dispatch({ type: GET_INSTAGRAM_FEED, payload: response.data.data });
+    })
+    .catch(() => {
+      errorHandler(dispatch, 'There was a problem getting your instagram feed.');
+    });
+ }
 }

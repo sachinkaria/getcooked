@@ -270,13 +270,14 @@ function updatePassword(req, res) {
   }
 }
 
-function instagramAuth(req, res){
+function instagramAuth(req, res) {
   const user = req.user;
   console.log('Authenticating Instagram Account');
   if (req.query && req.query.code) {
     const CODE = req.query.code;
     request
       .post('https://api.instagram.com/oauth/access_token')
+      .type('form')
       .send({
         client_id: config.INSTAGRAM_CLIENT_ID,
         client_secret: config.INSTAGRAM_CLIENT_SECRET,
@@ -289,9 +290,11 @@ function instagramAuth(req, res){
         user.social.instagram.userName = response.body.user.username;
         user.save();
         res.send(user);
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
       });
   }
-  res.redirect(
-    `https://api.instagram.com/oauth/authorize/?client_id=${config.INSTAGRAM_CLIENT_ID}&redirect_uri=${config.INSTAGRAM_REDIRECT_URI}&response_type=code`
-  );
 }
+

@@ -70,6 +70,29 @@ function Privacy() {
               </ul>
 
               <br />
+
+              <h2 className="gc-profile-heading-sm">
+                Social Media
+              </h2>
+              <h3 className="gc-text gc-bold">Instagram Account</h3>
+              <p>
+                Your connected instagram account is only used for display purposes to show off your work and we are not liable for the content displayed.
+              </p>
+              <p>
+                We will never store, lease, distribute or sell your Instagram data to third parties
+              </p>
+              <p>You are agree that:</p>
+              <ul>
+                <li>
+                  The Instagram account authorized and publicly displayed accurately represents your work and brand.
+                </li>
+                <li>
+                  You permit us to display your Instagram feed publicly once you have authenticated your account.
+                </li>
+              </ul>
+
+              <br />
+
               <h2 className="gc-profile-heading-sm">
                 Cookies and how we use them
               </h2>

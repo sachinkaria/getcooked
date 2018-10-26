@@ -38,6 +38,17 @@ class Profile extends React.Component {
     const CANONICAL_URL = 'https://www.getcooked.co/caterers/profile/'.concat(this.props.params.id);
     const DESCRIPTION = CHEF.description.split('***');
     const SUPPLIERS = CHEF.foodSuppliers && CHEF.foodSuppliers.filter(supplier => supplier.name && supplier.description);
+    let PHOTOS = [];
+    if (CHEF.instagramFeed) {
+      CHEF.instagramFeed.forEach((item) => {
+        PHOTOS.push({
+          id: item.id,
+          src: item.images.standard_resolution.url
+        });
+      });
+    }
+    PHOTOS = PHOTOS.concat(CHEF.photos);
+
     heap.track('View Caterer', { name: CHEF.displayName, id: this.props.params.id });
 
     return (
@@ -124,12 +135,10 @@ class Profile extends React.Component {
                     </Row>
                   </div>
                   {
-                    (CHEF.photos.length > 0) &&
+                    (PHOTOS.length > 0) &&
                     <div>
                       <hr />
-                      <div>
-                        <Images images={CHEF.photos} />
-                      </div>
+                        <Images images={PHOTOS} />
                     </div>
                   }
                   <hr />

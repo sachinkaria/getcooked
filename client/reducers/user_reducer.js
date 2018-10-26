@@ -7,13 +7,14 @@ import {
   GET_BOOKING,
   GET_INBOX,
   GET_CONVERSATION,
+  GET_INSTAGRAM_FEED,
   PROCESSING_FILE_UPLOAD,
   COMPLETED_FILE_UPLOAD,
   SENT_BOOKING_REQUEST,
   RESET_BOOKING_REQUEST
 } from '../actions/types';
 
-const INITIAL_STATE = { bookings: [], booking: null, events: [], event: null, inbox: [], conversation: [], data: null, processing_file_upload: false, sent_booking_request: false };
+const INITIAL_STATE = { bookings: [], booking: null, events: [], event: null, inbox: [], conversation: [], data: null, processing_file_upload: false, sent_booking_request: false, instagramFeed: null };
 
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -33,6 +34,8 @@ export default function (state = INITIAL_STATE, action) {
       return { ...state, inbox: action.payload };
     case GET_CONVERSATION:
       return { ...state, conversation: action.payload };
+    case GET_INSTAGRAM_FEED:
+      return { ...state, instagramFeed: action.payload };
     case PROCESSING_FILE_UPLOAD:
       return { ...state, processing_file_upload: true };
     case COMPLETED_FILE_UPLOAD:

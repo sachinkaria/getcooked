@@ -53,14 +53,13 @@ const LightBox = React.createClass({
 
   renderGallery() {
     return (
-      <div className="gc-image-container">
+      <div id="photos">
         {
           this.state.images.map((image, i) => (
-            <Thumbnail
+            <img
               key={image.src}
               onClick={e => this.openLightbox(i, e)}
-              className="gc-lightbox-thumbnail img-responsive"
-              style={{ backgroundImage: `url(${image.src})` }}
+              src={image.src}
             />
           ))
         }

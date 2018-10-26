@@ -151,46 +151,46 @@ class Photos extends Component {
               onUpload={this.onProfileUpload}
             />
           </div>
-          <div className="gc-margin-bottom--lg">
-          <label className="gc-text gc-margin-bottom">Cover Photo</label>
-          <br />
-          <ImageUpload
-          inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}
-          type="cover"
-          image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}
-          onDelete={() => this.onDelete('cover')}
-          onUpload={this.onCoverUpload}
-          />
-          </div>
-          <div className="gc-margin-bottom--lg">
-            <h4 className="gc-text gc-bold">Connect Instagram Account</h4>
-            {
-              (user.social && user.social.instagram.userName) ?
-                <div>
-                  <p className="gc-text">Connected to <span
-                    className="gc-orange">{user.social.instagram.userName}</span></p>
-                  {(INSTA && INSTA.length > 0) &&
-                  <section id="photos">
-                    {
-                      INSTA.map(post => (
-                        <img
-                          src={post.images.low_resolution.url}
-                          alt="unknown"
-                        />
-                      ))
-                    }
-                  </section>
-                  }
-                </div>
-                :
-                <Button
-                  className="gc-btn gc-btn--white"
-                  onClick={() => this.authenticateInstagram()}
-                >
-                  Connect Instagram
-                </Button>
-            }
-          </div>
+          {/*<div className="gc-margin-bottom--lg">*/}
+          {/*<label className="gc-text gc-margin-bottom">Cover Photo</label>*/}
+          {/*<br />*/}
+          {/*<ImageUpload*/}
+          {/*inProgress={this.state.processing === 'cover' && this.props.user.processing_file_upload}*/}
+          {/*type="cover"*/}
+          {/*image={this.props.user.data ? this.props.user.data.coverPhoto || null : null}*/}
+          {/*onDelete={() => this.onDelete('cover')}*/}
+          {/*onUpload={this.onCoverUpload}*/}
+          {/*/>*/}
+          {/*</div>*/}
+          {/*<div className="gc-margin-bottom--lg">*/}
+            {/*<h4 className="gc-text gc-bold">Connect Instagram Account</h4>*/}
+            {/*{*/}
+              {/*(user.social && user.social.instagram.userName) ?*/}
+                {/*<div>*/}
+                  {/*<p className="gc-text">Connected to <span*/}
+                    {/*className="gc-orange">{user.social.instagram.userName}</span></p>*/}
+                  {/*{(INSTA && INSTA.length > 0) &&*/}
+                  {/*<section id="photos">*/}
+                    {/*{*/}
+                      {/*INSTA.map(post => (*/}
+                        {/*<img*/}
+                          {/*src={post.images.low_resolution.url}*/}
+                          {/*alt="unknown"*/}
+                        {/*/>*/}
+                      {/*))*/}
+                    {/*}*/}
+                  {/*</section>*/}
+                  {/*}*/}
+                {/*</div>*/}
+                {/*:*/}
+                {/*<Button*/}
+                  {/*className="gc-btn gc-btn--white"*/}
+                  {/*onClick={() => this.authenticateInstagram()}*/}
+                {/*>*/}
+                  {/*Connect Instagram*/}
+                {/*</Button>*/}
+            {/*}*/}
+          {/*</div>*/}
           <div className="gc-margin-bottom--lg">
             <label className="gc-text">Photos</label>
             <p className="gc-text gc-grey">Share photos of your team, food, drinks and more. Give your viewers a visual idea of the delicous treats they can experience when they work with you!</p>

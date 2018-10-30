@@ -6,7 +6,7 @@ import { reduxForm} from 'redux-form';
 import { browserHistory } from 'react-router';
 import FaTrash from 'react-icons/lib/fa/trash';
 import ImageUpload from '../../../../components/ImageUpload';
-import { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos, deleteMultiple, getInstagramFeed } from '../../../../actions/users';
+import { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos, deleteMultiple, getInstagramFeed, updateUser } from '../../../../actions/users';
 import Steps from '../../../../components/chefs/setup/steps.json';
 
 const form = reduxForm({
@@ -31,9 +31,10 @@ class Photos extends Component {
     this.onDelete = this.onDelete.bind(this);
     this.authenticateInstagram = this.authenticateInstagram.bind(this);
     this.renderView = this.renderView.bind(this);
+    this.disconnectInstagram = this.disconnectInstagram.bind(this);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getCurrentUser();
     if (this.props.user.data.social && this.props.user.data.social.instagram.accessToken) {
       this.props.getInstagramFeed(this.props.user.data.social.instagram.accessToken);
@@ -123,6 +124,12 @@ class Photos extends Component {
     window.location.href = `https://api.instagram.com/oauth/authorize/?client_id=${process.env.INSTAGRAM_CLIENT_ID}&redirect_uri=${process.env.INSTAGRAM_REDIRECT_URL}&response_type=code`;
   }
 
+  disconnectInstagram() {
+    this.props.updateUser({
+      social: { instagram : undefined }
+    }, null, true);
+  }
+
   handleSubmit() {
     browserHistory.push(Steps.photos.onNext);
   }
@@ -162,35 +169,40 @@ class Photos extends Component {
           {/*onUpload={this.onCoverUpload}*/}
           {/*/>*/}
           {/*</div>*/}
-          {/*<div className="gc-margin-bottom--lg">*/}
-            {/*<h4 className="gc-text gc-bold">Connect Instagram Account</h4>*/}
-            {/*{*/}
-              {/*(user.social && user.social.instagram.userName) ?*/}
-                {/*<div>*/}
-                  {/*<p className="gc-text">Connected to <span*/}
-                    {/*className="gc-orange">{user.social.instagram.userName}</span></p>*/}
-                  {/*{(INSTA && INSTA.length > 0) &&*/}
-                  {/*<section id="photos">*/}
-                    {/*{*/}
-                      {/*INSTA.map(post => (*/}
-                        {/*<img*/}
-                          {/*src={post.images.low_resolution.url}*/}
-                          {/*alt="unknown"*/}
-                        {/*/>*/}
-                      {/*))*/}
-                    {/*}*/}
-                  {/*</section>*/}
-                  {/*}*/}
-                {/*</div>*/}
-                {/*:*/}
-                {/*<Button*/}
-                  {/*className="gc-btn gc-btn--white"*/}
-                  {/*onClick={() => this.authenticateInstagram()}*/}
-                {/*>*/}
-                  {/*Connect Instagram*/}
-                {/*</Button>*/}
-            {/*}*/}
-          {/*</div>*/}
+          <div className="gc-margin-bottom--lg">
+            <h4 className="gc-text gc-bold">Connect Instagram Account</h4>
+            {
+              (user.social && user.social.instagram.userName) ?
+                <div>
+                  <p className="gc-text">Connected to <span
+                    className="gc-orange">{user.social.instagram.userName}</span></p>
+
+                  <Button onClick={() => this.disconnectInstagram()} className="gc-btn gc-btn-white gc-btn-white--error gc-margin-bottom">
+                    Disconnect
+                  </Button>
+                  {(INSTA && INSTA.length > 0) &&
+                  <section id="photos">
+                    {
+                      INSTA.map(post => (
+                        <img
+                          key={post.id}
+                          src={post.images.low_resolution.url}
+                          alt="unknown"
+                        />
+                      ))
+                    }
+                  </section>
+                  }
+                </div>
+                :
+                <Button
+                  className="gc-btn gc-btn--white"
+                  onClick={() => this.authenticateInstagram()}
+                >
+                  Connect Instagram
+                </Button>
+            }
+          </div>
           <div className="gc-margin-bottom--lg">
             <label className="gc-text">Photos</label>
             <p className="gc-text gc-grey">Share photos of your team, food, drinks and more. Give your viewers a visual idea of the delicous treats they can experience when they work with you!</p>
@@ -249,4 +261,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos, deleteMultiple, getInstagramFeed })(form(Photos));
+export default connect(mapStateToProps, { uploadPhoto, getCurrentUser, deletePhoto, uploadMultiplePhotos, deleteMultiple, getInstagramFeed, updateUser })(form(Photos));

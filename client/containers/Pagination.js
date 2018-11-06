@@ -97,8 +97,8 @@ class Pagination extends React.Component {
        * hasRightSpill: has hidden pages to the right
        * spillOffset: number of hidden pages either to the left or to the right
        */
-      const hasLeftSpill = startPage > 2;
-      const hasRightSpill = (totalPages - endPage) > 1;
+      const hasLeftSpill = currentPage > 1;
+      const hasRightSpill = currentPage < totalPages;
       const spillOffset = totalNumbers - (pages.length + 1);
 
       switch (true) {

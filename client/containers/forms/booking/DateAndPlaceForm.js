@@ -65,7 +65,10 @@ class DateAndPlaceForm extends Component {
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           <div>
             <label className="gc-text gc-text--lg gc-text--slim">What date is your event?</label>
-            <div className="gc-margin-bottom--lg">
+            <br/>
+            <span className="gc-text gc-text--sm gc-text--slim">(Christmas day is now unavailable for caterers and chefs on our platform)</span>
+            <br/>
+            <div className="gc-margin-bottom--lg gc-margin-top">
               <DatePicker
                 name="date"
                 date={this.state.date}

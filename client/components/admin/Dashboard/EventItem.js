@@ -317,7 +317,7 @@ function EventItem({userItem, booking, updateEvent}) {
                                                   className="text-capitalize">{message.status}</span></span>
                                               </Col>
                                               <Col xs={12} sm={8}>
-                                                <p>{message.body}</p>
+                                                <p style={{ whiteSpace: 'pre-wrap'}}>{message.body}</p>
                                               </Col>
                                             </Row>
                                           </Panel.Body>

@@ -6,7 +6,6 @@ import moment from 'moment';
 function ListItem(props) {
   const { event } = props;
   return (
-    <Col sm={12}>
       <Panel className="gc-panel">
         <Panel.Body className="gc-margin-bottom">
           <Row>
@@ -46,7 +45,6 @@ function ListItem(props) {
           </Row>
         </Panel.Body>
       </Panel>
-    </Col>
   );
 }
 

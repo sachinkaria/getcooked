@@ -16,7 +16,7 @@ class Events extends React.Component {
       const { events } = this.props;
       return (
         <Row>
-          <Col className="gc-center">
+          <Col xs={12} className="gc-center">
             {events.map((event, i) =>
               (
                 <ListItem

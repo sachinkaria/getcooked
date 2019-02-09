@@ -114,18 +114,6 @@ class NavigationBar extends React.Component {
             }
           </Navbar.Collapse>
         </Navbar>
-        {
-          (isAuthenticated() && user.data && showNav && !user.data.termsAccepted && user.data.role === 'chef') && (
-          <div className="gc-popup">
-            <Row className="gc-margin-bottom--lg gc-center">
-              <Col xs={12} sm={6} smOffset={3}>
-                <p className="gc-text gc-text--lg gc-white gc-center">Our pricing model has been updated! We listened to your feedback and bookings are now on a commission basis. Do you understand and accept our <Link className="gc-light-grey" target="_blank" to="/terms">terms and conditions</Link> and <Link className="gc-light-grey" target="_blank" to="/privacy">privacy policy?</Link></p>
-                <Button bsClass="success" className="btn btn-success" onClick={() => this.acceptTerms()}>Accept</Button>
-              </Col>
-            </Row>
-          </div>
-          )
-        }
         <div className="gc-container">
           {this.props.children}
         </div>

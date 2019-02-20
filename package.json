@@ -13,7 +13,7 @@
     "lint": "eslint -c .eslintrc.yml *.js client --cache --quiet"
   },
   "engines": {
-    "node": "8.7.0",
+    "node": "10.13.0",
     "npm": "5.6.0"
   },
   "author": "Sachin Karia",

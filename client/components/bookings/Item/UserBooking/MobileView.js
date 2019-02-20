@@ -2,6 +2,7 @@
  * Created by sachinkaria on 18/10/2018.
  */
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import {browserHistory} from 'react-router';
 import {Col, Panel, Row, Button, Tabs, Tab} from 'react-bootstrap';
@@ -10,6 +11,7 @@ import BookingPaymentForm from '../../../../containers/forms/BookingPayment';
 import { getBooking, accept, decline, update } from '../../../../actions/bookings';
 import {create} from '../../../../actions/messages';
 import Chat from '../../../../components/Chat';
+import ReviewForm from '../../../../containers/ReviewForm';
 
 
 class MobileView extends React.Component {
@@ -91,6 +93,14 @@ class MobileView extends React.Component {
             <Button className="gc-btn gc-btn-white gc-margin-bottom" onClick={browserHistory.goBack}>Back to
               Event</Button>
           </Col>
+          {
+            (moment(booking.date).isBefore(moment()) && booking.status === 'confirmed' && !booking.review) &&
+            <Col xs={12} sm={8} smPull={4}>
+              <p className="gc-profile-heading-sm gc-center gc-margin-bottom--lg">Leave a review</p>
+              <ReviewForm bookingId={booking._id} chefId={booking.chef.id} />
+              <hr />
+            </Col>
+          }
         </Row>
         <Tabs animation={false} defaultActiveKey={1} id="uncontrolled-tab-example">
           <Tab eventKey={1} title="Summary" style={{ paddingTop: '20px', paddingBottom: '20px' }}>
@@ -164,7 +174,7 @@ class MobileView extends React.Component {
                           :
                           <div>
                             <h4 className="gc-text gc-text--lg">Book a FREE photographer for your event</h4>
-                            <Button onClick={() => this.bookPhotographer()} disabled={booking.status !== 'confirmed'} className="gc-btn gc-btn--lg gc-btn--orange">Book now</Button>
+                            <Button onClick={() => this.bookPhotographer()} disabled={(booking.status !== 'confirmed' || moment(booking.date).isBefore(moment()))} className="gc-btn gc-btn--lg gc-btn--orange">Book now</Button>
                           </div>
                       }
                     </Panel.Body>

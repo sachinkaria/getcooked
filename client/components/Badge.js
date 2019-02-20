@@ -4,7 +4,7 @@ import { Image } from 'react-bootstrap';
 
 
 const Badge = props => (
-  <Image className="gc-badge" src={props.logo} circle />
+  <Image className="gc-badge" src={props.logo} />
 );
 
 

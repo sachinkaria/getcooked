@@ -1,12 +1,14 @@
 import React from 'react';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import {browserHistory} from 'react-router';
 import {Col, Panel, Row, Button, Tabs, Tab} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import BookingPaymentForm from '../../../../containers/forms/BookingPayment';
-import { getBooking, accept, decline, update } from '../../../../actions/bookings';
+import {getBooking, accept, decline, update} from '../../../../actions/bookings';
 import {create} from '../../../../actions/messages';
 import Chat from '../../../../components/Chat';
+import ReviewForm from '../../../../containers/ReviewForm';
 
 
 class UserBooking extends React.Component {
@@ -19,7 +21,7 @@ class UserBooking extends React.Component {
     this.makePayment = this.makePayment.bind(this);
     this.bookPhotographer = this.bookPhotographer.bind(this);
 
-    this.state = { showPaymentForm: false };
+    this.state = {showPaymentForm: false};
   }
 
   componentWillMount() {
@@ -56,7 +58,7 @@ class UserBooking extends React.Component {
   }
 
   bookPhotographer() {
-    this.props.update(this.props.id, { products: { photographer: true } });
+    this.props.update(this.props.id, {products: {photographer: true}});
     window.location.reload();
   }
 
@@ -65,9 +67,9 @@ class UserBooking extends React.Component {
   }
 
   renderView() {
-    const { booking, user } = this.props;
+    const {booking, user} = this.props;
     let ADDITIONAL_INFORMATION = null;
-    const { messages } = booking;
+    const {messages} = booking;
 
     if (booking.additionalInformation) {
       ADDITIONAL_INFORMATION = {
@@ -102,43 +104,43 @@ class UserBooking extends React.Component {
                   </p>
                   {booking.status === 'deposit requested' &&
                   <div>
-                       <span className="gc-text gc-text--lg gc-text--slim">
-                  Final Quote
-                </span>
+                      <span className="gc-text gc-text--lg gc-text--slim">
+                        Final Quote
+                      </span>
                     <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{booking.quote.amount}
-                </span>
+                        £{booking.quote.amount}
+                      </span>
                     <hr className="gc-hr-sm"/>
                     <span className="gc-text gc-text--lg gc-text--slim">
-                  Deposit Due (5%)
+                        Deposit Due (5%)
                 </span>
                     <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{booking.quote.depositAmount}
-                </span>
+                        £{booking.quote.depositAmount}
+                      </span>
                   </div>
                   }
                   {booking.status === 'confirmed' &&
                   <div>
-                       <span className="gc-text gc-text--lg gc-text--slim">
-                  Final Quote
+                      <span className="gc-text gc-text--lg gc-text--slim">
+                        Final Quote
                 </span>
                     <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{booking.quote.amount}
-                </span>
+                        £{booking.quote.amount}
+                      </span>
                     <hr className="gc-hr-sm"/>
                     <span className="gc-text gc-text--lg gc-text--slim">
-                  Deposit Paid (5%)
+                        Deposit Paid (5%)
                 </span>
                     <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{booking.quote.depositAmount}
-                </span>
+                        £{booking.quote.depositAmount}
+                      </span>
                     <hr className="gc-hr-sm"/>
                     <span className="gc-text gc-text--lg gc-text--slim">
-                      Outstanding Balance
+                        Outstanding Balance
                   </span>
                     <span className="gc-text gc-text--lg gc-grey pull-right">
-                  £{booking.quote.balanceDue}
-                  </span>
+                        £{booking.quote.balanceDue}
+                      </span>
                   </div>
                   }
                   {
@@ -146,24 +148,35 @@ class UserBooking extends React.Component {
                     <span className="gc-text">This booking is unconfirmed. To confirm your booking you will be requested to pay a 5% deposit.</span>
                   }
                   {booking.status === 'deposit requested' &&
-                  <Button block className="gc-btn gc-btn--orange gc-margin-top" onClick={() => this.makePayment()}>Confirm Now</Button>
+                  <Button block className="gc-btn gc-btn--orange gc-margin-top" onClick={() => this.makePayment()}>Confirm
+                    Now</Button>
                   }
                 </Panel.Body>
               </Panel>
-              <Panel className="gc-panel text-center">
-              <Panel.Body>
-              <img className="gc-icon gc-icon--xl" src="/images/icon-camera.png" alt="Book a photographer" />
-                {
-                  booking.products.photographer ?
-                    <h4 className="gc-text gc-text--lg">Your photographer has been booked and will contact you to confirm the event.</h4>
-                    :
-                    <div>
-                      <h4 className="gc-text gc-text--lg">Book a FREE photographer for your event</h4>
-                      <Button onClick={() => this.bookPhotographer()} disabled={booking.status !== 'confirmed'} className="gc-btn gc-btn--lg gc-btn--orange">Book now</Button>
-                    </div>
-                }
-              </Panel.Body>
-              </Panel>
+              {
+                moment(booking.date).isAfter(moment()) &&
+                <Panel className="gc-panel text-center">
+                  <Panel.Body>
+                    <img className="gc-icon gc-icon--xl" src="/images/icon-camera.png" alt="Book a photographer"/>
+                    {
+                      booking.products.photographer ?
+                        <h4 className="gc-text gc-text--lg">Your photographer has been booked and will contact you to
+                          confirm the event.</h4>
+                        :
+                        <div>
+                          <h4 className="gc-text gc-text--lg">Book a FREE photographer for your event</h4>
+                          <Button
+                            onClick={() => this.bookPhotographer()}
+                            disabled={(booking.status !== 'confirmed' || moment(booking.date).isBefore(moment()))}
+                            className="gc-btn gc-btn--lg gc-btn--orange"
+                          >
+                            Book now
+                          </Button>
+                        </div>
+                    }
+                  </Panel.Body>
+                </Panel>
+              }
             </Col>
           }
           {
@@ -176,44 +189,59 @@ class UserBooking extends React.Component {
               />
             </Col>
           }
+          {
+            (moment(booking.date).isBefore(moment()) && booking.status === 'confirmed' && !booking.review) &&
+            <Col xs={12} sm={8} smPull={4}>
+              <p className="gc-profile-heading-sm gc-center gc-margin-bottom--lg">Leave a review</p>
+              <ReviewForm bookingId={booking._id} chefId={booking.chef.id} />
+            </Col>
+          }
           <Col xs={12} sm={8} smPull={4}>
-            <ul className="gc-steps bu-margin-bottom">
-              <li className={`gc-steps--item ${(booking.status === 'accepted' || booking.status === 'deposit requested' || booking.status === 'confirmed') && 'gc-steps--checked'}`}>
-                <h4 className="gc-text gc-bold">
-                  Plan your menu
-                </h4>
-                <p className="gc-grey">
-                  Use our chat feature to plan the menu for your event with your caterer.
-                </p>
-              </li>
-              <li className={`gc-steps--item ${(booking.status === 'deposit requested' || booking.status === 'confirmed') && 'gc-steps--checked'}`}>
-                <h4 className="gc-text gc-bold">
-                  Receive Final Quote
-                </h4>
-                <p className="gc-grey">
-                   Once you have decided your menu you will receive the final quote for your event.
-                </p>
-              </li>
-              <li className={`gc-steps--item ${booking.status === 'confirmed' && 'gc-steps--checked'}`}>
-                <h4 className="gc-text gc-bold">
-                  Pay Deposit
-                </h4>
-                <p className="gc-grey">
-                  Pay your 5% deposit to confirm your event. The balance of your quote is settled directly with your caterer.
-                </p>
-              </li>
-              <li className={`gc-steps--item ${booking.status === 'confirmed' && 'gc-steps--checked'}`}>
-                <h4 className="gc-text gc-bold">
-                  Confirm Booking
-                </h4>
-                <p className="gc-grey">
-                  Your booking is confirmed! Feel free to request any additional services for your booking.
-                </p>
-              </li>
-            </ul>
+            {
+              moment(booking.date).isAfter(moment()) &&
+              <ul className="gc-steps bu-margin-bottom">
+                <li
+                  className={`gc-steps--item ${(booking.status === 'accepted' || booking.status === 'deposit requested' || booking.status === 'confirmed') && 'gc-steps--checked'}`}>
+                  <h4 className="gc-text gc-bold">
+                    Plan your menu
+                  </h4>
+                  <p className="gc-grey">
+                    Use our chat feature to plan the menu for your event with your caterer.
+                  </p>
+                </li>
+                <li
+                  className={`gc-steps--item ${(booking.status === 'deposit requested' || booking.status === 'confirmed') && 'gc-steps--checked'}`}>
+                  <h4 className="gc-text gc-bold">
+                    Receive Final Quote
+                  </h4>
+                  <p className="gc-grey">
+                    Once you have decided your menu you will receive the final quote for your event.
+                  </p>
+                </li>
+                <li className={`gc-steps--item ${booking.status === 'confirmed' && 'gc-steps--checked'}`}>
+                  <h4 className="gc-text gc-bold">
+                    Pay Deposit
+                  </h4>
+                  <p className="gc-grey">
+                    Pay your 5% deposit to confirm your event. The balance of your quote is settled directly with your
+                    caterer.
+                  </p>
+                </li>
+                <li className={`gc-steps--item ${booking.status === 'confirmed' && 'gc-steps--checked'}`}>
+                  <h4 className="gc-text gc-bold">
+                    Confirm Booking
+                  </h4>
+                  <p className="gc-grey">
+                    Your booking is confirmed! Feel free to request any additional services for your booking.
+                  </p>
+                </li>
+              </ul>
+            }
+          </Col>
+          <Col xs={12} sm={8} smPull={moment(booking.date).isAfter(moment()) || booking.review ? 4 : 0}>
             <hr />
             <h2 className="gc-profile-heading-sm">Messages</h2>
-            <Chat messages={messages} user={user} otherUser={booking.chef} onSubmit={this.sendMessage}/>
+            <Chat disableInput={moment(booking.date).isBefore(moment())} messages={messages} user={user} otherUser={booking.chef} onSubmit={this.sendMessage}/>
           </Col>
         </Row>
       </div>

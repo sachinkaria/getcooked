@@ -1,5 +1,8 @@
 const Review = require('../models/review');
+const Booking = require('../models/booking');
 const _ = require('lodash');
+const request = require('superagent');
+const config = require('../config/main');
 
 module.exports.create = create;
 module.exports.list = list;
@@ -29,8 +32,26 @@ function create(req, res) {
     comment: REVIEW.comment || null
   });
 
-  review.save((err) => {
-    if (err) return (err);
-    res.jsonp(review);
+  review.save((error) => {
+    if (error) return (error);
+    Booking.findOne({ _id: req.params.bookingId }).exec((err, booking) => {
+      if (err) return (err);
+      _.extend(booking, { review: review._id });
+      booking.save();
+      sendReviewSlackNotification(USER);
+      res.jsonp(booking);
+    });
   });
+}
+
+
+function sendReviewSlackNotification(user) {
+  if (process.env.NODE_ENV === 'production') {
+    request
+      .post(config.slackBookingsWebHookUrl)
+      .send({
+        text: `${user.email} just left a review for her event!`
+      })
+      .end();
+  }
 }

@@ -23,6 +23,8 @@ require('./images/default_profile.png');
 require('./images/icon-edit.png');
 require('./images/event.png');
 require('./images/ingredients.png');
+require('./images/quality.png');
+require('./images/hygiene.png');
 require('./images/search.png');
 require('./images/bell.png');
 require('./images/loading.svg');

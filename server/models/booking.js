@@ -49,6 +49,10 @@ const BookingSchema = new Schema({
       type: Schema.ObjectId,
       ref: 'User'
     },
+    review: {
+      type: Schema.ObjectId,
+      ref: 'Review'
+    },
     contactDetails: ContactSchema,
     address: AddressSchema,
     date: Date,

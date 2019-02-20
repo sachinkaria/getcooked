@@ -17,7 +17,10 @@ function Chat(props) {
           }
         </ul>
       </div>
-      <MessageInput onSubmit={props.onSubmit} />
+      {
+       !props.disableInput &&
+        <MessageInput disableInput={props.disableInput} onSubmit={props.onSubmit} />
+      }
     </div>
   );
 };

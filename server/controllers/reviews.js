@@ -50,7 +50,7 @@ function sendReviewSlackNotification(user) {
     request
       .post(config.slackBookingsWebHookUrl)
       .send({
-        text: `${user.email} just left a review for her event!`
+        text: `${user.email} just left a review for their event!`
       })
       .end();
   }

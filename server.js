@@ -35,6 +35,7 @@ watcher.on('ready', () => {
 
 // now we should configure the API to use bodyParser and look for
 // JSON data in the request body
+app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(bodyParser.json({ limit: '30mb' }));
 

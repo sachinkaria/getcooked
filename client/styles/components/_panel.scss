@@ -1,5 +1,9 @@
 .gc-panel {
   border-radius: 0;
+
+  &.gc-panel--faq {
+    margin: -1px 0 0 0;
+  }
 }
 
 .gc-panel--bold {

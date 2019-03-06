@@ -68,3 +68,30 @@ export const POSTS = [
     src: '/blog/what-is-sustainable-catering'
   }
 ];
+
+export const FAQ_USERS = [
+  {
+    title: 'What happens now?',
+    body: 'We will give you a call to confirm your booking. After that your event details will be sent out to suitable chefs and caterers on our platform and those that are free will be in touch. If you do not answer our call we will assume your booking has been cancelled.'
+  },
+  {
+    title: 'How long will it take for caterers or chefs to be in touch?',
+    body: 'Usually, you will receive an email on your registered email address within 48 hours of submitting your event.'
+  },
+  {
+    title: 'When do I have to pay?',
+    body: 'You are only required to put down a deposit on your booking once you have confirmed the menu and final quote with your preferred caterer. Thereafter, you can settle the balance directly with your caterer.'
+  },
+  {
+    title: 'Can I cancel my booking?',
+    body: 'You can cancel your booking at anytime.'
+  },
+  {
+    title: 'Does my caterer or chef offer other services or equipment?',
+    body: 'Every chef and caterer can offer different services. These usually come as an added cost and that can be discussed directly with them.'
+  },
+  {
+    title: 'Can I change my event details?',
+    body: 'If you would like to change some of the details of your event feel free to contact us via email at team@getcooked.co.'
+  }
+];

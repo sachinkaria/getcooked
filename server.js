@@ -6,6 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const config = require('./server/config/main');
 const chokidar = require('chokidar');
+const compression = require('compression');
 const authRoutes = require('./server/routes/user');
 const adminRoutes = require('./server/routes/admin');
 const bookingRoutes = require('./server/routes/booking');
@@ -35,6 +36,7 @@ watcher.on('ready', () => {
 
 // now we should configure the API to use bodyParser and look for
 // JSON data in the request body
+app.use(compression());
 app.use(require('prerender-node').set('prerenderToken', process.env.PRERENDER_TOKEN));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(bodyParser.json({ limit: '30mb' }));

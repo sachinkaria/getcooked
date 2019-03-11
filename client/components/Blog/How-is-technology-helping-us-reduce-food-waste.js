@@ -4,7 +4,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import '../../images/food-waste.jpg';
+import '../../images/food-waste.webp';
 import { POSTS } from '../../utils/data';
 import ListItem from './ListItem';
 
@@ -26,7 +26,7 @@ function Blockchain() {
           content="Did you know that roughly one third of all food produced is either lost or wasted? This amounts
           to around 1.3 billion tonnes of food every single year."
         />
-        <meta property="og:image" alt="how is technology helping us reduce food waste" content="https://www.getcooked.co/images/food-waste.jpg" />
+        <meta property="og:image" alt="how is technology helping us reduce food waste" content="https://www.getcooked.co/images/food-waste.webp" />
         <meta property="og:url" content="https://www.getcooked.co/blog/how-is-technology-helping-us-reduce-food-waste" />
       </Helmet>
       <Row>
@@ -40,7 +40,7 @@ function Blockchain() {
               <img
                 style={{ width: '100%', paddingTop: '15px', marginBottom: '25px' }}
                 alt="food waste"
-                src="/images/food-waste.jpg"
+                src="/images/food-waste.webp"
               />
             </Col>
             <Col xs={12}>

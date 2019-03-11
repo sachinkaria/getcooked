@@ -5,7 +5,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import '../../images/catering-3.jpg';
+import '../../images/catering-3.webp';
 import { POSTS } from '../../utils/data';
 import ListItem from './ListItem';
 
@@ -18,7 +18,7 @@ function BookingACaterer() {
         <link rel="canonical" href="https://www.getcooked.co/blog/7-things-to-consider-when-booking-a-caterer" />
         <meta name="description" content="When planning an event, you need a plan of attack to choose and book a caterer - especially if food and service is a big part of your event." />
         <meta property="og:description" content="When planning an event, you need a plan of attack to choose and book a caterer - especially if food and service is a big part of your event." />
-        <meta property="og:image" alt="7 things to consider when booking a caterer" content="https://scontent.flhr4-1.fna.fbcdn.net/v/t1.0-9/35238522_603932340005662_7642992469004517376_n.jpg?_nc_cat=0&oh=2262eddcb82de17c848a3a143326336d&oe=5BB0E837" />
+        <meta property="og:image" alt="7 things to consider when booking a caterer" content="https://scontent.flhr4-1.fna.fbcdn.net/v/t1.0-9/35238522_603932340005662_7642992469004517376_n.webp?_nc_cat=0&oh=2262eddcb82de17c848a3a143326336d&oe=5BB0E837" />
         <meta property="og:url" content="https://www.getcooked.co/blog/7-things-to-consider-when-booking-a-caterer" />
       </Helmet>
       <Row>
@@ -32,7 +32,7 @@ function BookingACaterer() {
               <img
                 style={{ width: '100%', paddingTop: '15px', marginBottom: '25px' }}
                 alt="Booking a caterer"
-                src="/images/catering-3.jpg"
+                src="/images/catering-3.webp"
               />
             </Col>
             <Col xs={12}>

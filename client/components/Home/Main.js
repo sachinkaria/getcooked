@@ -7,7 +7,7 @@ import { MODAL } from '../../utils/data';
 
 function Main({ eventSubmit }) {
   const style = {
-    backgroundImage: 'url(/images/dining.jpg)',
+    backgroundImage: 'url(/images/dining.webp)',
     backgroundSize: 'cover'
   };
   return (

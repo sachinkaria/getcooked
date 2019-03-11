@@ -11,7 +11,7 @@ function WhoWeAre() {
               <img
                 style={{ width: '100%', paddingTop: '15px' }}
                 alt="Cater events around you"
-                src="/images/dinner.jpg"
+                src="/images/dinner.webp"
               />
             </Col>
             <Col sm={6} smPull={6}>

@@ -5,7 +5,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Button, Row, Col, Panel } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import '../../images/catering-3.jpg';
+import '../../images/catering-3.webp';
 import CoverPhoto from '../../components/chefs/profile/CoverPicture';
 
 function BookingACaterer() {
@@ -28,14 +28,14 @@ of the rise of Urban Farming."
         <meta
           property="og:image"
           alt="Supper Club"
-          content="https://www.getcooked.co/images/event-poster.jpg"
+          content="https://www.getcooked.co/images/event-poster.webp"
         />
         <meta
           property="og:url"
           content="https://www.getcooked.co/events/supper-club-the-urban-farming-debate"
         />
       </Helmet>
-      <CoverPhoto photoUrl={'/images/event-poster.jpg'} />
+      <CoverPhoto photoUrl={'/images/event-poster.webp'} />
       <Row>
         <Col xs={12} sm={8} smOffset={2}>
           <Row>

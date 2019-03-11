@@ -22,7 +22,7 @@ CoverPicture.propTypes = {
 };
 
 CoverPicture.defaultProps = {
-  photoUrl: 'images/chef1.jpg'
+  photoUrl: 'images/chef1.webp'
 };
 
 export default CoverPicture;

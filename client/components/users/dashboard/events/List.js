@@ -31,7 +31,7 @@ class Events extends React.Component {
                     <Panel.Body>
                       <Row>
                         <Col xs={12}>
-                          <Image src="/images/michael.jpg" style={{width: '100%', marginBottom: '10px'}}/>
+                          <Image src="/images/michael.webp" style={{width: '100%', marginBottom: '10px'}}/>
                           <p className="gc-text gc-text--lg gc-bold gc-margin-none">
                             Michael
                           </p>
@@ -92,14 +92,14 @@ class Events extends React.Component {
             </Col>
             <Col xs={12} sm={6}>
               <BlogThumbnail
-                backgroundImage="url(/images/tableware.jpg)"
+                backgroundImage="url(/images/tableware.webp)"
                 heading="5 Things To Consider When Planning Your Catering Budget"
                 path={'/blog/5-things-to-consider-when-planning-your-catering-budget'}
               />
             </Col>
             <Col xs={12} sm={6}>
               <BlogThumbnail
-                backgroundImage="url(/images/carrots.jpg)"
+                backgroundImage="url(/images/carrots.webp)"
                 heading=" What is Sustainable Catering?"
                 path={'/blog/what-is-sustainable-catering'}
               />

@@ -12,7 +12,7 @@ function AreYouACaterer() {
               <img
                 style={{ width: '100%', paddingTop: '15px' }}
                 alt="Cater events around you"
-                src="/images/catering.jpg"
+                src="/images/catering.webp"
               />
             </Col>
             <Col sm={6}>

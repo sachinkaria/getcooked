@@ -23,7 +23,7 @@ ProfilePicture.propTypes = {
 };
 
 ProfilePicture.defaultProps = {
-  photoUrl: 'images/chef1.jpg',
+  photoUrl: 'images/chef1.webp',
   withoutMargins: false
 };
 

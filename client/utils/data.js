@@ -39,31 +39,31 @@ export const BOOKING_MODAL = {
 export const POSTS = [
   {
     title: '5 Things to Consider When Planning Your Catering Budget',
-    image: '/images/tableware.jpg',
+    image: '/images/tableware.webp',
     date: '5th August 2018',
     src: '/blog/5-things-to-consider-when-planning-your-catering-budget'
   },
   {
     title: 'How is technology helping us reduce food waste?',
-    image: '/images/food-waste.jpg',
+    image: '/images/food-waste.webp',
     date: '25th June 2018',
     src: '/blog/how-is-technology-helping-us-reduce-food-waste'
   },
   {
     title: 'How Blockchain Can Change the Food Supply Chain',
-    image: '/images/blockchain.jpg',
+    image: '/images/blockchain.webp',
     date: '11th June 2018',
     src: '/blog/how-blockchain-can-change-the-food-supply-chain'
   },
   {
     title: '7 Things to Consider When Booking a Caterer',
-    image: '/images/catering-3.jpg',
+    image: '/images/catering-3.webp',
     date: '4th June 2018',
     src: '/blog/7-things-to-consider-when-booking-a-caterer'
   },
   {
     title: 'What is Sustainable Catering?',
-    image: '/images/carrots.jpg',
+    image: '/images/carrots.webp',
     date: '4th June 2018',
     src: '/blog/what-is-sustainable-catering'
   }

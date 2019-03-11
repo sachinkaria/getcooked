@@ -24,7 +24,7 @@ class WeddingServices extends Component {
     const COPY = {
       title: 'Wedding Catering',
       subtitle: 'Book Amazing Wedding Caterers For Your Special Day',
-      image: '/images/wedding.jpg'
+      image: '/images/wedding.webp'
     };
 
     const TEXT_SECTION_COPY = {
@@ -34,7 +34,7 @@ class WeddingServices extends Component {
        'Whether it\'s a 3-day fiesta or an all night Cèilidh our range of bespoke caterers would love to keep your guests from going hungry. Get a range of quotes from some of the best professional and sustainable catering companies in the UK and start planning your menu!'
       ],
       imageAlt: 'Wedding Catering',
-      imageUrl: '/images/wedding-2.jpg',
+      imageUrl: '/images/wedding-2.webp',
       button: true
     };
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 function Pricing() {
   const priceSectionStyle = {
-    backgroundImage: 'url(/images/catering-2.jpg)',
+    backgroundImage: 'url(/images/catering-2.webp)',
     backgroundSize: 'cover'
   };
   return (

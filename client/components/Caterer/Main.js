@@ -5,7 +5,7 @@ import ListItem from '../chefs/ListItem';
 
 function Main() {
   const style = {
-    backgroundImage: 'url(/images/grow-your-business.jpg)',
+    backgroundImage: 'url(/images/grow-your-business.webp)',
     backgroundSize: 'cover'
   };
   return (

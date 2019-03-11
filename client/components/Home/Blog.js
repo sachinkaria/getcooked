@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, Button } from 'react-bootstrap';
 import BlogThumbnail from '../BlogThumbnail';
-import '../../images/carrots.jpg';
-import '../../images/catering-3.jpg';
+import '../../images/carrots.webp';
+import '../../images/catering-3.webp';
 
 function Blog() {
   return (
@@ -15,14 +15,14 @@ function Blog() {
           <Row>
             <Col xs={12} sm={6}>
               <BlogThumbnail
-                backgroundImage="url(/images/tableware.jpg)"
+                backgroundImage="url(/images/tableware.webp)"
                 heading="5 Things To Consider When Planning Your Catering Budget"
                 path={'/blog/5-things-to-consider-when-planning-your-catering-budget'}
               />
             </Col>
             <Col xs={12} sm={6}>
               <BlogThumbnail
-                backgroundImage="url(/images/carrots.jpg)"
+                backgroundImage="url(/images/carrots.webp)"
                 heading=" What is Sustainable Catering?"
                 path={'/blog/what-is-sustainable-catering'}
               />

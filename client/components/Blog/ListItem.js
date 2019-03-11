@@ -5,7 +5,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col, Button } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import '../../images/catering-3.jpg';
+import '../../images/catering-3.webp';
 import { POSTS } from '../../utils/data';
 
 

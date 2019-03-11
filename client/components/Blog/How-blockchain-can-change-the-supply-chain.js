@@ -5,7 +5,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import '../../images/blockchain.jpg';
+import '../../images/blockchain.webp';
 import { POSTS } from '../../utils/data';
 import ListItem from './ListItem';
 
@@ -27,7 +27,7 @@ function Blockchain() {
           content="When it comes to blockchain technology most of us are still curious to see real
                 world implications and benefits that it can bring to certain industries."
         />
-        <meta property="og:image" alt="how can blockchain change the food supply chain" content="https://scontent.flhr4-1.fna.fbcdn.net/v/t1.0-9/35241502_603932300005666_8121026344843739136_n.jpg?_nc_cat=0&oh=ad7db958216bedfd772f17f08d0b9656&oe=5BA34E12" />
+        <meta property="og:image" alt="how can blockchain change the food supply chain" content="https://scontent.flhr4-1.fna.fbcdn.net/v/t1.0-9/35241502_603932300005666_8121026344843739136_n.webp?_nc_cat=0&oh=ad7db958216bedfd772f17f08d0b9656&oe=5BA34E12" />
         <meta property="og:url" content="https://www.getcooked.co/blog/how-blockchain-can-change-the-food-supply-chain" />
       </Helmet>
       <Row>
@@ -41,7 +41,7 @@ function Blockchain() {
               <img
                 style={{ width: '100%', paddingTop: '15px', marginBottom: '25px' }}
                 alt="Blockchain"
-                src="/images/blockchain.jpg"
+                src="/images/blockchain.webp"
               />
             </Col>
             <Col xs={12}>

@@ -5,7 +5,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Button, Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet';
-import '../../images/catering-3.jpg';
+import '../../images/catering-3.webp';
 import { POSTS } from '../../utils/data';
 import ListItem from './ListItem';
 
@@ -26,7 +26,7 @@ function BookingACaterer() {
           content="Planning an event can be overwhelming. If you haven\`t hosted an event before it can always be
                 difficult knowing where and how to get started."
         />
-        <meta property="og:image" alt="5 Things To Consider When Planning Your Catering Budget" content="https://www.getcooked.co/images/tableware.jpg" />
+        <meta property="og:image" alt="5 Things To Consider When Planning Your Catering Budget" content="https://www.getcooked.co/images/tableware.webp" />
         <meta property="og:url" content="https://www.getcooked.co/blog/5-things-to-consider-when-planning-your-catering-budget" />
       </Helmet>
       <Row>
@@ -40,7 +40,7 @@ function BookingACaterer() {
               <img
                 style={{ width: '100%', paddingTop: '15px', marginBottom: '25px' }}
                 alt="Tableware"
-                src="/images/tableware.jpg"
+                src="/images/tableware.webp"
               />
             </Col>
             <Col xs={12}>

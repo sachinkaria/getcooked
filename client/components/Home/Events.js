@@ -13,7 +13,7 @@ function WhoWeAre() {
               <img
                 style={{ width: '100%', paddingTop: '15px' }}
                 alt="The urban farming debate"
-                src="/images/event-poster.jpg"
+                src="/images/event-poster.webp"
               />
             </Col>
             <Col xs={12} sm={8}>
